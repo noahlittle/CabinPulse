@@ -763,7 +763,69 @@ footer {
     }
 }
 
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
 
+.modal-content {
+    background-color: var(--secondary-color);
+    margin: 15% auto;
+    padding: 20px;
+    border: 3px solid var(--highlight-color);
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.close {
+    color: var(--text-color);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: var(--highlight-color);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#waitlistForm input[type="text"],
+#waitlistForm input[type="email"],
+#waitlistForm button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+}
+
+#waitlistForm button {
+    background-color: var(--highlight-color);
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#waitlistForm button:hover {
+    background-color: var(--cta-color);
+}
+
+#formMessage {
+    margin-top: 10px;
+    font-weight: bold;
+}
 
     </style>
 </head>
@@ -889,7 +951,7 @@ footer {
                         <li><i class="fas fa-mobile-alt"></i>Instant Alerts</li>
                         <li><i class="fas fa-dollar"></i>Renews at $168 billed annually ($14/mo)</li>
                     </ul>
-                    <a href="#" class="cta-button pricing">Order Now</a>
+                    <a href="" class="cta-button pricing">Order Now</a>
                 </div>
                 <div class="pricing-card highlighted">
                     <span class="best-value">BEST VALUE</span>
@@ -907,7 +969,7 @@ footer {
                         <li><i class="fas fa-mobile-alt"></i>Instant Alerts</li>
                         <li><i class="fas fa-dollar"></i>Renews at $360 billed every 3 years ($10/mo)</li>
                     </ul>
-                    <a href="#" class="cta-button pricing">Order Now</a>
+                    <a href="" class="cta-button pricing">Order Now</a>
                 </div>
             </div>
         </div>
@@ -963,25 +1025,26 @@ footer {
         </div>
     </footer>
 
+    
     <script>
         window.addEventListener('scroll', function() {
             var header = document.querySelector('header');
             header.classList.toggle('scrolled', window.scrollY > 0);
         });
- // Add this new script for the mobile menu
- document.addEventListener('DOMContentLoaded', function() {
+    
+        document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
             const mobileMenu = document.querySelector('.mobile-menu');
             const mobileMenuClose = document.querySelector('.mobile-menu-close');
-
+    
             mobileMenuToggle.addEventListener('click', function() {
                 mobileMenu.style.display = 'flex';
             });
-
+    
             mobileMenuClose.addEventListener('click', function() {
                 mobileMenu.style.display = 'none';
             });
-
+    
             // Close mobile menu when a link is clicked
             const mobileMenuLinks = mobileMenu.querySelectorAll('a');
             mobileMenuLinks.forEach(link => {
@@ -989,7 +1052,76 @@ footer {
                     mobileMenu.style.display = 'none';
                 });
             });
+    
+            // Sold Out Modal functionality
+            var modal = document.getElementById("soldOutModal");
+            var span = document.getElementsByClassName("close")[0];
+    
+            // Get all "Order Now" buttons
+            var orderButtons = document.querySelectorAll(".cta-button.pricing");
+    
+            // When the user clicks on an "Order Now" button, open the modal
+            orderButtons.forEach(function(button) {
+                button.onclick = function(event) {
+                    event.preventDefault();
+                    modal.style.display = "block";
+                    // Set the plan value based on which button was clicked
+                    document.getElementById("plan").value = this.closest('.pricing-card').querySelector('h3').textContent;
+                }
+            });
+    
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+    
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+    
+            // Handle form submission
+            document.getElementById("waitlistForm").onsubmit = function(event) {
+                event.preventDefault();
+                var formData = new FormData(this);
+    
+                fetch('/add-to-waitlist', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("formMessage").textContent = data.message;
+                    if (data.success) {
+                        this.reset(); // Clear the form if submission was successful
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById("formMessage").textContent = "An error occurred. Please try again.";
+                });
+            };
         });
     </script>
+
+
+
+    <div id="soldOutModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img src="cpicon.png" alt="Sold Out" style="width: 100px; border-radius: 10px;">
+            <h2>Sorry, we're sold out!</h2>
+            <p>Join our waitlist to be notified as soon as more units become available.</p>
+            <form id="waitlistForm">
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+                <input type="hidden" id="plan" name="plan" value="">
+                <button type="submit">Join Waitlist</button>
+            </form>
+            <p id="formMessage"></p>
+        </div>
+    </div>
 </body>
 </html>
