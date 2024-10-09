@@ -562,22 +562,85 @@
         grid-template-columns: 1fr;
     }
 }
+
+       /* Add these new styles for the mobile menu */
+       .mobile-menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--primary-color);
+            z-index: 1001;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mobile-menu a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.5rem;
+            margin: 20px 0;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--highlight-color);
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <nav class="container">
             <div class="logo-container">
-            <img src="cpicon.png" alt="CabinPulse Logo" class="icon">
-            <h1>CabinPulse</h1>
+                <img src="cpicon.png" alt="CabinPulse Logo" class="icon">
+                <h1>CabinPulse</h1>
             </div>
             <div class="nav-links">
                 <a href="#features">Features</a>
                 <a href="#pricing">Pricing</a>
-                <a href="#contact">Contact</a>
+                <a href="#faq">FAQ</a>
+            </div>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
             </div>
         </nav>
     </header>
+
+    <div class="mobile-menu">
+        <div class="mobile-menu-close">
+            <i class="fas fa-times"></i>
+        </div>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+    </div>
 
     <section class="hero">
         <div class="container">
@@ -739,6 +802,28 @@
         window.addEventListener('scroll', function() {
             var header = document.querySelector('header');
             header.classList.toggle('scrolled', window.scrollY > 0);
+        });
+ // Add this new script for the mobile menu
+ document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const mobileMenuClose = document.querySelector('.mobile-menu-close');
+
+            mobileMenuToggle.addEventListener('click', function() {
+                mobileMenu.style.display = 'flex';
+            });
+
+            mobileMenuClose.addEventListener('click', function() {
+                mobileMenu.style.display = 'none';
+            });
+
+            // Close mobile menu when a link is clicked
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.style.display = 'none';
+                });
+            });
         });
     </script>
 </body>
