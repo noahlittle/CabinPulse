@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CabinPulse - Intelligent Cabin Monitoring</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a1a2e;
+            --secondary-color: #16213e;
+            --cta-color: #ffffff;
+            --accent-color: #0f3460;
+            --highlight-color: #e94560;
+            --text-color: #ffffff;
+            --dark-text-color: #000000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        header.scrolled {
+            background-color: var(--secondary-color);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            width: 125px;
+            height: 125px;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--highlight-color);
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('bg.png') no-repeat center center;
+            background-size: cover;
+            filter: brightness(0.3);
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            margin-top: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--cta-color);
+            color: var(--highlight-color);
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(233, 69, 96, 0.4);
+        }
+
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .badge {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        .badge.featured {
+            background-color: var(--highlight-color);
+            font-weight: bold;
+            margin-bottom: 2rem;
+        }
+
+.features {
+    padding: 100px 0;
+    background-color: var(--secondary-color);
+    position: relative;
+}
+
+.features::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background-color: var(--secondary-color);
+    transform: skewY(-3deg);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+    color: var(--highlight-color);
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.feature-card {
+    background-color: var(--accent-color);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(233, 69, 96, 0.1) 0%, rgba(233, 69, 96, 0) 70%);
+    transform: rotate(45deg);
+    z-index: 0;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    color: var(--highlight-color);
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.feature-highlight {
+    display: flex;
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.feature-highlight-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.feature-card.large {
+    text-align: left;
+    padding: 40px;
+}
+
+.feature-card.large .feature-icon {
+    font-size: 4rem;
+    margin-bottom: 30px;
+}
+
+.feature-card.large h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.feature-card.large p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.dashboard-preview {
+    flex: 1;
+    background-color: var(--accent-color);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard-image {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+.dashboard-preview p {
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+@media (max-width: 1024px) {
+    .feature-highlight {
+        flex-direction: column;
+    }
+    
+    .dashboard-preview {
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.coverage-map {
+            padding: 100px 0;
+            background: url('coverage.jpg') no-repeat center center;
+            background-size: cover;
+            text-align: center;
+            position: relative;
+        }
+
+        .coverage-map::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(26, 26, 46, 0.7);
+        }
+
+        .coverage-map .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .coverage-map h2 {
+            margin-bottom: 20px;
+            color: var(--cta-color);
+            font-size: 2.5rem;
+        }
+
+        .coverage-map p {
+            color: var(--cta-color);
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .pricing {
+            padding: 100px 0;
+            background-color: var(--secondary-color);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .pricing-card {
+            background-color: var(--primary-color);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card.highlighted {
+            border: 3px solid var(--highlight-color);
+            transform: scale(1.05);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--highlight-color);
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--cta-color);
+            margin: 20px 0;
+        }
+
+        .price .period {
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+
+        .device-price {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin-bottom: 20px;
+        }
+
+        .discount {
+            background-color: var(--highlight-color);
+            color: var(--primary-color);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .feature-list {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .feature-list li {
+            margin-bottom: 15px;
+            list-style-type: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-list i {
+            color: var(--highlight-color);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .device-image {
+            width: 150px;
+            margin: 0 auto 20px;
+            display: block;
+        }
+
+        .cta-button.pricing {
+            background-color: var(--highlight-color);
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            padding: 15px 30px;
+        }
+
+        .best-value {
+            position: absolute;
+            top: 30px;
+            right: -35px;
+            background-color: var(--highlight-color);
+            color: var(--primary-color);
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.highlighted {
+                transform: scale(1);
+            }
+        }
+
+        .feature-list {
+            text-align: left;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-list li {
+            margin-bottom: 10px;
+            list-style-type: none;
+        }
+
+        .feature-list li:before {
+            content: "\f00c";
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--highlight-color);
+            margin-right: 10px;
+        }
+
+        .device-image {
+            width: 200px;
+            margin: 0 auto 20px;
+            display: block;
+        }
+
+        .icon-text {
+            margin-right: 0.5rem;
+        }
+
+        .icon {
+            width: 50px;
+            height: 50px;
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .feature-grid, .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .faq {
+    padding: 100px 0;
+    background-color: var(--primary-color);
+    position: relative;
+}
+
+.faq::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background-color: var(--primary-color);
+    transform: skewY(-3deg);
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.faq-item {
+    background-color: var(--secondary-color);
+    border-radius: 20px;
+    padding: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faq-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.faq-item h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: var(--highlight-color);
+    display: flex;
+    align-items: center;
+}
+
+.faq-item h3 i {
+    margin-right: 10px;
+    font-size: 1.4rem;
+}
+
+.faq-item p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo-container">
+            <img src="cpicon.png" alt="CabinPulse Logo" class="icon">
+            <h1>CabinPulse</h1>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <img src="cpicon.png" alt="CabinPulse Logo" class="logo">
+            <div class="hero-content">
+                <span class="badge featured"><i class="fas fa-tower-cell icon-text"></i>NO WIFI REQUIRED!</span>
+                <h1>24/7 Cabin Monitoring</h1>
+                <p>Skip the frozen pipes and pointless trips to check on your cabin.</p>
+                <div class="badge-container">
+                    <span class="badge"><i class="fas fa-temperature-low icon-text"></i>Temperature</span>
+                    <span class="badge"><i class="fas fa-droplet icon-text"></i>Humidity</span>
+                    <span class="badge"><i class="fas fa-plug-circle-xmark icon-text"></i>Power Outages</span>
+                    <span class="badge"><i class="fas fa-smog icon-text"></i>Smoke</span>
+                    <span class="badge"><i class="fas fa-fire icon-text"></i>Gas Leaks</span>
+                </div>
+                <a href="#features" class="cta-button">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Comprehensive Monitoring, 24/7</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="feature-icon fas fa-temperature-low"></i>
+                    <h3>Temperature Monitoring</h3>
+                    <p>Precise monitoring to prevent pipe freezing.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="feature-icon fas fa-tint"></i>
+                    <h3>Humidity Monitoring</h3>
+                    <p>Fight mold and mildew with accurate humidity tracking.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="feature-icon fas fa-fire"></i>
+                    <h3>Smoke/Gas Detection</h3>
+                    <p>Instant smoke, carbon monoxide and gas leak alerts.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="feature-icon fas fa-bolt"></i>
+                    <h3>Power Outage Tracking</h3>
+                    <p>Track power disruptions, even when you're away.</p>
+                </div>
+            </div>
+            <div class="feature-highlight">
+                <div class="feature-highlight-text">
+                    <div class="feature-card large">
+                        <i class="feature-icon fas fa-tower-cell"></i>
+                        <h3>No WiFi Required</h3>
+                        <p>CabinPulse works out-of-the-box anywhere there's cellular coverage.</p>
+                        <br />
+                        <p><i>No need for a WiFi connection or any additional data plan!</i></p>
+                    </div>
+                    <div class="feature-card large">
+                        <i class="feature-icon fas fa-mobile-alt"></i>
+                        <h3>Instant Alerts</h3>
+                        <p>Receive custom alerts and critical notifications via text message in real-time. Whether it's a sudden temperature drop or a power outage, you'll be the first to know.</p>
+                    </div>
+                </div>
+                <div class="dashboard-preview feature-card large">
+                    <i class="feature-icon fas fa-chart-line"></i>
+                    <h3>Secure Dashboard</h3>
+                    <img src="cpdashboard.png" alt="CabinPulse Dashboard" class="dashboard-image">
+                    <p>Access from any device, anywhere.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="coverage-map">
+        <div class="container">
+            <h2>Coverage Map</h2>
+            <p>CabinPulse works anywhere in Canada and the USA with cellular coverage.</p>
+            <a href="https://www.att.com/maps/wireless-coverage.html" class="cta-button">View Network Coverage Map</a>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2 class="section-title">Choose Your Experience</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>1-Year Plan</h3>
+                    <img src="device.png" alt="CabinPulse Device" class="device-image">
+                    <div class="price">$14<span class="period">/mo</span></div>
+                    <div class="device-price">+ $60 one-time device fee</div>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i>24/7 Monitoring</li>
+                        <li><i class="fas fa-temperature-low"></i>Temperature Monitoring</li>
+                        <li><i class="fas fa-droplet"></i>Humidity Monitoring</li>
+                        <li><i class="fas fa-smog"></i>Smoke & Gas Detection</li>
+                        <li><i class="fas fa-plug"></i>Power Outage Tracking</li>
+                        <li><i class="fas fa-mobile-alt"></i>Instant Alerts</li>
+                        <li><i class="fas fa-dollar"></i>Renews at $168 billed annually ($14/mo)</li>
+                    </ul>
+                    <a href="#" class="cta-button pricing">Order Now</a>
+                </div>
+                <div class="pricing-card highlighted">
+                    <span class="best-value">BEST VALUE</span>
+                    <h3>3-Year Plan</h3>
+                    <img src="device.png" alt="CabinPulse Device" class="device-image">
+                    <div class="price">$10<span class="period">/mo</span></div>
+                    <div class="device-price">+ $60 one-time device fee</div>
+                    <span class="discount">Save 29% on monthly fee</span>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i>24/7 Monitoring</li>
+                        <li><i class="fas fa-temperature-low"></i>Temperature Monitoring</li>
+                        <li><i class="fas fa-droplet"></i>Humidity Monitoring</li>
+                        <li><i class="fas fa-smog"></i>Smoke & Gas Detection</li>
+                        <li><i class="fas fa-plug"></i>Power Outage Tracking</li>
+                        <li><i class="fas fa-mobile-alt"></i>Instant Alerts</li>
+                        <li><i class="fas fa-dollar"></i>Renews at $360 billed every 3 years ($10/mo)</li>
+                    </ul>
+                    <a href="#" class="cta-button pricing">Order Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3><i class="fas fa-question-circle"></i> How does CabinPulse work without WiFi?</h3>
+                    <p>CabinPulse uses cellular technology to transmit data, eliminating the need for WiFi. The device automatically connects to available networks in your area.</p>
+                </div>
+                <div class="faq-item">
+                    <h3><i class="fas fa-question-circle"></i> What's included in the device fee?</h3>
+                    <p>The one-time $60 device fee covers your CabinPulse monitoring unit, which includes temperature, humidity, smoke, and gas sensors, as well as power outage detection capabilities.</p>
+                </div>
+                <div class="faq-item">
+                    <h3><i class="fas fa-question-circle"></i> How often does CabinPulse send updates?</h3>
+                    <p>CabinPulse sends regular updates every 15 minutes. In case of any critical events (like a sudden temperature drop or smoke detection), alerts are sent immediately.</p>
+                </div>
+                <div class="faq-item">
+                    <h3><i class="fas fa-question-circle"></i> Is there a limit to the number of alerts I can receive?</h3>
+                    <p>No, there's no limit to the number of alerts. You'll receive notifications for all critical events to ensure the safety of your cabin.</p>
+                </div>
+                <div class="faq-item">
+                    <h3><i class="fas fa-question-circle"></i> Can I customize the alert thresholds?</h3>
+                    <p>Yes, you can customize alert thresholds through your secure online dashboard. This allows you to tailor the system to your cabin's specific needs.</p>
+                </div>
+                <div class="faq-item">
+                    <h3><i class="fas fa-question-circle"></i> What's the battery life of the CabinPulse device?</h3>
+                    <p>The CabinPulse device is designed to be plugged into a power outlet. However, it does have a backup battery that lasts up to 24 hours in case of prolonged power outages.</p>
+                </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <p>&copy; 2024 CabinPulse | protect@cabinpulse.com</p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            var header = document.querySelector('header');
+            header.classList.toggle('scrolled', window.scrollY > 0);
+        });
+    </script>
+</body>
+</html>
