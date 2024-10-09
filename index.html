@@ -827,6 +827,26 @@ footer {
     font-weight: bold;
 }
 
+#successMessage {
+        text-align: center;
+        padding: 20px;
+    }
+
+    #successMessage h2 {
+        margin-top: 20px;
+        color: #4CAF50;
+    }
+
+    .fade-out {
+        opacity: 0;
+        transition: opacity 0.5s ease-out;
+    }
+
+    .fade-in {
+        opacity: 1;
+        transition: opacity 0.5s ease-in;
+    }
+
     </style>
 </head>
 <body>
@@ -941,7 +961,7 @@ footer {
                     <h3>1-Year Plan</h3>
                     <img src="device.png" alt="CabinPulse Device" class="device-image">
                     <div class="price">$14<span class="period">/mo</span></div>
-                    <div class="device-price">+ $60 one-time device fee</div>
+                    <div class="device-price">+ $99 one-time device fee</div>
                     <ul class="feature-list">
                         <li><i class="fas fa-check-circle"></i>24/7 Monitoring</li>
                         <li><i class="fas fa-temperature-low"></i>Temperature Monitoring</li>
@@ -958,7 +978,7 @@ footer {
                     <h3>3-Year Plan</h3>
                     <img src="device.png" alt="CabinPulse Device" class="device-image">
                     <div class="price">$10<span class="period">/mo</span></div>
-                    <div class="device-price">+ $60 one-time device fee</div>
+                    <div class="device-price">+ $99 one-time device fee</div>
                     <span class="discount">Save 29% on monthly fee</span>
                     <ul class="feature-list">
                         <li><i class="fas fa-check-circle"></i>24/7 Monitoring</li>
@@ -985,7 +1005,7 @@ footer {
                 </div>
                 <div class="faq-item">
                     <h3><i class="fas fa-question-circle"></i> What's included in the device fee?</h3>
-                    <p>The one-time $60 device fee covers your CabinPulse monitoring unit, which includes temperature, humidity, smoke, and gas sensors, as well as power outage detection capabilities.</p>
+                    <p>The one-time $99 device fee covers your CabinPulse monitoring unit, which includes temperature, humidity, smoke, and gas sensors, as well as power outage detection capabilities.</p>
                 </div>
                 <div class="faq-item">
                     <h3><i class="fas fa-question-circle"></i> How often does CabinPulse send updates?</h3>
@@ -1082,35 +1102,51 @@ footer {
                 }
             }
     
-            // Handle form submission
-            document.getElementById("waitlistForm").onsubmit = function(event) {
-                event.preventDefault();
-                var formData = new FormData(this);
-    
-                fetch('/add-to-waitlist.php', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
+            // Update the form submission handler
+        document.getElementById("waitlistForm").onsubmit = function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+
+            fetch('/add-to-waitlist.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const initialContent = document.getElementById('modalInitialContent');
+                    const successMessage = document.getElementById('successMessage');
+
+                    // Fade out the initial content
+                    initialContent.classList.add('fade-out');
+
+                    // After the fade-out, hide initial content and show success message
+                    setTimeout(() => {
+                        initialContent.style.display = 'none';
+                        successMessage.style.display = 'block';
+                        successMessage.classList.add('fade-in');
+                    }, 500);
+
+                    // Clear the form
+                    this.reset();
+                } else {
                     document.getElementById("formMessage").textContent = data.message;
-                    if (data.success) {
-                        this.reset(); // Clear the form if submission was successful
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    document.getElementById("formMessage").textContent = "An error occurred. Please try again.";
-                });
-            };
-        });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById("formMessage").textContent = "An error occurred. Please try again.";
+            });
+        };
+    });
     </script>
 
 
 
-    <div id="soldOutModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
+<div id="soldOutModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="modalInitialContent">
             <img src="cpicon.png" alt="Sold Out" style="width: 100px; border-radius: 10px;">
             <h2>Sorry, we're sold out!</h2>
             <p>Join our waitlist to be notified as soon as more units become available.</p>
@@ -1120,8 +1156,13 @@ footer {
                 <input type="hidden" id="plan" name="plan" value="">
                 <button type="submit">Join Waitlist</button>
             </form>
-            <p id="formMessage"></p>
+        </div>
+        <div id="successMessage" style="display: none;">
+            <i class="fas fa-check-circle" style="font-size: 4rem; color: #4CAF50;"></i>
+            <h2>Thank You!</h2>
+            <p>You've been added to our waitlist. We'll notify you as soon as more units are available.</p>
         </div>
     </div>
+</div>
 </body>
 </html>
