@@ -6,6 +6,7 @@
     <title>CabinPulse - Intelligent Cabin Monitoring</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="38061709-54ec-4c13-8989-5ed667113bc0"></script>
     <style>
         /* Root variables */
 :root {
@@ -62,7 +63,7 @@ nav {
     align-items: center;
 }
 
-.logo {
+.logo-hero {
     width: 150px; /* Increased from 125px */
     height: 150px; /* Increased from 125px */
 }
@@ -97,7 +98,7 @@ nav {
     bottom: 0;
     background: url('bg.png') no-repeat center center;
     background-size: cover;
-    filter: brightness(0.3);
+    filter: brightness(0.5);
     z-index: -1;
 }
 
@@ -122,13 +123,15 @@ nav {
     display: inline-block;
     background-color: var(--cta-color);
     color: var(--highlight-color);
-    padding: 15px 30px; /* Increased from 12px 24px */
+    padding: 15px 30px;
     text-decoration: none;
     border-radius: 50px;
     font-weight: bold;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin-top: 1.2rem; /* Increased from 1rem */
-    font-size: 1.1rem; /* New size */
+    margin-top: 1.2rem;
+    font-size: 1.1rem;
+    position: relative;
+    z-index: 10;
     margin-bottom: 2rem;
 }
 
@@ -169,12 +172,16 @@ nav {
 .features::before {
     content: '';
     position: absolute;
-    top: -60px; /* Increased from -50px */
+    top: -100px; /* Increased from -50px */
     left: 0;
     right: 0;
     height: 120px; /* Increased from 100px */
     background-color: var(--secondary-color);
-    transform: skewY(-3deg);
+    --mask:
+    radial-gradient(108.17px at 50% 150px,#000 99%,#0000 101%) calc(50% - 120px) 0/240px 100%,
+    radial-gradient(108.17px at 50% -90px,#0000 99%,#000 101%) 50% 60px/240px 100% repeat-x;
+  -webkit-mask: var(--mask);
+          mask: var(--mask);
 }
 
 .section-title {
@@ -414,8 +421,9 @@ nav {
 }
 
 .device-image {
-    width: 180px; /* Increased from 150px */
-    margin: 0 auto 24px; /* Increased bottom margin from 20px */
+    width: 80%;
+    border-radius: 1rem;
+    margin: 0 auto 24px;
     display: block;
 }
 
@@ -448,12 +456,16 @@ nav {
 .faq::before {
     content: '';
     position: absolute;
-    top: -60px; /* Increased from -50px */
+    top: -100px; /* Increased from -50px */
     left: 0;
     right: 0;
     height: 120px; /* Increased from 100px */
     background-color: var(--primary-color);
-    transform: skewY(-3deg);
+    --mask:
+    radial-gradient(108.17px at 50% 150px,#000 99%,#0000 101%) calc(50% - 120px) 0/240px 100%,
+    radial-gradient(108.17px at 50% -90px,#0000 99%,#000 101%) 50% 60px/240px 100% repeat-x;
+  -webkit-mask: var(--mask);
+          mask: var(--mask);
 }
 
 .faq-grid {
@@ -475,21 +487,26 @@ nav {
 }
 
 .faq-item h3 {
-    font-size: 1.4rem; /* Increased from 1.2rem */
     margin-bottom: 18px; /* Increased from 15px */
     color: var(--highlight-color);
     display: flex;
     align-items: center;
+    line-height: 1.2;
+    font-size: 1.2rem;
 }
 
 .faq-item h3 i {
-    margin-right: 12px; /* Increased from 10px */
+    margin-right: 16px; /* Increased from 10px */
     font-size: 1.6rem; /* Increased from 1.4rem */
 }
 
 .faq-item p {
-    font-size: 1.1rem; /* Increased from 1rem */
+    font-size: 1rem; /* Increased from 1rem */
     line-height: 1.7; /* Increased from 1.6 */
+}
+
+.faq-item a {
+    color: white;
 }
 
 /* Mobile menu styles */
@@ -693,8 +710,16 @@ footer {
         max-width: 275px; /* Increased from 250px */
     }
 
-    .logo {
-        margin-top: 2rem;
+    .device-image {
+    width: 220px;
+    border-radius: 1rem;
+    margin: 0 auto 24px;
+    display: block;
+}
+
+
+    .hero-content {
+        margin-top: 5rem;
     }
 }
 
@@ -707,6 +732,7 @@ footer {
     width: 60px; /* Increased from 50px */
     height: 60px; /* Increased from 50px */
 }
+
 
 /* Feature highlight styles */
 .feature-highlight {
@@ -733,6 +759,7 @@ footer {
     justify-content: center;
     align-items: center;
 }
+
 
 /* Responsive styles */
 @media (max-width: 1024px) {
@@ -765,6 +792,10 @@ footer {
     .dashboard-image {
         max-width: 100%; /* Ensure image doesn't overflow on small screens */
         height: auto; /* Maintain aspect ratio */
+    }
+
+    .logo-hero {
+        display: none;
     }
 }
 
@@ -851,6 +882,7 @@ footer {
         opacity: 1;
         transition: opacity 0.5s ease-in;
     }
+    
 
     </style>
 </head>
@@ -883,7 +915,7 @@ footer {
 
     <section class="hero">
         <div class="container">
-            <img src="cpicon.png" alt="CabinPulse Logo" class="logo">
+            <img src="cpicon.png" alt="CabinPulse Logo" class="logo-hero">
             <div class="hero-content">
                 <span class="badge featured"><i class="fas fa-tower-cell icon-text"></i>NO WIFI REQUIRED</span>
                 <h1>24/7 Cabin Monitoring</h1>
@@ -902,7 +934,7 @@ footer {
 
     <section id="features" class="features">
         <div class="container">
-            <h2 class="section-title">Comprehensive Monitoring, 24/7</h2>
+            <h2 class="section-title">Always-On Monitoring</h2>
             <div class="feature-grid">
                 <div class="feature-card">
                     <i class="feature-icon fas fa-temperature-low"></i>
@@ -932,19 +964,23 @@ footer {
                         <h3>No WiFi Required</h3>
                         <p>CabinPulse works out-of-the-box anywhere there's cellular coverage.</p>
                         <br />
-                        <p><i>No need for a WiFi connection or any additional data plan!</i></p>
+                        <p><i>No need for an expensive WiFi connection or <u>any</u> additional data plan!</i></p>
                     </div>
                     <div class="feature-card large">
                         <i class="feature-icon fas fa-mobile-alt"></i>
                         <h3>Instant Alerts</h3>
-                        <p>Receive custom alerts and critical notifications via text message in real-time. Whether it's a sudden temperature drop or a power outage, you'll be the first to know.</p>
+                        <p>Receive custom alerts and critical notifications via text message in real-time.</p>
+                        <br />
+                        <p><i>Sudden temperature drop? Power outage? You'll be the first to know.</i></p>
                     </div>
                 </div>
                 <div class="dashboard-preview feature-card large">
                     <i class="feature-icon fas fa-chart-line"></i>
                     <h3>Secure Dashboard</h3>
+                    <p>Easily check in on your cabin from anywhere in the world.</p>
+                    <br />
                     <img src="cpdashboard.png" alt="CabinPulse Dashboard" class="dashboard-image">
-                    <p>Access from any device, anywhere.</p>
+                    <p>View your dashboard from any device, any time.</p>
                 </div>
             </div>
         </div>
@@ -960,18 +996,18 @@ footer {
 
     <section id="pricing" class="pricing">
         <div class="container">
-            <h2 class="section-title">Choose Your Experience</h2>
+            <h2 class="section-title">Get Your CabinPulse</h2>
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <h3>1-Year Plan</h3>
-                    <img src="device.png" alt="CabinPulse Device" class="device-image">
+                    <img src="product.png" alt="CabinPulse Device" class="device-image">
                     <div class="price">$14<span class="period">/mo</span></div>
                     <div class="device-price">+ $99 one-time device fee</div>
                     <ul class="feature-list">
                         <li><i class="fas fa-check-circle"></i>24/7 Monitoring</li>
                         <li><i class="fas fa-temperature-low"></i>Temperature Monitoring</li>
                         <li><i class="fas fa-droplet"></i>Humidity Monitoring</li>
-                        <li><i class="fas fa-smog"></i>Smoke & Gas Detection</li>
+                        <li><i class="fas fa-fire"></i>Smoke & Gas Detection</li>
                         <li><i class="fas fa-plug"></i>Power Outage Tracking</li>
                         <li><i class="fas fa-mobile-alt"></i>Instant Alerts</li>
                         <li><i class="fas fa-dollar"></i>Renews at $168 billed annually ($14/mo)</li>
@@ -981,7 +1017,7 @@ footer {
                 <div class="pricing-card highlighted">
                     <span class="best-value">BEST VALUE</span>
                     <h3>3-Year Plan</h3>
-                    <img src="device.png" alt="CabinPulse Device" class="device-image">
+                    <img src="product.png" alt="CabinPulse Device" class="device-image">
                     <div class="price">$10<span class="period">/mo</span></div>
                     <div class="device-price">+ $99 one-time device fee</div>
                     <span class="discount">Save 29% on monthly fee</span>
@@ -989,7 +1025,7 @@ footer {
                         <li><i class="fas fa-check-circle"></i>24/7 Monitoring</li>
                         <li><i class="fas fa-temperature-low"></i>Temperature Monitoring</li>
                         <li><i class="fas fa-droplet"></i>Humidity Monitoring</li>
-                        <li><i class="fas fa-smog"></i>Smoke & Gas Detection</li>
+                        <li><i class="fas fa-fire"></i>Smoke & Gas Detection</li>
                         <li><i class="fas fa-plug"></i>Power Outage Tracking</li>
                         <li><i class="fas fa-mobile-alt"></i>Instant Alerts</li>
                         <li><i class="fas fa-dollar"></i>Renews at $360 billed every 3 years ($10/mo)</li>
@@ -1005,27 +1041,41 @@ footer {
             <h2 class="section-title">Frequently Asked Questions</h2>
             <div class="faq-grid">
                 <div class="faq-item">
-                    <h3><i class="fas fa-question-circle"></i> How does CabinPulse work without WiFi?</h3>
-                    <p>CabinPulse uses cellular technology to transmit data, eliminating the need for WiFi. The device automatically connects to available networks in your area.</p>
+                    <h3><i class="fas fa-wifi"></i> How does CabinPulse work without WiFi?</h3>
+                    <p>CabinPulse uses cellular technology to transmit data, eliminating the need for WiFi. The device automatically connects to available cellular networks in your area.</p>
                 </div>
                 <div class="faq-item">
-                    <h3><i class="fas fa-question-circle"></i> What's included in the device fee?</h3>
+                    <h3><i class="fas fa-mobile-alt"></i> Do I need to pay for another cellular plan?</h3>
+                    <p>No! The monthly CabinPulse fee covers <u>everything</u>. The cellular conenctivity is completely built-in to the device, and there are no cellular data plans or WiFi required.</p>
+                </div>
+                <div class="faq-item">
+                    <h3><i class="fas fa-stairs"></i> How do I setup my CabinPulse device?</h3>
+                    <p>Once you receive your device, login to your CabinPulse dashboard, enter the activation code on your device, and plug it into a power outlet. It will immediately begin monitoring!</p>
+                </div>
+                <div class="faq-item">
+                    <h3><i class="fas fa-tower-cell"></i> My cabin doesn't have cell coverage - will CabinPulse work?</h3>
+                    <p>CabinPulse uses cellular technology to transmit data so coverage is required.</p>
+                    <br />
+                    <p>If you're unsure of coverage in your area, check the coverage map of our <a href="https://www.att.com/maps/wireless-coverage.html">network partner</a>.</p>
+                </div>
+                <div class="faq-item">
+                    <h3><i class="fas fa-dollar"></i> What's included in the device fee?</h3>
                     <p>The one-time $99 device fee covers your CabinPulse monitoring unit, which includes temperature, humidity, smoke, and gas sensors, as well as power outage detection capabilities.</p>
                 </div>
                 <div class="faq-item">
-                    <h3><i class="fas fa-question-circle"></i> How often does CabinPulse send updates?</h3>
-                    <p>CabinPulse sends regular updates every 15 minutes. In case of any critical events (like a sudden temperature drop or smoke detection), alerts are sent immediately.</p>
+                    <h3><i class="fas fa-paper-plane"></i> How up-to-date is the CabinPulse data?</h3>
+                    <p>CabinPulse sends new data updates to your dashboard every 15 minutes. In case of any critical events (like a sudden temperature drop or smoke detection), alerts are sent immediately.</p>
                 </div>
                 <div class="faq-item">
-                    <h3><i class="fas fa-question-circle"></i> Is there a limit to the number of alerts I can receive?</h3>
+                    <h3><i class="fas fa-bell"></i> Is there a limit to the number of alerts I can receive?</h3>
                     <p>No, there's no limit to the number of alerts. You'll receive notifications for all critical events to ensure the safety of your cabin.</p>
                 </div>
                 <div class="faq-item">
-                    <h3><i class="fas fa-question-circle"></i> Can I customize the alert thresholds?</h3>
+                    <h3><i class="fas fa-sliders"></i> Can I customize the alert thresholds?</h3>
                     <p>Yes, you can customize alert thresholds through your secure online dashboard. This allows you to tailor the system to your cabin's specific needs.</p>
                 </div>
                 <div class="faq-item">
-                    <h3><i class="fas fa-question-circle"></i> What's the battery life of the CabinPulse device?</h3>
+                    <h3><i class="fas fa-battery-half"></i> What's the battery life of the CabinPulse device?</h3>
                     <p>The CabinPulse device is designed to be plugged into a power outlet. However, it does have a backup battery that lasts up to 24 hours in case of prolonged power outages.</p>
                 </div>
         </div>
@@ -1037,9 +1087,9 @@ footer {
                 <i class="fas fa-shield-alt"></i>
             </div>
             <h2 class="cp-final-cta__title">Your cabin, monitored.</h2>
-            <p class="cp-final-cta__description">Don't let another day go by without knowing your cabin is safe. Start monitoring with CabinPulse today and enjoy peace of mind like never before.</p>
+            <p class="cp-final-cta__description">Enjoy peace of mind like never before.</p>
             <div class="cp-final-cta__buttons">
-                <a href="#pricing" class="cp-final-cta__button cp-final-cta__button--primary">Get Started</a>
+                <a href="#pricing" class="cp-final-cta__button cp-final-cta__button--primary">Get CabinPulse</a>
             </div>
         </div>
     </section>
