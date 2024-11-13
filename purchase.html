@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CabinPulse - Purchase</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <style>
+        :root {
+            --primary-color: #1a1a2e;
+            --secondary-color: #16213e;
+            --cta-color: #ffffff;
+            --accent-color: #0f3460;
+            --highlight-color: #e94560;
+            --text-color: #ffffff;
+            --dark-text-color: #000000;
+            --transition-duration: 0.5s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--secondary-color);
+            padding: 20px 0;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .icon {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        .purchase-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            gap: 30px;
+        }
+
+        .product-summary {
+            flex: 1;
+            padding: 30px;
+            background-color: var(--secondary-color);
+            border-radius: 24px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-summary h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: white;
+            text-align: center;
+        }
+
+        .product-image {
+            width: 100%;
+            max-width: 250px;
+            border-radius: 12px;
+            margin: 0 auto 20px;
+            display: block;
+        }
+
+        .price-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .price {
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--cta-color);
+        }
+
+        .price .period {
+            font-size: 18px;
+            color: var(--text-color);
+        }
+
+        .device-price {
+            font-size: 18px;
+            color: var(--text-color);
+            margin-top: 5px;
+        }
+
+        .discount, .upsell {
+            background-color: var(--highlight-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 20px;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+        }
+
+        .upsell {
+            background-color: var(--accent-color);
+            color: var(--cta-color);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .upsell:hover {
+            background-color: var(--highlight-color);
+        }
+
+        .product-details {
+            margin-bottom: 20px;
+        }
+
+        .product-details li {
+            margin-bottom: 10px;
+            list-style-type: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .product-details i {
+            color: var(--highlight-color);
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        .purchase-form {
+            flex: 1;
+            padding: 30px;
+            background-color: var(--secondary-color);
+            border-radius: 24px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .purchase-form h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: white;
+            text-align: center;
+        }
+
+        .form-step {
+            display: none;
+            opacity: 0;
+            transition: opacity var(--transition-duration) ease;
+        }
+
+        .form-step.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .account-container {
+        background-color: var(--accent-color);
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+        font-weight: 600;
+    }
+
+    .form-group label i {
+        margin-right: 10px;
+        color: var(--highlight-color);
+    }
+
+    .input-description {
+        font-size: 0.9em;
+        color: #ccc;
+        margin-bottom: 5px;
+    }
+
+    input[type="email"],
+    input[type="password"],
+    input[type="tel"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid var(--accent-color);
+        border-radius: 5px;
+        background-color: var(--primary-color);
+        color: var(--text-color);
+        font-size: 1em;
+    }
+
+    input[type="email"]:focus,
+    input[type="password"]:focus,
+    input[type="tel"]:focus {
+        outline: none;
+        border-color: var(--highlight-color);
+        box-shadow: 0 0 0 2px rgba(233, 69, 96, 0.2);
+    }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--highlight-color);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(233, 69, 96, 0.4);
+        }
+
+        .cta-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cta-button i {
+    margin-right: 10px;
+}
+
+        .total-price {
+            background-color: var(--accent-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .total-price h3 {
+            color: var(--highlight-color);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .price-item.discount {
+            color: white;
+            display: none;
+        }
+
+        .total-price .total {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--cta-color);
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--cta-color);
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .purchase-container {
+                flex-direction: column;
+            }
+
+            .product-summary {
+                margin-right: 0;
+                margin-bottom: 30px;
+            }
+        }
+
+        /* New styles for step indicators */
+        .step-indicators {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .step-indicator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: gray;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+
+        .step-indicator.active {
+            opacity: 1;
+            color: white;
+        }
+
+        .step-indicator i {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .step-indicator span {
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .step-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .step-title i {
+            font-size: 24px;
+            margin-right: 10px;
+            color: var(--highlight-color);
+        }
+
+        .step-title h1 {
+            font-size: 24px;
+            color: var(--highlight-color);
+        }
+
+        .form-icon {
+            font-size: 48px;
+            color: var(--highlight-color);
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .login-option {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .login-option a {
+            color: var(--highlight-color);
+            cursor: pointer;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .auth-message {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .auth-message.success {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .auth-message.error {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .auth-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .auth-button:hover {
+            background-color: var(--highlight-color);
+        }
+
+        .auth-button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        .cta-button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        input.invalid, select.invalid {
+    border: 1px dotted red;
+}
+
+.upsell {
+    background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+    padding: 20px;
+    border-radius: 12px;
+    margin: 20px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+.upsell:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.upsell-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.upsell-icon {
+    background: var(--highlight-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+}
+
+.upsell-icon i {
+    color: white;
+    font-size: 20px;
+}
+
+.upsell-title {
+    color: var(--cta-color);
+    font-weight: bold;
+    font-size: 1.2em;
+    margin: 0;
+}
+
+.savings-container {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0;
+}
+
+.savings-item {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    color: var(--cta-color);
+}
+
+.savings-item i {
+    margin-right: 10px;
+    color: var(--highlight-color);
+}
+
+.upgrade-button {
+    background: var(--highlight-color);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    animation: pulse 2s infinite;
+}
+
+.upgrade-button:hover {
+    background: #ff5673;
+    transform: translateY(-2px);
+}
+
+.big-icon {
+    font-size: 48px;
+    color: gold;
+    animation: pulse 2s infinite;
+}
+
+.upgrade-button i {
+    margin-right: 8px;
+}
+
+.price-comparison {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+}
+
+.price-column {
+    text-align: center;
+    flex: 1;
+    position: relative;
+}
+
+.price-column.highlighted {
+    color: var(--highlight-color);
+}
+
+
+.price-amount {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.sparkle {
+    position: absolute;
+    pointer-events: none;
+    font-size: 12px;
+    z-index: 1;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--translate-x), -100px) rotate(var(--rotate));
+        opacity: 0;
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.shipping-feature {
+    display: inline-block;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-right: 8px;
+    margin-top: 8px;
+}
+
+.feature-tracking { background: #0f3460; }
+.feature-express { background: #2a9d8f; }
+.feature-insured { background: #6930c3; }
+
+.hidden {
+    display: none !important;
+}
+
+.button-container {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.back-button {
+    display: inline-block;
+    background-color: transparent;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--highlight-color);
+    cursor: pointer;
+    font-size: 18px;
+    flex: 1;
+}
+
+.back-button:hover {
+    background-color: rgba(233, 69, 96, 0.1);
+}
+
+.cta-button {
+    flex: 2;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="cpicon.png" alt="CabinPulse Logo" class="icon">
+                <h1>CabinPulse</h1>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="purchase-container">
+            <div class="product-summary">
+                <div class="form-icon">
+                    <i class="fas fa-tower-cell"></i>
+                </div>
+                <h2>Your CabinPulse Experience</h2>
+                <img src="product.png" alt="CabinPulse Device" class="product-image">
+                <div class="price-container">
+                    <div class="price">$<span id="monthly-price"></span><span class="period">/mo</span></div>
+                    <div class="device-price">+ $99 one-time device fee</div>
+                </div>
+                <div id="discount-upsell"></div>
+                <div class="total-price">
+                    <h3 id="plan-length">3-Year Plan</h3>
+                    <ul class="product-details">
+                        <li><i class="fas fa-tower-cell"></i> 24/7 Monitoring</li>
+                        <li><i class="fas fa-temperature-low"></i> Temperature Monitoring</li>
+                        <li><i class="fas fa-droplet"></i> Humidity Monitoring</li>
+                        <li><i class="fas fa-smog"></i> Air Quality Monitoring</li>
+                        <li><i class="fas fa-plug"></i> Power Outage Tracking</li>
+                        <li><i class="fas fa-mobile-alt"></i> Instant Alerts</li>
+                        <li><i class="fas fa-dollar-sign"></i> <span id="renewal-info"></span></li>
+                    </ul>
+                    <div class="price-item">
+                        <span>Subscription</span>
+                        <span id="monthly-due">$14/mo</span>
+                    </div>
+                    <div class="price-item">
+                        <span>Device Fee (one-time)</span>
+                        <span>$99</span>
+                    </div>
+                    <div class="price-item total">
+                        <span>Total Due</span>
+                        <span id="total-due">$459</span>
+                    </div>
+                    <p id="inclusion-note"><i>Includes device and complete service (including cellular connectivity) for 3 years period.</i></p>
+
+                </div>
+            </div>
+            <div class="purchase-form">
+                <div class="form-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h2>Complete Your Purchase</h2>
+                <div class="step-indicators">
+                    <div class="step-indicator active" id="indicator-1">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Shipping</span>
+                    </div>
+                    <div class="step-indicator" id="indicator-2">
+                        <i class="fas fa-user"></i>
+                        <span>Account</span>
+                    </div>
+                    <div class="step-indicator" id="indicator-3">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Confirmation</span>
+                    </div>
+                </div>
+                <form id="purchaseForm">
+                    <div class="form-step active" id="step-1">
+                        <div class="step-title">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h1>Shipping Address</h1>
+                        </div>
+                        <p>This is where we'll send your CabinPulse device.</p>
+                        </br>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <input type="text" id="address" name="address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" name="city" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="state">State/Province</label>
+                            <input type="text" id="state" name="state" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="zip">Zip/Postal Code</label>
+                            <input type="text" id="zip" name="zip" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <select id="country" name="country" required>
+                                <option value="">Select Country</option>
+                                <option value="US">United States</option>
+                                <option value="CA">Canada</option>
+                            </select>
+                            <div id="shipping-loader" class="hidden" style="display: flex; justify-content: center; padding: 20px;">
+                                <div style="width: 30px; height: 30px; border: 3px solid #f3f3f3; border-top: 3px solid #e94560; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+                            </div>
+                            <div id="shipping-options" class="hidden" style="margin-top: 20px;">
+                                <p style="margin-bottom: 15px; font-weight: 600;">Available Shipping Options:</p>
+                                <div id="shipping-options-container" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 15px; background: rgba(255,255,255,0.05);">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="button-container">
+                            <button type="button" class="cta-button" onclick="nextStep()">Continue</button>
+                        </div>
+                    </div>
+                    <div class="form-step" id="step-2">
+                        <div class="step-title">
+                            <i class="fas fa-user"></i>
+                            <h1>Connect Account</h1>
+                        </div>
+                        <p>You'll use this account to view your data and to manage alerts.</p>
+                        <br />
+                        <div class="account-container">
+                            <div id="register-form">
+                                <div class="form-group">
+                                    <label for="email">
+                                        <i class="fas fa-envelope"></i> Email Address
+                                    </label>
+                                    <input type="email" id="email" name="email" placeholder="your@email.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">
+                                        <i class="fas fa-lock"></i> Create Password
+                                    </label>
+                                    <input type="password" id="password" name="password" placeholder="*********"">
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">
+                                        <i class="fas fa-mobile-alt"></i> Mobile Number for Alerts
+                                    </label>
+                                    <p class="input-description">We'll use this number to send you important alerts about your cabin.</p>
+                                    <input type="tel" id="phone" name="phone" placeholder="555-555-5555">
+                                    <div style="margin-top: 10px; padding: 12px; background-color: rgba(15, 52, 96, 0.5); border-radius: 8px; font-size: 0.9em; line-height: 1.4;">
+                                        <div style="display: flex; align-items: flex-start; gap: 10px;">
+                                            <i class="fas fa-bell" style="color: var(--highlight-color); margin-top: 2px;"></i>
+                                            <div>
+                                                <p>By providing your phone number, you agree to receive text message alerts about your cabin's status. You can customize alert preferences anytime in your account settings.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="login-form" class="hidden">
+                                <div class="form-group">
+                                    <label for="login-email">
+                                        <i class="fas fa-envelope"></i> Email Address
+                                    </label>
+                                    <input type="email" id="login-email" name="login-email" placeholder="your@email.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="login-password">
+                                        <i class="fas fa-lock"></i> Password
+                                    </label>
+                                    <input type="password" id="login-password" name="login-password">
+                                </div>
+                            </div>
+                            <div class="login-option">
+                                <a id="toggle-login">Existing account? Click here to log in</a>
+                            </div>
+                        </div>
+                        <div class="button-container">
+                            <button type="button" class="back-button" onclick="previousStep()">
+                                <i class="fas fa-arrow-left"></i> Back
+                            </button>
+                            <button type="button" class="cta-button" onclick="nextStep()">Continue</button>
+                        </div>
+                    </div>
+                    <div class="form-step" id="step-3">
+                        <div class="step-title">
+                            <i class="fas fa-check-circle"></i>
+                            <h1>Order Confirmation</h1>
+                        </div>
+                        <div class="total-price">
+                            <h3 id="confirm-plan-length">3-Year Plan</h3>
+                            <ul class="product-details">
+                                <li><i class="fas fa-tower-cell"></i> 24/7 Monitoring</li>
+                                <li><i class="fas fa-temperature-low"></i> Temperature Monitoring</li>
+                                <li><i class="fas fa-droplet"></i> Humidity Monitoring</li>
+                                <li><i class="fas fa-smog"></i> Air Quality Monitoring</li>
+                                <li><i class="fas fa-plug"></i> Power Outage Tracking</li>
+                                <li><i class="fas fa-mobile-alt"></i> Instant Alerts</li>
+                                <li><i class="fas fa-dollar-sign"></i> <span id="confirm-renewal-info"></span></li>
+                            </ul>
+                            <div class="price-item">
+                                <span>Subscription</span>
+                                <span id="confirm-monthly-due">$14/mo</span>
+                            </div>
+                            <div class="price-item">
+                                <span>Device Fee (one-time)</span>
+                                <span>$99</span>
+                            </div>
+                            <div class="price-item total">
+                                <span>Total Due Today</span>
+                                <span id="confirm-total-due">$459</span>
+                            </div>
+                        </div>
+                        <p>Please review your order details above. By clicking "Continue to Payment", you agree to our <a class="text-white" href="https://cabinpulse.com">Terms of Service</a> and <a class="text-white" href="https://cabinpulse.com">Privacy Policy</a>.</p>
+                        <br />
+                        <div class="button-container">
+                            <button type="button" class="back-button" onclick="previousStep()">
+                                <i class="fas fa-arrow-left"></i> Back
+                            </button>
+                            <button type="submit" class="cta-button">
+                                <i class="fas fa-lock"></i> Continue to Payment
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 CabinPulse</p>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    let plan = urlParams.get('plan') || '3';
+    let currentStep = 1;
+    let isLoginMode = false;
+    let isAuthenticated = false;
+    let userId = null;
+    let authToken = null;
+    let shippingCost = 0;
+
+    // Price and plan calculations
+    function updatePlanInfo() {
+        const monthlyPrice = plan === '1' ? 14 : 10;
+        const planCost = monthlyPrice * (plan === '1' ? 12 : 36);
+        const totalAmount = 99 + planCost + shippingCost;
+        const planLengthText = `${plan}-Year Plan`;
+        const renewalInfo = plan === '1' 
+            ? 'Renews at $168 billed annually ($14/mo)' 
+            : 'Renews at $360 billed every 3 years ($10/mo)';
+
+        // Update DOM elements
+        document.getElementById('plan-length').textContent = planLengthText;
+        document.getElementById('confirm-plan-length').textContent = planLengthText;
+        document.getElementById('monthly-price').textContent = monthlyPrice;
+        document.getElementById('monthly-due').textContent = `$${monthlyPrice}/mo`;
+        document.getElementById('confirm-monthly-due').textContent = `$${monthlyPrice}/mo`;
+        document.getElementById('total-due').textContent = `$${totalAmount}`;
+        document.getElementById('confirm-total-due').textContent = `$${totalAmount}`;
+        document.getElementById('renewal-info').textContent = renewalInfo;
+        document.getElementById('confirm-renewal-info').textContent = renewalInfo;
+        document.getElementById('inclusion-note').innerHTML = 
+            `<i>Includes device, and service for ${plan} year${plan === '1' ? '' : 's'}.</i>`;
+
+        // Update discount/upsell section
+        const discountUpsellElement = document.getElementById('discount-upsell');
+        if (plan === '3') {
+            discountUpsellElement.innerHTML = '<span class="discount">You are saving 29% on your subscription!</span>';
+        } else {
+            discountUpsellElement.innerHTML = createUpsellHTML();
+            initializeUpsell();
+        }
+
+        // Update URL without reload
+        urlParams.set('plan', plan);
+        window.history.replaceState({}, '', `${window.location.pathname}?${urlParams}`);
+        
+        updatePriceItems();
+    }
+
+    function updatePriceItems() {
+        const priceContainers = [
+            document.querySelector('.total-price'),
+            document.querySelector('#step-3 .total-price')
+        ];
+
+        priceContainers.forEach(container => {
+            if (!container) return;
+
+            // Remove existing shipping item if it exists
+            const existingShipping = container.querySelector('.shipping-item');
+            if (existingShipping) {
+                existingShipping.remove();
+            }
+
+            // Add shipping line item if there's a cost
+            if (shippingCost > 0) {
+                const shippingItem = document.createElement('div');
+                shippingItem.className = 'price-item shipping-item';
+                shippingItem.innerHTML = `
+                    <span>Shipping</span>
+                    <span>$${shippingCost.toFixed(2)}</span>
+                `;
+                
+                // Insert before the total
+                const totalItem = container.querySelector('.total');
+                container.insertBefore(shippingItem, totalItem);
+            }
+        });
+    }
+
+    // Visual effects for upsell
+    function createUpsellHTML() {
+        return `
+            <div class="upsell" id="upsellBanner">
+                <div class="upsell-header">
+                    <div class="upsell-icon">
+                        <i class="fas fa-arrow-trend-up"></i>
+                    </div>
+                    <h3 class="upsell-title">Want to Maximize Value?</h3>
+                </div>
+                <div class="savings-container">
+                    <div class="big-icon">
+                        <i class="fas fa-sack-dollar pulse"></i>
+                    </div>
+                    <div class="price-comparison">
+                        <div class="price-column">
+                            <div class="price-label">Current Plan</div>
+                            <div class="price-amount">$14/mo</div>
+                        </div>
+                        <div class="price-column highlighted">
+                            <div class="price-label">3-Year Plan</div>
+                            <div class="price-amount">$10/mo</div>
+                        </div>
+                    </div>
+                    <div class="savings-item">
+                        <i class="fas fa-piggy-bank"></i>
+                        <span>Save $144 over three years</span>
+                    </div>
+                    <div class="savings-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Lock in the lower rate longer</span>
+                    </div>
+                    <div class="savings-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Extended protection & peace of mind</span>
+                    </div>
+                    <button class="upgrade-button" onclick="upgradePlan()">
+                        <i class="fas fa-arrow-up"></i>
+                        Upgrade to 3-Year Plan
+                    </button>
+                </div>
+            </div>`;
+    }
+
+    function createSparkle(container) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.textContent = '✨';
+        const startX = Math.random() * container.offsetWidth;
+        sparkle.style.cssText = `
+            left: ${startX}px;
+            top: ${container.offsetHeight}px;
+            --translate-x: ${(Math.random() - 0.5) * 100}px;
+            --rotate: ${Math.random() * 360}deg;
+            animation: floatUp ${2 + Math.random()}s linear;
+        `;
+        container.appendChild(sparkle);
+        sparkle.addEventListener('animationend', () => {
+            sparkle.remove();
+            createSparkle(container);
+        });
+    }
+
+    function initializeUpsell() {
+        const upsellBanner = document.getElementById('upsellBanner');
+        if (upsellBanner) {
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => createSparkle(upsellBanner), i * 400);
+            }
+        }
+    }
+
+    window.previousStep = function() {
+    if (currentStep > 1) {
+        // Hide current step
+        const currentForm = document.getElementById(`step-${currentStep}`);
+        const previousForm = document.getElementById(`step-${currentStep - 1}`);
+        
+        // Update step indicators
+        document.getElementById(`indicator-${currentStep}`).classList.remove('active');
+        document.getElementById(`indicator-${currentStep - 1}`).classList.add('active');
+        
+        // Animate transition
+        currentForm.classList.remove('active');
+        
+        setTimeout(() => {
+            previousForm.classList.add('active');
+            currentStep--;
+        }, 500);
+        
+        // Clear any error states if going back
+        document.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
+    }
+};
+
+// Modify the existing step-1 button to match the new style
+document.querySelector('#step-1 .cta-button').outerHTML = `
+    <div class="button-container">
+        <button type="button" class="cta-button" onclick="nextStep()">Continue</button>
+    </div>
+`;
+
+    // Form validation and navigation
+    function validateStep(step) {
+        const stepElement = document.getElementById(`step-${step}`);
+        const inputs = stepElement.querySelectorAll(
+            isLoginMode && step === 2 ? '#login-form input' : 'input[required], select[required]'
+        );
+        let isValid = true;
+
+        if (step === 1) {
+            const shippingRadio = document.querySelector('input[name="shipping"]:checked');
+            if (!shippingRadio) {
+                alert('Please select a shipping option.');
+                return false;
+            }
+        }
+
+        inputs.forEach(input => {
+            if (!input.value.trim()) {
+                isValid = false;
+                input.classList.add('invalid');
+            } else {
+                input.classList.remove('invalid');
+            }
+        });
+
+        return isValid;
+    }
+
+    // Get continue button and disable initially
+    const continueButton = document.querySelector('#step-1 .cta-button');
+    continueButton.disabled = true;
+
+    // Add country change handler
+    document.getElementById('country').addEventListener('change', async function(e) {
+        const country = e.target.value;
+        const loaderElement = document.getElementById('shipping-loader');
+        const optionsElement = document.getElementById('shipping-options');
+        const optionsContainer = document.getElementById('shipping-options-container');
+        
+        // Reset shipping
+        shippingCost = 0;
+        updatePlanInfo();
+        continueButton.disabled = true;
+        
+        if (!country) {
+            optionsElement.classList.add('hidden');
+            return;
+        }
+
+        // Show loader
+        optionsElement.classList.add('hidden');
+        loaderElement.classList.remove('hidden');
+
+        // Simulate API delay
+        await new Promise(resolve => setTimeout(resolve, 1500));
+
+        // Hide loader and prepare options
+        loaderElement.classList.add('hidden');
+        
+        // Generate shipping option HTML based on country
+        const optionHTML = country === 'CA' 
+            ? `<label style="display: flex; gap: 10px; cursor: pointer;">
+                <input type="radio" name="shipping" value="20" style="margin-top: 4px;">
+                <div>
+                    <div style="font-weight: 600;">Canada Post Xpresspost ($20.00)</div>
+                    <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 2-4 business days</div>
+                    <div>
+                        <span class="shipping-feature feature-tracking">Express</span>
+                        <span class="shipping-feature feature-express">Tracked</span>
+                        <span class="shipping-feature feature-insured">Insured</span>
+                    </div>
+                </div>
+               </label>`
+            : `<label style="display: flex; gap: 10px; cursor: pointer;">
+                <input type="radio" name="shipping" value="25" style="margin-top: 4px;">
+                <div>
+                    <div style="font-weight: 600;">Canada Post Tracked Packet ($25.00)</div>
+                    <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 4-7 business days</div>
+                    <div>
+                        <span class="shipping-feature feature-tracking">Tracked</span>
+                        <span class="shipping-feature feature-insured">Insured</span>
+                    </div>
+                </div>
+               </label>`;
+
+        optionsContainer.innerHTML = optionHTML;
+        optionsElement.classList.remove('hidden');
+
+        // Add shipping selection handler
+        const shippingRadios = document.querySelectorAll('input[name="shipping"]');
+        shippingRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                shippingCost = parseFloat(this.value);
+                updatePlanInfo();
+                continueButton.disabled = false;
+            });
+        });
+    });
+
+    // API Calls
+    async function authenticateUser(email, password) {
+        try {
+            const response = await fetch('http://localhost:3030/api/users/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+
+            if (!response.ok) throw new Error('Authentication failed');
+
+            const result = await response.json();
+            isAuthenticated = true;
+            userId = result.user._id;
+            authToken = result.token;
+            return true;
+        } catch (error) {
+            console.error('Authentication error:', error);
+            return false;
+        }
+    }
+
+    async function addDeviceForUser(token, plan) {
+        try {
+            const response = await fetch('http://localhost:3030/api/devices/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    name: "CabinPulse Device",
+                    location: 'Primary Location',
+                    plan: plan === '1' ? '1-year' : '3-year'
+                })
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Failed to register device');
+            }
+
+            return await response.json();
+        } catch (error) {
+            console.error('Error registering device:', error);
+            throw error;
+        }
+    }
+
+    // Event Handlers
+    window.upgradePlan = function() {
+        if (plan === '1') {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { x: 0, y: 0.5 }
+            });
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { x: 1, y: 0.5 }
+            });
+            
+            setTimeout(() => {
+                confetti({
+                    particleCount: 50,
+                    spread: 100,
+                    origin: { x: 0.5, y: 0.5 },
+                    colors: ['#FFD700', '#FFA500', '#ff5673']
+                });
+            }, 250);
+
+            setTimeout(() => {
+                confetti({
+                    particleCount: 150,
+                    spread: 120,
+                    origin: { x: 0.5, y: 0.4 },
+                    gravity: 0.8,
+                    scalar: 1.2,
+                    drift: 1
+                });
+            }, 500);
+
+            let sparkleCount = 0;
+            const sparkleInterval = setInterval(() => {
+                if (sparkleCount >= 20) {
+                    clearInterval(sparkleInterval);
+                    return;
+                }
+                confetti({
+                    particleCount: 2,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: Math.random(), y: Math.random() - 0.2 },
+                    colors: ['#FFD700', '#FFA500', '#ff5673'],
+                    gravity: 0.5,
+                    scalar: 0.7,
+                    drift: 0
+                });
+                sparkleCount++;
+            }, 200);
+        }
+        
+        plan = '3';
+        updatePlanInfo();
+    };
+
+    window.nextStep = async function() {
+        if (currentStep < 3 && validateStep(currentStep)) {
+            if (currentStep === 2) {
+                const email = document.getElementById(isLoginMode ? 'login-email' : 'email').value;
+                const password = document.getElementById(isLoginMode ? 'login-password' : 'password').value;
+
+                if (isLoginMode) {
+                    const success = await authenticateUser(email, password);
+                    if (!success) {
+                        alert('Authentication failed. Please try again.');
+                        return;
+                    }
+                }
+            }
+
+            const currentForm = document.getElementById(`step-${currentStep}`);
+            const nextForm = document.getElementById(`step-${currentStep + 1}`);
+            
+            document.getElementById(`indicator-${currentStep}`).classList.remove('active');
+            document.getElementById(`indicator-${currentStep + 1}`).classList.add('active');
+            currentForm.classList.remove('active');
+            
+            setTimeout(() => {
+                nextForm.classList.add('active');
+                currentStep++;
+            }, 500);
+        }
+    };
+
+    // Form submissions
+    document.getElementById('purchaseForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    if (currentStep !== 3) {
+        alert('Please complete all steps before submitting.');
+        return;
+    }
+
+    const submitButton = document.querySelector('#step-3 .cta-button');
+    submitButton.disabled = true;
+    
+    try {
+        // Calculate prices
+        const monthlyPrice = plan === '1' ? 14 : 10;
+        const planCost = monthlyPrice * (plan === '1' ? 12 : 36);
+        const deviceCost = 99;
+        const totalAmount = (deviceCost + planCost + shippingCost) * 100; // Convert to cents
+
+        // Create checkout session
+        const response = await fetch('http://localhost:3030/api/create-checkout-session', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                planType: plan === '1' ? '1-year' : '3-year',
+                customerInfo: {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById(isLoginMode ? 'login-email' : 'email').value,
+                    phone: document.getElementById('phone')?.value,
+                },
+                shippingAddress: {
+                    line1: document.getElementById('address').value,
+                    city: document.getElementById('city').value,
+                    state: document.getElementById('state').value,
+                    postal_code: document.getElementById('zip').value,
+                    country: document.getElementById('country').value
+                },
+                priceData: {
+                    deviceCost,
+                    planCost,
+                    shippingCost,
+                    totalAmount
+                }
+            })
+        });
+
+        const { sessionId } = await response.json();
+
+        // Initialize Stripe
+        const stripe = Stripe('pk_test_51LZK81EVmyPNhExzDyBKh7hauIUFHXsvNwCBk2v6lcqC4V62yHnNpQfgwKetiuoyzozyg2I1eD9Y7Lx5X6oZFtiH00XLR3XlJt'); // Replace with your actual key
+
+        // Redirect to Stripe Checkout
+        const result = await stripe.redirectToCheckout({
+            sessionId: sessionId
+        });
+
+        if (result.error) {
+            alert(result.error.message);
+            submitButton.disabled = false;
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again.');
+        submitButton.disabled = false;
+    }
+});
+    // Login toggle
+    document.getElementById('toggle-login').addEventListener('click', function() {
+        isLoginMode = !isLoginMode;
+        isAuthenticated = false;
+        document.getElementById('register-form').classList.toggle('hidden');
+        document.getElementById('login-form').classList.toggle('hidden');
+        this.textContent = isLoginMode ? 'New user? Click here to register' : 'Existing account? Click here to log in';
+        document.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
+    });
+
+    // Initialize
+    updatePlanInfo();
+});
+    </script>
+</body>
+</html>

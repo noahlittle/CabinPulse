@@ -882,6 +882,30 @@ footer {
         opacity: 1;
         transition: opacity 0.5s ease-in;
     }
+
+    .dashboard-btn {
+    background-color: var(--highlight-color);
+    padding: 8px 16px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(233, 69, 96, 0.3);
+}
+
+.dashboard-btn i {
+    font-size: 1rem;
+}
+
+/* Mobile menu dashboard styling */
+.mobile-menu a i {
+    margin-right: 10px;
+}
     
 
     </style>
@@ -894,9 +918,13 @@ footer {
                 <h1>CabinPulse</h1>
             </div>
             <div class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#pricing">Pricing</a>
-                <a href="#faq">FAQ</a>
+                <a href="index.html#features">Features</a>
+                <a href="index.html#pricing">Pricing</a>
+                <a href="index.html#faq">FAQ</a>
+                <a href="https://dashboard.cabinpulse.com" class="dashboard-btn">
+                    <i class="fas fa-gauge-high"></i>
+                    Dashboard
+                </a>
             </div>
             <div class="mobile-menu-toggle">
                 <i class="fas fa-bars"></i>
@@ -908,10 +936,15 @@ footer {
         <div class="mobile-menu-close">
             <i class="fas fa-times"></i>
         </div>
-        <a href="#features">Features</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#faq">FAQ</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="https://dashboard.cabinpulse.com">
+            <i class="fas fa-gauge-high"></i>
+            Dashboard
+        </a>
     </div>
+    
 
     <section class="hero">
         <div class="container">
@@ -924,8 +957,7 @@ footer {
                     <span class="badge"><i class="fas fa-temperature-low icon-text"></i>Temperature</span>
                     <span class="badge"><i class="fas fa-droplet icon-text"></i>Humidity</span>
                     <span class="badge"><i class="fas fa-plug-circle-xmark icon-text"></i>Power Outages</span>
-                    <span class="badge"><i class="fas fa-smog icon-text"></i>Smoke</span>
-                    <span class="badge"><i class="fas fa-fire icon-text"></i>Gas Leaks</span>
+                    <span class="badge"><i class="fas fa-smog icon-text"></i>Air Quality</span>
                 </div>
                 <a href="#features" class="cta-button">Learn More</a>
             </div>
@@ -947,14 +979,14 @@ footer {
                     <p>Fight mold and mildew with accurate humidity tracking.</p>
                 </div>
                 <div class="feature-card">
-                    <i class="feature-icon fas fa-fire"></i>
-                    <h3>Smoke/Gas Detection</h3>
-                    <p>Instant smoke, carbon monoxide and gas leak alerts.</p>
+                    <i class="feature-icon fas fa-bolt"></i>
+                    <h3>Power Outages</h3>
+                    <p>Track power disruptions, even when you're away.</p>
                 </div>
                 <div class="feature-card">
-                    <i class="feature-icon fas fa-bolt"></i>
-                    <h3>Power Outage Tracking</h3>
-                    <p>Track power disruptions, even when you're away.</p>
+                    <i class="feature-icon fas fa-smog"></i>
+                    <h3>Air Quality Monitoring</h3>
+                    <p>Stay informed of air quality in your cabin, at all times.</p>
                 </div>
             </div>
             <div class="feature-highlight">
@@ -985,6 +1017,7 @@ footer {
             </div>
         </div>
     </section>
+    
 
     <section class="coverage-map">
         <div class="container">
@@ -1007,12 +1040,12 @@ footer {
                         <li><i class="fas fa-tower-cell"></i>24/7 Monitoring</li>
                         <li><i class="fas fa-temperature-low"></i>Temperature Monitoring</li>
                         <li><i class="fas fa-droplet"></i>Humidity Monitoring</li>
-                        <li><i class="fas fa-fire"></i>Smoke & Gas Detection</li>
+                        <li><i class="fas fa-smog"></i>Air Quality Monitoring</li>
                         <li><i class="fas fa-plug"></i>Power Outage Tracking</li>
-                        <li><i class="fas fa-mobile-alt"></i>Instant Alerts</li>
+                        <li><i class="fas fa-mobile-alt"></i>Instant Text Alerts</li>
                         <li><i class="fas fa-dollar"></i>Renews at $168 billed annually ($14/mo)</li>
                     </ul>
-                    <a href="" class="cta-button pricing">Order Now</a>
+                    <a href="https://cabinpulse.com/purchase.html?plan=1" class="cta-button pricing">Order Now</a>
                 </div>
                 <div class="pricing-card highlighted">
                     <span class="best-value">BEST VALUE</span>
@@ -1025,12 +1058,12 @@ footer {
                         <li><i class="fas fa-tower-cell"></i>24/7 Monitoring</li>
                         <li><i class="fas fa-temperature-low"></i>Temperature Monitoring</li>
                         <li><i class="fas fa-droplet"></i>Humidity Monitoring</li>
-                        <li><i class="fas fa-fire"></i>Smoke & Gas Detection</li>
+                        <li><i class="fas fa-smog"></i>Air Quality Monitoring</li>
                         <li><i class="fas fa-plug"></i>Power Outage Tracking</li>
-                        <li><i class="fas fa-mobile-alt"></i>Instant Alerts</li>
+                        <li><i class="fas fa-mobile-alt"></i>Instant Text Alerts</li>
                         <li><i class="fas fa-dollar"></i>Renews at $360 billed every 3 years ($10/mo)</li>
                     </ul>
-                    <a href="" class="cta-button pricing">Order Now</a>
+                    <a href="https://cabinpulse.com/purchase.html?plan=3" class="cta-button pricing">Order Now</a>
                 </div>
             </div>
         </div>
@@ -1060,11 +1093,11 @@ footer {
                 </div>
                 <div class="faq-item">
                     <h3><i class="fas fa-dollar"></i> What's included in the device fee?</h3>
-                    <p>The one-time $99 device fee covers your CabinPulse monitoring unit, which includes temperature, humidity, smoke, and gas sensors, as well as power outage detection capabilities.</p>
+                    <p>The one-time $99 device fee covers your CabinPulse monitoring unit, which includes temperature, humidity, air quality and power outage detection capabilities.</p>
                 </div>
                 <div class="faq-item">
                     <h3><i class="fas fa-paper-plane"></i> How up-to-date is the CabinPulse data?</h3>
-                    <p>CabinPulse sends new data updates to your dashboard every 15 minutes. In case of any critical events (like a sudden temperature drop or smoke detection), alerts are sent immediately.</p>
+                    <p>CabinPulse collects data every 5 minutes, and sends new data updates to your dashboard every 15 minutes. In case of any critical events (like a sudden temperature drop), alerts are sent immediately.</p>
                 </div>
                 <div class="faq-item">
                     <h3><i class="fas fa-bell"></i> Is there a limit to the number of alerts I can receive?</h3>
@@ -1127,97 +1160,10 @@ footer {
                     mobileMenu.style.display = 'none';
                 });
             });
+        });
     
-            // Sold Out Modal functionality
-            var modal = document.getElementById("soldOutModal");
-            var span = document.getElementsByClassName("close")[0];
-    
-            // Get all "Order Now" buttons
-            var orderButtons = document.querySelectorAll(".cta-button.pricing");
-    
-            // When the user clicks on an "Order Now" button, open the modal
-            orderButtons.forEach(function(button) {
-                button.onclick = function(event) {
-                    event.preventDefault();
-                    modal.style.display = "block";
-                    // Set the plan value based on which button was clicked
-                    document.getElementById("plan").value = this.closest('.pricing-card').querySelector('h3').textContent;
-                }
-            });
-    
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
-                modal.style.display = "none";
-            }
-    
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-    
-            // Update the form submission handler
-        document.getElementById("waitlistForm").onsubmit = function(event) {
-            event.preventDefault();
-            var formData = new FormData(this);
-
-            fetch('/add-to-waitlist.php', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    const initialContent = document.getElementById('modalInitialContent');
-                    const successMessage = document.getElementById('successMessage');
-
-                    // Fade out the initial content
-                    initialContent.classList.add('fade-out');
-
-                    // After the fade-out, hide initial content and show success message
-                    setTimeout(() => {
-                        initialContent.style.display = 'none';
-                        successMessage.style.display = 'block';
-                        successMessage.classList.add('fade-in');
-                    }, 500);
-
-                    // Clear the form
-                    this.reset();
-                } else {
-                    document.getElementById("formMessage").textContent = data.message;
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                document.getElementById("formMessage").textContent = "An error occurred. Please try again.";
-            });
-        };
-    });
+            
     </script>
-
-
-
-<div id="soldOutModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <div id="modalInitialContent">
-            <img src="cpicon.png" alt="Sold Out" style="width: 100px; border-radius: 10px;">
-            <h2>Sorry, we're sold out!</h2>
-            <p>Join our waitlist to be notified as soon as more CabinPulse units become available.</p>
-            <form id="waitlistForm">
-                <input type="text" id="name" name="name" placeholder="Your Name" required>
-                <input type="email" id="email" name="email" placeholder="Your Email" required>
-                <input type="hidden" id="plan" name="plan" value="">
-                <button type="submit">Join Waitlist</button>
-            </form>
-        </div>
-        <div id="successMessage" style="display: none;">
-            <i class="fas fa-check-circle" style="font-size: 4rem; color: #4CAF50;"></i>
-            <h2>Thank You!</h2>
-            <p>You've been added to our waitlist. We'll notify you as soon as more units are available.</p>
-        </div>
-    </div>
 </div>
 </body>
 </html>

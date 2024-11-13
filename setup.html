@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup Instructions - CabinPulse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Root variables */
+        :root {
+            --primary-color: #1a1a2e;
+            --secondary-color: #16213e;
+            --cta-color: #ffffff;
+            --accent-color: #0f3460;
+            --highlight-color: #e94560;
+            --text-color: #ffffff;
+            --dark-text-color: #000000;
+        }
+
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+
+        /* Header styles */
+        header {
+            background-color: var(--secondary-color);
+            padding: 25px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        .icon {
+            width: 60px;
+            height: 60px;
+            margin-right: 15px;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 25px;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--highlight-color);
+        }
+
+        /* Mobile menu styles */
+        .mobile-menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--primary-color);
+            z-index: 1001;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mobile-menu a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.8rem;
+            margin: 24px 0;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--highlight-color);
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            font-size: 2.4rem;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+
+        /* Hero Section */
+        .setup-hero {
+            background-color: var(--secondary-color);
+            padding: 180px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .setup-hero::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            right: 0;
+            height: 120px;
+            background-color: var(--primary-color);
+            clip-path: polygon(0 95%, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+
+        .hero-text {
+            text-align: left;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--highlight-color);
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background-color: rgba(233, 69, 96, 0.1);
+            color: var(--highlight-color);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .device-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transform: perspective(1000px) rotateY(-15deg);
+            transition: transform 0.3s ease;
+        }
+
+        .device-image:hover {
+            transform: perspective(1000px) rotateY(-5deg) translateY(-10px);
+        }
+
+        /* Setup Content Styles */
+        .setup-content {
+            padding: 100px 0;
+        }
+
+        .setup-steps {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .setup-step {
+            background-color: var(--secondary-color);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 30px;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 30px;
+            align-items: start;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .setup-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .step-number {
+            background-color: var(--highlight-color);
+            color: var(--primary-color);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.6rem;
+            box-shadow: 0 5px 15px rgba(233, 69, 96, 0.3);
+        }
+
+        .step-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .step-content .feature-icon {
+            color: var(--highlight-color);
+            font-size: 1.8rem;
+        }
+
+        .step-content p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .step-content ul {
+            list-style: none;
+            margin-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.1rem;
+        }
+
+        .step-content li i {
+            color: var(--highlight-color);
+        }
+
+        .troubleshooting {
+            background-color: rgba(233, 69, 96, 0.1);
+            border-left: 4px solid var(--highlight-color);
+            padding: 25px;
+            border-radius: 0 12px 12px 0;
+            margin-top: 25px;
+        }
+
+        .troubleshooting h3 {
+            color: var(--highlight-color);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+        }
+
+        .support-box {
+            text-align: center;
+            margin-top: 70px;
+            padding: 50px;
+            background-color: var(--secondary-color);
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .support-box h2 {
+            color: var(--highlight-color);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .support-box p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .support-box a {
+            display: inline-block;
+            background-color: var(--highlight-color);
+            color: var(--primary-color);
+            padding: 18px 36px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .support-box a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(233, 69, 96, 0.4);
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            text-align: center;
+            padding: 24px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .hero-text {
+                text-align: center;
+                order: 1;
+            }
+
+            .hero-image {
+                order: 2;
+            }
+
+            .device-image {
+                transform: none;
+                max-width: 300px;
+            }
+
+            .device-image:hover {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .setup-step {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 30px;
+            }
+
+            .step-number {
+                margin: 0 auto;
+            }
+
+            .step-content {
+                text-align: center;
+            }
+
+            .step-content h2 {
+                justify-content: center;
+            }
+
+            .step-content li {
+                justify-content: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .setup-hero {
+                padding: 150px 0 80px;
+            }
+        }
+
+        .dashboard-btn {
+    background-color: var(--highlight-color);
+    padding: 8px 16px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(233, 69, 96, 0.3);
+}
+
+.dashboard-btn i {
+    font-size: 1rem;
+}
+
+/* Mobile menu dashboard styling */
+.mobile-menu a i {
+    margin-right: 10px;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo-container">
+                <img src="cpicon.png" alt="CabinPulse Logo" class="icon">
+                <h1>CabinPulse</h1>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#features">Features</a>
+                <a href="index.html#pricing">Pricing</a>
+                <a href="index.html#faq">FAQ</a>
+                <a href="https://dashboard.cabinpulse.com" class="dashboard-btn">
+                    <i class="fas fa-gauge-high"></i>
+                    Dashboard
+                </a>
+            </div>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <div class="mobile-menu">
+        <div class="mobile-menu-close">
+            <i class="fas fa-times"></i>
+        </div>
+        <a href="index.html">Home</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="https://dashboard.cabinpulse.com">
+            <i class="fas fa-gauge-high"></i>
+            Dashboard
+        </a>
+    </div>
+    <section class="setup-hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <span class="hero-badge">Quick Setup Guide</span>
+                <h1>Setting Up Your CabinPulse</h1>
+                <p>Get your cabin monitoring up and running in less than 5 minutes with these simple steps.</p>
+            </div>
+            <div class="hero-image">
+                <img src="product.png" alt="CabinPulse Device" class="device-image">
+            </div>
+        </div>
+    </section>
+
+    <main class="setup-content">
+        <div class="container">
+            <div class="setup-steps">
+                <div class="setup-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h2>
+                            <i class="feature-icon fas fa-box-open"></i>
+                            Unpack Your Device
+                        </h2>
+                        <p>Your CabinPulse package should include:</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i>CabinPulse device</li>
+                            <li><i class="fas fa-check"></i>Power adapter</li>
+                            <li><i class="fas fa-check"></i>Quick start guide</li>
+                            <li><i class="fas fa-check"></i>Activation code</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="setup-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h2>
+                            <i class="feature-icon fas fa-plug"></i>
+                            Power Up
+                        </h2>
+                        <p>Connect your CabinPulse to power:</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i>Plug the power adapter into any standard outlet</li>
+                            <li><i class="fas fa-check"></i>Connect the adapter to your CabinPulse device</li>
+                            <li><i class="fas fa-check"></i>Wait for the LED indicator to turn solid blue (about 30 seconds)</li>
+                        </ul>
+                        <div class="troubleshooting">
+                            <h3><i class="fas fa-exclamation-circle"></i>Having problems?</h3>
+                            <p>Place your device in a central location of your cabin, away from large metal objects that might interfere with the cellular signal.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="setup-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h2>
+                            <i class="feature-icon fas fa-laptop"></i>
+                            Activate Online
+                        </h2>
+                        <p>Complete the activation process:</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i>Visit<a href="https://dashboard.cabinpulse.com" style="color: white">dashboard.cabinpulse.com</a></li>
+                            <li><i class="fas fa-check"></i>Sign In with the credentials you used at purchase</li>
+                            <li><i class="fas fa-check"></i>Click "Add New Device"</li>
+                            <li><i class="fas fa-check"></i>Enter the activation code from your device</li>
+                            <li><i class="fas fa-check"></i>Set your preferred alert thresholds</li>
+                        </ul>
+                        <div class="troubleshooting">
+                            <h3><i class="fas fa-exclamation-circle"></i>Can't find your activation code?</h3>
+                            <p>Your activation code can also be found on the bottom of your CabinPulse device. It's a 12-character code in the format: XXXX-XXXX-XXXX</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="support-box">
+                    <h2>Need Help?</h2>
+                    <p>Our support team is available 24/7 to assist you with setup.</p>
+                    <a href="mailto:support@cabinpulse.com">Contact Support</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 CabinPulse</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const mobileMenuClose = document.querySelector('.mobile-menu-close');
+
+            mobileMenuToggle.addEventListener('click', function() {
+                mobileMenu.style.display = 'flex';
+            });
+
+            mobileMenuClose.addEventListener('click', function() {
+                mobileMenu.style.display = 'none';
+            });
+
+            // Close mobile menu when a link is clicked
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.style.display = 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
