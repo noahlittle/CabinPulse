@@ -395,6 +395,29 @@
                 font-size: 15px;
             }
         }
+
+        .payment-notice {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px 30px;
+            display: inline-block;
+            margin: 20px 0;
+            margin-top: 3rem;
+            font-size: 14px;
+        }
+
+        .payment-notice i {
+            color: var(--highlight-color);
+            margin-right: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .payment-notice {
+                margin: 15px;
+                padding: 12px 20px;
+                font-size: 13px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -453,10 +476,16 @@
                     </div>
                 </div>
 
+
                 <div class="cta-buttons">
                     <a href="setup.html" class="cta-button primary">
                         <i class="fas fa-book-open"></i> Preview Setup Guide
                     </a>
+                </div>
+
+                <div class="payment-notice">
+                    <i class="fas fa-credit-card"></i>
+                    NOTE: This purchase will appear as "Toccata, Inc" on your credit card statement
                 </div>
             </div>
         </div>
@@ -500,8 +529,8 @@
     
                 // Update CTA buttons
                 ctaButtons.innerHTML = `
-                    <a href="javascript:history.back()" class="cta-button primary">
-                        <i class="fas fa-arrow-left"></i> Try Again
+                    <a href="https://cabinpulse.com" class="cta-button primary">
+                        <i class="fas fa-arrow-left"></i> Restart
                     </a>
                     <a href="mailto:support@cabinpulse.com" class="cta-button secondary">
                         <i class="fas fa-envelope"></i> Contact Support

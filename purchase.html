@@ -1810,7 +1810,7 @@ document.getElementById('purchaseForm').addEventListener('submit', async functio
         const { sessionId } = await response.json();
 
         // Initialize Stripe
-        const stripe = Stripe('pk_test_51LZK81EVmyPNhExzDyBKh7hauIUFHXsvNwCBk2v6lcqC4V62yHnNpQfgwKetiuoyzozyg2I1eD9Y7Lx5X6oZFtiH00XLR3XlJt');
+        const stripe = Stripe('pk_live_51LZK81EVmyPNhExzHXm1BF3uC8BO6iTdg6R3hrrcjo3XEnq6fral763hSpQppYgCnRzNZO6zeCVHdq2aJ835k37e00Vhl33gOG');
 
         // Redirect to Stripe Checkout - only passing sessionId
         const { error } = await stripe.redirectToCheckout({
