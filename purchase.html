@@ -1143,7 +1143,7 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
             <div class="savings-container">
                 <div class="big-icon">
-                    <i class="fas fa-hand-holding-dollar pulse"></i>
+                    <i class="fas fa-shield pulse"></i>
                 </div>
                 <div class="price-comparison">
                     <div class="price-column">
@@ -1175,33 +1175,7 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>`;
 }
 
-function createSparkle(container) {
-    const sparkle = document.createElement('div');
-    sparkle.className = 'sparkle';
-    sparkle.textContent = '✨';
-    const startX = Math.random() * container.offsetWidth;
-    sparkle.style.cssText = `
-        left: ${startX}px;
-        top: ${container.offsetHeight}px;
-        --translate-x: ${(Math.random() - 0.5) * 100}px;
-        --rotate: ${Math.random() * 360}deg;
-        animation: floatUp ${2 + Math.random()}s linear;
-    `;
-    container.appendChild(sparkle);
-    sparkle.addEventListener('animationend', () => {
-        sparkle.remove();
-        createSparkle(container);
-    });
-}
 
-function initializeUpsell() {
-    const upsellBanner = document.getElementById('upsellBanner');
-    if (upsellBanner) {
-        for (let i = 0; i < 5; i++) {
-            setTimeout(() => createSparkle(upsellBanner), i * 400);
-        }
-    }
-}
 
 // Make sure you also have this function defined
 window.upgradePlan = function() {
@@ -1271,7 +1245,6 @@ window.upgradePlan = function() {
             discountUpsellElement.innerHTML = '<span class="discount">You are saving 29% on your subscription!</span>';
         } else {
             discountUpsellElement.innerHTML = createUpsellHTML();
-            initializeUpsell();
         }
 
         // Update URL without reload
