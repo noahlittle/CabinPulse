@@ -650,6 +650,227 @@
     flex: 2;
 }
 
+.country-buttons {
+    display: flex;
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.country-option, .account-option {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 30px;
+    background: var(--secondary-color);
+    border: 2px solid var(--accent-color);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.country-option:hover, .account-option:hover {
+    border-color: var(--highlight-color);
+    transform: translateY(-2px);
+}
+
+.country-option.selected, .account-option.selected {
+    border-color: var(--highlight-color);
+    background: var(--accent-color);
+}
+
+.country-option i, .account-option i {
+    color: var(--highlight-color);
+    margin-bottom: 10px;
+}
+
+.country-name, .option-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.delivery-estimate, .option-desc {
+    font-size: 0.9rem;
+    color: #ccc;
+    text-align: center;
+}
+
+.account-selection {
+    display: flex;
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.validation-message {
+    color: var(--highlight-color);
+    font-size: 0.8em;
+    margin-top: 4px;
+}
+
+input.invalid {
+    border: 1px solid var(--highlight-color) !important;
+    background-color: rgba(233, 69, 96, 0.1) !important;
+}
+
+<style>
+/* Add/update these CSS rules */
+
+/* Responsive container for selection buttons */
+.country-buttons,
+.account-selection {
+    display: flex;
+    gap: 20px;
+    margin: 30px 0;
+}
+
+/* Base styles for option buttons */
+.country-option,
+.account-option {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: var(--secondary-color);
+    border: 2px solid var(--accent-color);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    min-width: 200px;
+}
+
+/* Hover and selected states */
+.country-option:hover,
+.account-option:hover {
+    border-color: var(--highlight-color);
+    transform: translateY(-2px);
+}
+
+.country-option.selected,
+.account-option.selected {
+    border-color: var(--highlight-color);
+    background: var(--accent-color);
+}
+
+/* Shipping options styling */
+#shipping-options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.shipping-option {
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.shipping-option:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.shipping-option-content {
+    flex: 1;
+}
+
+.shipping-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    margin-right: 10px;
+}
+
+.shipping-option-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.shipping-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 640px) {
+    .country-buttons,
+    .account-selection {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .country-option,
+    .account-option {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .shipping-option {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    .shipping-option-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .shipping-features {
+        justify-content: flex-start;
+    }
+}
+
+/* Improve shipping feature tags */
+.shipping-feature {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+.feature-tracking { 
+    background: #0f3460;
+}
+
+.feature-express { 
+    background: #2a9d8f;
+}
+
+.feature-insured { 
+    background: #6930c3;
+}
+
+/* Animation for radio selection */
+.shipping-option input[type="radio"] {
+    position: relative;
+    cursor: pointer;
+    margin-top: 4px;
+}
+
+.shipping-option input[type="radio"]:checked + .shipping-option-content {
+    opacity: 1;
+}
+
+.shipping-option:has(input[type="radio"]:checked) {
+    border: 1px solid var(--highlight-color);
+    background: rgba(255, 255, 255, 0.1);
+}
+
     </style>
 </head>
 <body>
@@ -724,106 +945,108 @@
                 <form id="purchaseForm">
                     <div class="form-step active" id="step-1">
                         <div class="step-title">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <h1>Shipping Address</h1>
+                            <i class="fas fa-globe"></i>
+                            <h1>Select Your Country</h1>
                         </div>
-                        <p>This is where we'll send your CabinPulse device.</p>
+                        <p>Choose your location to see available shipping options.</p>
                         </br>
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
+                        <div class="country-buttons">
+                            <button type="button" class="country-option" data-country="CA">
+                                <i class="fa-brands fa-canadian-maple-leaf fa-3x"></i>
+                                <span class="country-name">Canada</span>
+                                <span class="delivery-estimate">Delivery in 2-4 business days</span>
+                            </button>
+                            <button type="button" class="country-option" data-country="US">
+                                <i class="fas fa-flag-usa fa-3x"></i>
+                                <span class="country-name">United States</span>
+                                <span class="delivery-estimate">Delivery in 4-7 business days</span>
+                            </button>
                         </div>
-                        <div class="form-group">
-                            <label for="address">Address</label>
-                            <input type="text" id="address" name="address" required>
+                        <div id="shipping-loader" class="hidden" style="display: flex; justify-content: center; padding: 20px;">
+                            <div style="width: 30px; height: 30px; border: 3px solid #f3f3f3; border-top: 3px solid #e94560; border-radius: 50%; animation: spin 1s linear infinite;"></div>
                         </div>
-                        <div class="form-group">
-                            <label for="city">City</label>
-                            <input type="text" id="city" name="city" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="state">State/Province</label>
-                            <input type="text" id="state" name="state" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="zip">Zip/Postal Code</label>
-                            <input type="text" id="zip" name="zip" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="country">Country</label>
-                            <select id="country" name="country" required>
-                                <option value="">Select Country</option>
-                                <option value="US">United States</option>
-                                <option value="CA">Canada</option>
-                            </select>
-                            <div id="shipping-loader" class="hidden" style="display: flex; justify-content: center; padding: 20px;">
-                                <div style="width: 30px; height: 30px; border: 3px solid #f3f3f3; border-top: 3px solid #e94560; border-radius: 50%; animation: spin 1s linear infinite;"></div>
-                            </div>
-                            <div id="shipping-options" class="hidden" style="margin-top: 20px;">
-                                <p style="margin-bottom: 15px; font-weight: 600;">Available Shipping Options:</p>
-                                <div id="shipping-options-container" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 15px; background: rgba(255,255,255,0.05);">
-                                </div>
+                        <div id="shipping-options" class="hidden" style="margin-top: 20px;">
+                            <p style="margin-bottom: 15px; font-weight: 600;">Available Shipping Options:</p>
+                            <div id="shipping-options-container" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 15px; background: rgba(255,255,255,0.05);">
                             </div>
                         </div>
                         <div class="button-container">
-                            <button type="button" class="cta-button" onclick="nextStep()">Continue</button>
+                            <button type="button" class="cta-button" onclick="nextStep()" disabled>Continue</button>
                         </div>
                     </div>
                     <div class="form-step" id="step-2">
                         <div class="step-title">
                             <i class="fas fa-user"></i>
-                            <h1>Connect Account</h1>
+                            <h1>Account Setup</h1>
                         </div>
-                        <p>You'll use this account to view your data and to manage alerts.</p>
+                        <p>How would you like to continue?</p>
                         <br />
-                        <div class="account-container">
-                            <div id="register-form">
-                                <div class="form-group">
-                                    <label for="email">
-                                        <i class="fas fa-envelope"></i> Email Address
-                                    </label>
-                                    <input type="email" id="email" name="email" placeholder="your@email.com">
+                        <div class="account-selection">
+                            <button type="button" class="account-option" data-type="new">
+                                <i class="fas fa-user-plus fa-3x"></i>
+                                <span class="option-name">New User</span>
+                                <span class="option-desc">Is this your first CabinPulse?</span>
+                            </button>
+                            <button type="button" class="account-option" data-type="existing">
+                                <i class="fas fa-sign-in-alt fa-3x"></i>
+                                <span class="option-name">Returning User</span>
+                                <span class="option-desc">Add this new device to your account.</span>
+                            </button>
+                        </div>
+                    
+                        <div id="new-user-form" class="account-form hidden">
+                            <div style="margin-bottom: 20px; padding: 12px; background-color: rgba(15, 52, 96, 0.5); border: 1px solid var(--highlight-color); border-radius: 8px; font-size: 0.9em; line-height: 1.4;">
+                                <div style="display: flex; align-items: flex-start; gap: 10px;">
+                                    <i class="fas fa-info-circle" style="color: var(--highlight-color); margin-top: 2px;"></i>
+                                    <div>
+                                        <p>Welcome! Once your purchase is complete, we'll send you an email with your temporary password to access your account.</p>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="password">
-                                        <i class="fas fa-lock"></i> Create Password
-                                    </label>
-                                    <input type="password" id="password" name="password" placeholder="*********"">
-                                </div>
-                                <div class="form-group">
-                                    <label for="phone">
-                                        <i class="fas fa-mobile-alt"></i> Mobile Number for Alerts
-                                    </label>
-                                    <p class="input-description">We'll use this number to send you important alerts about your cabin.</p>
-                                    <input type="tel" id="phone" name="phone" placeholder="555-555-5555">
-                                    <div style="margin-top: 10px; padding: 12px; background-color: rgba(15, 52, 96, 0.5); border-radius: 8px; font-size: 0.9em; line-height: 1.4;">
-                                        <div style="display: flex; align-items: flex-start; gap: 10px;">
-                                            <i class="fas fa-bell" style="color: var(--highlight-color); margin-top: 2px;"></i>
-                                            <div>
-                                                <p>By providing your phone number, you agree to receive text message alerts about your cabin's status. You can customize alert preferences anytime in your account settings.</p>
-                                            </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="name">
+                                    <i class="fas fa-user"></i> Full Name
+                                </label>
+                                <input type="text" id="name" name="name" placeholder="John Doe" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">
+                                    <i class="fas fa-envelope"></i> Email Address
+                                </label>
+                                <input type="email" id="email" name="email" placeholder="hello@website.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">
+                                    <i class="fas fa-mobile-alt"></i> Mobile Number for Alerts
+                                </label>
+                                <input type="tel" id="phone" name="phone" placeholder="555-555-5555" required>
+                                <div style="margin-top: 10px; padding: 12px; background-color: rgba(15, 52, 96, 0.5); border-radius: 8px; font-size: 0.9em; line-height: 1.4;">
+                                    <div style="display: flex; align-items: flex-start; gap: 10px;">
+                                        <i class="fas fa-bell" style="color: var(--highlight-color); margin-top: 2px;"></i>
+                                        <div>
+                                            <p>By providing your phone number, you agree to receive text message alerts about your cabin's status. You can customize alert preferences anytime in your account settings.</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div id="login-form" class="hidden">
-                                <div class="form-group">
-                                    <label for="login-email">
-                                        <i class="fas fa-envelope"></i> Email Address
-                                    </label>
-                                    <input type="email" id="login-email" name="login-email" placeholder="your@email.com">
-                                </div>
-                                <div class="form-group">
-                                    <label for="login-password">
-                                        <i class="fas fa-lock"></i> Password
-                                    </label>
-                                    <input type="password" id="login-password" name="login-password">
-                                </div>
+                        </div>
+                        
+                        <div id="existing-user-form" class="account-form hidden">
+                            <div class="form-group">
+                                <label for="login-email">
+                                    <i class="fas fa-envelope"></i> Email Address
+                                </label>
+                                <input type="email" id="login-email" name="login-email" placeholder="hello@website.com" required>
                             </div>
-                            <div class="login-option">
-                                <a id="toggle-login">Existing account? Click here to log in</a>
+                            <div class="form-group">
+                                <label for="login-password">
+                                    <i class="fas fa-lock"></i> Password
+                                </label>
+                                <input type="password" id="login-password" name="login-password" placeholder="******" required>
                             </div>
                         </div>
+                        
                         <div class="button-container">
                             <button type="button" class="back-button" onclick="previousStep()">
                                 <i class="fas fa-arrow-left"></i> Back
@@ -881,9 +1104,8 @@
             <p>&copy; 2024 CabinPulse</p>
         </div>
     </footer>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
+<script>
+document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     let plan = urlParams.get('plan') || '3';
     let currentStep = 1;
@@ -892,6 +1114,133 @@
     let userId = null;
     let authToken = null;
     let shippingCost = 0;
+
+    // Prevent form submission on enter key
+    document.getElementById('purchaseForm').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    // Debounce function for API calls
+    function debounce(func, wait) {
+        let timeout;
+        return function(...args) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), wait);
+        };
+    }
+
+    function createUpsellHTML() {
+    return `
+        <div class="upsell" id="upsellBanner">
+            <div class="upsell-header">
+                <div class="upsell-icon">
+                    <i class="fas fa-arrow-trend-up"></i>
+                </div>
+                <h3 class="upsell-title">Save $140 with a 3-Year Plan</h3>
+            </div>
+            <div class="savings-container">
+                <div class="big-icon">
+                    <i class="fas fa-hand-holding-dollar pulse"></i>
+                </div>
+                <div class="price-comparison">
+                    <div class="price-column">
+                        <div class="price-label">Current Plan</div>
+                        <div class="price-amount">$14/mo</div>
+                    </div>
+                    <div class="price-column highlighted">
+                        <div class="price-label">3-Year Plan</div>
+                        <div class="price-amount">$10/mo</div>
+                    </div>
+                </div>
+                <div class="savings-item">
+                    <i class="fas fa-piggy-bank"></i>
+                    <span>Save $144 over three years</span>
+                </div>
+                <div class="savings-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Lock in the lower rate longer</span>
+                </div>
+                <div class="savings-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Extended protection & peace of mind</span>
+                </div>
+                <button class="upgrade-button" onclick="upgradePlan()">
+                    <i class="fas fa-arrow-up"></i>
+                    Upgrade to 3-Year Plan
+                </button>
+            </div>
+        </div>`;
+}
+
+function createSparkle(container) {
+    const sparkle = document.createElement('div');
+    sparkle.className = 'sparkle';
+    sparkle.textContent = '✨';
+    const startX = Math.random() * container.offsetWidth;
+    sparkle.style.cssText = `
+        left: ${startX}px;
+        top: ${container.offsetHeight}px;
+        --translate-x: ${(Math.random() - 0.5) * 100}px;
+        --rotate: ${Math.random() * 360}deg;
+        animation: floatUp ${2 + Math.random()}s linear;
+    `;
+    container.appendChild(sparkle);
+    sparkle.addEventListener('animationend', () => {
+        sparkle.remove();
+        createSparkle(container);
+    });
+}
+
+function initializeUpsell() {
+    const upsellBanner = document.getElementById('upsellBanner');
+    if (upsellBanner) {
+        for (let i = 0; i < 5; i++) {
+            setTimeout(() => createSparkle(upsellBanner), i * 400);
+        }
+    }
+}
+
+// Make sure you also have this function defined
+window.upgradePlan = function() {
+    if (plan === '1') {
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { x: 0, y: 0.5 }
+        });
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { x: 1, y: 0.5 }
+        });
+        
+        setTimeout(() => {
+            confetti({
+                particleCount: 50,
+                spread: 100,
+                origin: { x: 0.5, y: 0.5 },
+                colors: ['#FFD700', '#FFA500', '#ff5673']
+            });
+        }, 250);
+
+        setTimeout(() => {
+            confetti({
+                particleCount: 150,
+                spread: 120,
+                origin: { x: 0.5, y: 0.4 },
+                gravity: 0.8,
+                scalar: 1.2,
+                drift: 1
+            });
+        }, 500);
+    }
+    
+    plan = '3';
+    updatePlanInfo();
+};
 
     // Price and plan calculations
     function updatePlanInfo() {
@@ -963,351 +1312,416 @@
         });
     }
 
-    // Visual effects for upsell
-    function createUpsellHTML() {
-        return `
-            <div class="upsell" id="upsellBanner">
-                <div class="upsell-header">
-                    <div class="upsell-icon">
-                        <i class="fas fa-arrow-trend-up"></i>
-                    </div>
-                    <h3 class="upsell-title">Want to Maximize Value?</h3>
-                </div>
-                <div class="savings-container">
-                    <div class="big-icon">
-                        <i class="fas fa-sack-dollar pulse"></i>
-                    </div>
-                    <div class="price-comparison">
-                        <div class="price-column">
-                            <div class="price-label">Current Plan</div>
-                            <div class="price-amount">$14/mo</div>
-                        </div>
-                        <div class="price-column highlighted">
-                            <div class="price-label">3-Year Plan</div>
-                            <div class="price-amount">$10/mo</div>
-                        </div>
-                    </div>
-                    <div class="savings-item">
-                        <i class="fas fa-piggy-bank"></i>
-                        <span>Save $144 over three years</span>
-                    </div>
-                    <div class="savings-item">
-                        <i class="fas fa-clock"></i>
-                        <span>Lock in the lower rate longer</span>
-                    </div>
-                    <div class="savings-item">
-                        <i class="fas fa-shield-alt"></i>
-                        <span>Extended protection & peace of mind</span>
-                    </div>
-                    <button class="upgrade-button" onclick="upgradePlan()">
-                        <i class="fas fa-arrow-up"></i>
-                        Upgrade to 3-Year Plan
-                    </button>
-                </div>
-            </div>`;
-    }
-
-    function createSparkle(container) {
-        const sparkle = document.createElement('div');
-        sparkle.className = 'sparkle';
-        sparkle.textContent = '✨';
-        const startX = Math.random() * container.offsetWidth;
-        sparkle.style.cssText = `
-            left: ${startX}px;
-            top: ${container.offsetHeight}px;
-            --translate-x: ${(Math.random() - 0.5) * 100}px;
-            --rotate: ${Math.random() * 360}deg;
-            animation: floatUp ${2 + Math.random()}s linear;
-        `;
-        container.appendChild(sparkle);
-        sparkle.addEventListener('animationend', () => {
-            sparkle.remove();
-            createSparkle(container);
-        });
-    }
-
-    function initializeUpsell() {
-        const upsellBanner = document.getElementById('upsellBanner');
-        if (upsellBanner) {
-            for (let i = 0; i < 5; i++) {
-                setTimeout(() => createSparkle(upsellBanner), i * 400);
-            }
-        }
-    }
-
-    window.previousStep = function() {
-    if (currentStep > 1) {
-        // Hide current step
-        const currentForm = document.getElementById(`step-${currentStep}`);
-        const previousForm = document.getElementById(`step-${currentStep - 1}`);
-        
-        // Update step indicators
-        document.getElementById(`indicator-${currentStep}`).classList.remove('active');
-        document.getElementById(`indicator-${currentStep - 1}`).classList.add('active');
-        
-        // Animate transition
-        currentForm.classList.remove('active');
-        
-        setTimeout(() => {
-            previousForm.classList.add('active');
-            currentStep--;
-        }, 500);
-        
-        // Clear any error states if going back
-        document.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
-    }
-};
-
-// Modify the existing step-1 button to match the new style
-document.querySelector('#step-1 .cta-button').outerHTML = `
-    <div class="button-container">
-        <button type="button" class="cta-button" onclick="nextStep()">Continue</button>
-    </div>
-`;
-
-    // Form validation and navigation
-    function validateStep(step) {
-        const stepElement = document.getElementById(`step-${step}`);
-        const inputs = stepElement.querySelectorAll(
-            isLoginMode && step === 2 ? '#login-form input' : 'input[required], select[required]'
-        );
-        let isValid = true;
-
-        if (step === 1) {
-            const shippingRadio = document.querySelector('input[name="shipping"]:checked');
-            if (!shippingRadio) {
-                alert('Please select a shipping option.');
-                return false;
-            }
-        }
-
-        inputs.forEach(input => {
-            if (!input.value.trim()) {
-                isValid = false;
-                input.classList.add('invalid');
-            } else {
-                input.classList.remove('invalid');
-            }
-        });
-
-        return isValid;
-    }
-
-    // Get continue button and disable initially
-    const continueButton = document.querySelector('#step-1 .cta-button');
-    continueButton.disabled = true;
-
-    // Add country change handler
-    document.getElementById('country').addEventListener('change', async function(e) {
-        const country = e.target.value;
-        const loaderElement = document.getElementById('shipping-loader');
-        const optionsElement = document.getElementById('shipping-options');
-        const optionsContainer = document.getElementById('shipping-options-container');
-        
-        // Reset shipping
-        shippingCost = 0;
-        updatePlanInfo();
-        continueButton.disabled = true;
-        
-        if (!country) {
-            optionsElement.classList.add('hidden');
-            return;
-        }
-
-        // Show loader
-        optionsElement.classList.add('hidden');
-        loaderElement.classList.remove('hidden');
-
-        // Simulate API delay
-        await new Promise(resolve => setTimeout(resolve, 1500));
-
-        // Hide loader and prepare options
-        loaderElement.classList.add('hidden');
-        
-        // Generate shipping option HTML based on country
-        const optionHTML = country === 'CA' 
-            ? `<label style="display: flex; gap: 10px; cursor: pointer;">
-                <input type="radio" name="shipping" value="20" style="margin-top: 4px;">
-                <div>
-                    <div style="font-weight: 600;">Canada Post Xpresspost ($20.00)</div>
-                    <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 2-4 business days</div>
-                    <div>
-                        <span class="shipping-feature feature-tracking">Express</span>
-                        <span class="shipping-feature feature-express">Tracked</span>
-                        <span class="shipping-feature feature-insured">Insured</span>
-                    </div>
-                </div>
-               </label>`
-            : `<label style="display: flex; gap: 10px; cursor: pointer;">
-                <input type="radio" name="shipping" value="25" style="margin-top: 4px;">
-                <div>
-                    <div style="font-weight: 600;">Canada Post Tracked Packet ($25.00)</div>
-                    <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 4-7 business days</div>
-                    <div>
-                        <span class="shipping-feature feature-tracking">Tracked</span>
-                        <span class="shipping-feature feature-insured">Insured</span>
-                    </div>
-                </div>
-               </label>`;
-
-        optionsContainer.innerHTML = optionHTML;
-        optionsElement.classList.remove('hidden');
-
-        // Add shipping selection handler
-        const shippingRadios = document.querySelectorAll('input[name="shipping"]');
-        shippingRadios.forEach(radio => {
-            radio.addEventListener('change', function() {
-                shippingCost = parseFloat(this.value);
-                updatePlanInfo();
-                continueButton.disabled = false;
-            });
-        });
-    });
-
-    // API Calls
-    async function authenticateUser(email, password) {
+    // Field validation with API check
+    async function checkFieldAvailability(field, value) {
         try {
-            const response = await fetch('https://cabinpulse.com/api/users/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, password })
-            });
-
-            if (!response.ok) throw new Error('Authentication failed');
-
-            const result = await response.json();
-            isAuthenticated = true;
-            userId = result.user._id;
-            authToken = result.token;
-            return true;
-        } catch (error) {
-            console.error('Authentication error:', error);
-            return false;
-        }
-    }
-
-    async function addDeviceForUser(token, plan) {
-        try {
-            const response = await fetch('https://cabinpulse.com/api/devices/register', {
+            const response = await fetch('https://cabinpulse.com/api/users/check-availability', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    name: "CabinPulse Device",
-                    location: 'Primary Location',
-                    plan: plan === '1' ? '1-year' : '3-year'
+                    [field]: value
                 })
             });
 
             if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message || 'Failed to register device');
+                throw new Error('Network response was not ok');
             }
 
-            return await response.json();
+            const data = await response.json();
+            return data.availability[field];
         } catch (error) {
-            console.error('Error registering device:', error);
-            throw error;
+            console.error('Error checking availability:', error);
+            return { available: false, message: 'Error checking availability' };
         }
     }
 
-    // Event Handlers
-    window.upgradePlan = function() {
-        if (plan === '1') {
-            confetti({
-                particleCount: 100,
-                spread: 70,
-                origin: { x: 0, y: 0.5 }
-            });
-            confetti({
-                particleCount: 100,
-                spread: 70,
-                origin: { x: 1, y: 0.5 }
-            });
+    // Validation helper functions
+    function showFieldError(fieldId, message) {
+        const field = document.getElementById(fieldId);
+        const existingMessage = field.parentElement.querySelector('.validation-message');
+        
+        if (existingMessage) {
+            existingMessage.remove();
+        }
+
+        field.classList.add('invalid');
+        
+        const messageElement = document.createElement('div');
+        messageElement.className = 'validation-message';
+        messageElement.style.color = 'var(--highlight-color)';
+        messageElement.style.fontSize = '0.8em';
+        messageElement.style.marginTop = '4px';
+        messageElement.textContent = message;
+        
+        field.parentElement.appendChild(messageElement);
+    }
+
+    function showValidationError(formId, message) {
+        const form = document.getElementById(formId);
+        const existingError = form.querySelector('.form-error-message');
+        
+        if (existingError) {
+            existingError.remove();
+        }
+
+        const errorElement = document.createElement('div');
+        errorElement.className = 'form-error-message';
+        errorElement.style.color = 'var(--highlight-color)';
+        errorElement.style.padding = '10px';
+        errorElement.style.marginTop = '10px';
+        errorElement.style.backgroundColor = 'rgba(233, 69, 96, 0.1)';
+        errorElement.style.borderRadius = '5px';
+        errorElement.textContent = message;
+        
+        form.appendChild(errorElement);
+    }
+
+    function clearValidationMessages(formId) {
+        const form = document.getElementById(formId);
+        form.querySelectorAll('.validation-message, .form-error-message').forEach(el => el.remove());
+        form.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
+    }
+
+    // Step validation
+    function validateStep(step) {
+        if (step === 1) {
+            const shippingRadio = document.querySelector('input[name="shipping"]:checked');
+            const selectedCountry = document.querySelector('.country-option.selected');
             
-            setTimeout(() => {
-                confetti({
-                    particleCount: 50,
-                    spread: 100,
-                    origin: { x: 0.5, y: 0.5 },
-                    colors: ['#FFD700', '#FFA500', '#ff5673']
-                });
-            }, 250);
-
-            setTimeout(() => {
-                confetti({
-                    particleCount: 150,
-                    spread: 120,
-                    origin: { x: 0.5, y: 0.4 },
-                    gravity: 0.8,
-                    scalar: 1.2,
-                    drift: 1
-                });
-            }, 500);
-
-            let sparkleCount = 0;
-            const sparkleInterval = setInterval(() => {
-                if (sparkleCount >= 20) {
-                    clearInterval(sparkleInterval);
-                    return;
-                }
-                confetti({
-                    particleCount: 2,
-                    angle: 60,
-                    spread: 55,
-                    origin: { x: Math.random(), y: Math.random() - 0.2 },
-                    colors: ['#FFD700', '#FFA500', '#ff5673'],
-                    gravity: 0.5,
-                    scalar: 0.7,
-                    drift: 0
-                });
-                sparkleCount++;
-            }, 200);
+            if (!selectedCountry) {
+                alert('Please select a country.');
+                return false;
+            }
+            
+            if (!shippingRadio) {
+                alert('Please select a shipping option.');
+                return false;
+            }
+            return true;
         }
         
-        plan = '3';
-        updatePlanInfo();
-    };
+        if (step === 2) {
+            // Check if an account type is selected
+            const selectedOption = document.querySelector('.account-option.selected');
+            if (!selectedOption) {
+                alert('Please select an account type.');
+                return false;
+            }
 
+            return true; // Return true and handle detailed validation in nextStep
+        }
+
+        return true;
+    }
+
+    // Country selection handlers
+    document.querySelectorAll('.country-option').forEach(button => {
+        button.addEventListener('click', async function() {
+            const country = this.dataset.country;
+            const loaderElement = document.getElementById('shipping-loader');
+            const optionsElement = document.getElementById('shipping-options');
+            const optionsContainer = document.getElementById('shipping-options-container');
+            const continueButton = document.querySelector('#step-1 .cta-button');
+            
+            // Update selected state
+            document.querySelectorAll('.country-option').forEach(btn => 
+                btn.classList.remove('selected'));
+            this.classList.add('selected');
+            
+            // Reset shipping
+            shippingCost = 0;
+            updatePlanInfo();
+            continueButton.disabled = true;
+            
+            // Show loader
+            optionsElement.classList.add('hidden');
+            loaderElement.classList.remove('hidden');
+
+            // Simulate API delay
+            await new Promise(resolve => setTimeout(resolve, 1500));
+
+            // Hide loader and prepare options
+            loaderElement.classList.add('hidden');
+            
+            // Generate shipping option HTML based on country
+            const optionHTML = country === 'CA' 
+                ? `<label class="shipping-option">
+                    <input type="radio" name="shipping" value="20" style="margin-top: 4px;">
+                    <div class="shipping-option-content">
+                        <div class="shipping-option-header">
+                            <img src="https://www.canadapost-postescanada.ca/cpc/assets/cpc/uploads/logos/cpc-scp/primary/postmarks-80x80.svg" 
+                                 alt="Canada Post" 
+                                 class="shipping-logo">
+                            <div>
+                                <div style="font-weight: 600;">Canada Post Xpresspost ($20.00)</div>
+                                <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 2-4 business days</div>
+                            </div>
+                        </div>
+                        <div class="shipping-features">
+                            <span class="shipping-feature feature-express">
+                                <i class="fas fa-bolt"></i> Express
+                            </span>
+                            <span class="shipping-feature feature-tracking">
+                                <i class="fas fa-truck"></i> Tracked
+                            </span>
+                            <span class="shipping-feature feature-insured">
+                                <i class="fas fa-shield-alt"></i> Insured
+                            </span>
+                        </div>
+                    </div>
+                </label>`
+                : `<label class="shipping-option">
+                    <input type="radio" name="shipping" value="25" style="margin-top: 4px;">
+                    <div class="shipping-option-content">
+                        <div class="shipping-option-header">
+                            <img src="https://www.canadapost-postescanada.ca/cpc/assets/cpc/uploads/logos/cpc-scp/primary/postmarks-80x80.svg" 
+                                 alt="Canada Post" 
+                                 class="shipping-logo">
+                            <div>
+                                <div style="font-weight: 600;">Tracked Packet USA ($25.00)</div>
+                                <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 4-7 business days</div>
+                            </div>
+                        </div>
+                        <div class="shipping-features">
+                            <span class="shipping-feature feature-tracking">
+                                <i class="fas fa-truck"></i> Tracked
+                            </span>
+                            <span class="shipping-feature feature-insured">
+                                <i class="fas fa-shield-alt"></i> Insured
+                            </span>
+                        </div>
+                    </div>
+                </label>`;
+
+            optionsContainer.innerHTML = optionHTML;
+            optionsElement.classList.remove('hidden');
+
+            // Add shipping selection handler
+            const shippingRadios = document.querySelectorAll('input[name="shipping"]');
+            shippingRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    shippingCost = parseFloat(this.value);
+                    updatePlanInfo();
+                    continueButton.disabled = false;
+                });
+            });
+        });
+    });
+
+    // Account selection handlers
+    document.querySelectorAll('.account-option').forEach(button => {
+        button.addEventListener('click', function() {
+            const type = this.dataset.type;
+            
+            // Update selected state
+            document.querySelectorAll('.account-option').forEach(btn => 
+                btn.classList.remove('selected'));
+            this.classList.add('selected');
+            
+            // Show appropriate form and update mode
+            const newUserForm = document.getElementById('new-user-form');
+            const existingUserForm = document.getElementById('existing-user-form');
+            
+            if (type === 'new') {
+                newUserForm.classList.remove('hidden');
+                existingUserForm.classList.add('hidden');
+                isLoginMode = false;
+                
+                // Clear and disable existing user form inputs
+                existingUserForm.querySelectorAll('input').forEach(input => {
+                    input.value = '';
+                    input.required = false;
+                });
+                
+                // Enable new user form inputs
+                newUserForm.querySelectorAll('input').forEach(input => {
+                    input.required = true;
+                });
+            } else {
+                newUserForm.classList.add('hidden');
+                existingUserForm.classList.remove('hidden');
+                isLoginMode = true;
+                
+                // Clear and disable new user form inputs
+                newUserForm.querySelectorAll('input').forEach(input => {
+                    input.value = '';
+                    input.required = false;
+                });
+                
+                // Enable existing user form inputs
+                existingUserForm.querySelectorAll('input').forEach(input => {
+                    input.required = true;
+                });
+            }
+            
+            // Clear any existing validation states
+            document.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
+            document.querySelectorAll('.validation-message').forEach(el => el.remove());
+        });
+    });
+
+    // Next step handler
     window.nextStep = async function() {
         if (currentStep < 3 && validateStep(currentStep)) {
             if (currentStep === 2) {
-                const email = document.getElementById(isLoginMode ? 'login-email' : 'email').value;
-                const password = document.getElementById(isLoginMode ? 'login-password' : 'password').value;
+                const continueButton = document.querySelector('#step-2 .cta-button');
+                continueButton.disabled = true;
+                continueButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Validating...';
 
-                if (isLoginMode) {
-                    const success = await authenticateUser(email, password);
-                    if (!success) {
-                        alert('Authentication failed. Please try again.');
-                        return;
+                try {
+                    if (isLoginMode) {
+                        // Handle existing user validation
+                        const email = document.getElementById('login-email').value;
+                        const password = document.getElementById('login-password').value;
+
+                        const success = await authenticateUser(email, password);
+                        if (!success) {
+                            showValidationError('existing-user-form', 'Invalid email or password. Please try again.');
+                            continueButton.disabled = false;
+                            continueButton.innerHTML = 'Continue';
+                            return;
+                        }
+                    } else {
+                        // Handle new user validation
+                        const email = document.getElementById('email').value;
+                        const phone = document.getElementById('phone').value;
+                        
+                        // Validate both email and phone
+                        const response = await fetch('https://cabinpulse.com/api/users/check-availability', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                email,
+                                phone
+                            })
+                        });
+
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+
+                        const data = await response.json();
+                        const { availability } = data;
+
+                        let hasError = false;
+                        
+                        // Clear existing validation messages
+                        clearValidationMessages('new-user-form');
+
+                        // Check email availability
+                        if (!availability.email.available) {
+                            showFieldError('email', availability.email.message);
+                            hasError = true;
+                        }
+
+                        // Check phone availability
+                        if (!availability.phone.available) {
+                            showFieldError('phone', availability.phone.message);
+                            hasError = true;
+                        }
+
+                        if (hasError) {
+                            continueButton.disabled = false;
+                            continueButton.innerHTML = 'Continue';
+                            return;
+                        }
                     }
-                }
-            }
 
-            const currentForm = document.getElementById(`step-${currentStep}`);
-            const nextForm = document.getElementById(`step-${currentStep + 1}`);
-            
-            document.getElementById(`indicator-${currentStep}`).classList.remove('active');
-            document.getElementById(`indicator-${currentStep + 1}`).classList.add('active');
-            currentForm.classList.remove('active');
-            
-            setTimeout(() => {
-                nextForm.classList.add('active');
-                currentStep++;
-            }, 500);
+                    // Proceed to next step if validation passes
+                    const currentForm = document.getElementById(`step-${currentStep}`);
+                    const nextForm = document.getElementById(`step-${currentStep + 1}`);
+                    
+                    document.getElementById(`indicator-${currentStep}`).classList.remove('active');
+                    document.getElementById(`indicator-${currentStep + 1}`).classList.add('active');
+                    currentForm.classList.remove('active');
+                    
+                    setTimeout(() => {
+                        nextForm.classList.add('active');
+                        currentStep++;
+                    }, 500);
+
+                } catch (error) {
+                    console.error('Validation error:', error);
+                    showValidationError('new-user-form', 'An error occurred during validation. Please try again.');
+                } finally {
+                    continueButton.disabled = false;
+                    continueButton.innerHTML = 'Continue';
+                }
+            } else {
+                // Handle other steps normally
+                const currentForm = document.getElementById(`step-${currentStep}`);
+                const nextForm = document.getElementById(`step-${currentStep + 1}`);
+                
+                document.getElementById(`indicator-${currentStep}`).classList.remove('active');
+                document.getElementById(`indicator-${currentStep + 1}`).classList.add('active');
+                currentForm.classList.remove('active');
+                
+                setTimeout(() => {
+                    nextForm.classList.add('active');
+                    currentStep++;
+                }, 500);
+            }
         }
     };
 
-    // Form submissions
-    document.getElementById('purchaseForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    if (currentStep !== 3) {
-        alert('Please complete all steps before submitting.');
-        return;
-    }
+    async function authenticateUser(email, password) {
+    try {
+        const response = await fetch('https://cabinpulse.com/api/users/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email,
+                password
+            })
+        });
 
+        if (!response.ok) {
+            return false;
+        }
+
+        const data = await response.json();
+        isAuthenticated = true;
+        userId = data.userId;
+        authToken = data.token;
+        return true;
+    } catch (error) {
+        console.error('Authentication error:', error);
+        return false;
+    }
+}
+
+    // Previous step handler
+    window.previousStep = function() {
+        if (currentStep > 1) {
+            const currentForm = document.getElementById(`step-${currentStep}`);
+            const previousForm = document.getElementById(`step-${currentStep - 1}`);
+            
+            document.getElementById(`indicator-${currentStep}`).classList.remove('active');
+            document.getElementById(`indicator-${currentStep - 1}`).classList.add('active');
+            
+            currentForm.classList.remove('active');
+            
+            setTimeout(() => {
+                previousForm.classList.add('active');
+                currentStep--;
+            }, 500);
+            
+            document.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
+        }
+    };
+
+    // Form submission handler
+    // Inside the form submission handler
+// Inside the form submission handler
+document.getElementById('purchaseForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
     const submitButton = document.querySelector('#step-3 .cta-button');
     submitButton.disabled = true;
     
@@ -1318,6 +1732,40 @@ document.querySelector('#step-1 .cta-button').outerHTML = `
         const deviceCost = 99;
         const totalAmount = (deviceCost + planCost + shippingCost) * 100; // Convert to cents
 
+        // Get country from selected country option
+        const selectedCountry = document.querySelector('.country-option.selected')?.dataset.country;
+        if (!selectedCountry) {
+            throw new Error('No country selected');
+        }
+
+        // Get user info based on form type
+        let customerInfo;
+        const customerEmail = isLoginMode ? 
+            document.getElementById('login-email').value : 
+            document.getElementById('email').value;
+
+        if (isLoginMode) {
+            customerInfo = {
+                email: customerEmail,
+                existingUser: true
+            };
+        } else {
+            const phoneInput = document.getElementById('phone');
+            const nameInput = document.getElementById('name');
+            
+            // Validate required fields
+            if (!customerEmail || !phoneInput.value || !nameInput.value) {
+                throw new Error('Please fill in all required fields');
+            }
+            
+            customerInfo = {
+                email: customerEmail,
+                phone: phoneInput.value,
+                name: nameInput.value,
+                existingUser: false
+            };
+        }
+
         // Create checkout session
         const response = await fetch('https://cabinpulse.com/api/create-checkout-session', {
             method: 'POST',
@@ -1326,60 +1774,74 @@ document.querySelector('#step-1 .cta-button').outerHTML = `
             },
             body: JSON.stringify({
                 planType: plan === '1' ? '1-year' : '3-year',
-                customerInfo: {
-                    name: document.getElementById('name').value,
-                    email: document.getElementById(isLoginMode ? 'login-email' : 'email').value,
-                    phone: document.getElementById('phone')?.value,
-                },
-                shippingAddress: {
-                    line1: document.getElementById('address').value,
-                    city: document.getElementById('city').value,
-                    state: document.getElementById('state').value,
-                    postal_code: document.getElementById('zip').value,
-                    country: document.getElementById('country').value
-                },
+                customerInfo,
+                userType: isLoginMode ? 'existing' : 'new',
+                country: selectedCountry,
+                shippingCost: shippingCost,
                 priceData: {
                     deviceCost,
                     planCost,
                     shippingCost,
                     totalAmount
-                }
+                },
             })
         });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Failed to create checkout session');
+        }
 
         const { sessionId } = await response.json();
 
         // Initialize Stripe
-        const stripe = Stripe('pk_test_51LZK81EVmyPNhExzDyBKh7hauIUFHXsvNwCBk2v6lcqC4V62yHnNpQfgwKetiuoyzozyg2I1eD9Y7Lx5X6oZFtiH00XLR3XlJt'); // Replace with your actual key
+        const stripe = Stripe('pk_test_51LZK81EVmyPNhExzDyBKh7hauIUFHXsvNwCBk2v6lcqC4V62yHnNpQfgwKetiuoyzozyg2I1eD9Y7Lx5X6oZFtiH00XLR3XlJt');
 
-        // Redirect to Stripe Checkout
-        const result = await stripe.redirectToCheckout({
+        // Redirect to Stripe Checkout - only passing sessionId
+        const { error } = await stripe.redirectToCheckout({
             sessionId: sessionId
         });
 
-        if (result.error) {
-            alert(result.error.message);
+        if (error) {
+            console.error('Stripe Error:', error);
+            alert(error.message);
             submitButton.disabled = false;
         }
     } catch (error) {
         console.error('Error:', error);
-        alert('An error occurred. Please try again.');
+        alert(error.message || 'An error occurred. Please try again.');
         submitButton.disabled = false;
     }
 });
-    // Login toggle
-    document.getElementById('toggle-login').addEventListener('click', function() {
-        isLoginMode = !isLoginMode;
-        isAuthenticated = false;
-        document.getElementById('register-form').classList.toggle('hidden');
-        document.getElementById('login-form').classList.toggle('hidden');
-        this.textContent = isLoginMode ? 'New user? Click here to register' : 'Existing account? Click here to log in';
-        document.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
-    });
 
-    // Initialize
+    // Real-time validation for email and phone
+    document.getElementById('email')?.addEventListener('input', debounce(async function(e) {
+        const email = e.target.value.trim();
+        if (email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            const result = await checkFieldAvailability('email', email);
+            if (!result.available) {
+                showFieldError('email', result.message);
+            } else {
+                clearValidationMessages('new-user-form');
+            }
+        }
+    }, 500));
+
+    document.getElementById('phone')?.addEventListener('input', debounce(async function(e) {
+        const phone = e.target.value.trim();
+        if (phone && phone.length >= 10) {
+            const result = await checkFieldAvailability('phone', phone);
+            if (!result.available) {
+                showFieldError('phone', result.message);
+            } else {
+                clearValidationMessages('new-user-form');
+            }
+        }
+    }, 500));
+
+    // Initialize on load
     updatePlanInfo();
 });
-    </script>
+</script>
 </body>
 </html>
