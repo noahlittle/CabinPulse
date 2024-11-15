@@ -909,7 +909,7 @@ input.invalid {
                     </ul>
                     <div class="price-item">
                         <span>Subscription</span>
-                        <span id="monthly-due">$14/mo</span>
+                        <span id="monthly-due">$14/mo (billed annually)</span>
                     </div>
                     <div class="price-item">
                         <span>Device Fee (one-time)</span>
@@ -1072,7 +1072,7 @@ input.invalid {
                             </ul>
                             <div class="price-item">
                                 <span>Subscription</span>
-                                <span id="confirm-monthly-due">$14/mo</span>
+                                <span id="confirm-monthly-due">$14/mo (billed annually)</span>
                             </div>
                             <div class="price-item">
                                 <span>Device Fee (one-time)</span>
@@ -1230,7 +1230,7 @@ window.upgradePlan = function() {
         document.getElementById('plan-length').textContent = planLengthText;
         document.getElementById('confirm-plan-length').textContent = planLengthText;
         document.getElementById('monthly-price').textContent = monthlyPrice;
-        document.getElementById('monthly-due').textContent = `$${monthlyPrice}/mo`;
+        document.getElementById('monthly-due').textContent = `$${monthlyPrice}/mo (billed ` + (plan === '1' ? 'annually' : 'every 3 years') + ')';
         document.getElementById('confirm-monthly-due').textContent = `$${monthlyPrice}/mo`;
         document.getElementById('total-due').textContent = `$${totalAmount}`;
         document.getElementById('confirm-total-due').textContent = `$${totalAmount}`;
@@ -1390,98 +1390,140 @@ window.upgradePlan = function() {
     }
 
     // Country selection handlers
-    document.querySelectorAll('.country-option').forEach(button => {
-        button.addEventListener('click', async function() {
-            const country = this.dataset.country;
-            const loaderElement = document.getElementById('shipping-loader');
-            const optionsElement = document.getElementById('shipping-options');
-            const optionsContainer = document.getElementById('shipping-options-container');
-            const continueButton = document.querySelector('#step-1 .cta-button');
-            
-            // Update selected state
-            document.querySelectorAll('.country-option').forEach(btn => 
-                btn.classList.remove('selected'));
-            this.classList.add('selected');
-            
-            // Reset shipping
-            shippingCost = 0;
-            updatePlanInfo();
-            continueButton.disabled = true;
-            
-            // Show loader
-            optionsElement.classList.add('hidden');
-            loaderElement.classList.remove('hidden');
+    // Inside the country selection click handler
+document.querySelectorAll('.country-option').forEach(button => {
+    button.addEventListener('click', async function() {
+        const country = this.dataset.country;
+        const loaderElement = document.getElementById('shipping-loader');
+        const optionsElement = document.getElementById('shipping-options');
+        const optionsContainer = document.getElementById('shipping-options-container');
+        const continueButton = document.querySelector('#step-1 .cta-button');
+        
+        // Update selected state
+        document.querySelectorAll('.country-option').forEach(btn => 
+            btn.classList.remove('selected'));
+        this.classList.add('selected');
+        
+        // Reset shipping
+        shippingCost = 0;
+        updatePlanInfo();
+        continueButton.disabled = true;
+        
+        // Show loader
+        optionsElement.classList.add('hidden');
+        loaderElement.classList.remove('hidden');
 
-            // Simulate API delay
-            await new Promise(resolve => setTimeout(resolve, 1500));
+        // Simulate API delay
+        await new Promise(resolve => setTimeout(resolve, 1500));
 
-            // Hide loader and prepare options
-            loaderElement.classList.add('hidden');
-            
-            // Generate shipping option HTML based on country
-            const optionHTML = country === 'CA' 
-                ? `<label class="shipping-option">
-                    <input type="radio" name="shipping" value="20" style="margin-top: 4px;">
-                    <div class="shipping-option-content">
-                        <div class="shipping-option-header">
-                            <img src="https://www.canadapost-postescanada.ca/cpc/assets/cpc/uploads/logos/cpc-scp/primary/postmarks-80x80.svg" 
-                                 alt="Canada Post" 
-                                 class="shipping-logo">
-                            <div>
-                                <div style="font-weight: 600;">Canada Post Xpresspost ($20.00)</div>
-                                <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 2-4 business days</div>
-                            </div>
-                        </div>
-                        <div class="shipping-features">
-                            <span class="shipping-feature feature-express">
-                                <i class="fas fa-bolt"></i> Express
-                            </span>
-                            <span class="shipping-feature feature-tracking">
-                                <i class="fas fa-truck"></i> Tracked
-                            </span>
-                            <span class="shipping-feature feature-insured">
-                                <i class="fas fa-shield-alt"></i> Insured
-                            </span>
+        // Hide loader and prepare options
+        loaderElement.classList.add('hidden');
+        
+        // Generate shipping options HTML based on country
+        const optionsHTML = country === 'CA' 
+            ? `<label class="shipping-option">
+                <input type="radio" name="shipping" value="20" style="margin-top: 4px;">
+                <div class="shipping-option-content">
+                    <div class="shipping-option-header">
+                        <img src="https://www.canadapost-postescanada.ca/cpc/assets/cpc/uploads/logos/cpc-scp/primary/postmarks-80x80.svg" 
+                             alt="Canada Post" 
+                             class="shipping-logo">
+                        <div>
+                            <div style="font-weight: 600;">Canada Post Xpresspost ($20.00)</div>
+                            <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 2-4 business days</div>
                         </div>
                     </div>
-                </label>`
-                : `<label class="shipping-option">
-                    <input type="radio" name="shipping" value="25" style="margin-top: 4px;">
-                    <div class="shipping-option-content">
-                        <div class="shipping-option-header">
-                            <img src="https://www.canadapost-postescanada.ca/cpc/assets/cpc/uploads/logos/cpc-scp/primary/postmarks-80x80.svg" 
-                                 alt="Canada Post" 
-                                 class="shipping-logo">
-                            <div>
-                                <div style="font-weight: 600;">Tracked Packet USA ($25.00)</div>
-                                <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 4-7 business days</div>
-                            </div>
-                        </div>
-                        <div class="shipping-features">
-                            <span class="shipping-feature feature-tracking">
-                                <i class="fas fa-truck"></i> Tracked
-                            </span>
-                            <span class="shipping-feature feature-insured">
-                                <i class="fas fa-shield-alt"></i> Insured
-                            </span>
+                    <div class="shipping-features">
+                        <span class="shipping-feature feature-express">
+                            <i class="fas fa-bolt"></i> Express
+                        </span>
+                        <span class="shipping-feature feature-tracking">
+                            <i class="fas fa-truck"></i> Tracked
+                        </span>
+                        <span class="shipping-feature feature-insured">
+                            <i class="fas fa-shield-alt"></i> Insured
+                        </span>
+                    </div>
+                </div>
+            </label>
+            <label class="shipping-option">
+                <input type="radio" name="shipping" value="40" style="margin-top: 4px;">
+                <div class="shipping-option-content">
+                    <div class="shipping-option-header">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/United_Parcel_Service_logo_2014.svg/1200px-United_Parcel_Service_logo_2014.svg.png" 
+                             alt="UPS" 
+                             class="shipping-logo">
+                        <div>
+                            <div style="font-weight: 600;">UPS Expedited ($40.00)</div>
+                            <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 2-4 business days</div>
                         </div>
                     </div>
-                </label>`;
+                    <div class="shipping-features">
+                        <span class="shipping-feature feature-express">
+                            <i class="fas fa-bolt"></i> Express
+                        </span>
+                        <span class="shipping-feature feature-tracking">
+                            <i class="fas fa-truck"></i> Tracked
+                        </span>
+                    </div>
+                </div>
+            </label>`
+            : `<label class="shipping-option">
+                <input type="radio" name="shipping" value="25" style="margin-top: 4px;">
+                <div class="shipping-option-content">
+                    <div class="shipping-option-header">
+                        <img src="https://www.canadapost-postescanada.ca/cpc/assets/cpc/uploads/logos/cpc-scp/primary/postmarks-80x80.svg" 
+                             alt="Canada Post" 
+                             class="shipping-logo">
+                        <div>
+                            <div style="font-weight: 600;">Tracked Packet USA ($25.00)</div>
+                            <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 4-7 business days</div>
+                        </div>
+                    </div>
+                    <div class="shipping-features">
+                        <span class="shipping-feature feature-tracking">
+                            <i class="fas fa-truck"></i> Tracked
+                        </span>
+                        <span class="shipping-feature feature-insured">
+                            <i class="fas fa-shield-alt"></i> Insured
+                        </span>
+                    </div>
+                </div>
+            </label>
+            <label class="shipping-option">
+                <input type="radio" name="shipping" value="35" style="margin-top: 4px;">
+                <div class="shipping-option-content">
+                    <div class="shipping-option-header">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/United_Parcel_Service_logo_2014.svg/1200px-United_Parcel_Service_logo_2014.svg.png" 
+                             alt="UPS" 
+                             class="shipping-logo">
+                        <div>
+                            <div style="font-weight: 600;">UPS Standard ($35.00)</div>
+                            <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 3-7 business days</div>
+                        </div>
+                    </div>
+                    <div class="shipping-features">
+                        <span class="shipping-feature feature-tracking">
+                            <i class="fas fa-truck"></i> Tracked
+                        </span>
+                    </div>
+                </div>
+            </label>`;
 
-            optionsContainer.innerHTML = optionHTML;
-            optionsElement.classList.remove('hidden');
+        optionsContainer.innerHTML = optionsHTML;
+        optionsElement.classList.remove('hidden');
 
-            // Add shipping selection handler
-            const shippingRadios = document.querySelectorAll('input[name="shipping"]');
-            shippingRadios.forEach(radio => {
-                radio.addEventListener('change', function() {
-                    shippingCost = parseFloat(this.value);
-                    updatePlanInfo();
-                    continueButton.disabled = false;
-                });
+        // Add shipping selection handler
+        const shippingRadios = document.querySelectorAll('input[name="shipping"]');
+        shippingRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                shippingCost = parseFloat(this.value);
+                updatePlanInfo();
+                continueButton.disabled = false;
             });
         });
     });
+});
 
     // Account selection handlers
     document.querySelectorAll('.account-option').forEach(button => {
