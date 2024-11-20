@@ -1110,6 +1110,72 @@ header.banner-hidden {
     }
 }
 
+.how-it-works {
+    padding: 120px 0;
+    background-color: var(--primary-color);
+    position: relative;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    margin-top: 60px;
+}
+
+.step-card {
+    background-color: var(--secondary-color);
+    border-radius: 24px;
+    padding: 36px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.step-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 24px 36px rgba(0, 0, 0, 0.2);
+}
+
+.step-number {
+    background-color: var(--highlight-color);
+    color: var(--primary-color);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0 auto 24px;
+}
+
+.step-icon {
+    font-size: 3rem;
+    color: var(--highlight-color);
+    margin-bottom: 24px;
+}
+
+.step-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+    color: var(--text-color);
+}
+
+.step-card p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -1176,6 +1242,32 @@ header.banner-hidden {
                     <span class="badge"><i class="fas fa-smog icon-text"></i>Air Quality</span>
                 </div>
                 <a href="https://cabinpulse.com/purchase.html" class="cta-button">Get CabinPulse</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <i class="step-icon fas fa-plug"></i>
+                    <h3>Plug In</h3>
+                    <p>Simply plug your CabinPulse device into any power outlet in the building you want to monitor - no WiFi required.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <i class="step-icon fas fa-chart-line"></i>
+                    <h3>View Data</h3>
+                    <p>Check temperature, humidity, and air quality data updated every 15 minutes on our website or app - from anywhere in the world.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <i class="step-icon fas fa-bell"></i>
+                    <h3>Get Alerts</h3>
+                    <p>Receive instant text and email notifications if temperature drops, power goes out, or other issues arise.</p>
+                </div>
             </div>
         </div>
     </section>
