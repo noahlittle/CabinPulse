@@ -1432,95 +1432,96 @@ document.querySelectorAll('.country-option').forEach(button => {
         loaderElement.classList.add('hidden');
         
         // Generate shipping options HTML based on country
-        const optionsHTML = country === 'CA' 
-            ? `<label class="shipping-option">
-                <input type="radio" name="shipping" value="20" style="margin-top: 4px;">
-                <div class="shipping-option-content">
-                    <div class="shipping-option-header">
-                        <img src="https://www.canadapost-postescanada.ca/cpc/assets/cpc/uploads/logos/cpc-scp/primary/postmarks-80x80.svg" 
-                             alt="Canada Post" 
-                             class="shipping-logo">
-                        <div>
-                            <div style="font-weight: 600;">Canada Post Xpresspost ($20.00)</div>
-                            <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 2-4 business days</div>
-                        </div>
-                    </div>
-                    <div class="shipping-features">
-                        <span class="shipping-feature feature-express">
-                            <i class="fas fa-bolt"></i> Express
-                        </span>
-                        <span class="shipping-feature feature-tracking">
-                            <i class="fas fa-truck"></i> Tracked
-                        </span>
-                        <span class="shipping-feature feature-insured">
-                            <i class="fas fa-shield-alt"></i> Insured
-                        </span>
-                    </div>
+        // Find the section that generates shipping options HTML and update the Canada Post option
+const optionsHTML = country === 'CA' 
+    ? `<label class="shipping-option">
+        <input type="radio" name="shipping" value="0" style="margin-top: 4px;">
+        <div class="shipping-option-content">
+            <div class="shipping-option-header">
+                <img src="https://www.canadapost-postescanada.ca/cpc/assets/cpc/uploads/logos/cpc-scp/primary/postmarks-80x80.svg" 
+                     alt="Canada Post" 
+                     class="shipping-logo">
+                <div>
+                    <div style="font-weight: 600;">Canada Post Xpresspost (FREE)</div>
+                    <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 2-4 business days</div>
                 </div>
-            </label>
-            <label class="shipping-option">
-                <input type="radio" name="shipping" value="40" style="margin-top: 4px;">
-                <div class="shipping-option-content">
-                    <div class="shipping-option-header">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/United_Parcel_Service_logo_2014.svg/1200px-United_Parcel_Service_logo_2014.svg.png" 
-                             alt="UPS" 
-                             class="shipping-logo">
-                        <div>
-                            <div style="font-weight: 600;">UPS Expedited ($40.00)</div>
-                            <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 2-4 business days</div>
-                        </div>
-                    </div>
-                    <div class="shipping-features">
-                        <span class="shipping-feature feature-express">
-                            <i class="fas fa-bolt"></i> Express
-                        </span>
-                        <span class="shipping-feature feature-tracking">
-                            <i class="fas fa-truck"></i> Tracked
-                        </span>
-                    </div>
+            </div>
+            <div class="shipping-features">
+                <span class="shipping-feature feature-express">
+                    <i class="fas fa-bolt"></i> Express
+                </span>
+                <span class="shipping-feature feature-tracking">
+                    <i class="fas fa-truck"></i> Tracked
+                </span>
+                <span class="shipping-feature feature-insured">
+                    <i class="fas fa-shield-alt"></i> Insured
+                </span>
+            </div>
+        </div>
+    </label>
+    <label class="shipping-option">
+        <input type="radio" name="shipping" value="40" style="margin-top: 4px;">
+        <div class="shipping-option-content">
+            <div class="shipping-option-header">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/United_Parcel_Service_logo_2014.svg/1200px-United_Parcel_Service_logo_2014.svg.png" 
+                     alt="UPS" 
+                     class="shipping-logo">
+                <div>
+                    <div style="font-weight: 600;">UPS Expedited ($40.00)</div>
+                    <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 2-4 business days</div>
                 </div>
-            </label>`
-            : `<label class="shipping-option">
-                <input type="radio" name="shipping" value="25" style="margin-top: 4px;">
-                <div class="shipping-option-content">
-                    <div class="shipping-option-header">
-                        <img src="https://www.canadapost-postescanada.ca/cpc/assets/cpc/uploads/logos/cpc-scp/primary/postmarks-80x80.svg" 
-                             alt="Canada Post" 
-                             class="shipping-logo">
-                        <div>
-                            <div style="font-weight: 600;">Tracked Packet USA ($25.00)</div>
-                            <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 4-7 business days</div>
-                        </div>
-                    </div>
-                    <div class="shipping-features">
-                        <span class="shipping-feature feature-tracking">
-                            <i class="fas fa-truck"></i> Tracked
-                        </span>
-                        <span class="shipping-feature feature-insured">
-                            <i class="fas fa-shield-alt"></i> Insured
-                        </span>
-                    </div>
+            </div>
+            <div class="shipping-features">
+                <span class="shipping-feature feature-express">
+                    <i class="fas fa-bolt"></i> Express
+                </span>
+                <span class="shipping-feature feature-tracking">
+                    <i class="fas fa-truck"></i> Tracked
+                </span>
+            </div>
+        </div>
+    </label>`
+    : `<label class="shipping-option">
+        <input type="radio" name="shipping" value="25" style="margin-top: 4px;">
+        <div class="shipping-option-content">
+            <div class="shipping-option-header">
+                <img src="https://www.canadapost-postescanada.ca/cpc/assets/cpc/uploads/logos/cpc-scp/primary/postmarks-80x80.svg" 
+                     alt="Canada Post" 
+                     class="shipping-logo">
+                <div>
+                    <div style="font-weight: 600;">Tracked Packet USA ($25.00)</div>
+                    <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 4-7 business days</div>
                 </div>
-            </label>
-            <label class="shipping-option">
-                <input type="radio" name="shipping" value="35" style="margin-top: 4px;">
-                <div class="shipping-option-content">
-                    <div class="shipping-option-header">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/United_Parcel_Service_logo_2014.svg/1200px-United_Parcel_Service_logo_2014.svg.png" 
-                             alt="UPS" 
-                             class="shipping-logo">
-                        <div>
-                            <div style="font-weight: 600;">UPS Standard ($35.00)</div>
-                            <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 3-7 business days</div>
-                        </div>
-                    </div>
-                    <div class="shipping-features">
-                        <span class="shipping-feature feature-tracking">
-                            <i class="fas fa-truck"></i> Tracked
-                        </span>
-                    </div>
+            </div>
+            <div class="shipping-features">
+                <span class="shipping-feature feature-tracking">
+                    <i class="fas fa-truck"></i> Tracked
+                </span>
+                <span class="shipping-feature feature-insured">
+                    <i class="fas fa-shield-alt"></i> Insured
+                </span>
+            </div>
+        </div>
+    </label>
+    <label class="shipping-option">
+        <input type="radio" name="shipping" value="35" style="margin-top: 4px;">
+        <div class="shipping-option-content">
+            <div class="shipping-option-header">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/United_Parcel_Service_logo_2014.svg/1200px-United_Parcel_Service_logo_2014.svg.png" 
+                     alt="UPS" 
+                     class="shipping-logo">
+                <div>
+                    <div style="font-weight: 600;">UPS Standard ($35.00)</div>
+                    <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 3-7 business days</div>
                 </div>
-            </label>`;
+            </div>
+            <div class="shipping-features">
+                <span class="shipping-feature feature-tracking">
+                    <i class="fas fa-truck"></i> Tracked
+                </span>
+            </div>
+        </div>
+    </label>`;
 
         optionsContainer.innerHTML = optionsHTML;
         optionsElement.classList.remove('hidden');
