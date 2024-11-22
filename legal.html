@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal - CabinPulse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a1a2e;
+            --secondary-color: #16213e;
+            --cta-color: #ffffff;
+            --accent-color: #0f3460;
+            --highlight-color: #e94560;
+            --text-color: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--secondary-color);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        .icon {
+            width: 40px;
+            height: 40px;
+        }
+
+        .legal-container {
+            padding: 120px 0 60px;
+        }
+
+        .tab-container {
+            margin-bottom: 40px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            background-color: var(--secondary-color);
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+        }
+
+        .tab.active {
+            background-color: var(--highlight-color);
+        }
+
+        .tab-content {
+            display: none;
+            background-color: var(--secondary-color);
+            padding: 40px;
+            border-radius: 10px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .tab-content h1 {
+            color: var(--highlight-color);
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+
+        .tab-content h2 {
+            color: var(--highlight-color);
+            margin: 30px 0 15px;
+            font-size: 1.8rem;
+        }
+
+        .tab-content h3 {
+            color: var(--highlight-color);
+            margin: 20px 0 10px;
+            font-size: 1.4rem;
+        }
+
+        .tab-content p, .tab-content li {
+            margin-bottom: 15px;
+        }
+
+        .tab-content ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .legal-container {
+                padding: 100px 0 40px;
+            }
+
+            .tab-content {
+                padding: 20px;
+            }
+
+            .tab-content h1 {
+                font-size: 2rem;
+            }
+
+            .tab-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .tab-content h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="/" class="logo-container">
+                <img src="cpicon.png" alt="CabinPulse Logo" class="icon">
+                <h1>CabinPulse</h1>
+            </a>
+        </nav>
+    </header>
+
+    <main class="legal-container">
+        <div class="container">
+            <div class="tab-container">
+                <div class="tabs">
+                    <button class="tab active" onclick="openTab('privacy')">Privacy Policy</button>
+                    <button class="tab" onclick="openTab('terms')">Terms & Conditions</button>
+                </div>
+
+                <div id="privacy" class="tab-content active">
+                    <h1>Privacy Policy</h1>
+                    <p>Last updated: November 22, 2024</p>
+
+                    <h2>Introduction</h2>
+                    <p>CabinPulse ("we", "us", "our"), a service provided by Toccata, Inc., is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and protect your personal information.</p>
+
+                    <h2>Information We Collect</h2>
+                    <h3>Personal Information</h3>
+                    <ul>
+                        <li>Contact information (name, email address, phone number)</li>
+                        <li>Account credentials (encrypted passwords)</li>
+                        <li>Shipping and billing addresses</li>
+                        <li>Device data from your CabinPulse unit (temperature, humidity, air quality readings)</li>
+                    </ul>
+
+                    <h3>Automatically Collected Information</h3>
+                    <p>We collect anonymous usage data on our landing page only through:</p>
+                    <ul>
+                        <li>Umami Analytics</li>
+                        <li>Mouseflow (for user behavior analysis)</li>
+                    </ul>
+
+                    <h2>How We Use Your Information</h2>
+                    <p>We use your information to:</p>
+                    <ul>
+                        <li>Provide and maintain our monitoring service</li>
+                        <li>Process your orders and payments</li>
+                        <li>Send alerts and notifications</li>
+                        <li>Communicate about your account</li>
+                        <li>Improve our service and website</li>
+                    </ul>
+
+                    <h2>Data Storage and Security</h2>
+                    <ul>
+                        <li>All device data is encrypted during transmission</li>
+                        <li>Passwords are stored in encrypted format</li>
+                        <li>We retain your data for the duration of your active account</li>
+                        <li>Data may be deleted 30 days after account closure</li>
+                    </ul>
+
+                    <h2>Third-Party Services</h2>
+                    <p>We share limited data with:</p>
+                    <ul>
+                        <li>Stripe (payment processing)</li>
+                        <li>Umami Analytics (anonymous website analytics)</li>
+                        <li>Mouseflow (anonymous website behavior analysis)</li>
+                    </ul>
+                    <p>These services have their own privacy policies and handling practices.</p>
+
+                    <h2>Data Retention</h2>
+                    <p>We retain your data for as long as you maintain an active account. After account closure, we may delete your data after 30 days.</p>
+
+                    <h2>Your Rights</h2>
+                    <p>You have the right to:</p>
+                    <ul>
+                        <li>Access your personal data</li>
+                        <li>Request data correction</li>
+                        <li>Request data deletion</li>
+                        <li>Export your data</li>
+                        <li>Close your account</li>
+                    </ul>
+
+                    <h2>Children's Privacy</h2>
+                    <p>Our service is not intended for children under 13. We do not knowingly collect data from children under 13.</p>
+
+                    <h2>International Users</h2>
+                    <p>We only provide services to users in the United States and Canada. All data is processed in accordance with U.S. laws.</p>
+
+                    <h2>Changes to This Policy</h2>
+                    <p>We may update this policy periodically. We will notify you of any material changes via email or through our website.</p>
+
+                    <h2>Contact Us</h2>
+                    <p>For privacy-related questions, contact us at: support@cabinpulse.com</p>
+                </div>
+
+                <div id="terms" class="tab-content">
+                    <h1>Terms and Conditions</h1>
+                    <p>Last updated: November 22, 2024</p>
+
+                    <h2>1. Agreement to Terms</h2>
+                    <p>By accessing our website or using our services, you agree to these Terms and Conditions.</p>
+
+                    <h2>2. Company Information</h2>
+                    <p>CabinPulse is a service provided by Toccata, Inc., a Delaware corporation.</p>
+
+                    <h2>3. Services Description</h2>
+                    <p>CabinPulse provides remote monitoring services through cellular-connected devices that track temperature, humidity, and air quality.</p>
+
+                    <h2>4. Account Terms</h2>
+                    <ul>
+                        <li>You must provide accurate information when creating an account</li>
+                        <li>You are responsible for maintaining account security</li>
+                        <li>Account sharing is permitted</li>
+                        <li>We reserve the right to terminate accounts for violations of these terms</li>
+                    </ul>
+
+                    <h2>5. Service Area</h2>
+                    <ul>
+                        <li>Service is available only in the United States and Canada</li>
+                        <li>Service requires cellular coverage in your area</li>
+                        <li>No guarantee of service in areas with poor cellular coverage</li>
+                    </ul>
+
+                    <h2>6. Payment Terms</h2>
+                    <ul>
+                        <li>Prices are as listed on our website</li>
+                        <li>Subscriptions are billed according to your chosen plan</li>
+                        <li>All payments are processed through Stripe</li>
+                    </ul>
+
+                    <h2>7. Refund Policy</h2>
+                    <h3>30-Day Guarantee</h3>
+                    <ul>
+                        <li>Full refund available within 30 days of purchase</li>
+                        <li>Device must be returned in resaleable condition</li>
+                        <li>Return shipping costs are customer's responsibility</li>
+                    </ul>
+
+                    <h3>After 30 Days</h3>
+                    <ul>
+                        <li>No refunds after 30 days unless approved at our discretion</li>
+                        <li>We reserve the right to refuse refunds beyond the 30-day period</li>
+                    </ul>
+
+                    <h2>8. Device Warranty</h2>
+                    <ul>
+                        <li>1-year limited warranty from date of purchase</li>
+                        <li>Covers manufacturing defects and malfunctions</li>
+                        <li>Contact support@cabinpulse.com for warranty claims</li>
+                        <li>We will repair or replace defective devices at our discretion</li>
+                        <li>Warranty does not cover damage from misuse or unauthorized modifications</li>
+                    </ul>
+
+                    <h2>9. Limitations of Liability</h2>
+                    <p>We are not liable for:</p>
+                    <ul>
+                        <li>Service interruptions due to cellular network issues</li>
+                        <li>Damage resulting from device malfunction</li>
+                        <li>Consequential damages</li>
+                        <li>Events beyond our reasonable control</li>
+                    </ul>
+
+                    <h2>10. Device Usage</h2>
+                    <ul>
+                        <li>Devices are for indoor use only</li>
+                        <li>Operating temperature range: -20°C to 60°C (-4°F to 140°F)</li>
+                        <li>Battery life may be reduced in extreme temperatures</li>
+                    </ul>
+
+                    <h2>11. Data Collection and Privacy</h2>
+                    <ul>
+                        <li>See our Privacy Policy for data handling practices</li>
+                        <li>We encrypt device data during transmission</li>
+                        <li>We retain data for active accounts only</li>
+                    </ul>
+
+                    <h2>12. Modifications to Service</h2>
+                    <p>We reserve the right to:</p>
+                    <ul>
+                        <li>Modify or discontinue services</li>
+                        <li>Update these terms</li>
+                        <li>Change pricing with notice</li>
+                    </ul>
+
+                    <h2>13. Enterprise Services</h2>
+                    <p>Contact us for enterprise-level service agreements and custom solutions.</p>
+
+                    <h2>14. Contact</h2>
+                    <p>For all inquiries: support@cabinpulse.com</p>
+
+                    <h2>15. Governing Law</h2>
+                    <p>These terms are governed by the laws of Delaware, United States.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Toccata, Inc. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function openTab(tabName) {
+            const tabContents = document.getElementsByClassName('tab-content');
+            const tabs = document.getElementsByClassName('tab');
+            
+            for (let content of tabContents) {
+                content.classList.remove('active');
+            }
+            
+            for (let tab of tabs) {
+                tab.classList.remove('active');
+            }
+            
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>

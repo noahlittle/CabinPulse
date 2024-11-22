@@ -1284,6 +1284,27 @@ header.banner-hidden {
     }
 }
 
+@media (max-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
+        text-align: center !important;
+    }
+    
+    .logo-container {
+        justify-content: center !important;
+    }
+    
+    .footer-grid > div:first-child div:last-child {
+        justify-content: center;
+    }
+    
+    .footer-grid a {
+        display: inline-flex !important;
+        justify-content: center;
+    }
+}
+
 
     </style>
 </head>
@@ -1343,7 +1364,7 @@ header.banner-hidden {
             <div class="hero-content">
                 <span class="badge featured"><i class="fas fa-tower-cell icon-text"></i>NO WIFI REQUIRED</span>
                 <h1>Check on your cabin, from anywhere.</h1>
-                <p>CabinPulse is the all-in-one solution for monitoring your cabin's temperature, humidity, and air quality - without the need for WiFi.</p>
+                <p>CabinPulse is the all-in-one solution for monitoring your cabin's temperature, humidity, and power status - without the need for WiFi.</p>
                 <div class="badge-container">
                     <span class="badge"><i class="fas fa-temperature-low icon-text"></i>Temperature</span>
                     <span class="badge"><i class="fas fa-droplet icon-text"></i>Humidity</span>
@@ -1628,13 +1649,59 @@ header.banner-hidden {
 
     <footer id="contact">
         <div class="container">
-            <p>&copy; 2024 CabinPulse</p>
-            <!-- TrustBox widget - Review Collector 
-<div class="trustpilot-widget" data-locale="en-US" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="673fe159552d4bdb0a0cc055" data-style-height="52px" data-style-width="100%" style="margin-top: 2rem !important">
-    <a href="https://www.trustpilot.com/review/cabinpulse.com" target="_blank" rel="noopener" style="color: white;">
-        <i class="fas fa-star"></i> Review us on Trustpilot</a>
-  </div>
- End TrustBox widget -->
+            <div class="footer-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px; text-align: left; padding: 48px 0;">
+                <!-- Company Info -->
+                <div>
+                    <div class="logo-container" style="margin-bottom: 20px;">
+                        <img src="cpicon.png" alt="CabinPulse Logo" style="width: 40px; height: 40px; margin-right: 10px;">
+                        <h3>CabinPulse</h3>
+                    </div>
+                    <p style="color: #ccc; margin-bottom: 20px;">Intelligent cabin and vacation home monitoring, no WiFi required.</p>
+                    <div style="display: flex; gap: 15px;">
+                        <a href="mailto:support@cabinpulse.com" style="color: var(--text-color);"><i class="fas fa-envelope"></i></a>
+                        <!-- <a href="https://twitter.com/cabinpulse" style="color: var(--text-color);"><i class="fab fa-twitter"></i></a> -->
+                        <a href="https://www.facebook.com/61567189714759" style="color: var(--text-color);"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+
+    
+                <!-- Press -->
+                <div>
+                    <h4 style="color: var(--highlight-color); margin-bottom: 20px;">Press</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 10px;">
+                            <a href="https://www.theglobeandmail.com/investing/markets/markets-news/GetNews/29709301/cabinpulse-launches-remote-monitoring-solution-for-cabin-owners-no-wifi-needed/" 
+                               style="color: var(--text-color); text-decoration: none; display: flex; align-items: center;">
+                                <i class="far fa-newspaper" style="margin-right: 10px;"></i>
+                                Launch Announcement
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                                <!-- Quick Links -->
+                                <div>
+                                    <h4 style="color: var(--highlight-color); margin-bottom: 20px;">Quick Links</h4>
+                                    <ul style="list-style: none; padding: 0;">
+                                        <li style="margin-bottom: 10px;"><a href="#features" style="color: var(--text-color); text-decoration: none;">Features</a></li>
+                                        <li style="margin-bottom: 10px;"><a href="#pricing" style="color: var(--text-color); text-decoration: none;">Pricing</a></li>
+                                        <li style="margin-bottom: 10px;"><a href="#faq" style="color: var(--text-color); text-decoration: none;">FAQ</a></li>
+                                        <li style="margin-bottom: 10px;"><a href="/legal.html" style="color: var(--text-color); text-decoration: none;">Legal</a></li>
+                                    </ul>
+                                </div>
+                    
+                                <!-- Contact -->
+                                <div>
+                                    <h4 style="color: var(--highlight-color); margin-bottom: 20px;">Contact</h4>
+                                    <ul style="list-style: none; padding: 0;">
+                                        <li style="margin-bottom: 10px;"><i class="fas fa-envelope" style="margin-right: 10px;"></i> support@cabinpulse.com</li>
+                                        <li style="margin-bottom: 10px;"><i class="fas fa-location-dot" style="margin-right: 10px;"></i> Saskatoon, SK</li>
+                                    </ul>
+                                </div>
+            </div>
+    
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 20px; text-align: center;">
+                <p>&copy; 2024 Toccata, Inc. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
