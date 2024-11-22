@@ -1189,6 +1189,100 @@ header.banner-hidden {
     }
 }
 
+.trial-container {
+    background-color: var(--accent-color);
+    border: 2px solid var(--highlight-color);
+    border-radius: 24px;
+    padding: 36px;
+    text-align: center;
+    margin: 48px 0;
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.trial-container .trial-icon {
+    font-size: 2.5rem;
+    color: var(--highlight-color);
+    margin-bottom: 16px;
+}
+
+.trial-container h3 {
+    font-size: 1.8rem;
+    margin-bottom: 16px;
+    color: var(--highlight-color);
+}
+
+.trial-container p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+@media (max-width: 768px) {
+    .trial-container {
+        padding: 24px;
+        margin: 32px 0;
+    }
+    
+    .trial-container h3 {
+        font-size: 1.5rem;
+    }
+    
+    .trial-container p {
+        font-size: 1.1rem;
+    }
+}
+
+
+.question-container {
+    background-color: var(--accent-color);
+    border: 2px solid var(--highlight-color);
+    border-radius: 24px;
+    padding: 36px;
+    text-align: center;
+    margin: 48px 0;
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.question-container .question-icon {
+    font-size: 2.5rem;
+    color: var(--highlight-color);
+    margin-bottom: 16px;
+}
+
+.question-container h3 {
+    font-size: 1.8rem;
+    margin-bottom: 16px;
+    color: var(--highlight-color);
+}
+
+.question-container p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.question-container a {
+    color: var(--text-color);
+}
+
+@media (max-width: 768px) {
+    .question-container {
+        padding: 24px;
+        margin: 32px 0;
+    }
+    
+    .question-container h3 {
+        font-size: 1.5rem;
+    }
+    
+    .question-container p {
+        font-size: 1.1rem;
+    }
+}
 
 
     </style>
@@ -1389,6 +1483,13 @@ header.banner-hidden {
                     <a href="https://cabinpulse.com/purchase.html?plan=3" class="cta-button pricing">Buy Now</a>
                 </div>
             </div>
+            <div class="trial-container">
+                <div class="trial-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>30-Day Risk-Free Guarantee</h3>
+                <p>Not completely satisfied? Return your device within 30 days for a full refund - no questions asked.</p>
+            </div>
         </div>
     </section>
 
@@ -1425,6 +1526,7 @@ header.banner-hidden {
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -1494,6 +1596,13 @@ header.banner-hidden {
                     <h3><i class="fas fa-lock"></i> Where are your servers located?</h3>
                     <p>All data is securely hosted on servers located in Canada.</p>
                 </div>
+        </div>
+        <div class="question-container">
+            <div class="question-icon">
+                <i class="fas fa-message"></i>
+            </div>
+            <h3>More Questions?</h3>
+            <p><b>We're always happy to help!</b> Contact our support team at <a href="mailto:support@cabinpulse.com">support@cabinpulse.com</a> with any questions, thoughts or concerns and we'll get back to you within 24 hours.</p>
         </div>
     </section>
 

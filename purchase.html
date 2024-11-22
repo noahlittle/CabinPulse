@@ -124,7 +124,7 @@
             margin-top: 5px;
         }
 
-        .discount, .upsell {
+        .discount {
             background-color: var(--highlight-color);
             color: white;
             padding: 8px 16px;
@@ -135,17 +135,6 @@
             display: inline-block;
             text-align: center;
             width: 100%;
-        }
-
-        .upsell {
-            background-color: var(--accent-color);
-            color: var(--cta-color);
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .upsell:hover {
-            background-color: var(--highlight-color);
         }
 
         .product-details {
@@ -459,51 +448,6 @@
     border: 1px dotted red;
 }
 
-.upsell {
-    background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
-    padding: 20px;
-    border-radius: 12px;
-    margin: 20px 0;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-    overflow: hidden;
-    position: relative;
-}
-
-.upsell:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-}
-
-.upsell-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.upsell-icon {
-    background: var(--highlight-color);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 15px;
-}
-
-.upsell-icon i {
-    color: white;
-    font-size: 20px;
-}
-
-.upsell-title {
-    color: var(--cta-color);
-    font-weight: bold;
-    font-size: 1.2em;
-    margin: 0;
-}
-
 .savings-container {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 8px;
@@ -586,7 +530,7 @@
         transform: scale(1);
     }
     50% {
-        transform: scale(1.05);
+        transform: scale(1.01);
     }
     100% {
         transform: scale(1);
@@ -883,6 +827,74 @@ input.invalid {
     background: rgba(255, 255, 255, 0.1);
 }
 
+.guarantee-banner {
+    background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+    border: 1px solid var(--highlight-color);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.guarantee-icon {
+    background: var(--highlight-color);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.guarantee-icon i {
+    color: white;
+    font-size: 24px;
+}
+
+.guarantee-content h3 {
+    color: var(--highlight-color);
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.upsell {
+   background-color: var(--accent-color);
+   padding: 15px 20px;
+   border-radius: 8px;
+   margin: 15px 0;
+}
+
+.upsell-content {
+   display: flex;
+   align-items: center;
+   gap: 12px;
+   margin-bottom: 12px;
+}
+
+.upsell i {
+   color: var(--highlight-color);
+   font-size: 20px;
+}
+
+.upsell p {
+   margin: 0;
+   line-height: 1.4;
+}
+
+.upgrade-button {
+   background: var(--highlight-color);
+   color: white;
+   border: none;
+   padding: 10px 20px;
+   border-radius: 6px;
+   font-weight: 600;
+   cursor: pointer;
+   width: 100%;
+}
+
     </style>
 </head>
 <body>
@@ -908,6 +920,15 @@ input.invalid {
                     <div class="device-price">+ $99 one-time device fee</div>
                 </div>
                 <div id="discount-upsell"></div>
+                <div class="guarantee-banner">
+                    <div class="guarantee-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="guarantee-content">
+                        <h3>30-Day Risk-Free Trial</h3>
+                        <p>Try CabinPulse with complete peace of mind. If you're not completely satisfied, contact us to return within 30 days for a full refund.</p>
+                    </div>
+                </div>
                 <div class="total-price">
                     <h3 id="plan-length">3-Year Plan</h3>
                     <ul class="product-details">
@@ -1146,45 +1167,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function createUpsellHTML() {
     return `
-        <div class="upsell" id="upsellBanner">
-            <div class="upsell-header">
-                <div class="upsell-icon">
-                    <i class="fas fa-arrow-trend-up"></i>
-                </div>
-                <h3 class="upsell-title">Save $140 with a 3-Year Plan</h3>
-            </div>
-            <div class="savings-container">
-                <div class="big-icon">
-                    <i class="fas fa-shield pulse"></i>
-                </div>
-                <div class="price-comparison">
-                    <div class="price-column">
-                        <div class="price-label">Current Plan</div>
-                        <div class="price-amount">$14/mo</div>
-                    </div>
-                    <div class="price-column highlighted">
-                        <div class="price-label">3-Year Plan</div>
-                        <div class="price-amount">$10/mo</div>
-                    </div>
-                </div>
-                <div class="savings-item">
-                    <i class="fas fa-piggy-bank"></i>
-                    <span>Save $144 over three years</span>
-                </div>
-                <div class="savings-item">
-                    <i class="fas fa-clock"></i>
-                    <span>Lock in the lower rate longer</span>
-                </div>
-                <div class="savings-item">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>Extended protection & peace of mind</span>
-                </div>
-                <button class="upgrade-button" onclick="upgradePlan()">
-                    <i class="fas fa-arrow-up"></i>
-                    Upgrade to 3-Year Plan
-                </button>
-            </div>
-        </div>`;
+        <div class="upsell">
+    <div class="upsell-content">
+        <i class="fas fa-piggy-bank"></i>
+        <p>You could save an extra $4/month with our 3-year plan.</p>
+    </div>
+    <button class="upgrade-button" onclick="upgradePlan()">Switch to 3-Year Plan</button>
+</div>`;
 }
 
 
