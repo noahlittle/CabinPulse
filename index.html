@@ -2461,13 +2461,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const chatHeader = document.querySelector('.chat-header');
     chatHeader.appendChild(closeButton);
-
-    // Auto-open chat after 30 seconds
-    setTimeout(() => {
-        if (!chatState.isOpen) {
-            toggleChat();
-        }
-    }, 30000);
 });
 
 // Clean up when chat is closed
