@@ -1116,13 +1116,51 @@ input.invalid {
                                 <span id="confirm-total-due">$459</span>
                             </div>
                         </div>
-                        <p>Please review your order details above. By clicking "Continue to Payment", you agree to our <a class="text-white" href="https://cabinpulse.com">Terms of Service</a> and <a class="text-white" href="https://cabinpulse.com">Privacy Policy</a>.</p>
+                    
+                        <!-- Coverage Map Section -->
+                        <div style="margin: 20px 0; padding: 20px; background: var(--accent-color); border-radius: 12px;">
+                            <h3 style="margin-bottom: 15px; color: var(--highlight-color);">Confirm Coverage</h3>
+                            <p style="margin-bottom: 15px;">CabinPulse uses LTE-M to provide service. Please verify your location is within our coverage area before proceeding:</p>
+                            
+                            <!-- Coverage Map Links -->
+                            <div id="coverage-links" style="display: flex; gap: 15px; margin-bottom: 20px;">
+                                <a href="https://business.bell.ca/shop/medium-large/our-networks/lte-m#coverageContainer" 
+                                   target="_blank" 
+                                   class="cta-button canadian-coverage hidden">
+                                    <i class="fa-brands fa-canadian-maple-leaf" style="margin-right: 8px;"></i>Check Canadian Coverage
+                                </a>
+                                <a href="https://www.t-mobile.com/business/solutions/iot/cat-m-iot-coverage-map" 
+                                   target="_blank" 
+                                   class="cta-button usa-coverage hidden">
+                                    <i class="fas fa-flag-usa" style="margin-right: 8px;"></i>Check American Coverage
+                                </a>
+                            </div>
+                    
+                            <!-- Coverage Confirmation Checkbox -->
+                            <div style="margin-top: 15px;">
+                                <label style="display: flex; align-items: start; gap: 10px; cursor: pointer;">
+                                    <input type="checkbox" 
+                                           id="coverage-confirmation" 
+                                           style="margin-top: 4px;"
+                                           required>
+                                    <span>I confirm that I have checked the coverage map and the location I will use CabinPulse is within the LTE-M coverage area.</span> 
+                                </label>
+                                 </div>
+                                 <div style="margin-top: 12px; padding: 8px 12px; background: rgba(15, 52, 96, 0.5); border-radius: 6px; font-size: 0.85em; color: #ccc;">
+                                    <div style="display: flex; align-items: start; gap: 8px;">
+                                        <i class="fas fa-info-circle" style="color: var(--highlight-color); margin-top: 3px;"></i>
+                                        <p style="margin: 0;">We also produce limited quantities of an extended range version of CabinPulse that operates on regular LTE/3G for areas without LTE-M coverage. <a href="mailto:support@cabinpulse.com" style="color: var(--highlight-color); text-decoration: none;">Contact us</a> for more information.</p>
+                                    </div>
+                                </div>
+                        </div>
+                    
+                        <p>Please review your order details above. By clicking "Continue to Payment", you agree to our <a class="text-white" href="https://cabinpulse.com/legal.html">Terms of Service</a> and <a class="text-white" href="https://cabinpulse.com/legal.html">Privacy Policy</a>.</p>
                         <br />
                         <div class="button-container">
                             <button type="button" class="back-button" onclick="previousStep()">
                                 <i class="fas fa-arrow-left"></i> Back
                             </button>
-                            <button type="submit" class="cta-button">
+                            <button type="submit" class="cta-button" id="payment-button" disabled>
                                 <i class="fas fa-lock"></i> Continue to Payment
                             </button>
                         </div>
@@ -1147,6 +1185,30 @@ document.addEventListener('DOMContentLoaded', function() {
     let userId = null;
     let authToken = null;
     let shippingCost = 0;
+    let selectedCountry = null;
+
+    // Coverage map functionality
+    const coverageCheckbox = document.getElementById('coverage-confirmation');
+    const paymentButton = document.getElementById('payment-button');
+
+    function updateCoverageLinks(country) {
+        const canadianCoverageLink = document.querySelector('.canadian-coverage');
+        const usaCoverageLink = document.querySelector('.usa-coverage');
+        
+        if (country === 'CA') {
+            canadianCoverageLink.classList.remove('hidden');
+            usaCoverageLink.classList.add('hidden');
+        } else if (country === 'US') {
+            canadianCoverageLink.classList.add('hidden');
+            usaCoverageLink.classList.remove('hidden');
+        }
+    }
+
+    coverageCheckbox?.addEventListener('change', function() {
+        if (paymentButton) {
+            paymentButton.disabled = !this.checked;
+        }
+    });
 
     // Prevent form submission on enter key
     document.getElementById('purchaseForm').addEventListener('keypress', function(e) {
@@ -1166,56 +1228,53 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function createUpsellHTML() {
-    return `
-        <div class="upsell">
-    <div class="upsell-content">
-        <i class="fas fa-piggy-bank"></i>
-        <p>You could save an extra $4/month with our 3-year plan.</p>
-    </div>
-    <button class="upgrade-button" onclick="upgradePlan()">Switch to 3-Year Plan</button>
-</div>`;
-}
-
-
-
-// Make sure you also have this function defined
-window.upgradePlan = function() {
-    if (plan === '1') {
-        confetti({
-            particleCount: 100,
-            spread: 70,
-            origin: { x: 0, y: 0.5 }
-        });
-        confetti({
-            particleCount: 100,
-            spread: 70,
-            origin: { x: 1, y: 0.5 }
-        });
-        
-        setTimeout(() => {
-            confetti({
-                particleCount: 50,
-                spread: 100,
-                origin: { x: 0.5, y: 0.5 },
-                colors: ['#FFD700', '#FFA500', '#ff5673']
-            });
-        }, 250);
-
-        setTimeout(() => {
-            confetti({
-                particleCount: 150,
-                spread: 120,
-                origin: { x: 0.5, y: 0.4 },
-                gravity: 0.8,
-                scalar: 1.2,
-                drift: 1
-            });
-        }, 500);
+        return `
+            <div class="upsell">
+                <div class="upsell-content">
+                    <i class="fas fa-piggy-bank"></i>
+                    <p>You could save an extra $4/month with our 3-year plan.</p>
+                </div>
+                <button class="upgrade-button" onclick="upgradePlan()">Switch to 3-Year Plan</button>
+            </div>`;
     }
-    
-    plan = '3';
-    updatePlanInfo();
-};
+
+    window.upgradePlan = function() {
+        if (plan === '1') {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { x: 0, y: 0.5 }
+            });
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { x: 1, y: 0.5 }
+            });
+            
+            setTimeout(() => {
+                confetti({
+                    particleCount: 50,
+                    spread: 100,
+                    origin: { x: 0.5, y: 0.5 },
+                    colors: ['#FFD700', '#FFA500', '#ff5673']
+                });
+            }, 250);
+
+            setTimeout(() => {
+                confetti({
+                    particleCount: 150,
+                    spread: 120,
+                    origin: { x: 0.5, y: 0.4 },
+                    gravity: 0.8,
+                    scalar: 1.2,
+                    drift: 1
+                });
+            }, 500);
+        }
+        
+        plan = '3';
+        updatePlanInfo();
+    };
 
     // Price and plan calculations
     function updatePlanInfo() {
@@ -1384,167 +1443,168 @@ window.upgradePlan = function() {
                 return false;
             }
 
-            return true; // Return true and handle detailed validation in nextStep
+            return true;
         }
 
         return true;
     }
 
     // Country selection handlers
-    // Inside the country selection click handler
-document.querySelectorAll('.country-option').forEach(button => {
-    button.addEventListener('click', async function() {
-        const country = this.dataset.country;
-        const loaderElement = document.getElementById('shipping-loader');
-        const optionsElement = document.getElementById('shipping-options');
-        const optionsContainer = document.getElementById('shipping-options-container');
-        const continueButton = document.querySelector('#step-1 .cta-button');
-        
-        // Update selected state
-        document.querySelectorAll('.country-option').forEach(btn => 
-            btn.classList.remove('selected'));
-        this.classList.add('selected');
-        
-        // Reset shipping
-        shippingCost = 0;
-        updatePlanInfo();
-        continueButton.disabled = true;
-        
-        // Show loader
-        optionsElement.classList.add('hidden');
-        loaderElement.classList.remove('hidden');
+    document.querySelectorAll('.country-option').forEach(button => {
+        button.addEventListener('click', async function() {
+            const country = this.dataset.country;
+            selectedCountry = country;
+            updateCoverageLinks(country);
+            
+            const loaderElement = document.getElementById('shipping-loader');
+            const optionsElement = document.getElementById('shipping-options');
+            const optionsContainer = document.getElementById('shipping-options-container');
+            const continueButton = document.querySelector('#step-1 .cta-button');
+            
+            // Update selected state
+            document.querySelectorAll('.country-option').forEach(btn => 
+                btn.classList.remove('selected'));
+            this.classList.add('selected');
+            
+            // Reset shipping
+            shippingCost = 0;
+            updatePlanInfo();
+            continueButton.disabled = true;
+            
+            // Show loader
+            optionsElement.classList.add('hidden');
+            loaderElement.classList.remove('hidden');
 
-        // Simulate API delay
-        await new Promise(resolve => setTimeout(resolve, 1500));
+            // Simulate API delay
+            await new Promise(resolve => setTimeout(resolve, 1500));
 
-        // Hide loader and prepare options
-        loaderElement.classList.add('hidden');
-        
-        // Generate shipping options HTML based on country
-        const optionsHTML = country === 'CA' 
-    ? `<label class="shipping-option">
-        <input type="radio" name="shipping" value="0" style="margin-top: 4px;">
-        <div class="shipping-option-content">
-            <div class="shipping-option-header">
-                <i class="fas fa-store fa-2x" style="color: var(--highlight-color); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin-right: 5px;"></i>
-                <div>
-                    <div style="font-weight: 600;"> Pickup in Saskatoon (FREE)</div>
-                    <div style="font-size: 0.9em; opacity: 0.8;">Available in 1-2 business days</div>
-                </div>
-            </div>
-            <div class="shipping-features">
-                <span class="shipping-feature feature-express">
-                    <i class="fas fa-bolt"></i> Fastest
-                </span>
-                <span class="shipping-feature feature-tracking">
-                    <i class="fas fa-store"></i> Saskatoon ONLY
-                </span>
-            </div>
-        </div>
-    </label>
-    <label class="shipping-option">
-        <input type="radio" name="shipping" value="20" style="margin-top: 4px;">
-        <div class="shipping-option-content">
-            <div class="shipping-option-header">
-                <img src="https://www.canadapost-postescanada.ca/cpc/assets/cpc/uploads/logos/cpc-scp/primary/postmarks-80x80.svg" 
-                     alt="Canada Post" 
-                     class="shipping-logo">
-                <div>
-                    <div style="font-weight: 600;">Canada Post Xpresspost ($20.00)</div>
-                    <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 2-4 business days</div>
-                </div>
-            </div>
-            <div class="shipping-features">
-                <span class="shipping-feature feature-express">
-                    <i class="fas fa-bolt"></i> Express
-                </span>
-                <span class="shipping-feature feature-tracking">
-                    <i class="fas fa-truck"></i> Tracked
-                </span>
-                <span class="shipping-feature feature-insured">
-                    <i class="fas fa-shield-alt"></i> Insured
-                </span>
-            </div>
-        </div>
-    </label>
-    <label class="shipping-option">
-        <input type="radio" name="shipping" value="40" style="margin-top: 4px;">
-        <div class="shipping-option-content">
-            <div class="shipping-option-header">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/United_Parcel_Service_logo_2014.svg/1200px-United_Parcel_Service_logo_2014.svg.png" 
-                     alt="UPS" 
-                     class="shipping-logo">
-                <div>
-                    <div style="font-weight: 600;">UPS Expedited ($40.00)</div>
-                    <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 2-4 business days</div>
-                </div>
-            </div>
-            <div class="shipping-features">
-                <span class="shipping-feature feature-express">
-                    <i class="fas fa-bolt"></i> Express
-                </span>
-                <span class="shipping-feature feature-tracking">
-                    <i class="fas fa-truck"></i> Tracked
-                </span>
-            </div>
-        </div>
-    </label>`
-            : `<label class="shipping-option">
-                <input type="radio" name="shipping" value="25" style="margin-top: 4px;">
-                <div class="shipping-option-content">
-                    <div class="shipping-option-header">
-                        <img src="https://www.canadapost-postescanada.ca/cpc/assets/cpc/uploads/logos/cpc-scp/primary/postmarks-80x80.svg" 
-                             alt="Canada Post" 
-                             class="shipping-logo">
-                        <div>
-                            <div style="font-weight: 600;">Tracked Packet USA ($25.00)</div>
-                            <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 4-7 business days</div>
+            // Hide loader and prepare options
+            loaderElement.classList.add('hidden');
+            
+            // Generate shipping options HTML based on country
+            const optionsHTML = country === 'CA' 
+                ? `<label class="shipping-option">
+                    <input type="radio" name="shipping" value="0" style="margin-top: 4px;">
+                    <div class="shipping-option-content">
+                        <div class="shipping-option-header">
+                            <i class="fas fa-store fa-2x" style="color: white; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin-right: 5px;"></i>
+                            <div>
+                                <div style="font-weight: 600;"> Pickup in Saskatoon (FREE)</div>
+                                <div style="font-size: 0.9em; opacity: 0.8;">Available in 1-2 business days</div>
+                            </div>
+                        </div>
+                        <div class="shipping-features">
+                            <span class="shipping-feature feature-express">
+                                <i class="fas fa-bolt"></i> Fastest
+                            </span>
+                            <span class="shipping-feature feature-tracking">
+                                <i class="fas fa-store"></i> Saskatoon Only
+                            </span>
                         </div>
                     </div>
-                    <div class="shipping-features">
-                        <span class="shipping-feature feature-tracking">
-                            <i class="fas fa-truck"></i> Tracked
-                        </span>
-                        <span class="shipping-feature feature-insured">
-                            <i class="fas fa-shield-alt"></i> Insured
-                        </span>
-                    </div>
-                </div>
-            </label>
-            <label class="shipping-option">
-                <input type="radio" name="shipping" value="35" style="margin-top: 4px;">
-                <div class="shipping-option-content">
-                    <div class="shipping-option-header">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/United_Parcel_Service_logo_2014.svg/1200px-United_Parcel_Service_logo_2014.svg.png" 
-                             alt="UPS" 
-                             class="shipping-logo">
-                        <div>
-                            <div style="font-weight: 600;">UPS Standard ($35.00)</div>
-                            <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 3-7 business days</div>
+                </label>
+                <label class="shipping-option">
+                    <input type="radio" name="shipping" value="20" style="margin-top: 4px;">
+                    <div class="shipping-option-content">
+                        <div class="shipping-option-header">
+                            <img src="https://www.canadapost-postescanada.ca/cpc/assets/cpc/uploads/logos/cpc-scp/primary/postmarks-80x80.svg" 
+                                 alt="Canada Post" 
+                                 class="shipping-logo">
+                            <div>
+                                <div style="font-weight: 600;">Canada Post Xpresspost ($20.00)</div>
+                                <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 2-4 business days</div>
+                            </div>
+                        </div>
+                        <div class="shipping-features">
+                            <span class="shipping-feature feature-express">
+                                <i class="fas fa-bolt"></i> Express
+                            </span>
+                            <span class="shipping-feature feature-tracking">
+                                <i class="fas fa-truck"></i> Tracked
+                            </span>
+                            <span class="shipping-feature feature-insured">
+                                <i class="fas fa-shield-alt"></i> Insured
+                            </span>
                         </div>
                     </div>
-                    <div class="shipping-features">
-                        <span class="shipping-feature feature-tracking">
-                            <i class="fas fa-truck"></i> Tracked
-                        </span>
+                </label>
+                <label class="shipping-option">
+                    <input type="radio" name="shipping" value="40" style="margin-top: 4px;">
+                    <div class="shipping-option-content">
+                        <div class="shipping-option-header">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/United_Parcel_Service_logo_2014.svg/1200px-United_Parcel_Service_logo_2014.svg.png" 
+                                 alt="UPS" 
+                                 class="shipping-logo">
+                            <div>
+                                <div style="font-weight: 600;">UPS Expedited ($40.00)</div>
+                                <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 2-4 business days</div>
+                            </div>
+                        </div>
+                        <div class="shipping-features">
+                            <span class="shipping-feature feature-express">
+                                <i class="fas fa-bolt"></i> Express
+                            </span>
+                            <span class="shipping-feature feature-tracking">
+                                <i class="fas fa-truck"></i> Tracked
+                            </span>
+                        </div>
                     </div>
-                </div>
-            </label>`;
+                </label>`
+                : `<label class="shipping-option">
+                    <input type="radio" name="shipping" value="25" style="margin-top: 4px;">
+                    <div class="shipping-option-content">
+                        <div class="shipping-option-header">
+                            <img src="https://www.canadapost-postescanada.ca/cpc/assets/cpc/uploads/logos/cpc-scp/primary/postmarks-80x80.svg"alt="Canada Post" 
+                                class="shipping-logo">
+                            <div>
+                                <div style="font-weight: 600;">Tracked Packet USA ($25.00)</div>
+                                <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 4-7 business days</div>
+                            </div>
+                        </div>
+                        <div class="shipping-features">
+                            <span class="shipping-feature feature-tracking">
+                                <i class="fas fa-truck"></i> Tracked
+                            </span>
+                            <span class="shipping-feature feature-insured">
+                                <i class="fas fa-shield-alt"></i> Insured
+                            </span>
+                        </div>
+                    </div>
+                </label>
+                <label class="shipping-option">
+                    <input type="radio" name="shipping" value="35" style="margin-top: 4px;">
+                    <div class="shipping-option-content">
+                        <div class="shipping-option-header">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/United_Parcel_Service_logo_2014.svg/1200px-United_Parcel_Service_logo_2014.svg.png" 
+                                alt="UPS" 
+                                class="shipping-logo">
+                            <div>
+                                <div style="font-weight: 600;">UPS Standard ($35.00)</div>
+                                <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 3-7 business days</div>
+                            </div>
+                        </div>
+                        <div class="shipping-features">
+                            <span class="shipping-feature feature-tracking">
+                                <i class="fas fa-truck"></i> Tracked
+                            </span>
+                        </div>
+                    </div>
+                </label>`;
 
-        optionsContainer.innerHTML = optionsHTML;
-        optionsElement.classList.remove('hidden');
+            optionsContainer.innerHTML = optionsHTML;
+            optionsElement.classList.remove('hidden');
 
-        // Add shipping selection handler
-        const shippingRadios = document.querySelectorAll('input[name="shipping"]');
-        shippingRadios.forEach(radio => {
-            radio.addEventListener('change', function() {
-                shippingCost = parseFloat(this.value);
-                updatePlanInfo();
-                continueButton.disabled = false;
+            // Add shipping selection handler
+            const shippingRadios = document.querySelectorAll('input[name="shipping"]');
+            shippingRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    shippingCost = parseFloat(this.value);
+                    updatePlanInfo();
+                    continueButton.disabled = false;
+                });
             });
         });
     });
-});
 
     // Account selection handlers
     document.querySelectorAll('.account-option').forEach(button => {
@@ -1705,32 +1765,32 @@ document.querySelectorAll('.country-option').forEach(button => {
     };
 
     async function authenticateUser(email, password) {
-    try {
-        const response = await fetch('https://cabinpulse.com/api/users/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                email,
-                password
-            })
-        });
+        try {
+            const response = await fetch('https://cabinpulse.com/api/users/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email,
+                    password
+                })
+            });
 
-        if (!response.ok) {
+            if (!response.ok) {
+                return false;
+            }
+
+            const data = await response.json();
+            isAuthenticated = true;
+            userId = data.userId;
+            authToken = data.token;
+            return true;
+        } catch (error) {
+            console.error('Authentication error:', error);
             return false;
         }
-
-        const data = await response.json();
-        isAuthenticated = true;
-        userId = data.userId;
-        authToken = data.token;
-        return true;
-    } catch (error) {
-        console.error('Authentication error:', error);
-        return false;
     }
-}
 
     // Previous step handler
     window.previousStep = function() {
@@ -1753,102 +1813,100 @@ document.querySelectorAll('.country-option').forEach(button => {
     };
 
     // Form submission handler
-    // Inside the form submission handler
-// Inside the form submission handler
-document.getElementById('purchaseForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-    const submitButton = document.querySelector('#step-3 .cta-button');
-    submitButton.disabled = true;
-    
-    try {
-        // Calculate prices
-        const monthlyPrice = plan === '1' ? 14 : 10;
-        const planCost = monthlyPrice * (plan === '1' ? 12 : 36);
-        const deviceCost = 99;
-        const totalAmount = (deviceCost + planCost + shippingCost) * 100; // Convert to cents
+    document.getElementById('purchaseForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const submitButton = document.querySelector('#step-3 .cta-button');
+        submitButton.disabled = true;
+        
+        try {
+            // Calculate prices
+            const monthlyPrice = plan === '1' ? 14 : 10;
+            const planCost = monthlyPrice * (plan === '1' ? 12 : 36);
+            const deviceCost = 99;
+            const totalAmount = (deviceCost + planCost + shippingCost) * 100; // Convert to cents
 
-        // Get country from selected country option
-        const selectedCountry = document.querySelector('.country-option.selected')?.dataset.country;
-        if (!selectedCountry) {
-            throw new Error('No country selected');
-        }
-
-        // Get user info based on form type
-        let customerInfo;
-        const customerEmail = isLoginMode ? 
-            document.getElementById('login-email').value : 
-            document.getElementById('email').value;
-
-        if (isLoginMode) {
-            customerInfo = {
-                email: customerEmail,
-                existingUser: true
-            };
-        } else {
-            const phoneInput = document.getElementById('phone');
-            const nameInput = document.getElementById('name');
-            
-            // Validate required fields
-            if (!customerEmail || !phoneInput.value || !nameInput.value) {
-                throw new Error('Please fill in all required fields');
+            // Get country from selected country option
+            const selectedCountry = document.querySelector('.country-option.selected')?.dataset.country;
+            if (!selectedCountry) {
+                throw new Error('No country selected');
             }
-            
-            customerInfo = {
-                email: customerEmail,
-                phone: phoneInput.value,
-                name: nameInput.value,
-                existingUser: false
-            };
-        }
 
-        // Create checkout session
-        const response = await fetch('https://cabinpulse.com/api/create-checkout-session', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                planType: plan === '1' ? '1-year' : '3-year',
-                customerInfo,
-                userType: isLoginMode ? 'existing' : 'new',
-                country: selectedCountry,
-                shippingCost: shippingCost,
-                priceData: {
-                    deviceCost,
-                    planCost,
-                    shippingCost,
-                    totalAmount
+            // Get user info based on form type
+            let customerInfo;
+            const customerEmail = isLoginMode ? 
+                document.getElementById('login-email').value : 
+                document.getElementById('email').value;
+
+            if (isLoginMode) {
+                customerInfo = {
+                    email: customerEmail,
+                    existingUser: true
+                };
+            } else {
+                const phoneInput = document.getElementById('phone');
+                const nameInput = document.getElementById('name');
+                
+                // Validate required fields
+                if (!customerEmail || !phoneInput.value || !nameInput.value) {
+                    throw new Error('Please fill in all required fields');
+                }
+                
+                customerInfo = {
+                    email: customerEmail,
+                    phone: phoneInput.value,
+                    name: nameInput.value,
+                    existingUser: false
+                };
+            }
+
+            // Create checkout session
+            const response = await fetch('https://cabinpulse.com/api/create-checkout-session', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
                 },
-            })
-        });
+                body: JSON.stringify({
+                    planType: plan === '1' ? '1-year' : '3-year',
+                    customerInfo,
+                    userType: isLoginMode ? 'existing' : 'new',
+                    country: selectedCountry,
+                    shippingCost: shippingCost,
+                    priceData: {
+                        deviceCost,
+                        planCost,
+                        shippingCost,
+                        totalAmount
+                    },
+                })
+            });
 
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.message || 'Failed to create checkout session');
-        }
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Failed to create checkout session');
+            }
 
-        const { sessionId } = await response.json();
+            const { sessionId } = await response.json();
 
-        // Initialize Stripe
-        const stripe = Stripe('pk_live_51LZK81EVmyPNhExzHXm1BF3uC8BO6iTdg6R3hrrcjo3XEnq6fral763hSpQppYgCnRzNZO6zeCVHdq2aJ835k37e00Vhl33gOG');
+            // Initialize Stripe
+            const stripe = Stripe('pk_live_51LZK81EVmyPNhExzHXm1BF3uC8BO6iTdg6R3hrrcjo3XEnq6fral763hSpQppYgCnRzNZO6zeCVHdq2aJ835k37e00Vhl33gOG');
 
-        // Redirect to Stripe Checkout - only passing sessionId
-        const { error } = await stripe.redirectToCheckout({
-            sessionId: sessionId
-        });
+            // Redirect to Stripe Checkout
+            const { error } = await stripe.redirectToCheckout({
+                sessionId: sessionId
+            });
 
-        if (error) {
-            console.error('Stripe Error:', error);
-            alert(error.message);
+            if (error) {
+                console.error('Stripe Error:', error);
+                alert(error.message);
+                submitButton.disabled = false;
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert(error.message || 'An error occurred. Please try again.');
             submitButton.disabled = false;
         }
-    } catch (error) {
-        console.error('Error:', error);
-        alert(error.message || 'An error occurred. Please try again.');
-        submitButton.disabled = false;
-    }
-});
+    });
 
     // Real-time validation for email and phone
     document.getElementById('email')?.addEventListener('input', debounce(async function(e) {
@@ -1878,15 +1936,6 @@ document.getElementById('purchaseForm').addEventListener('submit', async functio
     // Initialize on load
     updatePlanInfo();
 });
-</script>
-<script type="text/javascript">
-    window._mfq = window._mfq || [];
-    (function() {
-      var mf = document.createElement("script");
-      mf.type = "text/javascript"; mf.defer = true;
-      mf.src = "//cdn.mouseflow.com/projects/61e5b084-381f-4246-be67-cb4704cb544b.js";
-      document.getElementsByTagName("head")[0].appendChild(mf);
-    })();
   </script>
 </body>
 </html>
