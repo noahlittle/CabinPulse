@@ -429,6 +429,96 @@
 .mobile-menu a i {
     margin-right: 10px;
 }
+
+@media (max-width: 768px) {
+    .setup-step {
+        grid-template-columns: auto 1fr;
+        text-align: left;
+        padding: 25px;
+    }
+
+    .step-content {
+        text-align: left;
+    }
+
+    .step-content h2 {
+        justify-content: flex-start;
+        font-size: 1.5rem;
+    }
+
+    .step-content li {
+        justify-content: flex-start;
+    }
+
+    .step-number {
+        margin: 0;
+        width: 40px;
+        height: 40px;
+        font-size: 1.4rem;
+    }
+
+    .hero-text h1 {
+        font-size: 2.2rem;
+    }
+
+    .setup-hero {
+        padding: 130px 0 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .setup-step {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        padding: 20px;
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    .step-number {
+        flex-shrink: 0;
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+    }
+
+    .step-content {
+        flex: 1;
+        min-width: 0; /* Prevents flex item from overflowing */
+    }
+
+    .step-content h2 {
+        font-size: 1.4rem;
+        flex-wrap: wrap;
+    }
+
+    .step-content ul {
+        margin-left: 10px;
+    }
+
+    .step-content li {
+        flex-wrap: wrap;
+        gap: 8px;
+        font-size: 1rem;
+    }
+
+    .troubleshooting {
+        padding: 15px;
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .setup-hero {
+        padding: 120px 0 50px;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -529,14 +619,37 @@
                         </h2>
                         <p>Complete the activation process:</p>
                         <ul>
-                            <li><i class="fas fa-check"></i>Visit<a href="https://dashboard.cabinpulse.com" style="color: white">dashboard.cabinpulse.com</a></li>
-                            <li><i class="fas fa-check"></i>Sign In with the credentials you used at purchase</li>
+                            <li><i class="fas fa-check"></i>Visit the CabinPulse dashboard,<a href="https://dashboard.cabinpulse.com" style="color: white">dashboard.cabinpulse.com</a></li>
+                            <li><i class="fas fa-check"></i>Sign in with the credentials that were emailed to you at purchase</li>
                             <li><i class="fas fa-check"></i>Follow the instructions to activate your device</li>
                             <li><i class="fas fa-check"></i>Find the device activation code on the card that came with your device</li>
                         </ul>
                         <div class="troubleshooting">
                             <h3><i class="fas fa-exclamation-circle"></i>Can't find your activation code?</h3>
                             <p>Your activation code can be found on the card that came with your device; it's an 8-character code.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="setup-step">
+                    <div class="step-number">?</div>
+                    <div class="step-content">
+                        <h2>
+                            <i class="feature-icon fas fa-wrench"></i>
+                            Troubleshooting Guide
+                        </h2>
+                        <div class="troubleshooting">
+                            <h3><i class="fas fa-lightbulb"></i>Device Not Turning On</h3>
+                            <ul>
+                                <li><i class="fas fa-check"></i>Verify power cord is firmly connected to both device and wall outlet</li>
+                                <li><i class="fas fa-check"></i>Check bottom vent for flashing lights</li>
+                                <li><i class="fas fa-check"></i>Green flashing light indicates cellular connection attempt (wait up to 15 minutes)</li>
+                                <li><i class="fas fa-check"></i>Try relocating device for better reception</li>
+                                <li><i class="fas fa-check"></i>Verify your location on the coverage map</li>
+                            </ul>
+                        </div>
+                        <div class="troubleshooting">
+                            <h3><i class="fas fa-key"></i>Login Issues</h3>
+                            <p>Check your email from when you purchased the device - your login credentials were sent there.</p>
                         </div>
                     </div>
                 </div>
