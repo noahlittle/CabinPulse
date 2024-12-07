@@ -10,15 +10,14 @@
     <script src="https://js.stripe.com/v3/"></script>
     <script defer src="https://cloud.umami.is/script.js" data-website-id="38061709-54ec-4c13-8989-5ed667113bc0"></script>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-16787746903">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-16787746903');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16787746903"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'AW-16787746903');
+    </script>
     
 
     <style>
@@ -183,53 +182,53 @@
         }
 
         .account-container {
-        background-color: var(--accent-color);
-        border-radius: 12px;
-        padding: 20px;
-        margin-bottom: 20px;
-    }
+            background-color: var(--accent-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
 
-    .form-group {
-        margin-bottom: 20px;
-    }
+        .form-group {
+            margin-bottom: 20px;
+        }
 
-    .form-group label {
-        display: flex;
-        align-items: center;
-        margin-bottom: 5px;
-        font-weight: 600;
-    }
+        .form-group label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
 
-    .form-group label i {
-        margin-right: 10px;
-        color: var(--highlight-color);
-    }
+        .form-group label i {
+            margin-right: 10px;
+            color: var(--highlight-color);
+        }
 
-    .input-description {
-        font-size: 0.9em;
-        color: #ccc;
-        margin-bottom: 5px;
-    }
+        .input-description {
+            font-size: 0.9em;
+            color: #ccc;
+            margin-bottom: 5px;
+        }
 
-    input[type="email"],
-    input[type="password"],
-    input[type="tel"] {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid var(--accent-color);
-        border-radius: 5px;
-        background-color: var(--primary-color);
-        color: var(--text-color);
-        font-size: 1em;
-    }
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--accent-color);
+            border-radius: 5px;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            font-size: 1em;
+        }
 
-    input[type="email"]:focus,
-    input[type="password"]:focus,
-    input[type="tel"]:focus {
-        outline: none;
-        border-color: var(--highlight-color);
-        box-shadow: 0 0 0 2px rgba(233, 69, 96, 0.2);
-    }
+        input[type="email"]:focus,
+        input[type="password"]:focus,
+        input[type="tel"]:focus {
+            outline: none;
+            border-color: var(--highlight-color);
+            box-shadow: 0 0 0 2px rgba(233, 69, 96, 0.2);
+        }
 
         label {
             display: block;
@@ -270,14 +269,14 @@
         }
 
         .cta-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-.cta-button i {
-    margin-right: 10px;
-}
+        .cta-button i {
+            margin-right: 10px;
+        }
 
         .total-price {
             background-color: var(--accent-color);
@@ -330,7 +329,6 @@
             }
         }
 
-        /* New styles for step indicators */
         .step-indicators {
             display: flex;
             justify-content: space-between;
@@ -445,469 +443,532 @@
             cursor: not-allowed;
         }
         input.invalid, select.invalid {
-    border: 1px dotted red;
-}
-
-.savings-container {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    padding: 15px;
-    margin: 10px 0;
-}
-
-.savings-item {
-    display: flex;
-    align-items: center;
-    margin: 10px 0;
-    color: var(--cta-color);
-}
-
-.savings-item i {
-    margin-right: 10px;
-    color: var(--highlight-color);
-}
-
-.upgrade-button {
-    background: var(--highlight-color);
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 25px;
-    font-weight: bold;
-    font-size: 1.5rem;
-    margin-top: 15px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    animation: pulse 2s infinite;
-}
-
-.upgrade-button:hover {
-    background: #ff5673;
-    transform: translateY(-2px);
-}
-
-.big-icon {
-    font-size: 48px;
-    color: gold;
-    animation: pulse 2s infinite;
-}
-
-.upgrade-button i {
-    margin-right: 8px;
-}
-
-.price-comparison {
-    display: flex;
-    justify-content: space-between;
-    margin: 15px 0;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-}
-
-.price-column {
-    text-align: center;
-    flex: 1;
-    position: relative;
-}
-
-.price-column.highlighted {
-    color: var(--highlight-color);
-}
-
-
-.price-amount {
-    font-size: 1.5em;
-    font-weight: bold;
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.01);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-.sparkle {
-    position: absolute;
-    pointer-events: none;
-    font-size: 12px;
-    z-index: 1;
-}
-
-@keyframes floatUp {
-    0% {
-        transform: translate(0, 0) rotate(0deg);
-        opacity: 1;
-    }
-    100% {
-        transform: translate(var(--translate-x), -100px) rotate(var(--rotate));
-        opacity: 0;
-    }
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.shipping-feature {
-    display: inline-block;
-    font-size: 12px;
-    padding: 4px 8px;
-    border-radius: 4px;
-    margin-right: 8px;
-    margin-top: 8px;
-}
-
-.feature-tracking { background: #0f3460; }
-.feature-express { background: #2a9d8f; }
-.feature-insured { background: #6930c3; }
-
-.hidden {
-    display: none !important;
-}
-
-.button-container {
-    display: flex;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.back-button {
-    display: inline-block;
-    background-color: transparent;
-    color: white;
-    padding: 15px 30px;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: bold;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid var(--highlight-color);
-    cursor: pointer;
-    font-size: 18px;
-    flex: 1;
-}
-
-.back-button:hover {
-    background-color: rgba(233, 69, 96, 0.1);
-}
-
-.cta-button {
-    flex: 2;
-}
-
-.country-buttons {
-    display: flex;
-    gap: 20px;
-    margin: 30px 0;
-}
-
-.country-option, .account-option {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    padding: 30px;
-    background: var(--secondary-color);
-    border: 2px solid var(--accent-color);
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.country-option:hover, .account-option:hover {
-    border-color: var(--highlight-color);
-    transform: translateY(-2px);
-}
-
-.country-option.selected, .account-option.selected {
-    border-color: var(--highlight-color);
-    background: var(--accent-color);
-}
-
-.country-option i, .account-option i {
-    color: var(--highlight-color);
-    margin-bottom: 10px;
-}
-
-.country-name, .option-name {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--text-color);
-}
-
-.delivery-estimate, .option-desc {
-    font-size: 0.9rem;
-    color: #ccc;
-    text-align: center;
-}
-
-.account-selection {
-    display: flex;
-    gap: 20px;
-    margin: 30px 0;
-}
-
-.validation-message {
-    color: var(--highlight-color);
-    font-size: 0.8em;
-    margin-top: 4px;
-}
-
-input.invalid {
-    border: 1px solid var(--highlight-color) !important;
-    background-color: rgba(233, 69, 96, 0.1) !important;
-}
-
-<style>
-/* Add/update these CSS rules */
-
-/* Responsive container for selection buttons */
-.country-buttons,
-.account-selection {
-    display: flex;
-    gap: 20px;
-    margin: 30px 0;
-}
-
-/* Base styles for option buttons */
-.country-option,
-.account-option {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    padding: 20px;
-    background: var(--secondary-color);
-    border: 2px solid var(--accent-color);
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-align: center;
-    min-width: 200px;
-}
-
-/* Hover and selected states */
-.country-option:hover,
-.account-option:hover {
-    border-color: var(--highlight-color);
-    transform: translateY(-2px);
-}
-
-.country-option.selected,
-.account-option.selected {
-    border-color: var(--highlight-color);
-    background: var(--accent-color);
-}
-
-/* Shipping options styling */
-#shipping-options-container {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.shipping-option {
-    display: flex;
-    gap: 15px;
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.shipping-option:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.shipping-option-content {
-    flex: 1;
-}
-
-.shipping-logo {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-    margin-right: 10px;
-}
-
-.shipping-option-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 8px;
-}
-
-.shipping-features {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 8px;
-}
-
-/* Responsive breakpoints */
-@media (max-width: 640px) {
-    .country-buttons,
-    .account-selection {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .country-option,
-    .account-option {
-        width: 100%;
-        min-width: unset;
-    }
-
-    .shipping-option {
-        flex-direction: column;
-        gap: 10px;
-        align-items: flex-start;
-    }
-
-    .shipping-option-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
-
-    .shipping-features {
-        justify-content: flex-start;
-    }
-}
-
-/* Improve shipping feature tags */
-.shipping-feature {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 12px;
-    padding: 4px 8px;
-    border-radius: 4px;
-    white-space: nowrap;
-}
-
-.feature-tracking { 
-    background: #0f3460;
-}
-
-.feature-express { 
-    background: #2a9d8f;
-}
-
-.feature-insured { 
-    background: #6930c3;
-}
-
-/* Animation for radio selection */
-.shipping-option input[type="radio"] {
-    position: relative;
-    cursor: pointer;
-    margin-top: 4px;
-}
-
-.shipping-option input[type="radio"]:checked + .shipping-option-content {
-    opacity: 1;
-}
-
-.shipping-option:has(input[type="radio"]:checked) {
-    border: 1px solid var(--highlight-color);
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.guarantee-banner {
-    background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
-    border: 1px solid var(--highlight-color);
-    border-radius: 12px;
-    padding: 20px;
-    margin: 20px 0;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.guarantee-icon {
-    background: var(--highlight-color);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
-
-.guarantee-icon i {
-    color: white;
-    font-size: 24px;
-}
-
-.guarantee-content h3 {
-    color: var(--highlight-color);
-    font-size: 1.2em;
-    margin-bottom: 5px;
-}
-
-.upsell {
-   background-color: var(--accent-color);
-   padding: 15px 20px;
-   border-radius: 8px;
-   margin: 15px 0;
-}
-
-.upsell-content {
-   display: flex;
-   align-items: center;
-   gap: 12px;
-   margin-bottom: 12px;
-}
-
-.upsell i {
-   color: var(--highlight-color);
-   font-size: 20px;
-}
-
-.upsell p {
-   margin: 0;
-   line-height: 1.4;
-}
-
-.upgrade-button {
-   background: var(--highlight-color);
-   color: white;
-   border: none;
-   padding: 10px 20px;
-   border-radius: 6px;
-   font-weight: 600;
-   cursor: pointer;
-   width: 100%;
-}
-
+            border: 1px dotted red;
+        }
+
+        .savings-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+
+        .savings-item {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            color: var(--cta-color);
+        }
+
+        .savings-item i {
+            margin-right: 10px;
+            color: var(--highlight-color);
+        }
+
+        .upgrade-button {
+            background: var(--highlight-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            animation: pulse 2s infinite;
+        }
+
+        .upgrade-button:hover {
+            background: #ff5673;
+            transform: translateY(-2px);
+        }
+
+        .big-icon {
+            font-size: 48px;
+            color: gold;
+            animation: pulse 2s infinite;
+        }
+
+        .upgrade-button i {
+            margin-right: 8px;
+        }
+
+        .price-comparison {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .price-column {
+            text-align: center;
+            flex: 1;
+            position: relative;
+        }
+
+        .price-column.highlighted {
+            color: var(--highlight-color);
+        }
+
+        .price-amount {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.01);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .sparkle {
+            position: absolute;
+            pointer-events: none;
+            font-size: 12px;
+            z-index: 1;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--translate-x), -100px) rotate(var(--rotate));
+                opacity: 0;
+            }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .shipping-feature {
+            display: inline-block;
+            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-right: 8px;
+            margin-top: 8px;
+        }
+
+        .feature-tracking { background: #0f3460; }
+        .feature-express { background: #2a9d8f; }
+        .feature-insured { background: #6930c3; }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .back-button {
+            display: inline-block;
+            background-color: transparent;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--highlight-color);
+            cursor: pointer;
+            font-size: 18px;
+            flex: 1;
+        }
+
+        .back-button:hover {
+            background-color: rgba(233, 69, 96, 0.1);
+        }
+
+        .cta-button {
+            flex: 2;
+        }
+
+        .country-buttons {
+            display: flex;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .country-option, .account-option {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            padding: 30px;
+            background: var(--secondary-color);
+            border: 2px solid var(--accent-color);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .country-option:hover, .account-option:hover {
+            border-color: var(--highlight-color);
+            transform: translateY(-2px);
+        }
+
+        .country-option.selected, .account-option.selected {
+            border-color: var(--highlight-color);
+            background: var(--accent-color);
+        }
+
+        .country-option i, .account-option i {
+            color: var(--highlight-color);
+            margin-bottom: 10px;
+        }
+
+        .country-name, .option-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .delivery-estimate, .option-desc {
+            font-size: 0.9rem;
+            color: #ccc;
+            text-align: center;
+        }
+
+        .account-selection {
+            display: flex;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .validation-message {
+            color: var(--highlight-color);
+            font-size: 0.8em;
+            margin-top: 4px;
+        }
+
+        input.invalid {
+            border: 1px solid var(--highlight-color) !important;
+            background-color: rgba(233, 69, 96, 0.1) !important;
+        }
+
+        .country-buttons,
+        .account-selection {
+            display: flex;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .country-option,
+        .account-option {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: var(--secondary-color);
+            border: 2px solid var(--accent-color);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            min-width: 200px;
+        }
+
+        .country-option:hover,
+        .account-option:hover {
+            border-color: var(--highlight-color);
+            transform: translateY(-2px);
+        }
+
+        .country-option.selected,
+        .account-option.selected {
+            border-color: var(--highlight-color);
+            background: var(--accent-color);
+        }
+
+        #shipping-options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .shipping-option {
+            display: flex;
+            gap: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .shipping-option:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .shipping-option-content {
+            flex: 1;
+        }
+
+        .shipping-logo {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            margin-right: 10px;
+        }
+
+        .shipping-option-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .shipping-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 640px) {
+            .country-buttons,
+            .account-selection {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .country-option,
+            .account-option {
+                width: 100%;
+                min-width: unset;
+            }
+
+            .shipping-option {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+
+            .shipping-option-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .shipping-features {
+                justify-content: flex-start;
+            }
+        }
+
+        .guarantee-banner {
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            border: 1px solid var(--highlight-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .guarantee-icon {
+            background: var(--highlight-color);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .guarantee-icon i {
+            color: white;
+            font-size: 24px;
+        }
+
+        .guarantee-content h3 {
+            color: var(--highlight-color);
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+
+        .upsell {
+            background-color: var(--accent-color);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .upsell-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .upsell i {
+            color: var(--highlight-color);
+            font-size: 20px;
+        }
+
+        .upsell p {
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .upgrade-button {
+            background: var(--highlight-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .guarantee-top-banner {
+            background: linear-gradient(135deg, var(--highlight-color), #ff6b81);
+            padding: 15px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .guarantee-top-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+        }
+
+        .guarantee-top-item i {
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 768px) {
+            .guarantee-top-banner {
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px;
+            }
+        }
+
+        .trust-banner-v2 {
+            color: white;
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: var(--primary-color);
+        }
+
+        .trust-banner-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 12px 16px;
+        }
+
+        .trust-mobile-view {
+            display: none;
+        }
+
+        .trust-primary {
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            text-align: center;
+            margin: auto;
+            margin-bottom:1rem;
+            font-weight: bold;
+        }
+
+        .trust-secondary {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            font-size: 0.85rem;
+            opacity: 0.95;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .trust-item i {
+            font-size: 0.9rem;
+        }
+
+        .trust-desktop-view {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+        }
+
+        .trust-desktop-view .trust-item {
+            font-size: 0.95rem;
+        }
+
+        .trust-desktop-view .trust-item i {
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .trust-desktop-view {
+                display: none;
+            }
+            
+            .trust-mobile-view {
+                display: block;
+            }
+
+            .trust-secondary {
+                display: flex;
+                justify-content: space-between;
+                gap: 8px;
+            }
+        }
     </style>
     <!-- Meta Pixel Code -->
-<script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '491964136205687');
-    fbq('track', 'PageView');
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '491964136205687');
+        fbq('track', 'PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=491964136205687&ev=PageView&noscript=1"
@@ -915,6 +976,53 @@ input.invalid {
     <!-- End Meta Pixel Code -->
 </head>
 <body>
+    <!-- Guarantee Banner (Trust Banner) -->
+    <div class="trust-banner-v2">
+        <div class="trust-banner-content">
+            <!-- Mobile Layout -->
+            <div class="trust-mobile-view">
+                <div class="trust-primary">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>30-Day Risk-Free Trial</span>
+                </div>
+                <div class="trust-secondary">
+                    <div class="trust-item">
+                        <i class="fas fa-undo"></i>
+                        <span>Free Returns</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>3-Year Warranty</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="fas fa-star"></i>
+                        <span>5-Star Support</span>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Desktop Layout -->
+            <div class="trust-desktop-view">
+                <div class="trust-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>30-Day Money-Back Guarantee</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-undo"></i>
+                    <span>Free Returns</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>3-Year Warranty</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-star"></i>
+                    <span>5-Star Support</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <header>
         <div class="container">
             <div class="logo-container">
@@ -1029,18 +1137,18 @@ input.invalid {
                             <i class="fas fa-user"></i>
                             <h1>Account Setup</h1>
                         </div>
-                        <p>How would you like to continue?</p>
+                        <p>Do you have an existing CabinPulse account?</p>
                         <br />
                         <div class="account-selection">
                             <button type="button" class="account-option" data-type="new">
                                 <i class="fas fa-user-plus fa-3x"></i>
-                                <span class="option-name">New User</span>
-                                <span class="option-desc">Is this your first CabinPulse?</span>
+                                <span class="option-name">This is my first CabinPulse</span>
+                                <span class="option-desc">We'll setup an account for you.</span>
                             </button>
                             <button type="button" class="account-option" data-type="existing">
                                 <i class="fas fa-sign-in-alt fa-3x"></i>
-                                <span class="option-name">Returning User</span>
-                                <span class="option-desc">Add this new device to your account.</span>
+                                <span class="option-name">I already have a CabinPulse</span>
+                                <span class="option-desc">We'll add this new device to your existing account.</span>
                             </button>
                         </div>
                     
@@ -1109,17 +1217,9 @@ input.invalid {
                             <i class="fas fa-check-circle"></i>
                             <h1>Order Confirmation</h1>
                         </div>
+                        
                         <div class="total-price">
                             <h3 id="confirm-plan-length">3-Year Plan</h3>
-                            <ul class="product-details">
-                                <li><i class="fas fa-tower-cell"></i> 24/7 Monitoring</li>
-                                <li><i class="fas fa-temperature-low"></i> Temperature Monitoring</li>
-                                <li><i class="fas fa-droplet"></i> Humidity Monitoring</li>
-                                <li><i class="fas fa-smog"></i> Air Quality Monitoring</li>
-                                <li><i class="fas fa-plug"></i> Power Outage Tracking</li>
-                                <li><i class="fas fa-mobile-alt"></i> Instant Alerts</li>
-                                <li><i class="fas fa-dollar-sign"></i> <span id="confirm-renewal-info"></span></li>
-                            </ul>
                             <div class="price-item">
                                 <span>Subscription</span>
                                 <span id="confirm-monthly-due">$14/mo (billed annually)</span>
@@ -1132,14 +1232,19 @@ input.invalid {
                                 <span>Total Due Today</span>
                                 <span id="confirm-total-due">$459</span>
                             </div>
+                            <p><b>Have a discount code?</b> You'll be able to apply it on the next screen.</p>
+                            <div style="margin-top: 12px; padding: 8px 12px; background: rgba(15, 52, 96, 0.5); border-radius: 6px; font-size: 0.85em; color: #ccc;">
+                                <div style="display: flex; align-items: start; gap: 8px;">
+                                    <i class="fas fa-info-circle" style="color: var(--highlight-color); margin-top: 3px;"></i>
+                                    <p style="margin: 0;">You can choose if you'd like to renew once your plan ends. We'll send you a reminder before your renewal date.</p>
+                                </div>
+                            </div>
                         </div>
                     
-                        <!-- Coverage Map Section -->
                         <div style="margin: 20px 0; padding: 20px; background: var(--accent-color); border-radius: 12px;">
-                            <h3 style="margin-bottom: 15px; color: var(--highlight-color);">Confirm Coverage</h3>
-                            <p style="margin-bottom: 15px;">CabinPulse uses LTE-M to provide service. Please verify your location is within our coverage area before proceeding:</p>
+                            <h3 style="margin-bottom: 15px; color: var(--highlight-color);">Cellular Coverage</h3>
+                            <p style="margin-bottom: 15px;">CabinPulse uses LTE-M to provide service. Please ensure your location is within our coverage area before purchase:</p>
                             
-                            <!-- Coverage Map Links -->
                             <div id="coverage-links" style="display: flex; gap: 15px; margin-bottom: 20px;">
                                 <a href="https://business.bell.ca/shop/medium-large/our-networks/lte-m#coverageContainer" 
                                    target="_blank" 
@@ -1152,23 +1257,12 @@ input.invalid {
                                     <i class="fas fa-flag-usa" style="margin-right: 8px;"></i>Check American Coverage
                                 </a>
                             </div>
-                    
-                            <!-- Coverage Confirmation Checkbox -->
-                            <div style="margin-top: 15px;">
-                                <label style="display: flex; align-items: start; gap: 10px; cursor: pointer;">
-                                    <input type="checkbox" 
-                                           id="coverage-confirmation" 
-                                           style="margin-top: 4px;"
-                                           required>
-                                    <span>I confirm that I have checked the coverage map and the location I will use CabinPulse is within the LTE-M coverage area.</span> 
-                                </label>
-                                 </div>
-                                 <div style="margin-top: 12px; padding: 8px 12px; background: rgba(15, 52, 96, 0.5); border-radius: 6px; font-size: 0.85em; color: #ccc;">
-                                    <div style="display: flex; align-items: start; gap: 8px;">
-                                        <i class="fas fa-info-circle" style="color: var(--highlight-color); margin-top: 3px;"></i>
-                                        <p style="margin: 0;">We also produce limited quantities of an extended range version of CabinPulse that operates on regular LTE/3G for areas without LTE-M coverage. <a href="mailto:support@cabinpulse.com" style="color: var(--highlight-color); text-decoration: none;">Contact us</a> for more information.</p>
-                                    </div>
+                            <div style="margin-top: 12px; padding: 8px 12px; background: rgba(15, 52, 96, 0.5); border-radius: 6px; font-size: 0.85em; color: #ccc;">
+                                <div style="display: flex; align-items: start; gap: 8px;">
+                                    <i class="fas fa-info-circle" style="color: var(--highlight-color); margin-top: 3px;"></i>
+                                    <p style="margin: 0;">We also produce limited quantities of an extended range version of CabinPulse that operates on regular LTE/3G for areas without LTE-M coverage. <a href="mailto:support@cabinpulse.com" style="color: var(--highlight-color); text-decoration: none;">Contact us</a> for more information.</p>
                                 </div>
+                            </div>
                         </div>
                     
                         <p>Please review your order details above. By clicking "Continue to Payment", you agree to our <a class="text-white" href="https://cabinpulse.com/legal.html">Terms of Service</a> and <a class="text-white" href="https://cabinpulse.com/legal.html">Privacy Policy</a>.</p>
@@ -1205,7 +1299,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let selectedCountry = null;
 
     // Coverage map functionality
-    const coverageCheckbox = document.getElementById('coverage-confirmation');
     const paymentButton = document.getElementById('payment-button');
 
     function updateCoverageLinks(country) {
@@ -1221,11 +1314,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    coverageCheckbox?.addEventListener('change', function() {
+    function updateStepThree() {
+        const paymentButton = document.getElementById('payment-button');
         if (paymentButton) {
-            paymentButton.disabled = !this.checked;
+            paymentButton.disabled = false;
         }
-    });
+    }
 
     // Prevent form submission on enter key
     document.getElementById('purchaseForm').addEventListener('keypress', function(e) {
@@ -1308,11 +1402,10 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('confirm-plan-length').textContent = planLengthText;
         document.getElementById('monthly-price').textContent = monthlyPrice;
         document.getElementById('monthly-due').textContent = `$${monthlyPrice}/mo (billed ` + (plan === '1' ? 'annually' : 'every 3 years') + ')';
-        document.getElementById('confirm-monthly-due').textContent = `$${monthlyPrice}/mo`;
+        document.getElementById('confirm-monthly-due').textContent = `$${monthlyPrice}/mo (billed ` + (plan === '1' ? 'annually' : 'every 3 years') + ')';
         document.getElementById('total-due').textContent = `$${totalAmount}`;
         document.getElementById('confirm-total-due').textContent = `$${totalAmount}`;
         document.getElementById('renewal-info').textContent = renewalInfo;
-        document.getElementById('confirm-renewal-info').textContent = renewalInfo;
         document.getElementById('inclusion-note').innerHTML = 
             `<i>Includes device, and service for ${plan} year${plan === '1' ? '' : 's'}.</i>`;
 
@@ -1362,7 +1455,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Field validation with API check
     async function checkFieldAvailability(field, value) {
         try {
             const response = await fetch('https://cabinpulse.com/api/users/check-availability', {
@@ -1387,7 +1479,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Validation helper functions
     function showFieldError(fieldId, message) {
         const field = document.getElementById(fieldId);
         const existingMessage = field.parentElement.querySelector('.validation-message');
@@ -1434,7 +1525,6 @@ document.addEventListener('DOMContentLoaded', function() {
         form.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
     }
 
-    // Step validation
     function validateStep(step) {
         if (step === 1) {
             const shippingRadio = document.querySelector('input[name="shipping"]:checked');
@@ -1453,7 +1543,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         if (step === 2) {
-            // Check if an account type is selected
             const selectedOption = document.querySelector('.account-option.selected');
             if (!selectedOption) {
                 alert('Please select an account type.');
@@ -1466,7 +1555,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return true;
     }
 
-    // Country selection handlers
     document.querySelectorAll('.country-option').forEach(button => {
         button.addEventListener('click', async function() {
             const country = this.dataset.country;
@@ -1478,27 +1566,21 @@ document.addEventListener('DOMContentLoaded', function() {
             const optionsContainer = document.getElementById('shipping-options-container');
             const continueButton = document.querySelector('#step-1 .cta-button');
             
-            // Update selected state
             document.querySelectorAll('.country-option').forEach(btn => 
                 btn.classList.remove('selected'));
             this.classList.add('selected');
             
-            // Reset shipping
             shippingCost = 0;
             updatePlanInfo();
             continueButton.disabled = true;
             
-            // Show loader
             optionsElement.classList.add('hidden');
             loaderElement.classList.remove('hidden');
 
-            // Simulate API delay
             await new Promise(resolve => setTimeout(resolve, 1500));
 
-            // Hide loader and prepare options
             loaderElement.classList.add('hidden');
             
-            // Generate shipping options HTML based on country
             const optionsHTML = country === 'CA' 
                 ? `<label class="shipping-option">
                     <input type="radio" name="shipping" value="0" style="margin-top: 4px;">
@@ -1611,7 +1693,6 @@ document.addEventListener('DOMContentLoaded', function() {
             optionsContainer.innerHTML = optionsHTML;
             optionsElement.classList.remove('hidden');
 
-            // Add shipping selection handler
             const shippingRadios = document.querySelectorAll('input[name="shipping"]');
             shippingRadios.forEach(radio => {
                 radio.addEventListener('change', function() {
@@ -1623,17 +1704,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Account selection handlers
     document.querySelectorAll('.account-option').forEach(button => {
         button.addEventListener('click', function() {
             const type = this.dataset.type;
             
-            // Update selected state
             document.querySelectorAll('.account-option').forEach(btn => 
                 btn.classList.remove('selected'));
             this.classList.add('selected');
             
-            // Show appropriate form and update mode
             const newUserForm = document.getElementById('new-user-form');
             const existingUserForm = document.getElementById('existing-user-form');
             
@@ -1642,13 +1720,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 existingUserForm.classList.add('hidden');
                 isLoginMode = false;
                 
-                // Clear and disable existing user form inputs
                 existingUserForm.querySelectorAll('input').forEach(input => {
                     input.value = '';
                     input.required = false;
                 });
                 
-                // Enable new user form inputs
                 newUserForm.querySelectorAll('input').forEach(input => {
                     input.required = true;
                 });
@@ -1657,25 +1733,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 existingUserForm.classList.remove('hidden');
                 isLoginMode = true;
                 
-                // Clear and disable new user form inputs
                 newUserForm.querySelectorAll('input').forEach(input => {
                     input.value = '';
                     input.required = false;
                 });
                 
-                // Enable existing user form inputs
                 existingUserForm.querySelectorAll('input').forEach(input => {
                     input.required = true;
                 });
             }
             
-            // Clear any existing validation states
             document.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
             document.querySelectorAll('.validation-message').forEach(el => el.remove());
         });
     });
 
-    // Next step handler
     window.nextStep = async function() {
         if (currentStep < 3 && validateStep(currentStep)) {
             if (currentStep === 2) {
@@ -1685,7 +1757,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 try {
                     if (isLoginMode) {
-                        // Handle existing user validation
                         const email = document.getElementById('login-email').value;
                         const password = document.getElementById('login-password').value;
 
@@ -1697,11 +1768,9 @@ document.addEventListener('DOMContentLoaded', function() {
                             return;
                         }
                     } else {
-                        // Handle new user validation
                         const email = document.getElementById('email').value;
                         const phone = document.getElementById('phone').value;
-                        
-                        // Validate both email and phone
+
                         const response = await fetch('https://cabinpulse.com/api/users/check-availability', {
                             method: 'POST',
                             headers: {
@@ -1721,17 +1790,13 @@ document.addEventListener('DOMContentLoaded', function() {
                         const { availability } = data;
 
                         let hasError = false;
-                        
-                        // Clear existing validation messages
                         clearValidationMessages('new-user-form');
 
-                        // Check email availability
                         if (!availability.email.available) {
                             showFieldError('email', availability.email.message);
                             hasError = true;
                         }
 
-                        // Check phone availability
                         if (!availability.phone.available) {
                             showFieldError('phone', availability.phone.message);
                             hasError = true;
@@ -1744,7 +1809,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         }
                     }
 
-                    // Proceed to next step if validation passes
                     const currentForm = document.getElementById(`step-${currentStep}`);
                     const nextForm = document.getElementById(`step-${currentStep + 1}`);
                     
@@ -1755,6 +1819,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     setTimeout(() => {
                         nextForm.classList.add('active');
                         currentStep++;
+                        if (currentStep === 3) {
+                            updateStepThree();
+                        }
                     }, 500);
 
                 } catch (error) {
@@ -1765,7 +1832,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     continueButton.innerHTML = 'Continue';
                 }
             } else {
-                // Handle other steps normally
                 const currentForm = document.getElementById(`step-${currentStep}`);
                 const nextForm = document.getElementById(`step-${currentStep + 1}`);
                 
@@ -1776,6 +1842,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 setTimeout(() => {
                     nextForm.classList.add('active');
                     currentStep++;
+                    if (currentStep === 3) {
+                        updateStepThree();
+                    }
                 }, 500);
             }
         }
@@ -1809,7 +1878,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Previous step handler
     window.previousStep = function() {
         if (currentStep > 1) {
             const currentForm = document.getElementById(`step-${currentStep}`);
@@ -1829,7 +1897,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // Form submission handler
     document.getElementById('purchaseForm').addEventListener('submit', async function(e) {
         e.preventDefault();
         
@@ -1837,19 +1904,16 @@ document.addEventListener('DOMContentLoaded', function() {
         submitButton.disabled = true;
         
         try {
-            // Calculate prices
             const monthlyPrice = plan === '1' ? 14 : 10;
             const planCost = monthlyPrice * (plan === '1' ? 12 : 36);
             const deviceCost = 99;
-            const totalAmount = (deviceCost + planCost + shippingCost) * 100; // Convert to cents
+            const totalAmount = (deviceCost + planCost + shippingCost) * 100;
 
-            // Get country from selected country option
             const selectedCountry = document.querySelector('.country-option.selected')?.dataset.country;
             if (!selectedCountry) {
                 throw new Error('No country selected');
             }
 
-            // Get user info based on form type
             let customerInfo;
             const customerEmail = isLoginMode ? 
                 document.getElementById('login-email').value : 
@@ -1864,7 +1928,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 const phoneInput = document.getElementById('phone');
                 const nameInput = document.getElementById('name');
                 
-                // Validate required fields
                 if (!customerEmail || !phoneInput.value || !nameInput.value) {
                     throw new Error('Please fill in all required fields');
                 }
@@ -1877,7 +1940,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 };
             }
 
-            // Create checkout session
             const response = await fetch('https://cabinpulse.com/api/create-checkout-session', {
                 method: 'POST',
                 headers: {
@@ -1904,11 +1966,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             const { sessionId } = await response.json();
-
-            // Initialize Stripe
             const stripe = Stripe('pk_live_51LZK81EVmyPNhExzHXm1BF3uC8BO6iTdg6R3hrrcjo3XEnq6fral763hSpQppYgCnRzNZO6zeCVHdq2aJ835k37e00Vhl33gOG');
 
-            // Redirect to Stripe Checkout
             const { error } = await stripe.redirectToCheckout({
                 sessionId: sessionId
             });
@@ -1925,7 +1984,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Real-time validation for email and phone
     document.getElementById('email')?.addEventListener('input', debounce(async function(e) {
         const email = e.target.value.trim();
         if (email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -1950,9 +2008,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, 500));
 
-    // Initialize on load
     updatePlanInfo();
 });
-  </script>
+</script>
 </body>
 </html>
