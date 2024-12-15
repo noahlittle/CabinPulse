@@ -956,6 +956,49 @@
                 gap: 8px;
             }
         }
+
+        /* Highlight banner for Canada Post free shipping */
+        .highlight-banner {
+            background: linear-gradient(135deg, #2a9d8f, #264653);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            color: #fff;
+            gap: 10px;
+        }
+
+        .highlight-banner i {
+            font-size: 1.5em;
+        }
+
+        .shipping-logo {
+    width: 48px !important;
+    height: 48px !important;
+    margin-right: 20px !important;
+}
+
+.store-icon {
+    color: white;
+    width: 48px !important;
+    height: 48px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px !important;
+    font-size: 24px !important;
+}
+
+.price-badge {
+    display: inline-block;
+    background: var(--highlight-color);
+    padding: 2px 10px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+        
     </style>
         <!-- Meta Pixel Code -->
 <script>
@@ -963,8 +1006,7 @@
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
     if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
+    n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '491964136205687');
@@ -1124,6 +1166,9 @@
                             <div style="width: 30px; height: 30px; border: 3px solid #f3f3f3; border-top: 3px solid #e94560; border-radius: 50%; animation: spin 1s linear infinite;"></div>
                         </div>
                         <div id="shipping-options" class="hidden" style="margin-top: 20px;">
+                            <div id="canada-post-notice" class="highlight-banner hidden">
+                                <i class="fa-brands fa-canadian-maple-leaf"></i> Canada Post is available again. Enjoy free shipping on all orders within Canada!
+                            </div>
                             <p style="margin-bottom: 15px; font-weight: 600;">Available Shipping Options:</p>
                             <div id="shipping-options-container" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 15px; background: rgba(255,255,255,0.05);">
                             </div>
@@ -1286,730 +1331,776 @@
             <p>&copy; 2024 CabinPulse</p>
         </div>
     </footer>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const urlParams = new URLSearchParams(window.location.search);
-    let plan = urlParams.get('plan') || '3';
-    let currentStep = 1;
-    let isLoginMode = false;
-    let isAuthenticated = false;
-    let userId = null;
-    let authToken = null;
-    let shippingCost = 0;
-    let selectedCountry = null;
-
-    // Coverage map functionality
-    const paymentButton = document.getElementById('payment-button');
-
-    function updateCoverageLinks(country) {
-        const canadianCoverageLink = document.querySelector('.canadian-coverage');
-        const usaCoverageLink = document.querySelector('.usa-coverage');
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            let plan = urlParams.get('plan') || '3';
+            let currentStep = 1;
+            let isLoginMode = false;
+            let isAuthenticated = false;
+            let userId = null;
+            let authToken = null;
+            let shippingCost = 0;
+            let selectedCountry = null;
         
-        if (country === 'CA') {
-            canadianCoverageLink.classList.remove('hidden');
-            usaCoverageLink.classList.add('hidden');
-        } else if (country === 'US') {
-            canadianCoverageLink.classList.add('hidden');
-            usaCoverageLink.classList.remove('hidden');
-        }
-    }
-
-    function updateStepThree() {
-        const paymentButton = document.getElementById('payment-button');
-        if (paymentButton) {
-            paymentButton.disabled = false;
-        }
-    }
-
-    // Prevent form submission on enter key
-    document.getElementById('purchaseForm').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            return false;
-        }
-    });
-
-    // Debounce function for API calls
-    function debounce(func, wait) {
-        let timeout;
-        return function(...args) {
-            clearTimeout(timeout);
-            timeout = setTimeout(() => func.apply(this, args), wait);
-        };
-    }
-
-    function createUpsellHTML() {
-        return `
-            <div class="upsell">
-                <div class="upsell-content">
-                    <i class="fas fa-piggy-bank"></i>
-                    <p>You could save an extra $4/month with our 3-year plan.</p>
-                </div>
-                <button class="upgrade-button" onclick="upgradePlan()">Switch to 3-Year Plan</button>
-            </div>`;
-    }
-
-    window.upgradePlan = function() {
-        if (plan === '1') {
-            confetti({
-                particleCount: 100,
-                spread: 70,
-                origin: { x: 0, y: 0.5 }
+            // Coverage map functionality
+            const paymentButton = document.getElementById('payment-button');
+        
+            function updateCoverageLinks(country) {
+                const canadianCoverageLink = document.querySelector('.canadian-coverage');
+                const usaCoverageLink = document.querySelector('.usa-coverage');
+                
+                if (country === 'CA') {
+                    canadianCoverageLink.classList.remove('hidden');
+                    usaCoverageLink.classList.add('hidden');
+                } else if (country === 'US') {
+                    canadianCoverageLink.classList.add('hidden');
+                    usaCoverageLink.classList.remove('hidden');
+                }
+            }
+        
+            function updateStepThree() {
+                const paymentButton = document.getElementById('payment-button');
+                if (paymentButton) {
+                    paymentButton.disabled = false;
+                }
+            }
+        
+            // Prevent form submission on enter key
+            document.getElementById('purchaseForm').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    return false;
+                }
             });
-            confetti({
-                particleCount: 100,
-                spread: 70,
-                origin: { x: 1, y: 0.5 }
-            });
-            
-            setTimeout(() => {
-                confetti({
-                    particleCount: 50,
-                    spread: 100,
-                    origin: { x: 0.5, y: 0.5 },
-                    colors: ['#FFD700', '#FFA500', '#ff5673']
-                });
-            }, 250);
-
-            setTimeout(() => {
-                confetti({
-                    particleCount: 150,
-                    spread: 120,
-                    origin: { x: 0.5, y: 0.4 },
-                    gravity: 0.8,
-                    scalar: 1.2,
-                    drift: 1
-                });
-            }, 500);
-        }
         
-        plan = '3';
-        updatePlanInfo();
-    };
-
-    // Price and plan calculations
-    function updatePlanInfo() {
-        const monthlyPrice = plan === '1' ? 14 : 10;
-        const planCost = monthlyPrice * (plan === '1' ? 12 : 36);
-        const totalAmount = 99 + planCost + shippingCost;
-        const planLengthText = `${plan}-Year Plan`;
-        const renewalInfo = plan === '1' 
-            ? 'Renews at $168 billed annually ($14/mo)' 
-            : 'Renews at $360 billed every 3 years ($10/mo)';
-
-        // Update DOM elements
-        document.getElementById('plan-length').textContent = planLengthText;
-        document.getElementById('confirm-plan-length').textContent = planLengthText;
-        document.getElementById('monthly-price').textContent = monthlyPrice;
-        document.getElementById('monthly-due').textContent = `$${monthlyPrice}/mo (billed ` + (plan === '1' ? 'annually' : 'every 3 years') + ')';
-        document.getElementById('confirm-monthly-due').textContent = `$${monthlyPrice}/mo (billed ` + (plan === '1' ? 'annually' : 'every 3 years') + ')';
-        document.getElementById('total-due').textContent = `$${totalAmount}`;
-        document.getElementById('confirm-total-due').textContent = `$${totalAmount}`;
-        document.getElementById('renewal-info').textContent = renewalInfo;
-        document.getElementById('inclusion-note').innerHTML = 
-            `<i>Includes device, and service for ${plan} year${plan === '1' ? '' : 's'}.</i>`;
-
-        // Update discount/upsell section
-        const discountUpsellElement = document.getElementById('discount-upsell');
-        if (plan === '3') {
-            discountUpsellElement.innerHTML = '<span class="discount">You are saving 29% on your subscription!</span>';
-        } else {
-            discountUpsellElement.innerHTML = createUpsellHTML();
-        }
-
-        // Update URL without reload
-        urlParams.set('plan', plan);
-        window.history.replaceState({}, '', `${window.location.pathname}?${urlParams}`);
-        
-        updatePriceItems();
-    }
-
-    function updatePriceItems() {
-        const priceContainers = [
-            document.querySelector('.total-price'),
-            document.querySelector('#step-3 .total-price')
-        ];
-
-        priceContainers.forEach(container => {
-            if (!container) return;
-
-            // Remove existing shipping item if it exists
-            const existingShipping = container.querySelector('.shipping-item');
-            if (existingShipping) {
-                existingShipping.remove();
+            // Debounce function for API calls
+            function debounce(func, wait) {
+                let timeout;
+                return function(...args) {
+                    clearTimeout(timeout);
+                    timeout = setTimeout(() => func.apply(this, args), wait);
+                };
             }
-
-            // Add shipping line item if there's a cost
-            if (shippingCost > 0) {
-                const shippingItem = document.createElement('div');
-                shippingItem.className = 'price-item shipping-item';
-                shippingItem.innerHTML = `
-                    <span>Shipping</span>
-                    <span>$${shippingCost.toFixed(2)}</span>
-                `;
+        
+            function createUpsellHTML() {
+                return `
+                    <div class="upsell">
+                        <div class="upsell-content">
+                            <i class="fas fa-piggy-bank"></i>
+                            <p>You could save an extra $4/month with our 3-year plan.</p>
+                        </div>
+                        <button class="upgrade-button" onclick="upgradePlan()">Switch to 3-Year Plan</button>
+                    </div>`;
+            }
+        
+            window.upgradePlan = function() {
+                if (plan === '1') {
+                    confetti({
+                        particleCount: 100,
+                        spread: 70,
+                        origin: { x: 0, y: 0.5 }
+                    });
+                    confetti({
+                        particleCount: 100,
+                        spread: 70,
+                        origin: { x: 1, y: 0.5 }
+                    });
+                    
+                    setTimeout(() => {
+                        confetti({
+                            particleCount: 50,
+                            spread: 100,
+                            origin: { x: 0.5, y: 0.5 },
+                            colors: ['#FFD700', '#FFA500', '#ff5673']
+                        });
+                    }, 250);
+        
+                    setTimeout(() => {
+                        confetti({
+                            particleCount: 150,
+                            spread: 120,
+                            origin: { x: 0.5, y: 0.4 },
+                            gravity: 0.8,
+                            scalar: 1.2,
+                            drift: 1
+                        });
+                    }, 500);
+                }
                 
-                // Insert before the total
-                const totalItem = container.querySelector('.total');
-                container.insertBefore(shippingItem, totalItem);
-            }
-        });
-    }
-
-    async function checkFieldAvailability(field, value) {
-        try {
-            const response = await fetch('https://cabinpulse.com/api/users/check-availability', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    [field]: value
-                })
-            });
-
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-
-            const data = await response.json();
-            return data.availability[field];
-        } catch (error) {
-            console.error('Error checking availability:', error);
-            return { available: false, message: 'Error checking availability' };
-        }
-    }
-
-    function showFieldError(fieldId, message) {
-        const field = document.getElementById(fieldId);
-        const existingMessage = field.parentElement.querySelector('.validation-message');
+                plan = '3';
+                updatePlanInfo();
+            };
         
-        if (existingMessage) {
-            existingMessage.remove();
-        }
-
-        field.classList.add('invalid');
+            // Price and plan calculations
+            function updatePlanInfo() {
+                const monthlyPrice = plan === '1' ? 14 : 10;
+                const planCost = monthlyPrice * (plan === '1' ? 12 : 36);
+                const totalAmount = 99 + planCost + shippingCost;
+                const planLengthText = `${plan}-Year Plan`;
+                const renewalInfo = plan === '1' 
+                    ? 'Renews at $168 billed annually ($14/mo)' 
+                    : 'Renews at $360 billed every 3 years ($10/mo)';
         
-        const messageElement = document.createElement('div');
-        messageElement.className = 'validation-message';
-        messageElement.style.color = 'var(--highlight-color)';
-        messageElement.style.fontSize = '0.8em';
-        messageElement.style.marginTop = '4px';
-        messageElement.textContent = message;
+                // Update DOM elements
+                document.getElementById('plan-length').textContent = planLengthText;
+                document.getElementById('confirm-plan-length').textContent = planLengthText;
+                document.getElementById('monthly-price').textContent = monthlyPrice;
+                document.getElementById('monthly-due').textContent = `$${monthlyPrice}/mo (billed ` + (plan === '1' ? 'annually' : 'every 3 years') + ')';
+                document.getElementById('confirm-monthly-due').textContent = `$${monthlyPrice}/mo (billed ` + (plan === '1' ? 'annually' : 'every 3 years') + ')';
+                document.getElementById('total-due').textContent = `$${totalAmount}`;
+                document.getElementById('confirm-total-due').textContent = `$${totalAmount}`;
+                document.getElementById('renewal-info').textContent = renewalInfo;
+                document.getElementById('inclusion-note').innerHTML = 
+                    `<i>Includes device, and service for ${plan} year${plan === '1' ? '' : 's'}.</i>`;
         
-        field.parentElement.appendChild(messageElement);
-    }
-
-    function showValidationError(formId, message) {
-        const form = document.getElementById(formId);
-        const existingError = form.querySelector('.form-error-message');
+                // Update discount/upsell section
+                const discountUpsellElement = document.getElementById('discount-upsell');
+                if (plan === '3') {
+                    discountUpsellElement.innerHTML = '<span class="discount">You are saving 29% on your subscription!</span>';
+                } else {
+                    discountUpsellElement.innerHTML = createUpsellHTML();
+                }
         
-        if (existingError) {
-            existingError.remove();
-        }
-
-        const errorElement = document.createElement('div');
-        errorElement.className = 'form-error-message';
-        errorElement.style.color = 'var(--highlight-color)';
-        errorElement.style.padding = '10px';
-        errorElement.style.marginTop = '10px';
-        errorElement.style.backgroundColor = 'rgba(233, 69, 96, 0.1)';
-        errorElement.style.borderRadius = '5px';
-        errorElement.textContent = message;
-        
-        form.appendChild(errorElement);
-    }
-
-    function clearValidationMessages(formId) {
-        const form = document.getElementById(formId);
-        form.querySelectorAll('.validation-message, .form-error-message').forEach(el => el.remove());
-        form.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
-    }
-
-    function validateStep(step) {
-        if (step === 1) {
-            const shippingRadio = document.querySelector('input[name="shipping"]:checked');
-            const selectedCountry = document.querySelector('.country-option.selected');
-            
-            if (!selectedCountry) {
-                alert('Please select a country.');
-                return false;
-            }
-            
-            if (!shippingRadio) {
-                alert('Please select a shipping option.');
-                return false;
-            }
-            return true;
-        }
-        
-        if (step === 2) {
-            const selectedOption = document.querySelector('.account-option.selected');
-            if (!selectedOption) {
-                alert('Please select an account type.');
-                return false;
-            }
-
-            return true;
-        }
-
-        return true;
-    }
-
-    document.querySelectorAll('.country-option').forEach(button => {
-        button.addEventListener('click', async function() {
-            const country = this.dataset.country;
-            selectedCountry = country;
-            updateCoverageLinks(country);
-            
-            const loaderElement = document.getElementById('shipping-loader');
-            const optionsElement = document.getElementById('shipping-options');
-            const optionsContainer = document.getElementById('shipping-options-container');
-            const continueButton = document.querySelector('#step-1 .cta-button');
-            
-            document.querySelectorAll('.country-option').forEach(btn => 
-                btn.classList.remove('selected'));
-            this.classList.add('selected');
-            
-            shippingCost = 0;
-            updatePlanInfo();
-            continueButton.disabled = true;
-            
-            optionsElement.classList.add('hidden');
-            loaderElement.classList.remove('hidden');
-
-            await new Promise(resolve => setTimeout(resolve, 1500));
-
-            loaderElement.classList.add('hidden');
-            
-            const optionsHTML = country === 'CA' 
-                ? `<label class="shipping-option">
-                    <input type="radio" name="shipping" value="0" style="margin-top: 4px;">
-                    <div class="shipping-option-content">
-                        <div class="shipping-option-header">
-                            <i class="fas fa-store fa-2x" style="color: white; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin-right: 5px;"></i>
-                            <div>
-                                <div style="font-weight: 600;"> Pickup in Saskatoon (FREE)</div>
-                                <div style="font-size: 0.9em; opacity: 0.8;">Available in 1-2 business days</div>
-                            </div>
-                        </div>
-                        <div class="shipping-features">
-                            <span class="shipping-feature feature-express">
-                                <i class="fas fa-bolt"></i> Fastest
-                            </span>
-                            <span class="shipping-feature feature-tracking">
-                                <i class="fas fa-store"></i> Saskatoon Only
-                            </span>
-                        </div>
-                    </div>
-                </label>
-                <label class="shipping-option">
-                    <input type="radio" name="shipping" value="20" style="margin-top: 4px;">
-                    <div class="shipping-option-content">
-                        <div class="shipping-option-header">
-                            <img src="https://www.canadapost-postescanada.ca/cpc/assets/cpc/uploads/logos/cpc-scp/primary/postmarks-80x80.svg" 
-                                 alt="Canada Post" 
-                                 class="shipping-logo">
-                            <div>
-                                <div style="font-weight: 600;">Canada Post Xpresspost ($20.00)</div>
-                                <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 2-4 business days</div>
-                            </div>
-                        </div>
-                        <div class="shipping-features">
-                            <span class="shipping-feature feature-express">
-                                <i class="fas fa-bolt"></i> Express
-                            </span>
-                            <span class="shipping-feature feature-tracking">
-                                <i class="fas fa-truck"></i> Tracked
-                            </span>
-                            <span class="shipping-feature feature-insured">
-                                <i class="fas fa-shield-alt"></i> Insured
-                            </span>
-                        </div>
-                    </div>
-                </label>
-                <label class="shipping-option">
-                    <input type="radio" name="shipping" value="40" style="margin-top: 4px;">
-                    <div class="shipping-option-content">
-                        <div class="shipping-option-header">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/United_Parcel_Service_logo_2014.svg/1200px-United_Parcel_Service_logo_2014.svg.png" 
-                                 alt="UPS" 
-                                 class="shipping-logo">
-                            <div>
-                                <div style="font-weight: 600;">UPS Expedited ($40.00)</div>
-                                <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 2-4 business days</div>
-                            </div>
-                        </div>
-                        <div class="shipping-features">
-                            <span class="shipping-feature feature-express">
-                                <i class="fas fa-bolt"></i> Express
-                            </span>
-                            <span class="shipping-feature feature-tracking">
-                                <i class="fas fa-truck"></i> Tracked
-                            </span>
-                        </div>
-                    </div>
-                </label>`
-                : `<label class="shipping-option">
-                    <input type="radio" name="shipping" value="25" style="margin-top: 4px;">
-                    <div class="shipping-option-content">
-                        <div class="shipping-option-header">
-                            <img src="https://www.canadapost-postescanada.ca/cpc/assets/cpc/uploads/logos/cpc-scp/primary/postmarks-80x80.svg"alt="Canada Post" 
-                                class="shipping-logo">
-                            <div>
-                                <div style="font-weight: 600;">Tracked Packet USA ($25.00)</div>
-                                <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 4-7 business days</div>
-                            </div>
-                        </div>
-                        <div class="shipping-features">
-                            <span class="shipping-feature feature-tracking">
-                                <i class="fas fa-truck"></i> Tracked
-                            </span>
-                            <span class="shipping-feature feature-insured">
-                                <i class="fas fa-shield-alt"></i> Insured
-                            </span>
-                        </div>
-                    </div>
-                </label>
-                <label class="shipping-option">
-                    <input type="radio" name="shipping" value="35" style="margin-top: 4px;">
-                    <div class="shipping-option-content">
-                        <div class="shipping-option-header">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/United_Parcel_Service_logo_2014.svg/1200px-United_Parcel_Service_logo_2014.svg.png" 
-                                alt="UPS" 
-                                class="shipping-logo">
-                            <div>
-                                <div style="font-weight: 600;">UPS Standard ($35.00)</div>
-                                <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 3-7 business days</div>
-                            </div>
-                        </div>
-                        <div class="shipping-features">
-                            <span class="shipping-feature feature-tracking">
-                                <i class="fas fa-truck"></i> Tracked
-                            </span>
-                        </div>
-                    </div>
-                </label>`;
-
-            optionsContainer.innerHTML = optionsHTML;
-            optionsElement.classList.remove('hidden');
-
-            const shippingRadios = document.querySelectorAll('input[name="shipping"]');
-            shippingRadios.forEach(radio => {
-                radio.addEventListener('change', function() {
-                    shippingCost = parseFloat(this.value);
-                    updatePlanInfo();
-                    continueButton.disabled = false;
-                });
-            });
-        });
-    });
-
-    document.querySelectorAll('.account-option').forEach(button => {
-        button.addEventListener('click', function() {
-            const type = this.dataset.type;
-            
-            document.querySelectorAll('.account-option').forEach(btn => 
-                btn.classList.remove('selected'));
-            this.classList.add('selected');
-            
-            const newUserForm = document.getElementById('new-user-form');
-            const existingUserForm = document.getElementById('existing-user-form');
-            
-            if (type === 'new') {
-                newUserForm.classList.remove('hidden');
-                existingUserForm.classList.add('hidden');
-                isLoginMode = false;
+                // Update URL without reload
+                urlParams.set('plan', plan);
+                window.history.replaceState({}, '', `${window.location.pathname}?${urlParams}`);
                 
-                existingUserForm.querySelectorAll('input').forEach(input => {
-                    input.value = '';
-                    input.required = false;
-                });
-                
-                newUserForm.querySelectorAll('input').forEach(input => {
-                    input.required = true;
-                });
-            } else {
-                newUserForm.classList.add('hidden');
-                existingUserForm.classList.remove('hidden');
-                isLoginMode = true;
-                
-                newUserForm.querySelectorAll('input').forEach(input => {
-                    input.value = '';
-                    input.required = false;
-                });
-                
-                existingUserForm.querySelectorAll('input').forEach(input => {
-                    input.required = true;
+                updatePriceItems();
+            }
+        
+            function updatePriceItems() {
+                const priceContainers = [
+                    document.querySelector('.total-price'),
+                    document.querySelector('#step-3 .total-price')
+                ];
+        
+                priceContainers.forEach(container => {
+                    if (!container) return;
+        
+                    // Remove existing shipping item if it exists
+                    const existingShipping = container.querySelector('.shipping-item');
+                    if (existingShipping) {
+                        existingShipping.remove();
+                    }
+        
+                    // Add shipping line item if there's a cost
+                    if (shippingCost > 0) {
+                        const shippingItem = document.createElement('div');
+                        shippingItem.className = 'price-item shipping-item';
+                        shippingItem.innerHTML = `
+                            <span>Shipping</span>
+                            <span>$${shippingCost.toFixed(2)}</span>
+                        `;
+                        
+                        // Insert before the total
+                        const totalItem = container.querySelector('.total');
+                        container.insertBefore(shippingItem, totalItem);
+                    }
                 });
             }
-            
-            document.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
-            document.querySelectorAll('.validation-message').forEach(el => el.remove());
-        });
-    });
-
-    window.nextStep = async function() {
-        if (currentStep < 3 && validateStep(currentStep)) {
-            if (currentStep === 2) {
-                const continueButton = document.querySelector('#step-2 .cta-button');
-                continueButton.disabled = true;
-                continueButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Validating...';
-
+        
+            async function checkFieldAvailability(field, value) {
                 try {
-                    if (isLoginMode) {
-                        const email = document.getElementById('login-email').value;
-                        const password = document.getElementById('login-password').value;
+                    const response = await fetch('https://cabinpulse.com/api/users/check-availability', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            [field]: value
+                        })
+                    });
+        
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+        
+                    const data = await response.json();
+                    return data.availability[field];
+                } catch (error) {
+                    console.error('Error checking availability:', error);
+                    return { available: false, message: 'Error checking availability' };
+                }
+            }
+        
+            function showFieldError(fieldId, message) {
+                const field = document.getElementById(fieldId);
+                const existingMessage = field.parentElement.querySelector('.validation-message');
+                
+                if (existingMessage) {
+                    existingMessage.remove();
+                }
+        
+                field.classList.add('invalid');
+                
+                const messageElement = document.createElement('div');
+                messageElement.className = 'validation-message';
+                messageElement.style.color = 'var(--highlight-color)';
+                messageElement.style.fontSize = '0.8em';
+                messageElement.style.marginTop = '4px';
+                messageElement.textContent = message;
+                
+                field.parentElement.appendChild(messageElement);
+            }
+        
+            function showValidationError(formId, message) {
+                const form = document.getElementById(formId);
+                const existingError = form.querySelector('.form-error-message');
+                
+                if (existingError) {
+                    existingError.remove();
+                }
+        
+                const errorElement = document.createElement('div');
+                errorElement.className = 'form-error-message';
+                errorElement.style.color = 'var(--highlight-color)';
+                errorElement.style.padding = '10px';
+                errorElement.style.marginTop = '10px';
+                errorElement.style.backgroundColor = 'rgba(233, 69, 96, 0.1)';
+                errorElement.style.borderRadius = '5px';
+                errorElement.textContent = message;
+                
+                form.appendChild(errorElement);
+            }
+        
+            function clearValidationMessages(formId) {
+                const form = document.getElementById(formId);
+                form.querySelectorAll('.validation-message, .form-error-message').forEach(el => el.remove());
+                form.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
+            }
+        
+            function validateStep(step) {
+                if (step === 1) {
+                    const shippingRadio = document.querySelector('input[name="shipping"]:checked');
+                    const selectedCountry = document.querySelector('.country-option.selected');
+                    
+                    if (!selectedCountry) {
+                        alert('Please select a country.');
+                        return false;
+                    }
+                    
+                    if (!shippingRadio) {
+                        alert('Please select a shipping option.');
+                        return false;
+                    }
+                    return true;
+                }
+                
+                if (step === 2) {
+                    const selectedOption = document.querySelector('.account-option.selected');
+                    if (!selectedOption) {
+                        alert('Please select an account type.');
+                        return false;
+                    }
+        
+                    return true;
+                }
+        
+                return true;
+            }
+        
+            document.querySelectorAll('.country-option').forEach(button => {
+    button.addEventListener('click', async function() {
+        const country = this.dataset.country;
+        selectedCountry = country;
+        updateCoverageLinks(country);
+        
+        const loaderElement = document.getElementById('shipping-loader');
+        const optionsElement = document.getElementById('shipping-options');
+        const optionsContainer = document.getElementById('shipping-options-container');
+        const continueButton = document.querySelector('#step-1 .cta-button');
+        const canadaPostNotice = document.getElementById('canada-post-notice');
+        
+        document.querySelectorAll('.country-option').forEach(btn => 
+            btn.classList.remove('selected'));
+        this.classList.add('selected');
+        
+        shippingCost = 0;
+        updatePlanInfo();
+        continueButton.disabled = true;
+        
+        optionsElement.classList.add('hidden');
+        loaderElement.classList.remove('hidden');
 
-                        const success = await authenticateUser(email, password);
-                        if (!success) {
-                            showValidationError('existing-user-form', 'Invalid email or password. Please try again.');
+        await new Promise(resolve => setTimeout(resolve, 1500));
+
+        loaderElement.classList.add('hidden');
+        
+        let optionsHTML;
+
+        // Add CSS for the selected state highlight
+        const styles = `
+            <style>
+                .shipping-option {
+                    position: relative;
+                    transition: all 0.3s ease;
+                }
+                .shipping-option:has(input:checked) {
+                    background: var(--accent-color) !important;
+                }
+            </style>
+        `;
+
+        if (country === 'CA') {
+            optionsHTML = `
+            ${styles}
+            <label class="shipping-option">
+                <input type="radio" name="shipping" value="0" style="margin-top: 4px;">
+                <div class="shipping-option-content">
+                    <div class="shipping-option-header">
+                        <i class="fas fa-store store-icon"></i>
+                        <div>
+                            <div class="price-badge">
+                                FREE
+                            </div>
+                            <div style="font-weight: 600;">Local Pickup in Saskatoon, SK</div>
+                            <div style="font-size: 0.9em; opacity: 0.8;">Available in 1-2 business days</div>
+                        </div>
+                    </div>
+                    <div class="shipping-features">
+                        <span class="shipping-feature feature-express">
+                            <i class="fas fa-bolt"></i> Fastest
+                        </span>
+                        <span class="shipping-feature feature-tracking">
+                            <i class="fas fa-store"></i> Saskatoon Only
+                        </span>
+                    </div>
+                </div>
+            </label>
+            <label class="shipping-option">
+                <input type="radio" name="shipping" value="0" style="margin-top: 4px;">
+                <div class="shipping-option-content">
+                    <div class="shipping-option-header">
+                        <img src="https://www.canadapost-postescanada.ca/cpc/assets/cpc/uploads/logos/cpc-scp/primary/postmarks-80x80.svg" 
+                             alt="Canada Post" 
+                             class="shipping-logo">
+                        <div>
+                            <div class="price-badge">
+                                FREE
+                            </div>
+                            <div style="font-weight: 600;">Canada Post Xpresspost</div>
+                            <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 2-4 business days</div>
+                        </div>
+                    </div>
+                    <div class="shipping-features">
+                        <span class="shipping-feature feature-express">
+                            <i class="fas fa-bolt"></i> Express
+                        </span>
+                        <span class="shipping-feature feature-tracking">
+                            <i class="fas fa-truck"></i> Tracked
+                        </span>
+                        <span class="shipping-feature feature-insured">
+                            <i class="fas fa-shield-alt"></i> Insured
+                        </span>
+                    </div>
+                </div>
+            </label>
+            <label class="shipping-option">
+                <input type="radio" name="shipping" value="40" style="margin-top: 4px;">
+                <div class="shipping-option-content">
+                    <div class="shipping-option-header">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/United_Parcel_Service_logo_2014.svg/1200px-United_Parcel_Service_logo_2014.svg.png" 
+                             alt="UPS" 
+                             class="shipping-logo">
+                        <div>
+                            <div class="price-badge">
+                                $40.00
+                            </div>
+                            <div style="font-weight: 600;">UPS Expedited</div>
+                            <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 2-4 business days</div>
+                        </div>
+                    </div>
+                    <div class="shipping-features">
+                        <span class="shipping-feature feature-express">
+                            <i class="fas fa-bolt"></i> Express
+                        </span>
+                        <span class="shipping-feature feature-tracking">
+                            <i class="fas fa-truck"></i> Tracked
+                        </span>
+                    </div>
+                </div>
+            </label>`;
+            canadaPostNotice.classList.remove('hidden');
+        } else {
+            optionsHTML = `
+            ${styles}
+            <label class="shipping-option">
+                <input type="radio" name="shipping" value="25" style="margin-top: 4px;">
+                <div class="shipping-option-content">
+                    <div class="shipping-option-header">
+                        <img src="https://www.canadapost-postescanada.ca/cpc/assets/cpc/uploads/logos/cpc-scp/primary/postmarks-80x80.svg" 
+                            alt="Canada Post" 
+                            class="shipping-logo">
+                        <div>
+                            <div class="price-badge">
+                                $25.00
+                            </div>
+                            <div style="font-weight: 600;">Tracked Packet USA</div>
+                            <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 4-7 business days</div>
+                        </div>
+                    </div>
+                    <div class="shipping-features">
+                        <span class="shipping-feature feature-tracking">
+                            <i class="fas fa-truck"></i> Tracked
+                        </span>
+                        <span class="shipping-feature feature-insured">
+                            <i class="fas fa-shield-alt"></i> Insured
+                        </span>
+                    </div>
+                </div>
+            </label>
+            <label class="shipping-option">
+                <input type="radio" name="shipping" value="35" style="margin-top: 4px;">
+                <div class="shipping-option-content">
+                    <div class="shipping-option-header">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/United_Parcel_Service_logo_2014.svg/1200px-United_Parcel_Service_logo_2014.svg.png" 
+                            alt="UPS" 
+                            class="shipping-logo">
+                        <div>
+                            <div class="price-badge">
+                                $35.00
+                            </div>
+                            <div style="font-weight: 600;">UPS Standard</div>
+                            <div style="font-size: 0.9em; opacity: 0.8;">Estimated Delivery: 3-7 business days</div>
+                        </div>
+                    </div>
+                    <div class="shipping-features">
+                        <span class="shipping-feature feature-tracking">
+                            <i class="fas fa-truck"></i> Tracked
+                        </span>
+                    </div>
+                </div>
+            </label>`;
+            canadaPostNotice.classList.add('hidden');
+        }
+
+        optionsContainer.innerHTML = optionsHTML;
+        optionsElement.classList.remove('hidden');
+
+        const shippingRadios = document.querySelectorAll('input[name="shipping"]');
+        shippingRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                shippingCost = parseFloat(this.value);
+                updatePlanInfo();
+                continueButton.disabled = false;
+            });
+        });
+    });
+});
+        
+            document.querySelectorAll('.account-option').forEach(button => {
+                button.addEventListener('click', function() {
+                    const type = this.dataset.type;
+                    
+                    document.querySelectorAll('.account-option').forEach(btn => 
+                        btn.classList.remove('selected'));
+                    this.classList.add('selected');
+                    
+                    const newUserForm = document.getElementById('new-user-form');
+                    const existingUserForm = document.getElementById('existing-user-form');
+                    
+                    if (type === 'new') {
+                        newUserForm.classList.remove('hidden');
+                        existingUserForm.classList.add('hidden');
+                        isLoginMode = false;
+                        
+                        existingUserForm.querySelectorAll('input').forEach(input => {
+                            input.value = '';
+                            input.required = false;
+                        });
+                        
+                        newUserForm.querySelectorAll('input').forEach(input => {
+                            input.required = true;
+                        });
+                    } else {
+                        newUserForm.classList.add('hidden');
+                        existingUserForm.classList.remove('hidden');
+                        isLoginMode = true;
+                        
+                        newUserForm.querySelectorAll('input').forEach(input => {
+                            input.value = '';
+                            input.required = false;
+                        });
+                        
+                        existingUserForm.querySelectorAll('input').forEach(input => {
+                            input.required = true;
+                        });
+                    }
+                    
+                    document.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
+                    document.querySelectorAll('.validation-message').forEach(el => el.remove());
+                });
+            });
+        
+            async function authenticateUser(email, password) {
+                try {
+                    const response = await fetch('https://cabinpulse.com/api/users/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            email,
+                            password
+                        })
+                    });
+        
+                    if (!response.ok) {
+                        return false;
+                    }
+        
+                    const data = await response.json();
+                    isAuthenticated = true;
+                    userId = data.userId;
+                    authToken = data.token;
+                    return true;
+                } catch (error) {
+                    console.error('Authentication error:', error);
+                    return false;
+                }
+            }
+        
+            window.nextStep = async function() {
+                if (currentStep < 3 && validateStep(currentStep)) {
+                    if (currentStep === 2) {
+                        const continueButton = document.querySelector('#step-2 .cta-button');
+                        continueButton.disabled = true;
+                        continueButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Validating...';
+        
+                        try {
+                            if (isLoginMode) {
+                                const email = document.getElementById('login-email').value;
+                                const password = document.getElementById('login-password').value;
+        
+                                const success = await authenticateUser(email, password);
+                                if (!success) {
+                                    showValidationError('existing-user-form', 'Invalid email or password. Please try again.');
+                                    continueButton.disabled = false;
+                                    continueButton.innerHTML = 'Continue';
+                                    return;
+                                }
+                            } else {
+                                const email = document.getElementById('email').value;
+                                const phone = document.getElementById('phone').value;
+        
+                                const response = await fetch('https://cabinpulse.com/api/users/check-availability', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify({
+                                        email,
+                                        phone
+                                    })
+                                });
+        
+                                if (!response.ok) {
+                                    throw new Error('Network response was not ok');
+                                }
+        
+                                const data = await response.json();
+                                const { availability } = data;
+        
+                                let hasError = false;
+                                clearValidationMessages('new-user-form');
+        
+                                if (!availability.email.available) {
+                                    showFieldError('email', availability.email.message);
+                                    hasError = true;
+                                }
+        
+                                if (!availability.phone.available) {
+                                    showFieldError('phone', availability.phone.message);
+                                    hasError = true;
+                                }
+        
+                                if (hasError) {
+                                    continueButton.disabled = false;
+                                    continueButton.innerHTML = 'Continue';
+                                    return;
+                                }
+                            }
+        
+                            const currentForm = document.getElementById(`step-${currentStep}`);
+                            const nextForm = document.getElementById(`step-${currentStep + 1}`);
+                            
+                            document.getElementById(`indicator-${currentStep}`).classList.remove('active');
+                            document.getElementById(`indicator-${currentStep + 1}`).classList.add('active');
+                            currentForm.classList.remove('active');
+                            
+                            setTimeout(() => {
+                                nextForm.classList.add('active');
+                                currentStep++;
+                                if (currentStep === 3) {
+                                    updateStepThree();
+                                }
+                                // Smooth scroll to the top of the form
+                                document.querySelector('.purchase-form').scrollIntoView({ behavior: 'smooth' });
+                            }, 500);
+        
+                        } catch (error) {
+                            console.error('Validation error:', error);
+                            showValidationError('new-user-form', 'An error occurred during validation. Please try again.');
+                        } finally {
                             continueButton.disabled = false;
                             continueButton.innerHTML = 'Continue';
-                            return;
                         }
                     } else {
-                        const email = document.getElementById('email').value;
-                        const phone = document.getElementById('phone').value;
-
-                        const response = await fetch('https://cabinpulse.com/api/users/check-availability', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                email,
-                                phone
-                            })
-                        });
-
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-
-                        const data = await response.json();
-                        const { availability } = data;
-
-                        let hasError = false;
-                        clearValidationMessages('new-user-form');
-
-                        if (!availability.email.available) {
-                            showFieldError('email', availability.email.message);
-                            hasError = true;
-                        }
-
-                        if (!availability.phone.available) {
-                            showFieldError('phone', availability.phone.message);
-                            hasError = true;
-                        }
-
-                        if (hasError) {
-                            continueButton.disabled = false;
-                            continueButton.innerHTML = 'Continue';
-                            return;
-                        }
+                        const currentForm = document.getElementById(`step-${currentStep}`);
+                        const nextForm = document.getElementById(`step-${currentStep + 1}`);
+                        
+                        document.getElementById(`indicator-${currentStep}`).classList.remove('active');
+                        document.getElementById(`indicator-${currentStep + 1}`).classList.add('active');
+                        currentForm.classList.remove('active');
+                        
+                        setTimeout(() => {
+                            nextForm.classList.add('active');
+                            currentStep++;
+                            if (currentStep === 3) {
+                                updateStepThree();
+                            }
+                            // Smooth scroll to the top of the form
+                            document.querySelector('.purchase-form').scrollIntoView({ behavior: 'smooth' });
+                        }, 500);
                     }
-
+                }
+            };
+        
+            window.previousStep = function() {
+                if (currentStep > 1) {
                     const currentForm = document.getElementById(`step-${currentStep}`);
-                    const nextForm = document.getElementById(`step-${currentStep + 1}`);
+                    const previousForm = document.getElementById(`step-${currentStep - 1}`);
                     
                     document.getElementById(`indicator-${currentStep}`).classList.remove('active');
-                    document.getElementById(`indicator-${currentStep + 1}`).classList.add('active');
+                    document.getElementById(`indicator-${currentStep - 1}`).classList.add('active');
+                    
                     currentForm.classList.remove('active');
                     
                     setTimeout(() => {
-                        nextForm.classList.add('active');
-                        currentStep++;
-                        if (currentStep === 3) {
-                            updateStepThree();
-                        }
+                        previousForm.classList.add('active');
+                        currentStep--;
+                        // Smooth scroll to the top of the form
+                        document.querySelector('.purchase-form').scrollIntoView({ behavior: 'smooth' });
                     }, 500);
-
-                } catch (error) {
-                    console.error('Validation error:', error);
-                    showValidationError('new-user-form', 'An error occurred during validation. Please try again.');
-                } finally {
-                    continueButton.disabled = false;
-                    continueButton.innerHTML = 'Continue';
+                    
+                    document.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
                 }
-            } else {
-                const currentForm = document.getElementById(`step-${currentStep}`);
-                const nextForm = document.getElementById(`step-${currentStep + 1}`);
+            };
+        
+            document.getElementById('purchaseForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
                 
-                document.getElementById(`indicator-${currentStep}`).classList.remove('active');
-                document.getElementById(`indicator-${currentStep + 1}`).classList.add('active');
-                currentForm.classList.remove('active');
+                const submitButton = document.querySelector('#step-3 .cta-button');
+                submitButton.disabled = true;
                 
-                setTimeout(() => {
-                    nextForm.classList.add('active');
-                    currentStep++;
-                    if (currentStep === 3) {
-                        updateStepThree();
+                try {
+                    const monthlyPrice = plan === '1' ? 14 : 10;
+                    const planCost = monthlyPrice * (plan === '1' ? 12 : 36);
+                    const deviceCost = 99;
+                    const totalAmount = (deviceCost + planCost + shippingCost) * 100;
+        
+                    const selectedCountry = document.querySelector('.country-option.selected')?.dataset.country;
+                    if (!selectedCountry) {
+                        throw new Error('No country selected');
                     }
-                }, 500);
-            }
-        }
-    };
-
-    async function authenticateUser(email, password) {
-        try {
-            const response = await fetch('https://cabinpulse.com/api/users/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    email,
-                    password
-                })
-            });
-
-            if (!response.ok) {
-                return false;
-            }
-
-            const data = await response.json();
-            isAuthenticated = true;
-            userId = data.userId;
-            authToken = data.token;
-            return true;
-        } catch (error) {
-            console.error('Authentication error:', error);
-            return false;
-        }
-    }
-
-    window.previousStep = function() {
-        if (currentStep > 1) {
-            const currentForm = document.getElementById(`step-${currentStep}`);
-            const previousForm = document.getElementById(`step-${currentStep - 1}`);
-            
-            document.getElementById(`indicator-${currentStep}`).classList.remove('active');
-            document.getElementById(`indicator-${currentStep - 1}`).classList.add('active');
-            
-            currentForm.classList.remove('active');
-            
-            setTimeout(() => {
-                previousForm.classList.add('active');
-                currentStep--;
-            }, 500);
-            
-            document.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
-        }
-    };
-
-    document.getElementById('purchaseForm').addEventListener('submit', async function(e) {
-        e.preventDefault();
         
-        const submitButton = document.querySelector('#step-3 .cta-button');
-        submitButton.disabled = true;
+                    let customerInfo;
+                    const customerEmail = isLoginMode ? 
+                        document.getElementById('login-email').value : 
+                        document.getElementById('email').value;
         
-        try {
-            const monthlyPrice = plan === '1' ? 14 : 10;
-            const planCost = monthlyPrice * (plan === '1' ? 12 : 36);
-            const deviceCost = 99;
-            const totalAmount = (deviceCost + planCost + shippingCost) * 100;
-
-            const selectedCountry = document.querySelector('.country-option.selected')?.dataset.country;
-            if (!selectedCountry) {
-                throw new Error('No country selected');
-            }
-
-            let customerInfo;
-            const customerEmail = isLoginMode ? 
-                document.getElementById('login-email').value : 
-                document.getElementById('email').value;
-
-            if (isLoginMode) {
-                customerInfo = {
-                    email: customerEmail,
-                    existingUser: true
-                };
-            } else {
-                const phoneInput = document.getElementById('phone');
-                const nameInput = document.getElementById('name');
-                
-                if (!customerEmail || !phoneInput.value || !nameInput.value) {
-                    throw new Error('Please fill in all required fields');
+                    if (isLoginMode) {
+                        customerInfo = {
+                            email: customerEmail,
+                            existingUser: true
+                        };
+                    } else {
+                        const phoneInput = document.getElementById('phone');
+                        const nameInput = document.getElementById('name');
+                        
+                        if (!customerEmail || !phoneInput.value || !nameInput.value) {
+                            throw new Error('Please fill in all required fields');
+                        }
+                        
+                        customerInfo = {
+                            email: customerEmail,
+                            phone: phoneInput.value,
+                            name: nameInput.value,
+                            existingUser: false
+                        };
+                    }
+        
+                    const response = await fetch('https://cabinpulse.com/api/create-checkout-session', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            planType: plan === '1' ? '1-year' : '3-year',
+                            customerInfo,
+                            userType: isLoginMode ? 'existing' : 'new',
+                            country: selectedCountry,
+                            shippingCost: shippingCost,
+                            priceData: {
+                                deviceCost,
+                                planCost,
+                                shippingCost,
+                                totalAmount
+                            },
+                        })
+                    });
+        
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.message || 'Failed to create checkout session');
+                    }
+        
+                    const { sessionId } = await response.json();
+                    const stripe = Stripe('pk_live_51LZK81EVmyPNhExzHXm1BF3uC8BO6iTdg6R3hrrcjo3XEnq6fral763hSpQppYgCnRzNZO6zeCVHdq2aJ835k37e00Vhl33gOG');
+        
+                    const { error } = await stripe.redirectToCheckout({
+                        sessionId: sessionId
+                    });
+        
+                    if (error) {
+                        console.error('Stripe Error:', error);
+                        alert(error.message);
+                        submitButton.disabled = false;
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert(error.message || 'An error occurred. Please try again.');
+                    submitButton.disabled = false;
                 }
-                
-                customerInfo = {
-                    email: customerEmail,
-                    phone: phoneInput.value,
-                    name: nameInput.value,
-                    existingUser: false
-                };
-            }
-
-            const response = await fetch('https://cabinpulse.com/api/create-checkout-session', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    planType: plan === '1' ? '1-year' : '3-year',
-                    customerInfo,
-                    userType: isLoginMode ? 'existing' : 'new',
-                    country: selectedCountry,
-                    shippingCost: shippingCost,
-                    priceData: {
-                        deviceCost,
-                        planCost,
-                        shippingCost,
-                        totalAmount
-                    },
-                })
             });
-
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message || 'Failed to create checkout session');
-            }
-
-            const { sessionId } = await response.json();
-            const stripe = Stripe('pk_live_51LZK81EVmyPNhExzHXm1BF3uC8BO6iTdg6R3hrrcjo3XEnq6fral763hSpQppYgCnRzNZO6zeCVHdq2aJ835k37e00Vhl33gOG');
-
-            const { error } = await stripe.redirectToCheckout({
-                sessionId: sessionId
-            });
-
-            if (error) {
-                console.error('Stripe Error:', error);
-                alert(error.message);
-                submitButton.disabled = false;
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            alert(error.message || 'An error occurred. Please try again.');
-            submitButton.disabled = false;
-        }
-    });
-
-    document.getElementById('email')?.addEventListener('input', debounce(async function(e) {
-        const email = e.target.value.trim();
-        if (email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            const result = await checkFieldAvailability('email', email);
-            if (!result.available) {
-                showFieldError('email', result.message);
-            } else {
-                clearValidationMessages('new-user-form');
-            }
-        }
-    }, 500));
-
-    document.getElementById('phone')?.addEventListener('input', debounce(async function(e) {
-        const phone = e.target.value.trim();
-        if (phone && phone.length >= 10) {
-            const result = await checkFieldAvailability('phone', phone);
-            if (!result.available) {
-                showFieldError('phone', result.message);
-            } else {
-                clearValidationMessages('new-user-form');
-            }
-        }
-    }, 500));
-
-    updatePlanInfo();
-});
-</script>
+        
+            document.getElementById('email')?.addEventListener('input', debounce(async function(e) {
+                const email = e.target.value.trim();
+                if (email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    const result = await checkFieldAvailability('email', email);
+                    if (!result.available) {
+                        showFieldError('email', result.message);
+                    } else {
+                        clearValidationMessages('new-user-form');
+                    }
+                }
+            }, 500));
+        
+            document.getElementById('phone')?.addEventListener('input', debounce(async function(e) {
+                const phone = e.target.value.trim();
+                if (phone && phone.length >= 10) {
+                    const result = await checkFieldAvailability('phone', phone);
+                    if (!result.available) {
+                        showFieldError('phone', result.message);
+                    } else {
+                        clearValidationMessages('new-user-form');
+                    }
+                }
+            }, 500));
+        
+            updatePlanInfo();
+        });
+        </script>        
 </body>
 </html>
