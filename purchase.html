@@ -2032,24 +2032,25 @@
                     }
         
                     const response = await fetch('https://cabinpulse.com/api/create-checkout-session', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            planType: plan === '1' ? '1-year' : '3-year',
-                            customerInfo,
-                            userType: isLoginMode ? 'existing' : 'new',
-                            country: selectedCountry,
-                            shippingCost: shippingCost,
-                            priceData: {
-                                deviceCost,
-                                planCost,
-                                shippingCost,
-                                totalAmount
-                            },
-                        })
-                    });
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+        planType: plan === '1' ? '1-year' : '3-year',
+        customerInfo,
+        userType: isLoginMode ? 'existing' : 'new',
+        country: selectedCountry,
+        shippingCost: shippingCost,
+        shipping_method: selectedCountry === 'CA' && shippingCost === 0 ? 'local_pickup' : undefined,
+        priceData: {
+            deviceCost,
+            planCost,
+            shippingCost,
+            totalAmount
+        },
+    })
+});
         
                     if (!response.ok) {
                         const errorData = await response.json();
