@@ -1084,7 +1084,7 @@
                 <img src="product.png" alt="CabinPulse Device" class="product-image">
                 <div class="price-container">
                     <div class="price">$<span id="monthly-price"></span><span class="period">/mo</span></div>
-                    <div class="device-price">+ $99 one-time device fee</div>
+                    <div class="device-price">+ $149 one-time device fee</div>
                 </div>
                 <div id="discount-upsell"></div>
                 <div class="guarantee-banner">
@@ -1113,11 +1113,11 @@
                     </div>
                     <div class="price-item">
                         <span>Device Fee (one-time)</span>
-                        <span>$99</span>
+                        <span>$149</span>
                     </div>
                     <div class="price-item total">
                         <span>Total Due</span>
-                        <span id="total-due">$459</span>
+                        <span id="total-due">$509</span>
                     </div>
                     <p id="inclusion-note"><i>Includes device and complete service (including cellular connectivity) for 3 years period.</i></p>
 
@@ -1271,7 +1271,7 @@
                             </div>
                             <div class="price-item">
                                 <span>Device Fee (one-time)</span>
-                                <span>$99</span>
+                                <span>$149</span>
                             </div>
                             <div class="price-item total">
                                 <span>Total Due Today</span>
@@ -1436,7 +1436,7 @@
             function updatePlanInfo() {
                 const monthlyPrice = plan === '1' ? 14 : 10;
                 const planCost = monthlyPrice * (plan === '1' ? 12 : 36);
-                const totalAmount = 99 + planCost + shippingCost;
+                const totalAmount = 149 + planCost + shippingCost;
                 const planLengthText = `${plan}-Year Plan`;
                 const renewalInfo = plan === '1' 
                     ? 'Renews at $168 billed annually ($14/mo)' 
@@ -1997,7 +1997,7 @@
                 try {
                     const monthlyPrice = plan === '1' ? 14 : 10;
                     const planCost = monthlyPrice * (plan === '1' ? 12 : 36);
-                    const deviceCost = 99;
+                    const deviceCost = 149;
                     const totalAmount = (deviceCost + planCost + shippingCost) * 100;
         
                     const selectedCountry = document.querySelector('.country-option.selected')?.dataset.country;
