@@ -20,7 +20,8 @@
     gtag('config', 'AW-16787746903');
   </script>
   <style>
-    /* Root variables */
+
+/* Root variables */
 :root {
   --primary-color: #1a1a2e;
   --secondary-color: #16213e;
@@ -55,34 +56,176 @@ body {
 
 /* Header styles */
 header {
-  padding: 25px 0;
+  padding: 15px 0;
   position: fixed;
   width: 100%;
   z-index: 1000;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
   top: 48px;
 }
 header.scrolled {
-  background-color: var(--secondary-color);
+  padding: 10px 0;
+  background-color: rgba(26, 26, 46, 0.95);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+.icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
 .logo-hero {
   width: 150px;
   height: 150px;
 }
-.nav-links a {
+
+/* Updated Nav Links Styles */
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  margin-left: auto;
+}
+.nav-link {
   color: var(--text-color);
   text-decoration: none;
-  margin-left: 25px;
-  transition: color 0.3s ease;
-  font-size: 1.1rem;
+  padding: 8px 15px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  font-weight: 500;
+  white-space: nowrap;
 }
-.nav-links a:hover {
+.nav-link:hover {
   color: var(--highlight-color);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.login-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.login-btn:hover {
+  border-color: var(--highlight-color);
+}
+.primary-cta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--highlight-color);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(233, 69, 96, 0.3);
+}
+.primary-cta:hover {
+  background-color: #ff5a7c;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(233, 69, 96, 0.4);
+}
+
+/* Mobile menu styles */
+.mobile-menu-toggle {
+  display: none;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.mobile-menu-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  z-index: 1001;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 60px;
+}
+.mobile-menu a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 1.8rem;
+  margin: 15px 0;
+  padding: 12px 24px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  width: 80%;
+  text-align: center;
+}
+.mobile-menu a:hover {
+  color: var(--highlight-color);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-menu-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-size: 2.4rem;
+}
+.mobile-menu-close:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Mobile menu additional button styles */
+.mobile-login-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.mobile-login-btn:hover {
+  border-color: var(--highlight-color);
+}
+.mobile-cta-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--highlight-color);
+  color: white !important;
+  font-weight: 600;
+  margin-top: 20px !important;
+}
+.mobile-cta-btn:hover {
+  background-color: #ff5a7c;
 }
 
 /* Hero section styles */
@@ -172,7 +315,7 @@ nav {
   margin-top: 25px;
 }
 .badge {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--accent-color);
   padding: 6px 12px;
   border-radius: 18px;
   font-size: 0.9rem;
@@ -263,6 +406,7 @@ nav {
   margin-bottom: 18px;
   position: relative;
   z-index: 1;
+  line-height: 1.1;
 }
 .feature-highlight {
   display: flex;
@@ -349,7 +493,24 @@ nav {
 .pricing {
   padding: 120px 0;
   background-color: var(--secondary-color);
+  position: relative;
 }
+
+.pricing::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background-color: var(--secondary-color);
+  --mask: 
+    radial-gradient(108.17px at 50% 150px, #000 99%, #0000 101%) calc(50% - 120px) 0/240px 100%,
+    radial-gradient(108.17px at 50% -90px, #0000 99%, #000 101%) 50% 60px/240px 100% repeat-x;
+  -webkit-mask: var(--mask);
+          mask: var(--mask);
+}
+
 .pricing-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -366,7 +527,7 @@ nav {
 }
 .pricing-card.highlighted {
   border: 3px solid var(--highlight-color);
-  transform: scale(1.05);
+  transform: scale(1.02);
   z-index: 10;
 }
 .pricing-card:hover {
@@ -425,7 +586,7 @@ nav {
   margin: 0 auto 24px;
   display: block;
 }
-.cta-button.pricing {
+.cta-button.pricingbutton {
   background-color: var(--highlight-color);
   color: white;
   font-size: 1.3rem;
@@ -498,135 +659,6 @@ nav {
   color: white;
 }
 
-/* Mobile menu styles */
-.mobile-menu-toggle {
-  display: none;
-  font-size: 1.8rem;
-  cursor: pointer;
-}
-.mobile-menu {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--primary-color);
-  z-index: 1001;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.mobile-menu a {
-  color: var(--text-color);
-  text-decoration: none;
-  font-size: 1.8rem;
-  margin: 24px 0;
-  transition: color 0.3s ease;
-}
-.mobile-menu a:hover {
-  color: var(--highlight-color);
-}
-.mobile-menu-close {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  font-size: 2.4rem;
-  cursor: pointer;
-}
-
-/* Final CTA section styles */
-.cp-final-cta {
-  background-color: var(--accent-color);
-  padding: 96px 0;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.cp-final-cta::before {
-  content: '';
-  position: absolute;
-  top: -60px;
-  left: 0;
-  right: 0;
-  height: 120px;
-  background-color: var(--accent-color);
-  transform: skewY(-3deg);
-}
-.cp-final-cta__container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-.cp-final-cta__icon {
-  font-size: 4.5rem;
-  color: var(--highlight-color);
-  margin-bottom: 36px;
-  animation: good 2s infinite;
-}
-@keyframes good {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
-}
-.cp-final-cta__title {
-  font-size: 2.8rem;
-  color: var(--cta-color);
-  margin-bottom: 24px;
-}
-.cp-final-cta__description {
-  font-size: 1.4rem;
-  color: var(--text-color);
-  margin-bottom: 36px;
-  line-height: 1.7;
-}
-.cp-final-cta__buttons {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-}
-.cp-final-cta__button {
-  display: inline-block;
-  padding: 18px 36px;
-  border-radius: 60px;
-  font-weight: bold;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  font-size: 1.2rem;
-}
-.cp-final-cta__button--primary {
-  background-color: var(--highlight-color);
-  color: var(--primary-color);
-}
-.cp-final-cta__button--secondary {
-  background-color: transparent;
-  color: var(--cta-color);
-  border: 2px solid var(--cta-color);
-}
-.cp-final-cta__button:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-}
-.cp-final-cta__button--primary:hover {
-  background-color: var(--cta-color);
-  color: var(--highlight-color);
-}
-.cp-final-cta__button--secondary:hover {
-  background-color: var(--cta-color);
-  color: var(--accent-color);
-}
-
-/* Footer styles */
-footer {
-  background-color: var(--secondary-color);
-  text-align: center;
-  padding: 24px 0;
-}
-.logo-container {
-  display: flex;
-  align-items: center;
-}
-
 /* Responsive styles */
 @media (max-width: 768px) {
   html {
@@ -636,7 +668,7 @@ footer {
     display: none;
   }
   .mobile-menu-toggle {
-    display: block;
+    display: flex;
   }
   .hero h1 {
     font-size: 3rem;
@@ -676,13 +708,27 @@ footer {
   }
 }
 
+@media screen and (max-width: 1000px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+  
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .nav-link {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+  }
+  
+  .primary-cta {
+    padding: 8px 15px;
+  }
+}
+
 /* Additional styles */
 .icon-text {
   margin-right: 0.6rem;
-}
-.icon {
-  width: 60px;
-  height: 60px;
 }
 
 /* Feature highlight styles */
@@ -972,11 +1018,6 @@ header.banner-hidden {
   line-height: 1.6;
   color: var(--text-color);
   opacity: 0.9;
-}
-@media (max-width: 768px) {
-  .steps-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* Trial container */
@@ -1464,6 +1505,129 @@ header.banner-hidden {
   }
 }
 
+.fleet-view-enhanced {
+  background-color: var(--accent-color);
+  border-radius: 24px;
+  padding: 48px;
+  margin-top: 70px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid var(--highlight-color);
+}
+
+.fleet-view-enhanced::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(233, 69, 96, 0.1) 0%, rgba(233, 69, 96, 0) 70%);
+  transform: rotate(45deg);
+  z-index: 0;
+}
+
+.fleet-view-enhanced:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 24px 36px rgba(0, 0, 0, 0.2);
+}
+
+.fleet-view-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.fleet-view-icon {
+  font-size: 4rem;
+  color: var(--highlight-color);
+  margin-bottom: 24px;
+  animation: pulse-light 3s infinite;
+}
+
+.superscript {
+  font-size: 0.9rem;
+}
+
+@keyframes pulse-light {
+  0% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+  100% { opacity: 0.8; transform: scale(1); }
+}
+
+.fleet-view-enhanced h3 {
+  font-size: 2.5rem;
+  margin-bottom: 24px;
+  color: white;
+  text-align: center;
+}
+
+.fleet-view-image-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 36px;
+}
+
+.fleet-view-image {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.fleet-view-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--highlight-color);
+  filter: blur(25px);
+  opacity: 0.4;
+  z-index: -1;
+  border-radius: inherit;
+}
+
+.fleet-view-image:hover {
+  transform: scale(1.02);
+}
+
+.fleet-view-enhanced p {
+  font-size: 1rem;
+  line-height: 1.7;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  color: var(--text-color);
+}
+
+
+@media (max-width: 768px) {
+  .fleet-view-enhanced {
+    padding: 36px 24px;
+  }
+  
+  .fleet-view-icon {
+    font-size: 3rem;
+  }
+  
+  .fleet-view-enhanced h3 {
+    font-size: 1.8rem;
+  }
+  
+  .fleet-view-enhanced p {
+    font-size: 1.1rem;
+  }
+  
+}
+
 /* --- END NEW CODE --- */
 
 /* Media queries to adjust hero scaling and margins */
@@ -1515,9 +1679,692 @@ header.banner-hidden {
   }
 }
 
+/* Final CTA section styles that were missing */
+.cp-final-cta {
+  background-color: var(--accent-color);
+  padding: 96px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cp-final-cta::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background-color: var(--accent-color);
+  transform: skewY(-3deg);
+}
+.cp-final-cta__container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.cp-final-cta__icon {
+  font-size: 4.5rem;
+  color: var(--highlight-color);
+  margin-bottom: 36px;
+  animation: good 2s infinite;
+}
+@keyframes good {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+.cp-final-cta__title {
+  font-size: 2.8rem;
+  color: var(--cta-color);
+  margin-bottom: 24px;
+}
+.cp-final-cta__description {
+  font-size: 1.4rem;
+  color: var(--text-color);
+  margin-bottom: 36px;
+  line-height: 1.7;
+}
+.cp-final-cta__buttons {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+.cp-final-cta__button {
+  display: inline-block;
+  padding: 18px 36px;
+  border-radius: 60px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 1.2rem;
+}
+.cp-final-cta__button--primary {
+  background-color: var(--highlight-color);
+  color: var(--primary-color);
+}
+.cp-final-cta__button--secondary {
+  background-color: transparent;
+  color: var(--cta-color);
+  border: 2px solid var(--cta-color);
+}
+.cp-final-cta__button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+.cp-final-cta__button--primary:hover {
+  background-color: var(--cta-color);
+  color: var(--highlight-color);
+}
+.cp-final-cta__button--secondary:hover {
+  background-color: var(--cta-color);
+  color: var(--accent-color);
+}
 
+/* Footer styles */
+footer {
+  background-color: var(--secondary-color);
+  text-align: center;
+  padding: 24px 0;
+}
+
+/* How it works responsive styles */
+@media (max-width: 1024px) {
+  .steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px;
+  }
+  
+  .step-card {
+    padding: 28px;
+  }
+  
+  .step-card h3 {
+    font-size: 1.3rem;
+  }
+  
+  .step-card p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-top: 40px;
+  }
+  
+  .how-it-works {
+    padding: 80px 0;
+  }
+  
+  .section-title {
+    font-size: 2.2rem;
+    margin-bottom: 50px;
+  }
+  
+  .step-card {
+    padding: 30px;
+  }
+  
+  .step-number {
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
+    margin-bottom: 18px;
+  }
+  
+  .step-icon {
+    font-size: 2.5rem;
+    margin-bottom: 18px;
+  }
+}
+
+.supported-networks {
+  padding: 120px 0;
+  background-color: var(--primary-color);
+  text-align: center;
+  position: relative;
+}
+
+.supported-networks h2 {
+  margin-bottom: 24px;
+  color: var(--highlight-color);
+  font-size: 2.8rem;
+}
+
+.supported-networks > .container > p {
+  color: var(--text-color);
+  font-size: 1.1rem;
+  margin-bottom: 50px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Country Selector Styles */
+.country-selector {
+  margin: 0 auto 40px;
+  max-width: 400px;
+}
+
+.country-selector label {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--text-color);
+  font-size: 1.1rem;
+  text-align: left;
+}
+
+.custom-select {
+  position: relative;
+}
+
+.custom-select select {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  padding: 15px 20px;
+  font-size: 1.1rem;
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  border: 2px solid var(--highlight-color);
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+}
+
+.custom-select select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.3);
+}
+
+.select-arrow {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--highlight-color);
+}
+
+/* Network Card Styles */
+.network-card {
+  background-color: var(--primary-color);
+  border-radius: 24px;
+  padding: 40px;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid rgba(233, 69, 96, 0.3);
+}
+
+.network-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.network-icon {
+  font-size: 3rem;
+  color: var(--highlight-color);
+  margin-bottom: 20px;
+}
+
+.network-card h3 {
+  font-size: 2rem;
+  color: var(--text-color);
+  margin-bottom: 15px;
+}
+
+.technologies {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.tech-badge {
+  background-color: var(--highlight-color);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.network-card h4 {
+  color: var(--highlight-color);
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.carrier-list {
+  list-style: none;
+  padding: 0;
+  margin-left: 2rem;
+  margin-bottom: 30px;
+}
+
+.carrier-list li {
+  margin-bottom: 8px;
+  color: var(--text-color);
+  font-size: 1.1rem;
+  text-align: left;
+}
+
+.coverage-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--highlight-color);
+  color: white;
+  padding: 12px 25px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.coverage-link:hover {
+  background-color: white;
+  color: var(--highlight-color);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(233, 69, 96, 0.3);
+}
+
+/* Additional Countries Styles */
+.additional-countries {
+  background-color: var(--primary-color);
+  border-radius: 24px;
+  padding: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(233, 69, 96, 0.3);
+}
+
+.additional-countries h3 {
+  font-size: 2rem;
+  color: var(--text-color);
+  margin-bottom: 15px;
+}
+
+.additional-countries > p {
+  color: var(--text-color);
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  opacity: 0.9;
+}
+
+.countries-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  text-align: left;
+}
+
+.country-item h4 {
+  color: var(--highlight-color);
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+  text-align: left;
+}
+
+.country-item ul {
+  padding-left: 20px;
+  color: var(--text-color);
+}
+
+.country-item li {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.compatibility-note {
+  margin-top: 40px;
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  background-color: rgba(233, 69, 96, 0.1);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: left;
+}
+
+.compatibility-note i {
+  color: var(--highlight-color);
+  font-size: 1.5rem;
+  margin-top: 3px;
+}
+
+.compatibility-note p {
+  color: var(--text-color);
+  font-size: 0.95rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.network-card-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.country-info {
+  flex: 0 0 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-right: 30px;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.carriers-info {
+  flex: 1;
+}
+
+.network-icon {
+  margin-bottom: 15px;
+}
+
+.carriers-info h4 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* Make the carrier list always left-aligned */
+.carrier-list {
+  text-align: left;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.carrier-list li {
+  margin-bottom: 10px;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+
+.carrier-list li::before {
+  content: "•";
+  color: var(--highlight-color);
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-right: 0.5em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .network-card-layout {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .country-info {
+    padding-right: 0;
+    padding-bottom: 20px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    width: 100%;
+  }
+  
+  .carriers-info {
+    width: 100%;
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .countries-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .supported-networks {
+    padding: 80px 0;
+  }
+  
+  .supported-networks h2 {
+    font-size: 2.2rem;
+  }
+  
+  .supported-networks > .container > p {
+    font-size: 1.2rem;
+  }
+  
+  .network-card {
+    padding: 30px 20px;
+  }
+  
+  .countries-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .compatibility-note {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
 
   </style>
+  <style>
+    /* CP Pricing Features - Unique naming to avoid conflicts */
+    .cp-feature-categories {
+      margin: 25px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .cp-feature-group {
+      background-color: rgba(15, 52, 96, 0.3);
+      border-radius: 15px;
+      padding: 20px;
+    }
+    
+    .cp-feature-group-title {
+      color: var(--highlight-color);
+      font-size: 1.2rem;
+      margin: 0 0 15px 0;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(233, 69, 96, 0.2);
+    }
+    
+    .cp-feature-group-title.standalone {
+      margin: 10px 0 15px 0;
+    }
+    
+    .cp-feature-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .cp-feature-list li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    
+    .cp-feature-list li:last-child {
+      margin-bottom: 0;
+    }
+    
+    .cp-feature-list li i {
+      color: var(--highlight-color);
+      margin-right: 12px;
+      min-width: 18px;
+      text-align: center;
+    }
+    
+    /* Feature Grid */
+    .cp-feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    
+    .cp-feature-grid-item {
+      background-color: rgba(15, 52, 96, 0.3);
+      border-radius: 12px;
+      padding: 20px 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+    
+    .cp-feature-grid-item:hover {
+      transform: translateY(-5px);
+    }
+    
+    .cp-feature-icon-large {
+      background-color: rgba(233, 69, 96, 0.15);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    
+    .cp-feature-icon-large i {
+      font-size: 1.8rem;
+      color: var(--highlight-color);
+    }
+    
+    .cp-feature-grid-item span {
+      font-size: 0.9rem;
+      line-height: 1.3;
+    }
+    
+    /* Connectivity Features */
+    .cp-connectivity-features {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    
+    .cp-connectivity-feature {
+      background-color: rgba(15, 52, 96, 0.3);
+      border-radius: 12px;
+      padding: 18px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      transition: transform 0.2s ease;
+    }
+    
+    .cp-connectivity-feature:hover {
+      transform: translateY(-3px);
+    }
+    
+    .cp-connectivity-icon {
+      background-color: rgba(233, 69, 96, 0.15);
+      min-width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .cp-connectivity-icon i {
+      font-size: 2rem;
+      color: var(--highlight-color);
+    }
+    
+    .cp-connectivity-text {
+      flex: 1;
+    }
+    
+    .cp-connectivity-text h5 {
+      margin: 0 0 5px 0;
+      font-size: 1.1rem;
+      color: var(--highlight-color);
+    }
+    
+    .cp-connectivity-text p {
+      margin: 0;
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+    
+    /* Guarantee Banner */
+    .cp-guarantee-banner {
+      background-color: rgba(15, 52, 96, 0.4);
+      padding: 15px;
+      border-radius: 12px;
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-left: 3px solid var(--highlight-color);
+    }
+    
+    .cp-guarantee-banner i {
+      color: var(--highlight-color);
+      font-size: 1.2rem;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .cp-feature-group {
+        padding: 15px;
+      }
+      
+      .cp-feature-group-title {
+        font-size: 1.1rem;
+      }
+      
+      .cp-feature-list li {
+        font-size: 0.95rem;
+      }
+    
+      
+      .cp-connectivity-feature {
+        padding: 15px;
+      }
+      
+      .cp-connectivity-icon {
+        min-width: 50px;
+        height: 50px;
+      }
+      
+      .cp-connectivity-icon i {
+        font-size: 1.5rem;
+      }
+      
+      .cp-connectivity-text h5 {
+        font-size: 1rem;
+      }
+
+      .cp-feature-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    
+    @media (max-width: 480px) {
+      .cp-feature-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    </style>
   <!-- Meta Pixel Code -->
   <script>
     !function(f,b,e,v,n,t,s)
@@ -1542,7 +2389,7 @@ header.banner-hidden {
     <div class="promo-banner-content">
       <div>
         <i class="fa-brands fa-canadian-maple-leaf"></i>
-        Get $25 off any purchase until March 31st
+        Get $25 CAD off any purchase until March 31st
       </div>
       <div>
         Use code <span class="promo-code">CANADA</span>
@@ -1559,12 +2406,15 @@ header.banner-hidden {
         <h1>CabinPulse</h1>
       </div>
       <div class="nav-links">
-        <a href="index.html#features">Features</a>
-        <a href="index.html#pricing">Pricing</a>
-        <a href="index.html#faq">FAQ</a>
-        <a href="https://dashboard.cabinpulse.com" class="dashboard-btn">
+        <a href="index.html#features" class="nav-link">Features</a>
+        <a href="index.html#pricing" class="nav-link">Pricing</a>
+        <a href="index.html#faq" class="nav-link">FAQ</a>
+        <a href="https://dashboard.cabinpulse.com" class="nav-link login-btn">
           <i class="fas fa-user"></i>
           Login
+        </a>
+        <a href="https://cabinpulse.com/purchase.html?plan=3" class="nav-link primary-cta">
+          Get CabinPulse
         </a>
       </div>
       <div class="mobile-menu-toggle">
@@ -1572,17 +2422,31 @@ header.banner-hidden {
       </div>
     </nav>
   </header>
-
+  
+  <!-- Updated Mobile Menu -->
   <div class="mobile-menu">
     <div class="mobile-menu-close">
       <i class="fas fa-times"></i>
     </div>
-    <a href="index.html#features">Features</a>
-    <a href="index.html#pricing">Pricing</a>
-    <a href="index.html#faq">FAQ</a>
-    <a href="https://dashboard.cabinpulse.com">
+    <a href="index.html#features">
+      <i class="fas fa-check-circle"></i>
+      Features
+    </a>
+    <a href="index.html#pricing">
+      <i class="fas fa-tag"></i>
+      Pricing
+    </a>
+    <a href="index.html#faq">
+      <i class="fas fa-question-circle"></i>
+      FAQ
+    </a>
+    <a href="https://dashboard.cabinpulse.com" class="mobile-login-btn">
       <i class="fas fa-user"></i>
       Login
+    </a>
+    <a href="https://cabinpulse.com/purchase.html?plan=3" class="mobile-cta-btn">
+      <i class="fas fa-shopping-cart"></i>
+      Get CabinPulse
     </a>
   </div>
   
@@ -1599,15 +2463,15 @@ header.banner-hidden {
             <i class="fas fa-wifi icon-text"></i>NO WIFI REQUIRED
           </span>
         </div>
-        <h1>Check on your cabin, from anywhere.</h1>
-        <p>CabinPulse is the all-in-one solution for monitoring your cabin's temperature, humidity, and power status - without the need for WiFi.</p>
+        <h1>Check on your property, from anywhere.</h1>
+        <p>CabinPulse is the all-in-one solution for remote property monitoring<b> - without WiFi.</b></p>
         <div class="badge-container">
           <span class="badge"><i class="fas fa-temperature-low icon-text"></i>Temperature</span>
           <span class="badge"><i class="fas fa-droplet icon-text"></i>Humidity</span>
           <span class="badge"><i class="fas fa-plug-circle-xmark icon-text"></i>Power Outages</span>
           <span class="badge"><i class="fas fa-smog icon-text"></i>Air Quality</span>
+          <span class="badge"><i class="fas fa-volume-high icon-text"></i>Alarm Detection<sup>1</sup></span>
         </div>
-        <a href="#features" class="cta-button">See How It Works</a>
       </div>
       <div class="hero-image">
         <img src="front.png" alt="Product Photo">
@@ -1617,25 +2481,29 @@ header.banner-hidden {
 
   <section class="how-it-works">
     <div class="container">
+      <div style="text-align: center; margin-bottom: 24px;">
+        <i class="fas fa-stairs" style="font-size: 3rem; color: var(--highlight-color);"></i>
+
+      </div>
       <h2 class="section-title">How It Works</h2>
       <div class="steps-grid">
         <div class="step-card">
           <div class="step-number">1</div>
-          <i class="step-icon fas fa-plug"></i>
           <h3>Plug In</h3>
+          <i class="step-icon fas fa-plug"></i>
           <p>Simply plug your CabinPulse device into any power outlet in the building you want to monitor - no WiFi required.</p>
         </div>
         <div class="step-card">
           <div class="step-number">2</div>
-          <i class="step-icon fas fa-chart-line"></i>
           <h3>View Data</h3>
-          <p>Check temperature, humidity, and air quality data updated every 15 minutes on our website or app - from anywhere in the world.</p>
+          <i class="step-icon fas fa-chart-line"></i>
+          <p>Check temperature, humidity, and air quality data updated in real-time - from anywhere in the world.</p>
         </div>
         <div class="step-card">
           <div class="step-number">3</div>
+          <h3>Get Instant Alerts</h3>
           <i class="step-icon fas fa-bell"></i>
-          <h3>Get Alerts</h3>
-          <p>Receive instant text and email notifications if temperature drops, power goes out, or other issues arise.</p>
+          <p>Receive real-time notifications if temperature drops, power goes out, or other issues arise - even smoke alarms.</p>
         </div>
       </div>
     </div>
@@ -1643,6 +2511,9 @@ header.banner-hidden {
 
   <section id="features" class="features">
     <div class="container">
+      <div style="text-align: center; margin-bottom: 24px;">
+        <i class="fas fa-wifi" style="font-size: 4.5rem; color: var(--highlight-color);"></i>
+      </div>
       <h2 class="section-title">Always-On Remote Monitoring</h2>
       <div class="feature-grid">
         <div class="feature-card">
@@ -1662,104 +2533,397 @@ header.banner-hidden {
         </div>
         <div class="feature-card">
           <i class="feature-icon fas fa-smog"></i>
-          <h3>Air Quality Monitoring</h3>
-          <p>Stay informed of air quality in your cabin, at all times.</p>
+          <h3>Air Quality Monitoring<sup class="superscript">2</sup></h3>
+          <p>Stay informed of indoor air quality, 24/7.</p>
+        </div>
+        <div class="feature-card">
+          <i class="feature-icon fas fa-bell"></i>
+          <h3>Instant Alerts</h3>
+          <p>Get notified immediately when issues are detected.</p>
+        </div>
+        <div class="feature-card">
+          <i class="feature-icon fas fa-heartbeat"></i>
+          <h3>Device Health</h3>
+          <p>Monitor device status and receive an alert if it stops reporting.</p>
+        </div>
+        <div class="feature-card">
+          <i class="feature-icon fas fa-ship"></i>
+          <h3>Fleet View</h3>
+          <p>Monitor multiple devices at once, in one easy view.</p>
+        </div>
+        <div class="feature-card">
+          <i class="feature-icon fas fa-volume-high"></i>
+          <h3>Alarm Detection<sup class="superscript">1,3</sup></h3>
+          <p>Smoke detector going off? Get alerted immediately.</p>
         </div>
       </div>
       <div class="feature-highlight">
         <div class="feature-highlight-text">
           <div class="feature-card large">
             <i class="feature-icon fas fa-tower-cell"></i>
-            <h3>No WiFi Required</h3>
-            <p>CabinPulse works out-of-the-box anywhere there's LTE-M cellular coverage.</p>
+            <h3>Comprehensive Coverage<sup class="superscript">4</sup></h3>
+            <p>CabinPulse uses LTE with 3G fallback, and connects to all major carriers in Canada, the United States, Mexico - and across Central and South America.</p>
             <br />
-            <p><i>No need for an expensive WiFi connection or <u>any</u> additional data plan!</i></p>
+            <p><i>All connectivity is included with your subscription; no separate data plan is needed. </i></p>
           </div>
           <div class="feature-card large">
             <i class="feature-icon fas fa-mobile-alt"></i>
-            <h3>Timely Alerts</h3>
-            <p>Receive custom alerts and critical notifications via text message and email.</p>
+            <h3>Instant Alerts</h3>
+            <p>Receive real-time notifications via text message and email when issues are detected. </p>
             <br />
-            <p><i>Sudden temperature drop? Power outage? You'll be the first to know.</i></p>
+            <p><i>Sudden temperature drop? Power outage? You'll know immediately.</i></p>
           </div>
         </div>
         <div class="dashboard-preview feature-card large">
           <i class="feature-icon fas fa-chart-line"></i>
-          <h3>Secure Dashboard</h3>
-          <p>Easily check in on your cabin from anywhere in the world.</p>
+          <h3>Detailed Dashboard</h3>
+          <p>Easily check in on your property from anywhere in the world. Explore historical data or request an <b>Instant Reading</b> to get live data from your device.</p>
           <br />
           <img src="dashboard.png" alt="CabinPulse Dashboard" class="dashboard-image">
-          <p>View your dashboard from any device, any time.</p>
+          <p style="font-size: 1rem">Accessible on mobile, tablet or desktop.</p>
         </div>
+      </div>
+      
+      <!-- New Fleet View Section -->
+      <div class="fleet-view-enhanced">
+        <div class="fleet-view-content">
+          <div class="fleet-view-icon">
+            <i class="fas fa-ship"></i>
+          </div>
+          <h3>Monitor Multiple Properties with Fleet View</h3>
+          
+          <div class="fleet-view-image-container">
+            <img src="fleet.png" alt="CabinPulse Fleet View" class="fleet-view-image">
+          </div>
+          
+          <p style="text-align: left;">Managing multiple properties? <b>Fleet View</b>, exclusively available to customers with multiple devices, gives you a consolidated dashboard to monitor all of your CabinPulse devices at a glance. See the status of all your properties in one place, making it easy to spot issues across your entire portfolio.</p>
+          
+        </div>
+      </div>
+      
+      <!-- Note about Acoustic Sensor -->
+      <div style="background-color: var(--accent-color); border-radius: 24px; padding: 24px; margin-top: 48px; text-align: center;">
+        <p style="font-size: 0.7rem; line-height: 1.5; text-align: left;"><sup class="superscript">1</sup> Works when placed in the immediate vicinity of a T3 smoke detector when alarm sounds in a quiet environment for longer than 15 seconds. Modern smoke detectors sold in the United States and Canada emit a T3 pattern. CabinPulse will not detect older, continuous style alarms.</p>
+        <p style="font-size: 0.7rem; line-height: 1.5; text-align: left;"><sup class="superscript">2</sup> An onboard MOX sensor is used to monitor different gases and volatile organic compounds (VOCs) in the air. CabinPulse uses a proprietary algorithm from Bosch to determine a measure of Indoor Air Quality (IAQ).</p>
+        <p style="font-size: 0.7rem; line-height: 1.5; text-align: left;"><sup class="superscript">3</sup> CabinPulse is not a replacement for smoke/fire monitoring and should not be relied upon for life safety. Alarm Detection is for informational purposes only. Your privacy is protected; CabinPulse devices do not have the ability to store or transmit any audio data. Alarm Detection recognizes alarms based on real-time analysis of standard T3 alarm patterns on-device.</p>
+        <p style="font-size: 0.7rem; line-height: 1.5; text-align: left;"><sup class="superscript">4</sup> CabinPulse has a built-in SIM card that supports connectivity across North America. All connectivity is included in your CabinPulse subscription and no additional cellular data plan is required.</p>
       </div>
     </div>
   </section>
   
-  <section class="coverage-map">
+  <section class="supported-networks">
     <div class="container">
-      <h2>See If You're Covered</h2>
-      <p>CabinPulse operates on the LTE-M network, providing reliable connectivity across North America. Check coverage for your specific location below.</p>
-      <div style="display: flex; gap: 24px; justify-content: center; flex-wrap: wrap;">
-        <a href="https://business.bell.ca/shop/medium-large/our-networks/lte-m#coverageContainer" class="cta-button">
-          <i class="fa-brands fa-canadian-maple-leaf" style="margin-right: 8px;"></i>Check Canadian Coverage
-        </a>
-        <a href="https://www.t-mobile.com/business/solutions/iot/cat-m-iot-coverage-map" class="cta-button">
-          <i class="fas fa-flag-usa" style="margin-right: 8px;"></i>Check American Coverage
-        </a>
+      <div class="fleet-view-icon">
+        <i class="fas fa-globe"></i>
+      </div>
+      <h2>Comprehensive Coverage</h2>
+      <p>CabinPulse connects out-of-the-box with all major cellular carriers across the Americas. CabinPulse will work anywhere there is 3G or LTE coverage from a supported network.</p>
+      
+      <div class="country-selector">
+        <label for="country-dropdown">Select Country:</label>
+        <div class="custom-select">
+          <select id="country-dropdown">
+            <option value="canada" selected>Canada</option>
+            <option value="united-states">United States</option>
+            <option value="mexico">Mexico</option>
+            <option value="additional">View Additional Countries</option>
+          </select>
+          <div class="select-arrow">
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Canada Network Card -->
+<div class="network-info" id="network-info-canada">
+  <div class="network-card">
+    <div class="network-card-layout">
+      <div class="country-info">
+        <div class="network-icon">
+          <i class="fas fa-broadcast-tower"></i>
+        </div>
+        <h3>Canada</h3>
+        <div class="technologies">
+          <span class="tech-badge">3G</span>
+          <span class="tech-badge">LTE</span>
+        </div>
+      </div>
+      
+      <div class="carriers-info">
+        <h4>Supported Networks:</h4>
+        <ul class="carrier-list">
+          <li>Bell Mobility</li>
+          <li>Rogers Wireless</li>
+          <li>Telus</li>
+          <li>Videotron</li>
+          <li>SaskTel (via roaming)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- United States Network Card -->
+<div class="network-info" id="network-info-united-states" style="display: none;">
+  <div class="network-card">
+    <div class="network-card-layout">
+      <div class="country-info">
+        <div class="network-icon">
+          <i class="fas fa-broadcast-tower"></i>
+        </div>
+        <h3>United States</h3>
+        <div class="technologies">
+          <span class="tech-badge">3G</span>
+          <span class="tech-badge">LTE</span>
+        </div>
+      </div>
+      
+      <div class="carriers-info">
+        <h4>Supported Networks:</h4>
+        <ul class="carrier-list">
+          <li>Alaska Wireless</li>
+          <li>AT&T</li>
+          <li>T-Mobile</li>
+          <li>Verizon</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Mexico Network Card -->
+<div class="network-info" id="network-info-mexico" style="display: none;">
+  <div class="network-card">
+    <div class="network-card-layout">
+      <div class="country-info">
+        <div class="network-icon">
+          <i class="fas fa-broadcast-tower"></i>
+        </div>
+        <h3>Mexico</h3>
+        <div class="technologies">
+          <span class="tech-badge">3G</span>
+          <span class="tech-badge">LTE</span>
+        </div>
+      </div>
+      
+      <div class="carriers-info">
+        <h4>Supported Networks:</h4>
+        <ul class="carrier-list">
+          <li>AT&T</li>
+          <li>Telcel</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+      
+      <div class="network-info" id="network-info-additional" style="display: none;">
+        <div class="additional-countries">
+          <h3>Additional Compatible Networks</h3>
+          <p>The following countries are not officially supported, but CabinPulse will likely work in these regions when in range of a supported network:</p>
+          
+          <div class="countries-grid">
+            <div class="country-item">
+              <h4>Caribbean</h4>
+              <ul>
+                <li>Anguilla (Flow)</li>
+                <li>Antigua and Barbuda (Flow)</li>
+                <li>Bahamas (Aliv, BTC Bahamas)</li>
+                <li>Barbados (Flow)</li>
+                <li>Cayman Islands (Flow)</li>
+                <li>Dominica (Flow)</li>
+                <li>Dominican Republic (Altice, Claro)</li>
+                <li>Jamaica (Digicel, Flow)</li>
+                <li>Saint Kitts and Nevis (Flow)</li>
+                <li>Saint Lucia (Flow)</li>
+                <li>Saint Vincent and the Grenadines (Flow)</li>
+                <li>Trinidad and Tobago (Digicel, TSTT)</li>
+                <li>Turks and Caicos Islands (Flow)</li>
+                <li>Virgin Islands (British) (Flow)</li>
+              </ul>
+            </div>
+            
+            <div class="country-item">
+              <h4>Central America</h4>
+              <ul>
+                <li>Belize (Smart)</li>
+                <li>Costa Rica (Movistar)</li>
+                <li>El Salvador (Claro, Telefonica)</li>
+                <li>Guatemala (Claro, Movistar)</li>
+                <li>Honduras (Claro, Tigo)</li>
+                <li>Nicaragua (Movistar)</li>
+                <li>Panama (Digicel, Movistar)</li>
+              </ul>
+            </div>
+            
+            <div class="country-item">
+              <h4>South America</h4>
+              <ul>
+                <li>Argentina (Claro, Movistar, Personal)</li>
+                <li>Bolivia (Viva)</li>
+                <li>Chile (Claro, Entel, Movistar)</li>
+                <li>Colombia (Movistar, Tigo)</li>
+                <li>Ecuador (Claro, Movistar)</li>
+                <li>Paraguay (Claro, Personal, Tigo, Vox)</li>
+                <li>Peru (Claro, Entel, Movistar)</li>
+                <li>Uruguay (Antel, Claro, Movistar)</li>
+                <li>Venezuela (Movistar)</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="compatibility-note">
+            <i class="fas fa-info-circle"></i>
+            <p>Network compatibility and performance may vary in these additional countries. For optimal performance, we recommend using CabinPulse in officially supported regions.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <section id="pricing" class="pricing">
     <div class="container">
-      <h2 class="section-title">Compare Plans</h2>
+      <div style="text-align: center; margin-bottom: 24px;">
+        <i class="fas fa-house-signal" style="font-size: 4.5rem; color: var(--highlight-color);"></i>
+      </div>
+      <h2 class="section-title">Get CabinPulse</h2>
+      
       <div class="pricing-grid">
+        <!-- 1-Year Plan Card -->
         <div class="pricing-card">
           <h3>1-Year Plan</h3>
           <img src="product.png" alt="CabinPulse Device" class="device-image">
-          <div class="price">$14<span class="period">/mo</span></div>
-          <div class="device-price">+ $149 one-time device fee</div>
-          <ul class="feature-list">
-            <li><i class="fas fa-tower-cell"></i>24/7 Monitoring</li>
-            <li><i class="fas fa-temperature-low"></i>Temperature Monitoring</li>
-            <li><i class="fas fa-droplet"></i>Humidity Monitoring</li>
-            <li><i class="fas fa-smog"></i>Air Quality Monitoring</li>
-            <li><i class="fas fa-plug"></i>Power Outage Tracking</li>
-            <li><i class="fas fa-mobile-alt"></i>Text & Email Alerts</li>
-            <li><i class="fa-brands fa-canadian-maple-leaf"></i>Assembled in Canada</li>
-            <li><i class="fas fa-shipping-fast"></i>$10 Express Shipping in Canada</li>
-          </ul>
-          <div style="background: rgba(233, 69, 96, 0.1); padding: 12px; border-radius: 12px; margin: 20px 0;">
-            <i class="fas fa-shield-alt" style="color: var(--highlight-color); margin-right: 8px;"></i>
+          <div class="price">$14<span class="period"> CAD/mo</span></div>
+          <div class="device-price">+ $199 CAD one-time device fee</div>
+          
+          <!-- Feature Categories -->
+          <div class="cp-feature-categories">
+            <!-- Core Monitoring -->
+            <div class="cp-feature-group">
+              <h4 class="cp-feature-group-title">Comprehensive Monitoring</h4>
+              <ul class="cp-feature-list">
+                <li><i class="fas fa-temperature-low"></i>Temperature</li>
+                <li><i class="fas fa-droplet"></i>Humidity</li>
+                <li><i class="fas fa-smog"></i>Air Quality</li>
+                <li><i class="fas fa-smog"></i>Environmental Pressure</li>
+                <li><i class="fas fa-plug"></i>Power Outages</li>
+                <li><i class="fas fa-volume-high"></i>Alarm Detection<sup>1</sup></li>
+              </ul>
+            </div>
+            
+            <!-- Additional Features - Grid Style -->
+            <h4 class="cp-feature-group-title standalone">Other Features</h4>
+            <div class="cp-feature-grid">
+              <div class="cp-feature-grid-item">
+                <div class="cp-feature-icon-large">
+                  <i class="fas fa-bell"></i>
+                </div>
+                <span>Instant Text & Email Alerts</span>
+              </div>
+              <div class="cp-feature-grid-item">
+                <div class="cp-feature-icon-large">
+                  <i class="fas fa-heartbeat"></i>
+                </div>
+                <span>Device Health Monitoring</span>
+              </div>
+              <div class="cp-feature-grid-item">
+                <div class="cp-feature-icon-large">
+                  <i class="fa-brands fa-canadian-maple-leaf"></i>
+                </div>
+                <span>Assembled in Canada</span>
+              </div>
+            </div>
+            
+            <div class="cp-connectivity-features">
+              <div class="cp-connectivity-feature">
+                <div class="cp-connectivity-icon">
+                  <i class="fas fa-tower-cell"></i>
+                </div>
+                <div class="cp-connectivity-text">
+                  <h5>Cellular Connectivity Included</h5>
+                  <p>Works anywhere with coverage in North America</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="cp-guarantee-banner">
+            <i class="fas fa-shield-alt"></i>
             <span>30 Day Risk-Free Guarantee</span>
           </div>
-          <a href="https://cabinpulse.com/purchase.html?plan=1" class="cta-button pricing">Buy Now →</a>
+          
+          <a href="https://cabinpulse.com/purchase.html?plan=1" class="cta-button pricingbutton">Buy Now →</a>
         </div>
+        
+        <!-- 3-Year Plan Card -->
         <div class="pricing-card highlighted">
           <span class="best-value">BEST VALUE</span>
           <h3>3-Year Plan</h3>
           <img src="product.png" alt="CabinPulse Device" class="device-image">
-          <div class="price">$10<span class="period">/mo</span></div>
-          <div class="device-price">+ $149 one-time device fee</div>
+          <div class="price">$10<span class="period"> CAD/mo</span></div>
+          <div class="device-price">+ $199 CAD one-time device fee</div>
           <br />
           <span class="discount">Save 29% on subscription</span>
-          <ul class="feature-list">
-            <li><i class="fas fa-tower-cell"></i>24/7 Monitoring</li>
-            <li><i class="fas fa-temperature-low"></i>Temperature Monitoring</li>
-            <li><i class="fas fa-droplet"></i>Humidity Monitoring</li>
-            <li><i class="fas fa-smog"></i>Air Quality Monitoring</li>
-            <li><i class="fas fa-plug"></i>Power Outage Tracking</li>
-            <li><i class="fas fa-mobile-alt"></i>Text & Email Alerts</li>
-            <li><i class="fa-brands fa-canadian-maple-leaf"></i>Assembled in Canada</li>
-            <li><i class="fas fa-shipping-fast"></i>$10 Express Shipping in Canada</li>
-          </ul>
-          <div style="background: rgba(233, 69, 96, 0.1); padding: 12px; border-radius: 12px; margin: 20px 0;">
-            <i class="fas fa-shield-alt" style="color: var(--highlight-color); margin-right: 8px;"></i>
+          
+          <!-- Feature Categories -->
+          <div class="cp-feature-categories">
+            <!-- Core Monitoring -->
+            <div class="cp-feature-group">
+              <h4 class="cp-feature-group-title">Comprehensive Monitoring</h4>
+              <ul class="cp-feature-list">
+                <li><i class="fas fa-temperature-low"></i>Temperature</li>
+                <li><i class="fas fa-droplet"></i>Humidity</li>
+                <li><i class="fas fa-smog"></i>Air Quality</li>
+                <li><i class="fas fa-smog"></i>Environmental Pressure</li>
+                <li><i class="fas fa-plug"></i>Power Outages</li>
+                <li><i class="fas fa-volume-high"></i>Alarm Detection<sup>1</sup></li>
+              </ul>
+            </div>
+            
+            <!-- Additional Features - Grid Style -->
+            <h4 class="cp-feature-group-title standalone">Other Features</h4>
+            <div class="cp-feature-grid">
+              <div class="cp-feature-grid-item">
+                <div class="cp-feature-icon-large">
+                  <i class="fas fa-bell"></i>
+                </div>
+                <span>Instant Text & Email Alerts</span>
+              </div>
+              <div class="cp-feature-grid-item">
+                <div class="cp-feature-icon-large">
+                  <i class="fas fa-heartbeat"></i>
+                </div>
+                <span>Device Health Monitoring</span>
+              </div>
+              <div class="cp-feature-grid-item">
+                <div class="cp-feature-icon-large">
+                  <i class="fa-brands fa-canadian-maple-leaf"></i>
+                </div>
+                <span>Assembled in Canada</span>
+              </div>
+            </div>
+            <div class="cp-connectivity-features">
+              <div class="cp-connectivity-feature">
+                <div class="cp-connectivity-icon">
+                  <i class="fas fa-tower-cell"></i>
+                </div>
+                <div class="cp-connectivity-text">
+                  <h5>Cellular Connectivity Included</h5>
+                  <p>Works anywhere with coverage in North America</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="cp-guarantee-banner">
+            <i class="fas fa-shield-alt"></i>
             <span>30 Day Risk-Free Guarantee</span>
           </div>
-          <a href="https://cabinpulse.com/purchase.html?plan=3" class="cta-button pricing">Buy Now →</a>
+          
+          <a href="https://cabinpulse.com/purchase.html?plan=3" class="cta-button pricingbutton">Buy Now →</a>
         </div>
       </div>
+      
       <div class="trial-container">
         <div class="trial-icon">
           <i class="fas fa-shield-alt"></i>
@@ -1772,7 +2936,10 @@ header.banner-hidden {
 
   <section class="testimonials">
     <div class="container">
-      <h2 class="section-title">What Our Users Say</h2>
+      <div style="text-align: center; margin-bottom: 24px;">
+        <i class="fas fa-star" style="font-size: 4.5rem; color: var(--highlight-color);"></i>
+      </div>
+      <h2 class="section-title">What Our Customers Say</h2>
       <div class="testimonials-grid">
         <div class="testimonial-card">
           <div class="star-rating">
@@ -1822,11 +2989,14 @@ header.banner-hidden {
 
   <section id="faq" class="faq">
     <div class="container">
+      <div style="text-align: center; margin-bottom: 24px;">
+        <i class="fas fa-question-circle" style="font-size: 4.5rem; color: var(--highlight-color);"></i>
+      </div>
       <h2 class="section-title">Frequently Asked Questions</h2>
       <div class="faq-grid">
         <div class="faq-item">
           <h3><i class="fas fa-wifi"></i> Does CabinPulse need WiFi to work?</h3>
-          <p>No, WiFi is NOT required. CabinPulse uses cellular technology to transmit data, eliminating the need for WiFi. The device automatically connects to available cellular networks in your area.</p>
+          <p>No, WiFi is NOT required. CabinPulse uses cellular technology (LTE with 3G fallback) to transmit data, eliminating the need for WiFi. The device automatically connects to available cellular networks in your area.</p>
         </div>
         <div class="faq-item">
           <h3><i class="fas fa-mobile-alt"></i> Do I need to pay for another cellular plan?</h3>
@@ -1837,38 +3007,46 @@ header.banner-hidden {
           <p>Once you receive your device, login to your CabinPulse dashboard, enter the activation code on your device, and plug it into a power outlet. It will immediately begin monitoring!</p>
         </div>
         <div class="faq-item">
-          <h3><i class="fas fa-tower-cell"></i> My cabin doesn't have cell coverage - will CabinPulse work?</h3>
-          <p>CabinPulse uses LTE-M cellular technology to transmit data so coverage is required.</p>
+          <h3><i class="fas fa-tower-cell"></i> My cabin has poor cell coverage - will CabinPulse work?</h3>
+          <p>CabinPulse uses LTE with 3G fallback for areas without 3G; if there's any cell coverage, it will usually connect.</p>
           <br />
-          <p>If you're unsure of coverage in your area, check the coverage map of our network partners in <a href="https://business.bell.ca/shop/medium-large/our-networks/lte-m#coverageContainer">Canada</a> or <a href="https://www.t-mobile.com/business/solutions/iot/cat-m-iot-coverage-map">the US</a>.</p>
+          <p>If you're unsure of coverage in your area, check the coverage maps from major carriers in your area for LTE or 3G.</p>
         </div>
         <div class="faq-item">
           <h3><i class="fas fa-dollar"></i> What's included in the device fee?</h3>
-          <p>The one-time $149 device fee covers your CabinPulse monitoring unit, which includes temperature, humidity, air quality and power outage detection capabilities.</p>
+          <p>The one-time $199 device fee covers your CabinPulse monitoring unit, which includes temperature, humidity, air quality, power outage detection capabilities and smoke alarm detection.</p>
         </div>
         <div class="faq-item">
           <h3><i class="fas fa-copy"></i> Can I buy multiple devices?</h3>
-          <p>If you'd like to monitor multiple cabins or spaces, you can purchase additional devices for each location and manage them from the same account. Do note that each device requires its own subscription.</p>
+          <p>If you'd like to monitor multiple cabins or spaces, you can purchase additional devices for each location and manage them all from the same account using <b>Fleet View</b>. Each device requires its own subscription.</p>
         </div>
         <div class="faq-item">
           <h3><i class="fas fa-paper-plane"></i> How up-to-date is the CabinPulse data?</h3>
-          <p>CabinPulse collects data every 5 minutes, and sends new data updates to your dashboard every 15 minutes.</p>
+          <p>CabinPulse collects data every 5 minutes and transmits every 15 minutes. You can also request real-time updates on-demand from your dashboard, and alerts for critical issues are sent instantly.</p>
         </div>
         <div class="faq-item">
           <h3><i class="fas fa-bell"></i> How are alerts sent?</h3>
-          <p>You'll receive alerts via text and email for any critical issues detected by your CabinPulse device. You can customize the alert thresholds and choose which alerts you'd like to receive.</p>
+          <p>You'll receive instant alerts via text and email for any critical issues detected by your CabinPulse device. You can customize the alert thresholds and choose which alerts you'd like to receive.</p>
+        </div>
+        <div class="faq-item">
+          <h3><i class="fas fa-bell"></i> How many alerts can I configure?</h3>
+          <p>You can set unlimited Standard Alerts, and set an Instant Alert for a high and low for each monitored metric.</p>
         </div>
         <div class="faq-item">
           <h3><i class="fas fa-battery-half"></i> What's the battery life of the CabinPulse device?</h3>
-          <p>The CabinPulse device is designed to be plugged into a power outlet. However, it does have a backup battery that lasts up to 7 days in case of prolonged power outages.</p>
+          <p>The CabinPulse device is designed to be plugged into a power outlet. However, it does have a backup battery that lasts up to 3 days in case of prolonged power outages.</p>
         </div>
         <div class="faq-item">
           <h3><i class="fas fa-plug"></i> How much electricity does CabinPulse use if it's plugged in 24/7?</h3>
           <p>The CabinPulse device is extremely energy efficient and uses about as much electricity as running your microwave for 60s - in an entire month!.</p>
         </div>
         <div class="faq-item">
+          <h3><i class="fas fa-volume-high"></i> How does the alarm detection feature work?</h3>
+          <p>An onboard acoustic sensor can recognize the distinct pattern of modern North American smoke alarms. Must be placed in close proximity to the detector and works best in an otherwise quiet environment.</p>
+        </div>
+        <div class="faq-item">
           <h3><i class="fas fa-clock-rotate-left"></i> How far back can I view historical data?</h3>
-          <p>We store data captured from your device for as long as your subscription is active. If you choose to not renew your subscription, your data will be stored for 30 days before being deleted.</p>
+          <p>We store data captured from your device for as long as your subscription is active. If you choose to not renew your subscription, your data will be stored for up to 30 days before being deleted.</p>
         </div>
         <div class="faq-item">
           <h3><i class="fas fa-snowflake"></i> Can the device be used outdoors or in unheated buildings?</h3>
@@ -1879,12 +3057,16 @@ header.banner-hidden {
           <p>The CabinPulse device comes with a 3-year warranty. If you experience any issues, contact our support team for troubleshooting or a replacement.</p>
         </div>
         <div class="faq-item">
+          <h3><i class="fas fa-handshake"></i> Do you offer bulk discounts?</h3>
+          <p>We offer negotiated terms for commercial customers which can include Service Level Agreements, additional support and discounted hardware for large orders.</p>
+        </div>
+        <div class="faq-item">
           <h3><i class="fa-brands fa-canadian-maple-leaf"></i> Where is the CabinPulse device manufactured?</h3>
-          <p>We're proudly based in Saskatchewan, Canada; all of our devices are designed and manufactured in Saskatoon.</p>
+          <p>We're proudly based in Saskatchewan, Canada; all of our devices are designed and assembled in Saskatoon.</p>
         </div>
         <div class="faq-item">
           <h3><i class="fas fa-lock"></i> Where are your servers located?</h3>
-          <p>All data is securely hosted on servers located in North America.</p>
+          <p>All data is securely hosted on servers located in Canada.</p>
         </div>
       </div>
       <div class="question-container">
@@ -1902,8 +3084,8 @@ header.banner-hidden {
       <div class="cp-final-cta__icon">
         <i class="fas fa-shield-alt"></i>
       </div>
-      <h2 class="cp-final-cta__title">Your cabin, monitored.</h2>
-      <p class="cp-final-cta__description">Enjoy peace of mind like never before.</p>
+      <h2 class="cp-final-cta__title">Your property, monitored.</h2>
+      <p class="cp-final-cta__description">Enjoy peace of mind like never before with always-on connectivity and instant alerts.</p>
       <div class="cp-final-cta__buttons">
         <a href="https://cabinpulse.com/purchase.html?plan=1" class="cp-final-cta__button cp-final-cta__button--primary">Get CabinPulse</a>
       </div>
@@ -1919,7 +3101,7 @@ header.banner-hidden {
             <img src="cpicon.png" alt="CabinPulse Logo" style="width: 40px; height: 40px; margin-right: 10px;">
             <h3>CabinPulse</h3>
           </div>
-          <p style="color: #ccc; margin-bottom: 20px;">Intelligent cabin and vacation home monitoring, no WiFi required.</p>
+          <p style="color: #ccc; margin-bottom: 20px;">Intelligent remote property monitoring, no WiFi required.</p>
           <div style="display: flex; gap: 15px;">
             <a href="mailto:support@cabinpulse.com" style="color: var(--text-color);"><i class="fas fa-envelope"></i></a>
             <!-- <a href="https://twitter.com/cabinpulse" style="color: var(--text-color);"><i class="fab fa-twitter"></i></a> -->
@@ -1953,7 +3135,7 @@ header.banner-hidden {
         <div>
           <h4 style="color: var(--highlight-color); margin-bottom: 20px;">Helpful Pages</h4>
           <ul style="list-style: none; padding: 0;">
-            <li style="margin-bottom: 10px;"><a href="/saskatchewan-coverage.html" style="color: var(--text-color); text-decoration: none;">Saskatchewan LTE-M Coverage</a></li>
+            <li style="margin-bottom: 10px;"><a href="/manual.html" style="color: var(--text-color); text-decoration: none;">CabinPulse Manual</a></li>
           </ul>
         </div>
         <!-- Contact -->
@@ -1966,12 +3148,41 @@ header.banner-hidden {
         </div>
       </div>
       <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 20px; text-align: center;">
-        <p>&copy; 2024 Toccata, Inc. All rights reserved.</p>
+        <p>&copy; 2025 Toccata, Inc. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
-  <script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const countryDropdown = document.getElementById('country-dropdown');
+    const canadaInfo = document.getElementById('network-info-canada');
+    const mexicoInfo = document.getElementById('network-info-mexico');
+    const usaInfo = document.getElementById('network-info-united-states');
+    const additionalInfo = document.getElementById('network-info-additional');
+    
+    countryDropdown.addEventListener('change', function() {
+      // Hide all info sections
+      canadaInfo.style.display = 'none';
+      mexicoInfo.style.display = 'none';
+      usaInfo.style.display = 'none';
+      additionalInfo.style.display = 'none';
+      
+      // Show the selected section
+      const selectedValue = this.value;
+      if (selectedValue === 'canada') {
+        canadaInfo.style.display = 'block';
+      } else if (selectedValue === 'mexico') {
+        mexicoInfo.style.display = 'block';
+      } else if (selectedValue === 'united-states') {
+        usaInfo.style.display = 'block';
+      } else if (selectedValue === 'additional') {
+        additionalInfo.style.display = 'block';
+      }
+    });
+  });
+ 
     window.addEventListener('scroll', function() {
       var header = document.querySelector('header');
       header.classList.toggle('scrolled', window.scrollY > 0);

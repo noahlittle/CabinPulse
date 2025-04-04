@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CabinPulse User Manual</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #1a1a2e;         /* Dark background for outer areas */
+      --secondary-color: #16213e;       /* Darker tone for header & toc */
+      --cta-color: #ffffff;
+      --accent-color: #0f3460;
+      --highlight-color: #e94560;
+      --text-color: #ffffff;
+      --toc-width: 250px;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--primary-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    
+    /* Ensure headings don't get hidden under the fixed header */
+    h1, h2, h3 {
+      scroll-margin-top: 120px;
+    }
+    
+    header {
+      background-color: var(--secondary-color);
+      padding: 20px 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--accent-color);
+    }
+    
+    nav.header-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-color);
+    }
+    
+    .logo-container .icon {
+      width: 40px;
+      height: 40px;
+    }
+    
+    main {
+      margin-top: 120px; /* Space for fixed header */
+      padding: 20px;
+    }
+    
+    /* Title above device options */
+    .device-selection-title {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+      color: var(--highlight-color);
+      font-weight: 600;
+    }
+    
+    /* Device Tabs */
+    .device-tabs {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+    
+    .device-tab {
+      padding: 10px 20px;
+      background-color: var(--secondary-color);
+      border: 1px solid var(--accent-color);
+      color: var(--text-color);
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      transition: background-color 0.3s;
+      position: relative;
+    }
+    
+    .device-tab.active {
+      background-color: var(--highlight-color);
+      color: var(--cta-color);
+    }
+    
+    .device-tab:disabled {
+      background-color: var(--accent-color);
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    
+    /* Tooltip styling for disabled CabinPulse+ */
+    .tooltip-container {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .tooltip-container .tooltip-text {
+      visibility: hidden;
+      width: 250px;
+      background-color: var(--accent-color);
+      color: var(--text-color);
+      text-align: center;
+      padding: 8px;
+      border-radius: 6px;
+      position: absolute;
+      z-index: 1100;
+      bottom: 125%; /* Position above the button */
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      font-size: 0.9rem;
+      line-height: 1.3;
+    }
+    
+    .tooltip-container .tooltip-text::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: var(--accent-color) transparent transparent transparent;
+    }
+    
+    .tooltip-container:hover .tooltip-text {
+      visibility: visible;
+      opacity: 1;
+    }
+    
+    /* Layout with sticky Table of Contents */
+    .content-container {
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+    }
+    
+    .toc {
+      flex: 0 0 var(--toc-width);
+      position: sticky;
+      top: 120px;
+      padding: 20px;
+      background-color: var(--secondary-color);
+      border: 1px solid var(--accent-color);
+      border-radius: 10px;
+      max-height: calc(100vh - 140px);
+    }
+    
+    .toc h2 {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      color: var(--highlight-color);
+      text-align: center;
+    }
+    
+    .toc ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    .toc li {
+      margin-bottom: 10px;
+    }
+    
+    .toc a {
+      text-decoration: none;
+      color: var(--text-color);
+      transition: color 0.2s;
+      display: block;
+      padding: 5px;
+      border-radius: 3px;
+      padding-left: 1rem;
+    }
+    
+    .toc a:hover {
+      color: var(--highlight-color);
+      background-color: var(--accent-color);
+    }
+    
+    /* Main info container with white background and black text */
+    .manual-content {
+      flex: 1;
+      background-color: #ffffff;
+      color: #000000;
+      padding: 40px;
+      border: 1px solid var(--accent-color);
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .manual-content h1 {
+      color: var(--highlight-color);
+      margin-bottom: 30px;
+      font-size: 2.5rem;
+      border-bottom: 1px solid var(--accent-color);
+      padding-bottom: 10px;
+    }
+    
+    .manual-content h2 {
+      color: var(--highlight-color);
+      margin: 30px 0 15px;
+      font-size: 1.8rem;
+      border-left: 3px solid var(--highlight-color);
+      padding-left: 10px;
+    }
+    
+    .manual-content h3 {
+      color: var(--highlight-color);
+      margin: 20px 0 10px;
+      font-size: 1.4rem;
+    }
+    
+    .manual-content p, 
+    .manual-content li {
+      margin-bottom: 15px;
+      font-size: 1rem;
+    }
+    
+    .manual-content ul {
+      margin-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    .manual-title {
+        text-align: center;
+        font-size: 3rem;
+    }
+    
+    img.device-image {
+      display: block;
+      margin: 20px auto;
+      max-width: 400px;
+      width: 100%;
+      border-radius: 5px;
+      padding: 5px;
+    }
+
+    /* Table styling */
+    .compatibility-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    .compatibility-table th,
+    .compatibility-table td {
+      border: 1px solid #ddd;
+      padding: 8px 12px;
+      text-align: left;
+    }
+
+    .compatibility-table th {
+      background-color: #f2f2f2;
+      font-weight: 600;
+    }
+
+    .compatibility-table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    
+    footer {
+      background-color: var(--secondary-color);
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 60px;
+      border-top: 1px solid var(--accent-color);
+    }
+    
+    @media (max-width: 768px) {
+      .content-container {
+        flex-direction: column;
+      }
+      
+      .toc {
+        position: static;
+        max-height: none;
+        margin-bottom: 20px;
+      }
+
+      .compatibility-table {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="header-nav">
+      <a href="/" class="logo-container">
+        <img src="cpicon.png" alt="CabinPulse Logo" class="icon">
+        <h1>CabinPulse</h1>
+      </a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1 class="manual-title">User Manual</h1>
+    <!-- Title above device options -->
+    <h2 class="device-selection-title">Select Your Device</h2>
+    
+    <!-- Device Tabs -->
+    <div class="device-tabs">
+      <button class="device-tab active" onclick="switchDevice('cabinpulse', event)">CabinPulse</button>
+      <div class="tooltip-container">
+        <button class="device-tab" disabled>CabinPulse+</button>
+        <span class="tooltip-text">Available Soon: Advanced connectivity options including satellite.</span>
+      </div>
+    </div>
+    
+    <!-- Content for CabinPulse -->
+    <div id="cabinpulse" class="device-content active">
+      <div class="content-container">
+        <!-- Table of Contents -->
+        <nav class="toc">
+        <img src="front.png" alt="CabinPulse Device" class="device-image">
+          <h2 id="toc-title">Table of Contents</h2>
+          <ul>
+            <li><a href="#intro">Introduction</a></li>
+            <li><a href="#getting-started">Getting Started</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#connectivity">Connectivity & Coverage</a></li>
+            <li><a href="#led-indicators">LED Indicators</a></li>
+            <li><a href="#troubleshooting">Troubleshooting</a></li>
+            <li><a href="#maintenance">Maintenance &amp; Safety</a></li>
+            <li><a href="#warranty">Warranty &amp; Support</a></li>
+            <li><a href="#regulatory">Regulatory Information</a></li>
+          </ul>
+        </nav>
+        
+        <!-- Manual Content -->
+        <div class="manual-content">
+          
+          <h1 id="intro">Introduction</h1>
+          <p>Welcome to CabinPulse! This device provides an all‑in‑one solution for monitoring your property's temperature, humidity, air quality, and power status – without needing WiFi. Using 3G/LTE cellular connectivity, CabinPulse ensures you stay informed about your property's environment, whether it's a vacation home, rental, farm or industrial space.</p>
+          
+          <h2 id="getting-started">Getting Started</h2>
+          <p><strong>In the Box:</strong></p>
+          <ul>
+            <li>CabinPulse Device</li>
+            <li>Power Adapter</li>
+            <li>Activation Card</li>
+            <li>Window Sticker</li>
+            <li>Quick Start Guide </li>
+          </ul>
+          <p><strong>Setup Instructions:</strong></p>
+          <ol>
+            <li>Inspect your package to ensure all components are present and undamaged.</li>
+            <li>Plug the device into a standard AC outlet using the supplied power adapter.</li>
+            <li>Activate the device by visiting <a href="https://dashboard.cabinpulse.com" style="color: var(--highlight-color);">dashboard.cabinpulse.com</a>. You can add it as an app on your mobile device by clicking "Add To Homescreen" from your browser. Log in to your account, then enter your activation code. Your account login information was emailed to you at the time of purchase.</li>
+            <li>Please note: It may take up to 30 minutes after activation for the first sensor readings to appear on your dashboard.</li>
+          </ol>
+          
+          <h2 id="how-it-works">How It Works</h2>
+          <p>CabinPulse takes sensor readings every few minutes and updates your dashboard every 15 minutes. You can also request real‑time updates on temperature, humidity, air quality, and power status from anywhere via the dashboard.</p>
+          <p><strong>Sensor Accuracy:</strong> The temperature sensor offers readings accurate to approximately ±0.2°C, while the environmental sensor is calibrated to provide reliable humidity and air quality data. These measurements help you protect your property from issues like freezing temperatures or excess moisture.</p>
+          <p><strong>Connectivity Outages:</strong> In the event of a cellular connectivity loss, CabinPulse stores your sensor readings internally. Once connectivity is restored, the device automatically transmits the stored data. In the case of extended outages, there may be data gaps as the device continually resets.</p>
+          <p><strong>Battery Backup:</strong> Although designed to be plugged in, CabinPulse includes a built‑in 2000 mAh LiPo battery that can keep the device running for up to 3 days during power outages.</p>
+          <p><strong>Alarm Detection:</strong> CabinPulse uses an onboard acoustic sensor and real-time on-device analysis to detect alarm patterns from smoke detectors and carbon monoxide detectors. No audio data is stored or transmitted.</p>
+          
+          <h2 id="connectivity">Connectivity & Coverage</h2>
+          <p><strong>Network Technology:</strong> CabinPulse connects using LTE (4G), with fallback to 3G where LTE is not available.</p>
+          
+          <h3>Officially Supported Countries</h3>
+          <p>CabinPulse is officially supported in the following countries with reliable connectivity and performance:</p>
+          
+          <table class="compatibility-table">
+            <tr>
+              <th>Country</th>
+              <th>Technologies</th>
+              <th>Carriers</th>
+            </tr>
+            <tr>
+              <td>Canada</td>
+              <td>3G, 4G</td>
+              <td>Bell Mobility, Rogers Wireless, Telus, Videotron, SaskTel (via roaming)</td>
+            </tr>
+            <tr>
+              <td>Mexico</td>
+              <td>3G, 4G</td>
+              <td>AT&T, Telcel</td>
+            </tr>
+            <tr>
+              <td>United States</td>
+              <td>3G, 4G</td>
+              <td>Alaska Wireless, AT&T, T-Mobile, Verizon, Union Telephone</td>
+            </tr>
+          </table>
+          
+          <h3>Additional Compatible Countries</h3>
+          <p>The following countries are not officially supported at this time, but will likely work without issue. Note that performance and coverage may not be as reliable as in officially supported countries.</p>
+          
+          <table class="compatibility-table">
+            <tr>
+              <th>Country</th>
+              <th>Technologies</th>
+              <th>Carriers</th>
+            </tr>
+            <tr>
+              <td>Anguilla</td>
+              <td>3G, 4G</td>
+              <td>Flow</td>
+            </tr>
+            <tr>
+              <td>Antigua and Barbuda</td>
+              <td>4G</td>
+              <td>Flow</td>
+            </tr>
+            <tr>
+              <td>Argentina</td>
+              <td>3G, 4G</td>
+              <td>Claro, Movistar, Personal</td>
+            </tr>
+            <tr>
+              <td>Bahamas</td>
+              <td>3G, 4G</td>
+              <td>Aliv, BTC Bahamas</td>
+            </tr>
+            <tr>
+              <td>Barbados</td>
+              <td>4G</td>
+              <td>Flow</td>
+            </tr>
+            <tr>
+              <td>Belize</td>
+              <td>3G, 4G</td>
+              <td>Smart</td>
+            </tr>
+            <tr>
+              <td>Bolivia</td>
+              <td>3G, 4G</td>
+              <td>Viva</td>
+            </tr>
+            <tr>
+              <td>Cayman Islands</td>
+              <td>3G</td>
+              <td>Flow</td>
+            </tr>
+            <tr>
+              <td>Chile</td>
+              <td>3G</td>
+              <td>Claro, Entel, Movistar</td>
+            </tr>
+            <tr>
+              <td>Colombia</td>
+              <td>3G, 4G</td>
+              <td>Movistar, Tigo</td>
+            </tr>
+            <tr>
+              <td>Costa Rica</td>
+              <td>3G</td>
+              <td>Movistar</td>
+            </tr>
+            <tr>
+              <td>Dominica</td>
+              <td>4G</td>
+              <td>Flow</td>
+            </tr>
+            <tr>
+              <td>Dominican Republic</td>
+              <td>3G, 4G</td>
+              <td>Altice Dominicana, Claro</td>
+            </tr>
+            <tr>
+              <td>Ecuador</td>
+              <td>3G, 4G</td>
+              <td>Claro, Movistar</td>
+            </tr>
+            <tr>
+              <td>El Salvador</td>
+              <td>3G, 4G</td>
+              <td>Claro, Telefonica</td>
+            </tr>
+            <tr>
+              <td>Guatemala</td>
+              <td>3G, 4G</td>
+              <td>Claro, Movistar</td>
+            </tr>
+            <tr>
+              <td>Honduras</td>
+              <td>3G, 4G</td>
+              <td>Claro, Tigo</td>
+            </tr>
+            <tr>
+              <td>Jamaica</td>
+              <td>3G, 4G</td>
+              <td>Digicel, Flow</td>
+            </tr>
+            <tr>
+              <td>Nicaragua</td>
+              <td>3G</td>
+              <td>Movistar</td>
+            </tr>
+            <tr>
+              <td>Panama</td>
+              <td>3G</td>
+              <td>Digicel, Movistar</td>
+            </tr>
+            <tr>
+              <td>Paraguay</td>
+              <td>3G, 4G</td>
+              <td>Claro, Personal, Tigo, Vox</td>
+            </tr>
+            <tr>
+              <td>Peru</td>
+              <td>3G, 4G</td>
+              <td>Claro, Entel, Movistar</td>
+            </tr>
+            <tr>
+              <td>Saint Kitts and Nevis</td>
+              <td>3G</td>
+              <td>Flow</td>
+            </tr>
+            <tr>
+              <td>Saint Lucia</td>
+              <td>3G</td>
+              <td>Flow</td>
+            </tr>
+            <tr>
+              <td>Saint Vincent and the Grenadines</td>
+              <td>3G, 4G</td>
+              <td>Flow</td>
+            </tr>
+            <tr>
+              <td>Trinidad and Tobago</td>
+              <td>3G</td>
+              <td>Digicel, TSTT</td>
+            </tr>
+            <tr>
+              <td>Turks and Caicos Islands</td>
+              <td>3G</td>
+              <td>Flow</td>
+            </tr>
+            <tr>
+              <td>Uruguay</td>
+              <td>3G, 4G</td>
+              <td>Antel, Claro, Movistar</td>
+            </tr>
+            <tr>
+              <td>Venezuela</td>
+              <td>3G, 4G</td>
+              <td>Movistar</td>
+            </tr>
+            <tr>
+              <td>Virgin Islands (British)</td>
+              <td>4G</td>
+              <td>Flow</td>
+            </tr>
+          </table>
+          
+          <h2 id="led-indicators">LED Indicators</h2>
+          <p><strong>Front White LED:</strong></p>
+          <ul>
+            <li><em>Breathing Mode:</em> Gently pulsing to indicate normal operation.</li>
+            <li><em>Reading Mode:</em> A brief bright flash signifies that a sensor reading is in progress.</li>
+            <li><em>Sending Mode:</em> A pulsating effect indicates data transmission.</li>
+            <li><em>Error Mode:</em> A rapid blinking pattern signals an error.</li>
+          </ul>
+          <p><strong>Bottom LED:</strong> (Visible through the bottom vent)</p>
+          <ul>
+            <li><em>Breathing Cyan:</em> Successfully connected to the cellular network.</li>
+            <li><em>Flashing Green:</em> Attempting to establish a connection.</li>
+            <li><em>Rapid or Solid Red:</em> Indicates a connectivity error or that the device is in an error state.</li>
+            <li><em>Other Patterns:</em> May appear during firmware updates or diagnostics.</li>
+          </ul>
+          
+          <h2 id="troubleshooting">Troubleshooting</h2>
+          <p><strong>No Data on Dashboard:</strong></p>
+          <ul>
+            <li>Ensure the device is properly plugged in with a stable power supply.</li>
+            <li>If the bottom LED flashes green, the device is trying to connect; rapid or solid red suggests a firmware issue.</li>
+            <li>Remember that initial readings may take up to 30 minutes after activation.</li>
+          </ul>
+          <p><strong>LED Error Patterns:</strong></p>
+          <ul>
+            <li>If the front LED blinks rapidly or the bottom LED shows rapid/solid red, try using a paperclip to press the RESET button accessible through the bottom vent. The RESET button is a silver button to the right of the glowing bottom LED.</li>
+            <li>If issues persist, contact our support team.</li>
+          </ul>
+          <p><strong>No Alerts Received:</strong></p>
+          <ul>
+            <li>Verify that your alert settings (phone number and email) are correctly configured in your dashboard.</li>
+            <li>Check your spam folder for email notifications.</li>
+          </ul>
+          <p><strong>Extended Connectivity Outages:</strong></p>
+          <ul>
+            <li>During prolonged outages, the device enters a low‑power mode while still recording sensor data.</li>
+            <li>Stored readings (up to 6 hours) will be transmitted once connectivity is restored.</li>
+          </ul>
+          <p><strong>Temperature Reading High / Low after Power Outage:</strong></p>
+          <ul>
+            <li>If your device is recovering from a power outage, it will aggressively charge its onboard battery to prepare for any future outages. This results in self-heating which cannot be entirely compensated for. Temperature can appear high or low as a result, because of attempted compensation.</li>
+            <li>Waiting until the device is fully charged (30-45min) and temperature should be returned to normal.</li>
+          </ul>
+          <p><strong>Temperature Reading Low:</strong></p>
+          <ul>
+            <li>Ensure you are using the included power adapter; your device is callibrated to work with the included 5V 3A power adapter and temperature may appear slightly low if another adapter is used.</li>
+          </ul>
+          <p><strong>I Want to Turn Off the White Light</strong></p>
+          <ul>
+            <li>You can turn off the LED on front of the device. Use a paperclip to hit the button directly below the glowing LED through the vent on the bottom of your device.</li>
+            <li>The bottom LED will briefly flash green and the front LED will power down. You can re-enable the front LED by pressing the button below the bottom LED again.</li>
+          </ul>
+
+          <h2 id="maintenance">Maintenance &amp; Safety</h2>
+          <p><strong>Routine Maintenance:</strong></p>
+          <ul>
+            <li>Dust the device periodically with a soft, dry cloth. Avoid using water or harsh chemicals.</li>
+            <li>The device automatically receives firmware updates over‑the‑air</li>
+            <li>Occasionally review your dashboard to ensure readings are within expected ranges.</li>
+          </ul>
+          <p><strong>Safety Guidelines:</strong></p>
+          <ul>
+            <li>Always plug the device directly into a standard outlet using the supplied power adapter with its built‑in cable.</li>
+            <li>Designed for indoor use – avoid areas with extreme moisture or direct weather exposure.</li>
+            <li>Handle the device carefully; if physical damage occurs, discontinue use and contact support.</li>
+          </ul>
+          
+          <h2 id="warranty">Warranty &amp; Support</h2>
+          <p><strong>Warranty:</strong> CabinPulse comes with a 3‑year warranty covering manufacturing defects and hardware issues. For warranty claims, please contact <a href="mailto:support@cabinpulse.com" style="color: var(--highlight-color);">support@cabinpulse.com</a>.</p>
+          <p><strong>Return Policy:</strong> Enjoy a 30‑day risk‑free guarantee. If CabinPulse does not meet your needs, you may return it for a full refund within 30 days of purchase.</p>
+          <p><strong>Support:</strong> Our support team typically responds within 24 hours. For FAQs and troubleshooting tips, visit <a href="https://dashboard.cabinpulse.com" style="color: var(--highlight-color);">dashboard.cabinpulse.com</a>.</p>
+          
+          <h2 id="regulatory">Regulatory Information</h2>
+          <p>This device complies with regulatory standards in the United States and Canada:</p>
+          <ul>
+            <li><strong>ISED:</strong> 20127-B504</li>
+            <li><strong>FCC ID:</strong> 2AEMI-B504</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <!-- CabinPulse+ Content (Disabled) -->
+    <div id="cabinpulse-plus" class="device-content" style="display: none;">
+      <div class="content-container">
+        <nav class="toc">
+          <h2 id="toc-title-plus">Table of Contents</h2>
+          <ul>
+            <li><a href="#intro-plus">Introduction</a></li>
+            <li><a href="#getting-started-plus">Getting Started</a></li>
+            <li><a href="#how-it-works-plus">How It Works</a></li>
+            <li><a href="#led-indicators-plus">LED Indicators</a></li>
+            <li><a href="#troubleshooting-plus">Troubleshooting</a></li>
+            <li><a href="#maintenance-plus">Maintenance &amp; Safety</a></li>
+            <li><a href="#warranty-plus">Warranty &amp; Support</a></li>
+            <li><a href="#regulatory-plus">Regulatory Information</a></li>
+          </ul>
+        </nav>
+        <div class="manual-content">
+          <h1 id="intro-plus">CabinPulse+</h1>
+          <p style="opacity: 0.6;">This version is currently disabled.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Toccata, Inc. All rights reserved.</p>
+    </div>
+  </footer>
+  
+  <script>
+    // Switch between device content
+    function switchDevice(deviceId, event) {
+      const tabs = document.querySelectorAll('.device-tab');
+      tabs.forEach(tab => tab.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+      
+      const contents = document.querySelectorAll('.device-content');
+      contents.forEach(content => content.style.display = 'none');
+      document.getElementById(deviceId).style.display = 'block';
+    }
+  </script>
+</body>
+</html>

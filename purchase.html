@@ -1083,8 +1083,8 @@
                 <h2>Your CabinPulse Experience</h2>
                 <img src="product.png" alt="CabinPulse Device" class="product-image">
                 <div class="price-container">
-                    <div class="price">$<span id="monthly-price"></span><span class="period">/mo</span></div>
-                    <div class="device-price">+ $149 one-time device fee</div>
+                    <div class="price">$<span id="monthly-price"></span><span class="period"> CAD/mo</span></div>
+                    <div class="device-price">+ $199 CAD one-time device fee</div>
                 </div>
                 <div id="discount-upsell"></div>
                 <div class="guarantee-banner">
@@ -1104,20 +1104,21 @@
                         <li><i class="fas fa-droplet"></i> Humidity Monitoring</li>
                         <li><i class="fas fa-smog"></i> Air Quality Monitoring</li>
                         <li><i class="fas fa-plug"></i> Power Outage Tracking</li>
+                        <li><i class="fas fa-bell"></i> Alarm Detection</li>
                         <li><i class="fas fa-mobile-alt"></i> Instant Alerts</li>
                         <li><i class="fas fa-dollar-sign"></i> <span id="renewal-info"></span></li>
                     </ul>
                     <div class="price-item">
                         <span>Subscription</span>
-                        <span id="monthly-due">$14/mo (billed annually)</span>
+                        <span id="monthly-due">$14 CAD/mo (billed annually)</span>
                     </div>
                     <div class="price-item">
                         <span>Device Fee (one-time)</span>
-                        <span>$149</span>
+                        <span>$199 CAD</span>
                     </div>
                     <div class="price-item total">
                         <span>Total Due</span>
-                        <span id="total-due">$509</span>
+                        <span id="total-due">$367 CAD</span>
                     </div>
                     <p id="inclusion-note"><i>Includes device and complete service (including cellular connectivity) for 3 years period.</i></p>
 
@@ -1167,7 +1168,7 @@
                         </div>
                         <div id="shipping-options" class="hidden" style="margin-top: 20px;">
                             <div id="canada-post-notice" class="highlight-banner hidden">
-                                <i class="fa-brands fa-canadian-maple-leaf"></i> Canada Post is available again! Enjoy $10 express shipping on all orders within Canada!
+                                <i class="fa-brands fa-canadian-maple-leaf"></i> Enjoy $10 express shipping on all orders within Canada!
                             </div>
                             <p style="margin-bottom: 15px; font-weight: 600;">Available Shipping Options:</p>
                             <div id="shipping-options-container" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 15px; background: rgba(255,255,255,0.05);">
@@ -1271,7 +1272,7 @@
                             </div>
                             <div class="price-item">
                                 <span>Device Fee (one-time)</span>
-                                <span>$149</span>
+                                <span>$199 CAD</span>
                             </div>
                             <div class="price-item total">
                                 <span>Total Due Today</span>
@@ -1282,30 +1283,6 @@
                                 <div style="display: flex; align-items: start; gap: 8px;">
                                     <i class="fas fa-info-circle" style="color: var(--highlight-color); margin-top: 3px;"></i>
                                     <p style="margin: 0;">You can choose if you'd like to renew once your plan ends. We'll send you a reminder before your renewal date.</p>
-                                </div>
-                            </div>
-                        </div>
-                    
-                        <div style="margin: 20px 0; padding: 20px; background: var(--accent-color); border-radius: 12px;">
-                            <h3 style="margin-bottom: 15px; color: var(--highlight-color);">Cellular Coverage</h3>
-                            <p style="margin-bottom: 15px;">CabinPulse uses LTE-M to provide service. Please ensure your location is within our coverage area before purchase:</p>
-                            
-                            <div id="coverage-links" style="display: flex; gap: 15px; margin-bottom: 20px;">
-                                <a href="https://business.bell.ca/shop/medium-large/our-networks/lte-m#coverageContainer" 
-                                   target="_blank" 
-                                   class="cta-button canadian-coverage hidden">
-                                    <i class="fa-brands fa-canadian-maple-leaf" style="margin-right: 8px;"></i>Check Canadian Coverage
-                                </a>
-                                <a href="https://www.t-mobile.com/business/solutions/iot/cat-m-iot-coverage-map" 
-                                   target="_blank" 
-                                   class="cta-button usa-coverage hidden">
-                                    <i class="fas fa-flag-usa" style="margin-right: 8px;"></i>Check American Coverage
-                                </a>
-                            </div>
-                            <div style="margin-top: 12px; padding: 8px 12px; background: rgba(15, 52, 96, 0.5); border-radius: 6px; font-size: 0.85em; color: #ccc;">
-                                <div style="display: flex; align-items: start; gap: 8px;">
-                                    <i class="fas fa-info-circle" style="color: var(--highlight-color); margin-top: 3px;"></i>
-                                    <p style="margin: 0;">We also produce limited quantities of an extended range version of CabinPulse that operates on regular LTE/3G for areas without LTE-M coverage. <a href="mailto:support@cabinpulse.com" style="color: var(--highlight-color); text-decoration: none;">Contact us</a> for more information.</p>
                                 </div>
                             </div>
                         </div>
@@ -1328,7 +1305,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 CabinPulse</p>
+            <p>&copy; 2025 CabinPulse</p>
         </div>
     </footer>
     <script>
@@ -1345,19 +1322,7 @@
         
             // Coverage map functionality
             const paymentButton = document.getElementById('payment-button');
-        
-            function updateCoverageLinks(country) {
-                const canadianCoverageLink = document.querySelector('.canadian-coverage');
-                const usaCoverageLink = document.querySelector('.usa-coverage');
-                
-                if (country === 'CA') {
-                    canadianCoverageLink.classList.remove('hidden');
-                    usaCoverageLink.classList.add('hidden');
-                } else if (country === 'US') {
-                    canadianCoverageLink.classList.add('hidden');
-                    usaCoverageLink.classList.remove('hidden');
-                }
-            }
+
         
             function updateStepThree() {
                 const paymentButton = document.getElementById('payment-button');
@@ -1436,7 +1401,7 @@
             function updatePlanInfo() {
                 const monthlyPrice = plan === '1' ? 14 : 10;
                 const planCost = monthlyPrice * (plan === '1' ? 12 : 36);
-                const totalAmount = 149 + planCost + shippingCost;
+                const totalAmount = 199 + planCost + shippingCost;
                 const planLengthText = `${plan}-Year Plan`;
                 const renewalInfo = plan === '1' 
                     ? 'Renews at $168 billed annually ($14/mo)' 
@@ -1448,8 +1413,8 @@
                 document.getElementById('monthly-price').textContent = monthlyPrice;
                 document.getElementById('monthly-due').textContent = `$${monthlyPrice}/mo (billed ` + (plan === '1' ? 'annually' : 'every 3 years') + ')';
                 document.getElementById('confirm-monthly-due').textContent = `$${monthlyPrice}/mo (billed ` + (plan === '1' ? 'annually' : 'every 3 years') + ')';
-                document.getElementById('total-due').textContent = `$${totalAmount}`;
-                document.getElementById('confirm-total-due').textContent = `$${totalAmount}`;
+                document.getElementById('total-due').textContent = `$${totalAmount} CAD`;
+                document.getElementById('confirm-total-due').textContent = `$${totalAmount} CAD`;
                 document.getElementById('renewal-info').textContent = renewalInfo;
                 document.getElementById('inclusion-note').innerHTML = 
                     `<i>Includes device, and service for ${plan} year${plan === '1' ? '' : 's'}.</i>`;
@@ -1604,7 +1569,6 @@
     button.addEventListener('click', async function() {
         const country = this.dataset.country;
         selectedCountry = country;
-        updateCoverageLinks(country);
         
         const loaderElement = document.getElementById('shipping-loader');
         const optionsElement = document.getElementById('shipping-options');
@@ -1997,7 +1961,7 @@
                 try {
                     const monthlyPrice = plan === '1' ? 14 : 10;
                     const planCost = monthlyPrice * (plan === '1' ? 12 : 36);
-                    const deviceCost = 149;
+                    const deviceCost = 199;
                     const totalAmount = (deviceCost + planCost + shippingCost) * 100;
         
                     const selectedCountry = document.querySelector('.country-option.selected')?.dataset.country;
