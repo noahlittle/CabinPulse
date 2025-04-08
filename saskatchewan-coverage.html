@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CabinPulse Coverage in Saskatchewan - Lake Cabin Monitoring Coverage Map</title>
-    <meta name="description" content="Check if CabinPulse's cellular cabin monitoring system works at your Saskatchewan lake. View coverage status for Emma Lake, Candle Lake, Last Mountain Lake, and more.">
+    <meta name="description" content="Check if CabinPulse's cellular cabin monitoring system works at your Saskatchewan lake. View coverage status using the reliable LTE/3G network.">
     <meta property="og:title" content="CabinPulse Coverage in Saskatchewan - Lake Cabin Monitoring Coverage Map">
-    <meta property="og:description" content="Check if CabinPulse's cellular cabin monitoring system works at your Saskatchewan lake. View coverage status for popular Saskatchewan lakes.">
+    <meta property="og:description" content="Check if CabinPulse's cellular cabin monitoring system works at your Saskatchewan lake using the reliable LTE/3G network. View coverage status for popular Saskatchewan lakes.">
     <meta property="og:image" content="https://cabinpulse.com/img/coverage-social.jpg">
     <meta property="og:url" content="https://cabinpulse.com/saskatchewan-coverage">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -212,57 +212,6 @@
             margin-top: 48px;
         }
 
-        .lake-card {
-            background-color: var(--secondary-color);
-            border-radius: 24px;
-            padding: 32px;
-            position: relative;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .lake-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-        }
-
-        .lake-name {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-            color: var(--text-color);
-        }
-
-        .lake-region {
-            color: var(--text-color);
-            opacity: 0.8;
-            font-size: 1.1rem;
-            margin-bottom: 16px;
-        }
-
-        .coverage-status {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 600;
-        }
-
-        .status-green {
-            background-color: rgba(46, 213, 115, 0.2);
-            color: #2ed573;
-        }
-
-        .status-yellow {
-            background-color: rgba(255, 199, 0, 0.2);
-            color: #ffc700;
-        }
-
-        .status-red {
-            background-color: rgba(255, 71, 87, 0.2);
-            color: #ff4757;
-        }
-
         /* Guarantee Banner */
         .guarantee-banner {
             background: linear-gradient(45deg, var(--highlight-color), var(--accent-color));
@@ -289,18 +238,19 @@
         /* CTA Button */
         .cta-button {
             display: inline-block;
-            background-color: var(--cta-color);
-            color: var(--highlight-color);
+            background-color: var(--highlight-color); /* Updated color */
+            color: var(--cta-color); /* Updated text color */
             padding: 15px 30px;
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
             font-size: 1.1rem;
             margin-top: 24px;
         }
 
         .cta-button:hover {
+            background-color: #d63d56; /* Darker shade on hover */
             transform: translateY(-3px);
             box-shadow: 0 12px 24px rgba(233, 69, 96, 0.4);
         }
@@ -366,6 +316,11 @@
             .lake-card {
                 padding: 24px;
             }
+            .cta-button {
+                width: 100%; /* Make button full width on mobile */
+                margin-left: 0;
+                margin-right: 0;
+            }
         }
 
          /* Search Bar Styles */
@@ -423,65 +378,175 @@
         }
 
         .coverage-link {
-    color: var(--highlight-color);
-    text-decoration: none;
-    font-weight: 500;
-    transition: opacity 0.3s ease;
-}
+            color: var(--highlight-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
 
-.coverage-link:hover {
-    opacity: 0.8;
-}
-/* Coverage Message Styles */
-.coverage-message {
-    margin-top: 16px;
-    padding: 16px;
-    border-radius: 12px;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
+        .coverage-link:hover {
+            opacity: 0.8;
+        }
 
-.coverage-message.success {
-    background-color: rgba(46, 213, 115, 0.1);
-    border: 1px solid rgba(46, 213, 115, 0.2);
-}
+        .coverage-map-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--highlight-color);
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: fit-content;
+        }
 
-.coverage-message.warning {
-    background-color: rgba(255, 199, 0, 0.1);
-    border: 1px solid rgba(255, 199, 0, 0.2);
-}
+        .coverage-map-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(233, 69, 96, 0.3);
+        }
 
-.coverage-message.error {
-    background-color: rgba(255, 71, 87, 0.1);
-    border: 1px solid rgba(255, 71, 87, 0.2);
-}
+        /* Updated Lake Card styles */
+        .lake-card {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Consistent gap */
+            background-color: #1B2438;
+            border-radius: 24px;
+            padding: 32px;
+            margin-bottom: 24px; /* Added margin */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-.coverage-map-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background-color: var(--highlight-color);
-    color: white;
-    text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: fit-content;
-}
+        .lake-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
 
-.coverage-map-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(233, 69, 96, 0.3);
-}
+        .lake-header {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
 
-.coverage-message p {
-    margin: 0;
-}
+        .lake-icon {
+            font-size: 2rem;
+            color: #4a9eff; /* Example color */
+            margin-bottom: 12px;
+            opacity: 0.8;
+        }
+
+        .lake-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0; /* Adjusted margin */
+        }
+
+        .lake-region {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Recommendation Banner Styles */
+        .recommendation-banner {
+            padding: 20px; /* Slightly reduced padding */
+            border-radius: 16px;
+            margin-bottom: 0; /* Adjusted margin */
+            border: 1px solid transparent; /* Base border */
+        }
+
+        .banner-success {
+            background-color: rgba(46, 213, 115, 0.1);
+            border-color: rgba(46, 213, 115, 0.2);
+            color: #2ed573; /* Text color for success */
+        }
+
+        .banner-warning {
+            background-color: rgba(255, 199, 0, 0.1);
+            border-color: rgba(255, 199, 0, 0.2);
+            color: #ffc700; /* Text color for warning */
+        }
+
+        .banner-error {
+            background-color: rgba(255, 71, 87, 0.1);
+            border-color: rgba(255, 71, 87, 0.2);
+            color: #ff4757; /* Text color for error */
+        }
+
+        .recommendation-content {
+            display: flex;
+            align-items: center; /* Center vertically */
+            gap: 16px;
+        }
+
+        .recommendation-content i {
+            font-size: 1.5rem; /* Banner icon size */
+            flex-shrink: 0; /* Prevent icon shrinking */
+        }
+
+        .recommendation-content p {
+            font-size: 1rem; /* Adjusted font size */
+            line-height: 1.6;
+            margin: 0;
+            color: var(--text-color); /* Use general text color */
+        }
+        .recommendation-content p b {
+           font-weight: 600; /* Ensure bold stands out */
+        }
+
+
+        /* Lake CTA Button */
+        .lake-cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%; /* Full width */
+            background-color: var(--highlight-color);
+            color: white;
+            text-decoration: none;
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 16px; /* Adjusted margin */
+            transition: all 0.3s ease;
+        }
+
+        .lake-cta-button:hover {
+            background-color: #d63d56; /* Darker shade */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(233, 69, 96, 0.3);
+        }
+
+        /* Responsive adjustments for lake card */
+        @media (max-width: 768px) {
+            .lake-card {
+                padding: 24px;
+            }
+            .lake-name {
+                font-size: 2rem;
+            }
+            .recommendation-content p {
+                font-size: 0.95rem;
+            }
+            .lake-cta-button {
+                font-size: 1rem;
+                padding: 14px 20px;
+            }
+        }
+
+        /* Hide elements that are no longer needed */
+        .hidden {
+            display: none !important;
+        }
+        .details-toggle, .coverage-details, .coverage-option, .coverage-divider {
+           display: none !important;
+        }
+
     </style>
 
     <!-- Favicon -->
@@ -503,11 +568,13 @@
 
     <section class="coverage-map">
         <div class="container">
-            <h2>Saskatchewan LTE-M Coverage Map</h2>
-            <p>Check detailed LTE-M coverage for your specific location on our network partner's coverage map.</p>
-            <a href="https://business.bell.ca/shop/medium-large/our-networks/lte-m#coverageContainer" class="cta-button">
+            <h2>CabinPulse: Saskatchewan Coverage Map</h2>
+            <p>CabinPulse works anywhere with cellular coverage.</p>
+            <!-- Removed span explaining two networks -->
+            <a href="https://www.bell.ca/Mobility/Our_network_coverage" target="_blank" rel="noopener noreferrer" class="cta-button">
                 <i class="fa-solid fa-map-location-dot" style="margin-right: 8px;"></i>View Coverage Map
             </a>
+            <!-- Removed second map button -->
         </div>
     </section>
 
@@ -515,7 +582,7 @@
         <div class="container">
             <h2 class="section-title">Lake Coverage Status</h2>
             <p class="section-subtitle">
-                Check the LTE-M cellular coverage status for popular Saskatchewan lakes to see if CabinPulse will work at your cabin.
+                Check the CabinPulse coverage status for popular Saskatchewan lakes. CabinPulse uses LTE, and can connect to 3G when LTE is not available.
             </p>
 
             <div class="search-container">
@@ -524,799 +591,1038 @@
             </div>
 
             <div class="lake-grid" id="lakeGrid">
-                
+
                 <div class="lake-card">
-                    <h3 class="lake-name">Anglin Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Anglin Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Anglin Lake.</p>
-            </div>
-        
+                    <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Anglin Lake.</p>
+                        </div>
+                    </div>
+                    <!-- Removed details toggle and details section -->
+                    <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
                 </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Besnard Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-red">
-                        <i class="fas fa-times-circle"></i>
-                        No Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Besnard Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message error">
-                <p>CabinPulse will NOT work at Besnard Lake due to limited cellular coverage.</p>
-            </div>
-        
+                    <div class="recommendation-banner banner-error">
+                        <div class="recommendation-content">
+                            <i class="fas fa-times-circle"></i>
+                            <p>Unfortunately, <b>CabinPulse</b> does not have reliable coverage at Besnard Lake.</p>
+                        </div>
+                    </div>
+                    <!-- Removed details toggle, details section and CTA button -->
                 </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Big Shell Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Big Shell Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Big Shell Lake.</p>
-            </div>
-        
+                    <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Big Shell Lake.</p>
+                        </div>
+                    </div>
+                    <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
                 </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Brightsand Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Brightsand Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Brightsand Lake.</p>
-            </div>
-        
+                    <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Brightsand Lake.</p>
+                        </div>
+                    </div>
+                    <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
                 </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Buffalo Pound Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-yellow">
-                        <i class="fas fa-exclamation-circle"></i>
-                        Partial Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Buffalo Pound Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message warning">
-                <p>CabinPulse works at SOME cabins at Buffalo Pound Lake. Check the coverage map to see if your cabin is within the coverage area.</p>
-                <a href="https://business.bell.ca/shop/medium-large/our-networks/lte-m#coverageContainer" 
-                   class="coverage-map-button">
-                    <i class="fa-solid fa-map-location-dot"></i>
-                    Coverage Map
-                </a>
-            </div>
-        
+                    <div class="recommendation-banner banner-success"> <!-- Changed from ER recommendation -->
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Buffalo Pound Lake.</p>
+                        </div>
+                    </div>
+                    <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse <!-- Changed from Get CabinPulseER -->
+                    </a>
                 </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Candle Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-yellow">
-                        <i class="fas fa-exclamation-circle"></i>
-                        Partial Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Candle Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message warning">
-                <p>CabinPulse works at SOME cabins at Candle Lake. Check the coverage map to see if your cabin is within the coverage area.</p>
-                <a href="https://business.bell.ca/shop/medium-large/our-networks/lte-m#coverageContainer" 
-                   class="coverage-map-button">
-                    <i class="fa-solid fa-map-location-dot"></i>
-                    Coverage Map
-                </a>
-            </div>
-        
+                    <div class="recommendation-banner banner-success"> <!-- Changed from ER recommendation -->
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Candle Lake.</p>
+                        </div>
+                    </div>
+                    <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse <!-- Changed from Get CabinPulseER -->
+                    </a>
                 </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Cannington Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Cannington Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Cannington Lake.</p>
-            </div>
-        
+                    <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Cannington Lake.</p>
+                        </div>
+                    </div>
+                    <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
                 </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Chitek Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Chitek Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Chitek Lake.</p>
-            </div>
-        
+                    <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Chitek Lake.</p>
+                        </div>
+                    </div>
+                    <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
                 </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Christopher Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Christopher Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Christopher Lake.</p>
-            </div>
-        
+                    <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Christopher Lake.</p>
+                        </div>
+                    </div>
+                    <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
                 </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Clearwater Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-red">
-                        <i class="fas fa-times-circle"></i>
-                        No Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Clearwater Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message error">
-                <p>CabinPulse will NOT work at Clearwater Lake due to limited cellular coverage.</p>
-            </div>
-        
+                    <div class="recommendation-banner banner-success"> <!-- Changed from ER recommendation -->
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Clearwater Lake.</p>
+                        </div>
+                    </div>
+                    <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse <!-- Changed from Get CabinPulseER -->
+                    </a>
                 </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Crooked Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Crooked Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Crooked Lake.</p>
-            </div>
-        
+                    <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Crooked Lake.</p>
+                        </div>
+                    </div>
+                    <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
                 </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Crystal Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Crystal Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Crystal Lake.</p>
-            </div>
-        
+                    <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Crystal Lake.</p>
+                        </div>
+                    </div>
+                    <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
                 </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Delaronde Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-red">
-                        <i class="fas fa-times-circle"></i>
-                        No Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Delaronde Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message error">
-                <p>CabinPulse will NOT work at Delaronde Lake due to limited cellular coverage.</p>
-            </div>
-        
+                    <div class="recommendation-banner banner-success"> <!-- Changed from ER recommendation -->
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Delaronde Lake.</p>
+                        </div>
+                    </div>
+                    <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse <!-- Changed from Get CabinPulseER -->
+                    </a>
                 </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Dore Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Dore Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-                    <div class="coverage-message success">
-                        <p>CabinPulse should work at ALL cabins at Dore Lake.</p>
+                     <div class="recommendation-banner banner-success"> <!-- Changed from ER recommendation -->
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Dore Lake.</p>
+                        </div>
                     </div>
-        
+                    <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse <!-- Changed from Get CabinPulseER -->
+                    </a>
                 </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Duck Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Duck Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Duck Lake.</p>
-            </div>
-        
+                    <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Duck Lake.</p>
+                        </div>
+                    </div>
+                    <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
                 </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Echo Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">East Trout Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Echo Lake.</p>
-            </div>
-        
+                    <div class="recommendation-banner banner-error">
+                        <div class="recommendation-content">
+                            <i class="fas fa-times-circle"></i>
+                            <p>Unfortunately, <b>CabinPulse</b> does not have reliable coverage at East Trout Lake.</p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Emma Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Echo Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Emma Lake.</p>
-            </div>
-        
+                    <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Echo Lake.</p>
+                        </div>
+                    </div>
+                    <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
                 </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Fishing Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Emma Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Fishing Lake.</p>
-            </div>
-        
+                    <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Emma Lake.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
+               </div>
+
+                <div class="lake-card">
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Fishing Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
+                    </div>
+                    <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Fishing Lake.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
+               </div>
+
+                <div class="lake-card">
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Good Spirit Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
+                    </div>
+                    <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Good Spirit Lake.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
+               </div>
+
+                <div class="lake-card">
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Greenwater Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
+                    </div>
+                    <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Greenwater Lake.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
+               </div>
+
+                <div class="lake-card">
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Grieg Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
+                    </div>
+                    <div class="recommendation-banner banner-warning"> <!-- Based on previous ER status -->
+                        <div class="recommendation-content">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <p><b>CabinPulse</b> works at SOME cabins at Grieg Lake. Check the coverage map for your specific location.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse <!-- Changed from Get CabinPulseER -->
+                    </a>
+               </div>
+
+                <div class="lake-card">
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Iroquois Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
+                    </div>
+                     <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Iroquois Lake.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
+               </div>
+
+                <div class="lake-card">
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Jackfish Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
+                    </div>
+                    <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Jackfish Lake.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
+               </div>
+
+                <div class="lake-card">
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Katepwa Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
+                    </div>
+                     <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Katepwa Lake.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
+               </div>
+
+                <div class="lake-card">
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Kenosee Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
+                    </div>
+                    <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Kenosee Lake.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
+               </div>
+
+                <div class="lake-card">
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Kimball Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
+                    </div>
+                     <div class="recommendation-banner banner-success"> <!-- Based on previous ER status -->
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Kimball Lake.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse <!-- Changed from Get CabinPulseER -->
+                    </a>
+               </div>
+
+                <div class="lake-card">
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Kingsmere Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
+                    </div>
+                     <div class="recommendation-banner banner-error">
+                        <div class="recommendation-content">
+                            <i class="fas fa-times-circle"></i>
+                            <p>Unfortunately, <b>CabinPulse</b> does not have reliable coverage at Kingsmere Lake.</p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Good Spirit Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Kipabiskau Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Good Spirit Lake.</p>
-            </div>
-        
+                    <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Kipabiskau Lake.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
+               </div>
+
+                <div class="lake-card">
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Lac des Îles</h2>
+                        <div class="lake-region">Saskatchewan</div>
+                    </div>
+                     <div class="recommendation-banner banner-success"> <!-- Based on previous ER status -->
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Lac des Îles.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse <!-- Changed from Get CabinPulseER -->
+                    </a>
+               </div>
+
+                <div class="lake-card">
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Lac la Ronge</h2>
+                        <div class="lake-region">Saskatchewan</div>
+                    </div>
+                    <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Lac la Ronge.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
+               </div>
+
+                <div class="lake-card">
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Lake Diefenbaker</h2>
+                        <div class="lake-region">Saskatchewan</div>
+                    </div>
+                     <div class="recommendation-banner banner-success"> <!-- Based on previous ER status -->
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Lake Diefenbaker.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse <!-- Changed from Get CabinPulseER -->
+                    </a>
+               </div>
+
+                <div class="lake-card">
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Last Mountain Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
+                    </div>
+                     <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Last Mountain Lake.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
+               </div>
+
+                <div class="lake-card">
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Little Bear Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
+                    </div>
+                     <div class="recommendation-banner banner-error">
+                        <div class="recommendation-content">
+                            <i class="fas fa-times-circle"></i>
+                            <p>Unfortunately, <b>CabinPulse</b> does not have reliable coverage at Little Bear Lake.</p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Greenwater Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Loon Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Greenwater Lake.</p>
-            </div>
-        
-                </div>
+                    <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Loon Lake.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
+               </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Grieg Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-red">
-                        <i class="fas fa-times-circle"></i>
-                        No Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Madge Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message error">
-                <p>CabinPulse will NOT work at Grieg Lake due to limited cellular coverage.</p>
-            </div>
-        
-                </div>
+                     <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Madge Lake.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
+               </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Iroquois Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Manitou Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Iroquois Lake.</p>
-            </div>
-        
-                </div>
+                    <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Manitou Lake.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
+               </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Jackfish Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Marean Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Jackfish Lake.</p>
-            </div>
-        
-                </div>
+                    <div class="recommendation-banner banner-success"> <!-- Based on previous ER status -->
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Marean Lake.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse <!-- Changed from Get CabinPulseER -->
+                    </a>
+               </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Katepwa Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Meadow Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Katepwa Lake.</p>
-            </div>
-        
-                </div>
+                     <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Meadow Lake.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
+               </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Kenosee Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Meeting Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Kenosee Lake.</p>
-            </div>
-        
-                </div>
+                     <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Meeting Lake.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
+               </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Kingsmere Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-red">
-                        <i class="fas fa-times-circle"></i>
-                        No Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Memorial Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message error">
-                <p>CabinPulse will NOT work at Kingsmere Lake due to limited cellular coverage.</p>
-            </div>
-        
-                </div>
+                     <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Memorial Lake.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
+               </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Kipabiskau Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Ministikwan Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Kipabiskau Lake.</p>
-            </div>
-        
-                </div>
+                     <div class="recommendation-banner banner-warning"> <!-- Based on previous ER status -->
+                        <div class="recommendation-content">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <p><b>CabinPulse</b> works at SOME cabins at Ministikwan Lake. Check the coverage map for your specific location.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse <!-- Changed from Get CabinPulseER -->
+                    </a>
+               </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Lac la Ronge</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Mission Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Lac la Ronge.</p>
-            </div>
-        
-                </div>
+                     <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Mission Lake.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
+               </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Lake Diefenbaker</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-yellow">
-                        <i class="fas fa-exclamation-circle"></i>
-                        Partial Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Montreal Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message warning">
-                <p>CabinPulse works at SOME cabins at Lake Diefenbaker. Check the coverage map to see if your cabin is within the coverage area.</p>
-                <a href="https://business.bell.ca/shop/medium-large/our-networks/lte-m#coverageContainer" 
-                   class="coverage-map-button">
-                    <i class="fa-solid fa-map-location-dot"></i>
-                    Coverage Map
-                </a>
-            </div>
-        
-                </div>
+                     <div class="recommendation-banner banner-success"> <!-- Based on previous ER status -->
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Montreal Lake.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse <!-- Changed from Get CabinPulseER -->
+                    </a>
+               </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Last Mountain Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Murray Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Last Mountain Lake.</p>
-            </div>
-        
-                </div>
+                     <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Murray Lake.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
+               </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Little Bear Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-red">
-                        <i class="fas fa-times-circle"></i>
-                        No Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Pasqua Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message error">
-                <p>CabinPulse will NOT work at Little Bear Lake due to limited cellular coverage.</p>
-            </div>
-        
-                </div>
+                     <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Pasqua Lake.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
+               </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Loon Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Pike Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Loon Lake.</p>
-            </div>
-        
-                </div>
+                    <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Pike Lake.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
+               </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Madge Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Redberry Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Madge Lake.</p>
-            </div>
-        
-                </div>
+                    <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Redberry Lake.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
+               </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Manitou Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Round Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Manitou Lake.</p>
-            </div>
-        
-                </div>
+                    <div class="recommendation-banner banner-success"> <!-- Based on previous ER status -->
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Round Lake.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse <!-- Changed from Get CabinPulseER -->
+                    </a>
+               </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Marean Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-yellow">
-                        <i class="fas fa-exclamation-circle"></i>
-                        Partial Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Shell Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message warning">
-                <p>CabinPulse works at SOME cabins at Marean Lake. Check the coverage map to see if your cabin is within the coverage area.</p>
-                <a href="https://business.bell.ca/shop/medium-large/our-networks/lte-m#coverageContainer" 
-                   class="coverage-map-button">
-                    <i class="fa-solid fa-map-location-dot"></i>
-                    Coverage Map
-                </a>
-            </div>
-        
-                </div>
+                     <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Shell Lake.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
+               </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Meadow Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Sled Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Meadow Lake.</p>
-            </div>
-        
-                </div>
+                     <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Sled Lake.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
+               </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Meeting Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Tobin Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Meeting Lake.</p>
-            </div>
-        
-                </div>
+                     <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Tobin Lake.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
+               </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Ministikwan Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-yellow">
-                        <i class="fas fa-exclamation-circle"></i>
-                        Partial Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Turtle Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message warning">
-                <p>CabinPulse works at SOME cabins at Ministikwan Lake. Check the coverage map to see if your cabin is within the coverage area.</p>
-                <a href="https://business.bell.ca/shop/medium-large/our-networks/lte-m#coverageContainer" 
-                   class="coverage-map-button">
-                    <i class="fa-solid fa-map-location-dot"></i>
-                    Coverage Map
-                </a>
-            </div>
-        
-                </div>
+                    <div class="recommendation-banner banner-success"> <!-- Based on previous ER status -->
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Turtle Lake.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse <!-- Changed from Get CabinPulseER -->
+                    </a>
+               </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Mission Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Wakaw Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Mission Lake.</p>
-            </div>
-        
-                </div>
+                    <div class="recommendation-banner banner-success"> <!-- Based on previous ER status -->
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Wakaw Lake.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse <!-- Changed from Get CabinPulseER -->
+                    </a>
+               </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Montreal Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-red">
-                        <i class="fas fa-times-circle"></i>
-                        No Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Waskesiu Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message error">
-                <p>CabinPulse will NOT work at Montreal Lake due to limited cellular coverage.</p>
-            </div>
-        
-                </div>
+                     <div class="recommendation-banner banner-success"> <!-- Based on previous ER status -->
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Waskesiu Lake.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse <!-- Changed from Get CabinPulseER -->
+                    </a>
+               </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Murray Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Weyakwin Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Murray Lake.</p>
-            </div>
-        
-                </div>
+                    <div class="recommendation-banner banner-success"> <!-- Based on previous ER status -->
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at Weyakwin Lake.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse <!-- Changed from Get CabinPulseER -->
+                    </a>
+               </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Pasqua Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">White Bear Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Pasqua Lake.</p>
-            </div>
-        
-                </div>
+                    <div class="recommendation-banner banner-success">
+                        <div class="recommendation-content">
+                            <i class="fas fa-check-circle"></i>
+                            <p><b>CabinPulse</b> will work at ALL cabins at White Bear Lake.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse
+                    </a>
+               </div>
 
                 <div class="lake-card">
-                    <h3 class="lake-name">Pike Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
+                    <div class="lake-header">
+                        <i class="fas fa-water lake-icon"></i>
+                        <h2 class="lake-name">Wollaston Lake</h2>
+                        <div class="lake-region">Saskatchewan</div>
                     </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Pike Lake.</p>
-            </div>
-        
-                </div>
+                    <div class="recommendation-banner banner-warning"> <!-- Based on previous ER status -->
+                        <div class="recommendation-content">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <p><b>CabinPulse</b> works at SOME cabins at Wollaston Lake. Check the coverage map for your specific location.</p>
+                        </div>
+                    </div>
+                     <a href="https://cabinpulse.com/purchase.html" class="lake-cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Get CabinPulse <!-- Changed from Get CabinPulseER -->
+                    </a>
+               </div>
 
-                <div class="lake-card">
-                    <h3 class="lake-name">Redberry Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
-                    </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Redberry Lake.</p>
-            </div>
-        
-                </div>
-
-                <div class="lake-card">
-                    <h3 class="lake-name">Round Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-yellow">
-                        <i class="fas fa-exclamation-circle"></i>
-                        Partial Coverage
-                    </div>
-                    
-            <div class="coverage-message warning">
-                <p>CabinPulse works at SOME cabins at Round Lake. Check the coverage map to see if your cabin is within the coverage area.</p>
-                <a href="https://business.bell.ca/shop/medium-large/our-networks/lte-m#coverageContainer" 
-                   class="coverage-map-button">
-                    <i class="fa-solid fa-map-location-dot"></i>
-                    Coverage Map
-                </a>
-            </div>
-        
-                </div>
-
-                <div class="lake-card">
-                    <h3 class="lake-name">Shell Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
-                    </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Shell Lake.</p>
-            </div>
-        
-                </div>
-
-                <div class="lake-card">
-                    <h3 class="lake-name">Sled Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
-                    </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Sled Lake.</p>
-            </div>
-        
-                </div>
-
-                <div class="lake-card">
-                    <h3 class="lake-name">Tobin Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
-                    </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at Tobin Lake.</p>
-            </div>
-        
-                </div>
-
-                <div class="lake-card">
-                    <h3 class="lake-name">Turtle Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-yellow">
-                        <i class="fas fa-exclamation-circle"></i>
-                        Partial Coverage
-                    </div>
-                    
-            <div class="coverage-message warning">
-                <p>CabinPulse works at SOME cabins at Turtle Lake. Check the coverage map to see if your cabin is within the coverage area.</p>
-                <a href="https://business.bell.ca/shop/medium-large/our-networks/lte-m#coverageContainer" 
-                   class="coverage-map-button">
-                    <i class="fa-solid fa-map-location-dot"></i>
-                    Coverage Map
-                </a>
-            </div>
-        
-                </div>
-
-                <div class="lake-card">
-                    <h3 class="lake-name">Wakaw Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-yellow">
-                        <i class="fas fa-exclamation-circle"></i>
-                        Partial Coverage
-                    </div>
-                    
-            <div class="coverage-message warning">
-                <p>CabinPulse works at SOME cabins at Wakaw Lake. Check the coverage map to see if your cabin is within the coverage area.</p>
-                <a href="https://business.bell.ca/shop/medium-large/our-networks/lte-m#coverageContainer" 
-                   class="coverage-map-button">
-                    <i class="fa-solid fa-map-location-dot"></i>
-                    Coverage Map
-                </a>
-            </div>
-        
-                </div>
-
-                <div class="lake-card">
-                    <h3 class="lake-name">Waskesiu Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-yellow">
-                        <i class="fas fa-exclamation-circle"></i>
-                        Partial Coverage
-                    </div>
-                    
-            <div class="coverage-message warning">
-                <p>CabinPulse works at SOME cabins at Waskesiu Lake. Check the coverage map to see if your cabin is within the coverage area.</p>
-                <a href="https://business.bell.ca/shop/medium-large/our-networks/lte-m#coverageContainer" 
-                   class="coverage-map-button">
-                    <i class="fa-solid fa-map-location-dot"></i>
-                    Coverage Map
-                </a>
-            </div>
-        
-                </div>
-
-                <div class="lake-card">
-                    <h3 class="lake-name">White Bear Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-green">
-                        <i class="fas fa-check-circle"></i>
-                        Full Coverage
-                    </div>
-                    
-            <div class="coverage-message success">
-                <p>CabinPulse should work at ALL cabins at White Bear Lake.</p>
-            </div>
-        
-                </div>
-
-                <div class="lake-card">
-                    <h3 class="lake-name">Wollaston Lake</h3>
-                    <div class="lake-region">Saskatchewan</div>
-                    <div class="coverage-status status-yellow">
-                        <i class="fas fa-exclamation-circle"></i>
-                        Partial Coverage
-                    </div>
-                    
-            <div class="coverage-message warning">
-                <p>CabinPulse works at SOME cabins at Wollaston Lake. Check the coverage map to see if your cabin is within the coverage area.</p>
-                <a href="https://business.bell.ca/shop/medium-large/our-networks/lte-m#coverageContainer" 
-                   class="coverage-map-button">
-                    <i class="fa-solid fa-map-location-dot"></i>
-                    Coverage Map
-                </a>
-            </div>
-        
-                </div>
-            </div>
+            </div><!-- End lake-grid -->
 
             <div class="no-results" id="noResults">
                 <i class="fas fa-search" style="font-size: 2rem; margin-bottom: 16px; color: var(--highlight-color);"></i>
@@ -1326,7 +1632,7 @@
 
             <div class="guarantee-banner">
                 <i class="fas fa-question-circle"></i>
-                <p>Don't see your lake listed? Contact us at support@cabinpulse.com and we'll help verify coverage for your specific location.</p>
+                <p>Don't see your lake listed? Contact us at support@cabinpulse.com or on live chat and we'll help verify coverage for your specific location.</p>
             </div>
         </div>
     </section>
@@ -1334,13 +1640,13 @@
         <div class="container">
             <div class="info-card">
                 <h3>About CabinPulse</h3>
-                <p>CabinPulse is a revolutionary cellular-based monitoring system designed specifically for cabins and vacation properties. Using advanced LTE-M technology, CabinPulse monitors your cabin's temperature, humidity, power status, and air quality - all without requiring WiFi or internet connection.</p>
-                
+                <p>CabinPulse is a revolutionary cellular-based monitoring system designed specifically for cabins and vacation properties. Using the cellular network for connectivity, CabinPulse monitors your cabin's temperature, humidity, power status, and air quality - all without requiring WiFi.</p>
+
                 <h3 style="margin-top: 24px;">How It Works</h3>
                 <ul>
                     <li>
                         <i class="fas fa-signal"></i>
-                        <span>Uses the LTE-M cellular network to transmit data from your cabin</span>
+                        <span>Uses <i>LTE with 3G fallback</i> to transmit data from your cabin</span>
                     </li>
                     <li>
                         <i class="fas fa-plug"></i>
@@ -1352,17 +1658,17 @@
                     </li>
                     <li>
                         <i class="fas fa-bell"></i>
-                        <span>Receive alerts for temperature drops, power outages, or other issues</span>
+                        <span>Receive instant alerts for temperature drops, power outages, or other issues</span>
                     </li>
                 </ul>
             </div>
 
             <div class="info-card">
                 <h3>Coverage in Saskatchewan</h3>
-                <p>CabinPulse operates on the LTE-M network, which provides coverage to many areas across Saskatchewan. Unfortunately, coverage is more limited in Saskatchewan compared to many other parts of Canada and the United States. Many cell towers in Saskatchewan have not been upgraded to support LTE-M, meaning that while there may be cell service, devices like CabinPulse that rely on the LTE-M network may not work everywhere. Coverage can vary depending on your specific location, especially in remote areas.</p>
-                
+                <p>CabinPulse operates on the robust LTE network with 3G fallback, which provides broad coverage across Saskatchewan, including many remote lake areas. This network ensures reliable connectivity for your cabin monitoring needs.</p>
+                <!-- Removed paragraph about LTE-M limitations and the two device types -->
                 <div class="coverage-note">
-                    <p><strong>Note:</strong> If your lake shows partial coverage, we strongly recommend checking the detailed coverage map linked above for your specific location. Coverage can vary significantly even within the same lake area.</p>
+                    <p><strong>Note:</strong> While coverage is generally widespread, if your lake shows partial coverage ("Works at SOME cabins"), we strongly recommend checking the detailed coverage map linked above for your specific cabin location. Coverage can vary based on local terrain and tower proximity.</p>
                 </div>
             </div>
 
@@ -1372,56 +1678,58 @@
             </div>
         </div>
     </section>
-        
-            <footer>
-                <div class="container">
-                    <div class="footer-content">
-                        <img src="cpicon.png" alt="CabinPulse Logo">
-                        <p>CabinPulse &copy; 2024 Toccata, Inc. All rights reserved.</p>
-                    </div>
-                </div>
-            </footer>
-        
-            <script type="application/ld+json">
-            {
-                "@context": "http://schema.org",
-                "@type": "WebPage",
-                "name": "CabinPulse Coverage in Saskatchewan",
-                "description": "Check if CabinPulse's cellular cabin monitoring system works at your Saskatchewan lake. View coverage status for popular Saskatchewan lakes.",
-                "provider": {
-                    "@type": "Organization",
-                    "name": "CabinPulse",
-                    "url": "https://cabinpulse.com"
-                }
-            }
-            </script>
-            <script>
-                // Search functionality
-                document.addEventListener('DOMContentLoaded', function() {
-                    const searchBox = document.getElementById('lakeSearch');
-                    const lakeGrid = document.getElementById('lakeGrid');
-                    const noResults = document.getElementById('noResults');
-                    const lakeCards = lakeGrid.getElementsByClassName('lake-card');
-        
-                    searchBox.addEventListener('input', function() {
-                        const searchTerm = this.value.toLowerCase().trim();
-                        let hasResults = false;
-        
-                        Array.from(lakeCards).forEach(card => {
-                            const lakeName = card.querySelector('.lake-name').textContent.toLowerCase();
-                            const region = card.querySelector('.lake-region').textContent.toLowerCase();
-                            
-                            if (lakeName.includes(searchTerm) || region.includes(searchTerm)) {
-                                card.style.display = '';
-                                hasResults = true;
-                            } else {
-                                card.style.display = 'none';
-                            }
-                        });
-        
-                        noResults.classList.toggle('visible', !hasResults);
-                    });
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <img src="cpicon.png" alt="CabinPulse Logo">
+                <p>CabinPulse © 2025 Toccata, Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "WebPage",
+        "name": "CabinPulse Coverage in Saskatchewan",
+        "description": "Check if CabinPulse's cellular cabin monitoring system works at your Saskatchewan lake using the cellular network. View coverage status for popular Saskatchewan lakes.",
+        "provider": {
+            "@type": "Organization",
+            "name": "CabinPulse",
+            "url": "https://cabinpulse.com"
+        }
+    }
+    </script>
+    <script>
+        // Search functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchBox = document.getElementById('lakeSearch');
+            const lakeGrid = document.getElementById('lakeGrid');
+            const noResults = document.getElementById('noResults');
+            const lakeCards = lakeGrid.getElementsByClassName('lake-card');
+
+            searchBox.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+                let hasResults = false;
+
+                Array.from(lakeCards).forEach(card => {
+                    const lakeName = card.querySelector('.lake-name').textContent.toLowerCase();
+                    const region = card.querySelector('.lake-region').textContent.toLowerCase();
+
+                    if (lakeName.includes(searchTerm) || region.includes(searchTerm)) {
+                        card.style.display = ''; // Show card using default grid display
+                        hasResults = true;
+                    } else {
+                        card.style.display = 'none'; // Hide card
+                    }
                 });
-            </script>
-        </body>
-        </html>
+
+                noResults.classList.toggle('visible', !hasResults);
+            });
+        });
+
+        // Removed toggleDetails function as it's no longer needed
+    </script>
+</body>
+</html>
