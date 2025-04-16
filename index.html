@@ -2371,6 +2371,33 @@ footer {
         grid-template-columns: 1fr;
       }
     }
+
+    .verified-badge {
+      display: inline-flex;
+      align-items: center;
+      background-color: rgba(0, 183, 106, 0.15);
+      color: #00b76a;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      margin-left: 10px;
+      position: relative;
+      top: -1px;
+    }
+    
+    .verified-badge i {
+      margin-right: 5px;
+      font-size: 0.9rem;
+    }
+    
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+      .verified-badge {
+        padding: 3px 8px;
+        font-size: 0.7rem;
+      }
+    }
     </style>
   <!-- Meta Pixel Code -->
   <script>
@@ -2947,28 +2974,43 @@ footer {
         <i class="fas fa-star" style="font-size: 4.5rem; color: var(--highlight-color);"></i>
       </div>
       <h2 class="section-title">What Our Customers Say</h2>
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <div class="star-rating">
+      
+      <!-- TrustPilot Trust Signal -->
+      <div style="text-align: center; margin-bottom: 40px;">
+        <div style="display: inline-flex; align-items: center; background-color: rgba(255, 255, 255, 0.1); padding: 8px 16px; border-radius: 8px;">
+          <div style="display: flex; color: gold; margin-right: 10px;">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
           </div>
-          <div class="testimonial-content">
-            Cabin Pulse is the exact solution we were looking for. Without the need for an internet connection, we can easily track potential problems at our cabin (heat failure, pipe leaks, cold air rapidly entering through a broken window/door, etc). The app is extremely simple to navigate. I love the air quality measure as well, and am considering a second unit for our home just to have a clear sense of where we need to adjust to get a healthier home. We are thrilled to have an effective and affordable solution to monitoring our place year round, and even more excited that it's Saskatchewan made!!
+          <span style="color: white; font-weight: 500;"> <span style="color: var(--highlight-color); font-weight: 600;">from 12 verified reviews</span></span>
+        </div>
+      </div>
+
+      <div style="margin-top: 60px; text-align: center; margin-bottom: 2rem;">
+        <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin: 0 auto; max-width: 1100px;">
+          <div style="background-color: var(--accent-color); border-radius: 12px; width: 200px; height: 200px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease;">
+            <img src="1.png" alt="CabinPulse Customer Installation 1" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
-          <div class="testimonial-author">
-            <div class="author-avatar">
-              <i class="fas fa-user"></i>
-            </div>
-            <div class="author-info">
-              <h4>Cabin Owner</h4>
-              <p>Wakaw Lake, SK</p>
-            </div>
+          <div style="background-color: var(--accent-color); border-radius: 12px; width: 200px; height: 200px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease;">
+            <img src="2.png" alt="CabinPulse Customer Installation 2" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="background-color: var(--accent-color); border-radius: 12px; width: 200px; height: 200px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease;">
+            <img src="3.png" alt="CabinPulse Customer Installation 3" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="background-color: var(--accent-color); border-radius: 12px; width: 200px; height: 200px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease;">
+            <img src="4.png" alt="CabinPulse Customer Installation 4" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="background-color: var(--accent-color); border-radius: 12px; width: 200px; height: 200px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease;">
+            <img src="5.png" alt="CabinPulse Customer Installation 5" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
         </div>
+      </div>
+      
+      <div class="testimonials-grid">
+        
         <div class="testimonial-card">
           <div class="star-rating">
             <i class="fas fa-star"></i>
@@ -2978,7 +3020,7 @@ footer {
             <i class="fas fa-star-half-alt"></i>
           </div>
           <div class="testimonial-content">
-            After years of worrying about frozen pipes every winter, CabinPulse has been a game-changer for us. The cellular connection works perfectly where our cabin is and the alerts are very reliable. It's a no brainer and has already paid for itself in prevented damage. It was very easy to set up - just plug it in!
+            After years of worrying about frozen pipes every winter, [CabinPulse] has been a game-changer for us. The connection works perfectly where our cabin is and the alerts are very reliable and instant! It's a no brainer and I tell everyone I know with a cabin about it and show them the app!
           </div>
           <div class="testimonial-author">
             <div class="author-avatar">
@@ -2986,7 +3028,140 @@ footer {
             </div>
             <div class="author-info">
               <h4>Cabin Owner</h4>
-              <p>Emma Lake, SK</p>
+              <p>Emma Lake, SK
+                <span class="verified-badge">
+                  <i class="fas fa-check-circle"></i>Verified Review
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="star-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <div class="testimonial-content">
+            Got a power outage alert and sure enough our clocks were reset today. The peace of mind from knowing exactly what's happening at our property is worth every penny. The only bad is that whatever plastic the case is made of really attracts fingerprints which don't come off easily.
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="author-info">
+              <h4>Cabin Owner</h4>
+              <p>Candle Lake, SK
+                <span class="verified-badge">
+                  <i class="fas fa-check-circle"></i>Verified Review
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="star-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="testimonial-content">
+            Setup was very easy. I appreciate the instant alerts and extra long power cord. Using for a vacant property and saves me a lot of time and worry.
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="author-info">
+              <h4>Property Owner</h4>
+              <p>Moose Jaw, SK
+                <span class="verified-badge">
+                  <i class="fas fa-check-circle"></i>Verified Review
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="star-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="testimonial-content">
+            CabinPulse is the exact solution we were looking for. Without the need for an internet connection, we can easily track potential problems at our cabin. The app is extremely simple to navigate. I love the air quality measure as well. We are thrilled to have an effective and affordable solution to monitoring our place year round!
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="author-info">
+              <h4>Cabin Owner</h4>
+              <p>Wakaw Lake, SK
+                <span class="verified-badge">
+                  <i class="fas fa-check-circle"></i>Verified Review
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="star-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <div class="testimonial-content">
+            The Fleet View feature is very very useful for monitoring all of our buildings quickly. Customer service has been excellent when I needed help setting up alerts and being able to send to over 10 phone numbers fits our needs perfectly.
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="author-info">
+              <h4>Facility Manager</h4>
+              <p>Calgary, AB
+                <span class="verified-badge">
+                  <i class="fas fa-check-circle"></i>Verified Review
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="star-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="testimonial-content">
+            We have had this service for 3 months now and it has worked excellent even though we  typically have poor cell service in the area and a metal roof on our cabin. Set up  process is seemless and app is user friendly.  Highly recommend.
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="author-info">
+              <h4>Cabin Owner</h4>
+              <p>Wakaw Lake, SK
+                <span class="verified-badge">
+                  <i class="fas fa-check-circle"></i>Verified Review
+                </span></p>
             </div>
           </div>
         </div>
