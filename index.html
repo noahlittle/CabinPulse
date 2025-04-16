@@ -848,9 +848,10 @@ nav {
   margin-top: 32px;
 }
 .author-avatar {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
+  width: 60px !important;
+  height: 60px !important;
+  flex-shrink: 0;
+  border-radius: 50% !important;
   background-color: var(--highlight-color);
   display: flex;
   align-items: center;
@@ -870,6 +871,22 @@ nav {
 @media (max-width: 768px) {
   .testimonials-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .cp-feature-grid {
+    display: flex !important;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    gap: 16px;
+    overflow-x: auto;    /* if they overflow, allow a little scroll */
+    padding-bottom: 8px;  /* room for scrollbar */
+  }
+  .cp-feature-grid-item {
+    flex: 0 0 auto;      /* don’t let each card grow or shrink */
+    width: auto;         /* let content size itself */
+    text-align: center;  /* keep icon + text centered */
   }
 }
 
@@ -2389,14 +2406,41 @@ footer {
       margin-right: 5px;
       font-size: 0.9rem;
     }
+
+    @media (max-width: 1000px) {
+      .verified-badge {
+        margin-left: 0px;
+        margin-top: 0.25rem;
+      }
+    }
     
     /* Mobile adjustments */
     @media (max-width: 768px) {
       .verified-badge {
         padding: 3px 8px;
         font-size: 0.7rem;
+        margin-left: 0px;
+        margin-top: 1rem;
       }
     }
+    @media (max-width: 768px) {
+  /* keep the avatar from shrinking/distorting */
+  .testimonial-author .author-avatar {
+    width: 60px !important;
+    height: 60px !important;
+    flex-shrink: 0;               /* don’t let flexbox squash it */
+    border-radius: 50% !important;/* force circle */
+    overflow: hidden;             /* crop any overflow */
+  }
+  /* if you ever swap in a real <img> for the icon, make it fill & crop */
+  .testimonial-author .author-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+  }
+}
 
   
 /* Feature CTA Section styles */
@@ -2757,6 +2801,97 @@ footer {
       display: block;
     }
   }
+
+  @media (max-width: 768px) {
+  .testimonials-grid {
+    display: flex;                     /* switch from grid to flex */
+    flex-wrap: nowrap;                 /* no wrapping */
+    overflow-x: auto;                  /* enable horizontal scroll */
+    scroll-snap-type: x mandatory;     /* snap scroll positions */
+    -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+    gap: 16px;                         /* spacing between cards */
+    padding-bottom: 10px;              /* give room for scrollbar */
+  }
+  .testimonials-grid .testimonial-card {
+    flex: 0 0 80%;                     /* each card takes 80% of viewport */
+    scroll-snap-align: center;         /* snap each card to center */
+    margin: 0;                         /* remove grid margins */
+  }
+  /* optional: style the scrollbar to match your theme */
+  .testimonials-grid::-webkit-scrollbar {
+    height: 6px;
+  }
+  .testimonials-grid::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+  }
+  .testimonials-grid::-webkit-scrollbar-thumb {
+    background: var(--highlight-color);
+    border-radius: 10px;
+  }
+  /* show a swipe hint below */
+  .testimonials .scroll-indicator {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+    color: var(--highlight-color);
+    font-size: 0.9rem;
+    animation: pulse 1.5s infinite;
+  }
+}
+
+/* 1. Center the first/last snap cards */
+@media (max-width: 768px) {
+  .testimonials-grid {
+    /* padding = (100% – card‑width)/2 -> (100% – 80%)/2 = 10% */
+    padding: 0 10%;
+  }
+}
+
+/* 2. Make sure the author name never wraps */
+.testimonial-author h4 {
+  white-space: nowrap;
+}
+
+/* 3. Force the avatar background + icon colors */
+.author-avatar {
+  background-color: var(--highlight-color) !important;
+}
+.author-avatar i {
+  color: var(--primary-color) !important;
+}
+
+@media (max-width: 768px) {
+  /* Force a 3‑column layout without overflow */
+  .cp-feature-grid {
+    display: flex !important;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    padding: 0;
+    gap: 8px;           /* shrink gap just a touch */
+    overflow: visible;  /* kill any scrollbars */
+  }
+
+  /* Each item takes exactly a third of the available width */
+  .cp-feature-grid-item {
+    flex: 0 0 calc(33.333% - 8px);
+    padding: 8px 4px;   /* trim padding to make room */
+  }
+
+  /* Shrink the icon circles & text so everything fits */
+  .cp-feature-icon-large {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 6px;
+  }
+  .cp-feature-icon-large i {
+    font-size: 1.4rem;
+  }
+  .cp-feature-grid-item span {
+    font-size: 0.85rem;
+    line-height: 1.2;
+  }
+}
     </style>
   <!-- Meta Pixel Code -->
   <script>
@@ -3057,7 +3192,6 @@ footer {
           </div>
         </div>
         <div class="scroll-indicator">
-          <i class="fas fa-arrow-left"></i> Swipe to see more <i class="fas fa-arrow-right"></i>
         </div>
       </div>
       
@@ -3260,19 +3394,19 @@ footer {
                 <div class="cp-feature-icon-large">
                   <i class="fas fa-bell"></i>
                 </div>
-                <span>Instant Text & Email Alerts</span>
+                <span>Instant Alerts</span>
               </div>
               <div class="cp-feature-grid-item">
                 <div class="cp-feature-icon-large">
                   <i class="fas fa-heartbeat"></i>
                 </div>
-                <span>Device Health Monitoring</span>
+                <span>Device Monitoring</span>
               </div>
               <div class="cp-feature-grid-item">
                 <div class="cp-feature-icon-large">
                   <i class="fa-brands fa-canadian-maple-leaf"></i>
                 </div>
-                <span>Assembled in Canada</span>
+                <span>Made in Canada</span>
               </div>
             </div>
             
@@ -3294,7 +3428,7 @@ footer {
             <span>30 Day Risk-Free Guarantee</span>
           </div>
           
-          <a href="https://cabinpulse.com/purchase.html?plan=1" class="cta-button pricingbutton">Get Cabinpulse →</a>
+          <a href="https://cabinpulse.com/purchase.html?plan=1" class="cta-button pricingbutton">Get CabinPulse →</a>
         </div>
         
         <!-- 3-Year Plan Card -->
@@ -3329,19 +3463,19 @@ footer {
                 <div class="cp-feature-icon-large">
                   <i class="fas fa-bell"></i>
                 </div>
-                <span>Instant Text & Email Alerts</span>
+                <span>Instant Alerts</span>
               </div>
               <div class="cp-feature-grid-item">
                 <div class="cp-feature-icon-large">
                   <i class="fas fa-heartbeat"></i>
                 </div>
-                <span>Device Health Monitoring</span>
+                <span>Device Monitoring</span>
               </div>
               <div class="cp-feature-grid-item">
                 <div class="cp-feature-icon-large">
                   <i class="fa-brands fa-canadian-maple-leaf"></i>
                 </div>
-                <span>Assembled in Canada</span>
+                <span>Made in Canada</span>
               </div>
             </div>
             <div class="cp-connectivity-features">
