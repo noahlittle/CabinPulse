@@ -2668,6 +2668,95 @@ footer {
     transform: rotate(90deg);
   }
 }
+  /* Photo Gallery Styles */
+  .photo-gallery-container {
+    margin: 60px 0 2rem;
+    text-align: center;
+  }
+  
+  .photo-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 0 auto;
+    max-width: 1100px;
+    flex-wrap: wrap;
+  }
+  
+  .photo-item {
+    background-color: var(--accent-color);
+    border-radius: 12px;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+  
+  .photo-item:hover {
+    transform: translateY(-5px);
+  }
+  
+  .photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Scroll indicator for mobile */
+  .scroll-indicator {
+    display: none;
+    text-align: center;
+    color: var(--highlight-color);
+    margin-top: 10px;
+    font-size: 0.9rem;
+    animation: pulse 1.5s infinite;
+  }
+  
+  @keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+  }
+  
+  /* Mobile styles - convert to horizontal scrolling */
+  @media (max-width: 768px) {
+    .photo-gallery {
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      padding: 10px 0 20px; /* Add padding for scrollbar */
+    }
+    
+    .photo-gallery::-webkit-scrollbar {
+      height: 6px;
+    }
+    
+    .photo-gallery::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+    }
+    
+    .photo-gallery::-webkit-scrollbar-thumb {
+      background: var(--highlight-color);
+      border-radius: 10px;
+    }
+    
+    .photo-item {
+      width: 180px; /* Slightly smaller on mobile */
+      height: 180px;
+      scroll-snap-align: center;
+    }
+    
+    .scroll-indicator {
+      display: block;
+    }
+  }
     </style>
   <!-- Meta Pixel Code -->
   <script>
@@ -2949,23 +3038,26 @@ footer {
         </div>
       </div>
 
-      <div style="margin-top: 60px; text-align: center; margin-bottom: 2rem;">
-        <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin: 0 auto; max-width: 1100px;">
-          <div style="background-color: var(--accent-color); border-radius: 12px; width: 200px; height: 200px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease;">
-            <img src="1.png" alt="CabinPulse Customer Installation 1" style="width: 100%; height: 100%; object-fit: cover;">
+      <div class="photo-gallery-container">
+        <div class="photo-gallery">
+          <div class="photo-item">
+            <img src="1.png" alt="CabinPulse Customer Installation 1">
           </div>
-          <div style="background-color: var(--accent-color); border-radius: 12px; width: 200px; height: 200px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease;">
-            <img src="2.png" alt="CabinPulse Customer Installation 2" style="width: 100%; height: 100%; object-fit: cover;">
+          <div class="photo-item">
+            <img src="2.png" alt="CabinPulse Customer Installation 2">
           </div>
-          <div style="background-color: var(--accent-color); border-radius: 12px; width: 200px; height: 200px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease;">
-            <img src="3.png" alt="CabinPulse Customer Installation 3" style="width: 100%; height: 100%; object-fit: cover;">
+          <div class="photo-item">
+            <img src="3.png" alt="CabinPulse Customer Installation 3">
           </div>
-          <div style="background-color: var(--accent-color); border-radius: 12px; width: 200px; height: 200px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease;">
-            <img src="4.png" alt="CabinPulse Customer Installation 4" style="width: 100%; height: 100%; object-fit: cover;">
+          <div class="photo-item">
+            <img src="4.png" alt="CabinPulse Customer Installation 4">
           </div>
-          <div style="background-color: var(--accent-color); border-radius: 12px; width: 200px; height: 200px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease;">
-            <img src="5.png" alt="CabinPulse Customer Installation 5" style="width: 100%; height: 100%; object-fit: cover;">
+          <div class="photo-item">
+            <img src="5.png" alt="CabinPulse Customer Installation 5">
           </div>
+        </div>
+        <div class="scroll-indicator">
+          <i class="fas fa-arrow-left"></i> Swipe to see more <i class="fas fa-arrow-right"></i>
         </div>
       </div>
       
