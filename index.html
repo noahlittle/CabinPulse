@@ -2398,6 +2398,277 @@ footer {
         font-size: 0.7rem;
       }
     }
+
+  
+/* Feature CTA Section styles */
+.feature-cta {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+  margin-top: -50px;
+  z-index: 1;
+}
+
+.feature-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('bg.png') no-repeat center center;
+  background-size: cover;
+  opacity: 0.05;
+  z-index: -1;
+}
+
+.feature-cta__content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+.feature-cta__icon-container {
+  width: 120px;
+  height: 120px;
+  background: rgba(233, 69, 96, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 30px;
+  position: relative;
+  animation: pulse 3s infinite;
+}
+
+.feature-cta__icon-container::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 50%;
+  border: 2px solid rgba(233, 69, 96, 0.3);
+  animation: pulse 3s infinite 0.5s;
+}
+
+.feature-cta__icon {
+  font-size: 4rem;
+  color: var(--highlight-color);
+}
+
+.feature-cta__title {
+  font-size: 2.5rem;
+  color: var(--cta-color);
+  margin-bottom: 20px;
+}
+
+.feature-cta__description {
+  font-size: 1.4rem;
+  color: var(--text-color);
+  margin-bottom: 40px;
+  line-height: 1.6;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.feature-cta__buttons {
+  margin-bottom: 40px;
+}
+
+.feature-cta__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background-color: var(--highlight-color);
+  color: white;
+  padding: 18px 40px;
+  border-radius: 50px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(233, 69, 96, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-cta__button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(233, 69, 96, 0.5);
+  background-color: #ff5a7c;
+}
+
+.feature-cta__button::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(45deg);
+  z-index: 0;
+  transition: all 0.6s ease;
+}
+
+.feature-cta__button:hover::after {
+  transform: rotate(45deg) translate(10%, 10%);
+}
+
+.feature-cta__button span,
+.feature-cta__button i {
+  position: relative;
+  z-index: 1;
+}
+
+.feature-cta__benefits {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.feature-cta__benefit {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.1rem;
+  color: var(--text-color);
+}
+
+.feature-cta__benefit i {
+  color: var(--highlight-color);
+  font-size: 1.2rem;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .feature-cta {
+    padding: 80px 0;
+    margin-top: -30px;
+  }
+  
+  .feature-cta__icon-container {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 25px;
+  }
+  
+  .feature-cta__icon {
+    font-size: 3rem;
+  }
+  
+  .feature-cta__title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .feature-cta__description {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+  
+  .feature-cta__button {
+    width: 100%;
+    max-width: 300px;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+  }
+  
+  .feature-cta__benefits {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+}
+
+/* If Font Awesome doesn't have fa-shield-heart, use this fallback */
+@supports not (content: '\f82b') {
+  .feature-cta__icon.fas.fa-shield-heart::before {
+    content: '\f505'; /* fa-shield-alt */
+  }
+}
+
+.hero-mobile-cta {
+  display: none; /* Hidden by default */
+  margin-top: 2rem; /* Add some space */
+}
+@media (max-width: 768px) {
+  .hero-mobile-cta {
+    display: inline-block; /* Show on mobile */
+    width: 100%; /* Make it full width for easier tapping */
+    max-width: 300px; /* Optional: prevent it being excessively wide */
+    text-align: center;
+  }
+  /* Adjust hero content text centering if needed */
+  .hero-content {
+     text-align: center; /* Center align text on mobile */
+  }
+   /* Center badge containers */
+   .badges-top, .badge-container {
+     justify-content: center;
+   }
+}
+/* Default styling for the details block */
+#footnotes {
+  margin-top: 48px;
+  border-radius: 24px;
+  background-color: var(--accent-color);
+  padding: 24px;
+}
+/* Hide the toggle on desktop; keep it open */
+@media (min-width: 769px) {
+  #footnotes summary {
+    display: none;
+  }
+  #footnotes[open] .footnotes-content {
+    display: block;
+  }
+}
+
+/* On mobile, collapse by default and show the summary toggle */
+@media (max-width: 768px) {
+  /* Hide the content pane until opened */
+  #footnotes:not([open]) .footnotes-content {
+    display: none;
+  }
+  /* Style the summary as a button */
+  #footnotes summary {
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    list-style: none;           /* remove default arrow in some browsers */
+    outline: none;
+  }
+  #footnotes summary::-webkit-details-marker {
+    display: none;             /* hide default disclosure triangle */
+  }
+  /* Optional: add a custom arrow after the text */
+  #footnotes summary::after {
+    content: '▸';
+    float: right;
+    transition: transform 0.2s ease;
+  }
+  /* Rotate arrow when open */
+  #footnotes[open] summary::after {
+    transform: rotate(90deg);
+  }
+}
     </style>
   <!-- Meta Pixel Code -->
   <script>
@@ -2506,6 +2777,7 @@ footer {
           <span class="badge"><i class="fas fa-smog icon-text"></i>Air Quality</span>
           <span class="badge"><i class="fas fa-volume-high icon-text"></i>Alarm Detection<sup>1</sup></span>
         </div>
+        <a href="https://cabinpulse.com/purchase.html?plan=3" class="feature-cta__button hero-mobile-cta">Get CabinPulse</a>
       </div>
       <div class="hero-image">
         <img src="front.png" alt="Product Photo">
@@ -2635,16 +2907,388 @@ footer {
         </div>
       </div>
       
-      <!-- Note about Acoustic Sensor -->
-      <div style="background-color: var(--accent-color); border-radius: 24px; padding: 24px; margin-top: 48px; text-align: center;">
-        <p style="font-size: 0.7rem; line-height: 1.5; text-align: left;"><sup class="superscript">1</sup> Works when placed in the immediate vicinity of a T3 smoke detector when alarm sounds in a quiet environment for longer than 15 seconds. Modern smoke detectors sold in the United States and Canada emit a T3 pattern. CabinPulse will not detect older, continuous style alarms.</p>
-        <p style="font-size: 0.7rem; line-height: 1.5; text-align: left;"><sup class="superscript">2</sup> An onboard MOX sensor is used to monitor different gases and volatile organic compounds (VOCs) in the air. CabinPulse uses a proprietary algorithm from Bosch to determine a measure of Indoor Air Quality (IAQ).</p>
-        <p style="font-size: 0.7rem; line-height: 1.5; text-align: left;"><sup class="superscript">3</sup> CabinPulse is not a replacement for smoke/fire monitoring and should not be relied upon for life safety. Alarm Detection is for informational purposes only. Your privacy is protected; CabinPulse devices do not have the ability to store or transmit any audio data. Alarm Detection recognizes alarms based on real-time analysis of standard T3 alarm patterns on-device.</p>
-        <p style="font-size: 0.7rem; line-height: 1.5; text-align: left;"><sup class="superscript">4</sup> CabinPulse has a built-in SIM card that supports connectivity across North America. All connectivity is included in your CabinPulse subscription and no additional cellular data plan is required.</p>
-      </div>
+      <details id="footnotes" open>
+        <summary>Footnotes</summary>
+        <div class="footnotes-content">
+          <p style="font-size: 0.7rem; line-height: 1.5; text-align: left;">
+            <sup class="superscript">1</sup> Works when placed in the immediate vicinity of a T3 smoke detector when alarm sounds in a quiet environment for longer than 15 seconds. Modern smoke detectors sold in the United States and Canada emit a T3 pattern. CabinPulse will not detect older, continuous style alarms.
+          </p>
+          <p style="font-size: 0.7rem; line-height: 1.5; text-align: left;">
+            <sup class="superscript">2</sup> An onboard MOX sensor is used to monitor different gases and volatile organic compounds (VOCs) in the air. CabinPulse uses a proprietary algorithm from Bosch to determine a measure of Indoor Air Quality (IAQ).
+          </p>
+          <p style="font-size: 0.7rem; line-height: 1.5; text-align: left;">
+            <sup class="superscript">3</sup> CabinPulse is not a replacement for smoke/fire monitoring and should not be relied upon for life safety. Alarm Detection is for informational purposes only. Your privacy is protected; CabinPulse devices do not have the ability to store or transmit any audio data. Alarm Detection recognizes alarms based on real-time analysis of standard T3 alarm patterns on-device.
+          </p>
+          <p style="font-size: 0.7rem; line-height: 1.5; text-align: left;">
+            <sup class="superscript">4</sup> CabinPulse has a built-in SIM card that supports connectivity across North America. All connectivity is included in your CabinPulse subscription and no additional cellular data plan is required.
+          </p>
+        </div>
+      </details>
+      
+      
     </div>
   </section>
   
+
+  <section class="testimonials">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 24px;">
+        <i class="fas fa-star" style="font-size: 4.5rem; color: var(--highlight-color);"></i>
+      </div>
+      <h2 class="section-title">What Our Customers Say</h2>
+      
+      <!-- TrustPilot Trust Signal -->
+      <div style="text-align: center; margin-bottom: 40px;">
+        <div style="display: inline-flex; align-items: center; background-color: rgba(255, 255, 255, 0.1); padding: 8px 16px; border-radius: 8px;">
+          <div style="display: flex; color: gold; margin-right: 10px;">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <span style="color: white; font-weight: 500;"> <span style="color: var(--highlight-color); font-weight: 600;">from 12 verified reviews</span></span>
+        </div>
+      </div>
+
+      <div style="margin-top: 60px; text-align: center; margin-bottom: 2rem;">
+        <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin: 0 auto; max-width: 1100px;">
+          <div style="background-color: var(--accent-color); border-radius: 12px; width: 200px; height: 200px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease;">
+            <img src="1.png" alt="CabinPulse Customer Installation 1" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="background-color: var(--accent-color); border-radius: 12px; width: 200px; height: 200px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease;">
+            <img src="2.png" alt="CabinPulse Customer Installation 2" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="background-color: var(--accent-color); border-radius: 12px; width: 200px; height: 200px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease;">
+            <img src="3.png" alt="CabinPulse Customer Installation 3" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="background-color: var(--accent-color); border-radius: 12px; width: 200px; height: 200px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease;">
+            <img src="4.png" alt="CabinPulse Customer Installation 4" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="background-color: var(--accent-color); border-radius: 12px; width: 200px; height: 200px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease;">
+            <img src="5.png" alt="CabinPulse Customer Installation 5" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+        </div>
+      </div>
+      
+      <div class="testimonials-grid">
+        
+        <div class="testimonial-card">
+          <div class="star-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="testimonial-content">
+            After years of worrying about frozen pipes every winter, [CabinPulse] has been a game-changer for us. The connection works perfectly where our cabin is and the alerts are very reliable and instant! It's a no brainer and I tell everyone I know with a cabin about it and show them the app!
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="author-info">
+              <h4>Cabin Owner</h4>
+              <p>Emma Lake, SK
+                <span class="verified-badge">
+                  <i class="fas fa-check-circle"></i>Verified Review
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="star-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <div class="testimonial-content">
+            Got a power outage alert and sure enough our clocks were reset today. The peace of mind from knowing exactly what's happening at our property is worth every penny. The only bad is that whatever plastic the case is made of really attracts fingerprints which don't come off easily.
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="author-info">
+              <h4>Cabin Owner</h4>
+              <p>Candle Lake, SK
+                <span class="verified-badge">
+                  <i class="fas fa-check-circle"></i>Verified Review
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="star-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="testimonial-content">
+            Setup was very easy. I appreciate the instant alerts and extra long power cord. Using for a vacant property and saves me a lot of time and worry.
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="author-info">
+              <h4>Property Owner</h4>
+              <p>Moose Jaw, SK
+                <span class="verified-badge">
+                  <i class="fas fa-check-circle"></i>Verified Review
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="star-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="testimonial-content">
+            CabinPulse is the exact solution we were looking for. Without the need for an internet connection, we can easily track potential problems at our cabin. The app is extremely simple to navigate. I love the air quality measure as well. We are thrilled to have an effective and affordable solution to monitoring our place year round!
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="author-info">
+              <h4>Cabin Owner</h4>
+              <p>Wakaw Lake, SK
+                <span class="verified-badge">
+                  <i class="fas fa-check-circle"></i>Verified Review
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="star-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <div class="testimonial-content">
+            The Fleet View feature is very very useful for monitoring all of our buildings quickly. Customer service has been excellent when I needed help setting up alerts and being able to send to over 10 phone numbers fits our needs perfectly.
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="author-info">
+              <h4>Facility Manager</h4>
+              <p>Calgary, AB
+                <span class="verified-badge">
+                  <i class="fas fa-check-circle"></i>Verified Review
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="star-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="testimonial-content">
+            We have had this service for 3 months now and it has worked excellent even though we  typically have poor cell service in the area and a metal roof on our cabin. Set up  process is seemless and app is user friendly.  Highly recommend.
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="author-info">
+              <h4>Cabin Owner</h4>
+              <p>Wakaw Lake, SK
+                <span class="verified-badge">
+                  <i class="fas fa-check-circle"></i>Verified Review
+                </span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <section id="pricing" class="pricing">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 24px;">
+        <i class="fas fa-house-signal" style="font-size: 4.5rem; color: var(--highlight-color);"></i>
+      </div>
+      <h2 class="section-title">Get CabinPulse</h2>
+      
+      <div class="pricing-grid">
+        <!-- 1-Year Plan Card -->
+        <div class="pricing-card">
+          <h3>1-Year Plan</h3>
+          <img src="product.png" alt="CabinPulse Device" class="device-image">
+          <div class="price">$14<span class="period"> CAD/mo</span></div>
+          <div class="device-price">+ $199 CAD one-time device fee</div>
+          
+          <!-- Feature Categories -->
+          <div class="cp-feature-categories">
+            <!-- Core Monitoring -->
+            <div class="cp-feature-group">
+              <h4 class="cp-feature-group-title">Comprehensive Monitoring</h4>
+              <ul class="cp-feature-list">
+                <li><i class="fas fa-temperature-low"></i>Temperature</li>
+                <li><i class="fas fa-droplet"></i>Humidity</li>
+                <li><i class="fas fa-smog"></i>Air Quality</li>
+                <li><i class="fas fa-smog"></i>Environmental Pressure</li>
+                <li><i class="fas fa-plug"></i>Power Outages</li>
+                <li><i class="fas fa-volume-high"></i>Alarm Detection<sup>1</sup></li>
+              </ul>
+            </div>
+            
+            <!-- Additional Features - Grid Style -->
+            <h4 class="cp-feature-group-title standalone">Other Features</h4>
+            <div class="cp-feature-grid">
+              <div class="cp-feature-grid-item">
+                <div class="cp-feature-icon-large">
+                  <i class="fas fa-bell"></i>
+                </div>
+                <span>Instant Text & Email Alerts</span>
+              </div>
+              <div class="cp-feature-grid-item">
+                <div class="cp-feature-icon-large">
+                  <i class="fas fa-heartbeat"></i>
+                </div>
+                <span>Device Health Monitoring</span>
+              </div>
+              <div class="cp-feature-grid-item">
+                <div class="cp-feature-icon-large">
+                  <i class="fa-brands fa-canadian-maple-leaf"></i>
+                </div>
+                <span>Assembled in Canada</span>
+              </div>
+            </div>
+            
+            <div class="cp-connectivity-features">
+              <div class="cp-connectivity-feature">
+                <div class="cp-connectivity-icon">
+                  <i class="fas fa-tower-cell"></i>
+                </div>
+                <div class="cp-connectivity-text">
+                  <h5>Cellular Connectivity Included</h5>
+                  <p>Works anywhere with coverage in North America</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="cp-guarantee-banner">
+            <i class="fas fa-shield-alt"></i>
+            <span>30 Day Risk-Free Guarantee</span>
+          </div>
+          
+          <a href="https://cabinpulse.com/purchase.html?plan=1" class="cta-button pricingbutton">Get Cabinpulse →</a>
+        </div>
+        
+        <!-- 3-Year Plan Card -->
+        <div class="pricing-card highlighted">
+          <span class="best-value">BEST VALUE</span>
+          <h3>3-Year Plan</h3>
+          <img src="product.png" alt="CabinPulse Device" class="device-image">
+          <div class="price">$10<span class="period"> CAD/mo</span></div>
+          <div class="device-price">+ $199 CAD one-time device fee</div>
+          <br />
+          <span class="discount">Save 29% on subscription</span>
+          
+          <!-- Feature Categories -->
+          <div class="cp-feature-categories">
+            <!-- Core Monitoring -->
+            <div class="cp-feature-group">
+              <h4 class="cp-feature-group-title">Comprehensive Monitoring</h4>
+              <ul class="cp-feature-list">
+                <li><i class="fas fa-temperature-low"></i>Temperature</li>
+                <li><i class="fas fa-droplet"></i>Humidity</li>
+                <li><i class="fas fa-smog"></i>Air Quality</li>
+                <li><i class="fas fa-smog"></i>Environmental Pressure</li>
+                <li><i class="fas fa-plug"></i>Power Outages</li>
+                <li><i class="fas fa-volume-high"></i>Alarm Detection<sup>1</sup></li>
+              </ul>
+            </div>
+            
+            <!-- Additional Features - Grid Style -->
+            <h4 class="cp-feature-group-title standalone">Other Features</h4>
+            <div class="cp-feature-grid">
+              <div class="cp-feature-grid-item">
+                <div class="cp-feature-icon-large">
+                  <i class="fas fa-bell"></i>
+                </div>
+                <span>Instant Text & Email Alerts</span>
+              </div>
+              <div class="cp-feature-grid-item">
+                <div class="cp-feature-icon-large">
+                  <i class="fas fa-heartbeat"></i>
+                </div>
+                <span>Device Health Monitoring</span>
+              </div>
+              <div class="cp-feature-grid-item">
+                <div class="cp-feature-icon-large">
+                  <i class="fa-brands fa-canadian-maple-leaf"></i>
+                </div>
+                <span>Assembled in Canada</span>
+              </div>
+            </div>
+            <div class="cp-connectivity-features">
+              <div class="cp-connectivity-feature">
+                <div class="cp-connectivity-icon">
+                  <i class="fas fa-tower-cell"></i>
+                </div>
+                <div class="cp-connectivity-text">
+                  <h5>Cellular Connectivity Included</h5>
+                  <p>Works anywhere with coverage in North America</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="cp-guarantee-banner">
+            <i class="fas fa-shield-alt"></i>
+            <span>30 Day Risk-Free Guarantee</span>
+          </div>
+          
+          <a href="https://cabinpulse.com/purchase.html?plan=3" class="cta-button pricingbutton">Get CabinPulse →</a>
+        </div>
+      </div>
+      
+      <div class="trial-container">
+        <div class="trial-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h3>30 Day Risk-Free Guarantee</h3>
+        <p>If CabinPulse isn't a fit, you can return it for a full refund at any time up to 30 days after purchase.</p>
+      </div>
+    </div>
+  </section>
+
+  
+  
+
   <section class="supported-networks">
     <div class="container">
       <div class="fleet-view-icon">
@@ -2815,354 +3459,32 @@ footer {
     </div>
   </section>
 
-  <section id="pricing" class="pricing">
+  <section class="feature-cta">
     <div class="container">
-      <div style="text-align: center; margin-bottom: 24px;">
-        <i class="fas fa-house-signal" style="font-size: 4.5rem; color: var(--highlight-color);"></i>
-      </div>
-      <h2 class="section-title">Get CabinPulse</h2>
-      
-      <div class="pricing-grid">
-        <!-- 1-Year Plan Card -->
-        <div class="pricing-card">
-          <h3>1-Year Plan</h3>
-          <img src="product.png" alt="CabinPulse Device" class="device-image">
-          <div class="price">$14<span class="period"> CAD/mo</span></div>
-          <div class="device-price">+ $199 CAD one-time device fee</div>
-          
-          <!-- Feature Categories -->
-          <div class="cp-feature-categories">
-            <!-- Core Monitoring -->
-            <div class="cp-feature-group">
-              <h4 class="cp-feature-group-title">Comprehensive Monitoring</h4>
-              <ul class="cp-feature-list">
-                <li><i class="fas fa-temperature-low"></i>Temperature</li>
-                <li><i class="fas fa-droplet"></i>Humidity</li>
-                <li><i class="fas fa-smog"></i>Air Quality</li>
-                <li><i class="fas fa-smog"></i>Environmental Pressure</li>
-                <li><i class="fas fa-plug"></i>Power Outages</li>
-                <li><i class="fas fa-volume-high"></i>Alarm Detection<sup>1</sup></li>
-              </ul>
-            </div>
-            
-            <!-- Additional Features - Grid Style -->
-            <h4 class="cp-feature-group-title standalone">Other Features</h4>
-            <div class="cp-feature-grid">
-              <div class="cp-feature-grid-item">
-                <div class="cp-feature-icon-large">
-                  <i class="fas fa-bell"></i>
-                </div>
-                <span>Instant Text & Email Alerts</span>
-              </div>
-              <div class="cp-feature-grid-item">
-                <div class="cp-feature-icon-large">
-                  <i class="fas fa-heartbeat"></i>
-                </div>
-                <span>Device Health Monitoring</span>
-              </div>
-              <div class="cp-feature-grid-item">
-                <div class="cp-feature-icon-large">
-                  <i class="fa-brands fa-canadian-maple-leaf"></i>
-                </div>
-                <span>Assembled in Canada</span>
-              </div>
-            </div>
-            
-            <div class="cp-connectivity-features">
-              <div class="cp-connectivity-feature">
-                <div class="cp-connectivity-icon">
-                  <i class="fas fa-tower-cell"></i>
-                </div>
-                <div class="cp-connectivity-text">
-                  <h5>Cellular Connectivity Included</h5>
-                  <p>Works anywhere with coverage in North America</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="cp-guarantee-banner">
-            <i class="fas fa-shield-alt"></i>
+      <div class="feature-cta__content">
+        <div class="feature-cta__icon-container">
+          <i class="feature-cta__icon fas fa-shield-heart"></i>
+        </div>
+        <h2 class="feature-cta__title">Peace of mind, wherever you are</h2>
+        <p class="feature-cta__description">Stop worrying about your remote property. Get real-time alerts, monitor conditions, and prevent costly damage - all without WiFi.</p>
+        <div class="feature-cta__buttons">
+          <a href="https://cabinpulse.com/purchase.html?plan=3" class="feature-cta__button">
+            <span>Get CabinPulse</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+        <div class="feature-cta__benefits">
+          <div class="feature-cta__benefit">
+            <i class="fas fa-check-circle"></i>
             <span>30 Day Risk-Free Guarantee</span>
           </div>
-          
-          <a href="https://cabinpulse.com/purchase.html?plan=1" class="cta-button pricingbutton">Buy Now →</a>
-        </div>
-        
-        <!-- 3-Year Plan Card -->
-        <div class="pricing-card highlighted">
-          <span class="best-value">BEST VALUE</span>
-          <h3>3-Year Plan</h3>
-          <img src="product.png" alt="CabinPulse Device" class="device-image">
-          <div class="price">$10<span class="period"> CAD/mo</span></div>
-          <div class="device-price">+ $199 CAD one-time device fee</div>
-          <br />
-          <span class="discount">Save 29% on subscription</span>
-          
-          <!-- Feature Categories -->
-          <div class="cp-feature-categories">
-            <!-- Core Monitoring -->
-            <div class="cp-feature-group">
-              <h4 class="cp-feature-group-title">Comprehensive Monitoring</h4>
-              <ul class="cp-feature-list">
-                <li><i class="fas fa-temperature-low"></i>Temperature</li>
-                <li><i class="fas fa-droplet"></i>Humidity</li>
-                <li><i class="fas fa-smog"></i>Air Quality</li>
-                <li><i class="fas fa-smog"></i>Environmental Pressure</li>
-                <li><i class="fas fa-plug"></i>Power Outages</li>
-                <li><i class="fas fa-volume-high"></i>Alarm Detection<sup>1</sup></li>
-              </ul>
-            </div>
-            
-            <!-- Additional Features - Grid Style -->
-            <h4 class="cp-feature-group-title standalone">Other Features</h4>
-            <div class="cp-feature-grid">
-              <div class="cp-feature-grid-item">
-                <div class="cp-feature-icon-large">
-                  <i class="fas fa-bell"></i>
-                </div>
-                <span>Instant Text & Email Alerts</span>
-              </div>
-              <div class="cp-feature-grid-item">
-                <div class="cp-feature-icon-large">
-                  <i class="fas fa-heartbeat"></i>
-                </div>
-                <span>Device Health Monitoring</span>
-              </div>
-              <div class="cp-feature-grid-item">
-                <div class="cp-feature-icon-large">
-                  <i class="fa-brands fa-canadian-maple-leaf"></i>
-                </div>
-                <span>Assembled in Canada</span>
-              </div>
-            </div>
-            <div class="cp-connectivity-features">
-              <div class="cp-connectivity-feature">
-                <div class="cp-connectivity-icon">
-                  <i class="fas fa-tower-cell"></i>
-                </div>
-                <div class="cp-connectivity-text">
-                  <h5>Cellular Connectivity Included</h5>
-                  <p>Works anywhere with coverage in North America</p>
-                </div>
-              </div>
-            </div>
+          <div class="feature-cta__benefit">
+            <i class="fas fa-check-circle"></i>
+            <span>$10 Express Shipping</span>
           </div>
-          
-          <div class="cp-guarantee-banner">
-            <i class="fas fa-shield-alt"></i>
-            <span>30 Day Risk-Free Guarantee</span>
-          </div>
-          
-          <a href="https://cabinpulse.com/purchase.html?plan=3" class="cta-button pricingbutton">Buy Now →</a>
-        </div>
-      </div>
-      
-      <div class="trial-container">
-        <div class="trial-icon">
-          <i class="fas fa-shield-alt"></i>
-        </div>
-        <h3>30 Day Risk-Free Guarantee</h3>
-        <p>If CabinPulse isn't a fit, you can return it for a full refund at any time up to 30 days after purchase.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="testimonials">
-    <div class="container">
-      <div style="text-align: center; margin-bottom: 24px;">
-        <i class="fas fa-star" style="font-size: 4.5rem; color: var(--highlight-color);"></i>
-      </div>
-      <h2 class="section-title">What Our Customers Say</h2>
-      
-      <!-- TrustPilot Trust Signal -->
-      <div style="text-align: center; margin-bottom: 40px;">
-        <div style="display: inline-flex; align-items: center; background-color: rgba(255, 255, 255, 0.1); padding: 8px 16px; border-radius: 8px;">
-          <div style="display: flex; color: gold; margin-right: 10px;">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-          </div>
-          <span style="color: white; font-weight: 500;"> <span style="color: var(--highlight-color); font-weight: 600;">from 12 verified reviews</span></span>
-        </div>
-      </div>
-
-      <div style="margin-top: 60px; text-align: center; margin-bottom: 2rem;">
-        <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin: 0 auto; max-width: 1100px;">
-          <div style="background-color: var(--accent-color); border-radius: 12px; width: 200px; height: 200px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease;">
-            <img src="1.png" alt="CabinPulse Customer Installation 1" style="width: 100%; height: 100%; object-fit: cover;">
-          </div>
-          <div style="background-color: var(--accent-color); border-radius: 12px; width: 200px; height: 200px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease;">
-            <img src="2.png" alt="CabinPulse Customer Installation 2" style="width: 100%; height: 100%; object-fit: cover;">
-          </div>
-          <div style="background-color: var(--accent-color); border-radius: 12px; width: 200px; height: 200px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease;">
-            <img src="3.png" alt="CabinPulse Customer Installation 3" style="width: 100%; height: 100%; object-fit: cover;">
-          </div>
-          <div style="background-color: var(--accent-color); border-radius: 12px; width: 200px; height: 200px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease;">
-            <img src="4.png" alt="CabinPulse Customer Installation 4" style="width: 100%; height: 100%; object-fit: cover;">
-          </div>
-          <div style="background-color: var(--accent-color); border-radius: 12px; width: 200px; height: 200px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease;">
-            <img src="5.png" alt="CabinPulse Customer Installation 5" style="width: 100%; height: 100%; object-fit: cover;">
-          </div>
-        </div>
-      </div>
-      
-      <div class="testimonials-grid">
-        
-        <div class="testimonial-card">
-          <div class="star-rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-          </div>
-          <div class="testimonial-content">
-            After years of worrying about frozen pipes every winter, [CabinPulse] has been a game-changer for us. The connection works perfectly where our cabin is and the alerts are very reliable and instant! It's a no brainer and I tell everyone I know with a cabin about it and show them the app!
-          </div>
-          <div class="testimonial-author">
-            <div class="author-avatar">
-              <i class="fas fa-user"></i>
-            </div>
-            <div class="author-info">
-              <h4>Cabin Owner</h4>
-              <p>Emma Lake, SK
-                <span class="verified-badge">
-                  <i class="fas fa-check-circle"></i>Verified Review
-                </span>
-              </p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="testimonial-card">
-          <div class="star-rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-          </div>
-          <div class="testimonial-content">
-            Got a power outage alert and sure enough our clocks were reset today. The peace of mind from knowing exactly what's happening at our property is worth every penny. The only bad is that whatever plastic the case is made of really attracts fingerprints which don't come off easily.
-          </div>
-          <div class="testimonial-author">
-            <div class="author-avatar">
-              <i class="fas fa-user"></i>
-            </div>
-            <div class="author-info">
-              <h4>Cabin Owner</h4>
-              <p>Candle Lake, SK
-                <span class="verified-badge">
-                  <i class="fas fa-check-circle"></i>Verified Review
-                </span>
-              </p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="testimonial-card">
-          <div class="star-rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="testimonial-content">
-            Setup was very easy. I appreciate the instant alerts and extra long power cord. Using for a vacant property and saves me a lot of time and worry.
-          </div>
-          <div class="testimonial-author">
-            <div class="author-avatar">
-              <i class="fas fa-user"></i>
-            </div>
-            <div class="author-info">
-              <h4>Property Owner</h4>
-              <p>Moose Jaw, SK
-                <span class="verified-badge">
-                  <i class="fas fa-check-circle"></i>Verified Review
-                </span>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="star-rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="testimonial-content">
-            CabinPulse is the exact solution we were looking for. Without the need for an internet connection, we can easily track potential problems at our cabin. The app is extremely simple to navigate. I love the air quality measure as well. We are thrilled to have an effective and affordable solution to monitoring our place year round!
-          </div>
-          <div class="testimonial-author">
-            <div class="author-avatar">
-              <i class="fas fa-user"></i>
-            </div>
-            <div class="author-info">
-              <h4>Cabin Owner</h4>
-              <p>Wakaw Lake, SK
-                <span class="verified-badge">
-                  <i class="fas fa-check-circle"></i>Verified Review
-                </span>
-              </p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="testimonial-card">
-          <div class="star-rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-          </div>
-          <div class="testimonial-content">
-            The Fleet View feature is very very useful for monitoring all of our buildings quickly. Customer service has been excellent when I needed help setting up alerts and being able to send to over 10 phone numbers fits our needs perfectly.
-          </div>
-          <div class="testimonial-author">
-            <div class="author-avatar">
-              <i class="fas fa-user"></i>
-            </div>
-            <div class="author-info">
-              <h4>Facility Manager</h4>
-              <p>Calgary, AB
-                <span class="verified-badge">
-                  <i class="fas fa-check-circle"></i>Verified Review
-                </span>
-              </p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="testimonial-card">
-          <div class="star-rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="testimonial-content">
-            We have had this service for 3 months now and it has worked excellent even though we  typically have poor cell service in the area and a metal roof on our cabin. Set up  process is seemless and app is user friendly.  Highly recommend.
-          </div>
-          <div class="testimonial-author">
-            <div class="author-avatar">
-              <i class="fas fa-user"></i>
-            </div>
-            <div class="author-info">
-              <h4>Cabin Owner</h4>
-              <p>Wakaw Lake, SK
-                <span class="verified-badge">
-                  <i class="fas fa-check-circle"></i>Verified Review
-                </span></p>
-            </div>
+          <div class="feature-cta__benefit">
+            <i class="fas fa-check-circle"></i>
+            <span>3-year Warranty</span>
           </div>
         </div>
       </div>
@@ -3335,7 +3657,24 @@ footer {
     </div>
   </footer>
 
-
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const fn = document.getElementById('footnotes');
+  
+      function updateFootnotes() {
+        if (window.innerWidth <= 768) {
+          fn.removeAttribute('open');
+        } else {
+          fn.setAttribute('open', '');
+        }
+      }
+  
+      // initialize on load
+      updateFootnotes();
+      // re‑apply on viewport resize
+      window.addEventListener('resize', updateFootnotes);
+    });
+  </script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const countryDropdown = document.getElementById('country-dropdown');

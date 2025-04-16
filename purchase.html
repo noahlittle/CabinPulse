@@ -129,7 +129,7 @@
             padding: 8px 16px;
             border-radius: 50px;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 0.8rem;
             margin-bottom: 20px;
             display: inline-block;
             text-align: center;
@@ -252,14 +252,14 @@
             display: inline-block;
             background-color: var(--highlight-color);
             color: white;
-            padding: 15px 30px;
+            padding: 10px 20px;
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: none;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 1rem;
             width: 100%;
         }
 
@@ -291,11 +291,42 @@
             font-size: 1.5rem;
         }
 
-        .price-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
+/* Mobile-friendly pricing display */
+.price-item.total {
+    display: block;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid var(--cta-color);
+}
+
+.price-item.total span {
+    display: block;
+    text-align: left;
+    font-size: 1.1em;
+}
+
+.price-item.total span:first-child {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.price-item.total span:last-child {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--cta-color);
+}
+
+@media (max-width: 768px) {
+    .price-item {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+    }
+    
+    .price-item span:first-child {
+        margin-bottom: 5px;
+    }
+}
 
         .price-item.discount {
             color: white;
@@ -472,7 +503,7 @@
             padding: 12px 24px;
             border-radius: 25px;
             font-weight: bold;
-            font-size: 1.5rem;
+            font-size: 1.1rem;
             margin-top: 15px;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -584,14 +615,13 @@
             display: inline-block;
             background-color: transparent;
             color: white;
-            padding: 15px 30px;
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: 1px solid var(--highlight-color);
             cursor: pointer;
-            font-size: 18px;
+            font-size: 1rem;
             flex: 1;
         }
 
@@ -954,6 +984,7 @@
                 display: flex;
                 justify-content: space-between;
                 gap: 8px;
+                font-size: 0.7rem;
             }
         }
 
@@ -997,6 +1028,10 @@
     border-radius: 12px;
     margin-bottom: 8px;
     font-weight: 600;
+}
+
+.text-white {
+    color: white;
 }
         
     </style>
@@ -1109,11 +1144,11 @@
                         <li><i class="fas fa-dollar-sign"></i> <span id="renewal-info"></span></li>
                     </ul>
                     <div class="price-item">
-                        <span>Subscription</span>
+                        <span><b>Subscription</b></span>
                         <span id="monthly-due">$14 CAD/mo (billed annually)</span>
                     </div>
                     <div class="price-item">
-                        <span>Device Fee (one-time)</span>
+                        <span><b>Device Fee (one-time)</b></span>
                         <span>$199 CAD</span>
                     </div>
                     <div class="price-item total">
@@ -1147,7 +1182,7 @@
                     <div class="form-step active" id="step-1">
                         <div class="step-title">
                             <i class="fas fa-globe"></i>
-                            <h1>Select Your Country</h1>
+                            <h1>Select Country</h1>
                         </div>
                         <p>Choose your location to see available shipping options.</p>
                         </br>
@@ -1267,11 +1302,11 @@
                         <div class="total-price">
                             <h3 id="confirm-plan-length">3-Year Plan</h3>
                             <div class="price-item">
-                                <span>Subscription</span>
+                                <span><b>Subscription</b></span>
                                 <span id="confirm-monthly-due">$14/mo (billed annually)</span>
                             </div>
                             <div class="price-item">
-                                <span>Device Fee (one-time)</span>
+                                <span><b>Device Fee (one-time)</b></span>
                                 <span>$199 CAD</span>
                             </div>
                             <div class="price-item total">
@@ -1287,14 +1322,14 @@
                             </div>
                         </div>
                     
-                        <p>Please review your order details above. By clicking "Continue to Payment", you agree to our <a class="text-white" href="https://cabinpulse.com/legal.html">Terms of Service</a> and <a class="text-white" href="https://cabinpulse.com/legal.html">Privacy Policy</a>.</p>
+                        <p>Please review your order details above. By clicking "Confirm Order", you agree to our <a class="text-white" href="https://cabinpulse.com/legal.html">Terms of Service</a> and <a class="text-white" href="https://cabinpulse.com/legal.html">Privacy Policy</a>.</p>
                         <br />
                         <div class="button-container">
                             <button type="button" class="back-button" onclick="previousStep()">
                                 <i class="fas fa-arrow-left"></i> Back
                             </button>
                             <button type="submit" class="cta-button" id="payment-button" disabled>
-                                <i class="fas fa-lock"></i> Continue to Payment
+                                <i class="fas fa-lock"></i> Confirm Order
                             </button>
                         </div>
                     </div>
@@ -1422,7 +1457,7 @@
                 // Update discount/upsell section
                 const discountUpsellElement = document.getElementById('discount-upsell');
                 if (plan === '3') {
-                    discountUpsellElement.innerHTML = '<span class="discount">You are saving 29% on your subscription!</span>';
+                    discountUpsellElement.innerHTML = '<span class="discount">Your 3-year plan is saving you 29%!</span>';
                 } else {
                     discountUpsellElement.innerHTML = createUpsellHTML();
                 }
