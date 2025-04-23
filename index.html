@@ -4383,17 +4383,50 @@ footer {
       return;
     }
     
-    // Show the popup when user moves mouse out of the window
-    document.addEventListener('mouseleave', function(e) {
-      // Only trigger when cursor moves out the top of the page
-      if (e.clientY < 20 && !popupShown && !showOnce) {
-        showExitPopup();
-        showOnce = true;
-      }
-    });
+    // Detect if we're on mobile or desktop
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     
-    // Also show popup when user has been inactive for 60 seconds
-    let inactivityTime = 60000; // 60 seconds
+    if (!isMobile) {
+      // On desktop: Show the popup when user moves mouse out of the window
+      document.addEventListener('mouseleave', function(e) {
+        // Only trigger when cursor moves out the top of the page
+        if (e.clientY < 20 && !popupShown && !showOnce) {
+          showExitPopup();
+          showOnce = true;
+        }
+      });
+    } else {
+      // On mobile: Show popup when user scrolls up quickly (indicating they might be leaving)
+      let lastScrollTop = 0;
+      let scrollThreshold = 40; // How many pixels they need to scroll up quickly
+      
+      window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        // If they're scrolling up quickly and not at the top of the page
+        if ((lastScrollTop - scrollTop) > scrollThreshold && scrollTop > 300 && !popupShown && !showOnce) {
+          showExitPopup();
+          showOnce = true;
+        }
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+      }, false);
+      
+      // Also detect back button press (common exit path on mobile)
+      window.addEventListener('popstate', function(e) {
+        if (!popupShown && !showOnce) {
+          // Prevent the back action
+          history.pushState(null, document.title, window.location.href);
+          // Show our popup
+          showExitPopup();
+          showOnce = true;
+        }
+      });
+      
+      // Add one more entry to history so we can detect when they try to go back
+      history.pushState(null, document.title, window.location.href);
+    }
+    
+    // For both mobile and desktop: show popup after user has been inactive
+    let inactivityTime = isMobile ? 30000 : 60000; // 30 seconds on mobile, 60 on desktop
     let inactivityTimer;
     
     // For mobile devices, we need to adjust scrolling behavior
@@ -4560,7 +4593,7 @@ footer {
               <i class="fas fa-check-circle"></i>
             </div>
             <h3>Thank You!</h3>
-            <p>We'll send you a reminder in the fall, along with a special discount code.</p>
+            <p>We'll send you a reminder in the fall.</p>
           `;
           
           // Replace form with success message
