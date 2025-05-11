@@ -386,7 +386,7 @@ nav {
   background-color: var(--accent-color);
   border-radius: 24px;
   padding: 36px;
-  text-align: center;
+  text-align: left;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -420,6 +420,9 @@ nav {
   z-index: 1;
   line-height: 1.1;
 }
+.feature-card p {
+  font-size: 0.9rem;
+}
 .feature-highlight {
   display: flex;
   gap: 48px;
@@ -444,7 +447,7 @@ nav {
   margin-bottom: 24px;
 }
 .feature-card.large p {
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 1.7;
 }
 .dashboard-preview {
@@ -664,7 +667,7 @@ nav {
   font-size: 1.6rem;
 }
 .faq-item p {
-  font-size: 1rem;
+  font-size: 0.9rem;
   line-height: 1.7;
 }
 .faq-item a {
@@ -696,10 +699,10 @@ nav {
     transform: scale(1);
   }
   .cp-final-cta__title {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
   .cp-final-cta__description {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   .cp-final-cta__buttons {
     flex-direction: column;
@@ -1749,12 +1752,12 @@ header.banner-hidden {
   100% { transform: scale(1); }
 }
 .cp-final-cta__title {
-  font-size: 2.8rem;
+  font-size: 2.5rem;
   color: var(--cta-color);
   margin-bottom: 24px;
 }
 .cp-final-cta__description {
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   color: var(--text-color);
   margin-bottom: 36px;
   line-height: 1.7;
@@ -2517,13 +2520,13 @@ footer {
 }
 
 .feature-cta__title {
-  font-size: 2.5rem;
+  font-size: 2.3rem;
   color: var(--cta-color);
   margin-bottom: 20px;
 }
 
 .feature-cta__description {
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   color: var(--text-color);
   margin-bottom: 40px;
   line-height: 1.6;
@@ -2545,7 +2548,7 @@ footer {
   color: white;
   padding: 18px 40px;
   border-radius: 50px;
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
@@ -2595,7 +2598,7 @@ footer {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   color: var(--text-color);
 }
 
@@ -3301,6 +3304,182 @@ footer {
   animation: spin 1s infinite linear;
 }
 
+/* --- NEW USE CASES SECTION STYLES --- */
+.use-cases {
+  padding: 100px 0;
+  background-color: var(--secondary-color); /* Or var(--primary-color) for variation */
+  position: relative;
+  overflow: hidden; /* To contain the carousel items */
+}
+
+/* Optional: Add a top wave/curve if desired, similar to other sections */
+.use-cases::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background-color: var(--secondary-color); /* Must match section background */
+  --mask:
+    radial-gradient(108.17px at 50% 150px, #000 99%, #0000 101%) calc(50% - 120px) 0/240px 100%,
+    radial-gradient(108.17px at 50% -90px, #0000 99%, #000 101%) 50% 60px/240px 100% repeat-x;
+  -webkit-mask: var(--mask);
+          mask: var(--mask);
+}
+
+.use-cases .section-title {
+  margin-bottom: 20px;
+}
+
+.use-cases-carousel-wrapper {
+    width: 100%;
+    overflow: hidden; /* This is key for the sliding effect with JS */
+    margin-bottom: 20px;
+}
+
+.use-cases-carousel {
+  display: flex;
+  /* No overflow-x: hidden here, JS will manage positioning */
+  gap: 24px;
+  padding: 20px 0; /* For card shadows */
+  transition: transform 0.5s ease-in-out; /* For smooth sliding */
+}
+
+.use-case-card {
+  flex: 0 0 calc(33.333% - 16px); /* Shows 3 cards, accounts for 24px gap (24*2/3 = 16) */
+  max-width: calc(33.333% - 16px); /* Ensure it doesn't grow beyond this */
+  min-width: 280px;
+  background-color: var(--accent-color);
+  border-radius: 24px;
+  padding: 30px 25px;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto; /* Allow cards to define their height based on content */
+}
+
+.use-case-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.2);
+}
+
+.use-case-icon {
+  font-size: 2.5rem;
+  color: var(--highlight-color);
+  margin-bottom: 20px;
+  background-color: rgba(233, 69, 96, 0.1);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.use-case-card h3 {
+  font-size: 1.4rem; /* Slightly adjusted for better fit */
+  color: var(--text-color);
+  margin-bottom: 15px;
+  line-height: 1.3;
+}
+
+.use-case-card p {
+  font-size: 0.9rem; /* Slightly adjusted */
+  color: var(--text-color);
+  opacity: 0.85;
+  line-height: 1.6;
+  flex-grow: 1; /* Helps to align buttons if text length varies */
+}
+
+.carousel-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px; /* Reduced from 30px */
+  gap: 20px;
+}
+
+.carousel-navigation button {
+  background-color: var(--highlight-color);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-navigation button:hover {
+  background-color: #ff5a7c;
+  transform: scale(1.1);
+}
+
+.carousel-navigation button:disabled {
+  background-color: var(--accent-color);
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: scale(1);
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px; /* Increased spacing */
+}
+
+.carousel-dots .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--accent-color); /* Dimmed color */
+    margin: 0 6px; /* Slightly more space between dots */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.carousel-dots .dot:hover {
+    transform: scale(1.2);
+}
+.carousel-dots .dot.active {
+    background-color: var(--highlight-color);
+    transform: scale(1.2);
+}
+
+/* Responsive styles for Use Cases */
+@media (max-width: 1024px) {
+  .use-case-card {
+    flex: 0 0 calc(50% - 12px); /* Show 2 cards */
+    max-width: calc(50% - 12px);
+  }
+}
+
+@media (max-width: 768px) {
+  .use-cases {
+    padding: 80px 0;
+  }
+  .use-case-card {
+    flex: 0 0 calc(100% - 40px); /* Show 1 card, with some margin */
+    max-width: calc(100% - 40px);
+    margin: 0 20px; /* Center the card */
+    min-width: 0; /* Override min-width for single card view */
+  }
+  .use-cases-carousel {
+    gap: 0; /* No gap if cards take full width effectively */
+  }
+  /* On mobile, the carousel-wrapper itself will have padding to show edges */
+  .use-cases-carousel-wrapper {
+     padding: 0; /* Let JS handle positioning */
+  }
+}
+
 @keyframes spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -3448,6 +3627,7 @@ footer {
     </div>
   </section>
 
+
   <section id="features" class="features">
     <div class="container">
       <div style="text-align: center; margin-bottom: 24px;">
@@ -3458,42 +3638,42 @@ footer {
         <div class="feature-card">
           <i class="feature-icon fas fa-temperature-low"></i>
           <h3>Temperature Monitoring</h3>
-          <p>Precise monitoring to prevent pipe freezing.</p>
+          <p>More than just a freeze alarm, CabinPulse tracks temperature with incredible &plusmn;0.2&nbsp;&deg;C accuracy, all-year-round.</p>
         </div>
         <div class="feature-card">
           <i class="feature-icon fas fa-tint"></i>
           <h3>Humidity Monitoring</h3>
-          <p>Fight mold and mildew with accurate humidity tracking.</p>
+          <p>Fight mold and mildew with always-on cellular humidity tracking. Humidity spike? Might be time for a check-in.</p>
         </div>
         <div class="feature-card">
           <i class="feature-icon fas fa-bolt"></i>
           <h3>Power Outages</h3>
-          <p>Track power disruptions, even when you're away.</p>
+          <p>Track power disruptions, even when you're away; CabinPulse is a reliable cellular power outage monitor made in Canada. Power outage? You'll get an alert in <b>seconds</b>.</p>
         </div>
         <div class="feature-card">
           <i class="feature-icon fas fa-smog"></i>
           <h3>Air Quality Monitoring<sup class="superscript">2</sup></h3>
-          <p>Stay informed of indoor air quality, 24/7.</p>
+          <p>CabinPulse tracks indoor air quality, 24/7 - as one of the only cellular air quality monitors on the market.</p>
         </div>
         <div class="feature-card">
           <i class="feature-icon fas fa-bell"></i>
           <h3>Instant Alerts</h3>
-          <p>Get notified immediately when issues are detected.</p>
+          <p>Get notified immediately when issues are detected. Power outage alerts, freeze alerts, air quality alerts and more.</p>
         </div>
         <div class="feature-card">
           <i class="feature-icon fas fa-heartbeat"></i>
           <h3>Device Health</h3>
-          <p>Monitor device status and receive an alert if it stops reporting.</p>
+          <p>CabinPulse is built for reliability. Monitor device status from your dashboard and receive an alert if it stops reporting.</p>
         </div>
         <div class="feature-card">
           <i class="feature-icon fas fa-ship"></i>
           <h3>Fleet View</h3>
-          <p>Monitor multiple devices at once, in one easy view.</p>
+          <p>Monitor multiple devices at once, in one easy view. CabinPulse is built for property managers and realtors too!</p>
         </div>
         <div class="feature-card">
           <i class="feature-icon fas fa-volume-high"></i>
           <h3>Alarm Detection<sup class="superscript">1,3</sup></h3>
-          <p>Smoke detector going off? Get alerted immediately.</p>
+          <p>Smoke detector going off? CabinPulse has built-in alarm detection, and you'll get alerted immediately - no WiFi required.</p>
         </div>
       </div>
       <div class="feature-highlight">
@@ -4139,7 +4319,11 @@ footer {
         </div>
         <div class="faq-item">
           <h3><i class="fas fa-mobile-alt"></i> Do I need to pay for another cellular plan?</h3>
-          <p>No! The CabinPulse subscription covers <u>everything</u>. The cellular connectivity is completely built-in to the device, and there are no cellular data plans or WiFi required.</p>
+          <p>No! The CabinPulse subscription covers <u>everything</u>. The cellular connectivity is completely built-in to the device, and there are no other cellular data plans or WiFi required.</p>
+        </div>
+        <div class="faq-item">
+          <h3><i class="fas fa-calendar-alt"></i>Can I pause my device when I don't need it?</h3>
+          <p>Yes. You can pause and restart your plan <b>once per year</b>; this means you can stretch out the 1-year plan to two 6 month periods over two years. Simply <a href="mailto:support@cabinpulse.com">contact support</a> when you're ready to pause or restart.</p>
         </div>
         <div class="faq-item">
           <h3><i class="fas fa-stairs"></i> How do I setup my CabinPulse device?</h3>
@@ -4147,7 +4331,7 @@ footer {
         </div>
         <div class="faq-item">
           <h3><i class="fas fa-tower-cell"></i> My cabin has poor cell coverage - will CabinPulse work?</h3>
-          <p>CabinPulse uses LTE with 3G fallback for areas without 3G; if there's any cell coverage, it will usually connect.</p>
+          <p>CabinPulse uses LTE with 3G fallback for areas without 3G; if there's even a single bar on your cell phone, it will connect.</p>
           <br />
           <p>If you're unsure of coverage in your area, check the coverage maps from major carriers in your area for LTE or 3G.</p>
         </div>
@@ -4172,6 +4356,10 @@ footer {
           <p>You can set unlimited Standard Alerts, and set an Instant Alert for a high and low for each monitored metric.</p>
         </div>
         <div class="faq-item">
+          <h3><i class="fas fa-bell"></i> How many people can receive alerts?</h3>
+          <p>There is no limit to the number of phone numbers and emails that can be added to receive alerts. If you wish to add more than 12, you'll need to <a href="mailto:support@cabinpulse.com">contact support</a> for assistance.</p>
+        </div>
+        <div class="faq-item">
           <h3><i class="fas fa-battery-half"></i> What's the battery life of the CabinPulse device?</h3>
           <p>The CabinPulse device is designed to be plugged into a power outlet. However, it does have a backup battery that lasts up to 3 days in case of prolonged power outages.</p>
         </div>
@@ -4186,6 +4374,10 @@ footer {
         <div class="faq-item">
           <h3><i class="fas fa-clock-rotate-left"></i> How far back can I view historical data?</h3>
           <p>We store data captured from your device for as long as your subscription is active. If you choose to not renew your subscription, your data will be stored for up to 30 days before being deleted.</p>
+        </div>
+        <div class="faq-item">
+          <h3><i class="fas fa-calendar"></i> What happens when my plan expires?</h3>
+          <p>When your plan expires, we'll let you know and your device will stop sending data and you will no longer receive alerts. You will be able to reactivate your plan at any time, and your data will be stored for up to 30 days after expiration.</p>
         </div>
         <div class="faq-item">
           <h3><i class="fas fa-snowflake"></i> Can the device be used outdoors or in unheated buildings?</h3>
@@ -4214,6 +4406,59 @@ footer {
         </div>
         <h3>More Questions?</h3>
         <p><b>We're always happy to help!</b> Contact our support team at <a href="mailto:support@cabinpulse.com">support@cabinpulse.com</a> with any questions, thoughts or concerns and we'll get back to you within 24 hours.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="use-cases" class="use-cases">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 24px;">
+        <i class="fas fa-puzzle-piece" style="font-size: 4.5rem; color: var(--highlight-color);"></i>
+      </div>
+      <h2 class="section-title">Use Cases</h2>
+      <p class="section-subtitle" style="text-align: center; max-width: 800px; margin: 0 auto 50px; font-size: 1rem; color: var(--text-color); opacity: 0.9;">
+        Whether you own a remote cabin, manage properties, or need to monitor an off-grid location, CabinPulse offers a reliable WiFi-free remote monitoring solution.
+      </p>
+      <div class="use-cases-carousel-wrapper">
+          <div class="use-cases-carousel">
+            <div class="use-case-card">
+              <div class="use-case-icon"><i class="fas fa-home"></i></div>
+              <h3>Cabin & Cottage Owners</h3>
+              <p>Relax knowing your getaway is safe. CabinPulse monitors temperature to prevent frozen pipes, alerts you to power outages, and checks air quality – all without WiFi. Perfect for remote cabin security and peace of mind.</p>
+            </div>
+            <div class="use-case-card">
+              <div class="use-case-icon"><i class="fas fa-plane-departure"></i></div>
+              <h3>Snowbirds & Seasonal Homes</h3>
+              <p>Travel with confidence. Monitor your vacant home from anywhere. Get instant alerts for critical temperature drops, power failures, or humidity issues that could lead to costly damage like burst pipes or mold growth while you're away.</p>
+            </div>
+            <div class="use-case-card">
+              <div class="use-case-icon"><i class="fas fa-tractor"></i></div>
+              <h3>Farm Shops & Outbuildings</h3>
+              <p>Protect valuable tools, equipment, and supplies in your remote farm shops or outbuildings. CabinPulse provides essential temperature, humidity, and power outage monitoring where WiFi can't reach, enhancing security.</p>
+            </div>
+            <div class="use-case-card">
+              <div class="use-case-icon"><i class="fas fa-warehouse"></i></div>
+              <h3>Barns & Agricultural Storage</h3>
+              <p>Ensure optimal conditions for livestock or stored goods. Monitor temperature and humidity in barns to support animal welfare or prevent spoilage. Get alerted to power outages affecting critical systems, without needing WiFi.</p>
+            </div>
+            <div class="use-case-card">
+              <div class="use-case-icon"><i class="fas fa-industry"></i></div>
+              <h3>Industrial & Remote Sites</h3>
+              <p>Maintain operational integrity at unmanned or remote industrial sites. Monitor environmental conditions, get power failure alerts for critical equipment, and enhance security with alarm detection, all via reliable cellular connectivity.</p>
+            </div>
+            <div class="use-case-card">
+              <div class="use-case-icon"><i class="fas fa-key"></i></div>
+              <h3>Realtors & Property Managers</h3>
+              <p>Safeguard vacant properties between showings or tenants. Prevent unexpected damage from extreme temperatures or power outages. Utilize Fleet View to efficiently monitor multiple listings with one simple cellular solution.</p>
+            </div>
+          </div>
+      </div>
+      <div class="carousel-navigation">
+          <button class="prev-btn" aria-label="Previous Use Case"><i class="fas fa-chevron-left"></i></button>
+          <button class="next-btn" aria-label="Next Use Case"><i class="fas fa-chevron-right"></i></button>
+      </div>
+      <div class="carousel-dots">
+          <!-- Dots will be generated by JS -->
       </div>
     </div>
   </section>
@@ -4949,6 +5194,208 @@ footer {
       }
       chatState.isOpen = false;
     }
+    // --- NEW USE CASES CAROUSEL SCRIPT ---
+document.addEventListener('DOMContentLoaded', function () {
+    const carouselWrapper = document.querySelector('.use-cases-carousel-wrapper');
+    const carousel = document.querySelector('.use-cases-carousel');
+    const cards = Array.from(carousel.querySelectorAll('.use-case-card'));
+    const prevButton = document.querySelector('.use-cases .prev-btn');
+    const nextButton = document.querySelector('.use-cases .next-btn');
+    const dotsContainer = document.querySelector('.use-cases .carousel-dots');
+
+    if (!carousel || !prevButton || !nextButton || !dotsContainer || cards.length === 0) {
+        if (prevButton && prevButton.parentElement) prevButton.parentElement.style.display = 'none'; // Hide nav
+        if (dotsContainer) dotsContainer.style.display = 'none'; // Hide dots
+        console.warn("Use Cases Carousel elements not found or no cards. Skipping initialization.");
+        return;
+    }
+
+    let currentIndex = 0;
+    let itemsPerPage = calculateItemsPerPage();
+    let totalPages = Math.ceil(cards.length / itemsPerPage);
+    const cardGap = parseInt(window.getComputedStyle(carousel).gap) || 24;
+
+    function calculateItemsPerPage() {
+        if (window.innerWidth <= 768) return 1;
+        if (window.innerWidth <= 1024) return 2;
+        return 3;
+    }
+
+    function updateCarousel() {
+        itemsPerPage = calculateItemsPerPage();
+        totalPages = Math.ceil(cards.length / itemsPerPage);
+        const wrapperWidth = carouselWrapper.offsetWidth;
+        // cardGap is already defined globally in your script
+
+        let cardWidthToApply;
+
+        // Apply/Reset card widths based on viewport
+        if (itemsPerPage > 1 && window.innerWidth > 768) { // Desktop or Tablet view
+            cardWidthToApply = Math.floor((wrapperWidth - (itemsPerPage - 1) * cardGap) / itemsPerPage);
+            
+            cards.forEach(card => {
+                card.style.width = `${cardWidthToApply}px`;
+                card.style.flexBasis = `${cardWidthToApply}px`;
+                // card.style.maxWidth = `${cardWidthToApply}px`; // Optionally set this too
+            });
+        } else { // Mobile view or when itemsPerPage becomes 1
+            // Let CSS control card widths
+            cards.forEach(card => {
+                card.style.width = ''; 
+                card.style.flexBasis = '';
+                // card.style.maxWidth = '';
+            });
+        }
+
+        // Reading properties like offsetLeft below will force a reflow if styles changed.
+
+        let offsetValue = 0;
+
+        if (currentIndex > 0) { // For any page other than the first
+            const firstCardIndexOfCurrentPage = currentIndex * itemsPerPage;
+            
+            if (firstCardIndexOfCurrentPage < cards.length) {
+                const targetCard = cards[firstCardIndexOfCurrentPage]; // The card that should start the page
+                
+                // Ensure targetCard exists before trying to read its properties
+                if (targetCard) {
+                    if (itemsPerPage === 1 && window.innerWidth <= 768) { // Mobile: center the current card
+                        const cardWidthForCentering = targetCard.offsetWidth; // Read current (CSS-defined or reset) width
+                        offsetValue = targetCard.offsetLeft - (wrapperWidth / 2) + (cardWidthForCentering / 2);
+                    } else { // Desktop / Tablet: align the target card to the left edge of the wrapper
+                        offsetValue = targetCard.offsetLeft;
+                    }
+                } else {
+                    // Fallback if targetCard is unexpectedly undefined
+                    if (carousel.scrollWidth > wrapperWidth) {
+                        offsetValue = carousel.scrollWidth - wrapperWidth; // Scroll to very end
+                    }
+                }
+            } else {
+                // This state (currentIndex implies cards that don't exist) should be prevented by totalPages logic.
+                // If somehow reached, scroll to the very end.
+                if (carousel.scrollWidth > wrapperWidth) {
+                    offsetValue = carousel.scrollWidth - wrapperWidth;
+                }
+            }
+        }
+
+        // Sanity checks for offsetValue:
+        offsetValue = Math.max(0, offsetValue || 0); // Ensure non-negative. (Handle potential NaN from offsetLeft if targetCard was null)
+
+        const maxPossibleOffset = carousel.scrollWidth - wrapperWidth;
+
+        if (maxPossibleOffset > 0) { // Only cap if there's something to scroll
+            offsetValue = Math.min(offsetValue, maxPossibleOffset);
+        } else { // If content is not wider than wrapper, or exactly fits
+            offsetValue = 0; 
+        }
+        
+        carousel.style.transform = `translateX(-${Math.round(offsetValue)}px)`;
+
+        updateButtons();
+        updateDots();
+    }
+
+    
+    
+    function setupDots() {
+        dotsContainer.innerHTML = ''; // Clear existing dots
+        for (let i = 0; i < totalPages; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (i === currentIndex) {
+                dot.classList.add('active');
+            }
+            dot.addEventListener('click', () => {
+                currentIndex = i;
+                updateCarousel();
+            });
+            dotsContainer.appendChild(dot);
+        }
+    }
+
+    function updateDots() {
+        const dots = dotsContainer.querySelectorAll('.dot');
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+
+    function updateButtons() {
+        prevButton.disabled = currentIndex === 0;
+        nextButton.disabled = currentIndex >= totalPages - 1;
+    }
+
+    prevButton.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateCarousel();
+        }
+    });
+
+    nextButton.addEventListener('click', () => {
+        if (currentIndex < totalPages - 1) {
+            currentIndex++;
+            updateCarousel();
+        }
+    });
+
+    // Ensure the resize handler is also clean:
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            const oldItemsPerPage = itemsPerPage;
+            // itemsPerPage will be recalculated based on new window.innerWidth
+            // The updateCarousel function will then reset/apply card styles as needed.
+            
+            itemsPerPage = calculateItemsPerPage(); 
+            totalPages = Math.ceil(cards.length / itemsPerPage);
+
+            if (oldItemsPerPage !== itemsPerPage) {
+                 // Adjust currentIndex to try and keep roughly the same items in view
+                 const firstVisibleCardAbsoluteIndex = currentIndex * oldItemsPerPage;
+                 currentIndex = Math.floor(firstVisibleCardAbsoluteIndex / itemsPerPage);
+                 currentIndex = Math.max(0, Math.min(currentIndex, totalPages - 1)); // Clamp
+            }
+            setupDots(); // Re-setup dots as totalPages might have changed
+            updateCarousel(); // This will apply new card widths if needed, then calculate scroll
+        }, 250);
+    });
+    
+    // Initial setup
+    setupDots();
+    updateCarousel();
+
+    // Touch swipe functionality (optional, but good for mobile)
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const swipeThreshold = 50; // Minimum distance for a swipe
+
+    carouselWrapper.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    carouselWrapper.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+        if (touchEndX < touchStartX - swipeThreshold) { // Swiped left
+            if (currentIndex < totalPages - 1) {
+                currentIndex++;
+                updateCarousel();
+            }
+        } else if (touchEndX > touchStartX + swipeThreshold) { // Swiped right
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
+        }
+    }
+});
   </script>
   <script type="text/javascript">
     window._mfq = window._mfq || [];
