@@ -1,30 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
-  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- Cleaned sitemap for CabinPulse -->
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
 
 <url>
   <loc>https://cabinpulse.com/</loc>
-  <lastmod>2025-05-11T13:49:20+00:00</lastmod>
+  <lastmod>2025-05-21T17:23:41+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://cabinpulse.com/purchase.html</loc>
-  <lastmod>2025-04-16T18:22:10+00:00</lastmod>
+  <loc>https://cabinpulse.com/index.html</loc>
+  <lastmod>2025-05-21T17:23:41+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cabinpulse.com/purchase.html?plan=1</loc>
+  <lastmod>2025-05-21T16:46:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cabinpulse.com/purchase.html?plan=3</loc>
+  <lastmod>2025-05-21T16:46:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cabinpulse.com/uses/freeze-alarm.html</loc>
+  <lastmod>2025-05-21T17:18:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cabinpulse.com/uses/power-outage-monitor.html</loc>
+  <lastmod>2025-05-21T17:18:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cabinpulse.com/uses/remote-cabin-cottage-monitoring-system.html</loc>
+  <lastmod>2025-05-21T17:26:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cabinpulse.com/uses/</loc>
+  <lastmod>2025-05-21T17:18:02+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://cabinpulse.com/legal.html</loc>
-  <lastmod>2025-02-02T00:46:17+00:00</lastmod>
+  <lastmod>2025-05-11T22:00:11+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://cabinpulse.com/manual.html</loc>
-  <lastmod>2025-04-04T21:55:11+00:00</lastmod>
+  <lastmod>2025-05-11T22:00:11+00:00</lastmod>
   <priority>0.80</priority>
 </url>
+<url>
+  <loc>https://cabinpulse.com/uses/cellular-temperature-monitor.html</loc>
+  <lastmod>2025-05-21T17:18:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cabinpulse.com/uses/remote-humidity-monitor.html</loc>
+  <lastmod>2025-05-21T17:18:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cabinpulse.com/uses/cellular-air-quality-monitor.html</loc>
+  <lastmod>2025-05-21T17:18:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
 
 </urlset>
