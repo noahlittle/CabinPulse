@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CabinPulse - Cellular Air Quality Monitor | VOC & IAQ Alerts</title>
+  <title>CabinPulse - Remote Cabin & Cottage Monitoring System | No WiFi</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <meta name="description" content="Monitor indoor air quality (IAQ) and VOCs remotely with CabinPulse Cellular Air Quality Monitor. Get custom alerts for poor air quality, wildfire smoke, and high VOC levels without WiFi. Works during power outages." />
-  <meta name="keywords" content="air quality monitor, cellular air quality monitor, VOC monitor, IAQ score, wildfire smoke alerts, no wifi air quality monitor, remote air quality monitoring, indoor air quality sensor, healthy home monitor">
+  <meta name="description" content="Protect your cabin or cottage with CabinPulse Remote Monitoring System. Get alerts for power outages, temperature changes (freeze alerts), poor air quality (wildfire smoke), high humidity (mould prevention) & smoke alarm sounds. Works without WiFi using cellular. Essential for every cabin owner." />
+  <meta name="keywords" content="remote cabin monitoring system, remote cottage monitoring system, cabin monitoring, cottage monitoring, power outage monitor cabin, temperature monitor cabin, freeze alarm cabin, air quality monitor cabin, wildfire smoke cabin, humidity monitor cabin, mould prevention cabin, smoke alarm monitor cabin, no wifi cabin monitor, cellular cabin monitor, cabin security no wifi, cottage security no wifi, smart cabin, smart cottage">
   
   <style>
     /* Root variables */
@@ -16,12 +16,12 @@
       --secondary-color: #16213e;
       --cta-color: #ffffff;
       --accent-color: #0f3460;
-      --highlight-color: #e94560; /* Keeping this for now, but could be a 'health' green or warning orange for AQ */
+      --highlight-color: #e94560; 
       --text-color: #ffffff;
       --dark-text-color: #000000;
-      --warning-color: #FFC107; /* For moderate AQ */
-      --danger-color: #e94560;  /* For poor AQ, same as highlight */
-      --good-color: #4CAF50;   /* For good AQ */
+      --warning-color: #FFC107; 
+      --danger-color: #e94560;  
+      --good-color: #4CAF50;   
     }
     
     /* Base styles */
@@ -61,7 +61,7 @@
       background-color: rgba(26, 26, 46, 0.95);
       backdrop-filter: blur(8px);
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-      padding: 15px 0 0; /* Removed bottom padding to accommodate breadcrumb */
+      padding: 15px 0 0; 
     }
     nav {
       display: flex;
@@ -146,7 +146,6 @@
       background-color: rgba(255, 255, 255, 0.2);
     }
     
-    /* Mobile Menu Expanded */
     .mobile-menu-expanded {
       position: fixed;
       top: 0;
@@ -222,9 +221,8 @@
       box-shadow: 0 6px 16px rgba(233, 69, 96, 0.4);
     }
     
-    /* Integrated Breadcrumb */
     .integrated-breadcrumb {
-      background-color: rgba(15, 52, 96, 0.7); /* Lighter blue color */
+      background-color: rgba(15, 52, 96, 0.7); 
       padding: 8px 0;
       margin-top: 15px;
       font-size: 0.85rem;
@@ -256,7 +254,6 @@
       font-weight: 600;
     }
     
-    /* Button styles */
     .cta-button {
       display: inline-block;
       background-color: var(--highlight-color);
@@ -276,7 +273,6 @@
       box-shadow: 0 12px 24px rgba(233, 69, 96, 0.4);
     }
     
-    /* Badge styles */
     .badge {
       background-color: var(--accent-color);
       padding: 6px 12px;
@@ -290,8 +286,6 @@
       font-size: 1.3rem;
     }
     
-    
-    /* Section styles */
     .section-title {
       text-align: center;
       font-size: 2.5rem;
@@ -300,27 +294,26 @@
       color: var(--highlight-color);
     }
     
-    /* Hero Section for Air Quality Monitor */
-    .aq-hero { /* Renamed from temp-hero */
+    .cabin-hero { 
       padding: 180px 0 120px; 
       background-color: var(--primary-color);
       position: relative;
       overflow: hidden;
     }
-    .aq-hero::before {
+    .cabin-hero::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('../bg-5.png') no-repeat center center; /* Consider a more air/sky related background */
+      background: url('../bg-5.png') no-repeat center center; 
       background-size: cover;
       filter: brightness(0.5);
       z-index: 0;
       opacity: 0.3;
     }
-    .aq-hero-container { /* Renamed */
+    .cabin-hero-container { 
       position: relative;
       z-index: 1;
       display: flex;
@@ -328,24 +321,24 @@
       justify-content: space-between;
       gap: 50px;
     }
-    .aq-hero-content { /* Renamed */
+    .cabin-hero-content { 
       flex: 1;
     }
-    .aq-hero-image { /* Renamed */
+    .cabin-hero-image { 
       flex: 1;
       display: flex;
       justify-content: center;
       position: relative;
       margin-top: 1rem;
     }
-    .aq-hero-image img {
+    .cabin-hero-image img {
       max-width: 100%;
       height: auto;
       filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
       position: relative;
       z-index: 1;
     }
-    .aq-hero-image::after {
+    .cabin-hero-image::after {
       content: '';
       position: absolute;
       bottom: -30px;
@@ -353,18 +346,18 @@
       transform: translateX(-50%);
       width: 80%;
       height: 20px;
-      background: var(--highlight-color); /* Or a blue/green for air */
+      background: var(--highlight-color); 
       filter: blur(30px);
       opacity: 0.6;
       z-index: 0;
     }
-    .aq-hero h1 {
-      font-size: 3rem; /* Adjusted for longer title potentially */
+    .cabin-hero h1 {
+      font-size: 2.8rem; 
       margin-bottom: 25px;
       line-height: 1.2;
     }
-    .aq-hero-subtitle { /* Renamed */
-      font-size: 1.2rem;
+    .cabin-hero-subtitle { 
+      font-size: 1rem;
       margin-bottom: 35px;
       color: var(--text-color);
       opacity: 0.9;
@@ -376,12 +369,16 @@
       gap: 12px;
       margin: 25px 0;
     }
-    .air-quality-highlight { /* New class for AQ specific highlights */
-      color: var(--highlight-color); /* Could be different based on context */
+    .highlight-text { 
+      color: var(--highlight-color); 
       font-weight: bold;
     }
+    .cabin-notice {
+        font-size: 0.8rem;
+        opacity: 0.9;
+        line-height: 1.6;
+    }
     
-    /* Feature Cards */
     .features-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -403,7 +400,7 @@
     }
     .feature-icon {
       font-size: 3.5rem;
-      color: var(--highlight-color); /* Or a blue/green for air */
+      color: var(--highlight-color); 
       margin-bottom: 24px;
     }
     .feature-card h3 {
@@ -418,7 +415,6 @@
       opacity: 0.8;
     }
     
-    /* How It Works Section */
     .how-it-works {
       padding: 50px 0;
       background-color: var(--secondary-color);
@@ -470,7 +466,7 @@
     }
     .step-icon {
       font-size: 3rem;
-      color: var(--highlight-color); /* Or a blue/green for air */
+      color: var(--highlight-color); 
       margin-bottom: 24px;
     }
     .step-card h3 {
@@ -486,7 +482,6 @@
       text-align: left;
     }
     
-    /* Comparison Section */
     .comparison {
       padding: 120px 0;
       background-color: var(--primary-color);
@@ -510,14 +505,13 @@
       margin-bottom: 30px;
     }
     
-    /* Updated Table Styles with Scrolling */
     .table-wrapper {
       width: 100%;
       max-width: 1000px;
       overflow-x: auto;
       margin-bottom: 60px;
       border-radius: 12px;
-      -webkit-overflow-scrolling: touch; /* For smoother scrolling on iOS */
+      -webkit-overflow-scrolling: touch; 
       scrollbar-width: thin;
       scrollbar-color: var(--highlight-color) var(--primary-color);
     }
@@ -537,7 +531,7 @@
     
     .comparison-table {
       width: 100%;
-      min-width: 600px; /* Ensures table doesn't get too narrow */
+      min-width: 600px; 
       border-collapse: collapse;
     }
     
@@ -571,7 +565,7 @@
     }
     
     .cabinpulse-col {
-      background-color: rgba(233, 69, 96, 0.1); /* Or a neutral highlight */
+      background-color: rgba(233, 69, 96, 0.1); 
     }
     
     .feature-name {
@@ -579,7 +573,6 @@
       color: var(--text-color);
     }
     
-    /* Testimonials Section */
     .testimonials {
       padding: 120px 0;
       background-color: var(--secondary-color);
@@ -662,7 +655,6 @@
       opacity: 0.8;
     }
     
-    /* FAQ Section */
     .faq {
       padding: 120px 0;
       background-color: var(--primary-color);
@@ -708,7 +700,6 @@
       transition: all 0.3s ease;
     }
     
-    /* Final CTA Section */
     .final-cta {
       padding: 120px 0;
       background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
@@ -722,7 +713,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('../forest-fire-smoke.jpg') no-repeat center center; /* Example background for AQ */
+      background: url('../cabin-woods.jpg') no-repeat center center; /* Example background for Cabin */
       background-size: cover;
       opacity: 0.1;
       z-index: 0;
@@ -735,7 +726,7 @@
     }
     .final-cta-icon {
       font-size: 4rem;
-      color: var(--highlight-color); /* Or a blue/green for air */
+      color: var(--highlight-color); 
       margin-bottom: 30px;
     }
     .final-cta h2 {
@@ -762,10 +753,9 @@
       gap: 10px;
     }
     .cta-feature i {
-      color: var(--highlight-color); /* Or a blue/green for air */
+      color: var(--highlight-color); 
     }
     
-    /* Footer Styles */
     footer {
       background-color: var(--secondary-color);
       padding: 60px 0 20px;
@@ -813,7 +803,7 @@
       text-decoration: none;
       opacity: 0.7;
       transition: all 0.3s ease;
-      font-size: 0.8rem;
+      font-size: 0.9rem; 
       display: flex;
       align-items: center;
     }
@@ -836,7 +826,6 @@
       font-size: 0.9rem;
     }
     
-    /* Image with Overlay */
     .image-overlay {
       position: relative;
       overflow: hidden;
@@ -876,7 +865,6 @@
       transform: scale(1.05);
     }
     
-    /* Text Highlight Animation */
     .text-highlight {
       color: var(--highlight-color);
       position: relative;
@@ -899,10 +887,9 @@
       transform-origin: bottom left;
     }
     
-    /* Responsive styles */
     @media (max-width: 1024px) {
-      .aq-hero h1 { /* Renamed */
-        font-size: 2.8rem; /* Adjusted */
+      .cabin-hero h1 { 
+        font-size: 2.6rem; 
       }
       .features-grid, 
       .steps-grid {
@@ -933,21 +920,21 @@
         padding: 6px 0;
         font-size: 0.8rem;
       }
-      .aq-hero { /* Renamed */
+      .cabin-hero { 
         padding-top: 150px;
       }
-      .aq-hero-container { /* Renamed */
+      .cabin-hero-container { 
         flex-direction: column;
         text-align: center;
       }
       .badge-container {
         justify-content: center;
       }
-      .aq-hero h1 { /* Renamed */
-        font-size: 2.5rem; /* Adjusted */
+      .cabin-hero h1 { 
+        font-size: 2.3rem; 
       }
-      .aq-hero-subtitle { /* Renamed */
-        font-size: 1.1rem; /* Adjusted */
+      .cabin-hero-subtitle { 
+        font-size: 1.1rem; 
       }
       .features-grid, 
       .steps-grid, 
@@ -980,8 +967,8 @@
     }
 
     @media (max-width: 480px) {
-      .aq-hero h1 { /* Renamed */
-        font-size: 2.2rem; /* Adjusted */
+      .cabin-hero h1 { 
+        font-size: 2.0rem; 
       }
       
       .comparison-table th {
@@ -997,24 +984,24 @@
       }
     }
     
-    .aq-hero-image { /* Renamed */
+    .cabin-hero-image { 
       position: relative;
     }
 
-    .aq-alert { /* Renamed from temp-alert */
+    .cabin-alert { 
       position: absolute;
       bottom: -100%; 
       left: 0;
       width: 100%;
       background-color: var(--danger-color); 
       color: white;
-      padding: 24px 10px; /* Adjusted padding */
-      border-radius: 12px; /* Rounded bottom corners */
+      padding: 24px 10px; 
+      border-radius: 12px; 
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 4px; /* Adjusted gap */
+      gap: 4px; 
       font-weight: bold;
       visibility: hidden; 
       opacity: 0; 
@@ -1022,29 +1009,28 @@
       z-index: 10;
     }
 
-    .aq-alert i {
-      font-size: 1.1rem; /* Adjusted */
-      margin-bottom: 2px; /* Adjusted */
+    .cabin-alert i {
+      font-size: 1.1rem; 
+      margin-bottom: 2px; 
       animation: pulse 1.5s infinite;
     }
 
     .alert-text {
-      font-size: 0.85rem; /* Adjusted */
+      font-size: 0.85rem; 
     }
 
     .alert-status {
-      font-size: 0.7rem; /* Adjusted */
+      font-size: 0.7rem; 
       opacity: 0.9;
     }
 
-    /* Alert active state */
-    .device-aq-display.alert-active { /* Renamed */
-      background-color: rgba(233, 69, 96, 0.2); /* More subtle red background for the box */
+    .device-cabin-status-display.alert-active { 
+      background-color: rgba(233, 69, 96, 0.2); 
       border-color: var(--danger-color);
       box-shadow: 0 0 20px rgba(233, 69, 96, 0.7);
     }
 
-    .device-aq-display.alert-active .aq-alert { /* Renamed */
+    .device-cabin-status-display.alert-active .cabin-alert { 
       bottom: 0; 
       visibility: visible; 
       opacity: 1; 
@@ -1057,70 +1043,73 @@
       100% { transform: scale(1); }
     }
 
-    .device-aq-display { /* Renamed from device-temp-display */
+    .device-cabin-status-display { 
       position: absolute;
       top: 10%;
       left: 20%;
       transform: translate(-50%, -50%);
       background: rgba(15, 52, 96, 0.9);
-      border: 2px solid var(--good-color); /* Start with green border for good AQ */
+      border: 2px solid var(--good-color); 
       border-radius: 12px;
       padding: 15px;
       text-align: center;
-      box-shadow: 0 0 15px rgba(76, 175, 80, 0.5); /* Green shadow */
-      width: 200px; /* Adjusted width */
-      font-size: 0.9rem; /* Base font size for display */
+      box-shadow: 0 0 15px rgba(76, 175, 80, 0.5); 
+      width: 240px; /* Adjusted width for new text */
+      font-size: 0.9rem; 
     }
 
-    .aq-value-iaq { /* Renamed and specific for IAQ */
-      font-family: monospace;
-      font-size: 1.8rem; /* Adjusted */
-      font-weight: bold;
-      color: var(--good-color); /* Start with green for IAQ */
-      margin-bottom: 5px;
-      line-height: 1;
+    .monitoring-status-main { /* New class for "Actively Monitoring" */
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.4rem; 
+      font-weight: 600; /* Bold */
+      color: var(--text-color); /* White text */
+      margin-bottom: 8px; /* Increased margin */
+      line-height: 1.2;
     }
-    .aq-value-voc { /* New for VOC */
-        font-family: monospace;
-        font-size: 1.2rem; /* Smaller for VOC */
+    .monitoring-status-sub { /* New class for "Cabin Status: No Issues" */
+        font-family: 'Poppins', sans-serif;
+        font-size: 1rem; 
         font-weight: normal;
-        color: var(--text-color); /* Neutral color */
-        opacity: 0.8;
-        margin-bottom: 8px;
+        color: var(--good-color); /* Green text */
+        opacity: 0.9;
+        margin-bottom: 10px; /* Increased margin */
         line-height: 1;
     }
 
 
-    .aq-status { /* Renamed */
+    .overall-cabin-status { /* This will now just be the indicator + "Status OK" */
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 6px;
       font-size: 0.8rem;
-      color: #ffffff;
+      color: #ffffff; /* Keeping this for potential future use with statusText if needed */
     }
 
     .status-indicator {
-      width: 8px;
-      height: 8px;
+      width: 10px; /* Slightly larger */
+      height: 10px; /* Slightly larger */
       border-radius: 50%;
-      background-color: var(--good-color); /* Start green */
+      background-color: var(--good-color); 
       animation: blink 1.5s infinite;
     }
 
     @keyframes blink {
-      0% { opacity: 1; }
-      50% { opacity: 0.4; }
-      100% { opacity: 1; }
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
     }
 
-    /* Style for "View All Use Cases" link with arrow */
-    .footer-grid a[href="/uses/"] {
+    .footer-grid a[href="/uses/"] { 
       color: var(--highlight-color) !important;
       text-decoration: none;
       display: flex;
       align-items: center;
       font-weight: 500;
+    }
+    .footer-grid a[href="/uses/remote-cabin-monitoring.html"] { 
+        color: var(--highlight-color) !important; 
+        font-weight: bold;
     }
 
     .footer-grid a[href="/uses/"] i {
@@ -1133,27 +1122,14 @@
       transform: translateX(3px);
     }
 
-    /* Fix for footer links and icons alignment */
     .footer-grid ul {
       list-style: none;
       padding: 0;
-      font-size: 0.9rem;
+    }
+    .footer-grid li, .footer-grid a {
+      font-size: 0.9rem; 
     }
 
-    .footer-grid li {
-      margin-bottom: 10px;
-      font-size: 0.9rem;
-    }
-
-    .footer-grid a {
-      color: var(--text-color);
-      text-decoration: none;
-      opacity: 0.7;
-      transition: all 0.3s ease;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-    }
 
     .footer-grid a i {
       margin-right: 10px;
@@ -1165,48 +1141,47 @@
       color: var(--highlight-color);
     }
 
-    /* Multi-threshold display for demo (AQ version) */
-    .threshold-display-aq { /* Renamed */
+    .threshold-display-cabin { 
       position: absolute;
-      top: -20px; /* Adjusted */
-      left: 75%; /* Adjusted */
+      top: -20px; 
+      left: 75%; 
       transform: translateX(-50%);
       background-color: var(--accent-color);
       border-radius: 12px;
       padding: 12px;
-      width: 260px; /* Adjusted */
+      width: 280px; 
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-      z-index: -1; /* Keep it behind the main device display if overlapping */
+      z-index: -1; 
     }
 
-    .threshold-title-aq { /* Renamed */
+    .threshold-title-cabin { 
       font-size: 1rem;
       text-align: center;
       margin-bottom: 10px;
-      color: var(--text-color); /* Neutral title */
+      color: var(--text-color); 
       font-weight: bold;
     }
 
-    .threshold-list-aq { /* Renamed */
+    .threshold-list-cabin { 
       display: flex;
       flex-direction: column;
       gap: 8px;
     }
 
-    .threshold-item-aq { /* Renamed */
+    .threshold-item-cabin { 
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 8px 12px;
       background-color: rgba(255, 255, 255, 0.1);
       border-radius: 8px;
-      font-size: 0.85rem; /* Adjusted */
+      font-size: 0.85rem; 
     }
 
-    .threshold-label { /* New class for label like IAQ, VOC */
+    .threshold-label { 
         opacity: 0.8;
     }
-    .threshold-condition { /* New class for condition like >500ppb or <50 */
+    .threshold-condition { 
       font-weight: bold;
     }
 
@@ -1215,7 +1190,6 @@
     .threshold-level-poor { color: var(--danger-color); }
 
 
-    /* Ensure footer responsive behavior is consistent */
     @media (max-width: 768px) {
       .footer-grid {
         grid-template-columns: 1fr !important;
@@ -1224,6 +1198,17 @@
       
       .footer-grid a[href="/uses/"] {
         justify-content: center;
+      }
+      .device-cabin-status-display {
+        left: 50%; /* Center on mobile */
+        top: 5%; /* Adjust vertical position */
+        width: 200px; /* Make it a bit smaller for mobile */
+      }
+      .monitoring-status-main {
+        font-size: 1.2rem;
+      }
+      .monitoring-status-sub {
+        font-size: 0.9rem;
       }
     }
   </style>
@@ -1253,7 +1238,6 @@
       </div>
     </nav>
     
-    <!-- Mobile Menu -->
     <div class="mobile-menu-expanded" id="mobile-menu">
       <div class="mobile-nav-links">
         <a href="/index.html#features" class="mobile-nav-link">Features</a>
@@ -1269,7 +1253,6 @@
       </div>
     </div>
     
-    <!-- Integrated Breadcrumb -->
     <div class="integrated-breadcrumb">
       <div class="container">
         <div class="breadcrumb-nav">
@@ -1277,64 +1260,69 @@
           <span class="breadcrumb-separator">/</span>
           <a href="/uses/">Uses</a>
           <span class="breadcrumb-separator">/</span>
-          <span class="breadcrumb-current">Cellular Air Quality Monitor</span>
+          <span class="breadcrumb-current">Remote Cabin & Cottage Monitoring</span>
         </div>
       </div>
     </div>
   </header>
   
-  <!-- Air Quality Monitor Hero Section -->
-  <section class="aq-hero">
-    <div class="container aq-hero-container">
-      <div class="aq-hero-content">
-        <h1>CabinPulse Cellular Air Quality Monitor</h1>
-        <p class="aq-hero-subtitle">Monitor Indoor Air Quality (IAQ) and harmful VOCs remotely. Get instant alerts for poor air, wildfire smoke, or high VOC levels—no WiFi needed, even during power outages.</p>
+  <!-- Cabin Monitoring Hero Section -->
+  <section class="cabin-hero">
+    <div class="container cabin-hero-container">
+      <div class="cabin-hero-content">
+        <h1>The Ultimate Remote Cabin & Cottage Monitoring System</h1>
+        <p class="cabin-hero-subtitle">Gain year-round peace of mind. Monitor power outages, temperature (freeze alerts), air quality (wildfire smoke), humidity (mould prevention), and even listen for smoke alarms at your cabin or cottage—all without WiFi, using reliable cellular.</p>
         
         <div class="badge-container">
-          <span class="badge"><i class="fas fa-wind icon-text" style="margin-right:0.2rem;"></i>VOC & IAQ Sensing</span>
-          <span class="badge"><i class="fas fa-bell icon-text" style="margin-right:0.2rem;"></i>Custom AQ Alerts</span>
-          <span class="badge"><i class="fas fa-wifi icon-text" style="margin-right:0.2rem;"></i>No WiFi Required</span>
+          <span class="badge"><i class="fas fa-bolt icon-text" style="margin-right:0.2rem;"></i>Power Outage Alerts</span>
+          <span class="badge"><i class="fas fa-temperature-half icon-text" style="margin-right:0.2rem;"></i>Temp & Humidity</span>
+          <span class="badge"><i class="fas fa-wind icon-text" style="margin-right:0.2rem;"></i>Air Quality Insights</span>
+          <span class="badge"><i class="fas fa-wifi icon-text" style="margin-right:0.2rem;"></i>No WiFi Needed</span>
         </div>
-        <p class="temp-notice">CabinPulse detects airborne pollutants and changes in your Indoor Air Quality Index, immediately notifying you when air quality drops below your custom thresholds.</p>
+        <p class="cabin-notice">CabinPulse provides essential protection for your home away from home, alerting you to critical issues instantly.</span></p>
         
-        <a href="https://cabinpulse.com/purchase.html?plan=3" class="cta-button"> 
-          Protect Your Air Now →
+        <a href="https://cabinpulse.com/purchase.html?plan=1" class="cta-button"> 
+          Protect Your Cabin Today →
         </a>
       </div>
-      <div class="aq-hero-image">
-        <img src="../front.png" alt="CabinPulse Cellular Air Quality Monitor - Remotely monitor VOCs and IAQ score, get alerts for poor air and smoke, no WiFi.">
-        <div class="device-aq-display">
-          <div class="aq-value-iaq" id="iaqDisplay">IAQ: 35</div>
-          <div class="aq-value-voc" id="vocDisplay">VOC: 120 ppb</div>
-          <div class="aq-status">
+      <div class="cabin-hero-image">
+        <img src="../front.png" alt="CabinPulse Remote Cabin Monitoring System device - monitors power, temperature, air quality, humidity without WiFi for cabins and cottages.">
+        <div class="device-cabin-status-display">
+          <div class="monitoring-status-main" id="monitoringStatusMain">Actively Monitoring</div>
+          <div class="monitoring-status-sub" id="monitoringStatusSub">No Issues</div>
+          <div class="overall-cabin-status">
             <span class="status-indicator" id="statusIndicator"></span>
-            <span class="status-text" id="statusText">Good Air Quality</span>
+            <!-- Text removed from here as it's now in monitoringStatusSub -->
           </div>
-          <div class="aq-alert">
+          <div class="cabin-alert"> <!-- This is now visually hidden unless explicitly triggered -->
             <i class="fas fa-triangle-exclamation"></i>
-            <span class="alert-text">Poor Air Quality!</span>
-            <span class="alert-status">Alert Sent</span>
+            <span class="alert-text">Cabin Alert!</span>
+            <span class="alert-status">Critical Event</span>
           </div>
         </div>
         
-        <div class="threshold-display-aq">
-          <div class="threshold-title-aq">Air Quality Alert Levels</div>
-          <div class="threshold-list-aq">
-            <div class="threshold-item-aq">
-              <span class="threshold-label">IAQ Index:</span>
-              <span class="threshold-condition threshold-level-poor">&gt; 150 (Poor)</span>
+        <div class="threshold-display-cabin">
+          <div class="threshold-title-cabin">Monitoring For:</div>
+          <div class="threshold-list-cabin">
+            <div class="threshold-item-cabin">
+              <span class="threshold-label">Temperature:</span>
+              <span class="threshold-condition threshold-level-poor">< 5°C</span>
             </div>
-            <div class="threshold-item-aq">
-              <span class="threshold-label">IAQ Index:</span>
-              <span class="threshold-condition threshold-level-moderate">&gt; 100 (Moderate)</span>
+            <div class="threshold-item-cabin">
+              <span class="threshold-label">Power:</span>
+              <span class="threshold-condition threshold-level-poor">Outage Detected</span>
             </div>
-            <div class="threshold-item-aq">
-              <span class="threshold-label">IAQ Index:</span>
-              <span class="threshold-condition threshold-level-poor">&gt; 300 (Very Poor)</span>
+            <div class="threshold-item-cabin">
+              <span class="threshold-label">Air Quality (IAQ):</span>
+              <span class="threshold-condition threshold-level-moderate">> 100</span>
             </div>
-            <div class="threshold-item-aq">
-              <span class="threshold-label">IAQ Index:</span>
-              <span class="threshold-condition threshold-level-moderate">&gt; 450 (Extremely Poor)</span>
+            <div class="threshold-item-cabin">
+              <span class="threshold-label">Humidity:</span>
+              <span class="threshold-condition threshold-level-moderate">> 70%</span>
+            </div>
+             <div class="threshold-item-cabin">
+              <span class="threshold-label">Smoke Alarm:</span>
+              <span class="threshold-condition threshold-level-poor">Active</span>
             </div>
           </div>
         </div>
@@ -1345,43 +1333,43 @@
   <!-- Features Section -->
   <section class="features">
     <div class="container" style="margin-bottom: 5rem;">
-      <h2 class="section-title">Here's Why CabinPulse is The Best Choice for Remote Air Quality Monitoring</h2>
+      <h2 class="section-title">Why CabinPulse is Essential for Every Cabin & Cottage Owner</h2>
       
       <div class="features-grid">
         <div class="feature-card">
-          <i class="feature-icon fas fa-search-location"></i>
-          <h3>Comprehensive Air Sensing</h3>
-          <p>CabinPulse monitors key indicators of air quality, including <span class="air-quality-highlight">Volatile Organic Compounds (VOCs)</span> and calculates an overall <span class="air-quality-highlight">Indoor Air Quality (IAQ) score</span>.</p>
+          <i class="feature-icon fas fa-bolt-lightning"></i>
+          <h3>Instant Power Outage Alerts</h3>
+          <p>Know immediately when the power goes out at your cabin or cottage. Prevent frozen pipes, spoiled food, and other costly damage by reacting quickly, even from afar.</p>
         </div>
         
         <div class="feature-card">
-          <i class="feature-icon fas fa-sliders-h"></i>
-          <h3>Customizable Air Quality Alerts</h3>
-          <p>Set unlimited thresholds for air quality. Get notified for moderate warnings or critical poor air quality, tailored to your specific health and safety needs.</p>
+          <i class="feature-icon fas fa-temperature-arrow-down"></i>
+          <h3>Critical Temperature Monitoring</h3>
+          <p>Set custom <span class="highlight-text">freeze alarms</span> to protect your pipes and property from cold snaps. Monitor high temperatures too, ensuring comfort and safety.</p>
         </div>
         
+        <div class="feature-card">
+          <i class="feature-icon fas fa-wind"></i>
+          <h3>Air Quality & Wildfire Smoke</h3>
+          <p>Monitor Indoor Air Quality (IAQ) and VOCs. Get alerts for poor air, crucial during <span class="highlight-text">wildfire season</span>, so you know if it's safe to visit or if you need to air out the property.</p>
+        </div>
+        
+        <div class="feature-card">
+          <i class="feature-icon fas fa-droplet"></i>
+          <h3>Humidity & Mould Prevention</h3>
+          <p>Track humidity levels to prevent costly <span class="highlight-text">mould growth</span> and structural damage. Get alerted if humidity gets too high, allowing you to take preventative action.</p>
+        </div>
+        
+         <div class="feature-card">
+          <i class="feature-icon fas fa-volume-high"></i>
+          <h3>Smoke Alarm Sound Monitoring</h3>
+          <p>CabinPulse can listen for the sound patterns of smoke and CO alarms (T3/T4). Get an informational alert if it detects these sounds, adding an extra layer of awareness. <i>Not a certified life-safety device</i>.</p>
+        </div>
+
         <div class="feature-card">
           <i class="feature-icon fas fa-tower-cell"></i>
-          <h3>Reliable Cellular Connectivity</h3>
-          <p>Forget WiFi hassles. CabinPulse uses robust cellular networks to send alerts and data, crucial for remote properties or during power/internet outages when air quality can be critical.</p>
-        </div>
-        
-        <div class="feature-card">
-          <i class="feature-icon fas fa-smog"></i>
-          <h3>Wildfire Smoke & Pollutant Detection</h3>
-          <p>Ideal for areas prone to <span class="air-quality-highlight">wildfire smoke</span> or industrial pollutants. Get early warnings when outdoor conditions impact your indoor air, allowing you to take protective measures.</p>
-        </div>
-        
-        <div class="feature-card">
-          <i class="feature-icon fas fa-battery-full"></i>
-          <h3>Uninterrupted Power Outage Monitoring</h3>
-          <p>With up to 3 days of battery backup, CabinPulse continues to monitor air quality and send alerts even when the power is out – often when ventilation systems fail and air quality worsens.</p>
-        </div>
-        
-        <div class="feature-card">
-          <i class="feature-icon fas fa-history"></i>
-          <h3>Historical Air Quality Data</h3>
-          <p>Track IAQ trends over time. Understand patterns, identify sources of pollution, and verify the effectiveness of mitigation efforts like air purifiers or ventilation changes.</p>
+          <h3>Unbeatable Cellular Coverage</h3>
+          <p>Forget unreliable WiFi. CabinPulse uses robust cellular, connecting to <span class="highlight-text">ALL major networks in Canada & the US</span>. If there's any cell service, CabinPulse works. Up to 3 days battery backup.</p>
         </div>
       </div>
     </div>
@@ -1391,36 +1379,36 @@
   <!-- How It Works Section -->
   <section class="how-it-works">
     <div class="container">
-      <h2 class="section-title">Monitor Your Air Quality in 3 Simple Steps</h2>
+      <h2 class="section-title">Effortless Monitoring for Your Cherished Getaway</h2>
       
       <div class="steps-grid">
         <div class="step-card">
           <div class="step-number">1</div>
           <i class="step-icon fas fa-plug"></i>
           <h3>Plug & Play Setup</h3>
-          <p>Simply plug CabinPulse into a power outlet. It connects automatically to the cellular network. No WiFi configuration, no technical expertise needed. Starts monitoring immediately.</p>
+          <p>Simply plug CabinPulse into a power outlet. It connects automatically to the best available cellular network. No WiFi configuration, no technical expertise needed.</p>
         </div>
         
         <div class="step-card">
           <div class="step-number">2</div>
           <i class="step-icon fas fa-cogs"></i>
-          <h3>Set Your Air Quality Thresholds</h3>
-          <p>Log into your CabinPulse dashboard to define custom alert thresholds for Indoor Air Quality scores.</p>
+          <h3>Set Your Cabin Thresholds</h3>
+          <p>Log into your dashboard to define custom alert thresholds for temperature, power outages, air quality, humidity, and enable smoke alarm sound monitoring.</p>
         </div>
         
         <div class="step-card">
           <div class="step-number">3</div>
           <i class="step-icon fas fa-mobile-alt"></i>
-          <h3>Receive Instant Air Alerts</h3>
-          <p>Get immediate notifications via text message and email if air quality drops below your set limits, so you can act quickly to protect your health and property.</p>
+          <h3>Receive Instant Cabin Alerts</h3>
+          <p>Get immediate notifications via text message and email for any critical events at your cabin or cottage, so you can act quickly to protect your property.</p>
         </div>
       </div>
       
       <div class="image-overlay" style="margin-top: 80px;">
-        <img src="../dashboard.png" alt="CabinPulse Dashboard showing air quality monitoring (IAQ & VOCs) and custom alert thresholds">
+        <img src="../dashboard.png" alt="CabinPulse Dashboard showing remote cabin monitoring data: temperature, power, air quality, humidity alerts.">
         <div class="overlay-content">
-          <h3>Track Air Quality From Anywhere, Anytime</h3>
-          <p>Access real-time IAQ scores and historical air quality data via your phone, tablet, or computer. Adjust alert settings remotely with ease.</p>
+          <h3>Oversee Your Cabin From Anywhere, Anytime</h3>
+          <p>Access real-time status and historical data for all monitored conditions via your phone, tablet, or computer. Adjust alert settings remotely with ease.</p>
         </div>
       </div>
     </div>
@@ -1429,10 +1417,10 @@
   <!-- Comparison Section -->
   <section class="comparison">
     <div class="container comparison-container">
-      <h2 class="section-title">CabinPulse vs. Standard Air Quality Monitors</h2>
+      <h2 class="section-title">CabinPulse vs. Traditional Cabin 'Solutions'</h2>
       
       <div class="comparison-intro">
-        <p>While many air quality monitors exist, CabinPulse offers a unique combination of comprehensive sensing, reliable cellular connectivity, and robust alerting for truly remote peace of mind.</p>
+        <p>Don't leave your valuable cabin or cottage unprotected or rely on spotty WiFi. CabinPulse offers comprehensive, reliable remote monitoring designed for the unique needs of secondary properties.</p>
       </div>
       
       <div class="table-wrapper">
@@ -1440,61 +1428,65 @@
           <thead>
             <tr>
               <th>Features</th>
-              <th>Basic/WiFi Air Monitors</th>
-              <th class="cabinpulse-col" style="border-radius: 1rem 1rem 0rem 0rem;">CabinPulse Air Quality</th>
+              <th>No Monitoring / Neighbors</th>
+              <th>WiFi-Only Devices</th>
+              <th class="cabinpulse-col" style="border-radius: 1rem 1rem 0rem 0rem;">CabinPulse System</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td class="feature-name">VOC Sensing</td>
-              <td><i class="checkmark fas fa-check"></i> VOCs or PM2.5 only</td>
-              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> IAQ Score from VOCs</td>
-            </tr>
-            <tr>
-              <td class="feature-name">Custom Alert Thresholds</td>
-              <td><i class="xmark fas fa-xmark"></i> Limited or fixed</td>
-              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Unlimited custom levels</td>
-            </tr>
-            <tr>
-              <td class="feature-name">Wildfire Smoke Indication</td>
-              <td><i class="checkmark fas fa-check"></i> Alerts on related air changes</td>
-              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Alerts on related air changes</td>
-            </tr>
-            <tr>
-              <td class="feature-name">Works During Power Outage</td>
-              <td><i class="xmark fas fa-xmark"></i> Rarely, WiFi router also fails</td>
-              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Up to 3 days backup</td>
-            </tr>
-            <tr>
               <td class="feature-name">Connectivity</td>
-              <td><i class="xmark fas fa-xmark"></i> WiFi only (unreliable)</td>
-              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Cellular (No WiFi Needed)</td>
+              <td><i class="xmark fas fa-xmark"></i> None / Unreliable</td>
+              <td><i class="xmark fas fa-xmark"></i> WiFi (Often Unstable/Off-Season)</td>
+              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Cellular (All N.A. Networks)</td>
             </tr>
             <tr>
-              <td class="feature-name">Historical Data Tracking</td>
-              <td><i class="xmark fas fa-xmark"></i> Limited or subscription-based</td>
-              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Full history included</td>
+              <td class="feature-name">Power Outage Alerts</td>
+              <td><i class="xmark fas fa-xmark"></i> Discover on arrival</td>
+              <td><i class="xmark fas fa-xmark"></i> Fails with WiFi/Power</td>
+              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Instant, with Battery Backup</td>
             </tr>
             <tr>
-              <td class="feature-name">Alert Recipients</td>
-              <td><i class="xmark fas fa-xmark"></i> Single user app notification</td>
-              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Multiple contacts (Text/Email)</td>
+              <td class="feature-name">Freeze Alerts</td>
+              <td><i class="xmark fas fa-xmark"></i> Risk of major damage</td>
+              <td><i class="xmark fas fa-xmark"></i> Fails with WiFi/Power</td>
+              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Reliable Custom Alerts</td>
             </tr>
             <tr>
-              <td class="feature-name">Remote Location Suitability</td>
-              <td><i class="xmark fas fa-xmark"></i> Poor, needs stable WiFi</td>
-              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Excellent for cabins, RVs etc.</td>
+              <td class="feature-name">Humidity / Mould Risk</td>
+              <td><i class="xmark fas fa-xmark"></i> Hidden until problematic</td>
+              <td><i class="xmark fas fa-xmark"></i> Limited by WiFi</td>
+              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Proactive Monitoring</td>
+            </tr>
+            <tr>
+              <td class="feature-name">Air Quality / Wildfire Smoke</td>
+              <td><i class="xmark fas fa-xmark"></i> Unknown until arrival</td>
+              <td><i class="xmark fas fa-xmark"></i> Limited by WiFi</td>
+              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Remote IAQ/VOC Info</td>
             </tr>
              <tr>
+              <td class="feature-name">Smoke Alarm Sound Info</td>
+              <td><i class="xmark fas fa-xmark"></i> No remote knowledge</td>
+              <td><i class="xmark fas fa-xmark"></i> Usually none</td>
+              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Informational Alerts</td>
+            </tr>
+            <tr>
+              <td class="feature-name">Year-Round Internet Cost</td>
+              <td><i class="checkmark fas fa-check"></i> Potentially none</td>
+              <td><i class="xmark fas fa-xmark"></i> High (e.g., Starlink $140+/mo)</td>
+              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Low Monthly Fee (Save $$$)</td>
+            </tr>
+            <tr>
               <td class="feature-name">Installation</td>
-              <td><i class="checkmark fas fa-check"></i> WiFi setup can be tricky</td>
+              <td><i class="checkmark fas fa-check"></i> N/A</td>
+              <td><i class="xmark fas fa-xmark"></i> WiFi setup can be tricky</td>
               <td class="cabinpulse-col" style="border-radius: 0rem 0rem 1rem 1rem;"><i class="checkmark fas fa-check"></i> Plug & play, truly simple</td>
             </tr>
           </tbody>
         </table>
       </div>
       
-      <a href="https://cabinpulse.com/purchase.html?plan=3" class="cta-button">Monitor Your Air →</a>
+      <a href="https://cabinpulse.com/purchase.html?plan=1" class="cta-button">Secure Your Cabin Now →</a>
     </div>
   </section>
 
@@ -1503,7 +1495,7 @@
   <!-- Testimonials Section -->
   <section class="testimonials">
     <div class="container">
-      <h2 class="section-title">Hear From CabinPulse Air Quality Users</h2>
+      <h2 class="section-title">Cabin & Cottage Owners Trust CabinPulse</h2>
       
       <div class="testimonials-grid">
         <div class="testimonial-card">
@@ -1511,13 +1503,13 @@
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
           <div class="testimonial-content">
-            During the recent wildfires we got alerts on our phones about the declining air quality at our cabin even though we were hundreds of kms away. Knew not to go up that weekend. So glad we have it!
+            We got CabinPulse last winter and love it! It was very easy to set up and the app is great, very user friendly. It’s great to make sure the furnace isn’t dead and that our water lines aren’t freezing in the winter. Having air quality and power outage alerts will be helpful for the summer and beyond. A no brainer for cabin owners!
           </div>
           <div class="testimonial-author">
-            <div class="author-avatar"><i class="fas fa-house"></i></div>
+            <div class="author-avatar"><i class="fas fa-house-chimney-window"></i></div>
             <div class="author-info">
               <h4>Cabin Owner</h4>
-              <p>Saskatchewan, Canada</p>
+              <p>Emma Lake, Canada</p>
             </div>
           </div>
         </div>
@@ -1530,10 +1522,10 @@
             The app is extremely simple to navigate. I love the air quality measure as well. We are thrilled to have an effective and affordable solution to monitoring our place year round!
           </div>
           <div class="testimonial-author">
-            <div class="author-avatar"><i class="fas fas fa-house"></i></div>
+            <div class="author-avatar"><i class="fas fa-house-chimney-user"></i></div>
             <div class="author-info">
               <h4>Cabin Owner</h4>
-              <p>Saskatchewan, Canada</p>
+              <p>Wakaw Lake, SK</p>
             </div>
           </div>
         </div>
@@ -1549,47 +1541,47 @@
   <!-- FAQ Section -->
   <section class="faq">
     <div class="container">
-      <h2 class="section-title">Air Quality Monitoring: Your Questions Answered</h2>
+      <h2 class="section-title">Your Cabin & Cottage Monitoring Questions Answered</h2>
       
       <div class="faq-grid">
         <div class="faq-item">
-          <h3><i class="fas fa-wind"></i> What air pollutants does CabinPulse detect?</h3>
-          <p>CabinPulse primarily monitors for a broad range of Volatile Organic Compounds (VOCs), which are common indoor air pollutants from sources like building materials, cleaning products, and smoke. It also calculates an overall Indoor Air Quality (IAQ) score based on multiple factors.</p>
+          <h3><i class="fas fa-list-check"></i>What does CabinPulse monitor for cabins/cottages?</h3>
+          <p>CabinPulse monitors for power outages, ambient temperature, air quality, relative humidity, and listens for standard smoke/CO alarm sound patterns (informational only).</p>
         </div>
         
         <div class="faq-item">
-          <h3><i class="fas fa-fire"></i> Can it detect wildfire smoke?</h3>
-          <p>Yes, while not a specific smoke particle detector, CabinPulse is highly effective at detecting the VOCs and other pollutants characteristic of <span class="air-quality-highlight">wildfire smoke</span>. Significant increases in these will trigger alerts, indicating poor air quality likely due to smoke.</p>
+          <h3><i class="fas fa-bolt"></i>How does it help with power outages at the cabin?</h3>
+          <p>CabinPulse sends you an immediate text/email alert if the power goes out and when it's restored. Its built-in battery keeps it running for up to 3 days, so you always know what's happening, even if you're not there.</p>
         </div>
         
         <div class="faq-item">
-          <h3><i class="fas fa-tachometer-alt"></i> What is an IAQ Score?</h3>
-          <p>The Indoor Air Quality (IAQ) score is an index that provides a simple way to understand the overall quality of your air. It ranges from 0 (good) to 500 (hazardous). CabinPulse allows you to set alerts based on different IAQ score levels.</p>
+          <h3><i class="fas fa-snowflake"></i>Can it prevent frozen pipes in my cottage?</h3>
+          <p>By providing timely low-temperature alerts, CabinPulse gives you the crucial early warning needed to take action and prevent pipes from freezing and bursting, saving you from potentially thousands in damages.</p>
         </div>
 
         <div class="faq-item">
-          <h3><i class="fas fa-wifi"></i> Does CabinPulse need WiFi for air monitoring?</h3>
-          <p>Absolutely not. CabinPulse uses its own <span class="air-quality-highlight">cellular connection</span> to transmit air quality data and send alerts. This is vital for remote locations without internet or during power outages when WiFi routers are down.</p>
+          <h3><i class="fas fa-smog"></i>How does air quality monitoring help during wildfire season?</h3>
+          <p>CabinPulse detects VOCs and changes in your IAQ score, which can indicate the presence of <span class="highlight-text">wildfire smoke</span>. You'll know if the air at your cabin or cottage is unhealthy before you travel, or if you need to take steps like closing windows or running air purifiers.</p>
         </div>
         
         <div class="faq-item">
-          <h3><i class="fas fa-exclamation-triangle"></i> How are air quality alerts delivered?</h3>
-          <p>You'll receive instant alerts via text message (SMS) and email when your pre-set IAQ or VOC thresholds are breached. You can add multiple contacts to ensure the right people are notified.</p>
+          <h3><i class="fas fa-tint"></i>How does humidity monitoring protect my cabin?</h3>
+          <p>High humidity can lead to <span class="highlight-text">mould, mildew, and structural issues</span>. CabinPulse alerts you if humidity exceeds your set threshold, allowing you to address potential moisture problems before they become serious.</p>
         </div>
         
         <div class="faq-item">
-          <h3><i class="fas fa-battery-three-quarters"></i> What if the power goes out?</h3>
-          <p>CabinPulse has a built-in battery backup lasting up to 3 days. It continues to monitor air quality and send alerts during power outages, which is often when indoor air can deteriorate due to lack of ventilation.</p>
+          <h3><i class="fas fa-volume-up"></i>What is smoke alarm sound monitoring?</h3>
+          <p>CabinPulse's acoustic sensor can detect the specific T3 smoke alarm sound patterns. If detected, it sends an informational alert. It's an added layer of awareness, but not a replacement for interconnected or monitored alarm systems.</p>
         </div>
         
         <div class="faq-item">
-          <h3><i class="fas fa-chart-area"></i> Can I see historical air quality data?</h3>
-          <p>Yes, the CabinPulse dashboard provides access to historical trends for IAQ scores. This helps you identify patterns, sources of pollution, or the impact of events like wildfires or renovations.</p>
+          <h3><i class="fas fa-signal"></i>Do I really not need WiFi? How's the cellular coverage?</h3>
+          <p>Absolutely no WiFi needed! CabinPulse has a built-in cellular modem that connects to <span class="highlight-text">all major networks across Canada and the US</span> and works in Mexico too. If there's even a faint signal from any carrier, CabinPulse will work.</p>
         </div>
         
         <div class="faq-item">
-          <h3><i class="fas fa-map-marked-alt"></i> Where is CabinPulse best used for air monitoring?</h3>
-          <p>It's ideal for vacation homes, cabins in wildfire-prone areas, RVs, basements, workshops, properties undergoing renovation, or any indoor space where you want to ensure healthy air without relying on WiFi.</p>
+          <h3><i class="fas fa-dollar-sign"></i>Can I save money on my cabin internet bill?</h3>
+          <p>Yes! Many users cancel expensive year-round internet services (like Starlink at $140+/month) at their cabin/cottage once they have CabinPulse, as it provides essential monitoring without needing WiFi, saving significant money, especially in the off-season.</p>
         </div>
       </div>
     </div>
@@ -1604,27 +1596,23 @@
   <section class="final-cta">
     <div class="container final-cta-container">
       <div class="final-cta-icon">
-        <i class="fas fa-lungs-virus"></i> <!-- Icon reflecting air/health -->
+        <i class="fas fa-shield-heart"></i> 
       </div>
-      <h2>Breathe Easier with Smart Air Quality Monitoring</h2>
-      <p>Protect your health and property with CabinPulse. Reliable air quality monitoring, custom alerts, and cellular connectivity ensure you're always informed, even from afar.</p>
+      <h2>Year-Round Peace of Mind for Your Cabin or Cottage</h2>
+      <p>Stop worrying about your home away from home. With CabinPulse, you're always connected, protecting your investment against power outages, extreme temperatures, poor air, humidity, and more – no WiFi required.</p>
       
       <div class="cta-features">
         <div class="cta-feature">
           <i class="fas fa-check-circle"></i>
-          <span>VOC & IAQ Monitoring</span>
+          <span>Power, Temp, Air, Humidity Alerts</span>
         </div>
         <div class="cta-feature">
           <i class="fas fa-check-circle"></i>
-          <span>Wildfire Smoke Ready</span>
-        </div>
-        <div class="cta-feature">
-          <i class="fas fa-check-circle"></i>
-          <span>No WiFi Needed</span>
+          <span>Cellular - No WiFi Needed</span>
         </div>
       </div>
       
-      <a href="https://cabinpulse.com/purchase.html?plan=3" class="cta-button">Get CabinPulse Air Monitor →</a>
+      <a href="https://cabinpulse.com/purchase.html?plan=1" class="cta-button">Get Your CabinPulse System →</a>
     </div>
   </section>
   
@@ -1731,92 +1719,31 @@
   
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const iaqDisplay = document.getElementById('iaqDisplay');
-        const vocDisplay = document.getElementById('vocDisplay');
-        const deviceAqDisplay = document.querySelector('.device-aq-display');
+        const monitoringStatusMain = document.getElementById('monitoringStatusMain');
+        const monitoringStatusSub = document.getElementById('monitoringStatusSub');
+        const deviceCabinDisplay = document.querySelector('.device-cabin-status-display');
         const statusIndicator = document.getElementById('statusIndicator');
-        const statusText = document.getElementById('statusText');
-    
-        let currentIAQ = 35;
-        let currentVOC = 120;
-        let alertTriggered = false;
-        let simulationInterval; // Declare here to be accessible for clearInterval
-    
-        const iaqLevels = {
-            good: { max: 50, color: 'var(--good-color)', text: 'Good Air Quality' },
-            moderate: { max: 100, color: 'var(--warning-color)', text: 'Moderate Air' },
-            unhealthySensitive: { max: 150, color: 'var(--warning-color)', text: 'Unhealthy (Sensitive)' },
-            unhealthy: { max: 200, color: 'var(--danger-color)', text: 'Unhealthy Air!' },
-            veryUnhealthy: { max: 300, color: 'var(--danger-color)', text: 'Very Unhealthy!!' },
-            hazardous: { max: 500, color: 'var(--danger-color)', text: 'Hazardous Air!!!' }
-        };
-    
-        function updateDisplay() {
-            iaqDisplay.textContent = `IAQ: ${Math.round(currentIAQ)}`;
-            vocDisplay.textContent = `VOC: ${Math.round(currentVOC)} ppb`;
-    
-            let currentLevelKey = Object.keys(iaqLevels).find(key => currentIAQ <= iaqLevels[key].max) || 'hazardous';
-            let currentLevel = iaqLevels[currentLevelKey];
+        // const cabinAlertBox = document.querySelector('.cabin-alert'); // Kept if needed for other alerts
+
+        function setStaticDisplay() {
+            monitoringStatusMain.textContent = "Actively Monitoring";
+            monitoringStatusSub.textContent = "No Issues";
             
-            iaqDisplay.style.color = currentLevel.color;
-            statusIndicator.style.backgroundColor = currentLevel.color;
-            // Keep the border red if an alert was triggered, otherwise update based on current level
-            if (!alertTriggered) {
-                deviceAqDisplay.style.borderColor = currentLevel.color;
-                deviceAqDisplay.style.boxShadow = `0 0 15px ${currentLevel.color}80`;
-            }
-    
-    
-            if (!alertTriggered) {
-                statusText.textContent = currentLevel.text;
-            }
-    
-            if ((currentIAQ > 150 || currentVOC > 500) && !alertTriggered) {
-                alertTriggered = true;
-                deviceAqDisplay.classList.add('alert-active'); // Makes the banner slide up
-                statusText.textContent = 'Alert Sent!';
-                statusIndicator.style.backgroundColor = 'var(--danger-color)';
-                deviceAqDisplay.style.borderColor = 'var(--danger-color)'; // Ensure border stays red
-                deviceAqDisplay.style.boxShadow = `0 0 20px rgba(233, 69, 96, 0.7)`;
-    
-    
-                // ADDED: Timeout to make the banner slide back down
-                setTimeout(() => {
-                    deviceAqDisplay.classList.remove('alert-active'); // This will make it slide down
-                    // The main display (border, IAQ color) will remain reflecting the poor AQ
-                    // and "Alert Sent!" will also remain as statusText.
-                }, 5000); // Banner stays for 5 seconds
-    
-                if (simulationInterval) {
-                    clearInterval(simulationInterval); // Stop simulation once alert is fully processed
-                }
-            }
+            monitoringStatusMain.style.color = 'var(--text-color)'; // Or var(--good-color) if preferred
+            monitoringStatusSub.style.color = 'var(--good-color)';
+            
+            statusIndicator.style.backgroundColor = 'var(--good-color)';
+            deviceCabinDisplay.style.borderColor = 'var(--good-color)';
+            deviceCabinDisplay.style.boxShadow = `0 0 15px rgba(76, 175, 80, 0.5)`;
+
+            // Ensure alert banner is not active for this static display
+            // if (deviceCabinDisplay.classList.contains('alert-active')) {
+            //     deviceCabinDisplay.classList.remove('alert-active');
+            // }
         }
-    
-        let simulationTime = 0;
-        simulationInterval = setInterval(() => { // Assign to simulationInterval
-            simulationTime++;
-    
-            if (simulationTime < 5) {
-                 currentIAQ += Math.random() * 2 -1;
-                 currentVOC += Math.random() * 10 - 5;
-            } else if (simulationTime < 15) {
-                currentIAQ += Math.random() * 3 + 1;
-                currentVOC += Math.random() * 20 + 5;
-            } else {
-                currentIAQ += Math.random() * 10 + 5;
-                currentVOC += Math.random() * 50 + 20;
-            }
-    
-            currentIAQ = Math.max(0, Math.min(currentIAQ, 350)); 
-            currentVOC = Math.max(0, Math.min(currentVOC, 700));
-    
-            updateDisplay();
-    
-        }, 1200);
-    
-        updateDisplay();
-    
+
+        setStaticDisplay(); // Set the display on load
+
         // Mobile Menu Toggle Functionality
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -1853,6 +1780,6 @@
             }
         });
     });
-    </script>
+  </script>
 </body>
 </html>
