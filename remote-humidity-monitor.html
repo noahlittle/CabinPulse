@@ -1,0 +1,1832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CabinPulse - Remote Cellular Humidity Monitor with Advanced Features</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <meta name="description" content="Protect your property from mold, mildew, and damage with CabinPulse Cellular Humidity Monitor. Get instant alerts for high/low humidity without WiFi. Advanced humidity monitoring for remote properties." />
+  <meta name="keywords" content="humidity monitor, cellular humidity monitor, remote humidity alert, mold prevention, mildew alert, no wifi humidity sensor, property humidity control">
+  <script defer src="https://analytics.cabinliving.ca/script.js" data-website-id="bd58d7d8-2b00-44ae-8285-c76db6e383ad"></script>
+  <style>
+    /* Root variables */
+    :root {
+      --primary-color: #1a1a2e;
+      --secondary-color: #16213e;
+      --cta-color: #ffffff;
+      --accent-color: #0f3460;
+      --highlight-color: #e94560; /* Keeping this for general highlight, can adjust if needed for humidity theme */
+      --text-color: #ffffff;
+      --dark-text-color: #000000;
+    }
+    
+    /* Base styles */
+    html {
+      font-size: 18px;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--primary-color);
+      color: var(--text-color);
+      overflow-x: hidden;
+      font-size: 1rem;
+    }
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 25px;
+    }
+    
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--text-color);
+    }
+    
+    /* Header styles */
+    header {
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+      background-color: rgba(26, 26, 46, 0.95);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      padding: 15px 0 0; /* Removed bottom padding to accommodate breadcrumb */
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+    .icon {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+    }
+    
+    /* Updated Nav Links Styles */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 20px;
+      margin-left: auto;
+    }
+    .nav-link {
+      color: var(--text-color);
+      text-decoration: none;
+      padding: 8px 15px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .nav-link:hover {
+      color: var(--highlight-color);
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    .login-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .login-btn:hover {
+      border-color: var(--highlight-color);
+    }
+    .primary-cta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--highlight-color);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(233, 69, 96, 0.3);
+    }
+    .primary-cta:hover {
+      background-color: #ff5a7c;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(233, 69, 96, 0.4);
+    }
+    
+    /* Mobile menu styles */
+    .mobile-menu-toggle {
+      display: none;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      background-color: rgba(255, 255, 255, 0.1);
+      z-index: 1001;
+    }
+    
+    .mobile-menu-toggle:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Mobile Menu Expanded */
+    .mobile-menu-expanded {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: rgba(26, 26, 46, 0.98);
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease-in-out;
+    }
+    
+    .mobile-menu-expanded.active {
+      transform: translateY(0);
+    }
+    
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    .mobile-nav-link {
+      color: var(--text-color);
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    
+    .mobile-nav-link:hover {
+      color: var(--highlight-color);
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .mobile-login-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      margin-top: 10px;
+      width: 200px;
+    }
+    
+    .mobile-primary-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background-color: var(--highlight-color);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(233, 69, 96, 0.3);
+      margin-top: 20px;
+      width: 200px;
+    }
+    
+    .mobile-primary-cta:hover {
+      background-color: #ff5a7c;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(233, 69, 96, 0.4);
+    }
+    
+    /* Integrated Breadcrumb */
+    .integrated-breadcrumb {
+      background-color: rgba(15, 52, 96, 0.7); /* Lighter blue color */
+      padding: 8px 0;
+      margin-top: 15px;
+      font-size: 0.85rem;
+    }
+    
+    .breadcrumb-nav {
+      display: flex;
+      align-items: center;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .breadcrumb-nav a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .breadcrumb-nav a:hover {
+      color: var(--highlight-color);
+    }
+    
+    .breadcrumb-separator {
+      margin: 0 10px;
+    }
+    
+    .breadcrumb-current {
+      color: var(--highlight-color);
+      font-weight: 600;
+    }
+    
+    /* Button styles */
+    .cta-button {
+      display: inline-block;
+      background-color: var(--highlight-color);
+      color: white;
+      padding: 15px 30px;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: bold;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-top: 1.2rem;
+      font-size: 1.1rem;
+      position: relative;
+      z-index: 10;
+    }
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(233, 69, 96, 0.4);
+    }
+    
+    /* Badge styles */
+    .badge {
+      background-color: var(--accent-color);
+      padding: 6px 12px;
+      border-radius: 18px;
+      font-size: 0.9rem;
+    }
+    .badge.featured {
+      background-color: var(--highlight-color);
+      font-weight: bold;
+      margin-bottom: 2.4rem;
+      font-size: 1.3rem;
+    }
+    
+    
+    /* Section styles */
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-top: 3rem;
+      margin-bottom: 70px;
+      color: var(--highlight-color);
+    }
+    
+    /* Hero Section for Humidity Monitor */
+    .hero-section { /* Renamed for clarity */
+      padding: 180px 0 120px; /* Adjusted top padding for the integrated breadcrumb */
+      background-color: var(--primary-color);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('../bg-5.png') no-repeat center center; /* Re-evaluate if too wintery */
+      background-size: cover;
+      filter: brightness(0.5);
+      z-index: 0;
+      opacity: 0.3;
+    }
+    .hero-container { /* Renamed for clarity */
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+    }
+    .hero-content { /* Renamed for clarity */
+      flex: 1;
+    }
+    .hero-image { /* Renamed for clarity */
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      margin-top: 1rem;
+    }
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+      position: relative;
+      z-index: 1;
+    }
+    .hero-image::after {
+      content: '';
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 20px;
+      background: var(--highlight-color);
+      filter: blur(30px);
+      opacity: 0.6;
+      z-index: 0;
+    }
+    .hero-section h1 {
+      font-size: 3rem;
+      margin-bottom: 25px;
+      line-height: 1.2;
+    }
+    .hero-subtitle { /* Renamed for clarity */
+      font-size: 1.2rem;
+      margin-bottom: 35px;
+      color: var(--text-color);
+      opacity: 0.9;
+      max-width: 600px;
+    }
+    .badge-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 25px 0;
+    }
+    .humidity-highlight { /* New class for humidity specific highlights */
+      color: var(--highlight-color);
+      font-weight: bold;
+    }
+    .data-notice { /* Renamed for clarity */
+      color: var(--text-color);
+      opacity: 0.8;
+      font-size: 0.9rem;
+      margin-top: 10px;
+    }
+    
+    /* Feature Cards */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      margin-top: 60px;
+    }
+    .feature-card {
+      background-color: var(--accent-color);
+      border-radius: 24px;
+      padding: 40px 30px;
+      text-align: left;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .feature-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+    }
+    .feature-icon {
+      font-size: 3.5rem;
+      color: var(--highlight-color);
+      margin-bottom: 24px;
+    }
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 18px;
+      color: var(--text-color);
+    }
+    .feature-card p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text-color);
+      opacity: 0.8;
+    }
+    
+    /* How It Works Section */
+    .how-it-works {
+      padding: 50px 0;
+      background-color: var(--secondary-color);
+      position: relative;
+    }
+    .how-it-works::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background-color: var(--secondary-color);
+      --mask:
+        radial-gradient(108.17px at 50% 150px, #000 99%, #0000 101%) calc(50% - 120px) 0/240px 100%,
+        radial-gradient(108.17px at 50% -90px, #0000 99%, #000 101%) 50% 60px/240px 100% repeat-x;
+      -webkit-mask: var(--mask);
+              mask: var(--mask);
+    }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+    .step-card {
+      background-color: var(--accent-color);
+      border-radius: 24px;
+      padding: 40px 30px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+    .step-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 24px 36px rgba(0, 0, 0, 0.2);
+    }
+    .step-number {
+      background-color: var(--highlight-color);
+      color: var(--primary-color);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 0 auto 24px;
+    }
+    .step-icon {
+      font-size: 3rem;
+      color: var(--highlight-color);
+      margin-bottom: 24px;
+    }
+    .step-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+      color: var(--text-color);
+    }
+    .step-card p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text-color);
+      opacity: 0.9;
+    }
+    
+    /* Comparison Section */
+    .comparison {
+      padding: 120px 0;
+      background-color: var(--primary-color);
+      position: relative;
+    }
+    .comparison-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .comparison-intro {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 60px;
+    }
+    .comparison-intro p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: var(--text-color);
+      opacity: 0.9;
+      margin-bottom: 30px;
+    }
+    
+    /* Updated Table Styles with Scrolling */
+    .table-wrapper {
+      width: 100%;
+      max-width: 1000px;
+      overflow-x: auto;
+      margin-bottom: 60px;
+      border-radius: 12px;
+      -webkit-overflow-scrolling: touch; /* For smoother scrolling on iOS */
+      scrollbar-width: thin;
+      scrollbar-color: var(--highlight-color) var(--primary-color);
+    }
+    
+    .table-wrapper::-webkit-scrollbar {
+      height: 6px;
+    }
+    
+    .table-wrapper::-webkit-scrollbar-track {
+      background: var(--primary-color);
+    }
+    
+    .table-wrapper::-webkit-scrollbar-thumb {
+      background-color: var(--highlight-color);
+      border-radius: 3px;
+    }
+    
+    .comparison-table {
+      width: 100%;
+      min-width: 600px; /* Ensures table doesn't get too narrow */
+      border-collapse: collapse;
+    }
+    
+    .comparison-table th {
+      padding: 20px;
+      text-align: left;
+      border-bottom: 2px solid var(--accent-color);
+      color: var(--highlight-color);
+      font-size: 1.2rem;
+      white-space: nowrap;
+    }
+    
+    .comparison-table td {
+      padding: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 1rem;
+    }
+    
+    .comparison-table tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .checkmark {
+      color: #4CAF50;
+      font-size: 1.5rem;
+    }
+    
+    .xmark {
+      color: #FF5252;
+      font-size: 1.5rem;
+    }
+    
+    .cabinpulse-col {
+      background-color: rgba(233, 69, 96, 0.1);
+    }
+    
+    .feature-name {
+      font-weight: 600;
+      color: var(--text-color);
+    }
+    
+    /* Testimonials Section */
+    .testimonials {
+      padding: 120px 0;
+      background-color: var(--secondary-color);
+      position: relative;
+    }
+    .testimonials::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background-color: var(--secondary-color);
+      --mask:
+        radial-gradient(108.17px at 50% 150px, #000 99%, #0000 101%) calc(50% - 120px) 0/240px 100%,
+        radial-gradient(108.17px at 50% -90px, #0000 99%, #000 101%) 50% 60px/240px 100% repeat-x;
+      -webkit-mask: var(--mask);
+              mask: var(--mask);
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .testimonial-card {
+      background-color: var(--accent-color);
+      border-radius: 24px;
+      padding: 40px;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 24px 36px rgba(0, 0, 0, 0.2);
+    }
+    .star-rating {
+      color: #ffd700;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    .testimonial-content {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 24px;
+      position: relative;
+    }
+    .testimonial-content::before {
+      content: '"';
+      font-size: 4rem;
+      color: var(--highlight-color);
+      position: absolute;
+      top: -20px;
+      left: -10px;
+      opacity: 0.3;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .author-avatar {
+      width: 60px;
+      height: 60px;
+      background-color: var(--highlight-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--primary-color);
+    }
+    .author-info h4 {
+      color: var(--highlight-color);
+      font-size: 1.2rem;
+      margin-bottom: 4px;
+    }
+    .author-info p {
+      color: var(--text-color);
+      opacity: 0.8;
+    }
+    
+    /* FAQ Section */
+    .faq {
+      padding: 120px 0;
+      background-color: var(--primary-color);
+      position: relative;
+    }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+    .faq-item {
+      background-color: var(--secondary-color);
+      border-radius: 24px;
+      padding: 30px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .faq-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    }
+    .faq-item h3 {
+      margin-bottom: 15px;
+      color: var(--highlight-color);
+      display: flex;
+      align-items: center;
+      font-size: 1.2rem;
+    }
+    .faq-item h3 i {
+      margin-right: 15px;
+      font-size: 1.4rem;
+    }
+    .faq-item p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text-color);
+      opacity: 0.9;
+    }
+
+    .faq-item a {
+      color: var(--highlight-color);
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    
+    /* Final CTA Section */
+    .final-cta {
+      padding: 120px 0;
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      text-align: center;
+      position: relative;
+    }
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('../freeze-bg.jpg') no-repeat center center; /* Re-evaluate if too wintery */
+      background-size: cover;
+      opacity: 0.1;
+      z-index: 0;
+    }
+    .final-cta-container {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .final-cta-icon {
+      font-size: 4rem;
+      color: var(--highlight-color);
+      margin-bottom: 30px;
+    }
+    .final-cta h2 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: var(--text-color);
+    }
+    .final-cta p {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+      color: var(--text-color);
+      opacity: 0.9;
+    }
+    .cta-features {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .cta-feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .cta-feature i {
+      color: var(--highlight-color);
+    }
+    
+    /* Footer Styles */
+    footer {
+      background-color: var(--secondary-color);
+      padding: 60px 0 20px;
+      text-align: left;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .footer-logo img {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+    }
+    .footer-logo h3 {
+      color: var(--text-color);
+      font-size: 1.5rem;
+    }
+    .footer-grid p {
+      color: var(--text-color);
+      opacity: 0.7;
+      margin-bottom: 20px;
+      font-size: 0.8rem;
+    }
+    .footer-grid h4 {
+      color: var(--highlight-color);
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+    .footer-links {
+      list-style: none;
+    }
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    .footer-links a {
+      color: var(--text-color);
+      text-decoration: none;
+      opacity: 0.7;
+      transition: all 0.3s ease;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+    }
+    .footer-links a i {
+      margin-right: 10px;
+      color: var(--highlight-color);
+    }
+    .footer-links a:hover {
+      opacity: 1;
+      color: var(--highlight-color);
+    }
+    .footer-divider {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 20px;
+    }
+    .footer-bottom {
+      text-align: center;
+      color: var(--text-color);
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
+    
+    /* Humidity Display Animation (adapted from temp) */
+    .humidity-display-animated { /* Renamed to avoid conflict if used elsewhere */
+      font-family: monospace;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: var(--highlight-color);
+      margin: 30px 0;
+      display: inline-block;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 15px 30px;
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+    .humidity-display-animated::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      animation: data-shine 4s infinite; /* Renamed animation */
+    }
+    @keyframes data-shine {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    
+    /* Image with Overlay */
+    .image-overlay {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      margin: 40px 0;
+      max-height: 500px;
+    }
+    .image-overlay img {
+      width: 100%;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .overlay-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to top, rgba(26, 26, 46, 0.9), rgba(26, 26, 46, 0.2));
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 40px;
+    }
+    .overlay-content h3 {
+      color: var(--text-color);
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+    .overlay-content p {
+      color: var(--text-color);
+      opacity: 0.9;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+    .image-overlay:hover img {
+      transform: scale(1.05);
+    }
+    
+    /* Text Highlight Animation */
+    .text-highlight {
+      color: var(--highlight-color);
+      position: relative;
+      display: inline-block;
+    }
+    .text-highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: var(--highlight-color);
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      transition: transform 0.5s ease;
+    }
+    .text-highlight:hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+    
+    /* Responsive styles */
+    @media (max-width: 1024px) {
+      .hero-section h1 { /* Adjusted */
+        font-size: 3.5rem;
+      }
+      .features-grid, 
+      .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      /* Reduced table text size for medium screens */
+      .comparison-table th {
+        font-size: 1.1rem;
+        padding: 18px 15px;
+      }
+      .comparison-table td {
+        font-size: 0.95rem;
+        padding: 18px 15px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .mobile-menu-toggle {
+        display: flex;
+      }
+      .integrated-breadcrumb {
+        padding: 6px 0;
+        font-size: 0.8rem;
+      }
+      .hero-section { /* Adjusted */
+        padding-top: 150px;
+      }
+      .hero-container { /* Adjusted */
+        flex-direction: column;
+        text-align: center;
+      }
+      .badge-container {
+        justify-content: center;
+      }
+      .hero-section h1 { /* Adjusted */
+        font-size: 3rem;
+      }
+      .hero-subtitle { /* Adjusted */
+        font-size: 1.2rem;
+      }
+      .features-grid, 
+      .steps-grid, 
+      .faq-grid, 
+      .testimonials-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      /* Further reduced table text size for small screens */
+      .comparison-table th {
+        font-size: 0.9rem;
+        padding: 15px 10px;
+      }
+      .comparison-table td {
+        font-size: 0.85rem;
+        padding: 12px 10px;
+      }
+      .checkmark, .xmark {
+        font-size: 1.2rem;
+      }
+      
+      .final-cta h2 {
+        font-size: 2.5rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+        margin-bottom: 40px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-section h1 { /* Adjusted */
+        font-size: 2.5rem;
+      }
+      
+      /* Even smaller table text for very small screens */
+      .comparison-table th {
+        font-size: 0.8rem;
+        padding: 10px 8px;
+      }
+      .comparison-table td {
+        font-size: 0.75rem;
+        padding: 10px 8px;
+      }
+      .checkmark, .xmark {
+        font-size: 1rem;
+      }
+    }
+    
+    .hero-image { /* Adjusted */
+      position: relative;
+    }
+
+    /* Styles for the device data display and alert, adapted for humidity */
+    .device-data-display { /* Renamed from device-temp-display */
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(15, 52, 96, 0.9);
+      border: 2px solid var(--highlight-color);
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(233, 69, 96, 0.5);
+      width: 180px;
+    }
+
+    .data-value { /* Renamed from temp-value */
+      font-family: monospace;
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: var(--highlight-color);
+      margin-bottom: 5px;
+    }
+
+    .data-status { /* Renamed from temp-status */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: #ffffff;
+    }
+
+    .status-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #4CAF50; /* Green for normal */
+      animation: blink 1.5s infinite;
+    }
+    
+    .data-alert { /* Renamed from temp-alert */
+      position: absolute;
+      bottom: -100%; /* Start off-screen */
+      left: 0;
+      width: 100%;
+      background-color: #e94560; /* Highlight color for alert */
+      color: white;
+      padding: 12px 10px;
+      border-radius: 12px 12px 12px 12px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      font-weight: bold;
+      visibility: hidden;
+      opacity: 0;
+      transition: bottom 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s 0.5s;
+      z-index: 10;
+    }
+
+    .data-alert i {
+      font-size: 1.2rem;
+      margin-bottom: 3px;
+      animation: pulse 1.5s infinite;
+    }
+
+    .alert-text {
+      font-size: 0.9rem;
+    }
+
+    .alert-status {
+      font-size: 0.75rem;
+      opacity: 0.9;
+    }
+
+    /* Alert active state */
+    .device-data-display.alert-active {
+      background-color: rgba(233, 69, 96, 0.9); /* Red background for alert */
+      border-color: #ff0033;
+      box-shadow: 0 0 20px rgba(233, 69, 96, 0.7);
+    }
+
+    .device-data-display.alert-active .data-alert {
+      bottom: 0; /* Slide up */
+      visibility: visible;
+      opacity: 1;
+      transition: bottom 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0.4; }
+      100% { opacity: 1; }
+    }
+
+    /* Style for "View All Use Cases" link with arrow */
+    .footer-grid a[href="/uses/"] {
+      color: var(--highlight-color) !important;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+    }
+
+    .footer-grid a[href="/uses/"] i {
+      margin-left: 10px;
+      margin-right: 0 !important;
+      transition: transform 0.2s ease;
+    }
+
+    .footer-grid a[href="/uses/"]:hover i {
+      transform: translateX(3px);
+    }
+
+    /* Fix for footer links and icons alignment */
+    .footer-grid ul {
+      list-style: none;
+      padding: 0;
+      font-size: 0.9rem;
+    }
+
+    .footer-grid li {
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+    }
+
+    .footer-grid a {
+      color: var(--text-color);
+      text-decoration: none;
+      opacity: 0.7;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-grid a i {
+      margin-right: 10px;
+      color: var(--highlight-color);
+    }
+
+    .footer-grid a:hover {
+      opacity: 1;
+      color: var(--highlight-color);
+    }
+
+    /* Ensure footer responsive behavior is consistent */
+    @media (max-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
+      }
+      
+      .footer-grid a[href="/uses/"] {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER SECTION -->
+  <header>
+    <nav class="container">
+      <div class="logo-container">
+        <img src="../cpicon.png" alt="CabinPulse Logo" class="icon">
+        <span class="logo-text">CabinPulse</span>
+      </div>
+      <div class="nav-links">
+        <a href="/index.html#features" class="nav-link">Features</a>
+        <a href="/index.html#pricing" class="nav-link">Pricing</a>
+        <a href="/index.html#faq" class="nav-link">FAQ</a>
+        <a href="https://blog.cabinpulse.com" class="nav-link">Blog</a>
+        <a href="https://dashboard.cabinpulse.com" class="nav-link login-btn">
+          Dashboard
+        </a>
+        <a href="https://cabinpulse.com/purchase.html?plan=1" class="nav-link primary-cta">
+          Get CabinPulse →
+        </a>
+      </div>
+      <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+        <i class="fas fa-bars" id="menu-icon"></i>
+      </div>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-expanded" id="mobile-menu">
+      <div class="mobile-nav-links">
+        <a href="/index.html#features" class="mobile-nav-link">Features</a>
+        <a href="/index.html#pricing" class="mobile-nav-link">Pricing</a>
+        <a href="/index.html#faq" class="mobile-nav-link">FAQ</a>
+        <a href="https://blog.cabinpulse.com" class="mobile-nav-link">Blog</a>
+        <a href="https://dashboard.cabinpulse.com" class="mobile-nav-link mobile-login-btn">
+          Dashboard
+        </a>
+        <a href="https://cabinpulse.com/purchase.html?plan=1" class="mobile-nav-link mobile-primary-cta">
+          Get CabinPulse →
+        </a>
+      </div>
+    </div>
+    
+    <!-- Integrated Breadcrumb -->
+    <div class="integrated-breadcrumb">
+      <div class="container">
+        <div class="breadcrumb-nav">
+          <a href="https://cabinpulse.com">Home</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="/uses/">Uses</a>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-current">Humidity Monitor</span>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Humidity Monitor Hero Section -->
+  <section class="hero-section">
+    <div class="container hero-container">
+      <div class="hero-content">
+        <h1>CabinPulse Remote Cellular Humidity Monitor</h1>
+        <p class="hero-subtitle">Prevent mold, mildew, and property damage with CabinPulse's advanced humidity monitoring system. No WiFi required.</p>
+        
+        <div class="badge-container">
+          <span class="badge"><i class="fas fa-tint icon-text" style="margin-right:0.2rem;"></i>±3% RH Accuracy</span>
+          <span class="badge"><i class="fas fa-bell icon-text" style="margin-right:0.2rem;"></i>Instant Alerts</span>
+          <span class="badge"><i class="fas fa-wifi-slash icon-text" style="margin-right:0.2rem;"></i>No WiFi Required</span>
+        </div>
+        <p class="data-notice">CabinPulse detects critical humidity changes with precision and sends instant alerts for high or low levels. Works across Canada and the US.</p>
+        
+        <a href="https://cabinpulse.com/purchase.html?plan=3" class="cta-button">
+          Get CabinPulse Now →
+        </a>
+      </div>
+      <div class="hero-image">
+        <img src="../front.png" alt="CabinPulse Humidity Monitor Device - Monitor humidity remotely with no WiFi required">
+        <div class="device-data-display"> <!-- Was device-temp-display -->
+          <div class="data-value">45.0%</div> <!-- Was temp-value -->
+          <div class="data-status"> <!-- Was temp-status -->
+            <span class="status-indicator"></span>
+            <span class="status-text">Monitoring</span>
+          </div>
+          <div class="data-alert"> <!-- Was temp-alert -->
+            <i class="fas fa-exclamation-triangle"></i>
+            <span class="alert-text">High Humidity</span>
+            <span class="alert-status">Alert Sent</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Features Section -->
+  <section class="features">
+    <div class="container" style="margin-bottom: 5rem;">
+      <h2 class="section-title">Why CabinPulse is the Ultimate Humidity Monitor</h2>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <i class="feature-icon fas fa-tint"></i>
+          <h3>Precision Humidity Monitoring</h3>
+          <p>CabinPulse measures relative humidity with <span class="humidity-highlight">±3% RH accuracy</span>, providing reliable data to protect your property from moisture damage.</p>
+        </div>
+        
+        <div class="feature-card">
+          <i class="feature-icon fas fa-bell"></i>
+          <h3>Customizable Alert Thresholds</h3>
+          <p>Set personalized high and low humidity thresholds to receive immediate alerts, giving you time to act before mold grows or valuables are damaged.</p>
+        </div>
+        
+        <div class="feature-card">
+          <i class="feature-icon fas fa-tower-cell"></i>
+          <h3>Cellular Connectivity</h3>
+          <p>Unlike WiFi-dependent systems, CabinPulse connects directly to major cellular networks to deliver alerts even during power outages or in remote locations.</p>
+        </div>
+        
+        <div class="feature-card">
+          <i class="feature-icon fas fa-chart-line"></i>
+          <h3>Historical Humidity Data</h3>
+          <p>Track humidity patterns over time (data saved every 5 minutes, plus on-demand updates) to identify risks and optimize your property's environment.</p>
+        </div>
+        
+        <div class="feature-card">
+          <i class="feature-icon fas fa-battery-half"></i>
+          <h3>Battery Backup</h3>
+          <p>CabinPulse continues monitoring for up to 3 days during power outages, providing critical protection when dehumidifiers or AC might be off.</p>
+        </div>
+        
+        <div class="feature-card">
+          <i class="feature-icon fas fa-plug-circle-xmark"></i>
+          <h3>Power Outage Detection</h3>
+          <p>Instantly know when your property loses power, a critical time when humidity control systems may fail, allowing you to take preemptive action.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  <!-- How It Works Section -->
+  <section class="how-it-works">
+    <div class="container">
+      <h2 class="section-title">How CabinPulse's Humidity Monitoring Works</h2>
+      
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <i class="step-icon fas fa-plug"></i>
+          <h3>Simple Setup</h3>
+          <p>Plug CabinPulse into any power outlet. No complex wiring, WiFi configuration, or professional installation required.</p>
+        </div>
+        
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <i class="step-icon fas fa-cloud-sun-rain"></i> <!-- Icon for humidity/weather -->
+          <h3>Continuous Monitoring</h3>
+          <p>CabinPulse automatically monitors humidity with precision accuracy, tracking changes that could lead to mold, mildew, or damage.</p>
+        </div>
+        
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <i class="step-icon fas fa-bell"></i>
+          <h3>Instant Alerts</h3>
+          <p>Receive <b>immediate</b> notifications via text and email when humidity levels exceed your customized thresholds or during power outages.</p>
+        </div>
+      </div>
+      
+      <div class="image-overlay" style="margin-top: 80px;">
+        <img src="../dashboard.png" alt="CabinPulse Dashboard showing humidity monitoring and alerts">
+        <div class="overlay-content">
+          <h3>Monitor From Anywhere</h3>
+          <p>Access your property's humidity data from your phone, tablet, or computer. View current conditions, historical data, and adjust alert thresholds remotely.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Comparison Section -->
+  <section class="comparison">
+    <div class="container comparison-container">
+      <h2 class="section-title">How CabinPulse Compares to Standard Humidity Monitors</h2>
+      
+      <div class="comparison-intro">
+        <p>Traditional humidity monitors offer basic readings, but CabinPulse provides comprehensive, cellular-based monitoring with advanced features to protect your property effectively.</p>
+      </div>
+      
+      <div class="table-wrapper">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Features</th>
+              <th>Basic/WiFi Humidity Monitors</th>
+              <th class="cabinpulse-col" style="border-radius: 1rem 1rem 0rem 0rem;">CabinPulse</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="feature-name">Precise Humidity Readings</td>
+              <td><i class="xmark fas fa-xmark"></i> Basic/Approximate</td>
+              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> ±3% RH accuracy</td>
+            </tr>
+            <tr>
+              <td class="feature-name">No WiFi Required</td>
+              <td><i class="xmark fas fa-xmark"></i> Most require WiFi</td>
+              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Cellular connection included</td>
+            </tr>
+             <tr>
+              <td class="feature-name">Where It Works</td>
+              <td><i class="xmark fas fa-xmark"></i> USA Only/Limited</td>
+              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> USA, Canada, Mexico</td>
+            </tr>
+            <tr>
+              <td class="feature-name">Battery Backup</td>
+              <td><i class="xmark fas fa-xmark"></i> Limited or none</td>
+              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Up to 3 days</td>
+            </tr>
+            <tr>
+              <td class="feature-name">Historical Data Tracking</td>
+              <td><i class="xmark fas fa-xmark"></i> Not available/Limited</td>
+              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Complete history (5-min intervals + on-demand)</td>
+            </tr>
+            <tr>
+              <td class="feature-name">Customizable Alert Thresholds</td>
+              <td><i class="xmark fas fa-xmark"></i> Fixed/Limited</td>
+              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Fully customizable (High & Low)</td>
+            </tr>
+            <tr>
+              <td class="feature-name">Multiple Alert Recipients</td>
+              <td><i class="xmark fas fa-xmark"></i> Limited options</td>
+              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Unlimited contacts</td>
+            </tr>
+            <tr>
+              <td class="feature-name">Power Outage Alerts</td>
+              <td><i class="xmark fas fa-xmark"></i> Rarely included</td>
+              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Instant notifications</td>
+            </tr>
+            <tr>
+              <td class="feature-name">Other Metrics Monitored</td>
+              <td><i class="xmark fas fa-xmark"></i> Humidity Only</td>
+              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Temperature, Air Quality & More</td>
+            </tr>
+            <tr>
+              <td class="feature-name">Easy Installation</td>
+              <td><i class="checkmark fas fa-check"></i> Usually simple</td>
+              <td class="cabinpulse-col" style="border-radius: 0rem 0rem 1rem 1rem;"><i class="checkmark fas fa-check"></i> Plug & play</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <a href="https://cabinpulse.com/purchase.html?plan=3" class="cta-button">Get CabinPulse →</a>
+    </div>
+  </section>
+
+  
+  
+  <!-- Testimonials Section -->
+  <section class="testimonials">
+    <div class="container">
+      <h2 class="section-title">What People Think of Our Humidity Monitor</h2>
+      
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="star-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="testimonial-content">
+            CabinPulse alerted us to rising humidity in our cottage this spring. Sure enough, water was leaking into our crawlspace. Really happy with the product and the service.
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="author-info">
+              <h4>Cottage Owner</h4>
+              <p>Muskoka, ON</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="star-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="testimonial-content">
+            I use CabinPulse to monitor humidity in my workshop where I store valuable wood and tools. The alerts for high humidity have helped me protect my investments. The app is also great for looking back at seasonal changes.
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="author-info">
+              <h4>Carpenter</h4>
+              <p>Saskatchewan, Canada</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="text-align: center;">
+          <a class="cta-button" href="https://www.google.com/search?sca_esv=7899e45081c54108&rlz=1C5GCCM_en&si=APYL9bs7Hg2KMLB-4tSoTdxuOx8BdRvHbByC_AuVpNyh0x2KzeWXWgXwfKH3IlceyMiFu88HEuZVWF8eHsdJTTf-cqBwzE7tIQOeY0nPJ7KjYfeFFZQlRGNoA0lez-VUqH8M6t1h-lLc&q=CabinPulse+Reviews&sa=X&ved=2ahUKEwjR-LikzLONAxUeEVkFHb7RFc8Q0bkNegQIMRAE&biw=1736&bih=849&dpr=2">More Reviews →</a>
+        </div>
+    </div>
+    </div>
+  </section>
+  
+  <!-- FAQ Section -->
+  <section class="faq">
+    <div class="container">
+      <h2 class="section-title">Frequently Asked Questions About CabinPulse's Humidity Monitoring</h2>
+      
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h3><i class="fas fa-tint"></i> What are ideal/dangerous humidity levels?</h3>
+          <p>Ideal indoor humidity is typically <a href="https://blog.cabinpulse.com/understanding-cabin-humidity-why-45-is-the-magic-number/">30-50%</a>. Levels consistently above 60% can promote mold and mildew growth, while very low levels can damage wood or cause discomfort. CabinPulse lets you set custom alerts for both high and low humidity.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3><i class="fas fa-wifi-slash"></i> Does CabinPulse need WiFi for humidity monitoring?</h3>
+          <p>No, WiFi is NOT required. CabinPulse uses reliable cellular technology (LTE with 3G fallback) to transmit humidity data and alerts, perfect for remote properties or areas with unstable internet.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3><i class="fas fa-mobile-alt"></i> How will I receive humidity alerts?</h3>
+          <p>CabinPulse sends instant alerts via text message and email when humidity levels go outside your customized thresholds. You can <a href="https://blog.cabinpulse.com/how-to-a/">add multiple contacts</a> to ensure someone is always notified.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3><i class="fas fa-water"></i> Can CabinPulse detect both high and low humidity?</h3>
+          <p>Yes, you can set custom upper (high humidity) and lower (low humidity) thresholds in the CabinPulse dashboard. You'll be alerted if humidity goes above or below these set points.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3><i class="fas fa-battery-half"></i> What happens during a power outage?</h3>
+          <p>CabinPulse has a backup battery, allowing it to continue monitoring humidity and send alerts for up to 3 days during a power outage. You'll also be alerted instantly when power is lost and restored.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3><i class="fas fa-map-marker-alt"></i> Where should I place CabinPulse for humidity monitoring?</h3>
+          <p>Place CabinPulse in areas prone to moisture like basements, crawl spaces, bathrooms, attics, or near plumbing. It's also ideal for storage areas with sensitive items like electronics, documents, or musical instruments.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3><i class="fas fa-cog"></i> Can I adjust humidity alert thresholds?</h3>
+          <p>Yes, you can easily set and adjust your high and low humidity alert thresholds at any time through the online CabinPulse dashboard from anywhere in the world. You can set as many different thresholds as you'd like.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3><i class="fas fa-chart-line"></i> How often is humidity data recorded?</h3>
+          <p>CabinPulse records humidity data every 5 minutes, providing a detailed historical log accessible via your dashboard. You can also request an on-demand, real-time humidity reading at any time.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="text-align: center;">
+        <a class="cta-button" href="https://cabinpulse.com/#faq">More Answers →</a>
+      </div>
+  </div>
+  </section>
+  
+  <!-- Final CTA Section -->
+  <section class="final-cta">
+    <div class="container final-cta-container">
+      <div class="final-cta-icon">
+        <i class="fas fa-shield-alt"></i> <!-- Shield could be fas fa-shield-droplet or similar if available -->
+      </div>
+      <h2>Protect Your Property from Humidity Damage</h2>
+      <p>CabinPulse provides reliable humidity protection with precision monitoring, instant alerts for high/low levels, and no WiFi required. Prevent mold, protect valuables, and ensure a healthy environment.</p>
+      
+      <div class="cta-features">
+        <div class="cta-feature">
+          <i class="fas fa-check-circle"></i>
+          <span>No WiFi Required</span>
+        </div>
+        <div class="cta-feature">
+          <i class="fas fa-check-circle"></i>
+          <span>±3% RH Accuracy</span>
+        </div>
+        <div class="cta-feature">
+          <i class="fas fa-check-circle"></i>
+          <span>Immediate Alerts</span>
+        </div>
+      </div>
+      
+      <a href="https://cabinpulse.com/purchase.html?plan=3" class="cta-button">Get CabinPulse Now →</a>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px; text-align: left; padding: 48px 0;">
+        <!-- Company Info -->
+        <div>
+          <div class="logo-container" style="margin-bottom: 20px;">
+            <img src="../cpicon.png" alt="CabinPulse Logo" style="width: 40px; height: 40px; margin-right: 10px;">
+            <h3>CabinPulse</h3>
+          </div>
+          <p style="color: #ccc; margin-bottom: 20px;">Intelligent remote property monitoring, no WiFi required.</p>
+          <div style="display: flex; gap: 15px;">
+            <a href="mailto:support@cabinpulse.com" style="color: var(--text-color);"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.facebook.com/61567189714759" style="color: var(--text-color);"><i class="fab fa-facebook"></i></a>
+          </div>
+        </div>
+        
+        <!-- Use Cases Section -->
+        <div>
+          <h4 style="color: var(--highlight-color); margin-bottom: 20px;">Use Cases</h4>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 10px;">
+              <a href="/uses/freeze-alarm.html" style="color: var(--text-color); text-decoration: none; display: flex; align-items: center;">
+                <i class="fas fa-temperature-low" style="margin-right: 10px;"></i>
+                Freeze Alarm
+              </a>
+            </li>
+            <li style="margin-bottom: 10px;">
+              <a href="/uses/power-outage-monitor.html" style="color: var(--text-color); text-decoration: none; display: flex; align-items: center;">
+                <i class="fas fa-plug-circle-xmark" style="margin-right: 10px;"></i>
+                Power Outage Monitor
+              </a>
+            </li>
+            <li style="margin-bottom: 10px;">
+              <a href="/uses/remote-cabin-cottage-monitoring-system.html" style="color: var(--text-color); text-decoration: none; display: flex; align-items: center;">
+                <i class="fas fa-mountain-sun" style="margin-right: 10px;"></i>
+                Cabin & Cottage Monitoring System
+              </a>
+            </li>
+            <li style="margin-bottom: 10px;">
+              <a href="/uses/" style="color: var(--highlight-color); text-decoration: none; display: flex; align-items: center; font-weight: 500;">
+                <span>View All Use Cases</span>
+                <i class="fas fa-arrow-right" style="margin-left: 10px;"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Quick Links -->
+        <div>
+          <h4 style="color: var(--highlight-color); margin-bottom: 20px;">Quick Links</h4>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 10px;"><a href="#features" style="color: var(--text-color); text-decoration: none;">Features</a></li>
+            <li style="margin-bottom: 10px;"><a href="#pricing" style="color: var(--text-color); text-decoration: none;">Pricing</a></li>
+            <li style="margin-bottom: 10px;"><a href="#faq" style="color: var(--text-color); text-decoration: none;">FAQ</a></li>
+            <li style="margin-bottom: 10px;"><a href="/legal.html" style="color: var(--text-color); text-decoration: none;">Legal</a></li>
+          </ul>
+  
+          <!-- Press Links -->
+          <h4 style="color: var(--highlight-color); margin-top: 25px; margin-bottom: 20px;">Press</h4>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 10px;">
+              <a href="https://www.theglobeandmail.com/investing/markets/markets-news/GetNews/29709301/cabinpulse-launches-remote-monitoring-solution-for-cabin-owners-no-wifi-needed/" 
+                 style="color: var(--text-color); text-decoration: none; display: flex; align-items: center;">
+                <i class="far fa-newspaper" style="margin-right: 10px;"></i>
+                CabinPulse Launch
+              </a>
+            </li>
+            <li style="margin-bottom: 10px;">
+              <a href="https://www.barchart.com/story/news/32222883/cabinpulse-announces-major-product-updates-new-design-expanded-connectivity-advanced-features-and-flexible-plans" 
+                 style="color: var(--text-color); text-decoration: none; display: flex; align-items: center;">
+                <i class="far fa-newspaper" style="margin-right: 10px;"></i>
+                Product Updates
+              </a>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Helpful Links & Contact -->
+        <div>
+          <h4 style="color: var(--highlight-color); margin-bottom: 20px;">Helpful Links</h4>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 10px;"><a href="/manual.html" style="color: var(--text-color); text-decoration: none;"><i class="fas fa-book" style="margin-right: 10px;"></i>CabinPulse Manual</a></li>
+            <li style="margin-bottom: 10px;"><a href="https://blog.cabinpulse.com" style="color: var(--text-color); text-decoration: none;"><i class="fas fa-blog" style="margin-right: 10px;"></i>CabinPulse Blog</a></li>
+            <li style="margin-bottom: 10px;"><a href="https://blog.cabinpulse.com/how-to-prevent-frozen-pipes-in-your-cabin-this-winter/" style="color: var(--text-color); text-decoration: none;"><i class="far fa-newspaper" style="margin-right: 10px;"></i>Prevent Frozen Pipes</a></li>
+            <li style="margin-bottom: 10px;"><a href="https://blog.cabinpulse.com/remote-vacation-home-monitors-keeping-your-investment-safe/" style="color: var(--text-color); text-decoration: none;"><i class="far fa-newspaper" style="margin-right: 10px;"></i>Remote Home Monitors</a></li>
+          </ul>
+          
+          <h4 style="color: var(--highlight-color); margin-top: 25px; margin-bottom: 20px;">Contact</h4>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 10px;"><i class="fas fa-envelope" style="margin-right: 10px;"></i><a href="mailto:support@cabinpulse.com" style="color: var(--text-color);">support@cabinpulse.com</a></li>
+            <li style="margin-bottom: 10px;"><i class="fas fa-location-dot" style="margin-right: 10px;"></i> Saskatchewan, Canada</li>
+          </ul>
+        </div>
+      </div>
+      <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 20px; text-align: center;">
+        <p>&copy; 2025 Toccata, Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <script>
+ document.addEventListener('DOMContentLoaded', function() {
+  // Humidity display animation
+  const dataDisplayElement = document.querySelector('.data-value'); // Updated selector
+  const deviceDataDisplay = document.querySelector('.device-data-display'); // Updated selector
+  const dataAlertElement = document.querySelector('.data-alert'); // Updated selector
+  
+  let humidity = 45.0; // Start at 45.0% RH
+  const alertThreshold = 65.0; // Alert at 65.0% RH
+  let alertTriggered = false;
+  let thresholdWarningShown = false;
+  
+  // Create the threshold warning element
+  const thresholdWarning = document.createElement('div');
+  thresholdWarning.className = 'threshold-warning'; // This class can be styled if needed
+  thresholdWarning.innerHTML = 'High Humidity'; // Warning text
+  thresholdWarning.style.position = 'absolute';
+  thresholdWarning.style.top = '-30px'; // Position above the display
+  thresholdWarning.style.left = '0';
+  thresholdWarning.style.width = '100%';
+  thresholdWarning.style.backgroundColor = '#e94560'; // Highlight color
+  thresholdWarning.style.color = 'white';
+  thresholdWarning.style.padding = '5px';
+  thresholdWarning.style.textAlign = 'center';
+  thresholdWarning.style.borderRadius = '8px 8px 0 0';
+  thresholdWarning.style.fontWeight = 'bold';
+  thresholdWarning.style.fontSize = '0.8rem';
+  thresholdWarning.style.opacity = '0'; // Start hidden
+  thresholdWarning.style.transition = 'opacity 0.5s ease-in-out';
+  deviceDataDisplay.prepend(thresholdWarning); // Add to the top of the display box
+  
+  // Function to gradually increase humidity
+  const increaseHumidity = () => {
+    humidity += 0.5; // Increase humidity
+    dataDisplayElement.textContent = `${humidity.toFixed(1)}%`;
+    
+    if (humidity >= alertThreshold && !alertTriggered) {
+      // Trigger alert when reaching threshold
+      alertTriggered = true;
+      deviceDataDisplay.classList.add('alert-active');
+      document.querySelector('.status-text').textContent = 'Alert Sent';
+      document.querySelector('.status-indicator').style.backgroundColor = '#e94560'; // Red indicator
+      
+      // Change alert text in the slide-up panel
+      dataAlertElement.querySelector('.alert-text').textContent = 'High Humidity';
+      
+      // After 5 seconds, hide the slide-up alert and show the static threshold warning
+      setTimeout(() => {
+        deviceDataDisplay.classList.remove('alert-active'); // Hide slide-up alert
+        
+        setTimeout(() => { // Wait for animation
+          if (!thresholdWarningShown) {
+            thresholdWarningShown = true;
+            deviceDataDisplay.style.border = '2px solid #ff0033'; // Red border for emphasis
+            deviceDataDisplay.style.boxShadow = '0 0 15px rgba(255, 0, 51, 0.5)';
+            thresholdWarning.style.opacity = '1'; // Show static warning
+            
+            // Settle humidity slightly above threshold
+            humidity = alertThreshold + 0.3;
+            dataDisplayElement.textContent = `${humidity.toFixed(1)}%`;
+          }
+        }, 500); 
+      }, 5000); // Duration for slide-up alert
+      
+      return; // Stop further increases for now
+    }
+    
+    if (!alertTriggered) {
+      // Continue increasing if alert not triggered
+      setTimeout(increaseHumidity, 600); // Speed of increase
+    }
+  };
+  
+  // Start the humidity increase after a short delay
+  setTimeout(increaseHumidity, 1000);
+  
+  // Handle humidity fluctuation after alert (optional)
+  setInterval(() => {
+    if (alertTriggered && thresholdWarningShown) {
+      // Small fluctuations
+      humidity += (Math.random() > 0.5 ? 0.1 : -0.1) * 0.2;
+      // Ensure it doesn't go too far from the alert state for demo
+      if (humidity < alertThreshold - 1) humidity = alertThreshold -1; 
+      if (humidity > alertThreshold + 2) humidity = alertThreshold + 2;
+      dataDisplayElement.textContent = `${humidity.toFixed(1)}%`;
+    }
+  }, 3000);
+  
+  // Mobile Menu Toggle Functionality
+  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  let menuOpen = false;
+  
+  mobileMenuToggle.addEventListener('click', function() {
+    if (menuOpen) {
+      mobileMenu.classList.remove('active');
+      menuIcon.classList.remove('fa-times');
+      menuIcon.classList.add('fa-bars');
+    } else {
+      mobileMenu.classList.add('active');
+      menuIcon.classList.remove('fa-bars');
+      menuIcon.classList.add('fa-times');
+    }
+    menuOpen = !menuOpen;
+  });
+  
+  // Close mobile menu when clicking on a link
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      mobileMenu.classList.remove('active');
+      menuIcon.classList.remove('fa-times');
+      menuIcon.classList.add('fa-bars');
+      menuOpen = false;
+    });
+  });
+  
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', function(event) {
+    const isClickInsideMenu = mobileMenu.contains(event.target);
+    const isClickOnToggle = mobileMenuToggle.contains(event.target);
+    
+    if (menuOpen && !isClickInsideMenu && !isClickOnToggle) {
+      mobileMenu.classList.remove('active');
+      menuIcon.classList.remove('fa-times');
+      menuIcon.classList.add('fa-bars');
+      menuOpen = false;
+    }
+  });
+});
+  </script>
+</body>
+</html>
