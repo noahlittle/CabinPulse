@@ -1,0 +1,1900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CabinPulse - RV Temperature Monitor for Pets | Cellular Pet Safety</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <meta name="description" content="Ensure your pet's safety in your RV with CabinPulse. Cellular RV temperature monitor with custom alerts, no WiFi needed. Protect your furry friends from heat or cold." />
+  <meta name="keywords" content="RV temperature monitor for pets, pet temperature monitor RV, RV pet safety monitor, cellular RV temperature monitor, no wifi pet temperature monitor RV, remote pet temperature monitoring RV, dog temperature monitor RV, cat temperature monitor RV, protect pets in RV">
+  <script defer src="https://analytics.cabinliving.ca/script.js" data-website-id="bd58d7d8-2b00-44ae-8285-c76db6e383ad"></script>
+  <style>
+    /* Root variables */
+    :root {
+      --primary-color: #1a1a2e;
+      --secondary-color: #16213e;
+      --cta-color: #ffffff;
+      --accent-color: #0f3460;
+      --highlight-color: #e94560;
+      --text-color: #ffffff;
+      --dark-text-color: #000000;
+    }
+    
+    /* Base styles */
+    html {
+      font-size: 18px;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--primary-color);
+      color: var(--text-color);
+      overflow-x: hidden;
+      font-size: 1rem;
+    }
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 25px;
+    }
+    
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--text-color);
+    }
+    
+    /* Header styles */
+    header {
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+      background-color: rgba(26, 26, 46, 0.95);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      padding: 15px 0 0; /* Removed bottom padding to accommodate breadcrumb */
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+    .icon {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+    }
+    
+    /* Updated Nav Links Styles */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 20px;
+      margin-left: auto;
+    }
+    .nav-link {
+      color: var(--text-color);
+      text-decoration: none;
+      padding: 8px 15px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .nav-link:hover {
+      color: var(--highlight-color);
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    .login-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .login-btn:hover {
+      border-color: var(--highlight-color);
+    }
+    .primary-cta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--highlight-color);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(233, 69, 96, 0.3);
+    }
+    .primary-cta:hover {
+      background-color: #ff5a7c;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(233, 69, 96, 0.4);
+    }
+    
+    /* Mobile menu styles */
+    .mobile-menu-toggle {
+      display: none;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      background-color: rgba(255, 255, 255, 0.1);
+      z-index: 1001;
+    }
+    
+    .mobile-menu-toggle:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Mobile Menu Expanded */
+    .mobile-menu-expanded {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: rgba(26, 26, 46, 0.98);
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease-in-out;
+    }
+    
+    .mobile-menu-expanded.active {
+      transform: translateY(0);
+    }
+    
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    .mobile-nav-link {
+      color: var(--text-color);
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    
+    .mobile-nav-link:hover {
+      color: var(--highlight-color);
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .mobile-login-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      margin-top: 10px;
+      width: 200px;
+    }
+    
+    .mobile-primary-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background-color: var(--highlight-color);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(233, 69, 96, 0.3);
+      margin-top: 20px;
+      width: 200px;
+    }
+    
+    .mobile-primary-cta:hover {
+      background-color: #ff5a7c;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(233, 69, 96, 0.4);
+    }
+    
+    /* Integrated Breadcrumb */
+    .integrated-breadcrumb {
+      background-color: rgba(15, 52, 96, 0.7); /* Lighter blue color */
+      padding: 8px 0;
+      margin-top: 15px;
+      font-size: 0.85rem;
+    }
+    
+    .breadcrumb-nav {
+      display: flex;
+      align-items: center;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .breadcrumb-nav a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .breadcrumb-nav a:hover {
+      color: var(--highlight-color);
+    }
+    
+    .breadcrumb-separator {
+      margin: 0 10px;
+    }
+    
+    .breadcrumb-current {
+      color: var(--highlight-color);
+      font-weight: 600;
+    }
+    
+    /* Button styles */
+    .cta-button {
+      display: inline-block;
+      background-color: var(--highlight-color);
+      color: white;
+      padding: 15px 30px;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: bold;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-top: 1.2rem;
+      font-size: 1.1rem;
+      position: relative;
+      z-index: 10;
+    }
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(233, 69, 96, 0.4);
+    }
+    
+    /* Badge styles */
+    .badge {
+      background-color: var(--accent-color);
+      padding: 6px 12px;
+      border-radius: 18px;
+      font-size: 0.9rem;
+    }
+    .badge.featured {
+      background-color: var(--highlight-color);
+      font-weight: bold;
+      margin-bottom: 2.4rem;
+      font-size: 1.3rem;
+    }
+    
+    
+    /* Section styles */
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-top: 3rem;
+      margin-bottom: 70px;
+      color: var(--highlight-color);
+    }
+    
+    /* Hero Section for Temperature Monitor */
+    .temp-hero {
+      padding: 180px 0 120px; /* Adjusted top padding for the integrated breadcrumb */
+      background-color: var(--primary-color);
+      position: relative;
+      overflow: hidden;
+    }
+    .temp-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('../bg-5.png') no-repeat center center; /* Consider an RV/pet-friendly background if available */
+      background-size: cover;
+      filter: brightness(0.5);
+      z-index: 0;
+      opacity: 0.3;
+    }
+    .temp-hero-container {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+    }
+    .temp-hero-content {
+      flex: 1;
+    }
+    .temp-hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      margin-top: 1rem;
+    }
+    .temp-hero-image img {
+      max-width: 100%;
+      height: auto;
+      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+      position: relative;
+      z-index: 1;
+    }
+    .temp-hero-image::after {
+      content: '';
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 20px;
+      background: var(--highlight-color);
+      filter: blur(30px);
+      opacity: 0.6;
+      z-index: 0;
+    }
+    .temp-hero h1 {
+      font-size: 2rem; /* Adjust if too long */
+      margin-bottom: 25px;
+      line-height: 1.2;
+    }
+    .temp-hero-subtitle {
+      font-size: 1rem;
+      margin-bottom: 35px;
+      color: var(--text-color);
+      opacity: 0.9;
+      max-width: 600px;
+    }
+    .badge-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 25px 0;
+    }
+    .temperature-highlight {
+      color: var(--highlight-color);
+      font-weight: bold;
+    }
+    
+    /* Feature Cards */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      margin-top: 60px;
+    }
+    .feature-card {
+      background-color: var(--accent-color);
+      border-radius: 24px;
+      padding: 40px 30px;
+      text-align: left;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card a {
+      text-decoration: none;
+      color: var(--highlight-color);
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+    }
+    .feature-icon {
+      font-size: 3.5rem;
+      color: var(--highlight-color);
+      margin-bottom: 24px;
+    }
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 18px;
+      color: var(--text-color);
+    }
+    .feature-card p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text-color);
+      opacity: 0.8;
+    }
+    
+    /* How It Works Section */
+    .how-it-works {
+      padding: 50px 0;
+      background-color: var(--secondary-color);
+      position: relative;
+    }
+    .how-it-works::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background-color: var(--secondary-color);
+      --mask:
+        radial-gradient(108.17px at 50% 150px, #000 99%, #0000 101%) calc(50% - 120px) 0/240px 100%,
+        radial-gradient(108.17px at 50% -90px, #0000 99%, #000 101%) 50% 60px/240px 100% repeat-x;
+      -webkit-mask: var(--mask);
+              mask: var(--mask);
+    }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+    .step-card {
+      background-color: var(--accent-color);
+      border-radius: 24px;
+      padding: 40px 30px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+    .step-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 24px 36px rgba(0, 0, 0, 0.2);
+    }
+    .step-number {
+      background-color: var(--highlight-color);
+      color: var(--primary-color);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 0 auto 24px;
+    }
+    .step-icon {
+      font-size: 3rem;
+      color: var(--highlight-color);
+      margin-bottom: 24px;
+    }
+    .step-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+      color: var(--text-color);
+    }
+    .step-card p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text-color);
+      opacity: 0.9;
+      text-align: left;
+    }
+    
+    /* Comparison Section */
+    .comparison {
+      padding: 120px 0;
+      background-color: var(--primary-color);
+      position: relative;
+    }
+    .comparison-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .comparison-intro {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 60px;
+    }
+    .comparison-intro p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: var(--text-color);
+      opacity: 0.9;
+      margin-bottom: 30px;
+    }
+    
+    /* Updated Table Styles with Scrolling */
+    .table-wrapper {
+      width: 100%;
+      max-width: 1000px;
+      overflow-x: auto;
+      margin-bottom: 60px;
+      border-radius: 12px;
+      -webkit-overflow-scrolling: touch; /* For smoother scrolling on iOS */
+      scrollbar-width: thin;
+      scrollbar-color: var(--highlight-color) var(--primary-color);
+    }
+    
+    .table-wrapper::-webkit-scrollbar {
+      height: 6px;
+    }
+    
+    .table-wrapper::-webkit-scrollbar-track {
+      background: var(--primary-color);
+    }
+    
+    .table-wrapper::-webkit-scrollbar-thumb {
+      background-color: var(--highlight-color);
+      border-radius: 3px;
+    }
+    
+    .comparison-table {
+      width: 100%;
+      min-width: 600px; /* Ensures table doesn't get too narrow */
+      border-collapse: collapse;
+    }
+    
+    .comparison-table th {
+      padding: 20px;
+      text-align: left;
+      border-bottom: 2px solid var(--accent-color);
+      color: var(--highlight-color);
+      font-size: 1.2rem;
+      white-space: nowrap;
+    }
+    
+    .comparison-table td {
+      padding: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 1rem;
+    }
+    
+    .comparison-table tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .checkmark {
+      color: #4CAF50;
+      font-size: 1.5rem;
+    }
+    
+    .xmark {
+      color: #FF5252;
+      font-size: 1.5rem;
+    }
+    
+    .cabinpulse-col {
+      background-color: rgba(233, 69, 96, 0.1);
+    }
+    
+    .feature-name {
+      font-weight: 600;
+      color: var(--text-color);
+    }
+    
+    /* Testimonials Section */
+    .testimonials {
+      padding: 120px 0;
+      background-color: var(--secondary-color);
+      position: relative;
+    }
+    .testimonials::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background-color: var(--secondary-color);
+      --mask:
+        radial-gradient(108.17px at 50% 150px, #000 99%, #0000 101%) calc(50% - 120px) 0/240px 100%,
+        radial-gradient(108.17px at 50% -90px, #0000 99%, #000 101%) 50% 60px/240px 100% repeat-x;
+      -webkit-mask: var(--mask);
+              mask: var(--mask);
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .testimonial-card {
+      background-color: var(--accent-color);
+      border-radius: 24px;
+      padding: 40px;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 24px 36px rgba(0, 0, 0, 0.2);
+    }
+    .star-rating {
+      color: #ffd700;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    .testimonial-content {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 24px;
+      position: relative;
+    }
+    .testimonial-content::before {
+      content: '"';
+      font-size: 4rem;
+      color: var(--highlight-color);
+      position: absolute;
+      top: -20px;
+      left: -10px;
+      opacity: 0.3;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .author-avatar {
+      width: 60px;
+      height: 60px;
+      background-color: var(--highlight-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--primary-color);
+    }
+    .author-info h4 {
+      color: var(--highlight-color);
+      font-size: 1.2rem;
+      margin-bottom: 4px;
+    }
+    .author-info p {
+      color: var(--text-color);
+      opacity: 0.8;
+    }
+    
+    /* FAQ Section */
+    .faq {
+      padding: 120px 0;
+      background-color: var(--primary-color);
+      position: relative;
+    }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+    .faq-item {
+      background-color: var(--secondary-color);
+      border-radius: 24px;
+      padding: 30px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .faq-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    }
+    .faq-item h3 {
+      margin-bottom: 15px;
+      color: var(--highlight-color);
+      display: flex;
+      align-items: center;
+      font-size: 1.2rem;
+    }
+    .faq-item h3 i {
+      margin-right: 15px;
+      font-size: 1.4rem;
+    }
+    .faq-item p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text-color);
+      opacity: 0.9;
+    }
+
+    .faq-item a {
+      color: var(--highlight-color);
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    
+    /* Final CTA Section */
+    .final-cta {
+      padding: 120px 0;
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      text-align: center;
+      position: relative;
+    }
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('../freeze-bg.jpg') no-repeat center center; /* Consider RV/pet themed bg */
+      background-size: cover;
+      opacity: 0.1;
+      z-index: 0;
+    }
+    .final-cta-container {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .final-cta-icon {
+      font-size: 4rem;
+      color: var(--highlight-color);
+      margin-bottom: 30px;
+    }
+    .final-cta h2 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: var(--text-color);
+    }
+    .final-cta p {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+      color: var(--text-color);
+      opacity: 0.9;
+    }
+    .cta-features {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .cta-feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .cta-feature i {
+      color: var(--highlight-color);
+    }
+    
+    /* Footer Styles */
+    footer {
+      background-color: var(--secondary-color);
+      padding: 60px 0 20px;
+      text-align: left;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .footer-logo img {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+    }
+    .footer-logo h3 {
+      color: var(--text-color);
+      font-size: 1.5rem;
+    }
+    .footer-grid p {
+      color: var(--text-color);
+      opacity: 0.7;
+      margin-bottom: 20px;
+      font-size: 0.8rem;
+    }
+    .footer-grid h4 {
+      color: var(--highlight-color);
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+    .footer-links {
+      list-style: none;
+    }
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    .footer-links a {
+      color: var(--text-color);
+      text-decoration: none;
+      opacity: 0.7;
+      transition: all 0.3s ease;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+    }
+    .footer-links a i {
+      margin-right: 10px;
+      color: var(--highlight-color);
+    }
+    .footer-links a:hover {
+      opacity: 1;
+      color: var(--highlight-color);
+    }
+    .footer-divider {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 20px;
+    }
+    .footer-bottom {
+      text-align: center;
+      color: var(--text-color);
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
+    
+    /* Temperature Display Animation */
+    .temp-display {
+      font-family: monospace;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: var(--highlight-color);
+      margin: 30px 0;
+      display: inline-block;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 15px 30px;
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+    .temp-display::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      animation: temp-shine 4s infinite;
+    }
+    @keyframes temp-shine {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    .temp-notice {
+      color: var(--text-color);
+      opacity: 0.8;
+      font-size: 0.8rem;
+      margin-top: 10px;
+    }
+    
+    /* Image with Overlay */
+    .image-overlay {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      margin: 40px 0;
+      max-height: 500px;
+    }
+    .image-overlay img {
+      width: 100%;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .overlay-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to top, rgba(26, 26, 46, 0.9), rgba(26, 26, 46, 0.2));
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 40px;
+    }
+    .overlay-content h3 {
+      color: var(--text-color);
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+    .overlay-content p {
+      color: var(--text-color);
+      opacity: 0.9;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+    .image-overlay:hover img {
+      transform: scale(1.05);
+    }
+    
+    /* Text Highlight Animation */
+    .text-highlight {
+      color: var(--highlight-color);
+      position: relative;
+      display: inline-block;
+    }
+    .text-highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: var(--highlight-color);
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      transition: transform 0.5s ease;
+    }
+    .text-highlight:hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+    
+    /* Responsive styles */
+    @media (max-width: 1024px) {
+      .temp-hero h1 {
+        font-size: 2.8rem; /* Adjusted for potentially longer RV title */
+      }
+      .features-grid, 
+      .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      /* Reduced table text size for medium screens */
+      .comparison-table th {
+        font-size: 1.1rem;
+        padding: 18px 15px;
+      }
+      .comparison-table td {
+        font-size: 0.95rem;
+        padding: 18px 15px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .mobile-menu-toggle {
+        display: flex;
+      }
+      .integrated-breadcrumb {
+        padding: 6px 0;
+        font-size: 0.8rem;
+      }
+      .temp-hero {
+        padding-top: 150px;
+      }
+      .temp-hero-container {
+        flex-direction: column;
+        text-align: center;
+      }
+      .badge-container {
+        justify-content: center;
+      }
+      .temp-hero h1 {
+        font-size: 2.5rem; /* Adjusted */
+      }
+      .temp-hero-subtitle {
+        font-size: 1.1rem; /* Adjusted */
+      }
+      .features-grid, 
+      .steps-grid, 
+      .faq-grid, 
+      .testimonials-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      /* Further reduced table text size for small screens */
+      .comparison-table th {
+        font-size: 0.9rem;
+        padding: 15px 10px;
+      }
+      .comparison-table td {
+        font-size: 0.85rem;
+        padding: 12px 10px;
+      }
+      .checkmark, .xmark {
+        font-size: 1.2rem;
+      }
+      
+      .final-cta h2 {
+        font-size: 2.5rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+        margin-bottom: 40px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .temp-hero h1 {
+        font-size: 2.2rem; /* Adjusted */
+      }
+      
+      /* Even smaller table text for very small screens */
+      .comparison-table th {
+        font-size: 0.8rem;
+        padding: 10px 8px;
+      }
+      .comparison-table td {
+        font-size: 0.75rem;
+        padding: 10px 8px;
+      }
+      .checkmark, .xmark {
+        font-size: 1rem;
+      }
+    }
+    
+    .temp-hero-image {
+      position: relative;
+    }
+
+    .temp-alert {
+      position: absolute;
+      bottom: -100%; 
+      left: 0;
+      width: 100%;
+      background-color: #e94560; 
+      color: white;
+      padding: 12px 10px;
+      border-radius: 12px 12px 12px 12px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      font-weight: bold;
+      visibility: hidden; 
+      opacity: 0; 
+      transition: bottom 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s 0.5s;
+      z-index: 10;
+    }
+
+    .temp-alert i {
+      font-size: 1.2rem;
+      margin-bottom: 3px;
+      animation: pulse 1.5s infinite;
+    }
+
+    .alert-text {
+      font-size: 0.9rem;
+    }
+
+    .alert-status {
+      font-size: 0.75rem;
+      opacity: 0.9;
+    }
+
+    .device-temp-display.alert-active {
+      background-color: rgba(233, 69, 96, 0.9); 
+      border-color: #ff0033;
+      box-shadow: 0 0 20px rgba(233, 69, 96, 0.7);
+    }
+
+    .device-temp-display.alert-active .temp-alert {
+      bottom: 0; 
+      visibility: visible; 
+      opacity: 1; 
+      transition: bottom 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    .device-temp-display {
+      position: absolute;
+      top: 10%;
+      left: 20%;
+      transform: translate(-50%, -50%);
+      background: rgba(15, 52, 96, 0.9);
+      border: 2px solid var(--highlight-color);
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(233, 69, 96, 0.5);
+      width: 180px;
+    }
+
+    .temp-value {
+      font-family: monospace;
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: var(--highlight-color);
+      margin-bottom: 5px;
+    }
+
+    .temp-status {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: #ffffff;
+    }
+
+    .status-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #4CAF50;
+      animation: blink 1.5s infinite;
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0.4; }
+      100% { opacity: 1; }
+    }
+
+    .footer-grid a[href="/uses/"] {
+      color: var(--highlight-color) !important;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+    }
+
+    .footer-grid a[href="/uses/"] i {
+      margin-left: 10px;
+      margin-right: 0 !important;
+      transition: transform 0.2s ease;
+    }
+
+    .footer-grid a[href="/uses/"]:hover i {
+      transform: translateX(3px);
+    }
+
+    .footer-grid ul {
+      list-style: none;
+      padding: 0;
+      font-size: 0.9rem;
+    }
+
+    .footer-grid li {
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+    }
+
+    .footer-grid a {
+      color: var(--text-color);
+      text-decoration: none;
+      opacity: 0.7;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-grid a i {
+      margin-right: 10px;
+      color: var(--highlight-color);
+    }
+
+    .footer-grid a:hover {
+      opacity: 1;
+      color: var(--highlight-color);
+    }
+
+    .threshold-display {
+      position: absolute;
+      top: -30px;
+      left: 70%;
+      transform: translateX(-50%);
+      background-color: var(--accent-color);
+      border-radius: 12px;
+      padding: 12px;
+      width: 280px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      z-index: -1;
+    }
+
+    .threshold-title {
+      font-size: 1rem;
+      text-align: center;
+      margin-bottom: 10px;
+      color: var(--highlight-color);
+      font-weight: bold;
+    }
+
+    .threshold-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .threshold-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 12px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      font-size: 0.9rem;
+    }
+
+    .threshold-value {
+      font-weight: bold;
+    }
+
+    .threshold-high {
+      color: #FF5252;
+    }
+
+    .threshold-low {
+      color: #2196F3;
+    }
+
+    .threshold-warning {
+      color: #FFC107;
+    }
+
+    .threshold-ideal {
+      color: #4CAF50;
+    }
+
+    @media (max-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
+      }
+      
+      .footer-grid a[href="/uses/"] {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER SECTION -->
+  <header>
+    <nav class="container">
+      <div class="logo-container">
+        <img src="../cpicon.png" alt="CabinPulse Logo" class="icon">
+        <span class="logo-text">CabinPulse</span>
+      </div>
+      <div class="nav-links">
+        <a href="/index.html#features" class="nav-link">Features</a>
+        <a href="/index.html#pricing" class="nav-link">Pricing</a>
+        <a href="/index.html#faq" class="nav-link">FAQ</a>
+        <a href="https://blog.cabinpulse.com" class="nav-link">Blog</a>
+        <a href="https://dashboard.cabinpulse.com" class="nav-link login-btn">
+          Dashboard
+        </a>
+        <a href="https://cabinpulse.com/purchase.html?plan=1" class="nav-link primary-cta">
+          Get CabinPulse →
+        </a>
+      </div>
+      <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+        <i class="fas fa-bars" id="menu-icon"></i>
+      </div>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-expanded" id="mobile-menu">
+      <div class="mobile-nav-links">
+        <a href="/index.html#features" class="mobile-nav-link">Features</a>
+        <a href="/index.html#pricing" class="mobile-nav-link">Pricing</a>
+        <a href="/index.html#faq" class="mobile-nav-link">FAQ</a>
+        <a href="https://blog.cabinpulse.com" class="mobile-nav-link">Blog</a>
+        <a href="https://dashboard.cabinpulse.com" class="mobile-nav-link mobile-login-btn">
+          Dashboard
+        </a>
+        <a href="https://cabinpulse.com/purchase.html?plan=1" class="mobile-nav-link mobile-primary-cta">
+          Get CabinPulse →
+        </a>
+      </div>
+    </div>
+    
+    <!-- Integrated Breadcrumb -->
+    <div class="integrated-breadcrumb">
+      <div class="container">
+        <div class="breadcrumb-nav">
+          <a href="https://cabinpulse.com">Home</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="/uses/">Uses</a>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-current">RV Temperature Monitor for Pets</span>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <!-- RV Pet Temperature Monitor Hero Section -->
+  <section class="temp-hero">
+    <div class="container temp-hero-container">
+      <div class="temp-hero-content">
+        <h1>Protect Your Pets in Your RV with CabinPulse Temperature Monitoring</h1>
+        <p class="temp-hero-subtitle">Ensure your furry friends are always safe and comfortable in your RV. Get instant cellular alerts for high & low temperatures, even with no WiFi or during power fluctuations. Peace of mind for every RV pet parent.</p>
+        
+        <div class="badge-container">
+          <span class="badge"><i class="fas fa-paw icon-text" style="margin-right:0.2rem;"></i> Pet Safety First</span>
+          <span class="badge"><i class="fas fa-temperature-high icon-text" style="margin-right:0.2rem;"></i>±0.2°C Accuracy</span>
+          <span class="badge"><i class="fas fa-wifi icon-text" style="margin-right:0.2rem;"></i>No WiFi Needed</span>
+        </div>
+        <p class="temp-notice">CabinPulse detects temperature shifts that could harm your pets and immediately notifies you, so you can take action before it's too late.</p>
+        
+        <a href="https://cabinpulse.com/purchase.html?plan=3" class="cta-button">
+          Get CabinPulse →
+        </a>
+      </div>
+      <div class="temp-hero-image">
+        <img src="../front.png" alt="CabinPulse RV Temperature Monitor for Pets - Cellular device ensuring pet safety in campers and RVs.">
+        <div class="device-temp-display">
+          <div class="temp-value">27.4°C</div>
+          <div class="temp-status">
+            <span class="status-indicator"></span>
+            <span class="status-text">Monitoring RV</span>
+          </div>
+          <div class="temp-alert">
+            <i class="fas fa-dog"></i> <!-- Changed icon -->
+            <span class="alert-text">RV Too Hot!</span>
+            <span class="alert-status">Alert Sent</span>
+          </div>
+        </div>
+        
+        <div class="threshold-display">
+          <div class="threshold-title">Active Alerts</div>
+          <div class="threshold-list">
+            <div class="threshold-item">
+              <span>Too Hot</span>
+              <span class="threshold-value threshold-high">Above 28°C</span>
+            </div>
+            <div class="threshold-item">
+              <span>Warming Up</span>
+              <span class="threshold-value threshold-warning">Above 25°C</span>
+            </div>
+            <div class="threshold-item">
+              <span>Cooling Down</span>
+              <span class="threshold-value threshold-warning">Below 12°C</span>
+            </div>
+            <div class="threshold-item">
+              <span>Too Cold</span> <!-- Still relevant for RVs -->
+              <span class="threshold-value threshold-low">Below 5°C</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Features Section -->
+  <section class="features">
+    <div class="container" style="margin-bottom: 5rem;">
+      <h2 class="section-title">Why CabinPulse is the Best RV Temperature Monitor for Your Pets</h2>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <i class="feature-icon fas fa-shield-dog"></i> <!-- Pet specific icon -->
+          <h3>Precision for Pet Comfort</h3>
+          <p>Ensure your pet's RV environment is always within a safe range with exceptional <span class="temperature-highlight">±0.2°C accuracy</span>. Vital for pets sensitive to small temperature changes.</p>
+        </div>
+        
+        <div class="feature-card">
+          <i class="feature-icon fas fa-sliders"></i>
+          <h3>Custom Pet Safety Alerts</h3>
+          <p>Set specific temperature alerts for your pets. Create multiple high and low alert thresholds if your RV's AC or heater fails, ensuring their comfort and safety.</p>
+        </div>
+        
+        <div class="feature-card">
+          <i class="feature-icon fas fa-tower-cell"></i>
+          <h3>Reliable Cellular Connection</h3>
+          <p>Perfect for campgrounds or off-grid adventures where WiFi is unreliable or unavailable. Get critical alerts for your pets' safety, no internet needed. Works on <a href="https://blog.cabinpulse.com/cabinpulse-cellular-coverage/">every major network</a> in North America.</p>
+        </div>
+        
+        <div class="feature-card">
+          <i class="feature-icon fas fa-chart-line"></i>
+          <h3>RV Temperature History</h3>
+          <p>Track temperature fluctuations inside your RV over time. Understand how external conditions affect your RV's climate and plan better for your pet's needs on the road.</p>
+        </div>
+        
+        <div class="feature-card">
+          <i class="feature-icon fas fa-car-battery"></i> <!-- RV specific icon -->
+          <h3>RV Power Outage Ready</h3>
+          <p>Crucial for RVs! If shore power disconnects or your RV's battery system has issues, CabinPulse's 3-day backup keeps watching over your pets when they need it most.</p>
+        </div>
+        
+        <div class="feature-card">
+          <i class="feature-icon fas fa-users"></i> <!-- Users icon -->
+          <h3>Alerts for the Whole Pack</h3>
+          <p>Configure alerts to notify yourself, your partner, or a pet-sitter via text and email if temperatures become unsafe for your pets in the RV. Ensure someone always knows.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  <!-- How It Works Section -->
+  <section class="how-it-works">
+    <div class="container">
+      <h2 class="section-title">Simple Steps to Pet Safety in Your RV</h2>
+      
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <i class="step-icon fas fa-plug"></i>
+          <h3>Plug & Play in Your RV</h3>
+          <p>Simply plug CabinPulse into any power outlet in your RV or camper. No complex wiring, WiFi configuration, or professional installation required. Works right out of the box for instant pet protection.</p>
+        </div>
+        
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <i class="step-icon fas fa-paw"></i> <!-- Pet icon -->
+          <h3>Set Pet Comfort Zones</h3>
+          <p>With the easy-to-use CabinPulse dashboard, define temperature thresholds specifically for your pets (dogs, cats, birds, etc.). Set unlimited high and low thresholds tailored to their needs.</p>
+        </div>
+        
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <i class="step-icon fas fa-mobile-alt"></i> <!-- Mobile for alert -->
+          <h3>Get Instant Alerts</h3>
+          <p>Receive <b>immediate</b> alerts via text message and email if the temperature inside your RV goes outside your pet's safe zone, allowing you to act fast and ensure their wellbeing.</p>
+        </div>
+      </div>
+      
+      <div class="image-overlay" style="margin-top: 80px;">
+        <img src="../dashboard.png" alt="CabinPulse Dashboard showing RV temperature monitoring and pet safety alert thresholds">
+        <div class="overlay-content">
+          <h3>Monitor Your RV Environment From Anywhere</h3>
+          <p>Access your RV's temperature data from your phone, tablet, or computer. The intuitive dashboard lets you view current conditions, check historical data, and adjust pet safety alert thresholds remotely with ease, whether you're hiking or at the grocery store.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Comparison Section -->
+  <section class="comparison">
+    <div class="container comparison-container">
+      <h2 class="section-title">CabinPulse vs. Standard Monitors for RV Pet Safety</h2>
+      
+      <div class="comparison-intro">
+        <p>Many temperature monitors exist, but CabinPulse offers the critical features and reliability needed to truly protect your pets in the unique and often unpredictable environment of an RV.</p>
+      </div>
+      
+      <div class="table-wrapper">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Features for Pet Safety</th>
+              <th>Basic Temperature Monitors</th>
+              <th class="cabinpulse-col" style="border-radius: 1rem 1rem 0rem 0rem;">CabinPulse for RV Pets</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="feature-name">Reliable Alerts (No WiFi)</td>
+              <td><i class="xmark fas fa-xmark"></i>WiFi only or cellular on only one US Carrier</td>
+              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Roams on every major cellular network in North America!</td>
+            </tr>
+             <tr>
+              <td class="feature-name">Number of Custom Alerts</td>
+              <td><i class="xmark fas fa-xmark"></i> Limited (1-2)</td>
+              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Unlimited for pet comfort</td>
+            </tr>
+            <tr>
+              <td class="feature-name">High & Low Temp Alerts</td>
+              <td><i class="xmark fas fa-xmark"></i> Sometimes</td>
+              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Critical for heat & cold</td>
+            </tr>
+            <tr>
+              <td class="feature-name">Works During RV Power Loss</td>
+              <td><i class="xmark fas fa-xmark"></i> Rarely, or short battery</td>
+              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Up to 3 days backup</td>
+            </tr>
+            <tr>
+              <td class="feature-name">Precision Accuracy for Pets</td>
+              <td><i class="xmark fas fa-xmark"></i> ±1-2°C (can be too wide)</td>
+              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> ±0.2°C for sensitive pets</td>
+            </tr>
+            <tr>
+              <td class="feature-name">Historical RV Temp Data</td>
+              <td><i class="xmark fas fa-xmark"></i> Limited or none</td>
+              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Understand RV climate</td>
+            </tr>
+            <tr>
+              <td class="feature-name">Alert Multiple Guardians</td>
+              <td><i class="xmark fas fa-xmark"></i> Single user only</td>
+              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> You & your co-pilot/sitter</td>
+            </tr>
+             <tr>
+              <td class="feature-name">Easy RV Setup</td>
+              <td><i class="checkmark fas fa-check"></i> Usually simple</td>
+              <td class="cabinpulse-col" style="border-radius: 0rem 0rem 1rem 1rem;"><i class="checkmark fas fa-check"></i> Plug & play, no RV tech needed</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <a href="https://cabinpulse.com/purchase.html?plan=3" class="cta-button">Keep My Pets Safe →</a>
+    </div>
+  </section>
+
+  
+  
+  <!-- Testimonials Section -->
+  <section class="testimonials">
+    <div class="container">
+      <h2 class="section-title">What RV Pet Owners Say About CabinPulse</h2>
+      
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="star-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="testimonial-content">
+            "Our RV air conditioner quit on a hot day while we were out for groceries. The CabinPulse alert came through instantly, and we rushed back. I'll never RV without it again!"
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <i class="fas fa-dog"></i>
+            </div>
+            <div class="author-info">
+              <h4>Dog Owner</h4>
+              <p>Arizona, USA</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="star-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="testimonial-content">
+            "We travel with two cats and always worried about leaving them. CabinPulse gives us complete peace of mind. The cellular connection is a lifesaver in campgrounds with no WiFi and makes it so easy."
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <i class="fas fa-cat"></i>
+            </div>
+            <div class="author-info">
+              <h4>RV & Cat Owner</h4>
+              <p>British Columbia, Canada</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="text-align: center;">
+          <a class="cta-button" href="https://www.google.com/search?sca_esv=7899e45081c54108&rlz=1C5GCCM_en&si=APYL9bs7Hg2KMLB-4tSoTdxuOx8BdRvHbByC_AuVpNyh0x2KzeWXWgXwfKH3IlceyMiFu88HEuZVWF8eHsdJTTf-cqBwzE7tIQOeY0nPJ7KjYfeFFZQlRGNoA0lez-VUqH8M6t1h-lLc&q=CabinPulse+RV+Pet+Monitor+Reviews&sa=X&ved=2ahUKEwjR-LikzLONAxUeEVkFHb7RFc8Q0bkNegQIMRAE&biw=1736&bih=849&dpr=2">More Reviews →</a>
+        </div>
+    </div>
+    </div>
+  </section>
+  
+  <!-- FAQ Section -->
+  <section class="faq">
+    <div class="container">
+      <h2 class="section-title">RV Pet Temperature Monitor: Your Questions Answered</h2>
+      
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h3><i class="fas fa-sliders"></i> How many temperature thresholds can I set?</h3>
+          <p>You can set unlimited temperature thresholds with CabinPulse for your RV. This means you can define specific "too hot" and "too cold" points for your dog, cat, or other pets, ensuring they're always in a safe environment.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3><i class="fas fa-wifi-slash"></i> Does CabinPulse need WiFi to protect my pets in the RV?</h3>
+          <p>No, WiFi is NOT required! CabinPulse uses reliable cellular technology, making it perfect for RVs in campgrounds, boondocking spots, or anywhere WiFi is spotty or unavailable. Your pet's safety alerts will always get through.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3><i class="fas fa-mobile-alt"></i> How will I get alerts if my RV gets too hot or cold for my pet?</h3>
+          <p>CabinPulse sends instant alerts via both text message and email when the RV temperature goes outside your pet's custom safe zone. You can add multiple contacts (e.g., spouse, pet sitter) to ensure someone is always notified.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3><i class="fas fa-thermometer-half"></i> How accurate is it for pet safety?</h3>
+          <p>CabinPulse offers exceptional accuracy of ±0.2°C (±0.36°F). This precision is vital for pets, especially those sensitive to small temperature changes, ensuring their environment is truly safe and comfortable.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3><i class="fas fa-car-battery"></i> What if my RV loses power (shore or battery)?</h3>
+          <p>CabinPulse has a built-in backup battery lasting up to 3 days. You'll get an alert if RV power is lost, and it will continue monitoring the temperature and sending pet safety alerts, which is crucial if your AC/heater depends on that power.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3><i class="fas fa-paw"></i> Is it safe to leave my pet alone in the RV with CabinPulse?</h3>
+          <p>CabinPulse is a powerful monitoring tool that alerts you to dangerous temperature changes. However, it does not control your RV's climate. Always use caution, know your pet's limits, and be aware of local conditions and regulations when leaving pets unattended.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3><i class="fas fa-map-marker-alt"></i> Where should I place it in my RV for best pet monitoring?</h3>
+          <p>Place CabinPulse near where your pet spends most of their time, but away from direct sunlight, vents, or heat-generating appliances for the most accurate ambient RV temperature reading. This ensures alerts are based on your pet's actual environment.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3><i class="fas fa-dog"></i> Can I use it for different types of pets in my RV?</h3>
+          <p>Absolutely! CabinPulse is ideal for monitoring the safety of dogs, cats, birds, reptiles (that need specific heat), and any pet sensitive to temperature. The custom alerts let you tailor it to any pet's unique needs in your camper or motorhome.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="text-align: center;">
+        <a class="cta-button" href="https://cabinpulse.com/#faq">More Answers →</a>
+      </div>
+  </div>
+  </section>
+  
+  <!-- Final CTA Section -->
+  <section class="final-cta">
+    <div class="container final-cta-container">
+      <div class="final-cta-icon">
+        <i class="fas fa-paw"></i> <!-- Pet Icon -->
+      </div>
+      <h2>Keep Your Furry Friends Safe & Comfortable on Every RV Adventure</h2>
+      <p>CabinPulse offers reliable RV temperature monitoring with custom pet safety alerts, unmatched accuracy, and cellular connectivity that works wherever your travels take you. Give yourself peace of mind.</p>
+      
+      <div class="cta-features">
+        <div class="cta-feature">
+          <i class="fas fa-check-circle"></i>
+          <span>Pet-Safe Temp Alerts</span>
+        </div>
+        <div class="cta-feature">
+          <i class="fas fa-check-circle"></i>
+          <span>±0.2°C Accuracy</span>
+        </div>
+        <div class="cta-feature">
+          <i class="fas fa-check-circle"></i>
+          <span>No RV WiFi Needed</span>
+        </div>
+      </div>
+      
+      <a href="https://cabinpulse.com/purchase.html?plan=3" class="cta-button">Get CabinPulse Now →</a>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px; text-align: left; padding: 48px 0;">
+        <!-- Company Info -->
+        <div>
+          <div class="logo-container" style="margin-bottom: 20px;">
+            <img src="../cpicon.png" alt="CabinPulse Logo" style="width: 40px; height: 40px; margin-right: 10px;">
+            <h3>CabinPulse</h3>
+          </div>
+          <p style="color: #ccc; margin-bottom: 20px;">Intelligent remote property monitoring, no WiFi required.</p>
+          <div style="display: flex; gap: 15px;">
+            <a href="mailto:support@cabinpulse.com" style="color: var(--text-color);"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.facebook.com/61567189714759" style="color: var(--text-color);"><i class="fab fa-facebook"></i></a>
+          </div>
+        </div>
+        
+        <!-- Use Cases Section -->
+        <div>
+          <h4 style="color: var(--highlight-color); margin-bottom: 20px;">Use Cases</h4>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 10px;">
+              <a href="/uses/freeze-alarm.html" style="color: var(--text-color); text-decoration: none; display: flex; align-items: center;">
+                <i class="fas fa-temperature-low" style="margin-right: 10px;"></i>
+                Freeze Alarm
+              </a>
+            </li>
+            <li style="margin-bottom: 10px;">
+              <a href="/uses/power-outage-monitor.html" style="color: var(--text-color); text-decoration: none; display: flex; align-items: center;">
+                <i class="fas fa-plug-circle-xmark" style="margin-right: 10px;"></i>
+                Power Outage Monitor
+              </a>
+            </li>
+            <li style="margin-bottom: 10px;">
+              <a href="/uses/remote-cabin-cottage-monitoring-system.html" style="color: var(--text-color); text-decoration: none; display: flex; align-items: center;">
+                <i class="fas fa-mountain-sun" style="margin-right: 10px;"></i>
+                Cabin & Cottage Monitoring System
+              </a>
+            </li>
+            <li style="margin-bottom: 10px;">
+              <a href="/uses/" style="color: var(--highlight-color); text-decoration: none; display: flex; align-items: center; font-weight: 500;">
+                <span>View All Use Cases</span>
+                <i class="fas fa-arrow-right" style="margin-left: 10px;"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Quick Links -->
+        <div>
+          <h4 style="color: var(--highlight-color); margin-bottom: 20px;">Quick Links</h4>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 10px;"><a href="#features" style="color: var(--text-color); text-decoration: none;">Features</a></li>
+            <li style="margin-bottom: 10px;"><a href="#pricing" style="color: var(--text-color); text-decoration: none;">Pricing</a></li>
+            <li style="margin-bottom: 10px;"><a href="#faq" style="color: var(--text-color); text-decoration: none;">FAQ</a></li>
+            <li style="margin-bottom: 10px;"><a href="/legal.html" style="color: var(--text-color); text-decoration: none;">Legal</a></li>
+          </ul>
+  
+          <!-- Press Links -->
+          <h4 style="color: var(--highlight-color); margin-top: 25px; margin-bottom: 20px;">Press</h4>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 10px;">
+              <a href="https://www.theglobeandmail.com/investing/markets/markets-news/GetNews/29709301/cabinpulse-launches-remote-monitoring-solution-for-cabin-owners-no-wifi-needed/" 
+                 style="color: var(--text-color); text-decoration: none; display: flex; align-items: center;">
+                <i class="far fa-newspaper" style="margin-right: 10px;"></i>
+                CabinPulse Launch
+              </a>
+            </li>
+            <li style="margin-bottom: 10px;">
+              <a href="https://www.barchart.com/story/news/32222883/cabinpulse-announces-major-product-updates-new-design-expanded-connectivity-advanced-features-and-flexible-plans" 
+                 style="color: var(--text-color); text-decoration: none; display: flex; align-items: center;">
+                <i class="far fa-newspaper" style="margin-right: 10px;"></i>
+                Product Updates
+              </a>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Helpful Links & Contact -->
+        <div>
+          <h4 style="color: var(--highlight-color); margin-bottom: 20px;">Helpful Links</h4>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 10px;"><a href="/manual.html" style="color: var(--text-color); text-decoration: none;"><i class="fas fa-book" style="margin-right: 10px;"></i>CabinPulse Manual</a></li>
+            <li style="margin-bottom: 10px;"><a href="https://blog.cabinpulse.com" style="color: var(--text-color); text-decoration: none;"><i class="fas fa-blog" style="margin-right: 10px;"></i>CabinPulse Blog</a></li>
+            <li style="margin-bottom: 10px;"><a href="https://blog.cabinpulse.com/how-to-prevent-frozen-pipes-in-your-cabin-this-winter/" style="color: var(--text-color); text-decoration: none;"><i class="far fa-newspaper" style="margin-right: 10px;"></i>Prevent Frozen Pipes</a></li>
+            <li style="margin-bottom: 10px;"><a href="https://blog.cabinpulse.com/remote-vacation-home-monitors-keeping-your-investment-safe/" style="color: var(--text-color); text-decoration: none;"><i class="far fa-newspaper" style="margin-right: 10px;"></i>Remote Home Monitors</a></li>
+          </ul>
+          
+          <h4 style="color: var(--highlight-color); margin-top: 25px; margin-bottom: 20px;">Contact</h4>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 10px;"><i class="fas fa-envelope" style="margin-right: 10px;"></i><a href="mailto:support@cabinpulse.com" style="color: var(--text-color);">support@cabinpulse.com</a></li>
+            <li style="margin-bottom: 10px;"><i class="fas fa-location-dot" style="margin-right: 10px;"></i> Saskatchewan, Canada</li>
+          </ul>
+        </div>
+      </div>
+      <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 20px; text-align: center;">
+        <p>&copy; 2025 Toccata, Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <script>
+ document.addEventListener('DOMContentLoaded', function() {
+  const tempDisplay = document.querySelector('.temp-value');
+  const deviceTempDisplay = document.querySelector('.device-temp-display');
+  const tempAlertElement = document.querySelector('.temp-alert'); // Renamed to avoid conflict
+  let temp = 27.4; 
+  let alertTriggered = false;
+  let thresholdWarningShown = false;
+  
+  const thresholdWarningDiv = document.createElement('div'); // Renamed
+  thresholdWarningDiv.className = 'threshold-warning-display'; // Unique class
+  thresholdWarningDiv.innerHTML = 'RV Temp High!';
+  thresholdWarningDiv.style.position = 'absolute';
+  thresholdWarningDiv.style.top = '-30px';
+  thresholdWarningDiv.style.left = '0';
+  thresholdWarningDiv.style.width = '100%';
+  thresholdWarningDiv.style.backgroundColor = '#e94560';
+  thresholdWarningDiv.style.color = 'white';
+  thresholdWarningDiv.style.padding = '5px';
+  thresholdWarningDiv.style.textAlign = 'center';
+  thresholdWarningDiv.style.borderRadius = '8px 8px 0 0';
+  thresholdWarningDiv.style.fontWeight = 'bold';
+  thresholdWarningDiv.style.fontSize = '0.8rem';
+  thresholdWarningDiv.style.opacity = '0';
+  thresholdWarningDiv.style.transition = 'opacity 0.5s ease-in-out';
+  if (deviceTempDisplay) { // Check if element exists
+    deviceTempDisplay.prepend(thresholdWarningDiv);
+  }
+  
+  const increaseTemp = () => {
+    if (!tempDisplay) return; // Guard clause
+
+    temp += 0.1;
+    tempDisplay.textContent = `${temp.toFixed(1)}°C`;
+    
+    if (temp >= 28.0 && !alertTriggered) {
+      alertTriggered = true;
+      if (deviceTempDisplay) deviceTempDisplay.classList.add('alert-active');
+      const statusTextEl = document.querySelector('.status-text');
+      if (statusTextEl) statusTextEl.textContent = 'Alert Sent';
+      const statusIndicatorEl = document.querySelector('.status-indicator');
+      if (statusIndicatorEl) statusIndicatorEl.style.backgroundColor = '#e94560';
+      
+      setTimeout(() => {
+        if (deviceTempDisplay) deviceTempDisplay.classList.remove('alert-active');
+        
+        setTimeout(() => {
+          if (!thresholdWarningShown) {
+            thresholdWarningShown = true;
+            if (deviceTempDisplay) {
+                deviceTempDisplay.style.border = '2px solid #ff0033';
+                deviceTempDisplay.style.boxShadow = '0 0 15px rgba(255, 0, 51, 0.5)';
+            }
+            thresholdWarningDiv.style.opacity = '1';
+            
+            temp = 28.3;
+            tempDisplay.textContent = `${temp.toFixed(1)}°C`;
+          }
+        }, 500); 
+      }, 5000);
+      
+      return;
+    }
+    
+    if (!alertTriggered) {
+      setTimeout(increaseTemp, 800);
+    }
+  };
+  
+  if (tempDisplay) { // Check if element exists
+    setTimeout(increaseTemp, 1000);
+  }
+  
+  setInterval(() => {
+    if (alertTriggered && thresholdWarningShown && tempDisplay) {
+      temp += (Math.random() > 0.5 ? 0.1 : -0.1) * 0.1;
+      tempDisplay.textContent = `${temp.toFixed(1)}°C`;
+    }
+  }, 3000);
+  
+  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  let menuOpen = false;
+  
+  if (mobileMenuToggle && mobileMenu && menuIcon) { // Check if elements exist
+    mobileMenuToggle.addEventListener('click', function() {
+      menuOpen = !menuOpen;
+      if (menuOpen) {
+        mobileMenu.classList.add('active');
+        menuIcon.classList.remove('fa-bars');
+        menuIcon.classList.add('fa-times');
+      } else {
+        mobileMenu.classList.remove('active');
+        menuIcon.classList.remove('fa-times');
+        menuIcon.classList.add('fa-bars');
+      }
+    });
+  
+    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        if (menuOpen) {
+          mobileMenu.classList.remove('active');
+          menuIcon.classList.remove('fa-times');
+          menuIcon.classList.add('fa-bars');
+          menuOpen = false;
+        }
+      });
+    });
+  
+    document.addEventListener('click', function(event) {
+      if (menuOpen && mobileMenu && mobileMenuToggle) {
+        const isClickInsideMenu = mobileMenu.contains(event.target);
+        const isClickOnToggle = mobileMenuToggle.contains(event.target);
+        
+        if (!isClickInsideMenu && !isClickOnToggle) {
+          mobileMenu.classList.remove('active');
+          menuIcon.classList.remove('fa-times');
+          menuIcon.classList.add('fa-bars');
+          menuOpen = false;
+        }
+      }
+    });
+  }
+});
+  </script>
+</body>
+</html>
