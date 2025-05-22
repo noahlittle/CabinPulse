@@ -1769,6 +1769,41 @@ header.banner-hidden {
   color: var(--accent-color);
 }
 
+
+
+
+.regularbutton {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 60px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+.regularbutton--primary {
+  background-color: var(--highlight-color);
+  color: var(--primary-color);
+}
+.regularbutton--secondary {
+  background-color: transparent;
+  color: var(--cta-color);
+  border: 2px solid var(--cta-color);
+}
+.regularbutton:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+.regularbutton--primary:hover {
+  background-color: var(--cta-color);
+  color: var(--highlight-color);
+}
+.regularbutton--secondary:hover {
+  background-color: var(--cta-color);
+  color: var(--accent-color);
+}
+
 /* Footer styles */
 footer {
   background-color: var(--secondary-color);
