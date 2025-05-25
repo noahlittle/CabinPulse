@@ -343,6 +343,15 @@ nav {
   margin-right: auto;
 }
 
+.uses-product {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  border-radius: 20px;
+  margin-top: -3rem;
+}
+
 /* Uses Grid */
 .uses-grid {
   display: grid;
@@ -593,6 +602,10 @@ footer {
   color: var(--highlight-color);
 }
 
+.left {
+  text-align: left;
+}
+
 /* Responsive styles */
 @media (max-width: 1024px) {
   .uses-hero h1 {
@@ -621,10 +634,10 @@ footer {
     padding-top: 140px;
   }
   .uses-hero h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
   .uses-hero-subtitle {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
   }
   .uses-grid {
     grid-template-columns: 1fr;
@@ -706,9 +719,12 @@ footer {
   <!-- Uses Hero Section -->
   <section class="uses-hero">
     <div class="container uses-hero-container">
-      <h1>Remote Monitoring with CabinPulse</h1>
-      <p class="uses-hero-subtitle">CabinPulse provides versatile, cellular-based monitoring for a wide range of properties and applications. Discover all the ways CabinPulse can protect your investments - without needing WiFi.</p>
+      <img src="../front.png" alt="CabinPulse Device" class="uses-product">
       
+      <h1>CabinPulse Remote Monitoring Use Cases</h1>
+      <div class="left">
+      <p class="uses-hero-subtitle">CabinPulse provides versatile, cellular-based monitoring for a wide range of properties and applications. Discover all the ways CabinPulse can protect your investments - without needing WiFi.</p>
+    </div>
       <a href="https://cabinpulse.com/purchase.html?plan=3" class="cta-button">
         Get CabinPulse Now →
       </a>
@@ -783,6 +799,15 @@ footer {
             Learn More <i class="fas fa-arrow-right"></i>
           </a>
         </div>
+
+        <div class="use-card">
+          <i class="use-icon fas fa-server"></i>
+          <h3>Server Room Environment</h3>
+          <p>Ensure optimal conditions for your IT infrastructure with precise temperature, humidity, and power monitoring. Receive immediate alerts if environmental parameters fall outside acceptable ranges for electronic equipment.</p>
+          <a href="/uses/server-room-monitor.html" class="learn-more">
+            Learn More <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
         
         <div class="use-card">
           <i class="use-icon fas fa-bell"></i>
@@ -808,11 +833,6 @@ footer {
           <p>Safeguard empty properties during vacancies or between tenants. Monitor for proper heating, power issues, and potential water damage to protect your real estate investments when no one is present.</p>
         </div>
         
-        <div class="use-card">
-          <i class="use-icon fas fa-server"></i>
-          <h3>Server Room Environment</h3>
-          <p>Ensure optimal conditions for your IT infrastructure with precise temperature, humidity, and power monitoring. Receive immediate alerts if environmental parameters fall outside acceptable ranges for electronic equipment.</p>
-        </div>
       </div>
     </div>
   </section>
