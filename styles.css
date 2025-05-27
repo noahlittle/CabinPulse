@@ -1,4 +1,3 @@
-
 /* Root variables */
 :root {
   --primary-color: #1a1a2e;
@@ -270,7 +269,7 @@ nav {
 }
 
 /* Button styles */
-.cta-button {
+.cta-button { /* This is a general .cta-button style. The new pricing card also uses this class. */
   display: inline-block;
   background-color: var(--cta-color);
   color: var(--highlight-color);
@@ -289,6 +288,7 @@ nav {
   transform: translateY(-3px);
   box-shadow: 0 12px 24px rgba(233, 69, 96, 0.4);
 }
+
 
 /* Badge styles */
 .badge-container {
@@ -490,104 +490,11 @@ nav {
   right: 0;
   height: 120px;
   background-color: var(--secondary-color);
-  --mask: 
+  --mask:
     radial-gradient(108.17px at 50% 150px, #000 99%, #0000 101%) calc(50% - 120px) 0/240px 100%,
     radial-gradient(108.17px at 50% -90px, #0000 99%, #000 101%) 50% 60px/240px 100% repeat-x;
   -webkit-mask: var(--mask);
           mask: var(--mask);
-}
-
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 48px;
-}
-.pricing-card {
-  background-color: var(--primary-color);
-  border-radius: 24px;
-  padding: 1rem;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-.pricing-card.highlighted {
-  border: 3px solid var(--highlight-color);
-  transform: scale(1.02);
-  z-index: 10;
-}
-.pricing-card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 24px 36px rgba(0, 0, 0, 0.2);
-}
-.pricing-card h3 {
-  font-size: 2rem;
-  margin-bottom: 24px;
-  color: var(--highlight-color);
-}
-.price {
-  font-size: 3.5rem;
-  font-weight: bold;
-  color: var(--cta-color);
-  margin: 24px 0;
-}
-.price .period {
-  font-size: 1.2rem;
-  color: var(--text-color);
-}
-.device-price {
-  font-size: 1rem;
-  color: var(--text-color);
-  margin-bottom: 24px;
-}
-.discount {
-  background-color: var(--highlight-color);
-  color: var(--primary-color);
-  padding: 6px 12px;
-  border-radius: 18px;
-  font-weight: bold;
-  font-size: 1rem;
-  margin-bottom: 24px;
-  display: inline-block;
-}
-.feature-list {
-  text-align: left;
-  margin-bottom: 36px;
-}
-.feature-list li {
-  margin-bottom: 18px;
-  list-style-type: none;
-  display: flex;
-  align-items: center;
-  font-size: 1.1rem;
-}
-.feature-list i {
-  color: var(--highlight-color);
-  margin-right: 12px;
-  font-size: 1.3rem;
-}
-.device-image {
-  width: 80%;
-  border-radius: 1rem;
-  margin: 0 auto 24px;
-  display: block;
-}
-.cta-button.pricingbutton {
-  background-color: var(--highlight-color);
-  color: white;
-  font-size: 1.3rem;
-  padding: 18px 36px;
-}
-.best-value {
-  position: absolute;
-  top: 36px;
-  right: -42px;
-  background-color: var(--highlight-color);
-  color: var(--primary-color);
-  padding: 6px 48px;
-  transform: rotate(45deg);
-  font-weight: bold;
-  font-size: 1rem;
 }
 
 /* FAQ section styles */
@@ -662,12 +569,8 @@ nav {
   .hero p {
     font-size: 1.2rem;
   }
-  .feature-grid,
-  .pricing-grid {
+  .feature-grid { /* This is for the main features section, not pricing features */
     grid-template-columns: 1fr;
-  }
-  .pricing-card.highlighted {
-    transform: scale(1);
   }
   .cp-final-cta__title {
     font-size: 2rem;
@@ -683,22 +586,9 @@ nav {
     width: 100%;
     max-width: 275px;
   }
-  .device-image {
-    width: 220px;
-    border-radius: 1rem;
-    margin: 0 auto 24px;
-    display: block;
-  }
   .logo-hero {
     display: none;
   }
-}
-
-@media screen and (max-width: 1000px) {
-  .pricing-grid {
-    grid-template-columns: 1fr;
-  }
-  
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -706,7 +596,6 @@ nav {
     padding: 8px 10px;
     font-size: 0.9rem;
   }
-  
   .primary-cta {
     padding: 8px 15px;
   }
@@ -717,29 +606,10 @@ nav {
   margin-right: 0.6rem;
 }
 
-/* Feature highlight styles */
-.feature-highlight {
-  display: flex;
-  gap: 48px;
-  margin-top: 70px;
-}
-.feature-highlight-text {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
-}
-.dashboard-preview {
-  flex: 1;
-  background-color: var(--accent-color);
-  border-radius: 24px;
-  padding: 36px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+/* Feature highlight styles (already present) */
+/* .feature-highlight { ... } */
+/* .feature-highlight-text { ... } */
+/* .dashboard-preview { ... } already defined earlier */
 
 /* Responsive styles for 1024px */
 @media (max-width: 1024px) {
@@ -751,9 +621,7 @@ nav {
   }
 }
 @media (max-width: 768px) {
-  .feature-grid {
-    grid-template-columns: 1fr;
-  }
+  /* .feature-grid is already 1fr from above */
   .feature-card.large {
     text-align: center;
   }
@@ -853,24 +721,28 @@ nav {
 @media (max-width: 768px) {
   .testimonials-grid {
     grid-template-columns: 1fr;
+    /* Flexbox scrolling for testimonials on mobile is applied later */
   }
 }
 
+/* Old .cp-feature-grid responsive (related to OLD pricing card features) - this can be removed if it was only for pricing features */
+/*
 @media (max-width: 768px) {
   .cp-feature-grid {
     display: flex !important;
     flex-wrap: nowrap;
     justify-content: space-around;
     gap: 16px;
-    overflow-x: auto;    /* if they overflow, allow a little scroll */
-    padding-bottom: 8px;  /* room for scrollbar */
+    overflow-x: auto;
+    padding-bottom: 8px;
   }
   .cp-feature-grid-item {
-    flex: 0 0 auto;      /* don’t let each card grow or shrink */
-    width: auto;         /* let content size itself */
-    text-align: center;  /* keep icon + text centered */
+    flex: 0 0 auto;
+    width: auto;
+    text-align: center;
   }
 }
+*/
 
 /* Promo banner styles */
 .promo-banner {
@@ -932,15 +804,11 @@ nav {
 }
 
 /* Adjust header and hero positioning when banner is closed */
-header {
-  top: 48px;
-  transition: top 0.3s ease-in-out;
-}
 header.banner-hidden {
   top: 0;
 }
 .hero {
-  margin-top: 48px;
+  margin-top: 48px; /* This assumes banner is 48px tall */
   transition: margin-top 0.3s ease-in-out;
 }
 .hero.banner-hidden {
@@ -1021,46 +889,6 @@ header.banner-hidden {
   line-height: 1.6;
   color: var(--text-color);
   opacity: 0.9;
-}
-
-/* Trial container */
-.trial-container {
-  background-color: var(--accent-color);
-  border: 2px solid var(--highlight-color);
-  border-radius: 24px;
-  padding: 36px;
-  text-align: center;
-  margin: 48px 0;
-  max-width: 1300px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.trial-container .trial-icon {
-  font-size: 2.5rem;
-  color: var(--highlight-color);
-  margin-bottom: 16px;
-}
-.trial-container h3 {
-  font-size: 1.8rem;
-  margin-bottom: 16px;
-  color: var(--highlight-color);
-}
-.trial-container p {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  color: var(--text-color);
-}
-@media (max-width: 768px) {
-  .trial-container {
-    padding: 24px;
-    margin: 32px 0;
-  }
-  .trial-container h3 {
-    font-size: 1.5rem;
-  }
-  .trial-container p {
-    font-size: 1.1rem;
-  }
 }
 
 /* Question container */
@@ -1286,42 +1114,12 @@ header.banner-hidden {
 .chat-widget.open {
   transform: translateY(0);
 }
-.chat-header {
-  background: var(--primary-color);
-  color: white;
-  padding: 15px 20px;
-  cursor: pointer;
-  user-select: none;
-  min-height: 60px;
-  display: flex;
-  align-items: center;
-}
-.chat-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-.chat-status {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 500;
-  font-size: 1.1rem;
-}
-.status-dot {
-  width: 8px;
-  height: 8px;
-  background: #4CAF50;
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-}
-.chat-body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  background: white;
-}
+/* .chat-header { ... } already defined */
+/* .chat-title { ... } already defined */
+/* .chat-status { ... } already defined */
+/* .status-dot { ... } already defined */
+/* .chat-body { ... } already defined */
+
 /* Update these chat widget styles */
 .chat-widget {
   position: fixed;
@@ -1470,18 +1268,19 @@ header.banner-hidden {
 .loader-dots div:nth-child(2) {
   animation-delay: -0.16s;
 }
-@keyframes bounce {
-  0%, 80%, 100% { 
+/* Keyframes for bounce was already defined, this is a redefinition. Keeping the latter. */
+@keyframes bounce { /* This will override the previous bounce */
+  0%, 80%, 100% {
     transform: scale(0);
-  } 
-  40% { 
+  }
+  40% {
     transform: scale(1.0);
   }
 }
 
 /* --- NEW CODE ADDED BELOW --- */
 /* Product Image Glow */
-.device-image {
+.device-image { /* This is a general .device-image for glow. New pricing card has its own more specific .device-image styles */
   position: relative;
   z-index: 1;
 }
@@ -1504,7 +1303,7 @@ header.banner-hidden {
   .hero-container {
     flex-direction: column;
   }
-  .hero-image {
+  .hero-image { /* This is for the main hero image */
     margin-top: 4rem;
     margin-bottom: 2rem;
     display: flex;
@@ -1621,19 +1420,15 @@ header.banner-hidden {
   .fleet-view-enhanced {
     padding: 36px 24px;
   }
-  
   .fleet-view-icon {
     font-size: 3rem;
   }
-  
   .fleet-view-enhanced h3 {
     font-size: 1.8rem;
   }
-  
   .fleet-view-enhanced p {
     font-size: 1.1rem;
   }
-  
 }
 
 /* --- END NEW CODE --- */
@@ -1653,7 +1448,7 @@ header.banner-hidden {
   }
 }
 @media screen and (max-width: 768px) {
-  .hero img {
+  .hero img { /* This refers to the main hero image */
     margin-top: -200px;
   }
   .hero-content {
@@ -1670,14 +1465,14 @@ header.banner-hidden {
     flex-direction: column;
   }
   /* Center the hero image container and the image itself */
-  .hero-image {
+  .hero-image { /* Main hero image */
     margin-top: 4rem;
     margin-bottom: 2rem;
     display: flex;
     justify-content: center;
     transform: scale(0.9);
   }
-  .hero-image img {
+  .hero-image img { /* Main hero image */
     display: block;
   }
   /* Center the badge groups in the hero section */
@@ -1769,9 +1564,6 @@ header.banner-hidden {
   color: var(--accent-color);
 }
 
-
-
-
 .regularbutton {
   display: inline-block;
   padding: 5px 15px;
@@ -1816,15 +1608,12 @@ footer {
     grid-template-columns: repeat(2, 1fr);
     gap: 36px;
   }
-  
   .step-card {
     padding: 28px;
   }
-  
   .step-card h3 {
     font-size: 1.3rem;
   }
-  
   .step-card p {
     font-size: 1rem;
   }
@@ -1836,27 +1625,19 @@ footer {
     gap: 30px;
     margin-top: 40px;
   }
-  
   .how-it-works {
     padding: 80px 0;
   }
-  
-  .section-title {
-    font-size: 2.2rem;
-    margin-bottom: 50px;
-  }
-  
+  /* .section-title is already defined */
   .step-card {
     padding: 30px;
   }
-  
   .step-number {
     width: 40px;
     height: 40px;
     font-size: 1.3rem;
     margin-bottom: 18px;
   }
-  
   .step-icon {
     font-size: 2.5rem;
     margin-bottom: 18px;
@@ -2108,9 +1889,7 @@ footer {
   flex: 1;
 }
 
-.network-icon {
-  margin-bottom: 15px;
-}
+/* .network-icon is already defined */
 
 .carriers-info h4 {
   margin-top: 0;
@@ -2148,7 +1927,6 @@ footer {
     flex-direction: column;
     gap: 20px;
   }
-  
   .country-info {
     padding-right: 0;
     padding-bottom: 20px;
@@ -2156,7 +1934,6 @@ footer {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     width: 100%;
   }
-  
   .carriers-info {
     width: 100%;
   }
@@ -2173,24 +1950,19 @@ footer {
   .supported-networks {
     padding: 80px 0;
   }
-  
   .supported-networks h2 {
     font-size: 2.2rem;
   }
-  
   .supported-networks > .container > p {
-    font-size: 1.2rem;
+    font-size: 1.2rem; /* Was 1.1rem, user might have meant to increase this to 1.2rem for mobile */
   }
-  
   .network-card {
     padding: 30px 20px;
   }
-  
   .countries-grid {
     grid-template-columns: 1fr;
     gap: 20px;
   }
-  
   .compatibility-note {
     flex-direction: column;
     align-items: center;
@@ -2198,252 +1970,43 @@ footer {
   }
 }
 
-  </style>
-  <style>
-    /* CP Pricing Features - Unique naming to avoid conflicts */
-    .cp-feature-categories {
-      margin: 25px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    
-    .cp-feature-group {
-      background-color: rgba(15, 52, 96, 0.3);
-      border-radius: 15px;
-      padding: 20px;
-    }
-    
-    .cp-feature-group-title {
-      color: var(--highlight-color);
-      font-size: 1.2rem;
-      margin: 0 0 15px 0;
-      padding-bottom: 8px;
-      border-bottom: 1px solid rgba(233, 69, 96, 0.2);
-    }
-    
-    .cp-feature-group-title.standalone {
-      margin: 10px 0 15px 0;
-    }
-    
-    .cp-feature-list {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-    }
-    
-    .cp-feature-list li {
-      display: flex;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-    
-    .cp-feature-list li:last-child {
-      margin-bottom: 0;
-    }
-    
-    .cp-feature-list li i {
-      color: var(--highlight-color);
-      margin-right: 12px;
-      min-width: 18px;
-      text-align: center;
-    }
-    
-    /* Feature Grid */
-    .cp-feature-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-    
-    .cp-feature-grid-item {
-      background-color: rgba(15, 52, 96, 0.3);
-      border-radius: 12px;
-      padding: 20px 15px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      transition: transform 0.2s ease;
-    }
-    
-    .cp-feature-grid-item:hover {
-      transform: translateY(-5px);
-    }
-    
-    .cp-feature-icon-large {
-      background-color: rgba(233, 69, 96, 0.15);
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-    
-    .cp-feature-icon-large i {
-      font-size: 1.8rem;
-      color: var(--highlight-color);
-    }
-    
-    .cp-feature-grid-item span {
-      font-size: 0.9rem;
-      line-height: 1.3;
-    }
-    
-    /* Connectivity Features */
-    .cp-connectivity-features {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-    
-    .cp-connectivity-feature {
-      background-color: rgba(15, 52, 96, 0.3);
-      border-radius: 12px;
-      padding: 18px;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      transition: transform 0.2s ease;
-    }
-    
-    .cp-connectivity-feature:hover {
-      transform: translateY(-3px);
-    }
-    
-    .cp-connectivity-icon {
-      background-color: rgba(233, 69, 96, 0.15);
-      min-width: 60px;
-      height: 60px;
-      border-radius: 12px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    .cp-connectivity-icon i {
-      font-size: 2rem;
-      color: var(--highlight-color);
-    }
-    
-    .cp-connectivity-text {
-      flex: 1;
-    }
-    
-    .cp-connectivity-text h5 {
-      margin: 0 0 5px 0;
-      font-size: 1.1rem;
-      color: var(--highlight-color);
-    }
-    
-    .cp-connectivity-text p {
-      margin: 0;
-      font-size: 0.85rem;
-      opacity: 0.8;
-    }
-    
-    /* Guarantee Banner */
-    .cp-guarantee-banner {
-      background-color: rgba(15, 52, 96, 0.4);
-      padding: 15px;
-      border-radius: 12px;
-      margin: 20px 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      border-left: 3px solid var(--highlight-color);
-    }
-    
-    .cp-guarantee-banner i {
-      color: var(--highlight-color);
-      font-size: 1.2rem;
-    }
-    
-    /* Responsive Adjustments */
-    @media (max-width: 768px) {
-      .cp-feature-group {
-        padding: 15px;
-      }
-      
-      .cp-feature-group-title {
-        font-size: 1.1rem;
-      }
-      
-      .cp-feature-list li {
-        font-size: 0.95rem;
-      }
-    
-      
-      .cp-connectivity-feature {
-        padding: 15px;
-      }
-      
-      .cp-connectivity-icon {
-        min-width: 50px;
-        height: 50px;
-      }
-      
-      .cp-connectivity-icon i {
-        font-size: 1.5rem;
-      }
-      
-      .cp-connectivity-text h5 {
-        font-size: 1rem;
-      }
 
-      .cp-feature-grid {
-        grid-template-columns: 1fr;
-      }
-    }
+.verified-badge {
+  display: inline-flex;
+  align-items: center;
+  background-color: rgba(0, 183, 106, 0.15);
+  color: #00b76a;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-left: 10px;
+  position: relative;
+  top: -1px;
+}
 
-    
-    @media (max-width: 480px) {
-      .cp-feature-grid {
-        grid-template-columns: 1fr;
-      }
-    }
+.verified-badge i {
+  margin-right: 5px;
+  font-size: 0.9rem;
+}
 
-    .verified-badge {
-      display: inline-flex;
-      align-items: center;
-      background-color: rgba(0, 183, 106, 0.15);
-      color: #00b76a;
-      padding: 5px 10px;
-      border-radius: 4px;
-      font-size: 0.8rem;
-      font-weight: bold;
-      margin-left: 10px;
-      position: relative;
-      top: -1px;
-    }
-    
-    .verified-badge i {
-      margin-right: 5px;
-      font-size: 0.9rem;
-    }
+@media (max-width: 1000px) {
+  .verified-badge {
+    margin-left: 0px;
+    margin-top: 0.25rem;
+  }
+}
 
-    @media (max-width: 1000px) {
-      .verified-badge {
-        margin-left: 0px;
-        margin-top: 0.25rem;
-      }
-    }
-    
-    /* Mobile adjustments */
-    @media (max-width: 768px) {
-      .verified-badge {
-        padding: 3px 8px;
-        font-size: 0.7rem;
-        margin-left: 0px;
-        margin-top: 1rem;
-      }
-    }
-    @media (max-width: 768px) {
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .verified-badge {
+    padding: 3px 8px;
+    font-size: 0.7rem;
+    margin-left: 0px;
+    margin-top: 1rem;
+  }
+}
+@media (max-width: 768px) {
   /* keep the avatar from shrinking/distorting */
   .testimonial-author .author-avatar {
     width: 60px !important;
@@ -2462,7 +2025,7 @@ footer {
   }
 }
 
-  
+
 /* Feature CTA Section styles */
 .feature-cta {
   background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
@@ -2504,7 +2067,7 @@ footer {
   justify-content: center;
   margin: 0 auto 30px;
   position: relative;
-  animation: pulse 3s infinite;
+  animation: pulse 3s infinite; /* Re-uses existing pulse keyframe */
 }
 
 .feature-cta__icon-container::before {
@@ -2516,7 +2079,7 @@ footer {
   bottom: -10px;
   border-radius: 50%;
   border: 2px solid rgba(233, 69, 96, 0.3);
-  animation: pulse 3s infinite 0.5s;
+  animation: pulse 3s infinite 0.5s; /* Re-uses existing pulse keyframe */
 }
 
 .feature-cta__icon {
@@ -2612,11 +2175,7 @@ footer {
   font-size: 1.2rem;
 }
 
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.1); opacity: 0.8; }
-  100% { transform: scale(1); opacity: 1; }
-}
+/* @keyframes pulse already defined */
 
 /* Responsive styles */
 @media (max-width: 768px) {
@@ -2624,34 +2183,28 @@ footer {
     padding: 80px 0;
     margin-top: -30px;
   }
-  
   .feature-cta__icon-container {
     width: 100px;
     height: 100px;
     margin-bottom: 25px;
   }
-  
   .feature-cta__icon {
     font-size: 3rem;
   }
-  
   .feature-cta__title {
-    font-size: 1.5rem;
+    font-size: 1.5rem; /* Was 2.3rem, user changed to 1.5rem for mobile */
     margin-bottom: 15px;
   }
-  
   .feature-cta__description {
-    font-size: 1.2rem;
+    font-size: 1.2rem; /* Was 1.1rem, user changed to 1.2rem for mobile */
     margin-bottom: 30px;
   }
-  
   .feature-cta__button {
     width: 100%;
     max-width: 300px;
     padding: 15px 30px;
-    font-size: 1.2rem;
+    font-size: 1.2rem; /* Was 1rem, user changed to 1.2rem for mobile */
   }
-  
   .feature-cta__benefits {
     flex-direction: column;
     gap: 15px;
@@ -2737,7 +2290,6 @@ footer {
     margin: 60px 0 2rem;
     text-align: center;
   }
-  
   .photo-gallery {
     display: flex;
     justify-content: center;
@@ -2746,7 +2298,6 @@ footer {
     max-width: 1100px;
     flex-wrap: wrap;
   }
-  
   .photo-item {
     background-color: var(--accent-color);
     border-radius: 12px;
@@ -2757,17 +2308,14 @@ footer {
     transition: transform 0.3s ease;
     flex-shrink: 0;
   }
-  
   .photo-item:hover {
     transform: translateY(-5px);
   }
-  
   .photo-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
-  
   /* Scroll indicator for mobile */
   .scroll-indicator {
     display: none;
@@ -2775,15 +2323,9 @@ footer {
     color: var(--highlight-color);
     margin-top: 10px;
     font-size: 0.9rem;
-    animation: pulse 1.5s infinite;
+    animation: pulse 1.5s infinite; /* Re-uses existing pulse keyframe */
   }
-  
-  @keyframes pulse {
-    0% { opacity: 0.6; }
-    50% { opacity: 1; }
-    100% { opacity: 0.6; }
-  }
-  
+  /* @keyframes pulse already defined */
   /* Mobile styles - convert to horizontal scrolling */
   @media (max-width: 768px) {
     .photo-gallery {
@@ -2796,27 +2338,22 @@ footer {
       scroll-snap-type: x mandatory;
       padding: 10px 0 20px; /* Add padding for scrollbar */
     }
-    
     .photo-gallery::-webkit-scrollbar {
       height: 6px;
     }
-    
     .photo-gallery::-webkit-scrollbar-track {
       background: rgba(255, 255, 255, 0.1);
       border-radius: 10px;
     }
-    
     .photo-gallery::-webkit-scrollbar-thumb {
       background: var(--highlight-color);
       border-radius: 10px;
     }
-    
     .photo-item {
       width: 180px; /* Slightly smaller on mobile */
       height: 180px;
       scroll-snap-align: center;
     }
-    
     .scroll-indicator {
       display: block;
     }
@@ -2856,7 +2393,7 @@ footer {
     margin-top: 8px;
     color: var(--highlight-color);
     font-size: 0.9rem;
-    animation: pulse 1.5s infinite;
+    animation: pulse 1.5s infinite; /* Re-uses existing pulse keyframe */
   }
 }
 
@@ -2881,24 +2418,27 @@ footer {
   color: var(--primary-color) !important;
 }
 
+/*
+  OLD .cp-feature-grid styling specific for old pricing card features.
+  This was a 3-column grid for "Other Features" in the old pricing cards.
+  The new pricing card also has a ".features-section" with ".feature-group"
+  which is styled differently. The old ".cp-feature-grid" rules below can be
+  removed as they are not used by the new pricing structure.
+*/
+/*
 @media (max-width: 768px) {
-  /* Force a 3‑column layout without overflow */
   .cp-feature-grid {
     display: flex !important;
     justify-content: space-between;
     flex-wrap: nowrap;
     padding: 0;
-    gap: 8px;           /* shrink gap just a touch */
-    overflow: visible;  /* kill any scrollbars */
+    gap: 8px;
+    overflow: visible;
   }
-
-  /* Each item takes exactly a third of the available width */
   .cp-feature-grid-item {
     flex: 0 0 calc(33.333% - 8px);
-    padding: 8px 4px;   /* trim padding to make room */
+    padding: 8px 4px;
   }
-
-  /* Shrink the icon circles & text so everything fits */
   .cp-feature-icon-large {
     width: 48px;
     height: 48px;
@@ -2912,6 +2452,7 @@ footer {
     line-height: 1.2;
   }
 }
+*/
 
 .exit-popup {
   position: fixed;
@@ -3176,101 +2717,80 @@ footer {
     max-height: 85vh;
     overflow-y: auto;
   }
-  
   .exit-popup-icon {
     width: 60px;
     height: 60px;
     margin-bottom: 15px;
   }
-  
   .exit-popup-icon i {
     font-size: 2rem;
   }
-  
   .exit-popup-options {
     flex-direction: column;
     gap: 20px;
   }
-  
   .option {
     padding: 20px 15px;
   }
-  
   .option-icon {
     width: 50px;
     height: 50px;
     margin-bottom: 15px;
   }
-  
   .option-icon i {
     font-size: 1.5rem;
   }
-  
   .option-divider {
     margin: 10px 0;
     padding: 5px 0;
   }
-  
   .exit-popup h2 {
     font-size: 1.8rem;
     margin-bottom: 5px;
   }
-  
   .exit-popup p {
     font-size: 1rem;
     margin-bottom: 20px;
   }
-  
   .option h3 {
     font-size: 1.3rem;
     margin-bottom: 10px;
   }
-  
   .option p {
     font-size: 0.9rem;
     min-height: auto;
     margin-bottom: 15px;
   }
-  
   .exit-popup-button {
     padding: 10px 20px;
     font-size: 0.9rem;
   }
-  
   .remind-form input {
     padding: 10px 15px;
     font-size: 0.9rem;
   }
-  
   .exit-popup-note {
     padding: 12px;
     flex-direction: column;
     gap: 5px;
   }
-  
   .exit-popup-note p {
     font-size: 0.8rem;
     margin: 0;
   }
-  
-  /* Increase tap target sizes for mobile */
   .exit-popup-close {
     top: 10px;
     right: 10px;
     width: 44px;
     height: 44px;
   }
-  
-  /* Add some scroll padding to elements */
   .exit-popup-content::-webkit-scrollbar {
     width: 8px;
   }
-  
   .exit-popup-content::-webkit-scrollbar-track {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 10px;
   }
-  
   .exit-popup-content::-webkit-scrollbar-thumb {
     background: var(--highlight-color);
     border-radius: 10px;
@@ -3317,7 +2837,6 @@ footer {
   overflow: hidden; /* To contain the carousel items */
 }
 
-/* Optional: Add a top wave/curve if desired, similar to other sections */
 .use-cases::before {
   content: '';
   position: absolute;
@@ -3339,32 +2858,31 @@ footer {
 
 .use-cases-carousel-wrapper {
     width: 100%;
-    overflow: hidden; /* This is key for the sliding effect with JS */
+    overflow: hidden;
     margin-bottom: 20px;
 }
 
 .use-cases-carousel {
   display: flex;
-  /* No overflow-x: hidden here, JS will manage positioning */
   gap: 24px;
-  padding: 20px 0; /* For card shadows */
-  transition: transform 0.5s ease-in-out; /* For smooth sliding */
+  padding: 20px 0;
+  transition: transform 0.5s ease-in-out;
 }
 
 .use-case-card {
-  flex: 0 0 calc(33.333% - 16px); /* Shows 3 cards, accounts for 24px gap (24*2/3 = 16) */
-  max-width: calc(33.333% - 16px); /* Ensure it doesn't grow beyond this */
+  flex: 0 0 calc(33.333% - 16px);
+  max-width: calc(33.333% - 16px);
   min-width: 280px;
   background-color: var(--accent-color);
   border-radius: 24px;
   padding: 30px 25px;
-  text-align: left;
+  text-align: left; /* Was center, user changed to left */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 8px 16px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  height: auto; /* Allow cards to define their height based on content */
+  align-items: center; /* Was left, user changed to center */
+  height: auto;
 }
 
 .use-case-card:hover {
@@ -3386,25 +2904,25 @@ footer {
 }
 
 .use-case-card h3 {
-  font-size: 1.4rem; /* Slightly adjusted for better fit */
+  font-size: 1.4rem;
   color: var(--text-color);
   margin-bottom: 15px;
   line-height: 1.3;
 }
 
 .use-case-card p {
-  font-size: 0.9rem; /* Slightly adjusted */
+  font-size: 0.9rem;
   color: var(--text-color);
   opacity: 0.85;
   line-height: 1.6;
-  flex-grow: 1; /* Helps to align buttons if text length varies */
+  flex-grow: 1;
 }
 
 .carousel-navigation {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px; /* Reduced from 30px */
+  margin-top: 10px;
   gap: 20px;
 }
 
@@ -3438,15 +2956,15 @@ footer {
 .carousel-dots {
     display: flex;
     justify-content: center;
-    margin-top: 25px; /* Increased spacing */
+    margin-top: 25px;
 }
 
 .carousel-dots .dot {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: var(--accent-color); /* Dimmed color */
-    margin: 0 6px; /* Slightly more space between dots */
+    background-color: var(--accent-color);
+    margin: 0 6px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
@@ -3458,10 +2976,9 @@ footer {
     transform: scale(1.2);
 }
 
-/* Responsive styles for Use Cases */
 @media (max-width: 1024px) {
   .use-case-card {
-    flex: 0 0 calc(50% - 12px); /* Show 2 cards */
+    flex: 0 0 calc(50% - 12px);
     max-width: calc(50% - 12px);
   }
 }
@@ -3471,21 +2988,323 @@ footer {
     padding: 80px 0;
   }
   .use-case-card {
-    flex: 0 0 calc(100% - 40px); /* Show 1 card, with some margin */
+    flex: 0 0 calc(100% - 40px);
     max-width: calc(100% - 40px);
-    margin: 0 20px; /* Center the card */
-    min-width: 0; /* Override min-width for single card view */
+    margin: 0 20px;
+    min-width: 0;
   }
   .use-cases-carousel {
-    gap: 0; /* No gap if cards take full width effectively */
+    gap: 0;
   }
-  /* On mobile, the carousel-wrapper itself will have padding to show edges */
   .use-cases-carousel-wrapper {
-     padding: 0; /* Let JS handle positioning */
+     padding: 0;
   }
 }
 
 @keyframes spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+/* --- START: NEW PRICING STYLES --- */
+.pricing-container {
+  max-width: 1000px; margin: 0 auto;
+}
+.plan-toggle-container {
+  display: flex; justify-content: center; align-items: center;
+  margin-bottom: 40px; gap: 20px;
+}
+.plan-toggle {
+  position: relative; display: flex;
+  background: rgba(15,52,96,0.4); border-radius: 50px;
+  padding: 6px; border: 2px solid rgba(233,69,96,0.3);
+}
+.toggle-option {
+  padding: 12px 24px; border-radius: 40px;
+  cursor: pointer; transition: all 0.3s ease;
+  font-weight: 600; font-size: 1rem;
+  color: var(--text-color); opacity: 0.7; z-index: 2;
+  position: relative;
+  overflow: visible;
+}
+.toggle-option.active {
+  opacity: 1; color: #fff;
+}
+.toggle-slider {
+  position: absolute; top: 6px; left: 6px;
+  width: calc(50% - 6px); height: calc(100% - 12px);
+  background: var(--highlight-color);
+  border-radius: 40px; transition: transform 0.3s ease;
+  z-index: 1;
+}
+.toggle-slider.three-year {
+  transform: translateX(calc(100% + 0px)); /* Adjusted for better centering if needed */
+}
+
+.plan-savings-indicator {
+  position: absolute;
+  top: -10px;
+  right: -20px;
+  background: var(--highlight-color);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  transform-origin: center center;
+  transition: all 0.3s ease-in-out;
+  animation: gentleWiggle 1.5s infinite ease-in-out;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  z-index: 3;
+}
+
+@keyframes gentleWiggle {
+  0% { transform: rotate(-6deg) scale(1); }
+  50% { transform: rotate(6deg) scale(1.08); }
+  100% { transform: rotate(-6deg) scale(1); }
+}
+
+.plan-savings-indicator.activated {
+  animation: none;
+  transform: rotate(0deg) scale(1.05);
+  font-size: 0.8rem;
+  padding: 5px 10px;
+  border: 1px solid white;
+  background-color: var(--highlight-color);
+  top: -10px;
+  right: -20px;
+}
+
+.pricing-card { /* This is the NEW pricing card style */
+  position: relative; overflow: hidden;
+  background: linear-gradient(135deg, var(--primary-color) 0%, rgba(15,52,96,0.8) 100%);
+  border-radius: 24px; padding: 40px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  border: 2px solid rgba(233,69,96,0.3);
+}
+.pricing-card::before {
+  content: '';
+  position: absolute; top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle, rgba(233,69,96,0.1) 0%, transparent 70%);
+  transform: rotate(45deg); z-index: 0;
+}
+.pricing-content {
+  position: relative; z-index: 1;
+}
+.pricing-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px; align-items: center;
+  margin-bottom: 40px;
+}
+
+.info-cta-wrapper {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 20px; width: 100%;
+  background-color: rgba(22, 33, 62, 0.6);
+  border: 1px solid rgba(233, 69, 96, 0.2);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.product-section {
+  display: flex; justify-content: center; align-items: center;
+}
+.product-carousel {
+  position: relative; width: 100%; max-width: 400px;
+}
+.carousel-container {
+  border-radius: 16px;
+  background: rgba(15,52,96,0.2);
+  padding: 20px;
+}
+.carousel-viewport {
+  overflow: hidden; width: 100%; height: 300px;
+}
+.carousel-track {
+  display: flex; transition: transform 0.4s ease-in-out;
+  height: 100%;
+}
+.carousel-slide {
+  flex: 0 0 100%;
+  display: flex; align-items: center; justify-content: center;
+  height: 100%;
+}
+.device-image { /* NEW pricing card device image style */
+  max-height: 100%; width: auto;
+  border-radius: 12px;
+  /* The general .device-image::before glow will apply here too */
+  /* filter: drop-shadow(0 8px 16px rgba(233,69,96,0.3)); /* Glow effect is already from ::before */
+  transition: transform 0.3s ease;
+}
+.device-image:hover { transform: scale(1.05); }
+
+.carousel-nav {
+  position: absolute; top: 50%;
+  transform: translateY(-50%);
+  background: rgba(233,69,96,0.9); color: #fff;
+  border: none; border-radius: 50%;
+  width: 30px; height: 30px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; z-index: 10; transition: all 0.3s ease;
+}
+.carousel-nav:hover {
+  background: var(--highlight-color);
+  transform: translateY(-50%) scale(1.1);
+}
+.carousel-nav.prev { left: 10px; }
+.carousel-nav.next { right: 10px; }
+
+.carousel-dots { /* Already defined for use-cases carousel, ensure consistency or use more specific selectors */
+  display: flex; justify-content: center; gap: 6px;
+  margin-top: 10px;
+}
+.carousel-dots .dot { /* Already defined for use-cases carousel */
+  width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(255,255,255,0.3); cursor: pointer;
+  transition: all 0.3s ease;
+}
+.carousel-dots .dot.active { /* Already defined for use-cases carousel */
+  background: var(--highlight-color);
+  transform: scale(1.3);
+}
+
+.pricing-section {
+  text-align: center; width: 100%;
+}
+.price-display {
+  margin-bottom: 20px;
+}
+.price { /* NEW price style */
+  font-size: 3.5rem; font-weight: 800;
+  color: var(--cta-color); margin: 0; line-height: 1;
+}
+.price .period { /* NEW period style */
+  font-size: 1.2rem; color: var(--text-color);
+  opacity: 0.8;
+}
+.price-label {
+  font-size: 1rem; color: var(--text-color);
+  opacity: 0.9; margin-top: 8px;
+}
+.device-price-container {
+  background: linear-gradient(135deg, rgba(15,52,96,0.6), rgba(233,69,96,0.1));
+  border: 2px solid rgba(233,69,96,0.3); border-radius: 16px;
+  padding: 16px; margin: 20px 0;
+}
+.device-price-label {
+  font-size: 0.8rem; color: var(--highlight-color);
+  font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.5px; margin-bottom: 4px;
+}
+.device-price { /* NEW device-price style */
+  font-size: 1.2rem; font-weight: 700;
+  color: var(--text-color);
+  display: flex; align-items: center; justify-content: center;
+  gap: 6px;
+}
+.device-price-icon { color: var(--highlight-color); }
+
+.discount-badge { /* NEW discount badge */
+  background: var(--highlight-color); color: #fff;
+  padding: 0 12px;
+  border-radius: 15px;
+  font-size: 0.9rem; font-weight: 600;
+  text-align: center;
+  margin-bottom: 0;
+  opacity: 0;
+  transform: scale(0.8) translateY(-10px);
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease, max-height 0.3s ease-out, margin-bottom 0.3s ease-out, padding-top 0.3s ease-out, padding-bottom 0.3s ease-out;
+  padding-top: 0; padding-bottom: 0;
+}
+.discount-badge.visible {
+  opacity: 1; transform: scale(1) translateY(0);
+  max-height: 40px;
+  margin-bottom: 15px;
+  padding-top: 6px; padding-bottom: 6px;
+}
+
+.cta-section {
+  text-align: center; width: 100%;
+}
+.cta-button { /* This is the general .cta-button style. Specifics for pricing button: */
+  background: var(--highlight-color); color: #fff; /* Overriding general .cta-button if different */
+  padding: 16px 32px; border-radius: 50px;
+  text-decoration: none; font-weight: 600;
+  font-size: 1.1rem; /* Overriding general .cta-button if different */
+  box-shadow: 0 8px 20px rgba(233,69,96,0.3);
+  transition: all 0.3s ease; display: inline-block;
+  margin-top: 0; /* Overriding general .cta-button if different */
+  margin-bottom: 20px; /* Overriding general .cta-button if different */
+}
+.cta-button:hover { /* Ensure hover matches new design if general one is different */
+  background: #ff5a7c; transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(233,69,96,0.5);
+}
+.guarantee-text {
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px; font-size: 0.9rem; opacity: 0.8;
+}
+.guarantee-text i { color: var(--highlight-color); }
+
+/* Features for NEW pricing card */
+.features-section {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 30px; margin-top: 40px; padding-top: 40px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.feature-group {
+  background: rgba(15,52,96,0.3); border-radius: 16px;
+  padding: 24px;
+}
+.feature-group h4 {
+  display: flex; align-items: center; gap: 8px;
+  color: var(--highlight-color); font-size: 1.1rem;
+  margin: 0 0 8px 0;
+}
+.feature-group-blurb {
+    font-size: 0.85rem;
+    color: var(--text-color);
+    opacity: 0.75;
+    margin: 0 0 16px 0;
+    line-height: 1.4;
+}
+.feature-list { /* NEW feature-list style */
+    list-style: none; padding: 0; margin: 0;
+}
+.feature-list li { /* NEW feature-list li style */
+  display: flex; align-items: center; margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+.feature-list li i { /* NEW feature-list i style */
+  color: var(--highlight-color); margin-right: 10px;
+  width: 16px; text-align: center;
+}
+
+/* Responsive for NEW pricing card */
+@media (max-width: 1024px) {
+  .pricing-main { grid-template-columns: 1fr; }
+  .features-section { grid-template-columns: 1fr; }
+  .info-cta-wrapper { margin-top: 40px; }
+}
+@media (max-width: 768px) {
+  /* .pricing { padding: 80px 0; } already in main styles */
+  /* .section-title { font-size: 2.2rem; margin-bottom: 40px; } already in main styles */
+  .pricing-card { padding: 30px 20px; } /* NEW pricing card padding */
+  .plan-toggle-container { flex-direction: column; gap: 15px; }
+  .product-carousel { max-width: 320px; }
+  .carousel-viewport { height: 250px; }
+  .info-cta-wrapper { padding: 20px; }
+}
+@media (max-width: 480px) {
+  .carousel-viewport { height: 200px; }
+  .product-carousel { max-width: 280px; }
 }
