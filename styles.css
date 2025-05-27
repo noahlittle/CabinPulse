@@ -3291,7 +3291,7 @@ footer {
 
 /* Responsive for NEW pricing card */
 @media (max-width: 1024px) {
-  .pricing-main { grid-template-columns: 1fr; }
+  .pricing-main { grid-template-columns: 1fr; gap: 10px;
   .features-section { grid-template-columns: 1fr; }
   .info-cta-wrapper { margin-top: 40px; }
 }
@@ -3302,7 +3302,8 @@ footer {
   .plan-toggle-container { flex-direction: column; gap: 15px; }
   .product-carousel { max-width: 320px; }
   .carousel-viewport { height: 250px; }
-  .info-cta-wrapper { padding: 20px; }
+  .info-cta-wrapper { padding: 20px; margin-top: 10px; }
+  .pricing-main { gap: 5px }
 }
 @media (max-width: 480px) {
   .carousel-viewport { height: 200px; }
