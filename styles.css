@@ -1486,21 +1486,17 @@ header.banner-hidden {
 
 /* Final CTA section styles that were missing */
 .cp-final-cta {
-  background-color: var(--accent-color);
+  background: 
+    linear-gradient(135deg, rgba(15, 52, 96, 0.85) 0%, rgba(26, 26, 46, 0.9) 100%), 
+    url('window-sticker.png') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
   padding: 96px 0;
   text-align: center;
   position: relative;
   overflow: hidden;
 }
-.cp-final-cta::before {
-  content: '';
-  position: absolute;
-  top: -60px;
-  left: 0;
-  right: 0;
-  height: 120px;
-  background-color: var(--accent-color);
-  transform: skewY(-3deg);
+
 }
 .cp-final-cta__container {
   max-width: 900px;
@@ -1513,6 +1509,18 @@ header.banner-hidden {
   margin-bottom: 36px;
   animation: good 2s infinite;
 }
+
+/* Mobile optimization for background */
+@media (max-width: 768px) {
+  .cp-final-cta {
+    background-attachment: scroll; /* Better performance on mobile */
+  }
+  
+  .cp-final-cta::before {
+    background-attachment: scroll; /* Better performance on mobile */
+  }
+}
+
 @keyframes good {
   0% { transform: scale(1); }
   50% { transform: scale(1.1); }
