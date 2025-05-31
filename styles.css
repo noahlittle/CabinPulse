@@ -1449,7 +1449,8 @@ header.banner-hidden {
 }
 @media screen and (max-width: 768px) {
   .hero img { /* This refers to the main hero image */
-    margin-top: -200px;
+    margin-top: -150px;
+    width: 80%;
   }
   .hero-content {
     margin-top: 5rem !important;
