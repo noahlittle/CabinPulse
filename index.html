@@ -260,7 +260,7 @@
   <!-- End Meta Pixel Code -->
 </head>
 <body>
-  <div class="promo-banner">
+  <!-- <div class="promo-banner">
     <div class="promo-banner-content">
       <div>
         <i class="fa-brands fa-canadian-maple-leaf"></i>
@@ -274,6 +274,23 @@
       <i class="fas fa-times"></i>
     </button>
   </div>
+-->
+  <div class="top-bar">
+    <div class="top-bar-content">
+      <div class="top-bar-left">
+        <a href="about.html" class="top-bar-link">
+          About
+        </a>
+        <a href="mailto:support@cabinpulse.com" class="top-bar-link">
+          Contact Us
+        </a>
+      </div>
+      <div class="proudly-canadian">
+        <i class="fa-brands fa-canadian-maple-leaf"></i>
+        Proudly Canadian
+      </div>
+    </div>
+  </div>
   <header>
     <nav class="container">
       <div class="logo-container">
@@ -281,15 +298,62 @@
         <span class="logo-text">CabinPulse</span>
       </div>
       <div class="nav-links">
-        <a href="index.html#features" class="nav-link">Features</a>
-        <a href="index.html#pricing" class="nav-link">Pricing</a>
-        <a href="index.html#faq" class="nav-link">FAQ</a>
-        <a href="https://blog.cabinpulse.com" class="nav-link">Blog</a>
+        <div class="nav-item">
+          <a href="#" class="nav-link has-dropdown">Product</a>
+          <div class="dropdown">
+            <a href="index.html#features" class="dropdown-item">
+              <i class="fas fa-check-circle"></i>Features
+            </a>
+            <a href="index.html#pricing" class="dropdown-item">
+              <i class="fas fa-tag"></i>Pricing
+            </a>
+            <a href="index.html#coverage" class="dropdown-item">
+              <i class="fas fa-tower-cell"></i>Coverage
+            </a>
+          </div>
+        </div>
+    
+        <div class="nav-item">
+          <a href="#" class="nav-link has-dropdown">Use Cases</a>
+          <div class="dropdown">
+            <a href="https://cabinpulse.com/uses/remote-cabin-cottage-monitoring-system.html" class="dropdown-item">
+              <i class="fas fa-home"></i>Cabin Monitoring
+            </a>
+            <a href="https://cabinpulse.com/uses/rv-temperature-monitor-pets.html" class="dropdown-item">
+              <i class="fas fa-dog"></i>RV Monitor for Pets
+            </a>
+            <a href="https://cabinpulse.com/uses/vacation-home-monitoring.html" class="dropdown-item">
+              <i class="fas fa-house-chimney-window"></i>Vacation Home Monitoring
+            </a>
+            <a href="https://cabinpulse.com/uses/server-room-monitor.html" class="dropdown-item">
+              <i class="fas fa-server"></i>Server Room Monitoring
+            </a>
+          </div>
+        </div>
+    
+        <div class="nav-item">
+          <a href="#" class="nav-link has-dropdown">Resources</a>
+          <div class="dropdown">
+            <a href="index.html#faq" class="dropdown-item">
+              <i class="fas fa-question-circle"></i>FAQ
+            </a>
+            <a href="https://blog.cabinpulse.com" class="dropdown-item">
+              <i class="fas fa-blog"></i>Blog
+            </a>
+            <a href="manual.html" class="dropdown-item">
+              <i class="fas fa-book"></i>User Manual
+            </a>
+            <a href="mailto:support@cabinpulse.com" class="dropdown-item">
+              <i class="fas fa-life-ring"></i>Support
+            </a>
+          </div>
+        </div>
+    
         <a href="https://dashboard.cabinpulse.com" class="nav-link login-btn">
           Dashboard
         </a>
         <a href="https://cabinpulse.com/purchase.html?plan=1" class="nav-link primary-cta">
-          Get CabinPulse →
+          Get Started
         </a>
       </div>
       <div class="mobile-menu-toggle">
@@ -334,10 +398,11 @@
       <div class="hero-content">
         <img src="cpicon.png" alt="CabinPulse Logo" class="logo-hero">
         <div class="badges-top">
-          <span class="badge canada">
+          <!-- <span class="badge canada">
             <i class="fa-brands fa-canadian-maple-leaf icon-text"></i>PROUDLY CANADIAN
           </span>
-          <span class="badge wifi">
+        -->
+          <span class="badge canada">
             <i class="fas fa-wifi icon-text"></i>NO WIFI REQUIRED
           </span>
         </div>
@@ -359,33 +424,65 @@
 
   <section class="how-it-works">
     <div class="container">
-      <div style="text-align: center; margin-bottom: 24px;">
-        <i class="fas fa-stairs" style="font-size: 3rem; color: var(--highlight-color);"></i>
 
-      </div>
-      <h2 class="section-title">How It Works</h2>
-      <div class="steps-grid">
-        <div class="step-card">
-          <div class="step-number">1</div>
-          <h3>Plug In</h3>
-          <i class="step-icon fas fa-plug"></i>
-          <p>Simply plug your CabinPulse device into any power outlet in the building you want to monitor - no WiFi required.</p>
+      
+      <div class="how-it-works-layout">
+        <!-- Product Image Side -->
+        <div class="product-showcase">
+          <div class="section-icon-left">
+            <i class="fas fa-house-signal" style="font-size: 3rem; color: var(--highlight-color);"></i>
+          </div>
+          <h2 class="section-title-left">How It Works</h2>
+          <div class="product-image-container">
+            <img src="product-4.png" alt="CabinPulse device setup and monitoring" class="product-image">
+          </div>
         </div>
-        <div class="step-card">
-          <div class="step-number">2</div>
-          <h3>View Data</h3>
-          <i class="step-icon fas fa-chart-line"></i>
-          <p>Check temperature, humidity, and air quality data updated in real-time - from anywhere in the world.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-number">3</div>
-          <h3>Get Instant Alerts</h3>
-          <i class="step-icon fas fa-bell"></i>
-          <p>Receive real-time notifications if temperature drops, power goes out, or other issues arise - even smoke alarms.</p>
+  
+        <!-- Steps Side -->
+        <div class="steps-container">
+          <div class="step-item">
+            <div class="step-number-container">
+              <div class="step-number">1</div>
+            </div>
+            <div class="step-content">
+              <div class="step-header">
+                <i class="step-icon fas fa-plug"></i>
+                <h3 class="step-title">Plug In</h3>
+              </div>
+              <p class="step-description">Simply plug your CabinPulse device into any power outlet in the building you want to monitor - no WiFi required.</p>
+            </div>
+          </div>
+  
+          <div class="step-item">
+            <div class="step-number-container">
+              <div class="step-number">2</div>
+            </div>
+            <div class="step-content">
+              <div class="step-header">
+                <i class="step-icon fas fa-chart-line"></i>
+                <h3 class="step-title">View Data</h3>
+              </div>
+              <p class="step-description">Check temperature, humidity, and air quality data updated in real-time - from anywhere in the world.</p>
+            </div>
+          </div>
+  
+          <div class="step-item">
+            <div class="step-number-container">
+              <div class="step-number">3</div>
+            </div>
+            <div class="step-content">
+              <div class="step-header">
+                <i class="step-icon fas fa-bell"></i>
+                <h3 class="step-title">Get Instant Alerts</h3>
+              </div>
+              <p class="step-description">Receive real-time notifications if temperature drops, power goes out, or other issues arise - even smoke alarms.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
+  
 
 
   <section id="features" class="features">
@@ -393,28 +490,138 @@
       <div style="text-align: center; margin-bottom: 24px;">
         <i class="fas fa-wifi" style="font-size: 4.5rem; color: var(--highlight-color);"></i>
       </div>
-      <h2 class="section-title">Always-On Remote Monitoring</h2>
-      <div class="feature-grid">
-        <div class="feature-card">
-          <i class="feature-icon fas fa-temperature-low"></i>
-          <h3>Temperature Monitoring</h3>
-          <p>More than just a freeze alarm, CabinPulse tracks temperature with <b>incredible &plusmn;0.2&nbsp;&deg;C accuracy</b>, all-year-round.</p>
+      <h2 class="section-title">Here's What CabinPulse Monitors</h2>
+      <div class="tabbed-features">
+        <div class="tabbed-content">
+          <!-- Tab Navigation -->
+          <div class="tab-navigation">
+            <button class="tab-button active" data-tab="temperature">
+              <i class="tab-icon fas fa-temperature-low"></i>
+              <span class="tab-label">Temperature</span>
+            </button>
+            <button class="tab-button" data-tab="power">
+              <i class="tab-icon fas fa-plug-circle-xmark"></i>
+              <span class="tab-label">Power Outages</span>
+            </button>
+            <button class="tab-button" data-tab="humidity">
+              <i class="tab-icon fas fa-droplet"></i>
+              <span class="tab-label">Humidity</span>
+            </button>
+            <button class="tab-button" data-tab="air-quality">
+              <i class="tab-icon fas fa-smog"></i>
+              <span class="tab-label">Air Quality</span>
+            </button>
+          </div>
+      
+          <!-- Tab Content -->
+          <div class="tab-content active" id="temperature">
+            <div class="content-layout">
+              <div class="content-text">
+                <h3 class="content-title">
+                  <i class="fas fa-temperature-low"></i>
+                  Temperature Monitoring
+                </h3>
+                <p class="content-description">
+                  More than just a freeze alarm, CabinPulse tracks temperature with <strong>incredible ±0.2°C accuracy</strong>, all-year-round. Get instant alerts when temperatures drop dangerously low or rise unexpectedly high.
+                </p>
+                <ul class="content-features">
+                  <li><i class="fas fa-check-circle"></i>±0.2°C precision accuracy</li>
+                  <li><i class="fas fa-check-circle"></i>Real-time temperature alerts</li>
+                  <li><i class="fas fa-check-circle"></i>Freeze protection monitoring</li>
+                  <li><i class="fas fa-check-circle"></i>Historical temperature data</li>
+                  <li><i class="fas fa-check-circle"></i>Custom threshold settings</li>
+                </ul>
+              </div>
+              <div class="content-image">
+                <div class="feature-image-container">
+                  <img src="winter.png" alt="CabinPulse temperature monitoring" class="feature-image">
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <div class="tab-content" id="power">
+            <div class="content-layout">
+              <div class="content-text">
+                <h3 class="content-title">
+                  <i class="fas fa-plug-circle-xmark"></i>
+                  Power Outage Detection
+                </h3>
+                <p class="content-description">
+                  Track power disruptions, even when you're away. CabinPulse is a reliable cellular <strong>power outage monitor</strong> made in Canada. Power outage? You'll get an alert in <strong>seconds</strong>.
+                </p>
+                <ul class="content-features">
+                  <li><i class="fas fa-check-circle"></i>Instant outage notifications</li>
+                  <li><i class="fas fa-check-circle"></i>Power restoration alerts</li>
+                  <li><i class="fas fa-check-circle"></i>Outage duration tracking</li>
+                  <li><i class="fas fa-check-circle"></i>3-day backup battery</li>
+                  <li><i class="fas fa-check-circle"></i>Works without WiFi</li>
+                </ul>
+              </div>
+              <div class="content-image">
+                <div class="feature-image-container">
+                  <img src="power-outage.png" alt="CabinPulse power outage monitoring" class="feature-image">
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <div class="tab-content" id="humidity">
+            <div class="content-layout">
+              <div class="content-text">
+                <h3 class="content-title">
+                  <i class="fas fa-droplet"></i>
+                  Humidity Monitoring
+                </h3>
+                <p class="content-description">
+                  Fight mould and mildew with always-on cellular <strong>humidity tracking</strong>. Humidity spike? Might be time for a check-in. Keep your property healthy with precise moisture monitoring.
+                </p>
+                <ul class="content-features">
+                  <li><i class="fas fa-check-circle"></i>Precise humidity measurement</li>
+                  <li><i class="fas fa-check-circle"></i>Mold prevention alerts</li>
+                  <li><i class="fas fa-check-circle"></i>Moisture level tracking</li>
+                  <li><i class="fas fa-check-circle"></i>Humidity trend analysis</li>
+                  <li><i class="fas fa-check-circle"></i>Custom humidity thresholds</li>
+                </ul>
+              </div>
+              <div class="content-image">
+                <div class="feature-image-container">
+                  <img src="humidity.png" alt="CabinPulse humidity monitoring" class="feature-image">
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <div class="tab-content" id="air-quality">
+            <div class="content-layout">
+              <div class="content-text">
+                <h3 class="content-title">
+                  <i class="fas fa-smog"></i>
+                  Air Quality Monitoring<sup class="superscript">2</sup>
+                </h3>
+                <p class="content-description">
+                  CabinPulse tracks <strong>indoor air quality</strong>, 24/7 - as one of the only cellular air quality monitors on the market. Monitor VOCs and ensure your property maintains healthy air conditions.
+                </p>
+                <ul class="content-features">
+                  <li><i class="fas fa-check-circle"></i>VOC detection & monitoring</li>
+                  <li><i class="fas fa-check-circle"></i>Indoor air quality index</li>
+                  <li><i class="fas fa-check-circle"></i>Pollution level alerts</li>
+                  <li><i class="fas fa-check-circle"></i>Air quality trends</li>
+                  <li><i class="fas fa-check-circle"></i>Bosch sensor technology</li>
+                </ul>
+              </div>
+              <div class="content-image">
+                <div class="feature-image-container">
+                  <img src="air-quality.png" alt="CabinPulse air quality monitoring" class="feature-image">
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="feature-card">
-          <i class="feature-icon fas fa-tint"></i>
-          <h3>Humidity Monitoring</h3>
-          <p>Fight mould and mildew with always-on cellular <b>humidity tracking</b>. Humidity spike? Might be time for a check-in.</p>
-        </div>
-        <div class="feature-card">
-          <i class="feature-icon fas fa-bolt"></i>
-          <h3>Power Outages</h3>
-          <p>Track power disruptions, even when you're away; CabinPulse is a reliable cellular <b>power outage monitor</b> made in Canada. Power outage? You'll get an alert in <b>seconds</b>.</p>
-        </div>
-        <div class="feature-card">
-          <i class="feature-icon fas fa-smog"></i>
-          <h3>Air Quality Monitoring<sup class="superscript">2</sup></h3>
-          <p>CabinPulse tracks <b>indoor air quality</b>, 24/7 - as one of the only cellular air quality monitors on the market.</p>
-        </div>
+      </div>
+      
+      <!-- KEEP THE REMAINING 4 FEATURE CARDS -->
+      <div class="feature-grid" style="margin-top: 70px;">
         <div class="feature-card">
           <i class="feature-icon fas fa-sync-alt"></i>
           <h3>Instant Updates</h3>
@@ -436,6 +643,7 @@
           <p>Smoke detector going off? CabinPulse has built-in <b>alarm detection</b>, and you'll get alerted immediately - no WiFi required.</p>
         </div>
       </div>
+
       <div class="feature-highlight">
         <div class="feature-highlight-text">
           <div class="feature-card large">
@@ -446,11 +654,10 @@
             <p><i>All connectivity is included with your subscription; no separate data plan is needed. </i></p>
           </div>
           <div class="feature-card large">
-            <i class="feature-icon fas fa-mobile-alt"></i>
-            <h3>Instant Alerts</h3>
-            <p>Receive real-time notifications via text message and email when issues are detected. </p>
-            <br />
-            <p><i>Sudden temperature drop? Power outage? You'll know immediately.</i></p>
+            <div class="coming-soon-badge">Coming Late 2025</div>
+            <i class="feature-icon fas fa-puzzle-piece"></i>
+            <h3>Add-On Sensors</h3>
+            <p>CabinPulse has built-in low-power Bluetooth, with support for portable <b>Add-Ons</b> like leak sensors, motion detectors, and door sensors - <b>coming soon</b>. </p>
           </div>
         </div>
         <div class="dashboard-preview feature-card large">
@@ -480,8 +687,8 @@
         </div>
       </div>
       
-      <details id="footnotes" open>
-        <summary>Footnotes</summary>
+      <details id="footnotes">
+        <summary><b>Footnotes</b></summary>
         <div class="footnotes-content">
           <p style="font-size: 0.7rem; line-height: 1.5; text-align: left;">
             <sup class="superscript">1</sup> Works when placed in the immediate vicinity of a T3 smoke detector when alarm sounds in a quiet environment for longer than 15 seconds. Modern smoke detectors sold in the United States and Canada emit a T3 pattern. CabinPulse will not detect older, continuous style alarms.
@@ -508,197 +715,247 @@
       <div style="text-align: center; margin-bottom: 24px;">
         <i class="fas fa-star" style="font-size: 4.5rem; color: var(--highlight-color);"></i>
       </div>
-      <h2 class="section-title">What Our Customers Say</h2>
+      <h2 class="section-title">Trusted Across North America</h2>
       
-      <!-- TrustPilot Trust Signal -->
-      <div style="text-align: center; margin-bottom: 40px;">
-        <div style="display: inline-flex; align-items: center; background-color: rgba(255, 255, 255, 0.1); padding: 8px 16px; border-radius: 8px;">
-          <div style="display: flex; color: gold; margin-right: 10px;">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
+      <!-- Trust Signals Header -->
+      <div class="trust-header">
+        <div class="trust-score">
+          <div class="rating-display">
+            <div class="rating-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+            <span class="rating-number">4.9</span>
           </div>
-          <span style="color: white; font-weight: 500;"> <span style="color: var(--highlight-color); font-weight: 600;">from 12 verified reviews</span></span>
+          <div class="rating-subtitle">from 12 verified reviews</div>
+        </div>
+        
+        <div class="customer-count">
+          <span class="count-number">250+</span>
+          <div class="count-label">Satisfied Customers</div>
         </div>
       </div>
-
-      <div class="photo-gallery-container">
-        <div class="photo-gallery">
-          <div class="photo-item">
-            <img src="1.png" alt="CabinPulse Customer Installation, monitoring their cottage.">
+  
+    
+      <!-- Featured Reviews (Compact) -->
+      <div class="featured-reviews">
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="review-location">Emma Lake, SK</div>
           </div>
-          <div class="photo-item">
-            <img src="2.png" alt="CabinPulse Customer Installation, checking their cabin remotely without WiFi.">
+          <img src="3.png" alt="CabinPulse device monitoring cabin" class="review-image">
+          <div class="review-text">
+            "After years of worrying about frozen pipes every winter, CabinPulse has been a game-changer for us. The connection works perfectly where our cabin is and the alerts are very reliable and instant! It's a no brainer and I tell everyone I know with a cabin about it and show them the app!"
           </div>
-          <div class="photo-item">
-            <img src="3.png" alt="CabinPulse Customer Installation, sending alerts when the temperature drops.">
-          </div>
-          <div class="photo-item">
-            <img src="4.png" alt="CabinPulse Customer Installation, monitoring their cabin property from anywhere.">
-          </div>
-          <div class="photo-item">
-            <img src="5.png" alt="CabinPulse Customer Installation, checking their cabin remotely without WiFi.">
-          </div>
+          <div class="review-author">Property Owner</div>
         </div>
-        <div class="scroll-indicator">
+        
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="review-location">Moose Jaw, SK</div>
+          </div>
+          <div class="review-text">
+            "Setup was very easy. I appreciate the instant alerts and extra long (like 6ft+) power cord. Using for a vacant property and saves me a lot of time and worry."
+          </div>
+          <div class="review-author">Property Owner</div>
+        </div>
+        
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="review-location">Candle Lake, SK</div>
+          </div>
+          <img src="2.png" alt="Remote cabin property monitoring" class="review-image">
+          <div class="review-text">
+            "Got a power outage alert and sure enough our clocks were reset today. The peace of mind from knowing exactly what's happening at our property is worth every penny. The case looks nice but really attracts fingerprints."
+          </div>
+          <div class="review-author">Property Owner</div>
         </div>
       </div>
-      
-      <div class="testimonials-grid">
-        
-        <div class="testimonial-card">
-          <div class="star-rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="testimonial-content">
-            After years of worrying about frozen pipes every winter, [CabinPulse] has been a game-changer for us. The connection works perfectly where our cabin is and the alerts are very reliable and instant! It's a no brainer and I tell everyone I know with a cabin about it and show them the app!
-          </div>
-          <div class="testimonial-author">
-            <div class="author-avatar">
-              <i class="fas fa-user"></i>
+  
+      <!-- Expand Button -->
+      <div class="more-reviews">
+        <button class="expand-button" onclick="toggleReviews()">
+          <span id="button-text">More Reviews</span>
+          <i class="fas fa-chevron-down" id="button-icon" style="margin-left: 8px; transition: transform 0.3s ease;"></i>
+        </button>
+      </div>
+  
+      <!-- Expandable Full Reviews -->
+      <div class="expandable-reviews" id="expandable-reviews">
+        <div class="full-reviews">
+          <div class="full-review-card">
+            <div class="full-review-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
             </div>
-            <div class="author-info">
-              <h4>Cabin Owner</h4>
-              <p>Emma Lake, SK
-                <span class="verified-badge">
+            <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=500&h=300&fit=crop&crop=center" alt="CabinPulse device monitoring remote cabin" class="full-review-image">
+            <div class="full-review-content">
+              After years of worrying about frozen pipes every winter, [CabinPulse] has been a game-changer for us. The connection works perfectly where our cabin is and the alerts are very reliable and instant! It's a no brainer and I tell everyone I know with a cabin about it and show them the app!
+            </div>
+            <div class="full-review-author">
+              <div class="author-avatar">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="author-info">
+                <h4>Property Owner</h4>
+                <p>Emma Lake, SK</p>
+                <div class="verified-badge">
                   <i class="fas fa-check-circle"></i>Verified Review
-                </span>
-              </p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div class="testimonial-card">
-          <div class="star-rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="testimonial-content">
-            Setup was very easy. I appreciate the instant alerts and extra long (like 6ft+) power cord. Using for a vacant property and saves me a lot of time and worry.
-          </div>
-          <div class="testimonial-author">
-            <div class="author-avatar">
-              <i class="fas fa-user"></i>
+  
+          <div class="full-review-card">
+            <div class="full-review-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
             </div>
-            <div class="author-info">
-              <h4>Property Owner</h4>
-              <p>Moose Jaw, SK
-                <span class="verified-badge">
+            <div class="full-review-content">
+              Setup was very easy. I appreciate the instant alerts and extra long (like 6ft+) power cord. Using for a vacant property and saves me a lot of time and worry.
+            </div>
+            <div class="full-review-author">
+              <div class="author-avatar">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="author-info">
+                <h4>Property Owner</h4>
+                <p>Moose Jaw, SK</p>
+                <div class="verified-badge">
                   <i class="fas fa-check-circle"></i>Verified Review
-                </span>
-              </p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="star-rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-          </div>
-          <div class="testimonial-content">
-            Got a power outage alert and sure enough our clocks were reset today. The peace of mind from knowing exactly what's happening at our property is worth every penny. The case looks nice but really attracts fingerprints.
-          </div>
-          <div class="testimonial-author">
-            <div class="author-avatar">
-              <i class="fas fa-user"></i>
+  
+          <div class="full-review-card">
+            <div class="full-review-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
             </div>
-            <div class="author-info">
-              <h4>Cabin Owner</h4>
-              <p>Candle Lake, SK
-                <span class="verified-badge">
+            <div class="full-review-content">
+              Got a power outage alert and sure enough our clocks were reset today. The peace of mind from knowing exactly what's happening at our property is worth every penny. The case looks nice but really attracts fingerprints.
+            </div>
+            <div class="full-review-author">
+              <div class="author-avatar">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="author-info">
+                <h4>Property Owner</h4>
+                <p>Candle Lake, SK</p>
+                <div class="verified-badge">
                   <i class="fas fa-check-circle"></i>Verified Review
-                </span>
-              </p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="star-rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="testimonial-content">
-            CabinPulse is the exact solution we were looking for. Without the need for an internet connection, we can easily track potential problems at our cabin. The app is extremely simple to navigate. I love the air quality measure as well. We are thrilled to have an effective and affordable solution to monitoring our place year round!
-          </div>
-          <div class="testimonial-author">
-            <div class="author-avatar">
-              <i class="fas fa-user"></i>
+  
+          <div class="full-review-card">
+            <div class="full-review-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
             </div>
-            <div class="author-info">
-              <h4>Cabin Owner</h4>
-              <p>Wakaw Lake, SK
-                <span class="verified-badge">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=300&fit=crop&crop=center" alt="CabinPulse app dashboard showing monitoring data" class="full-review-image">
+            <div class="full-review-content">
+              CabinPulse is the exact solution we were looking for. Without the need for an internet connection, we can easily track potential problems at our cabin. The app is extremely simple to navigate. I love the air quality measure as well. We are thrilled to have an effective and affordable solution to monitoring our place year round!
+            </div>
+            <div class="full-review-author">
+              <div class="author-avatar">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="author-info">
+                <h4>Property Owner</h4>
+                <p>Wakaw Lake, SK</p>
+                <div class="verified-badge">
                   <i class="fas fa-check-circle"></i>Verified Review
-                </span>
-              </p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div class="testimonial-card">
-          <div class="star-rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="testimonial-content">
-            The Fleet View feature is very very useful for monitoring all of our buildings quickly. Customer service has been excellent when I needed help setting up alerts and being able to send to over 10 phone numbers fits our needs perfectly.
-          </div>
-          <div class="testimonial-author">
-            <div class="author-avatar">
-              <i class="fas fa-user"></i>
+  
+          <div class="full-review-card">
+            <div class="full-review-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
             </div>
-            <div class="author-info">
-              <h4>Facility Manager</h4>
-              <p>Calgary, AB
-                <span class="verified-badge">
+            <div class="full-review-content">
+              The Fleet View feature is very very useful for monitoring all of our buildings quickly. Customer service has been excellent when I needed help setting up alerts and being able to send to over 10 phone numbers fits our needs perfectly.
+            </div>
+            <div class="full-review-author">
+              <div class="author-avatar">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="author-info">
+                <h4>Facility Manager</h4>
+                <p>Calgary, AB</p>
+                <div class="verified-badge">
                   <i class="fas fa-check-circle"></i>Verified Review
-                </span>
-              </p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div class="testimonial-card">
-          <div class="star-rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="testimonial-content">
-            We have had this service for 3 months now and it has worked excellent even though we  typically have poor cell service in the area and a metal roof on our cabin. Set up  process is seemless and app is user friendly.  Highly recommend.
-          </div>
-          <div class="testimonial-author">
-            <div class="author-avatar">
-              <i class="fas fa-user"></i>
+  
+          <div class="full-review-card">
+            <div class="full-review-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
             </div>
-            <div class="author-info">
-              <h4>Cabin Owner</h4>
-              <p>Wakaw Lake, SK
-                <span class="verified-badge">
+            <div class="full-review-content">
+              We have had this service for 3 months now and it has worked excellent even though we typically have poor cell service in the area and a metal roof on our cabin. Set up process is seamless and app is user friendly. Highly recommend.
+            </div>
+            <div class="full-review-author">
+              <div class="author-avatar">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="author-info">
+                <h4>Property Owner</h4>
+                <p>Wakaw Lake, SK</p>
+                <div class="verified-badge">
                   <i class="fas fa-check-circle"></i>Verified Review
-                </span></p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -838,12 +1095,12 @@
   
   
 
-  <section class="supported-networks">
+  <section id="coverage" class="supported-networks">
     <div class="container">
       <div class="fleet-view-icon">
         <i class="fas fa-globe"></i>
       </div>
-      <h2>Comprehensive Coverage</h2>
+      <h2 class="section-title">Coverage</h2>
       <p>CabinPulse connects out-of-the-box with all major cellular carriers across the Americas. CabinPulse will work anywhere there is 3G or LTE coverage from a supported network.</p>
       
       <div class="country-selector">
@@ -1359,377 +1616,125 @@
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Variables to track exit intent
-    let showOnce = false;
-    let popupShown = false;
-    const exitPopup = document.getElementById('exit-popup');
-    const closeBtn = document.querySelector('.exit-popup-close');
-    const remindForm = document.getElementById('remind-form');
-    
-    // Prevent body scrolling when popup is open
-    function toggleBodyScroll(isPopupOpen) {
-      if (isPopupOpen) {
-        // Store the current scroll position
-        const scrollY = window.scrollY;
-        document.body.style.position = 'fixed';
-        document.body.style.top = `-${scrollY}px`;
-        document.body.style.width = '100%';
-      } else {
-        // Restore the scroll position
-        const scrollY = document.body.style.top;
-        document.body.style.position = '';
-        document.body.style.top = '';
-        document.body.style.width = '';
-        window.scrollTo(0, parseInt(scrollY || '0') * -1);
-      }
-    }
-    
-    // Set cookie to prevent showing popup again in the same session
-    function setCookie(name, value, days) {
-      let expires = "";
-      if (days) {
-        const date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        expires = "; expires=" + date.toUTCString();
-      }
-      document.cookie = name + "=" + (value || "") + expires + "; path=/";
-    }
-    
-    // Check if the popup has already been shown
-    function getCookie(name) {
-      const nameEQ = name + "=";
-      const ca = document.cookie.split(';');
-      for (let i = 0; i < ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-      }
-      return null;
-    }
-    
-    // Don't show popup if it's been shown in the last day
-    if (getCookie('exitPopupShown')) {
-      return;
-    }
-    
-    // Detect if we're on mobile or desktop
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    
-    if (!isMobile) {
-      // On desktop: Show the popup when user moves mouse out of the window
-      document.addEventListener('mouseleave', function(e) {
-        // Only trigger when cursor moves out the top of the page
-        if (e.clientY < 20 && !popupShown && !showOnce) {
-          showExitPopup();
-          showOnce = true;
-        }
-      });
-    } else {
-      // On mobile: Show popup when user scrolls up quickly (indicating they might be leaving)
-      let lastScrollTop = 0;
-      let scrollThreshold = 40; // How many pixels they need to scroll up quickly
-      
-      window.addEventListener('scroll', function() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        // If they're scrolling up quickly and not at the top of the page
-        if ((lastScrollTop - scrollTop) > scrollThreshold && scrollTop > 300 && !popupShown && !showOnce) {
-          showExitPopup();
-          showOnce = true;
-        }
-        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-      }, false);
-      
-      // Also detect back button press (common exit path on mobile)
-      window.addEventListener('popstate', function(e) {
-        if (!popupShown && !showOnce) {
-          // Prevent the back action
-          history.pushState(null, document.title, window.location.href);
-          // Show our popup
-          showExitPopup();
-          showOnce = true;
-        }
-      });
-      
-      // Add one more entry to history so we can detect when they try to go back
-      history.pushState(null, document.title, window.location.href);
-    }
-    
-    // For both mobile and desktop: show popup after user has been inactive
-    let inactivityTime = isMobile ? 30000 : 60000; // 30 seconds on mobile, 60 on desktop
-    let inactivityTimer;
-    
-    // For mobile devices, we need to adjust scrolling behavior
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-      // Check if content is taller than viewport
-      const adjustMobileScrolling = function() {
-        const content = document.querySelector('.exit-popup-content');
-        if (content) {
-          // Add iOS momentum scrolling for better experience
-          content.style.webkitOverflowScrolling = 'touch';
-          
-          // Ensure it fits well on smaller screens
-          content.style.maxHeight = '80vh';
-          
-          // Make sure the popup is vertically centered
-          const popup = document.getElementById('exit-popup');
-          popup.style.alignItems = 'center';
-        }
-      };
-      
-      // Execute when popup is shown
-      const originalShowExitPopup = showExitPopup;
-      showExitPopup = function() {
-        originalShowExitPopup();
-        setTimeout(adjustMobileScrolling, 100);
-      };
-    }
-    
-    function resetInactivityTimer() {
-      clearTimeout(inactivityTimer);
-      inactivityTimer = setTimeout(function() {
-        if (!popupShown && !showOnce) {
-          showExitPopup();
-          showOnce = true;
-        }
-      }, inactivityTime);
-    }
-    
-    // Reset timer on user activity
-    ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart']
-    .forEach(function(evt) {
-      document.addEventListener(evt, resetInactivityTimer, false);
-    });
-    
-    // Initial timer start
-    resetInactivityTimer();
-    
-    // Function to show exit popup
-    function showExitPopup() {
-      exitPopup.classList.add('show');
-      popupShown = true;
-      setCookie('exitPopupShown', 'true', 1); // Don't show again for 1 day
-      toggleBodyScroll(true); // Prevent body scrolling
-    }
-    
-    // Close popup when clicking the close button
-    closeBtn.addEventListener('click', function() {
-      exitPopup.classList.remove('show');
-      toggleBodyScroll(false); // Restore body scrolling
-    });
-    
-    // Close popup when clicking outside the content
-    exitPopup.addEventListener('click', function(e) {
-      if (e.target === exitPopup) {
-        exitPopup.classList.remove('show');
-        toggleBodyScroll(false); // Restore body scrolling
-      }
-    });
-    
-    // Handle touch events for better mobile experience
-    if ('ontouchstart' in window) {
-      let touchStartY = 0;
-      let touchEndY = 0;
-      
-      // Add touch event listeners to popup content
-      const popupContent = exitPopup.querySelector('.exit-popup-content');
-      
-      popupContent.addEventListener('touchstart', function(e) {
-        // Only handle if we're at the edge of scrollable content
-        const scrollTop = this.scrollTop;
-        const scrollHeight = this.scrollHeight;
-        const height = this.offsetHeight;
-        
-        // Store touch position
-        touchStartY = e.touches[0].clientY;
-        
-        // If we're at the top or bottom of content, prevent default
-        if ((scrollTop <= 0 && e.touches[0].clientY > window.innerHeight / 2) ||
-            (scrollTop + height >= scrollHeight && e.touches[0].clientY < window.innerHeight / 2)) {
-          // Allow propagation for boundary cases
-        } else {
-          // Stop propagation for normal scroll
-          e.stopPropagation();
-        }
-      }, { passive: false });
-      
-      popupContent.addEventListener('touchmove', function(e) {
-        e.stopPropagation();
-      }, { passive: false });
-    }
-    
-    // Validate email function
-    function validateEmail(email) {
-      const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      return re.test(email.toLowerCase());
-    }
-    
-    // Email input validation
-    const emailInput = document.getElementById('remind-email');
-    emailInput.addEventListener('input', function() {
-      if (this.value && !validateEmail(this.value)) {
-        this.classList.add('error');
-        remindForm.classList.add('show-error');
-      } else {
-        this.classList.remove('error');
-        remindForm.classList.remove('show-error');
-      }
-    });
-    
-    // Handle the remind form submission
-    remindForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const email = emailInput.value;
-      
-      // Validate email
-      if (!email || !validateEmail(email)) {
-        emailInput.classList.add('error');
-        remindForm.classList.add('show-error');
-        return;
-      }
-      
-      const optionsDiv = document.querySelector('.exit-popup-options');
-      const noteDiv = document.querySelector('.exit-popup-note');
-      
-      // Show loading state
-      const submitButton = remindForm.querySelector('button[type="submit"]');
-      const originalButtonText = submitButton.innerHTML;
-      submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-      submitButton.disabled = true;
-      
-      // Send the email to the server
-      fetch('https://cabinpulse.com/api/data/collect-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ 
-          email: email,
-          source: 'exit_popup_fall_promo'
-        }),
-      })
-      .then(response => response.json())
-      .then(data => {
-        // Reset button state
-        submitButton.innerHTML = originalButtonText;
-        submitButton.disabled = false;
-        
-        if (data.success) {
-          // Create success message
-          const successDiv = document.createElement('div');
-          successDiv.className = 'success-message';
-          successDiv.innerHTML = `
-            <div class="success-icon">
-              <i class="fas fa-check-circle"></i>
-            </div>
-            <h3>Thank You!</h3>
-            <p>We'll send you a reminder in the fall.</p>
-          `;
-          
-          // Replace form with success message
-          optionsDiv.style.display = 'none';
-          noteDiv.style.display = 'none';
-          exitPopup.querySelector('.exit-popup-content').appendChild(successDiv);
-          successDiv.style.display = 'block';
-          
-          // Close popup after 3 seconds
-          setTimeout(function() {
-            exitPopup.classList.remove('show');
-            toggleBodyScroll(false); // Restore body scrolling
-            
-            // Reset the popup content after it's hidden
-            setTimeout(function() {
-              optionsDiv.style.display = 'flex';
-              noteDiv.style.display = 'flex';
-              successDiv.remove();
-            }, 500);
-          }, 3000);
-          
-          console.log('Email collected successfully:', email);
-        } else {
-          // Show error message
-          alert('Error saving your email. Please try again.');
-          console.error('Error:', data.error);
-        }
-      })
-      .catch(error => {
-        // Reset button state
-        submitButton.innerHTML = originalButtonText;
-        submitButton.disabled = false;
-        
-        // Show error message
-        alert('Connection error. Please try again later.');
-        console.error('Error:', error);
-      });
-    });
+  // Header scroll effect
+  window.addEventListener('scroll', function() {
+    var header = document.querySelector('header');
+    header.classList.toggle('scrolled', window.scrollY > 50);
   });
-</script>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const fn = document.getElementById('footnotes');
-  
-      function updateFootnotes() {
-        if (window.innerWidth <= 768) {
-          fn.removeAttribute('open');
-        } else {
-          fn.setAttribute('open', '');
-        }
-      }
-  
-      // initialize on load
-      updateFootnotes();
-      // re‑apply on viewport resize
-      window.addEventListener('resize', updateFootnotes);
-    });
-  </script>
-<script>
+  // Language toggle functionality
   document.addEventListener('DOMContentLoaded', function() {
-    const countryDropdown = document.getElementById('country-dropdown');
-    const canadaInfo = document.getElementById('network-info-canada');
-    const mexicoInfo = document.getElementById('network-info-mexico');
-    const usaInfo = document.getElementById('network-info-united-states');
-    const additionalInfo = document.getElementById('network-info-additional');
+    const langOptions = document.querySelectorAll('.lang-option');
     
-    countryDropdown.addEventListener('change', function() {
-      // Hide all info sections
-      canadaInfo.style.display = 'none';
-      mexicoInfo.style.display = 'none';
-      usaInfo.style.display = 'none';
-      additionalInfo.style.display = 'none';
-      
-      // Show the selected section
-      const selectedValue = this.value;
-      if (selectedValue === 'canada') {
-        canadaInfo.style.display = 'block';
-      } else if (selectedValue === 'mexico') {
-        mexicoInfo.style.display = 'block';
-      } else if (selectedValue === 'united-states') {
-        usaInfo.style.display = 'block';
-      } else if (selectedValue === 'additional') {
-        additionalInfo.style.display = 'block';
-      }
+    langOptions.forEach(option => {
+      option.addEventListener('click', function() {
+        // Remove active class from all options
+        langOptions.forEach(opt => opt.classList.remove('active'));
+        // Add active class to clicked option
+        this.classList.add('active');
+        
+        // Here you could add actual language switching logic
+        const selectedLang = this.dataset.lang;
+        console.log('Language switched to:', selectedLang);
+        
+        // Optional: Store language preference
+        localStorage.setItem('preferredLanguage', selectedLang);
+      });
+    });
+
+    // Load saved language preference
+    const savedLang = localStorage.getItem('preferredLanguage');
+    if (savedLang) {
+      langOptions.forEach(opt => opt.classList.remove('active'));
+      document.querySelector(`[data-lang="${savedLang}"]`)?.classList.add('active');
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+  const tabButtons = document.querySelectorAll('.tab-button');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  if (tabButtons.length > 0) {
+    tabButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const targetTab = this.getAttribute('data-tab');
+
+        // Remove active class from all buttons and contents
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+
+        // Add active class to clicked button and corresponding content
+        this.classList.add('active');
+        const targetContent = document.getElementById(targetTab);
+        if (targetContent) {
+          targetContent.classList.add('active');
+        }
+      });
+    });
+
+    // Add keyboard navigation
+    tabButtons.forEach((button, index) => {
+      button.addEventListener('keydown', function(e) {
+        let newIndex;
+        
+        if (e.key === 'ArrowRight') {
+          newIndex = (index + 1) % tabButtons.length;
+        } else if (e.key === 'ArrowLeft') {
+          newIndex = (index - 1 + tabButtons.length) % tabButtons.length;
+        }
+        
+        if (newIndex !== undefined) {
+          e.preventDefault();
+          tabButtons[newIndex].focus();
+          tabButtons[newIndex].click();
+        }
+      });
+    });
+  }
+});
+
+  // Promo banner close functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const banner = document.querySelector('.promo-banner');
+    const closeButton = document.querySelector('.close-banner');
+    const header = document.querySelector('header');
+    const topBar = document.querySelector('.top-bar');
+    const hero = document.querySelector('.hero');
+    
+    // Check if banner was previously closed
+    if (localStorage.getItem('promoBannerClosed')) {
+      banner.classList.add('hidden');
+      header.classList.add('banner-hidden');
+      topBar.classList.add('banner-hidden');
+      hero.classList.add('banner-hidden');
+    }
+    
+    closeButton.addEventListener('click', function() {
+      banner.classList.add('hidden');
+      header.classList.add('banner-hidden');
+      topBar.classList.add('banner-hidden');
+      hero.classList.add('banner-hidden');
+      localStorage.setItem('promoBannerClosed', 'true');
     });
   });
- 
-    window.addEventListener('scroll', function() {
-      var header = document.querySelector('header');
-      header.classList.toggle('scrolled', window.scrollY > 0);
-    });
-  
-    document.addEventListener('DOMContentLoaded', function() {
-      const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-      const mobileMenu = document.querySelector('.mobile-menu');
-      const mobileMenuClose = document.querySelector('.mobile-menu-close');
-  
+
+  // Mobile menu functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileMenuClose = document.querySelector('.mobile-menu-close');
+
+    if (mobileMenuToggle && mobileMenu) {
       mobileMenuToggle.addEventListener('click', function() {
         mobileMenu.style.display = 'flex';
       });
-  
+    }
+
+    if (mobileMenuClose && mobileMenu) {
       mobileMenuClose.addEventListener('click', function() {
         mobileMenu.style.display = 'none';
       });
-  
+
       // Close mobile menu when a link is clicked
       const mobileMenuLinks = mobileMenu.querySelectorAll('a');
       mobileMenuLinks.forEach(link => {
@@ -1737,228 +1742,224 @@
           mobileMenu.style.display = 'none';
         });
       });
-    });
-
-    document.addEventListener('DOMContentLoaded', function() {
-      const banner = document.querySelector('.promo-banner');
-      const closeButton = document.querySelector('.close-banner');
-      const header = document.querySelector('header');
-      const hero = document.querySelector('.hero');
-      // Check if banner was previously closed
-      if (localStorage.getItem('promoBannerClosed')) {
-        banner.classList.add('hidden');
-        header.classList.add('banner-hidden');
-        hero.classList.add('banner-hidden');
-      }
-      closeButton.addEventListener('click', function() {
-        banner.classList.add('hidden');
-        header.classList.add('banner-hidden');
-        hero.classList.add('banner-hidden');
-        // Store the banner state
-        localStorage.setItem('promoBannerClosed', 'true');
-      });
-    });
-
-    // Chat Widget Functions
-    const CHAT_API_URL = 'https://chat.cabinpulse.com';
-    let chatState = {
-      sessionId: localStorage.getItem('chatSessionId') || null,
-      lastMessageTimestamp: localStorage.getItem('chatLastTimestamp') || null,
-      pollingInterval: null,
-      isOpen: false,
-      hasProvidedEmail: localStorage.getItem('chatUserEmail') || false,
-      isAwaitingEmail: false,
-      isConnecting: false,
-      firstMessage: null,
-      awaitingFirstResponse: false
-    };
-    function startMessagePolling() {
-      if (chatState.pollingInterval) {
-        clearInterval(chatState.pollingInterval);
-      }
-      chatState.pollingInterval = setInterval(pollMessages, 5000);
     }
-    async function pollMessages() {
-      if (!chatState.sessionId || !chatState.isOpen) return;
-      try {
-        const url = `${CHAT_API_URL}/chat/messages/${chatState.sessionId}` +
-          (chatState.lastMessageTimestamp ? `?since_timestamp=${encodeURIComponent(chatState.lastMessageTimestamp)}` : '');
-        const response = await fetch(url);
-        const data = await response.json();
-        if (data.messages && data.messages.length > 0) {
-          data.messages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp))
-          .forEach(message => {
-            if (message.sender === 'support') {
-              if (chatState.awaitingFirstResponse) {
-                const loader = document.getElementById('chatLoader');
-                if (loader) { loader.remove(); }
-                chatState.awaitingFirstResponse = false;
-              }
-              addMessage(message.message, 'support');
+  });
+
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', function(event) {
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+      if (!item.contains(event.target)) {
+        // Remove any active states if you add them
+      }
+    });
+  });
+
+  // Chat Widget Functions (keeping your existing chat functionality)
+  const CHAT_API_URL = 'https://chat.cabinpulse.com';
+  let chatState = {
+    sessionId: localStorage.getItem('chatSessionId') || null,
+    lastMessageTimestamp: localStorage.getItem('chatLastTimestamp') || null,
+    pollingInterval: null,
+    isOpen: false,
+    hasProvidedEmail: localStorage.getItem('chatUserEmail') || false,
+    isAwaitingEmail: false,
+    isConnecting: false,
+    firstMessage: null,
+    awaitingFirstResponse: false
+  };
+
+  function startMessagePolling() {
+    if (chatState.pollingInterval) {
+      clearInterval(chatState.pollingInterval);
+    }
+    chatState.pollingInterval = setInterval(pollMessages, 5000);
+  }
+
+  async function pollMessages() {
+    if (!chatState.sessionId || !chatState.isOpen) return;
+    try {
+      const url = `${CHAT_API_URL}/chat/messages/${chatState.sessionId}` +
+        (chatState.lastMessageTimestamp ? `?since_timestamp=${encodeURIComponent(chatState.lastMessageTimestamp)}` : '');
+      const response = await fetch(url);
+      const data = await response.json();
+      if (data.messages && data.messages.length > 0) {
+        data.messages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp))
+        .forEach(message => {
+          if (message.sender === 'support') {
+            if (chatState.awaitingFirstResponse) {
+              const loader = document.getElementById('chatLoader');
+              if (loader) { loader.remove(); }
+              chatState.awaitingFirstResponse = false;
             }
-            chatState.lastMessageTimestamp = message.timestamp;
-            localStorage.setItem('chatLastTimestamp', message.timestamp);
-          });
-        }
-      } catch (error) {
-        console.error('Error polling messages:', error);
+            addMessage(message.message, 'support');
+          }
+          chatState.lastMessageTimestamp = message.timestamp;
+          localStorage.setItem('chatLastTimestamp', message.timestamp);
+        });
       }
+    } catch (error) {
+      console.error('Error polling messages:', error);
     }
-    async function initializeChat() {
-      if (!chatState.sessionId) {
-        try {
-          const response = await fetch(`${CHAT_API_URL}/chat/session/new`);
-          const data = await response.json();
-          chatState.sessionId = data.session_id;
-          localStorage.setItem('chatSessionId', chatState.sessionId);
-          startMessagePolling();
-          console.log('Chat initialized with session:', chatState.sessionId);
-          loadPreviousMessages();
-        } catch (error) {
-          console.error('Error initializing chat:', error);
-        }
-      } else {
-        startMessagePolling();
-        loadPreviousMessages();
-      }
-    }
-    async function loadPreviousMessages() {
+  }
+
+  async function initializeChat() {
+    if (!chatState.sessionId) {
       try {
-        const response = await fetch(`${CHAT_API_URL}/chat/messages/${chatState.sessionId}`);
+        const response = await fetch(`${CHAT_API_URL}/chat/session/new`);
         const data = await response.json();
-        if (data.messages && data.messages.length > 0) {
-          const messagesDiv = document.getElementById('chatMessages');
-          messagesDiv.innerHTML = '';
-          data.messages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp))
-          .forEach(message => {
-            addMessage(message.message, message.sender);
-            chatState.lastMessageTimestamp = message.timestamp;
-          });
-          localStorage.setItem('chatLastTimestamp', chatState.lastMessageTimestamp);
-        }
+        chatState.sessionId = data.session_id;
+        localStorage.setItem('chatSessionId', chatState.sessionId);
+        startMessagePolling();
+        console.log('Chat initialized with session:', chatState.sessionId);
+        loadPreviousMessages();
       } catch (error) {
-        console.error('Error loading previous messages:', error);
+        console.error('Error initializing chat:', error);
       }
+    } else {
+      startMessagePolling();
+      loadPreviousMessages();
     }
-    function startWaitingForResponse() {
-      chatState.awaitingFirstResponse = true;
-      addMessage("Connecting you to CabinPulse Support...", 'system');
-      const messagesDiv = document.getElementById('chatMessages');
-      const loaderDiv = document.createElement('div');
-      loaderDiv.id = 'chatLoader';
-      loaderDiv.className = 'chat-loader';
-      loaderDiv.innerHTML = '<div class="loader-dots"><div></div><div></div><div></div></div>';
-      messagesDiv.appendChild(loaderDiv);
-      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  }
+
+  async function loadPreviousMessages() {
+    try {
+      const response = await fetch(`${CHAT_API_URL}/chat/messages/${chatState.sessionId}`);
+      const data = await response.json();
+      if (data.messages && data.messages.length > 0) {
+        const messagesDiv = document.getElementById('chatMessages');
+        messagesDiv.innerHTML = '';
+        data.messages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp))
+        .forEach(message => {
+          addMessage(message.message, message.sender);
+          chatState.lastMessageTimestamp = message.timestamp;
+        });
+        localStorage.setItem('chatLastTimestamp', chatState.lastMessageTimestamp);
+      }
+    } catch (error) {
+      console.error('Error loading previous messages:', error);
     }
-    async function sendMessage() {
-      const input = document.getElementById('messageInput');
-      const message = input.value.trim();
-      if (message) {
-        try {
-          addMessage(message, 'user');
-          input.value = '';
-          if (!chatState.hasProvidedEmail && !chatState.isAwaitingEmail) {
-            chatState.isAwaitingEmail = true;
-            chatState.firstMessage = message;
-            setTimeout(() => {
-              addMessage("Please provide your email in case we get disconnected, or write 'skip'", 'system');
-            }, 1000);
+  }
+
+  function startWaitingForResponse() {
+    chatState.awaitingFirstResponse = true;
+    addMessage("Connecting you to CabinPulse Support...", 'system');
+    const messagesDiv = document.getElementById('chatMessages');
+    const loaderDiv = document.createElement('div');
+    loaderDiv.id = 'chatLoader';
+    loaderDiv.className = 'chat-loader';
+    loaderDiv.innerHTML = '<div class="loader-dots"><div></div><div></div><div></div></div>';
+    messagesDiv.appendChild(loaderDiv);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  }
+
+  async function sendMessage() {
+    const input = document.getElementById('messageInput');
+    const message = input.value.trim();
+    if (message) {
+      try {
+        addMessage(message, 'user');
+        input.value = '';
+        if (!chatState.hasProvidedEmail && !chatState.isAwaitingEmail) {
+          chatState.isAwaitingEmail = true;
+          chatState.firstMessage = message;
+          setTimeout(() => {
+            addMessage("Please provide your email in case we get disconnected, or write 'skip'", 'system');
+          }, 1000);
+          return;
+        }
+        if (chatState.isAwaitingEmail) {
+          if (message.includes('@')) {
+            localStorage.setItem('chatUserEmail', message);
+            chatState.hasProvidedEmail = true;
+            chatState.isAwaitingEmail = false;
+            startWaitingForResponse();
+            if (chatState.firstMessage) {
+              await sendMessageToBackend(chatState.firstMessage);
+              chatState.firstMessage = null;
+            }
+            return;
+          } else if (message.toLowerCase() === 'skip') {
+            chatState.hasProvidedEmail = true;
+            chatState.isAwaitingEmail = false;
+            startWaitingForResponse();
+            if (chatState.firstMessage) {
+              await sendMessageToBackend(chatState.firstMessage);
+              chatState.firstMessage = null;
+            }
             return;
           }
-          if (chatState.isAwaitingEmail) {
-            if (message.includes('@')) {
-              localStorage.setItem('chatUserEmail', message);
-              chatState.hasProvidedEmail = true;
-              chatState.isAwaitingEmail = false;
-              startWaitingForResponse();
-              if (chatState.firstMessage) {
-                await sendMessageToBackend(chatState.firstMessage);
-                chatState.firstMessage = null;
-              }
-              return;
-            } else if (message.toLowerCase() === 'skip') {
-              chatState.hasProvidedEmail = true;
-              chatState.isAwaitingEmail = false;
-              startWaitingForResponse();
-              if (chatState.firstMessage) {
-                await sendMessageToBackend(chatState.firstMessage);
-                chatState.firstMessage = null;
-              }
-              return;
-            }
-          }
-          await sendMessageToBackend(message);
-        } catch (error) {
-          console.error('Error sending message:', error);
-          addMessage('Error sending message. Please try again.', 'system');
         }
+        await sendMessageToBackend(message);
+      } catch (error) {
+        console.error('Error sending message:', error);
+        addMessage('Error sending message. Please try again.', 'system');
       }
     }
-    async function sendMessageToBackend(message) {
-      try {
-        const response = await fetch(`${CHAT_API_URL}/chat/message`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            message: message,
-            session_id: chatState.sessionId,
-            user_id: localStorage.getItem('chatUserEmail') || 'anonymous'
-          })
-        });
-        if (!response.ok) { throw new Error(`HTTP error! status: ${response.status}`); }
-        const data = await response.json();
-        if (data.timestamp) {
-          chatState.lastMessageTimestamp = data.timestamp;
-          localStorage.setItem('chatLastTimestamp', data.timestamp);
-        }
-      } catch (error) { throw error; }
-    }
-    function addMessage(content, sender) {
-      const messagesDiv = document.getElementById('chatMessages');
-      const messageDiv = document.createElement('div');
-      messageDiv.className = `message ${sender}`;
-      const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-      messageDiv.innerHTML = 
-        `<div class="message-content">${content}</div>
-         <div class="message-time">${time}</div>`;
-      messagesDiv.appendChild(messageDiv);
-      setTimeout(() => { messagesDiv.scrollTop = messagesDiv.scrollHeight; }, 100);
-    }
-    function handleKeyPress(event) {
-      if (event.key === 'Enter' && !event.shiftKey) {
-        event.preventDefault();
-        sendMessage();
+  }
+
+  async function sendMessageToBackend(message) {
+    try {
+      const response = await fetch(`${CHAT_API_URL}/chat/message`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: message,
+          session_id: chatState.sessionId,
+          user_id: localStorage.getItem('chatUserEmail') || 'anonymous'
+        })
+      });
+      if (!response.ok) { throw new Error(`HTTP error! status: ${response.status}`); }
+      const data = await response.json();
+      if (data.timestamp) {
+        chatState.lastMessageTimestamp = data.timestamp;
+        localStorage.setItem('chatLastTimestamp', data.timestamp);
       }
+    } catch (error) { throw error; }
+  }
+
+  function addMessage(content, sender) {
+    const messagesDiv = document.getElementById('chatMessages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${sender}`;
+    const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    messageDiv.innerHTML = 
+      `<div class="message-content">${content}</div>
+       <div class="message-time">${time}</div>`;
+    messagesDiv.appendChild(messageDiv);
+    setTimeout(() => { messagesDiv.scrollTop = messagesDiv.scrollHeight; }, 100);
+  }
+
+  function handleKeyPress(event) {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      sendMessage();
     }
-    function toggleChat() {
-      const widget = document.getElementById('chat-widget');
-      chatState.isOpen = !widget.classList.contains('open');
-      widget.classList.toggle('open');
-      if (chatState.isOpen) { initializeChat(); }
-      else {
-        if (chatState.pollingInterval) {
-          clearInterval(chatState.pollingInterval);
-          chatState.pollingInterval = null;
-        }
-      }
-    }
-    document.addEventListener('DOMContentLoaded', function() {
-      const closeButton = document.createElement('div');
-      closeButton.className = 'close-chat';
-      closeButton.onclick = toggleChat;
-      const chatHeader = document.querySelector('.chat-header');
-      chatHeader.appendChild(closeButton);
-    });
-    function cleanupChat() {
+  }
+
+  function toggleChat() {
+    const widget = document.getElementById('chat-widget');
+    chatState.isOpen = !widget.classList.contains('open');
+    widget.classList.toggle('open');
+    if (chatState.isOpen) { initializeChat(); }
+    else {
       if (chatState.pollingInterval) {
         clearInterval(chatState.pollingInterval);
         chatState.pollingInterval = null;
       }
-      chatState.isOpen = false;
     }
-    // --- NEW USE CASES CAROUSEL SCRIPT ---
-document.addEventListener('DOMContentLoaded', function () {
+  }
+
+  function cleanupChat() {
+    if (chatState.pollingInterval) {
+      clearInterval(chatState.pollingInterval);
+      chatState.pollingInterval = null;
+    }
+    chatState.isOpen = false;
+  }
+
+  // Use cases carousel functionality
+  document.addEventListener('DOMContentLoaded', function () {
     const carouselWrapper = document.querySelector('.use-cases-carousel-wrapper');
     const carousel = document.querySelector('.use-cases-carousel');
     const cards = Array.from(carousel.querySelectorAll('.use-case-card'));
@@ -1967,10 +1968,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const dotsContainer = document.querySelector('.use-cases .carousel-dots');
 
     if (!carousel || !prevButton || !nextButton || !dotsContainer || cards.length === 0) {
-        if (prevButton && prevButton.parentElement) prevButton.parentElement.style.display = 'none'; // Hide nav
-        if (dotsContainer) dotsContainer.style.display = 'none'; // Hide dots
-        console.warn("Use Cases Carousel elements not found or no cards. Skipping initialization.");
-        return;
+      if (prevButton && prevButton.parentElement) prevButton.parentElement.style.display = 'none';
+      if (dotsContainer) dotsContainer.style.display = 'none';
+      console.warn("Use Cases Carousel elements not found or no cards. Skipping initialization.");
+      return;
     }
 
     let currentIndex = 0;
@@ -1979,271 +1980,497 @@ document.addEventListener('DOMContentLoaded', function () {
     const cardGap = parseInt(window.getComputedStyle(carousel).gap) || 24;
 
     function calculateItemsPerPage() {
-        if (window.innerWidth <= 768) return 1;
-        if (window.innerWidth <= 1024) return 2;
-        return 3;
+      if (window.innerWidth <= 768) return 1;
+      if (window.innerWidth <= 1024) return 2;
+      return 3;
     }
 
     function updateCarousel() {
-        itemsPerPage = calculateItemsPerPage();
-        totalPages = Math.ceil(cards.length / itemsPerPage);
-        const wrapperWidth = carouselWrapper.offsetWidth;
-        // cardGap is already defined globally in your script
+      itemsPerPage = calculateItemsPerPage();
+      totalPages = Math.ceil(cards.length / itemsPerPage);
+      const wrapperWidth = carouselWrapper.offsetWidth;
 
-        let cardWidthToApply;
+      let cardWidthToApply;
 
-        // Apply/Reset card widths based on viewport
-        if (itemsPerPage > 1 && window.innerWidth > 768) { // Desktop or Tablet view
-            cardWidthToApply = Math.floor((wrapperWidth - (itemsPerPage - 1) * cardGap) / itemsPerPage);
-            
-            cards.forEach(card => {
-                card.style.width = `${cardWidthToApply}px`;
-                card.style.flexBasis = `${cardWidthToApply}px`;
-                // card.style.maxWidth = `${cardWidthToApply}px`; // Optionally set this too
-            });
-        } else { // Mobile view or when itemsPerPage becomes 1
-            // Let CSS control card widths
-            cards.forEach(card => {
-                card.style.width = ''; 
-                card.style.flexBasis = '';
-                // card.style.maxWidth = '';
-            });
-        }
-
-        // Reading properties like offsetLeft below will force a reflow if styles changed.
-
-        let offsetValue = 0;
-
-        if (currentIndex > 0) { // For any page other than the first
-            const firstCardIndexOfCurrentPage = currentIndex * itemsPerPage;
-            
-            if (firstCardIndexOfCurrentPage < cards.length) {
-                const targetCard = cards[firstCardIndexOfCurrentPage]; // The card that should start the page
-                
-                // Ensure targetCard exists before trying to read its properties
-                if (targetCard) {
-                    if (itemsPerPage === 1 && window.innerWidth <= 768) { // Mobile: center the current card
-                        const cardWidthForCentering = targetCard.offsetWidth; // Read current (CSS-defined or reset) width
-                        offsetValue = targetCard.offsetLeft - (wrapperWidth / 2) + (cardWidthForCentering / 2);
-                    } else { // Desktop / Tablet: align the target card to the left edge of the wrapper
-                        offsetValue = targetCard.offsetLeft;
-                    }
-                } else {
-                    // Fallback if targetCard is unexpectedly undefined
-                    if (carousel.scrollWidth > wrapperWidth) {
-                        offsetValue = carousel.scrollWidth - wrapperWidth; // Scroll to very end
-                    }
-                }
-            } else {
-                // This state (currentIndex implies cards that don't exist) should be prevented by totalPages logic.
-                // If somehow reached, scroll to the very end.
-                if (carousel.scrollWidth > wrapperWidth) {
-                    offsetValue = carousel.scrollWidth - wrapperWidth;
-                }
-            }
-        }
-
-        // Sanity checks for offsetValue:
-        offsetValue = Math.max(0, offsetValue || 0); // Ensure non-negative. (Handle potential NaN from offsetLeft if targetCard was null)
-
-        const maxPossibleOffset = carousel.scrollWidth - wrapperWidth;
-
-        if (maxPossibleOffset > 0) { // Only cap if there's something to scroll
-            offsetValue = Math.min(offsetValue, maxPossibleOffset);
-        } else { // If content is not wider than wrapper, or exactly fits
-            offsetValue = 0; 
-        }
+      if (itemsPerPage > 1 && window.innerWidth > 768) {
+        cardWidthToApply = Math.floor((wrapperWidth - (itemsPerPage - 1) * cardGap) / itemsPerPage);
         
-        carousel.style.transform = `translateX(-${Math.round(offsetValue)}px)`;
+        cards.forEach(card => {
+          card.style.width = `${cardWidthToApply}px`;
+          card.style.flexBasis = `${cardWidthToApply}px`;
+        });
+      } else {
+        cards.forEach(card => {
+          card.style.width = ''; 
+          card.style.flexBasis = '';
+        });
+      }
 
-        updateButtons();
-        updateDots();
+      let offsetValue = 0;
+
+      if (currentIndex > 0) {
+        const firstCardIndexOfCurrentPage = currentIndex * itemsPerPage;
+        
+        if (firstCardIndexOfCurrentPage < cards.length) {
+          const targetCard = cards[firstCardIndexOfCurrentPage];
+          
+          if (targetCard) {
+            if (itemsPerPage === 1 && window.innerWidth <= 768) {
+              const cardWidthForCentering = targetCard.offsetWidth;
+              offsetValue = targetCard.offsetLeft - (wrapperWidth / 2) + (cardWidthForCentering / 2);
+            } else {
+              offsetValue = targetCard.offsetLeft;
+            }
+          } else {
+            if (carousel.scrollWidth > wrapperWidth) {
+              offsetValue = carousel.scrollWidth - wrapperWidth;
+            }
+          }
+        } else {
+          if (carousel.scrollWidth > wrapperWidth) {
+            offsetValue = carousel.scrollWidth - wrapperWidth;
+          }
+        }
+      }
+
+      offsetValue = Math.max(0, offsetValue || 0);
+
+      const maxPossibleOffset = carousel.scrollWidth - wrapperWidth;
+
+      if (maxPossibleOffset > 0) {
+        offsetValue = Math.min(offsetValue, maxPossibleOffset);
+      } else {
+        offsetValue = 0; 
+      }
+      
+      carousel.style.transform = `translateX(-${Math.round(offsetValue)}px)`;
+
+      updateButtons();
+      updateDots();
     }
 
-    
-    
     function setupDots() {
-        dotsContainer.innerHTML = ''; // Clear existing dots
-        for (let i = 0; i < totalPages; i++) {
-            const dot = document.createElement('div');
-            dot.classList.add('dot');
-            if (i === currentIndex) {
-                dot.classList.add('active');
-            }
-            dot.addEventListener('click', () => {
-                currentIndex = i;
-                updateCarousel();
-            });
-            dotsContainer.appendChild(dot);
+      dotsContainer.innerHTML = '';
+      for (let i = 0; i < totalPages; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        if (i === currentIndex) {
+          dot.classList.add('active');
         }
+        dot.addEventListener('click', () => {
+          currentIndex = i;
+          updateCarousel();
+        });
+        dotsContainer.appendChild(dot);
+      }
     }
 
     function updateDots() {
-        const dots = dotsContainer.querySelectorAll('.dot');
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentIndex);
-        });
+      const dots = dotsContainer.querySelectorAll('.dot');
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentIndex);
+      });
     }
 
     function updateButtons() {
-        prevButton.disabled = currentIndex === 0;
-        nextButton.disabled = currentIndex >= totalPages - 1;
+      prevButton.disabled = currentIndex === 0;
+      nextButton.disabled = currentIndex >= totalPages - 1;
     }
 
     prevButton.addEventListener('click', () => {
-        if (currentIndex > 0) {
-            currentIndex--;
-            updateCarousel();
-        }
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateCarousel();
+      }
     });
 
     nextButton.addEventListener('click', () => {
-        if (currentIndex < totalPages - 1) {
-            currentIndex++;
-            updateCarousel();
-        }
+      if (currentIndex < totalPages - 1) {
+        currentIndex++;
+        updateCarousel();
+      }
     });
 
-    // Ensure the resize handler is also clean:
     let resizeTimeout;
     window.addEventListener('resize', () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            const oldItemsPerPage = itemsPerPage;
-            // itemsPerPage will be recalculated based on new window.innerWidth
-            // The updateCarousel function will then reset/apply card styles as needed.
-            
-            itemsPerPage = calculateItemsPerPage(); 
-            totalPages = Math.ceil(cards.length / itemsPerPage);
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        const oldItemsPerPage = itemsPerPage;
+        
+        itemsPerPage = calculateItemsPerPage(); 
+        totalPages = Math.ceil(cards.length / itemsPerPage);
 
-            if (oldItemsPerPage !== itemsPerPage) {
-                 // Adjust currentIndex to try and keep roughly the same items in view
-                 const firstVisibleCardAbsoluteIndex = currentIndex * oldItemsPerPage;
-                 currentIndex = Math.floor(firstVisibleCardAbsoluteIndex / itemsPerPage);
-                 currentIndex = Math.max(0, Math.min(currentIndex, totalPages - 1)); // Clamp
-            }
-            setupDots(); // Re-setup dots as totalPages might have changed
-            updateCarousel(); // This will apply new card widths if needed, then calculate scroll
-        }, 250);
+        if (oldItemsPerPage !== itemsPerPage) {
+           const firstVisibleCardAbsoluteIndex = currentIndex * oldItemsPerPage;
+           currentIndex = Math.floor(firstVisibleCardAbsoluteIndex / itemsPerPage);
+           currentIndex = Math.max(0, Math.min(currentIndex, totalPages - 1));
+        }
+        setupDots();
+        updateCarousel();
+      }, 250);
     });
     
-    // Initial setup
     setupDots();
     updateCarousel();
 
-    // Touch swipe functionality (optional, but good for mobile)
     let touchStartX = 0;
     let touchEndX = 0;
-    const swipeThreshold = 50; // Minimum distance for a swipe
+    const swipeThreshold = 50;
 
     carouselWrapper.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
+      touchStartX = e.changedTouches[0].screenX;
     }, { passive: true });
 
     carouselWrapper.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
     }, { passive: true });
 
     function handleSwipe() {
-        if (touchEndX < touchStartX - swipeThreshold) { // Swiped left
-            if (currentIndex < totalPages - 1) {
-                currentIndex++;
-                updateCarousel();
-            }
-        } else if (touchEndX > touchStartX + swipeThreshold) { // Swiped right
-            if (currentIndex > 0) {
-                currentIndex--;
-                updateCarousel();
-            }
+      if (touchEndX < touchStartX - swipeThreshold) {
+        if (currentIndex < totalPages - 1) {
+          currentIndex++;
+          updateCarousel();
         }
+      } else if (touchEndX > touchStartX + swipeThreshold) {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateCarousel();
+        }
+      }
     }
-});
-  </script>
-  <script>
-    // Place this inside your existing script tag or a new one
-    document.addEventListener('DOMContentLoaded', function() {
-      // Plan toggle
-      const toggles = document.querySelectorAll('.toggle-option'),
-            slider = document.querySelector('.toggle-slider'),
-            priceDisplay = document.getElementById('price-display'),
-            priceLabel = document.getElementById('price-label'),
-            discountBadge = document.getElementById('discount-badge'),
-            ctaBtn = document.getElementById('cta-button'),
-            planSavingsIndicator = document.querySelector('.plan-savings-indicator');
-  
-      const plans = {
-        1: { price:'$14', label:'billed annually', url:'?plan=1', showDiscount:false },
-        3: { price:'$10', label:'billed every 3 years', url:'?plan=3', showDiscount:true }
-      };
-      let currentPlan = 1;
-  
-      if (toggles.length > 0 && slider && priceDisplay && priceLabel && discountBadge && ctaBtn && planSavingsIndicator) {
-          toggles.forEach(opt=>{
-            opt.addEventListener('click',()=>{
-              const p = +opt.dataset.plan;
-              if(p===currentPlan) return;
-  
-              toggles.forEach(o=>o.classList.remove('active'));
-              opt.classList.add('active');
-              slider.classList.toggle('three-year', p===3);
-  
-              const plan = plans[p];
-              priceDisplay.innerHTML = `${plan.price}<span class="period"> CAD/mo</span>`;
-              priceLabel.textContent = plan.label;
-              ctaBtn.href = 'https://cabinpulse.com/purchase.html'+plan.url;
-              
-              discountBadge.classList.toggle('visible', plan.showDiscount);
-  
-              if (p === 3) {
-                  planSavingsIndicator.textContent = "Saving 29%";
-                  planSavingsIndicator.classList.add('activated');
-              } else {
-                  planSavingsIndicator.textContent = "Save 29%!";
-                  planSavingsIndicator.classList.remove('activated');
-              }
-              currentPlan = p;
-            });
+  });
+
+  // Pricing section functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const toggles = document.querySelectorAll('.toggle-option'),
+          slider = document.querySelector('.toggle-slider'),
+          priceDisplay = document.getElementById('price-display'),
+          priceLabel = document.getElementById('price-label'),
+          discountBadge = document.getElementById('discount-badge'),
+          ctaBtn = document.getElementById('cta-button'),
+          planSavingsIndicator = document.querySelector('.plan-savings-indicator');
+
+    const plans = {
+      1: { price:'$14', label:'billed annually', url:'?plan=1', showDiscount:false },
+      3: { price:'$10', label:'billed every 3 years', url:'?plan=3', showDiscount:true }
+    };
+    let currentPlan = 1;
+
+    if (toggles.length > 0 && slider && priceDisplay && priceLabel && discountBadge && ctaBtn && planSavingsIndicator) {
+        toggles.forEach(opt=>{
+          opt.addEventListener('click',()=>{
+            const p = +opt.dataset.plan;
+            if(p===currentPlan) return;
+
+            toggles.forEach(o=>o.classList.remove('active'));
+            opt.classList.add('active');
+            slider.classList.toggle('three-year', p===3);
+
+            const plan = plans[p];
+            priceDisplay.innerHTML = `${plan.price}<span class="period"> CAD/mo</span>`;
+            priceLabel.textContent = plan.label;
+            ctaBtn.href = 'https://cabinpulse.com/purchase.html'+plan.url;
+            
+            discountBadge.classList.toggle('visible', plan.showDiscount);
+
+            if (p === 3) {
+                planSavingsIndicator.textContent = "Saving 29%";
+                planSavingsIndicator.classList.add('activated');
+            } else {
+                planSavingsIndicator.textContent = "Save 29%!";
+                planSavingsIndicator.classList.remove('activated');
+            }
+            currentPlan = p;
           });
+        });
+    }
+
+    // Carousel for pricing section
+    const viewport = document.querySelector('.carousel-viewport'),
+          track = document.getElementById('carousel-track'),
+          carouselDots = document.querySelectorAll('#carousel-dots .carousel-dot');
+    let carouselIdx = 0;
+
+    function updatePricingCarousel(){
+      if (!viewport || !track || carouselDots.length === 0) return;
+      const w = viewport.clientWidth;
+      track.style.transform = `translateX(-${carouselIdx*w}px)`;
+      carouselDots.forEach((d,i)=>d.classList.toggle('active', i===carouselIdx));
+    }
+
+    window.nextImage = function(){ carouselIdx = (carouselIdx+1)%carouselDots.length; updatePricingCarousel(); }
+    window.previousImage = function(){ carouselIdx = (carouselIdx-1 + carouselDots.length)%carouselDots.length; updatePricingCarousel(); }
+    window.currentImage = function(i){ carouselIdx=i; updatePricingCarousel(); }
+
+    if (viewport) {
+        let startX=0;
+        viewport.addEventListener('touchstart',e=> startX=e.changedTouches[0].screenX, {passive:true});
+        viewport.addEventListener('touchend',e=>{
+          const delta = e.changedTouches[0].screenX - startX;
+          if(Math.abs(delta)>50) (delta>0? window.previousImage(): window.nextImage());
+        }, {passive:true});
+
+        updatePricingCarousel();
+        window.addEventListener('resize', updatePricingCarousel);
+    }
+  });
+
+  // Country selector functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const countryDropdown = document.getElementById('country-dropdown');
+    const canadaInfo = document.getElementById('network-info-canada');
+    const mexicoInfo = document.getElementById('network-info-mexico');
+    const usaInfo = document.getElementById('network-info-united-states');
+    const additionalInfo = document.getElementById('network-info-additional');
+    
+    if (countryDropdown && canadaInfo) {
+      countryDropdown.addEventListener('change', function() {
+        canadaInfo.style.display = 'none';
+        if (mexicoInfo) mexicoInfo.style.display = 'none';
+        if (usaInfo) usaInfo.style.display = 'none';
+        if (additionalInfo) additionalInfo.style.display = 'none';
+        
+        const selectedValue = this.value;
+        if (selectedValue === 'canada') {
+          canadaInfo.style.display = 'block';
+        } else if (selectedValue === 'mexico' && mexicoInfo) {
+          mexicoInfo.style.display = 'block';
+        } else if (selectedValue === 'united-states' && usaInfo) {
+          usaInfo.style.display = 'block';
+        } else if (selectedValue === 'additional' && additionalInfo) {
+          additionalInfo.style.display = 'block';
+        }
+      });
+    }
+  });
+
+  function toggleReviews() {
+  const featured = document.querySelector('.featured-reviews');
+  const moreReviewsBtn = document.querySelector('.more-reviews');
+  const buttonText = document.getElementById('button-text');
+  const buttonIcon = document.getElementById('button-icon');
+  
+  if (featured.classList.contains('expanded')) {
+    // Collapsing - fade out all reviews, fade in original 3
+    featured.classList.add('fading');
+    
+    setTimeout(() => {
+      // Remove all review cards
+      featured.innerHTML = '';
+      
+      // Add back the original 3 reviews with consistent structure
+      featured.innerHTML = `
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="review-location">Emma Lake, SK</div>
+          </div>
+          <img src="3.png" alt="CabinPulse device monitoring cabin" class="review-image">
+          <div class="review-text">
+            "After years of worrying about frozen pipes every winter, CabinPulse has been a game-changer for us. The connection works perfectly where our cabin is and the alerts are very reliable and instant! It's a no brainer and I tell everyone I know with a cabin about it and show them the app!"
+          </div>
+          <div class="review-author">Property Owner</div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="review-location">Moose Jaw, SK</div>
+          </div>
+          <div class="review-text">
+            "Setup was very easy. I appreciate the instant alerts and extra long (like 6ft+) power cord. Using for a vacant property and saves me a lot of time and worry."
+          </div>
+          <div class="review-author">Property Owner</div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="review-location">Candle Lake, SK</div>
+          </div>
+          <img src="2.png" alt="Remote cabin property monitoring" class="review-image">
+          <div class="review-text">
+            "Got a power outage alert and sure enough our clocks were reset today. The peace of mind from knowing exactly what's happening at our property is worth every penny. The case looks nice but really attracts fingerprints."
+          </div>
+          <div class="review-author">Property Owner</div>
+        </div>
+      `;
+      
+      featured.classList.remove('expanded');
+      featured.classList.remove('fading');
+      moreReviewsBtn.classList.remove('hidden');
+      buttonText.textContent = 'Read All Reviews';
+      buttonIcon.style.transform = 'rotate(0deg)';
+    }, 300);
+    
+  } else {
+    // Expanding - fade out 3 reviews, fade in all 6 with consistent structure
+    featured.classList.add('fading');
+    
+    setTimeout(() => {
+      // Remove existing content
+      featured.innerHTML = '';
+      
+      // Add all 6 reviews using the EXACT same structure as compact cards
+      featured.innerHTML = `
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="review-location">Emma Lake, SK</div>
+          </div>
+          <img src="3.png" alt="CabinPulse device monitoring remote cabin" class="review-image">
+          <div class="review-text">
+            After years of worrying about frozen pipes every winter, [CabinPulse] has been a game-changer for us. The connection works perfectly where our cabin is and the alerts are very reliable and instant! It's a no brainer and I tell everyone I know with a cabin about it and show them the app!
+          </div>
+          <div class="review-author">Property Owner</div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="review-location">Moose Jaw, SK</div>
+          </div>
+          <div class="review-text">
+            Setup was very easy. I appreciate the instant alerts and extra long (like 6ft+) power cord. Using for a vacant property and saves me a lot of time and worry.
+          </div>
+          <div class="review-author">Property Owner</div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="review-location">Candle Lake, SK</div>
+          </div>
+          <img src="2.png" alt="CabinPulse app dashboard showing monitoring data" class="review-image">
+          <div class="review-text">
+            Got a power outage alert and sure enough our clocks were reset today. The peace of mind from knowing exactly what's happening at our property is worth every penny. The case looks nice but really attracts fingerprints.
+          </div>
+          <div class="review-author">Property Owner</div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="review-location">Wakaw Lake, SK</div>
+          </div>
+          <img src="1.png" alt="CabinPulse app dashboard showing monitoring data" class="review-image">
+          <div class="review-text">
+            CabinPulse is the exact solution we were looking for. Without the need for an internet connection, we can easily track potential problems at our cabin. The app is extremely simple to navigate. I love the air quality measure as well. We are thrilled to have an effective and affordable solution to monitoring our place year round!
+          </div>
+          <div class="review-author">Property Owner</div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="review-location">Calgary, AB</div>
+          </div>
+          <div class="review-text">
+            The Fleet View feature is very very useful for monitoring all of our buildings quickly. Customer service has been excellent when I needed help setting up alerts and being able to send to over 10 phone numbers fits our needs perfectly.
+          </div>
+          <div class="review-author">Facility Manager</div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="review-location">Wakaw Lake, SK</div>
+          </div>
+          <div class="review-text">
+            We have had this service for 3 months now and it has worked excellent even though we typically have poor cell service in the area and a metal roof on our cabin. Set up process is seamless and app is user friendly. Highly recommend.
+          </div>
+          <div class="review-author">Property Owner</div>
+        </div>
+      `;
+      
+      featured.classList.add('expanded');
+      featured.classList.remove('fading');
+      moreReviewsBtn.classList.add('hidden');
+    }, 300);
+  }
+}
+
+// Updated footnotes functionality - remove auto-open behavior
+document.addEventListener('DOMContentLoaded', function() {
+  const fn = document.getElementById('footnotes');
+
+  if (fn) {
+    // Remove the automatic opening behavior
+    // Footnotes will now remain closed by default on all screen sizes
+    // Users can manually click to open them if needed
+    
+    // Optional: If you want different behavior on desktop vs mobile, you can uncomment below:
+    /*
+    function updateFootnotes() {
+      if (window.innerWidth <= 768) {
+        fn.removeAttribute('open');
       } else {
-          console.warn("One or more pricing toggle elements are missing.");
+        fn.setAttribute('open', '');
       }
-  
-      // Carousel
-      const viewport = document.querySelector('.carousel-viewport'),
-            track = document.getElementById('carousel-track'),
-            carouselDots = document.querySelectorAll('#carousel-dots .carousel-dot'); // More specific selector
-      let carouselIdx = 0;
-  
-      function updateCarousel(){
-        if (!viewport || !track || carouselDots.length === 0) return;
-        const w = viewport.clientWidth;
-        track.style.transform = `translateX(-${carouselIdx*w}px)`;
-        carouselDots.forEach((d,i)=>d.classList.toggle('active', i===carouselIdx));
-      }
-  
-      // Make carousel functions global if called by inline onclick
-      window.nextImage = function(){ carouselIdx = (carouselIdx+1)%carouselDots.length; updateCarousel(); }
-      window.previousImage = function(){ carouselIdx = (carouselIdx-1 + carouselDots.length)%carouselDots.length; updateCarousel(); }
-      window.currentImage = function(i){ carouselIdx=i; updateCarousel(); }
-  
-  
-      if (viewport) {
-          let startX=0;
-          viewport.addEventListener('touchstart',e=> startX=e.changedTouches[0].screenX, {passive:true});
-          viewport.addEventListener('touchend',e=>{
-            const delta = e.changedTouches[0].screenX - startX;
-            if(Math.abs(delta)>50) (delta>0? window.previousImage(): window.nextImage());
-          }, {passive:true});
-  
-          // Initial call and resize listener
-          updateCarousel(); // Call once on load
-          window.addEventListener('resize', updateCarousel);
-      } else {
-          console.warn("Carousel viewport not found.");
-      }
-    });
-  </script>
+    }
+
+    updateFootnotes();
+    window.addEventListener('resize', updateFootnotes);
+    */
+  }
+});
+</script>
+</script>
   <script type="text/javascript">
     window._mfq = window._mfq || [];
     (function() {
