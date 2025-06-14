@@ -3008,8 +3008,7 @@ Replace the existing top-bar-content div with:
   }
 
   .tab-label {
-    font-size: 0.65rem;
-    display: block; /* Show labels on very small screens but tiny */
+    display: none;
   }
 
   .content-layout {
