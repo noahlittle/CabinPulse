@@ -574,7 +574,7 @@ Replace the existing top-bar-content div with:
     flex: 1;
   }
   .hero h1 {
-    font-size: 4rem;
+    font-size: 3rem;
     margin-top: 25px;
     margin-bottom: 25px;
     line-height: 1.2;
@@ -3065,7 +3065,7 @@ Replace the existing top-bar-content div with:
   
   @media screen and (max-width: 1180px) {
     .hero h1 {
-      font-size: 2.5rem;
+      font-size: 2.3rem;
     }
     .badges-top {
       justify-content: space-between;
@@ -3191,10 +3191,10 @@ Replace the existing top-bar-content div with:
       margin-top: 68px;
     }
     .hero h1 {
-      font-size: 3rem;
+      font-size: 2rem;
     }
     .hero p {
-      font-size: 1.2rem;
+      font-size: 1rem;
     }
     .hero-container {
       flex-direction: column;
@@ -4084,3 +4084,4 @@ Replace the existing top-bar-content div with:
       padding: 5px 10px;
     }
   }
+  
