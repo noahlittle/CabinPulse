@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CabinPulse - Cellular Temperature Monitor with Instant Alerts | Made in Canada</title>
+  <title>CabinPulse - Cellular Temperature Monitor | Made in Canada</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <meta name="description" content="Monitor temperature precisely with CabinPulse Temperature Monitor. Set unlimited custom alerts without WiFi. High & low temperature monitoring with ±0.2°C accuracy." />
+  <meta name="description" content="Monitor temperature precisely over cellular with CabinPulse. Set unlimited custom alerts without WiFi. High & low temperature monitoring with ±0.2°C accuracy." />
   <meta name="keywords" content="temperature monitor, cellular temperature monitor, high accuracy temperature sensor, custom temperature alerts, no wifi temperature monitor, remote temperature monitoring">
   <script defer src="https://analytics.cabinliving.ca/script.js" data-website-id="bd58d7d8-2b00-44ae-8285-c76db6e383ad"></script>
   <script type="application/ld+json">
@@ -155,6 +155,9 @@
       --highlight-color: #e94560;
       --text-color: #ffffff;
       --dark-text-color: #000000;
+      --warning-color: #FFC107;
+      --danger-color: #e94560;
+      --good-color: #4CAF50;
     }
     
     /* Base styles */
@@ -179,23 +182,95 @@
       padding: 0 25px;
     }
     
-    .logo-text {
-      font-size: 1.5rem;
-      font-weight: 900;
+    /* Top Bar Styles */
+    .top-bar {
+      background-color: rgba(15, 52, 96, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(233, 69, 96, 0.1);
+      padding: 6px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      transition: all 0.3s ease;
+    }
+
+    .top-bar-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 25px;
+    }
+
+    .top-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .top-bar-link {
       color: var(--text-color);
+      text-decoration: none;
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      opacity: 0.8;
+      transition: all 0.3s ease;
+      padding: 3px 6px;
+      border-radius: 4px;
+    }
+
+    .top-bar-link:hover {
+      opacity: 1;
+      color: var(--highlight-color);
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .proudly-canadian {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-color);
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      opacity: 0.9;
+      background-color: rgba(233, 69, 96, 0.15);
+      padding: 3px 8px;
+      border-radius: 12px;
+      border: 1px solid rgba(233, 69, 96, 0.3);
+    }
+
+    .proudly-canadian i {
+      color: var(--highlight-color);
+      font-size: 0.8rem;
     }
     
     /* Header styles */
     header {
+      padding-top: 12px;
       position: fixed;
       width: 100%;
       z-index: 1000;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
-      background-color: rgba(26, 26, 46, 0.95);
-      backdrop-filter: blur(8px);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-      padding: 15px 0 0; /* Removed bottom padding to accommodate breadcrumb */
+      background-color: rgba(26, 26, 46, 0.98);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+      border-bottom: 1px solid rgba(233, 69, 96, 0.2);
+      top: 38px;
+      transition: all 0.3s ease;
     }
+
+    header.scrolled {
+      padding-top: 12px;
+      background-color: rgba(26, 26, 46, 1);
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+    }
+    
     nav {
       display: flex;
       justify-content: space-between;
@@ -205,63 +280,134 @@
       display: flex;
       align-items: center;
     }
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--text-color);
+    }
     .icon {
       width: 40px;
       height: 40px;
       margin-right: 10px;
     }
     
-    /* Updated Nav Links Styles */
+    /* Desktop Navigation Links */
     .nav-links {
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      gap: 20px;
+      gap: 8px;
       margin-left: auto;
+    }
+    .nav-item {
+      position: relative;
     }
     .nav-link {
       color: var(--text-color);
       text-decoration: none;
-      padding: 8px 15px;
-      border-radius: 8px;
+      padding: 10px 16px;
+      border-radius: 6px;
       transition: all 0.3s ease;
-      font-size: 1rem;
-      font-weight: 500;
+      font-size: 0.8rem;
+      font-weight: 600;
       white-space: nowrap;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      position: relative;
     }
     .nav-link:hover {
       color: var(--highlight-color);
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: rgba(255, 255, 255, 0.08);
+      transform: translateY(-1px);
     }
+    .nav-link.has-dropdown::after {
+      content: '\f0d7';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      margin-left: 6px;
+      font-size: 0.7rem;
+      transition: transform 0.3s ease;
+    }
+    .nav-item:hover .nav-link.has-dropdown::after {
+      transform: rotate(180deg);
+    }
+    
+    /* Nav Dropdowns */
+    .dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      transform: translateY(-10px);
+      background-color: rgba(22, 33, 62, 0.98);
+      backdrop-filter: blur(12px);
+      border-radius: 12px;
+      padding: 12px 0;
+      min-width: 220px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(233, 69, 96, 0.2);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 1001;
+    }
+    
+    .nav-item:hover .dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(5%);
+    }
+    .dropdown-item {
+      display: block;
+      color: var(--text-color);
+      text-decoration: none;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-transform: none;
+      letter-spacing: 0;
+      transition: all 0.2s ease;
+      border-left: 3px solid transparent;
+    }
+    .dropdown-item:hover {
+      background-color: rgba(233, 69, 96, 0.1);
+      color: var(--highlight-color);
+      border-left-color: var(--highlight-color);
+      padding-left: 24px;
+    }
+    .dropdown-item i {
+      margin-right: 10px;
+      width: 16px;
+      text-align: center;
+      color: var(--highlight-color);
+      opacity: 0.8;
+    }
+    
+    /* Nav CTA Buttons */
     .login-btn {
-      display: flex;
-      align-items: center;
-      gap: 6px;
       border: 1px solid rgba(255, 255, 255, 0.3);
+      background-color: rgba(255, 255, 255, 0.05);
     }
     .login-btn:hover {
       border-color: var(--highlight-color);
+      background-color: rgba(233, 69, 96, 0.1);
     }
     .primary-cta {
-      display: flex;
-      align-items: center;
-      gap: 8px;
       background-color: var(--highlight-color);
-      color: white;
-      padding: 8px 20px;
-      border-radius: 8px;
-      font-weight: 600;
-      transition: all 0.3s ease;
+      color: white !important;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 700;
       box-shadow: 0 4px 12px rgba(233, 69, 96, 0.3);
+      margin-left: 8px;
     }
     .primary-cta:hover {
       background-color: #ff5a7c;
-      color: white;
+      color: white !important;
       transform: translateY(-2px);
       box-shadow: 0 6px 16px rgba(233, 69, 96, 0.4);
     }
     
-    /* Mobile menu styles */
+    /* Mobile Navigation */
     .mobile-menu-toggle {
       display: none;
       cursor: pointer;
@@ -272,101 +418,244 @@
       border-radius: 50%;
       transition: all 0.3s ease;
       background-color: rgba(255, 255, 255, 0.1);
-      z-index: 1001;
+      position: relative;
+      z-index: 1002;
     }
-    
     .mobile-menu-toggle:hover {
       background-color: rgba(255, 255, 255, 0.2);
     }
-    
-    /* Mobile Menu Expanded */
-    .mobile-menu-expanded {
+
+    .mobile-menu-toggle i {
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-menu-toggle.active i {
+      transform: rotate(90deg);
+    }
+
+    /* New Mobile Menu Styles */
+    .mobile-menu {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100vh;
-      background-color: rgba(26, 26, 46, 0.98);
-      z-index: 1000;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      transform: translateY(-100%);
-      transition: transform 0.3s ease-in-out;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      z-index: 1001;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      overflow-y: auto;
+      padding-top: 80px;
     }
-    
-    .mobile-menu-expanded.active {
-      transform: translateY(0);
+
+    .mobile-menu.open {
+      opacity: 1;
+      visibility: visible;
     }
-    
-    .mobile-nav-links {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
+
+    .mobile-menu-content {
+      padding: 20px;
+      max-width: 400px;
+      margin: 0 auto;
     }
-    
+
+    .mobile-nav-item {
+      margin-bottom: 12px;
+      border-radius: 16px;
+      background: rgba(15, 52, 96, 0.3);
+      border: 1px solid rgba(233, 69, 96, 0.2);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-nav-item:hover {
+      background: rgba(15, 52, 96, 0.5);
+      border-color: rgba(233, 69, 96, 0.4);
+    }
+
     .mobile-nav-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
       color: var(--text-color);
       text-decoration: none;
-      padding: 12px 20px;
-      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
       transition: all 0.3s ease;
-      font-size: 1rem;
-      font-weight: 500;
-      white-space: nowrap;
+      position: relative;
     }
-    
+
     .mobile-nav-link:hover {
       color: var(--highlight-color);
-      background-color: rgba(255, 255, 255, 0.1);
+      background: rgba(233, 69, 96, 0.1);
     }
-    
+
+    .mobile-nav-link i {
+      margin-right: 12px;
+      font-size: 1.2rem;
+      color: var(--highlight-color);
+    }
+
+    .mobile-nav-link.has-dropdown::after {
+      content: '\f0d7';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      font-size: 0.9rem;
+      transition: transform 0.3s ease;
+      color: var(--highlight-color);
+    }
+
+    .mobile-nav-link.has-dropdown.open::after {
+      transform: rotate(180deg);
+    }
+
+    /* Mobile Dropdown */
+    .mobile-dropdown {
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      background: rgba(22, 33, 62, 0.8);
+      border-top: 1px solid rgba(233, 69, 96, 0.2);
+    }
+
+    .mobile-dropdown.open {
+      max-height: 400px;
+      padding: 12px 0;
+    }
+
+    .mobile-dropdown-item {
+      display: block;
+      padding: 16px 32px;
+      color: var(--text-color);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-transform: none;
+      letter-spacing: 0;
+      transition: all 0.2s ease;
+      border-left: 3px solid transparent;
+      position: relative;
+    }
+
+    .mobile-dropdown-item:hover {
+      background-color: rgba(233, 69, 96, 0.1);
+      color: var(--highlight-color);
+      border-left-color: var(--highlight-color);
+      padding-left: 36px;
+    }
+
+    .mobile-dropdown-item i {
+      margin-right: 12px;
+      width: 16px;
+      text-align: center;
+      color: var(--highlight-color);
+      opacity: 0.8;
+      font-size: 1rem;
+    }
+
+    /* Mobile CTA Section */
+    .mobile-cta-section {
+      margin-top: 32px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(233, 69, 96, 0.2);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
     .mobile-login-btn {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      margin-top: 10px;
-      width: 200px;
+      gap: 12px;
+      padding: 16px 24px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      background-color: rgba(255, 255, 255, 0.05);
+      color: var(--text-color);
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
     }
-    
-    .mobile-primary-cta {
+
+    .mobile-login-btn:hover {
+      border-color: var(--highlight-color);
+      background-color: rgba(233, 69, 96, 0.1);
+      color: var(--highlight-color);
+    }
+
+    .mobile-cta-btn {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 12px;
+      padding: 18px 24px;
+      background: linear-gradient(135deg, var(--highlight-color) 0%, #ff5a7c 100%);
+      color: white !important;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 8px 20px rgba(233, 69, 96, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .mobile-cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(233, 69, 96, 0.5);
+    }
+
+    .mobile-cta-btn i {
+      font-size: 1.2rem;
+    }
+
+    .mobile-menu-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background-color: rgba(233, 69, 96, 0.2);
+      border: 2px solid rgba(233, 69, 96, 0.4);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: var(--highlight-color);
+      z-index: 1002;
+    }
+
+    .mobile-menu-close:hover {
       background-color: var(--highlight-color);
       color: white;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(233, 69, 96, 0.3);
-      margin-top: 20px;
-      width: 200px;
+      transform: rotate(90deg);
     }
     
-    .mobile-primary-cta:hover {
-      background-color: #ff5a7c;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(233, 69, 96, 0.4);
-    }
-    
-    /* Integrated Breadcrumb */
+    /* Breadcrumb */
     .integrated-breadcrumb {
-      background-color: rgba(15, 52, 96, 0.7); /* Lighter blue color */
+      background-color: rgba(15, 52, 96, 0.7);
       padding: 8px 0;
       margin-top: 15px;
-      font-size: 0.85rem;
+      font-size: 0.7rem;
     }
     
     .breadcrumb-nav {
       display: flex;
       align-items: center;
-      font-size: 0.85rem;
+      font-size: 0.7rem;
       color: rgba(255, 255, 255, 0.7);
     }
     
@@ -423,11 +712,10 @@
       font-size: 1.3rem;
     }
     
-    
     /* Section styles */
     .section-title {
       text-align: center;
-      font-size: 2.5rem;
+      font-size: 2rem;
       margin-top: 3rem;
       margin-bottom: 70px;
       color: var(--highlight-color);
@@ -435,7 +723,7 @@
     
     /* Hero Section for Temperature Monitor */
     .temp-hero {
-      padding: 180px 0 120px; /* Adjusted top padding for the integrated breadcrumb */
+      padding: 250px 0 120px; 
       background-color: var(--primary-color);
       position: relative;
       overflow: hidden;
@@ -492,12 +780,12 @@
       z-index: 0;
     }
     .temp-hero h1 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       margin-bottom: 25px;
       line-height: 1.2;
     }
     .temp-hero-subtitle {
-      font-size: 1.2rem;
+      font-size: 0.9rem;
       margin-bottom: 35px;
       color: var(--text-color);
       opacity: 0.9;
@@ -545,10 +833,15 @@
       color: var(--text-color);
     }
     .feature-card p {
-      font-size: 1rem;
+      font-size: 0.9rem;
       line-height: 1.6;
       color: var(--text-color);
       opacity: 0.8;
+    }
+    
+    .features {
+      padding: 50px 0;
+      background-color: var(--secondary-color);
     }
     
     /* How It Works Section */
@@ -612,7 +905,7 @@
       color: var(--text-color);
     }
     .step-card p {
-      font-size: 1rem;
+      font-size: 0.9rem;
       line-height: 1.6;
       color: var(--text-color);
       opacity: 0.9;
@@ -636,7 +929,7 @@
       margin: 0 auto 60px;
     }
     .comparison-intro p {
-      font-size: 1.2rem;
+      font-size: 0.9rem;
       line-height: 1.6;
       color: var(--text-color);
       opacity: 0.9;
@@ -650,7 +943,7 @@
       overflow-x: auto;
       margin-bottom: 60px;
       border-radius: 12px;
-      -webkit-overflow-scrolling: touch; /* For smoother scrolling on iOS */
+      -webkit-overflow-scrolling: touch;
       scrollbar-width: thin;
       scrollbar-color: var(--highlight-color) var(--primary-color);
     }
@@ -670,7 +963,7 @@
     
     .comparison-table {
       width: 100%;
-      min-width: 600px; /* Ensures table doesn't get too narrow */
+      min-width: 600px;
       border-collapse: collapse;
     }
     
@@ -679,14 +972,14 @@
       text-align: left;
       border-bottom: 2px solid var(--accent-color);
       color: var(--highlight-color);
-      font-size: 1.2rem;
+      font-size: 1rem;
       white-space: nowrap;
     }
     
     .comparison-table td {
       padding: 20px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      font-size: 1rem;
+      font-size: 0.8rem;
     }
     
     .comparison-table tr:last-child td {
@@ -694,12 +987,12 @@
     }
     
     .checkmark {
-      color: #4CAF50;
+      color: var(--good-color);
       font-size: 1.5rem;
     }
     
     .xmark {
-      color: #FF5252;
+      color: var(--danger-color);
       font-size: 1.5rem;
     }
     
@@ -754,7 +1047,7 @@
       margin-bottom: 20px;
     }
     .testimonial-content {
-      font-size: 1.1rem;
+      font-size: 0.9rem;
       line-height: 1.8;
       margin-bottom: 24px;
       position: relative;
@@ -828,7 +1121,7 @@
       font-size: 1.4rem;
     }
     .faq-item p {
-      font-size: 1rem;
+      font-size: 0.9rem;
       line-height: 1.6;
       color: var(--text-color);
       opacity: 0.9;
@@ -872,12 +1165,12 @@
       margin-bottom: 30px;
     }
     .final-cta h2 {
-      font-size: 3rem;
+      font-size: 2rem;
       margin-bottom: 20px;
       color: var(--text-color);
     }
     .final-cta p {
-      font-size: 1.2rem;
+      font-size: 0.9rem;
       margin-bottom: 40px;
       color: var(--text-color);
       opacity: 0.9;
@@ -969,41 +1262,6 @@
       font-size: 0.9rem;
     }
     
-    /* Temperature Display Animation */
-    .temp-display {
-      font-family: monospace;
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: var(--highlight-color);
-      margin: 30px 0;
-      display: inline-block;
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 15px 30px;
-      border-radius: 12px;
-      position: relative;
-      overflow: hidden;
-    }
-    .temp-display::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-      animation: temp-shine 4s infinite;
-    }
-    @keyframes temp-shine {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(100%); }
-    }
-    .temp-notice {
-      color: var(--text-color);
-      opacity: 0.8;
-      font-size: 0.9rem;
-      margin-top: 10px;
-    }
-    
     /* Image with Overlay */
     .image-overlay {
       position: relative;
@@ -1067,10 +1325,234 @@
       transform-origin: bottom left;
     }
     
+    .temp-hero-image {
+      position: relative;
+    }
+
+    .temp-alert {
+      position: absolute;
+      bottom: -100%; 
+      left: 0;
+      width: 100%;
+      background-color: var(--danger-color); 
+      color: white;
+      padding: 10px 10px;
+      border-radius: 12px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      font-weight: bold;
+      visibility: hidden; 
+      opacity: 0; 
+      transition: bottom 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s 0.5s;
+      z-index: 10;
+    }
+
+    .temp-alert i {
+      font-size: 1.1rem;
+      margin-bottom: 2px;
+      animation: pulse 1.5s infinite;
+    }
+
+    .alert-text {
+      font-size: 0.85rem;
+    }
+
+    .alert-status {
+      font-size: 0.7rem;
+      opacity: 0.9;
+    }
+
+    /* Alert active state */
+    .device-temp-display.alert-active {
+      background-color: rgba(233, 69, 96, 0.2);
+      border-color: var(--danger-color);
+      box-shadow: 0 0 20px rgba(233, 69, 96, 0.7);
+    }
+
+    .device-temp-display.alert-active .temp-alert {
+      bottom: 0; 
+      visibility: visible; 
+      opacity: 1; 
+      transition: bottom 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    .device-temp-display {
+      position: absolute;
+      top: 10%;
+      left: 20%;
+      transform: translate(-50%, -50%);
+      background: rgba(15, 52, 96, 0.9);
+      border: 2px solid var(--good-color);
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(76, 175, 80, 0.5);
+      width: 200px;
+      font-size: 0.9rem;
+    }
+
+    .temp-value {
+      font-family: monospace;
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--good-color);
+      margin-bottom: 5px;
+      line-height: 1;
+    }
+
+    .temp-status {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: #ffffff;
+    }
+
+    .status-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--good-color);
+      animation: blink 1.5s infinite;
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0.4; }
+      100% { opacity: 1; }
+    }
+
+    /* Style for "View All Use Cases" link with arrow */
+    .footer-grid a[href="/uses/"] {
+      color: var(--highlight-color) !important;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+    }
+
+    .footer-grid a[href="/uses/"] i {
+      margin-left: 10px;
+      margin-right: 0 !important;
+      transition: transform 0.2s ease;
+    }
+
+    .footer-grid a[href="/uses/"]:hover i {
+      transform: translateX(3px);
+    }
+
+    /* Fix for footer links and icons alignment */
+    .footer-grid ul {
+      list-style: none;
+      padding: 0;
+      font-size: 0.9rem;
+    }
+
+    .footer-grid li {
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+    }
+
+    .footer-grid a {
+      color: var(--text-color);
+      text-decoration: none;
+      opacity: 0.7;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-grid a i {
+      margin-right: 10px;
+      color: var(--highlight-color);
+    }
+
+    .footer-grid a:hover {
+      opacity: 1;
+      color: var(--highlight-color);
+    }
+
+    /* Multi-threshold display for demo */
+    .threshold-display {
+      position: absolute;
+      top: -20px;
+      left: 75%;
+      transform: translateX(-50%);
+      background-color: var(--accent-color);
+      border-radius: 12px;
+      padding: 12px;
+      width: 280px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      z-index: -1;
+    }
+
+    .threshold-title {
+      font-size: 1rem;
+      text-align: center;
+      margin-bottom: 10px;
+      color: var(--text-color);
+      font-weight: bold;
+    }
+
+    .threshold-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .threshold-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 12px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      font-size: 0.85rem;
+    }
+
+    .threshold-value {
+      font-weight: bold;
+    }
+
+    .threshold-high {
+      color: #FF5252;
+    }
+
+    .threshold-low {
+      color: #2196F3;
+    }
+
+    .threshold-warning {
+      color: #FFC107;
+    }
+
+    .threshold-ideal {
+      color: #4CAF50;
+    }
+
+    .temp-notice {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--text-color);
+      opacity: 0.8;
+      margin-bottom: 20px;
+    }
+    
     /* Responsive styles */
     @media (max-width: 1024px) {
       .temp-hero h1 {
-        font-size: 3.5rem;
+        font-size: 1.6rem;
       }
       .features-grid, 
       .steps-grid {
@@ -1080,7 +1562,6 @@
         grid-template-columns: repeat(2, 1fr);
       }
       
-      /* Reduced table text size for medium screens */
       .comparison-table th {
         font-size: 1.1rem;
         padding: 18px 15px;
@@ -1091,19 +1572,39 @@
       }
     }
     
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
       .nav-links {
         display: none;
       }
       .mobile-menu-toggle {
         display: flex;
       }
+      .top-bar {
+        padding: 6px 0;
+      }
+      .top-bar-content {
+        padding: 0 15px;
+      }
+      .top-bar-left {
+        gap: 16px;
+      }
+      .top-bar-link {
+        font-size: 0.7rem;
+        padding: 3px 6px;
+      }
+      .integrated-breadcrumb {
+        padding: 6px 0;
+        font-size: 0.8rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
       .integrated-breadcrumb {
         padding: 6px 0;
         font-size: 0.8rem;
       }
       .temp-hero {
-        padding-top: 150px;
+        padding-top: 200px;
       }
       .temp-hero-container {
         flex-direction: column;
@@ -1113,10 +1614,10 @@
         justify-content: center;
       }
       .temp-hero h1 {
-        font-size: 3rem;
+        font-size: 1.4rem;
       }
       .temp-hero-subtitle {
-        font-size: 1.2rem;
+        font-size: 0.9rem;
       }
       .features-grid, 
       .steps-grid, 
@@ -1126,7 +1627,6 @@
         grid-template-columns: 1fr;
       }
       
-      /* Further reduced table text size for small screens */
       .comparison-table th {
         font-size: 0.9rem;
         padding: 15px 10px;
@@ -1144,17 +1644,16 @@
       }
       
       .section-title {
-        font-size: 2rem;
+        font-size: 1.5rem;
         margin-bottom: 40px;
       }
     }
 
     @media (max-width: 480px) {
       .temp-hero h1 {
-        font-size: 2.5rem;
+        font-size: 1.3rem;
       }
       
-      /* Even smaller table text for very small screens */
       .comparison-table th {
         font-size: 0.8rem;
         padding: 10px 8px;
@@ -1167,235 +1666,39 @@
         font-size: 1rem;
       }
     }
-    
-    .temp-hero-image {
-      position: relative;
+
+    /* Ensure footer responsive behavior is consistent */
+    @media (max-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
+      }
+      
+      .footer-grid a[href="/uses/"] {
+        justify-content: center;
+      }
     }
-
-    .temp-alert {
-      position: absolute;
-      bottom: -100%; /* Use percentage to ensure it's completely off-screen */
-      left: 0;
-      width: 100%;
-      background-color: #e94560; /* Same as highlight-color */
-      color: white;
-      padding: 12px 10px;
-      border-radius: 12px 12px 12px 12px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 5px;
-      font-weight: bold;
-      visibility: hidden; /* Start hidden */
-      opacity: 0; /* Start transparent */
-      transition: bottom 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s 0.5s;
-      z-index: 10;
-    }
-
-    .temp-alert i {
-      font-size: 1.2rem;
-      margin-bottom: 3px;
-      animation: pulse 1.5s infinite;
-    }
-
-    .alert-text {
-      font-size: 0.9rem;
-    }
-
-    .alert-status {
-      font-size: 0.75rem;
-      opacity: 0.9;
-    }
-
-    /* Alert active state */
-    .device-temp-display.alert-active {
-      background-color: rgba(233, 69, 96, 0.9); /* Red background based on highlight-color */
-      border-color: #ff0033;
-      box-shadow: 0 0 20px rgba(233, 69, 96, 0.7);
-    }
-
-    .device-temp-display.alert-active .temp-alert {
-      bottom: 0; /* Slide up to visible position */
-      visibility: visible; /* Make visible */
-      opacity: 1; /* Make fully opaque */
-      transition: bottom 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
-    }
-
-    .device-temp-display {
-      position: absolute;
-      top: 10%;
-      left: 20%;
-      transform: translate(-50%, -50%);
-      background: rgba(15, 52, 96, 0.9);
-      border: 2px solid var(--highlight-color);
-      border-radius: 12px;
-      padding: 15px;
-      text-align: center;
-      box-shadow: 0 0 15px rgba(233, 69, 96, 0.5);
-      width: 180px;
-    }
-
-    .temp-value {
-      font-family: monospace;
-      font-size: 2.2rem;
-      font-weight: bold;
-      color: var(--highlight-color);
-      margin-bottom: 5px;
-    }
-
-    .temp-status {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      font-size: 0.8rem;
-      color: #ffffff;
-    }
-
-    .status-indicator {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background-color: #4CAF50;
-      animation: blink 1.5s infinite;
-    }
-
-    @keyframes blink {
-      0% { opacity: 1; }
-      50% { opacity: 0.4; }
-      100% { opacity: 1; }
-    }
-
-    /* Style for "View All Use Cases" link with arrow */
-.footer-grid a[href="/uses/"] {
-  color: var(--highlight-color) !important;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  font-weight: 500;
-}
-
-.footer-grid a[href="/uses/"] i {
-  margin-left: 10px;
-  margin-right: 0 !important;
-  transition: transform 0.2s ease;
-}
-
-.footer-grid a[href="/uses/"]:hover i {
-  transform: translateX(3px);
-}
-
-/* Fix for footer links and icons alignment */
-.footer-grid ul {
-  list-style: none;
-  padding: 0;
-  font-size: 0.9rem;
-}
-
-.footer-grid li {
-  margin-bottom: 10px;
-  font-size: 0.9rem;
-}
-
-.footer-grid a {
-  color: var(--text-color);
-  text-decoration: none;
-  opacity: 0.7;
-  transition: all 0.3s ease;
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-}
-
-.footer-grid a i {
-  margin-right: 10px;
-  color: var(--highlight-color);
-}
-
-.footer-grid a:hover {
-  opacity: 1;
-  color: var(--highlight-color);
-}
-
-/* Multi-threshold display for demo */
-.threshold-display {
-  position: absolute;
-  top: -30px;
-  left: 70%;
-  transform: translateX(-50%);
-  background-color: var(--accent-color);
-  border-radius: 12px;
-  padding: 12px;
-  width: 280px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  z-index: -1;
-}
-
-.threshold-title {
-  font-size: 1rem;
-  text-align: center;
-  margin-bottom: 10px;
-  color: var(--highlight-color);
-  font-weight: bold;
-}
-
-.threshold-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.threshold-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 12px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  font-size: 0.9rem;
-}
-
-.threshold-value {
-  font-weight: bold;
-}
-
-.threshold-high {
-  color: #FF5252;
-}
-
-.threshold-low {
-  color: #2196F3;
-}
-
-.threshold-warning {
-  color: #FFC107;
-}
-
-.threshold-ideal {
-  color: #4CAF50;
-}
-
-/* Ensure footer responsive behavior is consistent */
-@media (max-width: 768px) {
-  .footer-grid {
-    grid-template-columns: 1fr !important;
-    gap: 32px !important;
-  }
-  
-  .footer-grid a[href="/uses/"] {
-    justify-content: center;
-  }
-}
   </style>
 </head>
 <body>
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="top-bar-content">
+      <div class="top-bar-left">
+        <a href="../about.html" class="top-bar-link">
+          About
+        </a>
+        <a href="mailto:support@cabinpulse.com" class="top-bar-link">
+          Contact Us
+        </a>
+      </div>
+      <div class="proudly-canadian">
+        <i class="fa-brands fa-canadian-maple-leaf"></i>
+        Proudly Canadian
+      </div>
+    </div>
+  </div>
+
   <!-- HEADER SECTION -->
   <header>
     <nav class="container">
@@ -1404,37 +1707,68 @@
         <span class="logo-text">CabinPulse</span>
       </div>
       <div class="nav-links">
-        <a href="/index.html#features" class="nav-link">Features</a>
-        <a href="/index.html#pricing" class="nav-link">Pricing</a>
-        <a href="/index.html#faq" class="nav-link">FAQ</a>
-        <a href="https://blog.cabinpulse.com" class="nav-link">Blog</a>
+        <div class="nav-item">
+          <a href="#" class="nav-link has-dropdown">Product</a>
+          <div class="dropdown">
+            <a href="../index.html#features" class="dropdown-item">
+              <i class="fas fa-check-circle"></i>Features
+            </a>
+            <a href="../index.html#pricing" class="dropdown-item">
+              <i class="fas fa-tag"></i>Pricing
+            </a>
+            <a href="../index.html#coverage" class="dropdown-item">
+              <i class="fas fa-tower-cell"></i>Coverage
+            </a>
+          </div>
+        </div>
+    
+        <div class="nav-item">
+          <a href="#" class="nav-link has-dropdown">Use Cases</a>
+          <div class="dropdown">
+            <a href="https://cabinpulse.com/uses/remote-cabin-cottage-monitoring-system.html" class="dropdown-item">
+              <i class="fas fa-home"></i>Cabin Monitoring
+            </a>
+            <a href="https://cabinpulse.com/uses/rv-temperature-monitor-pets.html" class="dropdown-item">
+              <i class="fas fa-dog"></i>RV Monitor for Pets
+            </a>
+            <a href="https://cabinpulse.com/uses/vacation-home-monitoring.html" class="dropdown-item">
+              <i class="fas fa-house-chimney-window"></i>Vacation Home Monitoring
+            </a>
+            <a href="https://cabinpulse.com/uses/server-room-monitor.html" class="dropdown-item">
+              <i class="fas fa-server"></i>Server Room Monitoring
+            </a>
+          </div>
+        </div>
+    
+        <div class="nav-item">
+          <a href="#" class="nav-link has-dropdown">Resources</a>
+          <div class="dropdown">
+            <a href="../index.html#faq" class="dropdown-item">
+              <i class="fas fa-question-circle"></i>FAQ
+            </a>
+            <a href="https://blog.cabinpulse.com" class="dropdown-item">
+              <i class="fas fa-blog"></i>Blog
+            </a>
+            <a href="../manual.html" class="dropdown-item">
+              <i class="fas fa-book"></i>User Manual
+            </a>
+            <a href="mailto:support@cabinpulse.com" class="dropdown-item">
+              <i class="fas fa-life-ring"></i>Support
+            </a>
+          </div>
+        </div>
+    
         <a href="https://dashboard.cabinpulse.com" class="nav-link login-btn">
           Dashboard
         </a>
         <a href="https://cabinpulse.com/purchase.html?plan=1" class="nav-link primary-cta">
-          Get CabinPulse →
+          Get Started
         </a>
       </div>
-      <div class="mobile-menu-toggle" id="mobile-menu-toggle">
-        <i class="fas fa-bars" id="menu-icon"></i>
+      <div class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
       </div>
     </nav>
-    
-    <!-- Mobile Menu -->
-    <div class="mobile-menu-expanded" id="mobile-menu">
-      <div class="mobile-nav-links">
-        <a href="/index.html#features" class="mobile-nav-link">Features</a>
-        <a href="/index.html#pricing" class="mobile-nav-link">Pricing</a>
-        <a href="/index.html#faq" class="mobile-nav-link">FAQ</a>
-        <a href="https://blog.cabinpulse.com" class="mobile-nav-link">Blog</a>
-        <a href="https://dashboard.cabinpulse.com" class="mobile-nav-link mobile-login-btn">
-          Dashboard
-        </a>
-        <a href="https://cabinpulse.com/purchase.html?plan=1" class="mobile-nav-link mobile-primary-cta">
-          Get CabinPulse →
-        </a>
-      </div>
-    </div>
     
     <!-- Integrated Breadcrumb -->
     <div class="integrated-breadcrumb">
@@ -1450,12 +1784,102 @@
     </div>
   </header>
   
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <div class="mobile-menu-close">
+      <i class="fas fa-times"></i>
+    </div>
+    
+    <div class="mobile-menu-content">
+      <!-- Product Section -->
+      <div class="mobile-nav-item">
+        <a href="#" class="mobile-nav-link has-dropdown">
+          <div>
+            <i class="fas fa-cube"></i>
+            Product
+          </div>
+        </a>
+        <div class="mobile-dropdown">
+          <a href="../index.html#features" class="mobile-dropdown-item">
+            <i class="fas fa-check-circle"></i>Features
+          </a>
+          <a href="../index.html#pricing" class="mobile-dropdown-item">
+            <i class="fas fa-tag"></i>Pricing
+          </a>
+          <a href="../index.html#coverage" class="mobile-dropdown-item">
+            <i class="fas fa-tower-cell"></i>Coverage
+          </a>
+        </div>
+      </div>
+
+      <!-- Use Cases Section -->
+      <div class="mobile-nav-item">
+        <a href="#" class="mobile-nav-link has-dropdown">
+          <div>
+            <i class="fas fa-lightbulb"></i>
+            Use Cases
+          </div>
+        </a>
+        <div class="mobile-dropdown">
+          <a href="https://cabinpulse.com/uses/remote-cabin-cottage-monitoring-system.html" class="mobile-dropdown-item">
+            <i class="fas fa-home"></i>Cabin Monitoring
+          </a>
+          <a href="https://cabinpulse.com/uses/rv-temperature-monitor-pets.html" class="mobile-dropdown-item">
+            <i class="fas fa-dog"></i>RV Monitor for Pets
+          </a>
+          <a href="https://cabinpulse.com/uses/vacation-home-monitoring.html" class="mobile-dropdown-item">
+            <i class="fas fa-house-chimney-window"></i>Vacation Home Monitoring
+          </a>
+          <a href="https://cabinpulse.com/uses/server-room-monitor.html" class="mobile-dropdown-item">
+            <i class="fas fa-server"></i>Server Room Monitoring
+          </a>
+        </div>
+      </div>
+
+      <!-- Resources Section -->
+      <div class="mobile-nav-item">
+        <a href="#" class="mobile-nav-link has-dropdown">
+          <div>
+            <i class="fas fa-book"></i>
+            Resources
+          </div>
+        </a>
+        <div class="mobile-dropdown">
+          <a href="../index.html#faq" class="mobile-dropdown-item">
+            <i class="fas fa-question-circle"></i>FAQ
+          </a>
+          <a href="https://blog.cabinpulse.com" class="mobile-dropdown-item">
+            <i class="fas fa-blog"></i>Blog
+          </a>
+          <a href="../manual.html" class="mobile-dropdown-item">
+            <i class="fas fa-book"></i>User Manual
+          </a>
+          <a href="mailto:support@cabinpulse.com" class="mobile-dropdown-item">
+            <i class="fas fa-life-ring"></i>Support
+          </a>
+        </div>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="mobile-cta-section">
+        <a href="https://dashboard.cabinpulse.com" class="mobile-login-btn">
+          <i class="fas fa-tachometer-alt"></i>
+          Dashboard
+        </a>
+        <a href="https://cabinpulse.com/purchase.html?plan=1" class="mobile-cta-btn">
+          <i class="fas fa-shopping-cart"></i>
+          Get CabinPulse
+        </a>
+      </div>
+    </div>
+  </div>
+
   <!-- Temperature Monitor Hero Section -->
   <section class="temp-hero">
     <div class="container temp-hero-container">
       <div class="temp-hero-content">
-        <h1>CabinPulse Cellular Temperature Monitor</h1>
-        <p class="temp-hero-subtitle">Monitor temperatures with precision and set unlimited custom alerts for both high and low thresholds. Works during power outages with no WiFi required.</p>
+        <h1>Cellular Temperature Monitoring</h1>
+        <p class="temp-hero-subtitle">CabinPulse monitors temperatures with precision and sets unlimited custom alerts for both high and low thresholds. Works during power outages with no WiFi required.</p>
         
         <div class="badge-container">
           <span class="badge"><i class="fas fa-temperature-high icon-text" style="margin-right:0.2rem;"></i>±0.2°C Accuracy</span>
@@ -1465,18 +1889,17 @@
         <p class="temp-notice">CabinPulse detects temperature variations with exceptional precision and immediately notifies you when temperatures exceed your customized thresholds.</p>
         
         <a href="https://cabinpulse.com/purchase.html?plan=3" class="cta-button">
-          Get CabinPulse Now →
+          Get CabinPulse →
         </a>
       </div>
       <div class="temp-hero-image">
         <img src="../front.png" alt="CabinPulse Temperature Monitor Device - Monitor temperature remotely with multiple alerts and without WiFi">
         <div class="device-temp-display">
-          <div class="temp-value">27.4°C</div>
+          <div class="temp-value" id="tempDisplay">27.4°C</div>
           <div class="temp-status">
-            <span class="status-indicator"></span>
-            <span class="status-text">Monitoring</span>
+            <span class="status-indicator" id="statusIndicator"></span>
+            <span class="status-text" id="statusText">Monitoring</span>
           </div>
-          <!-- Add the new alert element -->
           <div class="temp-alert">
             <i class="fas fa-exclamation-triangle"></i>
             <span class="alert-text">Above Threshold</span>
@@ -1484,9 +1907,8 @@
           </div>
         </div>
         
-        <!-- Add threshold display to showcase multiple alert thresholds -->
         <div class="threshold-display">
-          <div class="threshold-title">Alert Thresholds</div>
+          <div class="threshold-title">Temperature Alert Levels</div>
           <div class="threshold-list">
             <div class="threshold-item">
               <span>Alert #1</span>
@@ -1513,7 +1935,7 @@
   <!-- Features Section -->
   <section class="features">
     <div class="container" style="margin-bottom: 5rem;">
-      <h2 class="section-title">Why CabinPulse is the Ultimate Temperature Monitor</h2>
+      <h2 class="section-title">CabinPulse is the Best Choice for Remote Temperature Monitoring</h2>
       
       <div class="features-grid">
         <div class="feature-card">
@@ -1523,7 +1945,7 @@
         </div>
         
         <div class="feature-card">
-          <i class="feature-icon fas fa-sliders"></i>
+          <i class="feature-icon fas fa-sliders-h"></i>
           <h3>Unlimited Custom Alerts</h3>
           <p>Set as many temperature thresholds as you need for both high and low conditions. Create multiple alert zones with different notification settings for complete customization.</p>
         </div>
@@ -1559,36 +1981,36 @@
   <!-- How It Works Section -->
   <section class="how-it-works">
     <div class="container">
-      <h2 class="section-title">How CabinPulse's Temperature Monitoring Works</h2>
+      <h2 class="section-title">Monitor Your Temperature in 3 Simple Steps</h2>
       
       <div class="steps-grid">
         <div class="step-card">
           <div class="step-number">1</div>
           <i class="step-icon fas fa-plug"></i>
-          <h3>Simple Setup</h3>
-          <p>Plug CabinPulse into any power outlet in your property. No complex wiring, WiFi configuration, or professional installation required. Works right out of the box.</p>
+          <h3>Plug & Play Setup</h3>
+          <p>Simply plug CabinPulse into a power outlet. It connects automatically to the cellular network. No WiFi configuration, no technical expertise needed. Starts monitoring immediately.</p>
         </div>
         
         <div class="step-card">
           <div class="step-number">2</div>
-          <i class="step-icon fas fa-sliders"></i>
-          <h3>Configure Your Alerts</h3>
-          <p>Use the CabinPulse dashboard to set unlimited temperature thresholds for both high and low temperatures, tailored to your specific monitoring needs.</p>
+          <i class="step-icon fas fa-cogs"></i>
+          <h3>Set Your Temperature Thresholds</h3>
+          <p>Log into your CabinPulse dashboard to define custom alert thresholds for both high and low temperatures based on your specific monitoring needs.</p>
         </div>
         
         <div class="step-card">
           <div class="step-number">3</div>
-          <i class="step-icon fas fa-bell"></i>
-          <h3>Receive Instant Notifications</h3>
-          <p>Get <b>immediate</b> alerts via text message and email whenever temperatures cross any of your custom thresholds, allowing for quick action.</p>
+          <i class="step-icon fas fa-mobile-alt"></i>
+          <h3>Receive Instant Temperature Alerts</h3>
+          <p>Get immediate notifications via text message and email if temperatures cross any of your set limits, so you can act quickly to protect your property.</p>
         </div>
       </div>
       
       <div class="image-overlay" style="margin-top: 80px;">
         <img src="../dashboard.png" alt="CabinPulse Dashboard showing temperature monitoring and multiple alert thresholds">
         <div class="overlay-content">
-          <h3>Monitor Multiple Thresholds From Anywhere</h3>
-          <p>Access your property's temperature data from your phone, tablet, or computer. The intuitive dashboard lets you view current conditions, check historical data, and adjust all your alert thresholds remotely with ease.</p>
+          <h3>Track Temperature From Anywhere, Anytime</h3>
+          <p>Access real-time temperature data and historical trends via your phone, tablet, or computer. Adjust alert settings remotely with ease.</p>
         </div>
       </div>
     </div>
@@ -1597,20 +2019,19 @@
   <!-- Comparison Section -->
   <section class="comparison">
     <div class="container comparison-container">
-      <h2 class="section-title">How CabinPulse Compares to Standard Temperature Monitors</h2>
+      <h2 class="section-title">CabinPulse vs. Standard Temperature Monitors</h2>
       
       <div class="comparison-intro">
-        <p>Traditional temperature monitors offer basic functionality, but CabinPulse provides comprehensive temperature monitoring with advanced features that work reliably in all conditions.</p>
+        <p>While many temperature monitors exist, CabinPulse offers a unique combination of precision sensing, reliable cellular connectivity, and robust alerting for truly remote peace of mind.</p>
       </div>
       
-      <!-- Added table wrapper for horizontal scrolling -->
       <div class="table-wrapper">
         <table class="comparison-table">
           <thead>
             <tr>
               <th>Features</th>
               <th>Basic Temperature Monitors</th>
-              <th class="cabinpulse-col" style="border-radius: 1rem 1rem 0rem 0rem;">CabinPulse</th>
+              <th class="cabinpulse-col" style="border-radius: 1rem 1rem 0rem 0rem;">CabinPulse Temperature</th>
             </tr>
           </thead>
           <tbody>
@@ -1637,7 +2058,7 @@
             <tr>
               <td class="feature-name">Connectivity</td>
               <td><i class="xmark fas fa-xmark"></i> WiFi only</td>
-              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Cellular (no WiFi needed)</td>
+              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Cellular (No WiFi Needed)</td>
             </tr>
             <tr>
               <td class="feature-name">Historical Data Tracking</td>
@@ -1655,14 +2076,14 @@
               <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Text & email alerts</td>
             </tr>
             <tr>
-              <td class="feature-name">Geographic Coverage</td>
-              <td><i class="xmark fas fa-xmark"></i> Limited by WiFi</td>
-              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> USA, Canada, Mexico</td>
+              <td class="feature-name">Remote Location Suitability</td>
+              <td><i class="xmark fas fa-xmark"></i> Poor, needs WiFi</td>
+              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Excellent for cabins, RVs etc.</td>
             </tr>
-            <tr>
+             <tr>
               <td class="feature-name">Installation</td>
               <td><i class="checkmark fas fa-check"></i> Usually simple</td>
-              <td class="cabinpulse-col" style="border-radius: 0rem 0rem 1rem 1rem;"><i class="checkmark fas fa-check"></i> Plug & play, no setup</td>
+              <td class="cabinpulse-col" style="border-radius: 0rem 0rem 1rem 1rem;"><i class="checkmark fas fa-check"></i> Plug & play, truly simple</td>
             </tr>
           </tbody>
         </table>
@@ -1677,24 +2098,18 @@
   <!-- Testimonials Section -->
   <section class="testimonials">
     <div class="container">
-      <h2 class="section-title">What People Say About Our Temperature Monitor</h2>
+      <h2 class="section-title">Hear From CabinPulse Temperature Users</h2>
       
       <div class="testimonials-grid">
         <div class="testimonial-card">
           <div class="star-rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
           <div class="testimonial-content">
             We use CabinPulse to monitor temperatures in our greenhouse. Being able to set multiple alert thresholds has been a game-changer. I get notifications both when it's too hot and too cold. The accuracy is great and it works where we don't have WiFi.
           </div>
           <div class="testimonial-author">
-            <div class="author-avatar">
-              <i class="fas fa-user"></i>
-            </div>
+            <div class="author-avatar"><i class="fas fa-seedling"></i></div>
             <div class="author-info">
               <h4>Greenhouse Owner</h4>
               <p>Manitoba, Canada</p>
@@ -1704,21 +2119,15 @@
         
         <div class="testimonial-card">
           <div class="star-rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
           <div class="testimonial-content">
             Our wine cellar requires precise temperature monitoring, and CabinPulse has been perfect. The cellular connection means we don't have to worry about WiFi or power dropping out and the data helps us identify any issues before they affect our collection.
           </div>
           <div class="testimonial-author">
-            <div class="author-avatar">
-              <i class="fas fa-user"></i>
-            </div>
+            <div class="author-avatar"><i class="fas fas fa-wine-bottle"></i></div>
             <div class="author-info">
-              <h4>CabinPulse Customer</h4>
+              <h4>Wine Collector</h4>
               <p>Alberta, Canada</p>
             </div>
           </div>
@@ -1726,7 +2135,7 @@
       </div>
       <div>
         <div style="text-align: center;">
-          <a class="cta-button" href="https://www.google.com/search?sca_esv=7899e45081c54108&rlz=1C5GCCM_en&si=APYL9bs7Hg2KMLB-4tSoTdxuOx8BdRvHbByC_AuVpNyh0x2KzeWXWgXwfKH3IlceyMiFu88HEuZVWF8eHsdJTTf-cqBwzE7tIQOeY0nPJ7KjYfeFFZQlRGNoA0lez-VUqH8M6t1h-lLc&q=CabinPulse+Reviews&sa=X&ved=2ahUKEwjR-LikzLONAxUeEVkFHb7RFc8Q0bkNegQIMRAE&biw=1736&bih=849&dpr=2">More Reviews →</a>
+          <a class="cta-button" href="https://www.google.com/search?q=CabinPulse+Reviews" target="_blank" rel="noopener">More Reviews →</a>
         </div>
     </div>
     </div>
@@ -1735,7 +2144,7 @@
   <!-- FAQ Section -->
   <section class="faq">
     <div class="container">
-      <h2 class="section-title">Frequently Asked Questions About CabinPulse's Temperature Monitor</h2>
+      <h2 class="section-title">Cellular Temperature Monitoring: Your Questions Answered</h2>
       
       <div class="faq-grid">
         <div class="faq-item">
@@ -1745,7 +2154,7 @@
         
         <div class="faq-item">
           <h3><i class="fas fa-wifi"></i> Does CabinPulse need WiFi to monitor temperature?</h3>
-          <p>No, WiFi is NOT required. Unlike most temperature monitors that depend on an internet connection, CabinPulse uses cellular technology to transmit temperature data and alerts. This makes it ideal for remote locations, vacation properties, or any setting where internet connectivity is unreliable.</p>
+          <p>No, WiFi is NOT required. Unlike most temperature monitors that depend on an internet connection, CabinPulse uses <span class="temperature-highlight">cellular technology</span> to transmit temperature data and alerts. This makes it ideal for remote locations, vacation properties, or any setting where internet connectivity is unreliable.</p>
         </div>
         
         <div class="faq-item">
@@ -1755,7 +2164,7 @@
         
         <div class="faq-item">
           <h3><i class="fas fa-thermometer-full"></i> How accurate is the temperature monitoring?</h3>
-          <p>CabinPulse provides exceptional accuracy of ±0.2°C (±0.36°F), which is significantly more precise than standard temperature monitors. This high accuracy is essential for applications requiring precise temperature control like wine cellars, sensitive equipment rooms, or greenhouse monitoring.</p>
+          <p>CabinPulse provides exceptional accuracy of <span class="temperature-highlight">±0.2°C (±0.36°F)</span>, which is significantly more precise than standard temperature monitors. This high accuracy is essential for applications requiring precise temperature control like wine cellars, sensitive equipment rooms, or greenhouse monitoring.</p>
         </div>
         
         <div class="faq-item">
@@ -1792,7 +2201,7 @@
       <div class="final-cta-icon">
         <i class="fas fa-temperature-high"></i>
       </div>
-      <h2>Precision Temperature Monitoring Made Simple</h2>
+      <h2>Cellular Temperature Monitoring Made Simple</h2>
       <p>CabinPulse provides reliable temperature monitoring with unlimited custom thresholds, unmatched accuracy, and cellular connectivity that works even during power outages.</p>
       
       <div class="cta-features">
@@ -1810,7 +2219,7 @@
         </div>
       </div>
       
-      <a href="https://cabinpulse.com/purchase.html?plan=3" class="cta-button">Get CabinPulse Now →</a>
+      <a href="https://cabinpulse.com/purchase.html?plan=3" class="cta-button">Get CabinPulse →</a>
     </div>
   </section>
   
@@ -1871,7 +2280,7 @@
             <li style="margin-bottom: 10px;"><a href="#faq" style="color: var(--text-color); text-decoration: none;">FAQ</a></li>
             <li style="margin-bottom: 10px;"><a href="/legal.html" style="color: var(--text-color); text-decoration: none;">Legal</a></li>
           </ul>
-  
+
           <!-- Press Links -->
           <h4 style="color: var(--highlight-color); margin-top: 25px; margin-bottom: 20px;">Press</h4>
           <ul style="list-style: none; padding: 0;">
@@ -1909,137 +2318,186 @@
           </ul>
         </div>
       </div>
-      <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 20px; text-align: center;">
+      <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 20px; text-align: center; font-size: 0.8rem;">
         <p>&copy; 2025 Toccata, Inc. All rights reserved.</p>
       </div>
     </div>
   </footer>
   
   <script>
- document.addEventListener('DOMContentLoaded', function() {
-  // Temperature display animation
-  const tempDisplay = document.querySelector('.temp-value');
-  const deviceTempDisplay = document.querySelector('.device-temp-display');
-  const tempAlert = document.querySelector('.temp-alert');
-  let temp = 27.4; // Starting temperature for this version
-  let alertTriggered = false;
-  let thresholdWarningShown = false;
-  
-  // Create the threshold warning element
-  const thresholdWarning = document.createElement('div');
-  thresholdWarning.className = 'threshold-warning';
-  thresholdWarning.innerHTML = 'Above Threshold';
-  thresholdWarning.style.position = 'absolute';
-  thresholdWarning.style.top = '-30px';
-  thresholdWarning.style.left = '0';
-  thresholdWarning.style.width = '100%';
-  thresholdWarning.style.backgroundColor = '#e94560';
-  thresholdWarning.style.color = 'white';
-  thresholdWarning.style.padding = '5px';
-  thresholdWarning.style.textAlign = 'center';
-  thresholdWarning.style.borderRadius = '8px 8px 0 0';
-  thresholdWarning.style.fontWeight = 'bold';
-  thresholdWarning.style.fontSize = '0.8rem';
-  thresholdWarning.style.opacity = '0';
-  thresholdWarning.style.transition = 'opacity 0.5s ease-in-out';
-  deviceTempDisplay.prepend(thresholdWarning);
-  
-  // Function to gradually increase temperature
-  const increaseTemp = () => {
-    temp += 0.1;
-    tempDisplay.textContent = `${temp.toFixed(1)}°C`;
-    
-    if (temp >= 28.0 && !alertTriggered) {
-      // Trigger alert when reaching 28.0
-      alertTriggered = true;
-      deviceTempDisplay.classList.add('alert-active');
-      document.querySelector('.status-text').textContent = 'Alert Sent';
-      document.querySelector('.status-indicator').style.backgroundColor = '#e94560';
-      
-      // After 5 seconds, hide the alert and show the threshold warning
-      setTimeout(() => {
-        // Hide the alert by removing the class
-        deviceTempDisplay.classList.remove('alert-active');
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+      var header = document.querySelector('header');
+      header.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Mobile menu functionality
+    document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileMenuClose = document.querySelector('.mobile-menu-close');
+    const dropdownLinks = document.querySelectorAll('.mobile-nav-link.has-dropdown');
+
+    // Toggle mobile menu
+    function toggleMobileMenu() {
+      mobileMenu.classList.toggle('open');
+      mobileMenuToggle.classList.toggle('active');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    }
+
+    // Open mobile menu
+    if (mobileMenuToggle) {
+      mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+    }
+
+    // Close mobile menu
+    if (mobileMenuClose) {
+      mobileMenuClose.addEventListener('click', toggleMobileMenu);
+    }
+
+    // Close mobile menu when clicking outside
+    if (mobileMenu) {
+      mobileMenu.addEventListener('click', function(e) {
+        if (e.target === mobileMenu) {
+          toggleMobileMenu();
+        }
+      });
+    }
+
+    // Handle dropdown toggles
+    dropdownLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
         
-        // Wait for animation to complete, then show the threshold warning
-        setTimeout(() => {
-          if (!thresholdWarningShown) {
-            thresholdWarningShown = true;
-            deviceTempDisplay.style.border = '2px solid #ff0033';
-            deviceTempDisplay.style.boxShadow = '0 0 15px rgba(255, 0, 51, 0.5)';
-            thresholdWarning.style.opacity = '1';
-            
-            // After showing the warning, continue with higher temperature
-            temp = 28.3;
-            tempDisplay.textContent = `${temp.toFixed(1)}°C`;
+        const parentItem = this.closest('.mobile-nav-item');
+        const dropdown = parentItem.querySelector('.mobile-dropdown');
+        const isOpen = dropdown.classList.contains('open');
+
+        // Close all other dropdowns
+        document.querySelectorAll('.mobile-dropdown.open').forEach(openDropdown => {
+          if (openDropdown !== dropdown) {
+            openDropdown.classList.remove('open');
+            openDropdown.previousElementSibling.classList.remove('open');
           }
-        }, 500); // Short delay to ensure animation completes
-      }, 5000);
-      
-      return;
-    }
-    
-    if (!alertTriggered) {
-      // Continue countdown if we haven't reached the threshold yet
-      setTimeout(increaseTemp, 800);
-    }
-  };
-  
-  // Start the countdown after a short delay
-  setTimeout(increaseTemp, 1000);
-  
-  // Handle the temperature fluctuation after alert
-  setInterval(() => {
-    if (alertTriggered && thresholdWarningShown) {
-      // Small fluctuations after alert
-      temp += (Math.random() > 0.5 ? 0.1 : -0.1) * 0.1;
-      tempDisplay.textContent = `${temp.toFixed(1)}°C`;
-    }
-  }, 3000);
-  
-  // Mobile Menu Toggle Functionality
-  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const menuIcon = document.getElementById('menu-icon');
-  let menuOpen = false;
-  
-  mobileMenuToggle.addEventListener('click', function() {
-    if (menuOpen) {
-      mobileMenu.classList.remove('active');
-      menuIcon.classList.remove('fa-times');
-      menuIcon.classList.add('fa-bars');
-    } else {
-      mobileMenu.classList.add('active');
-      menuIcon.classList.remove('fa-bars');
-      menuIcon.classList.add('fa-times');
-    }
-    menuOpen = !menuOpen;
-  });
-  
-  // Close mobile menu when clicking on a link
-  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
-  mobileLinks.forEach(link => {
-    link.addEventListener('click', function() {
-      mobileMenu.classList.remove('active');
-      menuIcon.classList.remove('fa-times');
-      menuIcon.classList.add('fa-bars');
-      menuOpen = false;
+        });
+
+        // Toggle current dropdown
+        dropdown.classList.toggle('open', !isOpen);
+        this.classList.toggle('open', !isOpen);
+      });
+    });
+
+    // Close mobile menu when clicking on non-dropdown links
+    const regularLinks = document.querySelectorAll('.mobile-dropdown-item, .mobile-cta-btn, .mobile-login-btn');
+    regularLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        // Small delay to allow navigation
+        setTimeout(() => {
+          toggleMobileMenu();
+        }, 200);
+      });
+    });
+
+    // Handle escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+        toggleMobileMenu();
+      }
     });
   });
-  
-  // Close mobile menu when clicking outside
-  document.addEventListener('click', function(event) {
-    const isClickInsideMenu = mobileMenu.contains(event.target);
-    const isClickOnToggle = mobileMenuToggle.contains(event.target);
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const tempDisplay = document.getElementById('tempDisplay');
+        const deviceTempDisplay = document.querySelector('.device-temp-display');
+        const statusIndicator = document.getElementById('statusIndicator');
+        const statusText = document.getElementById('statusText');
     
-    if (menuOpen && !isClickInsideMenu && !isClickOnToggle) {
-      mobileMenu.classList.remove('active');
-      menuIcon.classList.remove('fa-times');
-      menuIcon.classList.add('fa-bars');
-      menuOpen = false;
-    }
-  });
-});
-  </script>
+        let currentTemp = 27.4;
+        let alertTriggered = false;
+        let simulationInterval;
+    
+        function updateDisplay() {
+            tempDisplay.textContent = `${currentTemp.toFixed(1)}°C`;
+    
+            if (currentTemp <= 5) {
+                tempDisplay.style.color = '#2196F3';
+                statusIndicator.style.backgroundColor = '#2196F3';
+                if (!alertTriggered) {
+                    deviceTempDisplay.style.borderColor = '#2196F3';
+                    deviceTempDisplay.style.boxShadow = `0 0 15px rgba(33, 150, 243, 0.5)`;
+                }
+            } else if (currentTemp <= 10) {
+                tempDisplay.style.color = '#FFC107';
+                statusIndicator.style.backgroundColor = '#FFC107';
+                if (!alertTriggered) {
+                    deviceTempDisplay.style.borderColor = '#FFC107';
+                    deviceTempDisplay.style.boxShadow = `0 0 15px rgba(255, 193, 7, 0.5)`;
+                }
+            } else if (currentTemp <= 23) {
+                tempDisplay.style.color = 'var(--good-color)';
+                statusIndicator.style.backgroundColor = 'var(--good-color)';
+                if (!alertTriggered) {
+                    deviceTempDisplay.style.borderColor = 'var(--good-color)';
+                    deviceTempDisplay.style.boxShadow = `0 0 15px rgba(76, 175, 80, 0.5)`;
+                }
+            } else if (currentTemp <= 28) {
+                tempDisplay.style.color = '#FFC107';
+                statusIndicator.style.backgroundColor = '#FFC107';
+                if (!alertTriggered) {
+                    deviceTempDisplay.style.borderColor = '#FFC107';
+                    deviceTempDisplay.style.boxShadow = `0 0 15px rgba(255, 193, 7, 0.5)`;
+                }
+            } else {
+                tempDisplay.style.color = '#FF5252';
+                statusIndicator.style.backgroundColor = '#FF5252';
+                if (!alertTriggered) {
+                    deviceTempDisplay.style.borderColor = '#FF5252';
+                    deviceTempDisplay.style.boxShadow = `0 0 15px rgba(255, 82, 82, 0.5)`;
+                }
+            }
+    
+            if (!alertTriggered) {
+                statusText.textContent = 'Monitoring';
+            }
+    
+            if (currentTemp >= 28.0 && !alertTriggered) {
+                alertTriggered = true;
+                deviceTempDisplay.classList.add('alert-active');
+                statusText.textContent = 'Alert Sent!';
+                statusIndicator.style.backgroundColor = 'var(--danger-color)';
+                deviceTempDisplay.style.borderColor = 'var(--danger-color)';
+                deviceTempDisplay.style.boxShadow = `0 0 20px rgba(233, 69, 96, 0.7)`;
+    
+                setTimeout(() => {
+                    deviceTempDisplay.classList.remove('alert-active');
+                }, 5000);
+    
+                if (simulationInterval) {
+                    clearInterval(simulationInterval);
+                }
+            }
+        }
+    
+        let simulationTime = 0;
+        simulationInterval = setInterval(() => {
+            simulationTime++;
+    
+            if (simulationTime < 5) {
+                 currentTemp += Math.random() * 0.2 - 0.1;
+            } else if (simulationTime < 15) {
+                currentTemp += Math.random() * 0.3 + 0.1;
+            } else {
+                currentTemp += Math.random() * 0.5 + 0.2;
+            }
+    
+            currentTemp = Math.max(-10, Math.min(currentTemp, 35)); 
+    
+            updateDisplay();
+    
+        }, 1200);
+    
+        updateDisplay();
+    });
+    </script>
 </body>
 </html>
