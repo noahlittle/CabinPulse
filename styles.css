@@ -1200,10 +1200,9 @@ Replace the existing top-bar-content div with:
     line-height: 1.3;
   }
   .use-case-card p {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--text-color);
     opacity: 0.85;
-    line-height: 1.6;
     flex-grow: 1;
   }
   .carousel-navigation {
@@ -1761,7 +1760,7 @@ Replace the existing top-bar-content div with:
   }
   .supported-networks > .container > p {
     color: var(--text-color);
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     margin-bottom: 50px;
     max-width: 800px;
     margin-left: auto;
@@ -1877,7 +1876,8 @@ Replace the existing top-bar-content div with:
   .carrier-list li {
     margin-bottom: 10px;
     color: var(--text-color);
-    font-size: 1.1rem;
+    font-size: 1rem;
+    font-weight: 600;
     list-style-type: none;
     display: flex;
     align-items: center;
@@ -2148,7 +2148,7 @@ Replace the existing top-bar-content div with:
     color: var(--highlight-color);
   }
   .question-container p {
-    font-size: 1.2rem;
+    font-size: 0.95rem;
     line-height: 1.6;
     color: var(--text-color);
   }
@@ -2225,7 +2225,7 @@ Replace the existing top-bar-content div with:
     margin-bottom: 20px;
   }
   .feature-cta__description {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     color: var(--text-color);
     margin-bottom: 40px;
     line-height: 1.6;
@@ -3591,7 +3591,7 @@ Replace the existing top-bar-content div with:
       padding: 80px 0;
     }
     .supported-networks > .container > p {
-      font-size: 1.2rem;
+      font-size: 0.95rem;
     }
     .network-card {
       padding: 30px 20px;
@@ -3629,7 +3629,7 @@ Replace the existing top-bar-content div with:
       font-size: 1.5rem;
     }
     .question-container p {
-      font-size: 1.1rem;
+      font-size: 0.95rem;
     }
     #footnotes:not([open]) .footnotes-content {
       display: none;
@@ -3695,7 +3695,7 @@ Replace the existing top-bar-content div with:
       margin-bottom: 15px;
     }
     .feature-cta__description {
-      font-size: 1.2rem;
+      font-size: 0.95rem;
       margin-bottom: 30px;
     }
     .feature-cta__button {
