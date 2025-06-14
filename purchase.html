@@ -62,7 +62,7 @@
         }
         </script>
         <script>(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"97188751", enableAutoSpaTracking: true};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");</script>
-        <link rel="stylesheet" href="purchase-styles.css">
+
         <!-- Meta Pixel Code -->
 <script>
     !function(f,b,e,v,n,t,s)
@@ -255,14 +255,14 @@
         }
 
         .step-icon {
-            width: 48px;
-            height: 48px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
             background: rgba(233, 69, 96, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 0.8rem;
             color: var(--highlight-color);
             transition: all 0.3s ease;
         }
@@ -1013,7 +1013,7 @@
             .step-icon {
                 width: 40px;
                 height: 40px;
-                font-size: 1rem;
+                font-size: 0.8rem;
             }
 
             .button-container {
@@ -1337,10 +1337,6 @@
                                     <!-- Compact Features -->
                                     <div class="features-compact">
                                         <div class="feature-badge">
-                                            <i class="fas fa-tower-cell"></i>
-                                            <span>24/7 Monitoring</span>
-                                        </div>
-                                        <div class="feature-badge">
                                             <i class="fas fa-wifi"></i>
                                             <span>No WiFi Required</span>
                                         </div>
@@ -1439,6 +1435,14 @@
                 1: { price: '14', label: 'billed annually', duration: '1-Year Plan', subscription: '$168/year' },
                 3: { price: '10', label: 'billed every 3 years', duration: '3-Year Plan', subscription: '$360/3 years' }
             };
+
+            // Prevent Enter key from submitting the form
+            document.getElementById('purchaseForm').addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.keyCode === 13) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
 
             // Initialize the plan toggle based on URL parameter
 function initializePlan() {
@@ -1641,6 +1645,35 @@ function initializePlan() {
                 });
             });
 
+            function scrollToAccountForm() {
+    // Only scroll on mobile devices
+    if (window.innerWidth <= 768) {
+        const newUserForm = document.getElementById('new-user-form');
+        const existingUserForm = document.getElementById('existing-user-form');
+        
+        // Determine which form is visible
+        const visibleForm = newUserForm.style.display === 'block' ? newUserForm : existingUserForm;
+        
+        if (visibleForm) {
+            // Small delay to ensure the form is visible first
+            setTimeout(() => {
+                const rect = visibleForm.getBoundingClientRect();
+                const isVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
+                
+                // Only scroll if the form isn't fully visible
+                if (!isVisible) {
+                    // Scroll just enough to show the form
+                    const scrollOffset = rect.top - window.innerHeight * 0.7; // Show at 70% down the screen
+                    window.scrollBy({
+                        top: scrollOffset,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 100);
+        }
+    }
+}
+
  // Country selection with validation
 document.querySelectorAll('.selection-option[data-country]').forEach(option => {
     option.addEventListener('click', function() {
@@ -1797,44 +1830,47 @@ document.querySelectorAll('.selection-option[data-country]').forEach(option => {
 
             // Account type selection
             document.querySelectorAll('.selection-option[data-type]').forEach(option => {
-                option.addEventListener('click', function() {
-                    const type = this.dataset.type;
-                    
-                    // Update selection state
-                    document.querySelectorAll('.selection-option[data-type]').forEach(opt => 
-                        opt.classList.remove('selected'));
-                    this.classList.add('selected');
-                    
-                    const newUserForm = document.getElementById('new-user-form');
-                    const existingUserForm = document.getElementById('existing-user-form');
-                    
-                    if (type === 'new') {
-                        newUserForm.style.display = 'block';
-                        existingUserForm.style.display = 'none';
-                        isLoginMode = false;
-                        
-                        // Set required fields
-                        existingUserForm.querySelectorAll('input').forEach(input => {
-                            input.required = false;
-                        });
-                        newUserForm.querySelectorAll('input').forEach(input => {
-                            input.required = true;
-                        });
-                    } else {
-                        newUserForm.style.display = 'none';
-                        existingUserForm.style.display = 'block';
-                        isLoginMode = true;
-                        
-                        // Set required fields
-                        newUserForm.querySelectorAll('input').forEach(input => {
-                            input.required = false;
-                        });
-                        existingUserForm.querySelectorAll('input').forEach(input => {
-                            input.required = true;
-                        });
-                    }
-                });
+    option.addEventListener('click', function() {
+        const type = this.dataset.type;
+        
+        // Update selection state
+        document.querySelectorAll('.selection-option[data-type]').forEach(opt => 
+            opt.classList.remove('selected'));
+        this.classList.add('selected');
+        
+        const newUserForm = document.getElementById('new-user-form');
+        const existingUserForm = document.getElementById('existing-user-form');
+        
+        if (type === 'new') {
+            newUserForm.style.display = 'block';
+            existingUserForm.style.display = 'none';
+            isLoginMode = false;
+            
+            // Set required fields
+            existingUserForm.querySelectorAll('input').forEach(input => {
+                input.required = false;
             });
+            newUserForm.querySelectorAll('input').forEach(input => {
+                input.required = true;
+            });
+        } else {
+            newUserForm.style.display = 'none';
+            existingUserForm.style.display = 'block';
+            isLoginMode = true;
+            
+            // Set required fields
+            newUserForm.querySelectorAll('input').forEach(input => {
+                input.required = false;
+            });
+            existingUserForm.querySelectorAll('input').forEach(input => {
+                input.required = true;
+            });
+        }
+        
+        // Add scroll effect for mobile
+        scrollToAccountForm();
+    });
+});
 
             // Real-time validation for email and phone
             document.getElementById('email')?.addEventListener('input', debounce(async function(e) {
