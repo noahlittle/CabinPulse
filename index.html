@@ -16,7 +16,7 @@
   <meta name="keywords" content="remote cabin monitoring, no wifi property monitor, cellular security, temperature alerts, power outage sensor">
   <meta name="description" content="Monitor your remote property 24/7 with CabinPulse – no WiFi needed! CabinPulse is a cellular connected monitor for temperature, power outages, humidity & more. Secure your peace of mind." />
   <script defer src="https://analytics.cabinliving.ca/script.js" data-website-id="bd58d7d8-2b00-44ae-8285-c76db6e383ad"></script>
-  <link rel="stylesheet" href="styles.css?v=0.34">
+  <link rel="stylesheet" href="styles.css?v=0.35">
   <!-- TrustBox script -->
   <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
   <!-- End TrustBox script -->
@@ -371,34 +371,94 @@
   </header>
   
   <!-- Updated Mobile Menu -->
-  <div class="mobile-menu">
-    <div class="mobile-menu-close">
-      <i class="fas fa-times"></i>
-    </div>
-    <a href="index.html#features">
-      <i class="fas fa-check-circle"></i>
-      Features
-    </a>
-    <a href="index.html#pricing">
-      <i class="fas fa-tag"></i>
-      Pricing
-    </a>
-    <a href="index.html#faq">
-      <i class="fas fa-question-circle"></i>
-      FAQ
-    </a>
-    <a href="https://blog.cabinpulse.com">
-      <i class="fas fa-blog"></i>
-      Blog
-    </a>
-    <a href="https://dashboard.cabinpulse.com" class="mobile-login-btn">
-      Dashboard
-    </a>
-    <a href="https://cabinpulse.com/purchase.html?plan=1" class="mobile-cta-btn">
-      <i class="fas fa-shopping-cart"></i>
-      Get CabinPulse →
-    </a>
+<div class="mobile-menu">
+  <div class="mobile-menu-close">
+    <i class="fas fa-times"></i>
   </div>
+  
+  <div class="mobile-menu-content">
+    <!-- Product Section -->
+    <div class="mobile-nav-item">
+      <a href="#" class="mobile-nav-link has-dropdown">
+        <div>
+          <i class="fas fa-cube"></i>
+          Product
+        </div>
+      </a>
+      <div class="mobile-dropdown">
+        <a href="index.html#features" class="mobile-dropdown-item">
+          <i class="fas fa-check-circle"></i>Features
+        </a>
+        <a href="index.html#pricing" class="mobile-dropdown-item">
+          <i class="fas fa-tag"></i>Pricing
+        </a>
+        <a href="index.html#coverage" class="mobile-dropdown-item">
+          <i class="fas fa-tower-cell"></i>Coverage
+        </a>
+      </div>
+    </div>
+
+    <!-- Use Cases Section -->
+    <div class="mobile-nav-item">
+      <a href="#" class="mobile-nav-link has-dropdown">
+        <div>
+          <i class="fas fa-lightbulb"></i>
+          Use Cases
+        </div>
+      </a>
+      <div class="mobile-dropdown">
+        <a href="https://cabinpulse.com/uses/remote-cabin-cottage-monitoring-system.html" class="mobile-dropdown-item">
+          <i class="fas fa-home"></i>Cabin Monitoring
+        </a>
+        <a href="https://cabinpulse.com/uses/rv-temperature-monitor-pets.html" class="mobile-dropdown-item">
+          <i class="fas fa-dog"></i>RV Monitor for Pets
+        </a>
+        <a href="https://cabinpulse.com/uses/vacation-home-monitoring.html" class="mobile-dropdown-item">
+          <i class="fas fa-house-chimney-window"></i>Vacation Home Monitoring
+        </a>
+        <a href="https://cabinpulse.com/uses/server-room-monitor.html" class="mobile-dropdown-item">
+          <i class="fas fa-server"></i>Server Room Monitoring
+        </a>
+      </div>
+    </div>
+
+    <!-- Resources Section -->
+    <div class="mobile-nav-item">
+      <a href="#" class="mobile-nav-link has-dropdown">
+        <div>
+          <i class="fas fa-book"></i>
+          Resources
+        </div>
+      </a>
+      <div class="mobile-dropdown">
+        <a href="index.html#faq" class="mobile-dropdown-item">
+          <i class="fas fa-question-circle"></i>FAQ
+        </a>
+        <a href="https://blog.cabinpulse.com" class="mobile-dropdown-item">
+          <i class="fas fa-blog"></i>Blog
+        </a>
+        <a href="manual.html" class="mobile-dropdown-item">
+          <i class="fas fa-book"></i>User Manual
+        </a>
+        <a href="mailto:support@cabinpulse.com" class="mobile-dropdown-item">
+          <i class="fas fa-life-ring"></i>Support
+        </a>
+      </div>
+    </div>
+
+    <!-- CTA Buttons -->
+    <div class="mobile-cta-section">
+      <a href="https://dashboard.cabinpulse.com" class="mobile-login-btn">
+        <i class="fas fa-tachometer-alt"></i>
+        Dashboard
+      </a>
+      <a href="https://cabinpulse.com/purchase.html?plan=1" class="mobile-cta-btn">
+        <i class="fas fa-shopping-cart"></i>
+        Get CabinPulse
+      </a>
+    </div>
+  </div>
+</div>
   
   <!-- Updated Hero Section with Product Photo and Stacked Badges on Mobile -->
   <section class="hero">
@@ -1728,30 +1788,78 @@
 
   // Mobile menu functionality
   document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const mobileMenuClose = document.querySelector('.mobile-menu-close');
+  const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  const mobileMenuClose = document.querySelector('.mobile-menu-close');
+  const dropdownLinks = document.querySelectorAll('.mobile-nav-link.has-dropdown');
 
-    if (mobileMenuToggle && mobileMenu) {
-      mobileMenuToggle.addEventListener('click', function() {
-        mobileMenu.style.display = 'flex';
-      });
-    }
+  // Toggle mobile menu
+  function toggleMobileMenu() {
+    mobileMenu.classList.toggle('open');
+    mobileMenuToggle.classList.toggle('active');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  }
 
-    if (mobileMenuClose && mobileMenu) {
-      mobileMenuClose.addEventListener('click', function() {
-        mobileMenu.style.display = 'none';
+  // Open mobile menu
+  if (mobileMenuToggle) {
+    mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+  }
+
+  // Close mobile menu
+  if (mobileMenuClose) {
+    mobileMenuClose.addEventListener('click', toggleMobileMenu);
+  }
+
+  // Close mobile menu when clicking outside
+  if (mobileMenu) {
+    mobileMenu.addEventListener('click', function(e) {
+      if (e.target === mobileMenu) {
+        toggleMobileMenu();
+      }
+    });
+  }
+
+  // Handle dropdown toggles
+  dropdownLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const parentItem = this.closest('.mobile-nav-item');
+      const dropdown = parentItem.querySelector('.mobile-dropdown');
+      const isOpen = dropdown.classList.contains('open');
+
+      // Close all other dropdowns
+      document.querySelectorAll('.mobile-dropdown.open').forEach(openDropdown => {
+        if (openDropdown !== dropdown) {
+          openDropdown.classList.remove('open');
+          openDropdown.previousElementSibling.classList.remove('open');
+        }
       });
 
-      // Close mobile menu when a link is clicked
-      const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-      mobileMenuLinks.forEach(link => {
-        link.addEventListener('click', function() {
-          mobileMenu.style.display = 'none';
-        });
-      });
+      // Toggle current dropdown
+      dropdown.classList.toggle('open', !isOpen);
+      this.classList.toggle('open', !isOpen);
+    });
+  });
+
+  // Close mobile menu when clicking on non-dropdown links
+  const regularLinks = document.querySelectorAll('.mobile-dropdown-item, .mobile-cta-btn, .mobile-login-btn');
+  regularLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      // Small delay to allow navigation
+      setTimeout(() => {
+        toggleMobileMenu();
+      }, 200);
+    });
+  });
+
+  // Handle escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+      toggleMobileMenu();
     }
   });
+});
 
   // Close dropdowns when clicking outside
   document.addEventListener('click', function(event) {
