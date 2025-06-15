@@ -152,7 +152,7 @@
       --secondary-color: #16213e;
       --cta-color: #ffffff;
       --accent-color: #0f3460;
-      --highlight-color: #e94560; /* Keeping this for general highlight, can adjust if needed for humidity theme */
+      --highlight-color: #e94560;
       --text-color: #ffffff;
       --dark-text-color: #000000;
     }
@@ -184,84 +184,241 @@
       font-weight: 900;
       color: var(--text-color);
     }
-    
+
+    /* Top Bar Styles */
+    .top-bar {
+      background-color: rgba(15, 52, 96, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(233, 69, 96, 0.1);
+      padding: 6px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      transition: all 0.3s ease;
+    }
+
+    .top-bar-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 25px;
+    }
+
+    .top-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .top-bar-link {
+      color: var(--text-color);
+      text-decoration: none;
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      opacity: 0.8;
+      transition: all 0.3s ease;
+      padding: 3px 6px;
+      border-radius: 4px;
+    }
+
+    .top-bar-link:hover {
+      opacity: 1;
+      color: var(--highlight-color);
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .proudly-canadian {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-color);
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      opacity: 0.9;
+      background-color: rgba(233, 69, 96, 0.15);
+      padding: 3px 8px;
+      border-radius: 12px;
+      border: 1px solid rgba(233, 69, 96, 0.3);
+    }
+
+    .proudly-canadian i {
+      color: var(--highlight-color);
+      font-size: 0.8rem;
+    }
+
     /* Header styles */
     header {
+      padding-top: 12px;
       position: fixed;
       width: 100%;
       z-index: 1000;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
-      background-color: rgba(26, 26, 46, 0.95);
-      backdrop-filter: blur(8px);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-      padding: 15px 0 0; /* Removed bottom padding to accommodate breadcrumb */
+      background-color: rgba(26, 26, 46, 0.98);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+      border-bottom: 1px solid rgba(233, 69, 96, 0.2);
+      top: 38px;
+      transition: all 0.3s ease;
     }
+
+    header.scrolled {
+      padding-top: 12px;
+      background-color: rgba(26, 26, 46, 1);
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+    }
+
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
+
     .logo-container {
       display: flex;
       align-items: center;
     }
+
     .icon {
       width: 40px;
       height: 40px;
       margin-right: 10px;
     }
-    
-    /* Updated Nav Links Styles */
+
+    /* Navigation Links */
     .nav-links {
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      gap: 20px;
+      gap: 8px;
       margin-left: auto;
     }
+
+    .nav-item {
+      position: relative;
+    }
+
     .nav-link {
       color: var(--text-color);
       text-decoration: none;
-      padding: 8px 15px;
-      border-radius: 8px;
+      padding: 10px 16px;
+      border-radius: 6px;
       transition: all 0.3s ease;
-      font-size: 1rem;
-      font-weight: 500;
+      font-size: 0.8rem;
+      font-weight: 600;
       white-space: nowrap;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      position: relative;
     }
+
     .nav-link:hover {
       color: var(--highlight-color);
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: rgba(255, 255, 255, 0.08);
+      transform: translateY(-1px);
     }
+
+    .nav-link.has-dropdown::after {
+      content: '\f0d7';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      margin-left: 6px;
+      font-size: 0.7rem;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-item:hover .nav-link.has-dropdown::after {
+      transform: rotate(180deg);
+    }
+
+    /* Dropdowns */
+    .dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      transform: translateY(-10px);
+      background-color: rgba(22, 33, 62, 0.98);
+      backdrop-filter: blur(12px);
+      border-radius: 12px;
+      padding: 12px 0;
+      min-width: 220px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(233, 69, 96, 0.2);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 1001;
+    }
+
+    .nav-item:hover .dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(5%);
+    }
+
+    .dropdown-item {
+      display: block;
+      color: var(--text-color);
+      text-decoration: none;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-transform: none;
+      letter-spacing: 0;
+      transition: all 0.2s ease;
+      border-left: 3px solid transparent;
+    }
+
+    .dropdown-item:hover {
+      background-color: rgba(233, 69, 96, 0.1);
+      color: var(--highlight-color);
+      border-left-color: var(--highlight-color);
+      padding-left: 24px;
+    }
+
+    .dropdown-item i {
+      margin-right: 10px;
+      width: 16px;
+      text-align: center;
+      color: var(--highlight-color);
+      opacity: 0.8;
+    }
+
+    /* Nav CTA Buttons */
     .login-btn {
-      display: flex;
-      align-items: center;
-      gap: 6px;
       border: 1px solid rgba(255, 255, 255, 0.3);
+      background-color: rgba(255, 255, 255, 0.05);
     }
+
     .login-btn:hover {
       border-color: var(--highlight-color);
+      background-color: rgba(233, 69, 96, 0.1);
     }
+
     .primary-cta {
-      display: flex;
-      align-items: center;
-      gap: 8px;
       background-color: var(--highlight-color);
-      color: white;
-      padding: 8px 20px;
-      border-radius: 8px;
-      font-weight: 600;
-      transition: all 0.3s ease;
+      color: white !important;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 700;
       box-shadow: 0 4px 12px rgba(233, 69, 96, 0.3);
+      margin-left: 8px;
     }
+
     .primary-cta:hover {
       background-color: #ff5a7c;
-      color: white;
+      color: white !important;
       transform: translateY(-2px);
       box-shadow: 0 6px 16px rgba(233, 69, 96, 0.4);
     }
-    
-    /* Mobile menu styles */
+
+    /* Mobile Navigation */
     .mobile-menu-toggle {
       display: none;
       cursor: pointer;
@@ -272,101 +429,244 @@
       border-radius: 50%;
       transition: all 0.3s ease;
       background-color: rgba(255, 255, 255, 0.1);
-      z-index: 1001;
+      position: relative;
+      z-index: 1002;
     }
-    
     .mobile-menu-toggle:hover {
       background-color: rgba(255, 255, 255, 0.2);
     }
-    
-    /* Mobile Menu Expanded */
-    .mobile-menu-expanded {
+
+    .mobile-menu-toggle i {
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-menu-toggle.active i {
+      transform: rotate(90deg);
+    }
+
+    /* New Mobile Menu Styles */
+    .mobile-menu {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100vh;
-      background-color: rgba(26, 26, 46, 0.98);
-      z-index: 1000;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      transform: translateY(-100%);
-      transition: transform 0.3s ease-in-out;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      z-index: 1001;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      overflow-y: auto;
+      padding-top: 80px;
     }
-    
-    .mobile-menu-expanded.active {
-      transform: translateY(0);
+
+    .mobile-menu.open {
+      opacity: 1;
+      visibility: visible;
     }
-    
-    .mobile-nav-links {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
+
+    .mobile-menu-content {
+      padding: 20px;
+      max-width: 400px;
+      margin: 0 auto;
     }
-    
+
+    .mobile-nav-item {
+      margin-bottom: 12px;
+      border-radius: 16px;
+      background: rgba(15, 52, 96, 0.3);
+      border: 1px solid rgba(233, 69, 96, 0.2);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-nav-item:hover {
+      background: rgba(15, 52, 96, 0.5);
+      border-color: rgba(233, 69, 96, 0.4);
+    }
+
     .mobile-nav-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
       color: var(--text-color);
       text-decoration: none;
-      padding: 12px 20px;
-      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
       transition: all 0.3s ease;
-      font-size: 1rem;
-      font-weight: 500;
-      white-space: nowrap;
+      position: relative;
     }
-    
+
     .mobile-nav-link:hover {
       color: var(--highlight-color);
-      background-color: rgba(255, 255, 255, 0.1);
+      background: rgba(233, 69, 96, 0.1);
     }
-    
+
+    .mobile-nav-link i {
+      margin-right: 12px;
+      font-size: 1.2rem;
+      color: var(--highlight-color);
+    }
+
+    .mobile-nav-link.has-dropdown::after {
+      content: '\f0d7';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      font-size: 0.9rem;
+      transition: transform 0.3s ease;
+      color: var(--highlight-color);
+    }
+
+    .mobile-nav-link.has-dropdown.open::after {
+      transform: rotate(180deg);
+    }
+
+    /* Mobile Dropdown */
+    .mobile-dropdown {
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      background: rgba(22, 33, 62, 0.8);
+      border-top: 1px solid rgba(233, 69, 96, 0.2);
+    }
+
+    .mobile-dropdown.open {
+      max-height: 400px;
+      padding: 12px 0;
+    }
+
+    .mobile-dropdown-item {
+      display: block;
+      padding: 16px 32px;
+      color: var(--text-color);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-transform: none;
+      letter-spacing: 0;
+      transition: all 0.2s ease;
+      border-left: 3px solid transparent;
+      position: relative;
+    }
+
+    .mobile-dropdown-item:hover {
+      background-color: rgba(233, 69, 96, 0.1);
+      color: var(--highlight-color);
+      border-left-color: var(--highlight-color);
+      padding-left: 36px;
+    }
+
+    .mobile-dropdown-item i {
+      margin-right: 12px;
+      width: 16px;
+      text-align: center;
+      color: var(--highlight-color);
+      opacity: 0.8;
+      font-size: 1rem;
+    }
+
+    /* Mobile CTA Section */
+    .mobile-cta-section {
+      margin-top: 32px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(233, 69, 96, 0.2);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
     .mobile-login-btn {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      margin-top: 10px;
-      width: 200px;
+      gap: 12px;
+      padding: 16px 24px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      background-color: rgba(255, 255, 255, 0.05);
+      color: var(--text-color);
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
     }
-    
-    .mobile-primary-cta {
+
+    .mobile-login-btn:hover {
+      border-color: var(--highlight-color);
+      background-color: rgba(233, 69, 96, 0.1);
+      color: var(--highlight-color);
+    }
+
+    .mobile-cta-btn {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 12px;
+      padding: 18px 24px;
+      background: linear-gradient(135deg, var(--highlight-color) 0%, #ff5a7c 100%);
+      color: white !important;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 8px 20px rgba(233, 69, 96, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .mobile-cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(233, 69, 96, 0.5);
+    }
+
+    .mobile-cta-btn i {
+      font-size: 1.2rem;
+    }
+
+    .mobile-menu-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background-color: rgba(233, 69, 96, 0.2);
+      border: 2px solid rgba(233, 69, 96, 0.4);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: var(--highlight-color);
+      z-index: 1002;
+    }
+
+    .mobile-menu-close:hover {
       background-color: var(--highlight-color);
       color: white;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(233, 69, 96, 0.3);
-      margin-top: 20px;
-      width: 200px;
+      transform: rotate(90deg);
     }
-    
-    .mobile-primary-cta:hover {
-      background-color: #ff5a7c;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(233, 69, 96, 0.4);
-    }
-    
-    /* Integrated Breadcrumb */
+
+    /* Breadcrumb */
     .integrated-breadcrumb {
-      background-color: rgba(15, 52, 96, 0.7); /* Lighter blue color */
+      background-color: rgba(15, 52, 96, 0.7);
       padding: 8px 0;
       margin-top: 15px;
-      font-size: 0.85rem;
+      font-size: 0.7rem;
     }
     
     .breadcrumb-nav {
       display: flex;
       align-items: center;
-      font-size: 0.85rem;
+      font-size: 0.7rem;
       color: rgba(255, 255, 255, 0.7);
     }
     
@@ -423,19 +723,26 @@
       font-size: 1.3rem;
     }
     
-    
     /* Section styles */
     .section-title {
       text-align: center;
-      font-size: 2.5rem;
+      font-size: 2rem;
       margin-top: 3rem;
       margin-bottom: 70px;
       color: var(--highlight-color);
     }
+
+    .section-icon {
+      font-size: 3rem;
+      color: var(--highlight-color);
+      margin-bottom: 20px;
+      display: block;
+      text-align: center;
+    }
     
     /* Hero Section for Humidity Monitor */
-    .hero-section { /* Renamed for clarity */
-      padding: 180px 0 120px; /* Adjusted top padding for the integrated breadcrumb */
+    .hero-section {
+      padding: 250px 0 120px; 
       background-color: var(--primary-color);
       position: relative;
       overflow: hidden;
@@ -447,13 +754,13 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('../bg-5.png') no-repeat center center; /* Re-evaluate if too wintery */
+      background: url('../bg-5.png') no-repeat center center;
       background-size: cover;
       filter: brightness(0.5);
       z-index: 0;
       opacity: 0.3;
     }
-    .hero-container { /* Renamed for clarity */
+    .hero-container {
       position: relative;
       z-index: 1;
       display: flex;
@@ -461,10 +768,10 @@
       justify-content: space-between;
       gap: 50px;
     }
-    .hero-content { /* Renamed for clarity */
+    .hero-content {
       flex: 1;
     }
-    .hero-image { /* Renamed for clarity */
+    .hero-image {
       flex: 1;
       display: flex;
       justify-content: center;
@@ -492,12 +799,12 @@
       z-index: 0;
     }
     .hero-section h1 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       margin-bottom: 25px;
       line-height: 1.2;
     }
-    .hero-subtitle { /* Renamed for clarity */
-      font-size: 1.2rem;
+    .hero-subtitle {
+      font-size: 0.9rem;
       margin-bottom: 35px;
       color: var(--text-color);
       opacity: 0.9;
@@ -509,11 +816,11 @@
       gap: 12px;
       margin: 25px 0;
     }
-    .humidity-highlight { /* New class for humidity specific highlights */
+    .humidity-highlight {
       color: var(--highlight-color);
       font-weight: bold;
     }
-    .data-notice { /* Renamed for clarity */
+    .data-notice {
       color: var(--text-color);
       opacity: 0.8;
       font-size: 0.9rem;
@@ -551,10 +858,15 @@
       color: var(--text-color);
     }
     .feature-card p {
-      font-size: 1rem;
+      font-size: 0.9rem;
       line-height: 1.6;
       color: var(--text-color);
       opacity: 0.8;
+    }
+    
+    .features {
+      padding: 50px 0;
+      background-color: var(--primary-color);
     }
     
     /* How It Works Section */
@@ -618,10 +930,11 @@
       color: var(--text-color);
     }
     .step-card p {
-      font-size: 1rem;
+      font-size: 0.9rem;
       line-height: 1.6;
       color: var(--text-color);
       opacity: 0.9;
+      text-align: left;
     }
     
     /* Comparison Section */
@@ -641,7 +954,7 @@
       margin: 0 auto 60px;
     }
     .comparison-intro p {
-      font-size: 1.2rem;
+      font-size: 0.9rem;
       line-height: 1.6;
       color: var(--text-color);
       opacity: 0.9;
@@ -655,7 +968,7 @@
       overflow-x: auto;
       margin-bottom: 60px;
       border-radius: 12px;
-      -webkit-overflow-scrolling: touch; /* For smoother scrolling on iOS */
+      -webkit-overflow-scrolling: touch;
       scrollbar-width: thin;
       scrollbar-color: var(--highlight-color) var(--primary-color);
     }
@@ -675,7 +988,7 @@
     
     .comparison-table {
       width: 100%;
-      min-width: 600px; /* Ensures table doesn't get too narrow */
+      min-width: 600px;
       border-collapse: collapse;
     }
     
@@ -684,14 +997,14 @@
       text-align: left;
       border-bottom: 2px solid var(--accent-color);
       color: var(--highlight-color);
-      font-size: 1.2rem;
+      font-size: 1rem;
       white-space: nowrap;
     }
     
     .comparison-table td {
       padding: 20px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      font-size: 1rem;
+      font-size: 0.8rem;
     }
     
     .comparison-table tr:last-child td {
@@ -759,7 +1072,7 @@
       margin-bottom: 20px;
     }
     .testimonial-content {
-      font-size: 1.1rem;
+      font-size: 0.9rem;
       line-height: 1.8;
       margin-bottom: 24px;
       position: relative;
@@ -833,7 +1146,7 @@
       font-size: 1.4rem;
     }
     .faq-item p {
-      font-size: 1rem;
+      font-size: 0.9rem;
       line-height: 1.6;
       color: var(--text-color);
       opacity: 0.9;
@@ -860,7 +1173,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('../freeze-bg.jpg') no-repeat center center; /* Re-evaluate if too wintery */
+      background: url('../freeze-bg.jpg') no-repeat center center;
       background-size: cover;
       opacity: 0.1;
       z-index: 0;
@@ -877,12 +1190,12 @@
       margin-bottom: 30px;
     }
     .final-cta h2 {
-      font-size: 3rem;
+      font-size: 2rem;
       margin-bottom: 20px;
       color: var(--text-color);
     }
     .final-cta p {
-      font-size: 1.2rem;
+      font-size: 0.9rem;
       margin-bottom: 40px;
       color: var(--text-color);
       opacity: 0.9;
@@ -974,35 +1287,6 @@
       font-size: 0.9rem;
     }
     
-    /* Humidity Display Animation (adapted from temp) */
-    .humidity-display-animated { /* Renamed to avoid conflict if used elsewhere */
-      font-family: monospace;
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: var(--highlight-color);
-      margin: 30px 0;
-      display: inline-block;
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 15px 30px;
-      border-radius: 12px;
-      position: relative;
-      overflow: hidden;
-    }
-    .humidity-display-animated::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-      animation: data-shine 4s infinite; /* Renamed animation */
-    }
-    @keyframes data-shine {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(100%); }
-    }
-    
     /* Image with Overlay */
     .image-overlay {
       position: relative;
@@ -1066,116 +1350,15 @@
       transform-origin: bottom left;
     }
     
-    /* Responsive styles */
-    @media (max-width: 1024px) {
-      .hero-section h1 { /* Adjusted */
-        font-size: 3.5rem;
-      }
-      .features-grid, 
-      .steps-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .footer-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      
-      /* Reduced table text size for medium screens */
-      .comparison-table th {
-        font-size: 1.1rem;
-        padding: 18px 15px;
-      }
-      .comparison-table td {
-        font-size: 0.95rem;
-        padding: 18px 15px;
-      }
-    }
-    
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-      .mobile-menu-toggle {
-        display: flex;
-      }
-      .integrated-breadcrumb {
-        padding: 6px 0;
-        font-size: 0.8rem;
-      }
-      .hero-section { /* Adjusted */
-        padding-top: 150px;
-      }
-      .hero-container { /* Adjusted */
-        flex-direction: column;
-        text-align: center;
-      }
-      .badge-container {
-        justify-content: center;
-      }
-      .hero-section h1 { /* Adjusted */
-        font-size: 3rem;
-      }
-      .hero-subtitle { /* Adjusted */
-        font-size: 1.2rem;
-      }
-      .features-grid, 
-      .steps-grid, 
-      .faq-grid, 
-      .testimonials-grid,
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      /* Further reduced table text size for small screens */
-      .comparison-table th {
-        font-size: 0.9rem;
-        padding: 15px 10px;
-      }
-      .comparison-table td {
-        font-size: 0.85rem;
-        padding: 12px 10px;
-      }
-      .checkmark, .xmark {
-        font-size: 1.2rem;
-      }
-      
-      .final-cta h2 {
-        font-size: 2.5rem;
-      }
-      
-      .section-title {
-        font-size: 2rem;
-        margin-bottom: 40px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero-section h1 { /* Adjusted */
-        font-size: 2.5rem;
-      }
-      
-      /* Even smaller table text for very small screens */
-      .comparison-table th {
-        font-size: 0.8rem;
-        padding: 10px 8px;
-      }
-      .comparison-table td {
-        font-size: 0.75rem;
-        padding: 10px 8px;
-      }
-      .checkmark, .xmark {
-        font-size: 1rem;
-      }
-    }
-    
-    .hero-image { /* Adjusted */
+    .hero-image {
       position: relative;
     }
 
     /* Styles for the device data display and alert, adapted for humidity */
-    .device-data-display { /* Renamed from device-temp-display */
+    .device-data-display {
       position: absolute;
       top: 10%;
-      left: 50%;
+      left: 20%;
       transform: translate(-50%, -50%);
       background: rgba(15, 52, 96, 0.9);
       border: 2px solid var(--highlight-color);
@@ -1186,7 +1369,7 @@
       width: 180px;
     }
 
-    .data-value { /* Renamed from temp-value */
+    .data-value {
       font-family: monospace;
       font-size: 2.2rem;
       font-weight: bold;
@@ -1194,7 +1377,7 @@
       margin-bottom: 5px;
     }
 
-    .data-status { /* Renamed from temp-status */
+    .data-status {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1207,16 +1390,16 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background-color: #4CAF50; /* Green for normal */
+      background-color: #4CAF50;
       animation: blink 1.5s infinite;
     }
     
-    .data-alert { /* Renamed from temp-alert */
+    .data-alert {
       position: absolute;
-      bottom: -100%; /* Start off-screen */
+      bottom: -100%;
       left: 0;
       width: 100%;
-      background-color: #e94560; /* Highlight color for alert */
+      background-color: #e94560;
       color: white;
       padding: 12px 10px;
       border-radius: 12px 12px 12px 12px;
@@ -1249,13 +1432,13 @@
 
     /* Alert active state */
     .device-data-display.alert-active {
-      background-color: rgba(233, 69, 96, 0.9); /* Red background for alert */
+      background-color: rgba(233, 69, 96, 0.9);
       border-color: #ff0033;
       box-shadow: 0 0 20px rgba(233, 69, 96, 0.7);
     }
 
     .device-data-display.alert-active .data-alert {
-      bottom: 0; /* Slide up */
+      bottom: 0;
       visibility: visible;
       opacity: 1;
       transition: bottom 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s;
@@ -1323,6 +1506,124 @@
       opacity: 1;
       color: var(--highlight-color);
     }
+    
+    /* Responsive styles */
+    @media (max-width: 1024px) {
+      .hero-section h1 {
+        font-size: 1.6rem;
+      }
+      .features-grid, 
+      .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .comparison-table th {
+        font-size: 1.1rem;
+        padding: 18px 15px;
+      }
+      .comparison-table td {
+        font-size: 0.95rem;
+        padding: 18px 15px;
+      }
+    }
+    
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+      .mobile-menu-toggle {
+        display: flex;
+      }
+      .top-bar {
+        padding: 6px 0;
+      }
+      .top-bar-content {
+        padding: 0 15px;
+      }
+      .top-bar-left {
+        gap: 16px;
+      }
+      .top-bar-link {
+        font-size: 0.7rem;
+        padding: 3px 6px;
+      }
+      .integrated-breadcrumb {
+        padding: 6px 0;
+        font-size: 0.8rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .integrated-breadcrumb {
+        padding: 6px 0;
+        font-size: 0.8rem;
+      }
+      .hero-section {
+        padding-top: 200px;
+      }
+      .hero-container {
+        flex-direction: column;
+        text-align: center;
+      }
+      .badge-container {
+        justify-content: center;
+      }
+      .hero-section h1 {
+        font-size: 1.4rem;
+      }
+      .hero-subtitle {
+        font-size: 0.9rem;
+      }
+      .features-grid, 
+      .steps-grid, 
+      .faq-grid, 
+      .testimonials-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .comparison-table th {
+        font-size: 0.9rem;
+        padding: 15px 10px;
+      }
+      .comparison-table td {
+        font-size: 0.85rem;
+        padding: 12px 10px;
+      }
+      .checkmark, .xmark {
+        font-size: 1.2rem;
+      }
+      
+      .final-cta h2 {
+        font-size: 2.5rem;
+      }
+      
+      .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 40px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-section h1 {
+        font-size: 1.3rem;
+      }
+      
+      .comparison-table th {
+        font-size: 0.8rem;
+        padding: 10px 8px;
+      }
+      .comparison-table td {
+        font-size: 0.75rem;
+        padding: 10px 8px;
+      }
+      .checkmark, .xmark {
+        font-size: 1rem;
+      }
+    }
 
     /* Ensure footer responsive behavior is consistent */
     @media (max-width: 768px) {
@@ -1338,6 +1639,23 @@
   </style>
 </head>
 <body>
+  <div class="top-bar">
+    <div class="top-bar-content">
+      <div class="top-bar-left">
+        <a href="/about.html" class="top-bar-link">
+          About
+        </a>
+        <a href="mailto:support@cabinpulse.com" class="top-bar-link">
+          Contact Us
+        </a>
+      </div>
+      <div class="proudly-canadian">
+        <i class="fa-brands fa-canadian-maple-leaf"></i>
+        Proudly Canadian
+      </div>
+    </div>
+  </div>
+
   <!-- HEADER SECTION -->
   <header>
     <nav class="container">
@@ -1346,37 +1664,68 @@
         <span class="logo-text">CabinPulse</span>
       </div>
       <div class="nav-links">
-        <a href="/index.html#features" class="nav-link">Features</a>
-        <a href="/index.html#pricing" class="nav-link">Pricing</a>
-        <a href="/index.html#faq" class="nav-link">FAQ</a>
-        <a href="https://blog.cabinpulse.com" class="nav-link">Blog</a>
+        <div class="nav-item">
+          <a href="#" class="nav-link has-dropdown">Product</a>
+          <div class="dropdown">
+            <a href="/index.html#features" class="dropdown-item">
+              <i class="fas fa-check-circle"></i>Features
+            </a>
+            <a href="/index.html#pricing" class="dropdown-item">
+              <i class="fas fa-tag"></i>Pricing
+            </a>
+            <a href="/index.html#coverage" class="dropdown-item">
+              <i class="fas fa-tower-cell"></i>Coverage
+            </a>
+          </div>
+        </div>
+    
+        <div class="nav-item">
+          <a href="#" class="nav-link has-dropdown">Use Cases</a>
+          <div class="dropdown">
+            <a href="/uses/remote-cabin-cottage-monitoring-system.html" class="dropdown-item">
+              <i class="fas fa-home"></i>Cabin Monitoring
+            </a>
+            <a href="/uses/rv-temperature-monitor-pets.html" class="dropdown-item">
+              <i class="fas fa-dog"></i>RV Monitor for Pets
+            </a>
+            <a href="/uses/vacation-home-monitoring.html" class="dropdown-item">
+              <i class="fas fa-house-chimney-window"></i>Vacation Home Monitoring
+            </a>
+            <a href="/uses/server-room-monitor.html" class="dropdown-item">
+              <i class="fas fa-server"></i>Server Room Monitoring
+            </a>
+          </div>
+        </div>
+    
+        <div class="nav-item">
+          <a href="#" class="nav-link has-dropdown">Resources</a>
+          <div class="dropdown">
+            <a href="/index.html#faq" class="dropdown-item">
+              <i class="fas fa-question-circle"></i>FAQ
+            </a>
+            <a href="https://blog.cabinpulse.com" class="dropdown-item">
+              <i class="fas fa-blog"></i>Blog
+            </a>
+            <a href="/manual.html" class="dropdown-item">
+              <i class="fas fa-book"></i>User Manual
+            </a>
+            <a href="mailto:support@cabinpulse.com" class="dropdown-item">
+              <i class="fas fa-life-ring"></i>Support
+            </a>
+          </div>
+        </div>
+    
         <a href="https://dashboard.cabinpulse.com" class="nav-link login-btn">
           Dashboard
         </a>
         <a href="https://cabinpulse.com/purchase.html?plan=1" class="nav-link primary-cta">
-          Get CabinPulse →
+          Get Started
         </a>
       </div>
-      <div class="mobile-menu-toggle" id="mobile-menu-toggle">
-        <i class="fas fa-bars" id="menu-icon"></i>
+      <div class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
       </div>
     </nav>
-    
-    <!-- Mobile Menu -->
-    <div class="mobile-menu-expanded" id="mobile-menu">
-      <div class="mobile-nav-links">
-        <a href="/index.html#features" class="mobile-nav-link">Features</a>
-        <a href="/index.html#pricing" class="mobile-nav-link">Pricing</a>
-        <a href="/index.html#faq" class="mobile-nav-link">FAQ</a>
-        <a href="https://blog.cabinpulse.com" class="mobile-nav-link">Blog</a>
-        <a href="https://dashboard.cabinpulse.com" class="mobile-nav-link mobile-login-btn">
-          Dashboard
-        </a>
-        <a href="https://cabinpulse.com/purchase.html?plan=1" class="mobile-nav-link mobile-primary-cta">
-          Get CabinPulse →
-        </a>
-      </div>
-    </div>
     
     <!-- Integrated Breadcrumb -->
     <div class="integrated-breadcrumb">
@@ -1392,6 +1741,96 @@
     </div>
   </header>
   
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <div class="mobile-menu-close">
+      <i class="fas fa-times"></i>
+    </div>
+    
+    <div class="mobile-menu-content">
+      <!-- Product Section -->
+      <div class="mobile-nav-item">
+        <a href="#" class="mobile-nav-link has-dropdown">
+          <div>
+            <i class="fas fa-cube"></i>
+            Product
+          </div>
+        </a>
+        <div class="mobile-dropdown">
+          <a href="/index.html#features" class="mobile-dropdown-item">
+            <i class="fas fa-check-circle"></i>Features
+          </a>
+          <a href="/index.html#pricing" class="mobile-dropdown-item">
+            <i class="fas fa-tag"></i>Pricing
+          </a>
+          <a href="/index.html#coverage" class="mobile-dropdown-item">
+            <i class="fas fa-tower-cell"></i>Coverage
+          </a>
+        </div>
+      </div>
+
+      <!-- Use Cases Section -->
+      <div class="mobile-nav-item">
+        <a href="#" class="mobile-nav-link has-dropdown">
+          <div>
+            <i class="fas fa-lightbulb"></i>
+            Use Cases
+          </div>
+        </a>
+        <div class="mobile-dropdown">
+          <a href="/uses/remote-cabin-cottage-monitoring-system.html" class="mobile-dropdown-item">
+            <i class="fas fa-home"></i>Cabin Monitoring
+          </a>
+          <a href="/uses/rv-temperature-monitor-pets.html" class="mobile-dropdown-item">
+            <i class="fas fa-dog"></i>RV Monitor for Pets
+          </a>
+          <a href="/uses/vacation-home-monitoring.html" class="mobile-dropdown-item">
+            <i class="fas fa-house-chimney-window"></i>Vacation Home Monitoring
+          </a>
+          <a href="/uses/server-room-monitor.html" class="mobile-dropdown-item">
+            <i class="fas fa-server"></i>Server Room Monitoring
+          </a>
+        </div>
+      </div>
+
+      <!-- Resources Section -->
+      <div class="mobile-nav-item">
+        <a href="#" class="mobile-nav-link has-dropdown">
+          <div>
+            <i class="fas fa-book"></i>
+            Resources
+          </div>
+        </a>
+        <div class="mobile-dropdown">
+          <a href="/index.html#faq" class="mobile-dropdown-item">
+            <i class="fas fa-question-circle"></i>FAQ
+          </a>
+          <a href="https://blog.cabinpulse.com" class="mobile-dropdown-item">
+            <i class="fas fa-blog"></i>Blog
+          </a>
+          <a href="/manual.html" class="mobile-dropdown-item">
+            <i class="fas fa-book"></i>User Manual
+          </a>
+          <a href="mailto:support@cabinpulse.com" class="mobile-dropdown-item">
+            <i class="fas fa-life-ring"></i>Support
+          </a>
+        </div>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="mobile-cta-section">
+        <a href="https://dashboard.cabinpulse.com" class="mobile-login-btn">
+          <i class="fas fa-tachometer-alt"></i>
+          Dashboard
+        </a>
+        <a href="https://cabinpulse.com/purchase.html?plan=1" class="mobile-cta-btn">
+          <i class="fas fa-shopping-cart"></i>
+          Get CabinPulse
+        </a>
+      </div>
+    </div>
+  </div>
+
   <!-- Humidity Monitor Hero Section -->
   <section class="hero-section">
     <div class="container hero-container">
@@ -1412,13 +1851,13 @@
       </div>
       <div class="hero-image">
         <img src="../front.png" alt="CabinPulse Humidity Monitor Device - Monitor humidity remotely with no WiFi required">
-        <div class="device-data-display"> <!-- Was device-temp-display -->
-          <div class="data-value">45.0%</div> <!-- Was temp-value -->
-          <div class="data-status"> <!-- Was temp-status -->
+        <div class="device-data-display">
+          <div class="data-value">45.0%</div>
+          <div class="data-status">
             <span class="status-indicator"></span>
             <span class="status-text">Monitoring</span>
           </div>
-          <div class="data-alert"> <!-- Was temp-alert -->
+          <div class="data-alert">
             <i class="fas fa-exclamation-triangle"></i>
             <span class="alert-text">High Humidity</span>
             <span class="alert-status">Alert Sent</span>
@@ -1431,6 +1870,7 @@
   <!-- Features Section -->
   <section class="features">
     <div class="container" style="margin-bottom: 5rem;">
+      <i class="section-icon fas fa-star"></i>
       <h2 class="section-title">Why CabinPulse is the Ultimate Humidity Monitor</h2>
       
       <div class="features-grid">
@@ -1477,6 +1917,7 @@
   <!-- How It Works Section -->
   <section class="how-it-works">
     <div class="container">
+      <i class="section-icon fas fa-cogs"></i>
       <h2 class="section-title">How CabinPulse's Humidity Monitoring Works</h2>
       
       <div class="steps-grid">
@@ -1489,7 +1930,7 @@
         
         <div class="step-card">
           <div class="step-number">2</div>
-          <i class="step-icon fas fa-cloud-sun-rain"></i> <!-- Icon for humidity/weather -->
+          <i class="step-icon fas fa-cloud-sun-rain"></i>
           <h3>Continuous Monitoring</h3>
           <p>CabinPulse automatically monitors humidity with precision accuracy, tracking changes that could lead to mold, mildew, or damage.</p>
         </div>
@@ -1515,6 +1956,7 @@
   <!-- Comparison Section -->
   <section class="comparison">
     <div class="container comparison-container">
+      <i class="section-icon fas fa-balance-scale"></i>
       <h2 class="section-title">How CabinPulse Compares to Standard Humidity Monitors</h2>
       
       <div class="comparison-intro">
@@ -1594,6 +2036,7 @@
   <!-- Testimonials Section -->
   <section class="testimonials">
     <div class="container">
+      <i class="section-icon fas fa-quote-left"></i>
       <h2 class="section-title">What People Think of Our Humidity Monitor</h2>
       
       <div class="testimonials-grid">
@@ -1652,6 +2095,7 @@
   <!-- FAQ Section -->
   <section class="faq">
     <div class="container">
+      <i class="section-icon fas fa-question-circle"></i>
       <h2 class="section-title">Frequently Asked Questions About CabinPulse's Humidity Monitoring</h2>
       
       <div class="faq-grid">
@@ -1707,7 +2151,7 @@
   <section class="final-cta">
     <div class="container final-cta-container">
       <div class="final-cta-icon">
-        <i class="fas fa-shield-alt"></i> <!-- Shield could be fas fa-shield-droplet or similar if available -->
+        <i class="fas fa-shield-alt"></i>
       </div>
       <h2>Protect Your Property from Humidity Damage</h2>
       <p>CabinPulse provides reliable humidity protection with precision monitoring, instant alerts for high/low levels, and no WiFi required. Prevent mold, protect valuables, and ensure a healthy environment.</p>
@@ -1788,7 +2232,7 @@
             <li style="margin-bottom: 10px;"><a href="#faq" style="color: var(--text-color); text-decoration: none;">FAQ</a></li>
             <li style="margin-bottom: 10px;"><a href="/legal.html" style="color: var(--text-color); text-decoration: none;">Legal</a></li>
           </ul>
-  
+
           <!-- Press Links -->
           <h4 style="color: var(--highlight-color); margin-top: 25px; margin-bottom: 20px;">Press</h4>
           <ul style="list-style: none; padding: 0;">
@@ -1826,18 +2270,99 @@
           </ul>
         </div>
       </div>
-      <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 20px; text-align: center;">
+      <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 20px; text-align: center; font-size: 0.8rem;">
         <p>&copy; 2025 Toccata, Inc. All rights reserved.</p>
       </div>
     </div>
   </footer>
   
   <script>
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+      var header = document.querySelector('header');
+      header.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Mobile menu functionality
+    document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileMenuClose = document.querySelector('.mobile-menu-close');
+    const dropdownLinks = document.querySelectorAll('.mobile-nav-link.has-dropdown');
+
+    // Toggle mobile menu
+    function toggleMobileMenu() {
+      mobileMenu.classList.toggle('open');
+      mobileMenuToggle.classList.toggle('active');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    }
+
+    // Open mobile menu
+    if (mobileMenuToggle) {
+      mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+    }
+
+    // Close mobile menu
+    if (mobileMenuClose) {
+      mobileMenuClose.addEventListener('click', toggleMobileMenu);
+    }
+
+    // Close mobile menu when clicking outside
+    if (mobileMenu) {
+      mobileMenu.addEventListener('click', function(e) {
+        if (e.target === mobileMenu) {
+          toggleMobileMenu();
+        }
+      });
+    }
+
+    // Handle dropdown toggles
+    dropdownLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const parentItem = this.closest('.mobile-nav-item');
+        const dropdown = parentItem.querySelector('.mobile-dropdown');
+        const isOpen = dropdown.classList.contains('open');
+
+        // Close all other dropdowns
+        document.querySelectorAll('.mobile-dropdown.open').forEach(openDropdown => {
+          if (openDropdown !== dropdown) {
+            openDropdown.classList.remove('open');
+            openDropdown.previousElementSibling.classList.remove('open');
+          }
+        });
+
+        // Toggle current dropdown
+        dropdown.classList.toggle('open', !isOpen);
+        this.classList.toggle('open', !isOpen);
+      });
+    });
+
+    // Close mobile menu when clicking on non-dropdown links
+    const regularLinks = document.querySelectorAll('.mobile-dropdown-item, .mobile-cta-btn, .mobile-login-btn');
+    regularLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        // Small delay to allow navigation
+        setTimeout(() => {
+          toggleMobileMenu();
+        }, 200);
+      });
+    });
+
+    // Handle escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+        toggleMobileMenu();
+      }
+    });
+  });
+
  document.addEventListener('DOMContentLoaded', function() {
   // Humidity display animation
-  const dataDisplayElement = document.querySelector('.data-value'); // Updated selector
-  const deviceDataDisplay = document.querySelector('.device-data-display'); // Updated selector
-  const dataAlertElement = document.querySelector('.data-alert'); // Updated selector
+  const dataDisplayElement = document.querySelector('.data-value');
+  const deviceDataDisplay = document.querySelector('.device-data-display');
+  const dataAlertElement = document.querySelector('.data-alert');
   
   let humidity = 45.0; // Start at 45.0% RH
   const alertThreshold = 65.0; // Alert at 65.0% RH
@@ -1846,26 +2371,26 @@
   
   // Create the threshold warning element
   const thresholdWarning = document.createElement('div');
-  thresholdWarning.className = 'threshold-warning'; // This class can be styled if needed
-  thresholdWarning.innerHTML = 'High Humidity'; // Warning text
+  thresholdWarning.className = 'threshold-warning';
+  thresholdWarning.innerHTML = 'High Humidity';
   thresholdWarning.style.position = 'absolute';
-  thresholdWarning.style.top = '-30px'; // Position above the display
+  thresholdWarning.style.top = '-30px';
   thresholdWarning.style.left = '0';
   thresholdWarning.style.width = '100%';
-  thresholdWarning.style.backgroundColor = '#e94560'; // Highlight color
+  thresholdWarning.style.backgroundColor = '#e94560';
   thresholdWarning.style.color = 'white';
   thresholdWarning.style.padding = '5px';
   thresholdWarning.style.textAlign = 'center';
   thresholdWarning.style.borderRadius = '8px 8px 0 0';
   thresholdWarning.style.fontWeight = 'bold';
   thresholdWarning.style.fontSize = '0.8rem';
-  thresholdWarning.style.opacity = '0'; // Start hidden
+  thresholdWarning.style.opacity = '0';
   thresholdWarning.style.transition = 'opacity 0.5s ease-in-out';
-  deviceDataDisplay.prepend(thresholdWarning); // Add to the top of the display box
+  deviceDataDisplay.prepend(thresholdWarning);
   
   // Function to gradually increase humidity
   const increaseHumidity = () => {
-    humidity += 0.5; // Increase humidity
+    humidity += 0.5;
     dataDisplayElement.textContent = `${humidity.toFixed(1)}%`;
     
     if (humidity >= alertThreshold && !alertTriggered) {
@@ -1873,35 +2398,35 @@
       alertTriggered = true;
       deviceDataDisplay.classList.add('alert-active');
       document.querySelector('.status-text').textContent = 'Alert Sent';
-      document.querySelector('.status-indicator').style.backgroundColor = '#e94560'; // Red indicator
+      document.querySelector('.status-indicator').style.backgroundColor = '#e94560';
       
       // Change alert text in the slide-up panel
       dataAlertElement.querySelector('.alert-text').textContent = 'High Humidity';
       
       // After 5 seconds, hide the slide-up alert and show the static threshold warning
       setTimeout(() => {
-        deviceDataDisplay.classList.remove('alert-active'); // Hide slide-up alert
+        deviceDataDisplay.classList.remove('alert-active');
         
-        setTimeout(() => { // Wait for animation
+        setTimeout(() => {
           if (!thresholdWarningShown) {
             thresholdWarningShown = true;
-            deviceDataDisplay.style.border = '2px solid #ff0033'; // Red border for emphasis
+            deviceDataDisplay.style.border = '2px solid #ff0033';
             deviceDataDisplay.style.boxShadow = '0 0 15px rgba(255, 0, 51, 0.5)';
-            thresholdWarning.style.opacity = '1'; // Show static warning
+            thresholdWarning.style.opacity = '1';
             
             // Settle humidity slightly above threshold
             humidity = alertThreshold + 0.3;
             dataDisplayElement.textContent = `${humidity.toFixed(1)}%`;
           }
         }, 500); 
-      }, 5000); // Duration for slide-up alert
+      }, 5000);
       
-      return; // Stop further increases for now
+      return;
     }
     
     if (!alertTriggered) {
       // Continue increasing if alert not triggered
-      setTimeout(increaseHumidity, 600); // Speed of increase
+      setTimeout(increaseHumidity, 600);
     }
   };
   
@@ -1919,50 +2444,7 @@
       dataDisplayElement.textContent = `${humidity.toFixed(1)}%`;
     }
   }, 3000);
-  
-  // Mobile Menu Toggle Functionality
-  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const menuIcon = document.getElementById('menu-icon');
-  let menuOpen = false;
-  
-  mobileMenuToggle.addEventListener('click', function() {
-    if (menuOpen) {
-      mobileMenu.classList.remove('active');
-      menuIcon.classList.remove('fa-times');
-      menuIcon.classList.add('fa-bars');
-    } else {
-      mobileMenu.classList.add('active');
-      menuIcon.classList.remove('fa-bars');
-      menuIcon.classList.add('fa-times');
-    }
-    menuOpen = !menuOpen;
-  });
-  
-  // Close mobile menu when clicking on a link
-  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
-  mobileLinks.forEach(link => {
-    link.addEventListener('click', function() {
-      mobileMenu.classList.remove('active');
-      menuIcon.classList.remove('fa-times');
-      menuIcon.classList.add('fa-bars');
-      menuOpen = false;
-    });
-  });
-  
-  // Close mobile menu when clicking outside
-  document.addEventListener('click', function(event) {
-    const isClickInsideMenu = mobileMenu.contains(event.target);
-    const isClickOnToggle = mobileMenuToggle.contains(event.target);
-    
-    if (menuOpen && !isClickInsideMenu && !isClickOnToggle) {
-      mobileMenu.classList.remove('active');
-      menuIcon.classList.remove('fa-times');
-      menuIcon.classList.add('fa-bars');
-      menuOpen = false;
-    }
-  });
 });
-  </script>
+    </script>
 </body>
 </html>
