@@ -188,17 +188,95 @@
       color: var(--text-color);
     }
     
+    /* Top Bar Styles */
+    .top-bar {
+      background-color: rgba(15, 52, 96, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(233, 69, 96, 0.1);
+      padding: 6px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      transition: all 0.3s ease;
+    }
+
+    .top-bar-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 25px;
+    }
+
+    .top-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .top-bar-link {
+      color: var(--text-color);
+      text-decoration: none;
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      opacity: 0.8;
+      transition: all 0.3s ease;
+      padding: 3px 6px;
+      border-radius: 4px;
+    }
+
+    .top-bar-link:hover {
+      opacity: 1;
+      color: var(--highlight-color);
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .proudly-canadian {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-color);
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      opacity: 0.9;
+      background-color: rgba(233, 69, 96, 0.15);
+      padding: 3px 8px;
+      border-radius: 12px;
+      border: 1px solid rgba(233, 69, 96, 0.3);
+    }
+
+    .proudly-canadian i {
+      color: var(--highlight-color);
+      font-size: 0.8rem;
+    }
+    
     /* Header styles */
     header {
+      padding-top: 12px;
       position: fixed;
       width: 100%;
       z-index: 1000;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
-      background-color: rgba(26, 26, 46, 0.95);
-      backdrop-filter: blur(8px);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-      padding: 15px 0 0; 
+      background-color: rgba(26, 26, 46, 0.98);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+      border-bottom: 1px solid rgba(233, 69, 96, 0.2);
+      top: 38px;
+      transition: all 0.3s ease;
     }
+
+    header.scrolled {
+      padding-top: 12px;
+      background-color: rgba(26, 26, 46, 1);
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+    }
+    
     nav {
       display: flex;
       justify-content: space-between;
@@ -214,57 +292,123 @@
       margin-right: 10px;
     }
     
-    /* Updated Nav Links Styles */
+    /* Desktop Navigation Links */
     .nav-links {
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      gap: 20px;
+      gap: 8px;
       margin-left: auto;
+    }
+    .nav-item {
+      position: relative;
     }
     .nav-link {
       color: var(--text-color);
       text-decoration: none;
-      padding: 8px 15px;
-      border-radius: 8px;
+      padding: 10px 16px;
+      border-radius: 6px;
       transition: all 0.3s ease;
-      font-size: 1rem;
-      font-weight: 500;
+      font-size: 0.8rem;
+      font-weight: 600;
       white-space: nowrap;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      position: relative;
     }
     .nav-link:hover {
       color: var(--highlight-color);
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: rgba(255, 255, 255, 0.08);
+      transform: translateY(-1px);
     }
+    .nav-link.has-dropdown::after {
+      content: '\f0d7';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      margin-left: 6px;
+      font-size: 0.7rem;
+      transition: transform 0.3s ease;
+    }
+    .nav-item:hover .nav-link.has-dropdown::after {
+      transform: rotate(180deg);
+    }
+    
+    /* Nav Dropdowns */
+    .dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      transform: translateY(-10px);
+      background-color: rgba(22, 33, 62, 0.98);
+      backdrop-filter: blur(12px);
+      border-radius: 12px;
+      padding: 12px 0;
+      min-width: 220px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(233, 69, 96, 0.2);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 1001;
+    }
+    
+    .nav-item:hover .dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(5%);
+    }
+    .dropdown-item {
+      display: block;
+      color: var(--text-color);
+      text-decoration: none;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-transform: none;
+      letter-spacing: 0;
+      transition: all 0.2s ease;
+      border-left: 3px solid transparent;
+    }
+    .dropdown-item:hover {
+      background-color: rgba(233, 69, 96, 0.1);
+      color: var(--highlight-color);
+      border-left-color: var(--highlight-color);
+      padding-left: 24px;
+    }
+    .dropdown-item i {
+      margin-right: 10px;
+      width: 16px;
+      text-align: center;
+      color: var(--highlight-color);
+      opacity: 0.8;
+    }
+    
+    /* Nav CTA Buttons */
     .login-btn {
-      display: flex;
-      align-items: center;
-      gap: 6px;
       border: 1px solid rgba(255, 255, 255, 0.3);
+      background-color: rgba(255, 255, 255, 0.05);
     }
     .login-btn:hover {
       border-color: var(--highlight-color);
+      background-color: rgba(233, 69, 96, 0.1);
     }
     .primary-cta {
-      display: flex;
-      align-items: center;
-      gap: 8px;
       background-color: var(--highlight-color);
-      color: white;
-      padding: 8px 20px;
-      border-radius: 8px;
-      font-weight: 600;
-      transition: all 0.3s ease;
+      color: white !important;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 700;
       box-shadow: 0 4px 12px rgba(233, 69, 96, 0.3);
+      margin-left: 8px;
     }
     .primary-cta:hover {
       background-color: #ff5a7c;
-      color: white;
+      color: white !important;
       transform: translateY(-2px);
       box-shadow: 0 6px 16px rgba(233, 69, 96, 0.4);
     }
     
-    /* Mobile menu styles */
+    /* Mobile Navigation */
     .mobile-menu-toggle {
       display: none;
       cursor: pointer;
@@ -275,99 +419,243 @@
       border-radius: 50%;
       transition: all 0.3s ease;
       background-color: rgba(255, 255, 255, 0.1);
-      z-index: 1001;
+      position: relative;
+      z-index: 1002;
     }
-    
     .mobile-menu-toggle:hover {
       background-color: rgba(255, 255, 255, 0.2);
     }
-    
-    .mobile-menu-expanded {
+
+    .mobile-menu-toggle i {
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-menu-toggle.active i {
+      transform: rotate(90deg);
+    }
+
+    /* New Mobile Menu Styles */
+    .mobile-menu {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100vh;
-      background-color: rgba(26, 26, 46, 0.98);
-      z-index: 1000;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      transform: translateY(-100%);
-      transition: transform 0.3s ease-in-out;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      z-index: 1001;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      overflow-y: auto;
+      padding-top: 80px;
     }
-    
-    .mobile-menu-expanded.active {
-      transform: translateY(0);
+
+    .mobile-menu.open {
+      opacity: 1;
+      visibility: visible;
     }
-    
-    .mobile-nav-links {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
+
+    .mobile-menu-content {
+      padding: 20px;
+      max-width: 400px;
+      margin: 0 auto;
     }
-    
+
+    .mobile-nav-item {
+      margin-bottom: 12px;
+      border-radius: 16px;
+      background: rgba(15, 52, 96, 0.3);
+      border: 1px solid rgba(233, 69, 96, 0.2);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-nav-item:hover {
+      background: rgba(15, 52, 96, 0.5);
+      border-color: rgba(233, 69, 96, 0.4);
+    }
+
     .mobile-nav-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
       color: var(--text-color);
       text-decoration: none;
-      padding: 12px 20px;
-      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
       transition: all 0.3s ease;
-      font-size: 1rem;
-      font-weight: 500;
-      white-space: nowrap;
+      position: relative;
     }
-    
+
     .mobile-nav-link:hover {
       color: var(--highlight-color);
-      background-color: rgba(255, 255, 255, 0.1);
+      background: rgba(233, 69, 96, 0.1);
     }
-    
+
+    .mobile-nav-link i {
+      margin-right: 12px;
+      font-size: 1.2rem;
+      color: var(--highlight-color);
+    }
+
+    .mobile-nav-link.has-dropdown::after {
+      content: '\f0d7';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      font-size: 0.9rem;
+      transition: transform 0.3s ease;
+      color: var(--highlight-color);
+    }
+
+    .mobile-nav-link.has-dropdown.open::after {
+      transform: rotate(180deg);
+    }
+
+    /* Mobile Dropdown */
+    .mobile-dropdown {
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      background: rgba(22, 33, 62, 0.8);
+      border-top: 1px solid rgba(233, 69, 96, 0.2);
+    }
+
+    .mobile-dropdown.open {
+      max-height: 400px;
+      padding: 12px 0;
+    }
+
+    .mobile-dropdown-item {
+      display: block;
+      padding: 16px 32px;
+      color: var(--text-color);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-transform: none;
+      letter-spacing: 0;
+      transition: all 0.2s ease;
+      border-left: 3px solid transparent;
+      position: relative;
+    }
+
+    .mobile-dropdown-item:hover {
+      background-color: rgba(233, 69, 96, 0.1);
+      color: var(--highlight-color);
+      border-left-color: var(--highlight-color);
+      padding-left: 36px;
+    }
+
+    .mobile-dropdown-item i {
+      margin-right: 12px;
+      width: 16px;
+      text-align: center;
+      color: var(--highlight-color);
+      opacity: 0.8;
+      font-size: 1rem;
+    }
+
+    /* Mobile CTA Section */
+    .mobile-cta-section {
+      margin-top: 32px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(233, 69, 96, 0.2);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
     .mobile-login-btn {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      margin-top: 10px;
-      width: 200px;
+      gap: 12px;
+      padding: 16px 24px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      background-color: rgba(255, 255, 255, 0.05);
+      color: var(--text-color);
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
     }
-    
-    .mobile-primary-cta {
+
+    .mobile-login-btn:hover {
+      border-color: var(--highlight-color);
+      background-color: rgba(233, 69, 96, 0.1);
+      color: var(--highlight-color);
+    }
+
+    .mobile-cta-btn {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 12px;
+      padding: 18px 24px;
+      background: linear-gradient(135deg, var(--highlight-color) 0%, #ff5a7c 100%);
+      color: white !important;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 8px 20px rgba(233, 69, 96, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .mobile-cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(233, 69, 96, 0.5);
+    }
+
+    .mobile-cta-btn i {
+      font-size: 1.2rem;
+    }
+
+    .mobile-menu-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background-color: rgba(233, 69, 96, 0.2);
+      border: 2px solid rgba(233, 69, 96, 0.4);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: var(--highlight-color);
+      z-index: 1002;
+    }
+
+    .mobile-menu-close:hover {
       background-color: var(--highlight-color);
       color: white;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(233, 69, 96, 0.3);
-      margin-top: 20px;
-      width: 200px;
-    }
-    
-    .mobile-primary-cta:hover {
-      background-color: #ff5a7c;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(233, 69, 96, 0.4);
+      transform: rotate(90deg);
     }
     
     .integrated-breadcrumb {
       background-color: rgba(15, 52, 96, 0.7); 
       padding: 8px 0;
       margin-top: 15px;
-      font-size: 0.85rem;
+      font-size: 0.7rem;
     }
     
     .breadcrumb-nav {
       display: flex;
       align-items: center;
-      font-size: 0.85rem;
+      font-size: 0.7rem;
       color: rgba(255, 255, 255, 0.7);
     }
     
@@ -424,14 +712,22 @@
     
     .section-title {
       text-align: center;
-      font-size: 2.5rem;
+      font-size: 2rem;
       margin-top: 3rem;
       margin-bottom: 70px;
       color: var(--highlight-color);
     }
+
+    .section-icon {
+      font-size: 3rem;
+      color: var(--highlight-color);
+      margin-bottom: 20px;
+      display: block;
+      text-align: center;
+    }
     
     .cabin-hero { 
-      padding: 180px 0 120px; 
+      padding: 250px 0 120px; 
       background-color: var(--primary-color);
       position: relative;
       overflow: hidden;
@@ -488,12 +784,12 @@
       z-index: 0;
     }
     .cabin-hero h1 {
-      font-size: 2.8rem; 
+      font-size: 2.5rem; 
       margin-bottom: 25px;
       line-height: 1.2;
     }
     .cabin-hero-subtitle { 
-      font-size: 1rem;
+      font-size: 0.9rem;
       margin-bottom: 35px;
       color: var(--text-color);
       opacity: 0.9;
@@ -510,9 +806,16 @@
       font-weight: bold;
     }
     .cabin-notice {
-        font-size: 0.8rem;
-        opacity: 0.9;
+        font-size: 0.9rem;
+        opacity: 0.8;
         line-height: 1.6;
+        color: var(--text-color);
+        margin-bottom: 20px;
+    }
+    
+    .features {
+      padding: 50px 0;
+      background-color: var(--primary-color);
     }
     
     .features-grid {
@@ -545,7 +848,7 @@
       color: var(--text-color);
     }
     .feature-card p {
-      font-size: 1rem;
+      font-size: 0.9rem;
       line-height: 1.6;
       color: var(--text-color);
       opacity: 0.8;
@@ -611,7 +914,7 @@
       color: var(--text-color);
     }
     .step-card p {
-      font-size: 1rem;
+      font-size: 0.9rem;
       line-height: 1.6;
       color: var(--text-color);
       opacity: 0.9;
@@ -634,7 +937,7 @@
       margin: 0 auto 60px;
     }
     .comparison-intro p {
-      font-size: 1.2rem;
+      font-size: 0.9rem;
       line-height: 1.6;
       color: var(--text-color);
       opacity: 0.9;
@@ -676,14 +979,14 @@
       text-align: left;
       border-bottom: 2px solid var(--accent-color);
       color: var(--highlight-color);
-      font-size: 1.2rem;
+      font-size: 1rem;
       white-space: nowrap;
     }
     
     .comparison-table td {
       padding: 20px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      font-size: 1rem;
+      font-size: 0.8rem;
     }
     
     .comparison-table tr:last-child td {
@@ -750,7 +1053,7 @@
       margin-bottom: 20px;
     }
     .testimonial-content {
-      font-size: 1.1rem;
+      font-size: 0.9rem;
       line-height: 1.8;
       margin-bottom: 24px;
       position: relative;
@@ -823,7 +1126,7 @@
       font-size: 1.4rem;
     }
     .faq-item p {
-      font-size: 1rem;
+      font-size: 0.9rem;
       line-height: 1.6;
       color: var(--text-color);
       opacity: 0.9;
@@ -866,12 +1169,12 @@
       margin-bottom: 30px;
     }
     .final-cta h2 {
-      font-size: 3rem;
+      font-size: 2rem;
       margin-bottom: 20px;
       color: var(--text-color);
     }
     .final-cta p {
-      font-size: 1.2rem;
+      font-size: 0.9rem;
       margin-bottom: 40px;
       color: var(--text-color);
       opacity: 0.9;
@@ -939,7 +1242,7 @@
       text-decoration: none;
       opacity: 0.7;
       transition: all 0.3s ease;
-      font-size: 0.9rem; 
+      font-size: 0.8rem; 
       display: flex;
       align-items: center;
     }
@@ -1025,7 +1328,7 @@
     
     @media (max-width: 1024px) {
       .cabin-hero h1 { 
-        font-size: 2.6rem; 
+        font-size: 1.6rem; 
       }
       .features-grid, 
       .steps-grid {
@@ -1045,19 +1348,39 @@
       }
     }
     
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
       .nav-links {
         display: none;
       }
       .mobile-menu-toggle {
         display: flex;
       }
+      .top-bar {
+        padding: 6px 0;
+      }
+      .top-bar-content {
+        padding: 0 15px;
+      }
+      .top-bar-left {
+        gap: 16px;
+      }
+      .top-bar-link {
+        font-size: 0.7rem;
+        padding: 3px 6px;
+      }
+      .integrated-breadcrumb {
+        padding: 6px 0;
+        font-size: 0.8rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
       .integrated-breadcrumb {
         padding: 6px 0;
         font-size: 0.8rem;
       }
       .cabin-hero { 
-        padding-top: 150px;
+        padding-top: 200px;
       }
       .cabin-hero-container { 
         flex-direction: column;
@@ -1067,10 +1390,10 @@
         justify-content: center;
       }
       .cabin-hero h1 { 
-        font-size: 2.3rem; 
+        font-size: 1.4rem; 
       }
       .cabin-hero-subtitle { 
-        font-size: 1.1rem; 
+        font-size: 0.9rem; 
       }
       .features-grid, 
       .steps-grid, 
@@ -1097,14 +1420,14 @@
       }
       
       .section-title {
-        font-size: 2rem;
+        font-size: 1.5rem;
         margin-bottom: 40px;
       }
     }
 
     @media (max-width: 480px) {
       .cabin-hero h1 { 
-        font-size: 2.0rem; 
+        font-size: 1.3rem; 
       }
       
       .comparison-table th {
@@ -1263,7 +1586,7 @@
       padding: 0;
     }
     .footer-grid li, .footer-grid a {
-      font-size: 0.9rem; 
+      font-size: 0.8rem; 
     }
 
 
@@ -1350,6 +1673,24 @@
   </style>
 </head>
 <body>
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="top-bar-content">
+      <div class="top-bar-left">
+        <a href="../about.html" class="top-bar-link">
+          About
+        </a>
+        <a href="mailto:support@cabinpulse.com" class="top-bar-link">
+          Contact Us
+        </a>
+      </div>
+      <div class="proudly-canadian">
+        <i class="fa-brands fa-canadian-maple-leaf"></i>
+        Proudly Canadian
+      </div>
+    </div>
+  </div>
+
   <!-- HEADER SECTION -->
   <header>
     <nav class="container">
@@ -1358,36 +1699,68 @@
         <span class="logo-text">CabinPulse</span>
       </div>
       <div class="nav-links">
-        <a href="/index.html#features" class="nav-link">Features</a>
-        <a href="/index.html#pricing" class="nav-link">Pricing</a>
-        <a href="/index.html#faq" class="nav-link">FAQ</a>
-        <a href="https://blog.cabinpulse.com" class="nav-link">Blog</a>
+        <div class="nav-item">
+          <a href="#" class="nav-link has-dropdown">Product</a>
+          <div class="dropdown">
+            <a href="../index.html#features" class="dropdown-item">
+              <i class="fas fa-check-circle"></i>Features
+            </a>
+            <a href="../index.html#pricing" class="dropdown-item">
+              <i class="fas fa-tag"></i>Pricing
+            </a>
+            <a href="../index.html#coverage" class="dropdown-item">
+              <i class="fas fa-tower-cell"></i>Coverage
+            </a>
+          </div>
+        </div>
+    
+        <div class="nav-item">
+          <a href="#" class="nav-link has-dropdown">Use Cases</a>
+          <div class="dropdown">
+            <a href="https://cabinpulse.com/uses/remote-cabin-cottage-monitoring-system.html" class="dropdown-item">
+              <i class="fas fa-home"></i>Cabin Monitoring
+            </a>
+            <a href="https://cabinpulse.com/uses/rv-temperature-monitor-pets.html" class="dropdown-item">
+              <i class="fas fa-dog"></i>RV Monitor for Pets
+            </a>
+            <a href="https://cabinpulse.com/uses/vacation-home-monitoring.html" class="dropdown-item">
+              <i class="fas fa-house-chimney-window"></i>Vacation Home Monitoring
+            </a>
+            <a href="https://cabinpulse.com/uses/server-room-monitor.html" class="dropdown-item">
+              <i class="fas fa-server"></i>Server Room Monitoring
+            </a>
+          </div>
+        </div>
+    
+        <div class="nav-item">
+          <a href="#" class="nav-link has-dropdown">Resources</a>
+          <div class="dropdown">
+            <a href="../index.html#faq" class="dropdown-item">
+              <i class="fas fa-question-circle"></i>FAQ
+            </a>
+            <a href="https://blog.cabinpulse.com" class="dropdown-item">
+              <i class="fas fa-blog"></i>Blog
+            </a>
+            <a href="../manual.html" class="dropdown-item">
+              <i class="fas fa-book"></i>User Manual
+            </a>
+            <a href="mailto:support@cabinpulse.com" class="dropdown-item">
+              <i class="fas fa-life-ring"></i>Support
+            </a>
+          </div>
+        </div>
+    
         <a href="https://dashboard.cabinpulse.com" class="nav-link login-btn">
           Dashboard
         </a>
         <a href="https://cabinpulse.com/purchase.html?plan=1" class="nav-link primary-cta">
-          Get CabinPulse →
+          Get Started
         </a>
       </div>
-      <div class="mobile-menu-toggle" id="mobile-menu-toggle">
-        <i class="fas fa-bars" id="menu-icon"></i>
+      <div class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
       </div>
     </nav>
-    
-    <div class="mobile-menu-expanded" id="mobile-menu">
-      <div class="mobile-nav-links">
-        <a href="/index.html#features" class="mobile-nav-link">Features</a>
-        <a href="/index.html#pricing" class="mobile-nav-link">Pricing</a>
-        <a href="/index.html#faq" class="mobile-nav-link">FAQ</a>
-        <a href="https://blog.cabinpulse.com" class="mobile-nav-link">Blog</a>
-        <a href="https://dashboard.cabinpulse.com" class="mobile-nav-link mobile-login-btn">
-          Dashboard
-        </a>
-        <a href="https://cabinpulse.com/purchase.html?plan=1" class="mobile-nav-link mobile-primary-cta">
-          Get CabinPulse →
-        </a>
-      </div>
-    </div>
     
     <div class="integrated-breadcrumb">
       <div class="container">
@@ -1402,6 +1775,96 @@
     </div>
   </header>
   
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <div class="mobile-menu-close">
+      <i class="fas fa-times"></i>
+    </div>
+    
+    <div class="mobile-menu-content">
+      <!-- Product Section -->
+      <div class="mobile-nav-item">
+        <a href="#" class="mobile-nav-link has-dropdown">
+          <div>
+            <i class="fas fa-cube"></i>
+            Product
+          </div>
+        </a>
+        <div class="mobile-dropdown">
+          <a href="../index.html#features" class="mobile-dropdown-item">
+            <i class="fas fa-check-circle"></i>Features
+          </a>
+          <a href="../index.html#pricing" class="mobile-dropdown-item">
+            <i class="fas fa-tag"></i>Pricing
+          </a>
+          <a href="../index.html#coverage" class="mobile-dropdown-item">
+            <i class="fas fa-tower-cell"></i>Coverage
+          </a>
+        </div>
+      </div>
+
+      <!-- Use Cases Section -->
+      <div class="mobile-nav-item">
+        <a href="#" class="mobile-nav-link has-dropdown">
+          <div>
+            <i class="fas fa-lightbulb"></i>
+            Use Cases
+          </div>
+        </a>
+        <div class="mobile-dropdown">
+          <a href="https://cabinpulse.com/uses/remote-cabin-cottage-monitoring-system.html" class="mobile-dropdown-item">
+            <i class="fas fa-home"></i>Cabin Monitoring
+          </a>
+          <a href="https://cabinpulse.com/uses/rv-temperature-monitor-pets.html" class="mobile-dropdown-item">
+            <i class="fas fa-dog"></i>RV Monitor for Pets
+          </a>
+          <a href="https://cabinpulse.com/uses/vacation-home-monitoring.html" class="mobile-dropdown-item">
+            <i class="fas fa-house-chimney-window"></i>Vacation Home Monitoring
+          </a>
+          <a href="https://cabinpulse.com/uses/server-room-monitor.html" class="mobile-dropdown-item">
+            <i class="fas fa-server"></i>Server Room Monitoring
+          </a>
+        </div>
+      </div>
+
+      <!-- Resources Section -->
+      <div class="mobile-nav-item">
+        <a href="#" class="mobile-nav-link has-dropdown">
+          <div>
+            <i class="fas fa-book"></i>
+            Resources
+          </div>
+        </a>
+        <div class="mobile-dropdown">
+          <a href="../index.html#faq" class="mobile-dropdown-item">
+            <i class="fas fa-question-circle"></i>FAQ
+          </a>
+          <a href="https://blog.cabinpulse.com" class="mobile-dropdown-item">
+            <i class="fas fa-blog"></i>Blog
+          </a>
+          <a href="../manual.html" class="mobile-dropdown-item">
+            <i class="fas fa-book"></i>User Manual
+          </a>
+          <a href="mailto:support@cabinpulse.com" class="mobile-dropdown-item">
+            <i class="fas fa-life-ring"></i>Support
+          </a>
+        </div>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="mobile-cta-section">
+        <a href="https://dashboard.cabinpulse.com" class="mobile-login-btn">
+          <i class="fas fa-tachometer-alt"></i>
+          Dashboard
+        </a>
+        <a href="https://cabinpulse.com/purchase.html?plan=1" class="mobile-cta-btn">
+          <i class="fas fa-shopping-cart"></i>
+          Get CabinPulse
+        </a>
+      </div>
+    </div>
+  </div>
+
   <!-- Cabin Monitoring Hero Section -->
   <section class="cabin-hero">
     <div class="container cabin-hero-container">
@@ -1415,7 +1878,7 @@
           <span class="badge"><i class="fas fa-wind icon-text" style="margin-right:0.2rem;"></i>Air Quality Insights</span>
           <span class="badge"><i class="fas fa-wifi icon-text" style="margin-right:0.2rem;"></i>No WiFi Needed</span>
         </div>
-        <p class="cabin-notice">CabinPulse provides essential protection for your home away from home, alerting you to critical issues instantly.</span></p>
+        <p class="cabin-notice">CabinPulse provides essential protection for your home away from home, alerting you to critical issues instantly.</p>
         
         <a href="https://cabinpulse.com/purchase.html?plan=1" class="cta-button"> 
           Protect Your Cabin →
@@ -1469,6 +1932,7 @@
   <!-- Features Section -->
   <section class="features">
     <div class="container" style="margin-bottom: 5rem;">
+      <i class="section-icon fas fa-star"></i>
       <h2 class="section-title">Why CabinPulse is Essential for Every Cabin & Cottage Owner</h2>
       
       <div class="features-grid">
@@ -1515,6 +1979,7 @@
   <!-- How It Works Section -->
   <section class="how-it-works">
     <div class="container">
+      <i class="section-icon fas fa-cogs"></i>
       <h2 class="section-title">Effortless Monitoring for Your Lakeside Getaway</h2>
       
       <div class="steps-grid">
@@ -1553,6 +2018,7 @@
   <!-- Comparison Section -->
   <section class="comparison">
     <div class="container comparison-container">
+      <i class="section-icon fas fa-balance-scale"></i>
       <h2 class="section-title">CabinPulse vs. Traditional Cabin 'Solutions'</h2>
       
       <div class="comparison-intro">
@@ -1610,7 +2076,7 @@
               <td class="feature-name">Year-Round Internet Cost</td>
               <td><i class="checkmark fas fa-check"></i> Potentially none</td>
               <td><i class="xmark fas fa-xmark"></i> High (e.g., Starlink $140+/mo)</td>
-              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Low Monthly Fee (Save $$$)</td>
+              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Low Monthly Fee (Save $$)</td>
             </tr>
             <tr>
               <td class="feature-name">Installation</td>
@@ -1631,6 +2097,7 @@
   <!-- Testimonials Section -->
   <section class="testimonials">
     <div class="container">
+      <i class="section-icon fas fa-quote-left"></i>
       <h2 class="section-title">Cabin & Cottage Owners Trust CabinPulse</h2>
       
       <div class="testimonials-grid">
@@ -1639,7 +2106,7 @@
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
           <div class="testimonial-content">
-            We got CabinPulse last winter and love it! It was very easy to set up and the app is great, very user friendly. It’s great to make sure the furnace isn’t dead and that our water lines aren’t freezing in the winter. Having air quality and power outage alerts will be helpful for the summer and beyond. A no brainer for cabin owners!
+            We got CabinPulse last winter and love it! It was very easy to set up and the app is great, very user friendly. It's great to make sure the furnace isn't dead and that our water lines aren't freezing in the winter. Having air quality and power outage alerts will be helpful for the summer and beyond. A no brainer for cabin owners!
           </div>
           <div class="testimonial-author">
             <div class="author-avatar"><i class="fas fa-house-chimney-window"></i></div>
@@ -1677,6 +2144,7 @@
   <!-- FAQ Section -->
   <section class="faq">
     <div class="container">
+      <i class="section-icon fas fa-question-circle"></i>
       <h2 class="section-title">Your Cabin & Cottage Monitoring Questions Answered</h2>
       
       <div class="faq-grid">
@@ -1854,7 +2322,86 @@
   </footer>
   
   <script>
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+      var header = document.querySelector('header');
+      header.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Mobile menu functionality
     document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileMenuClose = document.querySelector('.mobile-menu-close');
+    const dropdownLinks = document.querySelectorAll('.mobile-nav-link.has-dropdown');
+
+    // Toggle mobile menu
+    function toggleMobileMenu() {
+      mobileMenu.classList.toggle('open');
+      mobileMenuToggle.classList.toggle('active');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    }
+
+    // Open mobile menu
+    if (mobileMenuToggle) {
+      mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+    }
+
+    // Close mobile menu
+    if (mobileMenuClose) {
+      mobileMenuClose.addEventListener('click', toggleMobileMenu);
+    }
+
+    // Close mobile menu when clicking outside
+    if (mobileMenu) {
+      mobileMenu.addEventListener('click', function(e) {
+        if (e.target === mobileMenu) {
+          toggleMobileMenu();
+        }
+      });
+    }
+
+    // Handle dropdown toggles
+    dropdownLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const parentItem = this.closest('.mobile-nav-item');
+        const dropdown = parentItem.querySelector('.mobile-dropdown');
+        const isOpen = dropdown.classList.contains('open');
+
+        // Close all other dropdowns
+        document.querySelectorAll('.mobile-dropdown.open').forEach(openDropdown => {
+          if (openDropdown !== dropdown) {
+            openDropdown.classList.remove('open');
+            openDropdown.previousElementSibling.classList.remove('open');
+          }
+        });
+
+        // Toggle current dropdown
+        dropdown.classList.toggle('open', !isOpen);
+        this.classList.toggle('open', !isOpen);
+      });
+    });
+
+    // Close mobile menu when clicking on non-dropdown links
+    const regularLinks = document.querySelectorAll('.mobile-dropdown-item, .mobile-cta-btn, .mobile-login-btn');
+    regularLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        // Small delay to allow navigation
+        setTimeout(() => {
+          toggleMobileMenu();
+        }, 200);
+      });
+    });
+
+    // Handle escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+        toggleMobileMenu();
+      }
+    });
+
         const monitoringStatusMain = document.getElementById('monitoringStatusMain');
         const monitoringStatusSub = document.getElementById('monitoringStatusSub');
         const deviceCabinDisplay = document.querySelector('.device-cabin-status-display');
@@ -1879,42 +2426,6 @@
         }
 
         setStaticDisplay(); // Set the display on load
-
-        // Mobile Menu Toggle Functionality
-        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = document.getElementById('menu-icon');
-        let menuOpen = false;
-    
-        mobileMenuToggle.addEventListener('click', function() {
-            menuOpen = !menuOpen;
-            mobileMenu.classList.toggle('active', menuOpen);
-            menuIcon.classList.toggle('fa-times', menuOpen);
-            menuIcon.classList.toggle('fa-bars', !menuOpen);
-        });
-    
-        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                if (menuOpen) {
-                    mobileMenu.classList.remove('active');
-                    menuIcon.classList.remove('fa-times');
-                    menuIcon.classList.add('fa-bars');
-                    menuOpen = false;
-                }
-            });
-        });
-    
-        document.addEventListener('click', function(event) {
-            const isClickInsideMenu = mobileMenu.contains(event.target);
-            const isClickOnToggle = mobileMenuToggle.contains(event.target);
-            if (menuOpen && !isClickInsideMenu && !isClickOnToggle) {
-                mobileMenu.classList.remove('active');
-                menuIcon.classList.remove('fa-times');
-                menuIcon.classList.add('fa-bars');
-                menuOpen = false;
-            }
-        });
     });
   </script>
 </body>
