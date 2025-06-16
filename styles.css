@@ -4268,3 +4268,93 @@ Replace the existing top-bar-content div with:
     }
     
   }
+
+/* ==========================================================================
+   HERO CTA BUTTONS
+   ========================================================================== */
+
+/* Simple button container */
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Primary CTA */
+.hero-buy-btn {
+  background-color: var(--highlight-color);
+  color: white;
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
+}
+
+.hero-buy-btn:hover {
+  background-color: #ff5a7c;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(233, 69, 96, 0.4);
+  color: white;
+  text-decoration: none;
+}
+
+/* Secondary CTA */
+.hero-learn-btn {
+  background: rgba(15, 52, 96, 0.8);
+  backdrop-filter: blur(8px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-color);
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero-learn-btn:hover {
+  border-color: var(--highlight-color);
+  background: rgba(233, 69, 96, 0.1);
+  color: var(--highlight-color);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 900px) {
+  .hero-cta {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-buy-btn,
+  .hero-learn-btn {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-buy-btn,
+  .hero-learn-btn {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+  }
+}
