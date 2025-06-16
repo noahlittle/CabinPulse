@@ -4343,13 +4343,23 @@ Replace the existing top-bar-content div with:
     gap: 0.75rem;
   }
 
+  .hero {
+    height: 110vh; /* Adjust height for mobile */
+  }
+
   .hero-buy-btn,
   .hero-learn-btn {
     width: 100%;
     max-width: 280px;
     justify-content: center;
   }
+
+  .hero-container {
+    padding: 1px;
+  }
 }
+
+
 
 @media (max-width: 480px) {
   .hero-buy-btn,
@@ -4373,9 +4383,11 @@ Replace the existing top-bar-content div with:
   /* Show mobile image, hide desktop image */
   .mobile-hero-image {
     display: flex;
+    max-width: 700px;
     justify-content: center;
     margin: 1.5rem 0;
     transform: scale(0.8);
+    margin: auto;
     margin-top: -50px;
     margin-bottom: -50px;
   }
@@ -4419,7 +4431,6 @@ Replace the existing top-bar-content div with:
   
   .badge.canada, .badge.wifi {
     width: 100%;
-    margin-top: 2rem;
   }
   
   .hero-mobile-cta {
@@ -4427,5 +4438,27 @@ Replace the existing top-bar-content div with:
     width: 100%;
     max-width: 300px;
     text-align: center;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero {
+    height: 110vh;
+    margin-top: 68px;
+  }
+
+  .how-it-works {
+    padding: 60px 0 120px 0; /* Reduced top padding from 120px to 60px */
+    background-color: var(--primary-color);
+    position: relative;
+  }
+
+
+}
+
+@media (max-width: 480px) {
+  .feature-card.large h3 {
+    font-size: 1.8rem;
+    margin-bottom: 24px;
   }
 }
