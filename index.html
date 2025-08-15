@@ -20,8 +20,101 @@
   <!-- TrustBox script -->
   <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
   <!-- End TrustBox script -->
-  <!-- Google tag (gtag.js) -->
-  <!-- Google tag (gtag.js) -->
+  <!-- Clarity tracking code for https://cabinpulse.com -->
+   <style>
+   /* Government Badge - matching other logo styles */
+.gov-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease, filter 0.3s ease, transform 0.3s ease;
+  height: 50px; /* Match partner-logo height */
+}
+
+.gov-badge i {
+  font-size: 2rem;
+  color: white;
+  filter: brightness(0) invert(1); /* Match partner-logo filter */
+}
+
+.gov-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.gov-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.gov-subtitle {
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: white;
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 4px;
+}
+
+/* Hover effect matching other logos */
+.logo-item:hover .gov-badge {
+  opacity: 1;
+  filter: drop-shadow(0 4px 8px rgba(233, 69, 96, 0.3));
+  transform: translateY(-5px); /* Match logo-item hover */
+}
+
+/* Mobile adjustments to match partner-logo responsive sizing */
+@media (max-width: 900px) {
+  .gov-badge {
+    height: 45px;
+  }
+  
+  .gov-badge i {
+    font-size: 1.8rem;
+  }
+  
+  .gov-title {
+    font-size: 1.1rem;
+  }
+  
+  .gov-subtitle {
+    font-size: 0.55rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .gov-badge {
+    height: 40px;
+    gap: 8px;
+  }
+  
+  .gov-badge i {
+    font-size: 1.5rem;
+  }
+  
+  .gov-title {
+    font-size: 0.95rem;
+  }
+  
+  .gov-subtitle {
+    font-size: 0.5rem;
+  }
+}
+</style>
+<script>
+  (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "rzeoobm96j");
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17117116213"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -29,14 +122,6 @@
   gtag('js', new Date());
 
   gtag('config', 'AW-17117116213');
-</script>
-  <!-- Clarity tracking code for https://cabinpulse.com -->
-<script>
-  (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-  })(window, document, "clarity", "script", "rzeoobm96j");
 </script>
     <script type="application/ld+json">
       {
@@ -505,6 +590,36 @@
   </div>
 </section>
 
+
+<!-- Add this section after the hero section and before the "How It Works" section -->
+<section class="trusted-by">
+  <div class="container">
+    <div class="trusted-by-content">
+      <h3 class="trusted-by-title">Trusted To Monitor For</h3>
+      <div class="logo-grid">
+        <div class="logo-item">
+          <img src="yyc.png" alt="YYC Calgary International Airport " class="partner-logo">
+        </div>
+          <div class="logo-item">
+          <img src="raven.png" alt="Raven Rescue Safety Medical" class="partner-logo raven">
+        </div>
+<div class="logo-item">
+  <div class="gov-badge canadian">
+    <i class="fa-brands fa-canadian-maple-leaf"></i>
+    <div class="gov-text">
+      <span class="gov-title">Government Customers</span>
+      <span class="gov-subtitle">Provincial, Territorial & Municipal</span>
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
   <section class="how-it-works">
     <div class="container">
 
@@ -575,7 +690,7 @@
       </div>
       <h2 class="section-title" style="margin-bottom: 10px !important;">Here's What CabinPulse Monitors</h2>
       <p class="section-subtitle" style="text-align: center; max-width: 700px; margin: 0 auto 50px; font-size: 1.1rem; color: var(--text-color); opacity: 0.9; line-height: 1.6;">
-        <strong>No WiFi required.</strong> CabinPulse automatically connects to the cellular network out-of-the-box and starts monitoring immediately.
+        <strong>No WiFi or additional data plan required.</strong> CabinPulse automatically connects to the cellular network out-of-the-box with built-in connectivity and starts monitoring immediately.
       </p>
       <div class="tabbed-features">
         <div class="tabbed-content">
@@ -706,6 +821,7 @@
         </div>
       </div>
       
+      
       <!-- KEEP THE REMAINING 4 FEATURE CARDS -->
       <div class="feature-grid" style="margin-top: 70px;">
         <div class="feature-card">
@@ -737,13 +853,13 @@
             <h3>Comprehensive Coverage<sup class="superscript">4</sup></h3>
             <p>CabinPulse uses LTE with 3G fallback, and connects to <b>all major carriers</b> in Canada, the United States, Mexico - and across Central and South America.</p>
             <br />
-            <p><i>All connectivity is included with your subscription; no separate data plan is needed. </i></p>
+            <p><b>All connectivity</b> is included with your subscription; no separate data plan is needed.</p>
           </div>
           <div class="feature-card large">
-            <div class="coming-soon-badge">Coming Late 2025</div>
+            <div class="coming-soon-badge">Coming Soon</div>
             <i class="feature-icon fas fa-puzzle-piece"></i>
             <h3>CabinPulse Add-Ons</h3>
-            <p>CabinPulse already has built-in low-power Bluetooth, with support for portable <b>Add-Ons</b> like leak sensors, motion detectors, and door sensors. <b>Add-Ons</b> available soon. </p>
+            <p>CabinPulse already has built-in low-power Bluetooth, with support for portable <b>Add-Ons</b> like leak sensors, motion detectors, door sensors and remote switches. Available late 2025.</p>
           </div>
         </div>
         <div class="dashboard-preview feature-card large">
@@ -816,11 +932,11 @@
             </div>
             <span class="rating-number">4.9</span>
           </div>
-          <div class="rating-subtitle">from 12 verified reviews</div>
+          <div class="rating-subtitle">from 46 verified reviews</div>
         </div>
         
         <div class="customer-count">
-          <span class="count-number">250+</span>
+          <span class="count-number">500+</span>
           <div class="count-label">Satisfied Customers</div>
         </div>
       </div>
@@ -1411,8 +1527,8 @@
           <p>Once you receive your device, login to your CabinPulse dashboard, enter the activation code on your device, and plug it into a power outlet. It will immediately begin monitoring!</p>
         </div>
         <div class="faq-item">
-          <h3><i class="fas fa-tower-cell"></i> My cabin has poor cell coverage - will CabinPulse work?</h3>
-          <p>CabinPulse uses LTE with 3G fallback for areas without 3G; if there's even a single bar on your cell phone, it will connect.</p>
+          <h3><i class="fas fa-tower-cell"></i> My property has poor cell coverage - will CabinPulse work?</h3>
+          <p>CabinPulse uses LTE with 3G fallback for areas without LTE; if there's even a single bar on your cell phone, it will connect without issue.</p>
           <br />
           <p>If you're unsure of coverage in your area, check the coverage maps from major carriers in your area for LTE or 3G.</p>
         </div>
@@ -1422,7 +1538,7 @@
         </div>
         <div class="faq-item">
           <h3><i class="fas fa-copy"></i> Can I buy multiple devices?</h3>
-          <p>If you'd like to monitor multiple cabins or spaces, you can purchase additional devices for each location and manage them all from the same account using <b>Fleet View</b>. Each device requires its own subscription.</p>
+          <p>If you'd like to monitor multiple areas, you can purchase additional devices for each location and manage them all from the same account using <b>Fleet View</b>. Each device requires its own subscription.</p>
         </div>
         <div class="faq-item">
           <h3><i class="fas fa-paper-plane"></i> How up-to-date is the CabinPulse data?</h3>
@@ -1446,7 +1562,7 @@
         </div>
         <div class="faq-item">
           <h3><i class="fas fa-plug"></i> How much electricity does CabinPulse use if it's plugged in 24/7?</h3>
-          <p>The CabinPulse device is extremely energy efficient and uses about as much electricity as running your microwave for 60s - in an entire month!.</p>
+          <p>The CabinPulse device is extremely energy efficient and uses about as much electricity as running your microwave for 5 minutes - in an entire month!.</p>
         </div>
         <div class="faq-item">
           <h3><i class="fas fa-volume-high"></i> How does the alarm detection feature work?</h3>
@@ -1463,6 +1579,14 @@
         <div class="faq-item">
           <h3><i class="fas fa-snowflake"></i> Can the device be used outdoors or in unheated buildings?</h3>
           <p>CabinPulse is intended to be used indoors only, but can be used in unheated buildings. Note that it is rated to continue functioning from -20°C to 60°C (-4°F to 140°F) while plugged into power; its onboard battery life is significantly diminished in cold temperatures.</p>
+        </div>
+        <div class="faq-item">
+          <h3><i class="fas fa-solar-panel"></i> Can CabinPulse work off solar power or battery bank?</h3>
+          <p>Yes. CabinPulse uses 5V power via a micro USB connection, making it compatible with alternate power solutions. We can ship a compatible 12V or 24V converter upon request.</p>
+        </div>
+        <div class="faq-item">
+          <h3><i class="fas fa-battery-half"></i> I need monitoring where there is no power, can I use CabinPulse?</h3>
+          <p>CabinPulse needs power to work. Howeever, our Add-On sensors are battery powered and can connect wirelessly up to 30 metres from a CabinPulse device if there is power near the area you need monitored.</p>
         </div>
         <div class="faq-item">
           <h3><i class="fas fa-award"></i> What's the warranty on the CabinPulse device?</h3>
@@ -1651,6 +1775,7 @@
           <h4 style="color: var(--highlight-color); margin-bottom: 20px;">Helpful Links</h4>
           <ul style="list-style: none; padding: 0;">
             <li style="margin-bottom: 10px;"><a href="/manual.html" style="color: var(--text-color); text-decoration: none;"><i class="fas fa-book" style="margin-right: 10px;"></i>CabinPulse Manual</a></li>
+            <li style="margin-bottom: 10px;"><a href="/cares/index.html" style="color: var(--text-color); text-decoration: none;"><i class="fas fa-hands-helping"></i> CabinPulse Cares</a></li>
             <li style="margin-bottom: 10px;"><a href="https://blog.cabinpulse.com" style="color: var(--text-color); text-decoration: none;"><i class="fas fa-blog" style="margin-right: 10px;"></i>CabinPulse Blog</a></li>
             <li style="margin-bottom: 10px;"><a href="https://blog.cabinpulse.com/how-to-prevent-frozen-pipes-in-your-cabin-this-winter/" style="color: var(--text-color); text-decoration: none;"><i class="far fa-newspaper" style="margin-right: 10px;"></i>Prevent Frozen Pipes</a></li>
             <li style="margin-bottom: 10px;"><a href="https://blog.cabinpulse.com/remote-vacation-home-monitors-keeping-your-investment-safe/" style="color: var(--text-color); text-decoration: none;"><i class="far fa-newspaper" style="margin-right: 10px;"></i>Remote Home Monitors</a></li>
@@ -1676,7 +1801,7 @@
         <i class="fas fa-calendar-alt"></i>
       </div>
       <h2>Not ready yet?</h2>
-      <p>Protect your cabin by planning ahead!</p>
+      <p>Protect your property by planning ahead!</p>
       
       <div class="exit-popup-options">
 
