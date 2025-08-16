@@ -753,7 +753,7 @@ Replace the existing top-bar-content div with:
     font-size: 3rem;
     margin-top: 25px;
     margin-bottom: 25px;
-    line-height: 1.2;
+    line-height: 0.6;
   }
   .hero p {
     font-size: 1.4rem;
@@ -4648,4 +4648,175 @@ Replace the existing top-bar-content div with:
   .plus-icon {
     font-size: 1.5rem;
   }
+}
+
+/* Hero Headline Animation Styles */
+.hero-headline {
+  font-size: 3rem;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  line-height: 1.3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Changed from center to flex-start */
+  text-align: left; /* Changed from center to left */
+}
+
+.headline-line {
+  display: block;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.headline-line:first-child {
+  animation-delay: 0.2s;
+}
+
+.headline-line:last-child {
+  animation-delay: 0.6s;
+}
+
+.headline-rotating {
+  display: block;
+  height: 1.4em;
+  line-height: 1.4em;
+  position: relative;
+  overflow: hidden;
+  margin: 0.1em 0;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease 0.4s forwards;
+  width: 100%; /* Ensure full width */
+}
+
+.rotating-wrapper {
+  position: relative; /* Changed from absolute */
+  display: block;
+  width: 100%;
+  height: 5.6em; /* Height for 4 items */
+}
+
+.rotating-item {
+  display: block;
+  height: 1.4em;
+  line-height: 1.4em;
+  color: var(--highlight-color);
+  font-weight: 800;
+  text-transform: lowercase;
+  position: relative;
+  white-space: nowrap;
+  text-align: left; /* Ensure left alignment */
+  transition: all 0.5s ease;
+}
+
+/* Simple animation that moves items up */
+.rotating-wrapper {
+  animation: rotateWords 12s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  transform: translateY(0);
+}
+
+@keyframes rotateWords {
+  0%, 22% {
+    transform: translateY(0);
+  }
+  25%, 47% {
+    transform: translateY(-1.4em);
+  }
+  50%, 72% {
+    transform: translateY(-2.8em);
+  }
+  75%, 97% {
+    transform: translateY(-4.2em);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Fade in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add a subtle glow effect to the rotating text */
+.rotating-item {
+  text-shadow: 0 0 20px rgba(233, 69, 96, 0.3);
+}
+
+/* Fade edges for smooth transition */
+.headline-rotating::before,
+.headline-rotating::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 30%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.headline-rotating::before {
+  top: 0;
+}
+
+.headline-rotating::after {
+  bottom: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .hero-headline {
+    font-size: 2rem;
+    align-items: center; /* Center on mobile */
+    text-align: center; /* Center on mobile */
+  }
+  
+  .headline-rotating {
+    height: 1.3em;
+  }
+  
+  .rotating-wrapper {
+    height: 5.2em; /* Adjusted for smaller line height */
+  }
+  
+  .rotating-item {
+    height: 1.3em;
+    line-height: 1.3em;
+    text-align: center; /* Center on mobile */
+  }
+  
+  @keyframes rotateWords {
+    0%, 22% {
+      transform: translateY(0);
+    }
+    25%, 47% {
+      transform: translateY(-1.3em);
+    }
+    50%, 72% {
+      transform: translateY(-2.6em);
+    }
+    75%, 97% {
+      transform: translateY(-3.9em);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-headline {
+    font-size: 1.6rem;
+  }
+}
+
+/* Optional: Pause on hover */
+.headline-rotating:hover .rotating-wrapper {
+  animation-play-state: paused;
 }
