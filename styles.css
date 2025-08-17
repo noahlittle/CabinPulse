@@ -66,8 +66,8 @@
   
   .regularbutton {
     display: inline-block;
-    padding: 5px 15px;
-    border-radius: 60px;
+    padding: 10px 30px;
+    border-radius: 10px;
     font-weight: 600;
     text-decoration: none;
     transition: all 0.3s ease;
