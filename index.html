@@ -707,31 +707,35 @@
       <div style="text-align: center; margin-bottom: 24px;">
         <i class="fas fa-wifi" style="font-size: 4.5rem; color: var(--highlight-color);"></i>
       </div>
-      <h2 class="section-title" style="margin-bottom: 10px !important;">Here's What CabinPulse Monitors</h2>
+      <h2 class="section-title" style="margin-bottom: 10px !important; line-height: 2.5rem;">Here's What CabinPulse Monitors</h2>
       <p class="section-subtitle" style="text-align: center; max-width: 700px; margin: 0 auto 50px; font-size: 1.1rem; color: var(--text-color); opacity: 0.9; line-height: 1.6;">
         <strong>No WiFi or additional data plan required.</strong> CabinPulse automatically connects to the cellular network out-of-the-box with built-in connectivity and starts monitoring immediately.
       </p>
       <div class="tabbed-features">
         <div class="tabbed-content">
           <!-- Tab Navigation -->
-          <div class="tab-navigation">
-            <button class="tab-button active" data-tab="temperature">
-              <i class="tab-icon fas fa-temperature-low"></i>
-              <span class="tab-label">Temperature</span>
-            </button>
-            <button class="tab-button" data-tab="power">
-              <i class="tab-icon fas fa-plug-circle-xmark"></i>
-              <span class="tab-label">Power Outages</span>
-            </button>
-            <button class="tab-button" data-tab="humidity">
-              <i class="tab-icon fas fa-droplet"></i>
-              <span class="tab-label">Humidity</span>
-            </button>
-            <button class="tab-button" data-tab="air-quality">
-              <i class="tab-icon fas fa-smog"></i>
-              <span class="tab-label">Air Quality</span>
-            </button>
-          </div>
+        <div class="tab-navigation">
+          <button class="tab-button active" data-tab="temperature">
+            <i class="tab-icon fas fa-temperature-low"></i>
+            <span class="tab-label">Temperature</span>
+          </button>
+          <button class="tab-button" data-tab="power">
+            <i class="tab-icon fas fa-plug-circle-xmark"></i>
+            <span class="tab-label">Power Outages</span>
+          </button>
+          <button class="tab-button" data-tab="humidity">
+            <i class="tab-icon fas fa-droplet"></i>
+            <span class="tab-label">Humidity</span>
+          </button>
+          <button class="tab-button" data-tab="air-quality">
+            <i class="tab-icon fas fa-smog"></i>
+            <span class="tab-label">Air Quality</span>
+          </button>
+          <button class="tab-button" data-tab="addons">
+            <i class="tab-icon fas fa-link"></i>
+            <span class="tab-label">Add-Ons</span>
+          </button>
+        </div>
       
           <!-- Tab Content -->
           <div class="tab-content active" id="temperature">
@@ -837,6 +841,62 @@
               </div>
             </div>
           </div>
+
+ <div class="tab-content" id="addons">
+  <div class="addons-layout">
+    <!-- Top section: Description and Image -->
+    <div class="addons-header">
+      <div class="addons-main-text">
+        <h3 class="content-title">
+          <i class="fas fa-link"></i>
+          Add-Ons
+          <span style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); color: white; padding: 4px 10px; border-radius: 15px; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-left: 10px; vertical-align: middle;">Coming Late 2025</span>
+        </h3>
+        <p class="content-description">
+          Expand your monitoring with optional wireless, battery-powered <strong>Add-Ons</strong> that connect to your existing CabinPulse device via Bluetooth. Monitor areas without power outlets or control devices, up to <strong>30 meters away</strong> from your CabinPulse device.
+        </p>
+      </div>
+      <div class="addons-image">
+        <div class="feature-image-container">
+          <img src="addons.png" alt="CabinPulse Add-Ons for expanded monitoring" class="feature-image">
+        </div>
+      </div>
+    </div>
+    
+    <!-- Bottom section: Types and Features Grid -->
+    <div class="addons-details-grid">
+      <div class="addons-types">
+        <h4 style="color: var(--highlight-color); font-size: 1.1rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+          <i class="fas fa-microchip" style="font-size: 1rem;"></i>
+          Available Add-Ons
+        </h4>
+        <ul class="content-features" style="margin-bottom: 0;">
+          <li><i class="fas fa-water"></i><strong>Leak Sensor</strong></li>
+          <li><i class="fas fa-thermometer-half"></i><strong>Temperature Sensor</strong></li>
+          <li><i class="fas fa-door-open"></i><strong>Door/Window Sensor</strong></li>
+          <li><i class="fas fa-walking"></i><strong>Motion Detector</strong></li>
+          <li><i class="fas fa-toggle-on"></i><strong>Remote Switch</strong></li>
+        </ul>
+      </div>
+      
+      <div class="addons-features">
+        <h4 style="color: var(--highlight-color); font-size: 1.1rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+          <i class="fas fa-star" style="font-size: 1rem;"></i>
+          Key Features
+        </h4>
+        <ul class="content-features">
+          <li><i class="fas fa-battery-full"></i>Up to 24 month battery life (AA batteries)</li>
+          <li><i class="fas fa-plug-circle-xmark"></i>No power outlet required</li>
+          <li><i class="fas fa-wifi"></i>30-meter wireless Bluetooth range</li>
+          <li><i class="fas fa-dollar"></i>No additional subscription required</li>
+          <li><i class="fas fa-link"></i>Seamless integration with CabinPulse</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
         </div>
       </div>
       
@@ -858,11 +918,6 @@
           <h3>Device Health</h3>
           <p>CabinPulse is built for <b>reliability</b>. Monitor device status from your dashboard and receive an alert if it stops reporting.</p>
         </div>
-        <div class="feature-card">
-          <i class="feature-icon fas fa-volume-high"></i>
-          <h3>Alarm Detection<sup class="superscript">1,3</sup></h3>
-          <p>Smoke detector going off? CabinPulse has built-in <b>alarm detection</b>, and you'll get alerted immediately - no WiFi required.</p>
-        </div>
       </div>
 
       <div class="feature-highlight">
@@ -876,9 +931,11 @@
           </div>
           <div class="feature-card large">
             <div class="coming-soon-badge">Coming Soon</div>
-            <i class="feature-icon fas fa-puzzle-piece"></i>
+            <i class="feature-icon fas fa-link"></i>
             <h3>CabinPulse Add-Ons</h3>
-            <p>CabinPulse already has built-in low-power Bluetooth, with support for portable <b>Add-Ons</b> like leak sensors, motion detectors, door sensors and remote switches. Available late 2025.</p>
+            <p>CabinPulse already has built-in low-power Bluetooth, with support for portable <b>Add-Ons</b> like leak sensors, motion detectors, door sensors and remote switches. </p>
+            <br />
+            <p><strong>Available late 2025</strong></p>
           </div>
         </div>
         <div class="dashboard-preview feature-card large">
@@ -1296,6 +1353,7 @@
                 <h4><i class="fas fa-bell"></i>Alerts & Features</h4>
                 <p class="feature-group-blurb">CabinPulse will keep you in the loop, 24/7.</p>
                 <ul class="feature-list">
+                  <li><i class="fas fa-link"></i>Add-On Support</li>
                   <li><i class="fas fa-mobile-alt"></i>Instant Alerts</li>
                   <li><i class="fas fa-volume-high"></i>Alarm Detection</li>
                   <li><i class="fas fa-heartbeat"></i>Device Health</li>
@@ -1526,116 +1584,171 @@
   </section>
 
   <section id="faq" class="faq">
-    <div class="container">
-      <div style="text-align: center; margin-bottom: 24px;">
-        <i class="fas fa-question-circle" style="font-size: 4.5rem; color: var(--highlight-color);"></i>
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 24px;">
+      <i class="fas fa-question-circle" style="font-size: 4.5rem; color: var(--highlight-color);"></i>
+    </div>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    
+    <!-- Initial FAQs - Most Important Questions -->
+    <div class="faq-grid initial-faqs">
+      <div class="faq-item">
+        <h3><i class="fas fa-wifi"></i> Does CabinPulse need WiFi to work?</h3>
+        <p>No, WiFi is NOT required. CabinPulse uses cellular technology (LTE with 3G fallback) to transmit data, eliminating the need for WiFi. The device automatically connects to available cellular networks in your area.</p>
       </div>
-      <h2 class="section-title">Frequently Asked Questions</h2>
-      <div class="faq-grid">
-        <div class="faq-item">
-          <h3><i class="fas fa-wifi"></i> Does CabinPulse need WiFi to work?</h3>
-          <p>No, WiFi is NOT required. CabinPulse uses cellular technology (LTE with 3G fallback) to transmit data, eliminating the need for WiFi. The device automatically connects to available cellular networks in your area.</p>
-        </div>
-        <div class="faq-item">
-          <h3><i class="fas fa-mobile-alt"></i> Do I need to pay for another cellular plan?</h3>
-          <p>No! The CabinPulse subscription covers <u>everything</u>. The cellular connectivity is completely built-in to the device, and there are no other cellular data plans or WiFi required.</p>
-        </div>
-        <div class="faq-item">
-          <h3><i class="fas fa-calendar-alt"></i>Can I pause my device when I don't need it?</h3>
-          <p>Yes. You can pause and restart your plan <b>once per year</b>; this means you can stretch out the 1-year plan to two 6 month periods over two years. Simply <a href="mailto:support@cabinpulse.com">contact support</a> when you're ready to pause or restart.</p>
-        </div>
-        <div class="faq-item">
-          <h3><i class="fas fa-stairs"></i> How do I setup my CabinPulse device?</h3>
-          <p>Once you receive your device, login to your CabinPulse dashboard, enter the activation code on your device, and plug it into a power outlet. It will immediately begin monitoring!</p>
-        </div>
-        <div class="faq-item">
-          <h3><i class="fas fa-tower-cell"></i> My site has poor cell coverage - will CabinPulse work?</h3>
-          <p>CabinPulse uses LTE with 3G fallback for areas without LTE; if there's even a single bar on your cell phone, it will connect without issue.</p>
-          <br />
-          <p>If you're unsure of coverage in your area, check the coverage maps from major carriers in your area for LTE or 3G.</p>
-        </div>
-        <div class="faq-item">
-          <h3><i class="fas fa-dollar"></i> What's included in the device fee?</h3>
-          <p>The one-time $199 device fee covers your CabinPulse monitoring unit, which includes temperature, humidity, air quality, power outage detection capabilities and smoke alarm detection.</p>
-        </div>
-        <div class="faq-item">
-          <h3><i class="fas fa-copy"></i> Can I buy multiple devices?</h3>
-          <p>If you'd like to monitor multiple areas, you can purchase additional devices for each location and manage them all from the same account using <b>Fleet View</b>. Each device requires its own subscription.</p>
-        </div>
-        <div class="faq-item">
-          <h3><i class="fas fa-paper-plane"></i> How up-to-date is the CabinPulse data?</h3>
-          <p>CabinPulse collects data every 5 minutes and transmits every 15 minutes. You can also request real-time updates on-demand from your dashboard, and alerts for critical issues are sent instantly.</p>
-        </div>
-        <div class="faq-item">
-          <h3><i class="fas fa-bell"></i> How are alerts sent?</h3>
-          <p>You'll receive instant alerts via text and email for any critical issues detected by your CabinPulse device. You can customize the alert thresholds and choose which alerts you'd like to receive.</p>
-        </div>
-        <div class="faq-item">
-          <h3><i class="fas fa-bell"></i> How many alerts can I configure?</h3>
-          <p>You can set unlimited Standard Alerts, and set an Instant Alert for a high and low for each monitored metric.</p>
-        </div>
-        <div class="faq-item">
-          <h3><i class="fas fa-bell"></i> How many people can receive alerts?</h3>
-          <p>There is no limit to the number of phone numbers and emails that can be added to receive alerts. If you wish to add more than 12, you'll need to <a href="mailto:support@cabinpulse.com">contact support</a> for assistance.</p>
-        </div>
-        <div class="faq-item">
-          <h3><i class="fas fa-battery-half"></i> What's the battery life of the CabinPulse device?</h3>
-          <p>The CabinPulse device is designed to be plugged into a power outlet. However, it does have a backup battery that lasts up to 3 days in case of prolonged power outages.</p>
-        </div>
-        <div class="faq-item">
-          <h3><i class="fas fa-plug"></i> How much electricity does CabinPulse use if it's plugged in 24/7?</h3>
-          <p>The CabinPulse device is extremely energy efficient and uses about as much electricity as running your microwave for 5 minutes - in an entire month!.</p>
-        </div>
-        <div class="faq-item">
-          <h3><i class="fas fa-volume-high"></i> How does the alarm detection feature work?</h3>
-          <p>An onboard acoustic sensor can recognize the distinct pattern of modern North American smoke alarms. Must be placed in close proximity to the detector and works best in an otherwise quiet environment.</p>
-        </div>
-        <div class="faq-item">
-          <h3><i class="fas fa-clock-rotate-left"></i> How far back can I view historical data?</h3>
-          <p>We store data captured from your device for as long as your subscription is active. If you choose to not renew your subscription, your data will be stored for up to 30 days before being deleted.</p>
-        </div>
-        <div class="faq-item">
-          <h3><i class="fas fa-calendar"></i> What happens when my plan expires?</h3>
-          <p>When your plan expires, we'll let you know and your device will stop sending data and you will no longer receive alerts. You will be able to reactivate your plan at any time, and your data will be stored for up to 30 days after expiration.</p>
-        </div>
-        <div class="faq-item">
-          <h3><i class="fas fa-snowflake"></i> Can the device be used outdoors or in unheated buildings?</h3>
-          <p>CabinPulse is intended to be used indoors only, but can be used in unheated buildings. Note that it is rated to continue functioning from -20°C to 60°C (-4°F to 140°F) while plugged into power; its onboard battery life is significantly diminished in cold temperatures.</p>
-        </div>
-        <div class="faq-item">
-          <h3><i class="fas fa-solar-panel"></i> Can CabinPulse work off solar power or battery bank?</h3>
-          <p>Yes. CabinPulse uses 5V power via a micro USB connection, making it compatible with alternate power solutions. We can ship a compatible 12V or 24V converter upon request.</p>
-        </div>
-        <div class="faq-item">
-          <h3><i class="fas fa-battery-half"></i> I need monitoring where there is no power, can I use CabinPulse?</h3>
-          <p>CabinPulse needs power to work. However, our Add-On sensors are battery powered and can connect wirelessly up to 30 metres from a CabinPulse device if there is power near the area you need monitored.</p>
-        </div>
-        <div class="faq-item">
-          <h3><i class="fas fa-award"></i> What's the warranty on the CabinPulse device?</h3>
-          <p>The CabinPulse device comes with a 3-year warranty. If you experience any issues, contact our support team for troubleshooting or a replacement.</p>
-        </div>
-        <div class="faq-item">
-          <h3><i class="fas fa-handshake"></i> Do you offer bulk discounts?</h3>
-          <p>We offer negotiated terms for enterprise customers which can include Service Level Agreements, additional support and discounted hardware for large orders (10+ units).</p>
-        </div>
-        <div class="faq-item">
-          <h3><i class="fa-brands fa-canadian-maple-leaf"></i> Where is the CabinPulse device manufactured?</h3>
-          <p>We're proudly based in Saskatchewan, Canada; all of our devices are designed and assembled in Saskatoon.</p>
-        </div>
-        <div class="faq-item">
-          <h3><i class="fas fa-lock"></i> Where are your servers located?</h3>
-          <p>All data is securely hosted on servers located in Canada.</p>
-        </div>
+      <div class="faq-item">
+        <h3><i class="fas fa-mobile-alt"></i> Do I need to pay for another cellular plan?</h3>
+        <p>No! The CabinPulse subscription covers <u>everything</u>. The cellular connectivity is completely built-in to the device, and there are no other cellular data plans or WiFi required.</p>
       </div>
-      <div class="question-container">
-        <div class="question-icon">
-          <i class="fas fa-message"></i>
-        </div>
-        <h3>More Questions?</h3>
-        <p><b>We're always happy to help!</b> Contact our support team at <a href="mailto:support@cabinpulse.com">support@cabinpulse.com</a> with any questions, thoughts or concerns and we'll get back to you within 24 hours.</p>
+      <div class="faq-item">
+        <h3><i class="fas fa-stairs"></i> How do I setup my CabinPulse device?</h3>
+        <p>Once you receive your device, login to your CabinPulse dashboard, enter the activation code on your device, and plug it into a power outlet. It will immediately begin monitoring!</p>
+      </div>
+      <div class="faq-item">
+        <h3><i class="fas fa-tower-cell"></i> My site has poor cell coverage - will CabinPulse work?</h3>
+        <p>CabinPulse uses LTE with 3G fallback for areas without LTE; if there's even a single bar on your cell phone, it will connect without issue.</p>
+        <br />
+        <p>If you're unsure of coverage in your area, check the coverage maps from major carriers in your area for LTE or 3G.</p>
+      </div>
+      <div class="faq-item">
+        <h3><i class="fas fa-dollar"></i> What's included in the device fee?</h3>
+        <p>The one-time $199 device fee covers your CabinPulse monitoring unit, which includes temperature, humidity, air quality, power outage detection capabilities and smoke alarm detection.</p>
+      </div>
+      <div class="faq-item">
+        <h3><i class="fas fa-award"></i> What's the warranty on the CabinPulse device?</h3>
+        <p>The CabinPulse device comes with a 3-year warranty. If you experience any issues, contact our support team for troubleshooting or a replacement.</p>
       </div>
     </div>
-  </section>
+
+    <!-- Expandable FAQs - Organized by Category -->
+    <div class="faq-categories" id="expandable-faqs" style="display: none;">
+      
+      <!-- Features & Monitoring Category -->
+      <div class="faq-category">
+        <h3 class="faq-category-title">
+          <i class="fas fa-chart-line"></i>
+          Features & Monitoring
+        </h3>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <h3><i class="fas fa-paper-plane"></i> How up-to-date is the CabinPulse data?</h3>
+            <p>CabinPulse collects data every 5 minutes and transmits every 15 minutes. You can also request real-time updates on-demand from your dashboard, and alerts for critical issues are sent instantly.</p>
+          </div>
+          <div class="faq-item">
+            <h3><i class="fas fa-bell"></i> How are alerts sent?</h3>
+            <p>You'll receive instant alerts via text and email for any critical issues detected by your CabinPulse device. You can customize the alert thresholds and choose which alerts you'd like to receive.</p>
+          </div>
+          <div class="faq-item">
+            <h3><i class="fas fa-bell"></i> How many alerts can I configure?</h3>
+            <p>You can set unlimited Standard Alerts, and set an Instant Alert for a high and low for each monitored metric.</p>
+          </div>
+          <div class="faq-item">
+            <h3><i class="fas fa-bell"></i> How many people can receive alerts?</h3>
+            <p>There is no limit to the number of phone numbers and emails that can be added to receive alerts. If you wish to add more than 12, you'll need to <a href="mailto:support@cabinpulse.com">contact support</a> for assistance.</p>
+          </div>
+          <div class="faq-item">
+            <h3><i class="fas fa-volume-high"></i> How does the alarm detection feature work?</h3>
+            <p>An onboard acoustic sensor can recognize the distinct pattern of modern North American smoke alarms. Must be placed in close proximity to the detector and works best in an otherwise quiet environment.</p>
+          </div>
+          <div class="faq-item">
+            <h3><i class="fas fa-clock-rotate-left"></i> How far back can I view historical data?</h3>
+            <p>We store data captured from your device for as long as your subscription is active. If you choose to not renew your subscription, your data will be stored for up to 30 days before being deleted.</p>
+          </div>
+          <div class="faq-item">
+            <h3><i class="fas fa-copy"></i> Can I buy multiple devices?</h3>
+            <p>If you'd like to monitor multiple areas, you can purchase additional devices for each location and manage them all from the same account using <b>Fleet View</b>. Each device requires its own subscription.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Subscription & Pricing Category -->
+      <div class="faq-category">
+        <h3 class="faq-category-title">
+          <i class="fas fa-dollar-sign"></i>
+          Subscription & Pricing
+        </h3>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <h3><i class="fas fa-calendar-alt"></i>Can I pause my device when I don't need it?</h3>
+            <p>Yes. You can pause and restart your plan <b>once per year</b>; this means you can stretch out the 1-year plan to two 6 month periods over two years. Simply <a href="mailto:support@cabinpulse.com">contact support</a> when you're ready to pause or restart.</p>
+          </div>
+          <div class="faq-item">
+            <h3><i class="fas fa-calendar"></i> What happens when my plan expires?</h3>
+            <p>When your plan expires, we'll let you know and your device will stop sending data and you will no longer receive alerts. You will be able to reactivate your plan at any time, and your data will be stored for up to 30 days after expiration.</p>
+          </div>
+          <div class="faq-item">
+            <h3><i class="fas fa-handshake"></i> Do you offer bulk discounts?</h3>
+            <p>We offer negotiated terms for enterprise customers which can include Service Level Agreements, additional support and discounted hardware for large orders (10+ units).</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Technical Specifications Category -->
+      <div class="faq-category">
+        <h3 class="faq-category-title">
+          <i class="fas fa-cogs"></i>
+          Technical Specifications
+        </h3>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <h3><i class="fas fa-battery-half"></i> What's the battery life of the CabinPulse device?</h3>
+            <p>The CabinPulse device is designed to be plugged into a power outlet. However, it does have a backup battery that lasts up to 3 days in case of prolonged power outages.</p>
+          </div>
+          <div class="faq-item">
+            <h3><i class="fas fa-plug"></i> How much electricity does CabinPulse use if it's plugged in 24/7?</h3>
+            <p>The CabinPulse device is extremely energy efficient and uses about as much electricity as running your microwave for 5 minutes - in an entire month!.</p>
+          </div>
+          <div class="faq-item">
+            <h3><i class="fas fa-snowflake"></i> Can the device be used outdoors or in unheated buildings?</h3>
+            <p>CabinPulse is intended to be used indoors only, but can be used in unheated buildings. Note that it is rated to continue functioning from -20°C to 60°C (-4°F to 140°F) while plugged into power; its onboard battery life is significantly diminished in cold temperatures.</p>
+          </div>
+          <div class="faq-item">
+            <h3><i class="fas fa-solar-panel"></i> Can CabinPulse work off solar power or battery bank?</h3>
+            <p>Yes. CabinPulse uses 5V power via a micro USB connection, making it compatible with alternate power solutions. We can ship a compatible 12V or 24V converter upon request.</p>
+          </div>
+          <div class="faq-item">
+            <h3><i class="fas fa-battery-half"></i> I need monitoring where there is no power, can I use CabinPulse?</h3>
+            <p>CabinPulse needs power to work. However, our Add-On sensors are battery powered and can connect wirelessly up to 30 metres from a CabinPulse device if there is power near the area you need monitored.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Company & Support Category -->
+      <div class="faq-category">
+        <h3 class="faq-category-title">
+          <i class="fas fa-building"></i>
+          Company & Support
+        </h3>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <h3><i class="fa-brands fa-canadian-maple-leaf"></i> Where is the CabinPulse device manufactured?</h3>
+            <p>We're proudly based in Saskatchewan, Canada; all of our devices are designed and assembled in Saskatoon.</p>
+          </div>
+          <div class="faq-item">
+            <h3><i class="fas fa-lock"></i> Where are your servers located?</h3>
+            <p>All data is securely hosted on servers located in Canada.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <!-- Expand Button -->
+    <div class="faq-expand-container">
+      <button class="faq-expand-button" onclick="toggleFAQ()">
+        <span id="faq-button-text">View All FAQs</span>
+        <i class="fas fa-chevron-down" id="faq-button-icon"></i>
+      </button>
+    </div>
+
+    <div class="question-container">
+      <div class="question-icon">
+        <i class="fas fa-message"></i>
+      </div>
+      <h3>More Questions?</h3>
+      <p><b>We're always happy to help!</b> Contact our support team at <a href="mailto:support@cabinpulse.com">support@cabinpulse.com</a> with any questions, thoughts or concerns and we'll get back to you within 24 hours.</p>
+    </div>
+  </div>
+</section>
 
   <section id="use-cases" class="use-cases">
     <div class="container">
@@ -2529,6 +2642,45 @@
       });
     }
   });
+
+  function toggleFAQ() {
+  const expandableSection = document.getElementById('expandable-faqs');
+  const button = document.querySelector('.faq-expand-button');
+  const buttonText = document.getElementById('faq-button-text');
+  const buttonIcon = document.getElementById('faq-button-icon');
+  
+  if (expandableSection.style.display === 'none') {
+    // Expanding
+    expandableSection.style.display = 'block';
+    button.classList.add('expanded');
+    buttonText.textContent = 'Show Less FAQs';
+    buttonIcon.style.transform = 'rotate(180deg)';
+    
+    // Smooth scroll to the expanded section
+    setTimeout(() => {
+      expandableSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 100);
+  } else {
+    // Collapsing
+    expandableSection.style.display = 'none';
+    button.classList.remove('expanded');
+    buttonText.textContent = 'View All FAQs';
+    buttonIcon.style.transform = 'rotate(0deg)';
+  }
+}
+
+// Optional: Add keyboard support for the expand button
+document.addEventListener('DOMContentLoaded', function() {
+  const faqButton = document.querySelector('.faq-expand-button');
+  if (faqButton) {
+    faqButton.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleFAQ();
+      }
+    });
+  }
+});
 
   function toggleReviews() {
   const featured = document.querySelector('.featured-reviews');

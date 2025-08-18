@@ -815,7 +815,7 @@ Replace the existing top-bar-content div with:
   
   .feature-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 48px;
     margin-bottom: 70px;
   }
@@ -4994,5 +4994,396 @@ Replace the existing top-bar-content div with:
   
   .hero-content {
     margin-top: 1rem !important;
+  }
+}
+
+.faq-expand-container {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.faq-expand-container {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.faq-expand-button {
+  background: linear-gradient(135deg, var(--highlight-color) 0%, #ff5a7c 100%);
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  box-shadow: 0 4px 12px rgba(233, 69, 96, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.faq-expand-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(233, 69, 96, 0.4);
+}
+
+.faq-expand-button i {
+  transition: transform 0.3s ease;
+  font-size: 1rem;
+}
+
+.faq-expand-button.expanded i {
+  transform: rotate(180deg);
+}
+
+/* FAQ Categories */
+.faq-categories {
+  margin-top: 60px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.faq-category {
+  margin-bottom: 60px;
+}
+
+.faq-category-title {
+  font-size: 1.8rem;
+  color: var(--highlight-color);
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(233, 69, 96, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.faq-category-title i {
+  font-size: 2rem;
+  opacity: 0.8;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 900px) {
+  .faq-category-title {
+    font-size: 1.4rem;
+  }
+  
+  .faq-category-title i {
+    font-size: 1.6rem;
+  }
+  
+  .faq-expand-button {
+    font-size: 0.95rem;
+    padding: 12px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .faq-category-title {
+    font-size: 1.2rem;
+    gap: 10px;
+  }
+  
+  .faq-expand-button {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+  }
+}
+
+/* ==========================================================================
+   ADD-ONS TAB CUSTOM LAYOUT CSS
+   ========================================================================== */
+
+/* Override default content-layout for Add-Ons tab */
+#addons .content-layout {
+  display: none; /* Hide if accidentally using old structure */
+}
+
+/* Add-Ons specific layout */
+.addons-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Top section with description and image side-by-side */
+.addons-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.addons-main-text {
+  padding-right: 20px;
+}
+
+.addons-main-text .content-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--highlight-color);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.addons-main-text .content-title i {
+  font-size: 2.5rem;
+}
+
+.addons-main-text .content-description {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-color);
+  opacity: 0.9;
+}
+
+.addons-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addons-image .feature-image-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  background: linear-gradient(135deg, rgba(15, 52, 96, 0.3) 0%, rgba(233, 69, 96, 0.1) 100%);
+  border-radius: 32px;
+  border: 2px solid rgba(233, 69, 96, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.addons-image .feature-image-container:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(233, 69, 96, 0.3);
+}
+
+.addons-image .feature-image-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(233, 69, 96, 0.05) 0%, transparent 70%);
+  transform: rotate(45deg);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.addons-image .feature-image {
+  width: 100%;
+  height: auto;
+  border-radius: 30px;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+  display: block;
+}
+
+.addons-image .feature-image-container:hover .feature-image {
+  transform: scale(1.02);
+}
+
+/* Bottom grid for types and features side-by-side */
+.addons-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: rgba(15, 52, 96, 0.3);
+  border-radius: 20px;
+  padding: 32px;
+  border: 1px solid rgba(233, 69, 96, 0.2);
+}
+
+.addons-types, .addons-features {
+  padding: 0;
+}
+
+/* Add-Ons subsection styling */
+#addons h4 {
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(233, 69, 96, 0.2);
+  color: var(--highlight-color);
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#addons .content-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#addons .content-features li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 1rem;
+  color: var(--text-color);
+  opacity: 0.9;
+}
+
+#addons .content-features li strong {
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+/* Different icons for sensor types vs features */
+#addons .content-features li i {
+  width: 20px;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+/* Sensor list specific icons */
+.addons-types .content-features li i {
+  color: #ff5a7c;
+  opacity: 0.9;
+}
+
+/* Features list icons */
+.addons-features .content-features li i {
+  color: var(--highlight-color);
+  opacity: 0.9;
+}
+
+/* Add-Ons "Coming Soon" badge animation */
+#addons .content-title span {
+  animation: pulse-light 3s infinite;
+}
+
+@keyframes pulse-light {
+  0%, 100% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN FOR ADD-ONS TAB
+   ========================================================================== */
+
+/* Tablet adjustments */
+@media (max-width: 900px) {
+  .addons-header {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .addons-main-text {
+    padding-right: 0;
+    text-align: center;
+  }
+  
+  .addons-main-text .content-title {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .addons-image {
+    order: -1; /* Image first on tablet/mobile */
+  }
+  
+  .addons-details-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 24px;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .addons-layout {
+    gap: 30px;
+  }
+  
+  .addons-header {
+    gap: 20px;
+  }
+  
+  .addons-main-text .content-title {
+    font-size: 1.6rem;
+    gap: 8px;
+  }
+  
+  .addons-main-text .content-title i {
+    font-size: 1.8rem;
+  }
+  
+  .addons-main-text .content-description {
+    font-size: 0.95rem;
+  }
+  
+  .addons-details-grid {
+    padding: 20px;
+    gap: 24px;
+  }
+  
+  #addons h4 {
+    font-size: 1rem;
+  }
+  
+  #addons .content-features {
+    font-size: 0.9rem;
+  }
+  
+  #addons .content-features li {
+    margin-bottom: 10px;
+  }
+  
+  #addons .content-features li i {
+    font-size: 1.1rem;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+  .addons-main-text .content-title {
+    font-size: 1.4rem;
+  }
+  
+  .addons-main-text .content-title span {
+    font-size: 0.5rem;
+    padding: 3px 8px;
+  }
+  
+  .addons-details-grid {
+    padding: 16px;
+  }
+  
+  #addons h4 {
+    font-size: 0.95rem;
+  }
+  
+  #addons .content-features {
+    font-size: 0.85rem;
   }
 }
