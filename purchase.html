@@ -9,15 +9,14 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="https://js.stripe.com/v3/"></script>
     <script defer src="https://analytics.cabinliving.ca/script.js" data-website-id="bd58d7d8-2b00-44ae-8285-c76db6e383ad"></script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17117116213"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17117116213"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'AW-17117116213');
-</script>
+    gtag('config', 'AW-17117116213');
+    </script>
     <!-- Clarity tracking code for https://cabinpulse.com -->
 <script>
     (function(c,l,a,r,i,t,y){
@@ -1182,7 +1181,7 @@
                                     <div class="selection-option" data-country="US">
                                         <i class="fas fa-flag-usa"></i>
                                         <div class="option-title">United States</div>
-                                        <div class="option-description">Delivery in 4-7 business days</div>
+                                        <div class="option-description">Free shipping via Canada Post / USPS</div>
                                     </div>
                                 </div>
 
@@ -1729,50 +1728,106 @@ document.querySelectorAll('.selection-option[data-country]').forEach(option => {
                                         <div class="shipping-provider">
                                             <img src="https://www.canadapost-postescanada.ca/cpc/assets/cpc/uploads/logos/cpc-scp/primary/postmarks-80x80.svg" 
                                                  alt="Canada Post" class="shipping-logo">
-                                            <span>Canada Post Expedited</span>
+                                            <span>Expedited Parcel</span>
+                                            <i class="fas fa-truck" style="color: var(--highlight-color); margin-left: 4px;"></i>
                                         </div>
                                         <span class="shipping-price">FREE</span>
                                     </div>
                                     <div class="shipping-estimate">
                                         <i class="fas fa-clock"></i>
-                                        <span>Delivery in 2-4 business days</span>
+                                        <span>Usually delivers in 2-6 business days</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="shipping-option" data-cost="35">
+                                <input type="radio" name="shipping" value="35" id="canada-post-xpresspost">
+                                <div class="shipping-details">
+                                    <div class="shipping-name">
+                                        <div class="shipping-provider">
+                                            <img src="https://www.canadapost-postescanada.ca/cpc/assets/cpc/uploads/logos/cpc-scp/primary/postmarks-80x80.svg" 
+                                                 alt="Canada Post" class="shipping-logo">
+                                            <span>Xpresspost</span>
+                                            <i class="fas fa-plane" style="color: var(--highlight-color); margin-left: 4px;"></i>
+                                        </div>
+                                        <span class="shipping-price">$35.00</span>
+                                    </div>
+                                    <div class="shipping-estimate">
+                                        <i class="fas fa-clock"></i>
+                                        <span>Usually delivers in 1-2 business days</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="shipping-option" data-cost="70">
+                                <input type="radio" name="shipping" value="70" id="canada-post-priority">
+                                <div class="shipping-details">
+                                    <div class="shipping-name">
+                                        <div class="shipping-provider">
+                                            <img src="https://www.canadapost-postescanada.ca/cpc/assets/cpc/uploads/logos/cpc-scp/primary/postmarks-80x80.svg" 
+                                                 alt="Canada Post" class="shipping-logo">
+                                            <span>Priority</span>
+                                            <i class="fas fa-bolt" style="color: var(--highlight-color); margin-left: 4px;"></i>
+                                        </div>
+                                        <span class="shipping-price">$70.00</span>
+                                    </div>
+                                    <div class="shipping-estimate">
+                                        <i class="fas fa-clock"></i>
+                                        <span>Usually delivers next business day</span>
                                     </div>
                                 </div>
                             </div>
                         `;
                     } else {
                         optionsHTML = `
-                            <div class="shipping-option" data-cost="25">
-                                <input type="radio" name="shipping" value="25" id="tracked-packet">
+                            <div class="shipping-option" data-cost="0">
+                                <input type="radio" name="shipping" value="0" id="tracked-packet">
                                 <div class="shipping-details">
                                     <div class="shipping-name">
                                         <div class="shipping-provider">
                                             <img src="https://www.canadapost-postescanada.ca/cpc/assets/cpc/uploads/logos/cpc-scp/primary/postmarks-80x80.svg" 
                                                  alt="Canada Post" class="shipping-logo">
-                                            <span>Tracked Packet USA</span>
+                                            <span>Tracked Packet</span>
                                         </div>
-                                        <span class="shipping-price">$25.00</span>
+                                        <span class="shipping-price">FREE</span>
                                     </div>
                                     <div class="shipping-estimate">
                                         <i class="fas fa-clock"></i>
-                                        <span>Delivery in 4-7 business days</span>
+                                        <span>Usually delivers in 5-7 business days</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="shipping-option" data-cost="35">
-                                <input type="radio" name="shipping" value="35" id="ups-standard">
+                            <div class="shipping-option" data-cost="45">
+                                <input type="radio" name="shipping" value="45" id="canada-post-expedited">
                                 <div class="shipping-details">
                                     <div class="shipping-name">
                                         <div class="shipping-provider">
-                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/United_Parcel_Service_logo_2014.svg/1200px-United_Parcel_Service_logo_2014.svg.png" 
-                                                 alt="UPS" class="shipping-logo">
-                                            <span>UPS Standard</span>
+                                            <img src="https://www.canadapost-postescanada.ca/cpc/assets/cpc/uploads/logos/cpc-scp/primary/postmarks-80x80.svg" 
+                                                 alt="Canada Post" class="shipping-logo">
+                                            <span>Expedited Parcel</span>
+                                            <i class="fas fa-truck" style="color: var(--highlight-color); margin-left: 4px;"></i>
                                         </div>
-                                        <span class="shipping-price">$35.00</span>
+                                        <span class="shipping-price">$45.00</span>
                                     </div>
                                     <div class="shipping-estimate">
                                         <i class="fas fa-clock"></i>
-                                        <span>Delivery in 3-7 business days</span>
+                                        <span>Usually delivers in 4-6 business days</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="shipping-option" data-cost="75">
+                                <input type="radio" name="shipping" value="75" id="canada-post-xpresspost-usa">
+                                <div class="shipping-details">
+                                    <div class="shipping-name">
+                                        <div class="shipping-provider">
+                                            <img src="https://www.canadapost-postescanada.ca/cpc/assets/cpc/uploads/logos/cpc-scp/primary/postmarks-80x80.svg" 
+                                                 alt="Canada Post" class="shipping-logo">
+                                            <span>Xpresspost USA</span>
+                                            <i class="fas fa-plane" style="color: var(--highlight-color); margin-left: 4px;"></i>
+                                        </div>
+                                        <span class="shipping-price">$75.00</span>
+                                    </div>
+                                    <div class="shipping-estimate">
+                                        <i class="fas fa-clock"></i>
+                                        <span>Usually delivers in 2-5 business days</span>
                                     </div>
                                 </div>
                             </div>
@@ -1801,16 +1856,14 @@ document.querySelectorAll('.selection-option[data-country]').forEach(option => {
                         });
                     });
                     
-                    // Auto-select first option for Canada (free shipping)
-                    if (country === 'CA') {
-                        const firstOption = container.querySelector('.shipping-option');
-                        const firstRadio = firstOption.querySelector('input[type="radio"]');
-                        firstRadio.checked = true;
-                        firstOption.classList.add('selected');
-                        shippingCost = 0;
-                        updatePlanInfo();
-                        document.getElementById('step1-continue').disabled = false;
-                    }
+                    // Auto-select first option (free shipping) for both countries
+                    const firstOption = container.querySelector('.shipping-option');
+                    const firstRadio = firstOption.querySelector('input[type="radio"]');
+                    firstRadio.checked = true;
+                    firstOption.classList.add('selected');
+                    shippingCost = 0;
+                    updatePlanInfo();
+                    document.getElementById('step1-continue').disabled = false;
                 }, 1000);
             }
 
