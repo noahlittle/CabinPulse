@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CabinPulse Add-Ons | Expand Your Monitoring</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=1.4">
+  <meta name="robots" content="noindex,nofollow">
+  
+  <style>
+    /* Additional styles specific to Add-Ons page */
+    .addons-hero {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(26, 26, 46, 0.2) 0%, rgba(22, 33, 62, 0.15) 100%),
+                  url('bg.png') center/cover;
+      padding: 140px 0 80px;
+      margin-top: 94px;
+    }
+
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(233, 69, 96, 0.2);
+      border: 2px solid var(--highlight-color);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 900;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #fff 0%, var(--highlight-color) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 3s ease-in-out infinite;
+      background-size: 200% 200%;
+    }
+
+    @keyframes shimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      opacity: 0.9;
+      margin-bottom: 50px;
+      line-height: 1.6;
+      color: var(--text-color);
+    }
+
+    /* Mini sensor preview cards in hero - Icons only */
+    .sensor-preview-grid {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 50px;
+      flex-wrap: wrap;
+    }
+
+    .sensor-preview-card {
+      width: 90px;
+      height: 90px;
+      background: rgba(15, 52, 96, 0.4);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(233, 69, 96, 0.2);
+      border-radius: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sensor-preview-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(233, 69, 96, 0.2) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .sensor-preview-card:hover::before {
+      opacity: 1;
+    }
+
+    .sensor-preview-card:hover {
+      transform: translateY(-10px) scale(1.1);
+      box-shadow: 0 20px 40px rgba(233, 69, 96, 0.4);
+      border-color: var(--highlight-color);
+      background: linear-gradient(135deg, rgba(233, 69, 96, 0.2) 0%, rgba(255, 90, 124, 0.1) 100%);
+    }
+
+    .sensor-preview-icon {
+      font-size: 2.5rem;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .sensor-preview-card:hover .sensor-preview-icon {
+      color: var(--highlight-color);
+      transform: scale(1.1);
+    }
+
+    /* Main Features Tabbed Section */
+    .sensor-features-section {
+      padding: 120px 0;
+      background-color: var(--secondary-color);
+      position: relative;
+    }
+
+    .sensor-features-section .section-title {
+      margin-bottom: 30px;
+    }
+
+    .sensor-features-section::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background-color: var(--secondary-color);
+      --mask:
+        radial-gradient(108.17px at 50% 150px, #000 99%, #0000 101%) calc(50% - 120px) 0/240px 100%,
+        radial-gradient(108.17px at 50% -90px, #0000 99%, #000 101%) 50% 60px/240px 100% repeat-x;
+      -webkit-mask: var(--mask);
+              mask: var(--mask);
+    }
+
+    /* How It Works Section Updated */
+    .how-addons-work {
+      padding: 120px 0;
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      text-align: center;
+      position: relative;
+    }
+
+    .connection-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 80px;
+      margin-top: 60px;
+      flex-wrap: wrap;
+    }
+
+    .connection-item {
+      text-align: center;
+      position: relative;
+    }
+
+    .connection-icon {
+      width: 140px;
+      height: 140px;
+      background: linear-gradient(135deg, rgba(15, 52, 96, 0.8) 0%, rgba(233, 69, 96, 0.2) 100%);
+      border: 3px solid rgba(233, 69, 96, 0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 3.5rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .connection-icon i {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .connection-item:hover .connection-icon {
+      transform: scale(1.1);
+      border-color: var(--highlight-color);
+    }
+
+    .connection-icon::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(233, 69, 96, 0.2) 0%, transparent 70%);
+      animation: pulse 3s infinite;
+      z-index: 1;
+    }
+
+    .connection-arrow {
+      position: absolute;
+      top: 30%;
+      transform: translateY(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent 0%, var(--highlight-color) 50%, transparent 100%);
+      animation: flow 2s infinite;
+    }
+
+    .connection-item:first-child .connection-arrow {
+      right: -80px;
+    }
+
+    .connection-item:nth-child(2) .connection-arrow {
+      right: -80px;
+    }
+
+    @keyframes flow {
+      0% { transform: translateY(-50%) scaleX(0); }
+      50% { transform: translateY(-50%) scaleX(1); }
+      100% { transform: translateY(-50%) scaleX(0); }
+    }
+
+    .connection-item h3 {
+      font-size: 1.4rem;
+      color: var(--text-color);
+      margin-bottom: 8px;
+    }
+
+    .connection-item p {
+      font-size: 0.95rem;
+      opacity: 0.8;
+      max-width: 200px;
+      margin: 0 auto;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.1); }
+    }
+
+
+    /* Bundle Builder Section */
+    .bundle-builder {
+      padding: 120px 0;
+      background: linear-gradient(135deg, rgba(233, 69, 96, 0.1) 0%, var(--secondary-color) 100%);
+      position: relative;
+    }
+
+    .builder-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .builder-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+      margin-top: 60px;
+    }
+
+    .sensor-selector {
+      display: grid;
+      gap: 20px;
+    }
+
+    .sensor-select-card {
+      background: rgba(15, 52, 96, 0.6);
+      border: 2px solid rgba(233, 69, 96, 0.2);
+      border-radius: 20px;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 20px;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .sensor-select-card:hover {
+      border-color: rgba(233, 69, 96, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .sensor-select-card.selected {
+      border-color: var(--highlight-color);
+      background: rgba(233, 69, 96, 0.1);
+    }
+
+    .bundle-summary {
+      position: sticky;
+      top: 120px;
+      background: linear-gradient(135deg, rgba(22, 33, 62, 0.9) 0%, rgba(15, 52, 96, 0.8) 100%);
+      border: 2px solid var(--highlight-color);
+      border-radius: 24px;
+      padding: 30px;
+      height: fit-content;
+    }
+
+    /* CTA Section */
+    .addons-cta {
+      padding: 100px 0;
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .addons-cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('bg.png') no-repeat center center;
+      background-size: cover;
+      opacity: 0.05;
+      z-index: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .sensor-preview-grid {
+        gap: 20px;
+      }
+
+      .sensor-preview-card {
+        width: 80px;
+        height: 80px;
+      }
+
+      .sensor-preview-icon {
+        font-size: 2.2rem;
+      }
+
+      .connection-visual {
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .connection-arrow {
+        display: none;
+      }
+
+      .builder-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .bundle-summary {
+        position: static;
+        margin-top: 40px;
+      }
+
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .sensor-preview-grid {
+        gap: 15px;
+      }
+
+      .sensor-preview-card {
+        width: 70px;
+        height: 70px;
+        border-radius: 20px;
+      }
+
+      .sensor-preview-icon {
+        font-size: 1.8rem;
+      }
+
+    }
+  </style>
+</head>
+<body>
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="top-bar-content">
+      <div class="top-bar-left">
+        <a href="/about.html" class="top-bar-link">About</a>
+        <a href="mailto:support@cabinpulse.com" class="top-bar-link">Contact Us</a>
+      </div>
+      <div class="proudly-canadian">
+        <i class="fa-brands fa-canadian-maple-leaf"></i>
+        Proudly Canadian
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <nav class="container">
+      <a href="/" class="logo-container">
+        <img src="cpicon.png" alt="CabinPulse Logo" class="icon">
+        <span class="logo-text">CabinPulse</span>
+      </a>
+      <div class="nav-links">
+        <div class="nav-item">
+          <a href="#" class="nav-link has-dropdown">Product</a>
+          <div class="dropdown">
+            <a href="/" class="dropdown-item"><i class="fas fa-home"></i>Overview</a>
+            <a href="/index.html#features" class="dropdown-item"><i class="fas fa-check-circle"></i>Features</a>
+            <a href="/addons" class="dropdown-item"><i class="fas fa-puzzle-piece"></i>Add-Ons</a>
+            <a href="/index.html#pricing" class="dropdown-item"><i class="fas fa-tag"></i>Pricing</a>
+          </div>
+        </div>
+        
+        <div class="nav-item">
+          <a href="#" class="nav-link has-dropdown">Use Cases</a>
+          <div class="dropdown">
+            <a href="/uses/remote-cabin-cottage-monitoring-system.html" class="dropdown-item">
+              <i class="fas fa-home"></i>Cabin Monitoring
+            </a>
+            <a href="/uses/rv-temperature-monitor-pets.html" class="dropdown-item">
+              <i class="fas fa-dog"></i>RV Monitor for Pets
+            </a>
+            <a href="/uses/vacation-home-monitoring.html" class="dropdown-item">
+              <i class="fas fa-house-chimney-window"></i>Vacation Home Monitoring
+            </a>
+          </div>
+        </div>
+        
+        <div class="nav-item">
+          <a href="#" class="nav-link has-dropdown">Resources</a>
+          <div class="dropdown">
+            <a href="/index.html#faq" class="dropdown-item"><i class="fas fa-question-circle"></i>FAQ</a>
+            <a href="https://blog.cabinpulse.com" class="dropdown-item"><i class="fas fa-blog"></i>Blog</a>
+            <a href="/manual.html" class="dropdown-item"><i class="fas fa-book"></i>User Manual</a>
+            <a href="mailto:support@cabinpulse.com" class="dropdown-item"><i class="fas fa-life-ring"></i>Support</a>
+          </div>
+        </div>
+        
+        <a href="https://dashboard.cabinpulse.com" class="nav-link login-btn">Dashboard</a>
+        <a href="https://cabinpulse.com/purchase.html?plan=1" class="nav-link primary-cta">Get Started</a>
+      </div>
+      <div class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="addons-hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-puzzle-piece"></i> EXPAND YOUR MONITORING
+        </div>
+        
+        <h1 class="hero-title">CabinPulse Add-Ons</h1>
+        <p class="hero-subtitle">
+          Expand your monitoring with wireless sensors that connect to your CabinPulse device. 
+          No WiFi or power needed at sensor locations – monitor anywhere <strong>within 30 meters</strong> of your base unit.
+        </p>
+        
+        <div class="sensor-preview-grid">
+          <div class="sensor-preview-card" onclick="selectTab('temperature')" title="Temperature Sensor">
+            <i class="sensor-preview-icon fas fa-temperature-half"></i>
+          </div>
+          
+          <div class="sensor-preview-card" onclick="selectTab('motion')" title="Motion Sensor">
+            <i class="sensor-preview-icon fas fa-person-running"></i>
+          </div>
+          
+          <div class="sensor-preview-card" onclick="selectTab('door')" title="Door/Window Sensor">
+            <i class="sensor-preview-icon fas fa-door-open"></i>
+          </div>
+          
+          <div class="sensor-preview-card" onclick="selectTab('leak')" title="Leak Sensor">
+            <i class="sensor-preview-icon fas fa-droplet"></i>
+          </div>
+          
+          <div class="sensor-preview-card" onclick="selectTab('switch')" title="Smart Switch">
+            <i class="sensor-preview-icon fas fa-toggle-on"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tabbed Sensor Features Section -->
+  <section id="features" class="sensor-features-section">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 16px;">
+        <i class="fas fa-link" style="font-size: 4.5rem; color: var(--highlight-color);"></i>
+      </div>
+      <h2 class="section-title">Choose Your Add-Ons</h2>
+      <p class="section-subtitle" style="text-align: center; max-width: 800px; margin: 0 auto 30px; font-size: 1.1rem; color: var(--text-color); opacity: 0.9;">
+        Each Add-On connects wirelessly to your CabinPulse device and is battery powered. <strong>No additional power or WiFi needed.</strong>
+      </p>
+      
+      <div class="tabbed-features">
+        <div class="tabbed-content">
+          <!-- Tab Navigation -->
+          <div class="tab-navigation">
+            <button class="tab-button active" data-tab="temperature" onclick="selectTab('temperature')">
+              <i class="tab-icon fas fa-temperature-half"></i>
+              <span class="tab-label">Temperature</span>
+            </button>
+            <button class="tab-button" data-tab="motion" onclick="selectTab('motion')">
+              <i class="tab-icon fas fa-person-running"></i>
+              <span class="tab-label">Motion</span>
+            </button>
+            <button class="tab-button" data-tab="door" onclick="selectTab('door')">
+              <i class="tab-icon fas fa-door-open"></i>
+              <span class="tab-label">Door</span>
+            </button>
+            <button class="tab-button" data-tab="leak" onclick="selectTab('leak')">
+              <i class="tab-icon fas fa-droplet"></i>
+              <span class="tab-label">Leak</span>
+            </button>
+            <button class="tab-button" data-tab="switch" onclick="selectTab('switch')">
+              <i class="tab-icon fas fa-toggle-on"></i>
+              <span class="tab-label">Smart Switch</span>
+            </button>
+          </div>
+          
+          <!-- Tab Content -->
+          <div class="tab-content active" id="temperature">
+            <div class="content-layout">
+              <div class="content-text">
+                <h3 class="content-title">
+                  <i class="fas fa-temperature-half"></i>
+                  Temperature Sensor
+                </h3>
+                <p class="content-description">
+                  Monitor temperature in multiple areas with precision. Perfect for freezers, server rooms, greenhouses, or any space requiring specific temperature control. Set custom high and low thresholds for instant alerts.
+                </p>
+                <ul class="content-features">
+                  <li><i class="fas fa-check-circle"></i>Customizable high/low alert thresholds</li>
+                  <li><i class="fas fa-check-circle"></i>±0.2°C precision accuracy</li>
+                  <li><i class="fas fa-check-circle"></i>2-year battery life</li>
+                  <li><i class="fas fa-check-circle"></i>Works from -40°C to 60°C</li>
+                </ul>
+                <div style="margin-top: 30px;">
+                  <span style="font-size: 1.8rem; font-weight: 700; color: var(--highlight-color);">$59 CAD</span>
+                </div>
+              </div>
+              <div class="content-image">
+                <div class="feature-image-container">
+                  <img src="temperature-sensor.png" alt="Temperature Sensor" class="feature-image" style="padding: 20px;">
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="tab-content" id="motion">
+            <div class="content-layout">
+              <div class="content-text">
+                <h3 class="content-title">
+                  <i class="fas fa-person-running"></i>
+                  Motion Sensor
+                </h3>
+                <p class="content-description">
+                  Advanced PIR motion detection for reliable property monitoring. Know exactly when someone enters your cabin, storage area, or restricted zones. Perfect for security and occupancy monitoring.
+                </p>
+                <ul class="content-features">
+                  <li><i class="fas fa-check-circle"></i>5m detection range</li>
+                  <li><i class="fas fa-check-circle"></i>110° field of view</li>
+                  <li><i class="fas fa-check-circle"></i>Instant motion alerts</li>
+                  <li><i class="fas fa-check-circle"></i>2-year battery life</li>
+                </ul>
+                <div style="margin-top: 30px;">
+                  <span style="font-size: 1.8rem; font-weight: 700; color: var(--highlight-color);">$59 CAD</span>
+                </div>
+              </div>
+              <div class="content-image">
+                <div class="feature-image-container">
+                  <img src="motion-sensor.png" alt="Motion Sensor" class="feature-image" style="padding: 20px;">
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="tab-content" id="door">
+            <div class="content-layout">
+              <div class="content-text">
+                <h3 class="content-title">
+                  <i class="fas fa-door-open"></i>
+                  Door/Window Sensor
+                </h3>
+                <p class="content-description">
+                  Monitor all entry points to your property. Magnetic reed switch technology provides reliable detection of door and window openings. Essential for security and access monitoring.
+                </p>
+                <ul class="content-features">
+                  <li><i class="fas fa-check-circle"></i>Magnetic reed switch</li>
+                  <li><i class="fas fa-check-circle"></i>Works on doors and windows</li>
+                  <li><i class="fas fa-check-circle"></i>Instant open/close alerts</li>
+                  <li><i class="fas fa-check-circle"></i>2-year battery life</li>
+                  <li><i class="fas fa-check-circle"></i>Easy peel-and-stick installation</li>
+                </ul>
+                <div style="margin-top: 30px;">
+                  <span style="font-size: 1.8rem; font-weight: 700; color: var(--highlight-color);">$59 CAD</span>
+                </div>
+              </div>
+              <div class="content-image">
+                <div class="feature-image-container">
+                  <img src="door-sensor.png" alt="Door Sensor" class="feature-image" style="padding: 20px;">
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="tab-content" id="leak">
+            <div class="content-layout">
+              <div class="content-text">
+                <h3 class="content-title">
+                  <i class="fas fa-droplet"></i>
+                  Leak Sensor with Cable
+                </h3>
+                <p class="content-description">
+                  Advanced water detection with included 1-meter leak cable and pogo pin connectors. The cable allows monitoring along entire lengths - perfect for water heaters, sump pumps, and pipe runs.
+                </p>
+                <ul class="content-features">
+                  <li><i class="fas fa-check-circle"></i>Detects as little as 1mm of water</li>
+                  <li><i class="fas fa-check-circle"></i>Use with included leak cable or with built-in pogo contacts</li>
+                  <li><i class="fas fa-check-circle"></i>Includes 1m leak detection cable</li>
+                  <li><i class="fas fa-check-circle"></i>2-year battery life</li>
+                  <li><i class="fas fa-check-circle"></i>Adjustable sensitivity levels</li>
+                </ul>
+                <div style="margin-top: 30px;">
+                  <span style="font-size: 1.8rem; font-weight: 700; color: var(--highlight-color);">$59 CAD</span>
+                  <span style="font-size: 0.9rem; opacity: 0.8; display: block;">Includes 1m cable</span>
+                </div>
+              </div>
+              <div class="content-image">
+                <div class="feature-image-container">
+                  <img src="leak-sensor.png" alt="Leak Sensor with Cable" class="feature-image" style="padding: 20px;">
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="tab-content" id="switch">
+            <div class="content-layout">
+              <div class="content-text">
+                <h3 class="content-title">
+                  <i class="fas fa-toggle-on"></i>
+                  Smart Switch Relay
+                </h3>
+                <p class="content-description">
+                  Remote control relay for turning devices on/off from anywhere. Control pumps, heaters, lights, or any device up to 3A. 
+                  Features screw terminal blocks for easy wiring and can be triggered manually or automatically based on sensor conditions.
+                </p>
+                <ul class="content-features">
+                  <li><i class="fas fa-check-circle"></i>Remote on/off control</li>
+                  <li><i class="fas fa-check-circle"></i>Screw terminal block connections</li>
+                  <li><i class="fas fa-check-circle"></i>2-year battery life</li>
+                </ul>
+                <div style="margin-top: 30px;">
+                  <span style="font-size: 1.8rem; font-weight: 700; color: var(--highlight-color);">$59 CAD</span>
+                                    <span style="font-size: 0.9rem; opacity: 0.8; display: block;">Relay rated for 3A</span>
+                </div>
+              </div>
+              <div class="content-image">
+                <div class="feature-image-container">
+                  <img src="smart-switch.png" alt="Smart Switch Relay" class="feature-image" style="padding: 20px;">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="how-addons-work">
+    <div class="container">
+      <h2 class="section-title">Simple Wireless Setup</h2>
+      <p style="font-size: 1.1rem; opacity: 0.9; max-width: 800px; margin: 0 auto;">
+        All Add-On sensors connect wirelessly to your CabinPulse device using Bluetooth Low Energy. 
+        Your CabinPulse handles the cellular connectivity – sensors just need batteries.
+      </p>
+      
+      <div class="connection-visual">
+        <div class="connection-item">
+          <div class="connection-icon">
+            <i class="fas fa-microchip"></i>
+          </div>
+          <h3>Add-Ons</h3>
+          <p>Up to 30 add-ons per device</p>
+          <div class="connection-arrow"></div>
+        </div>
+        
+        <div class="connection-item">
+          <div class="connection-icon">
+            <i class="fas fa-satellite-dish"></i>
+          </div>
+          <h3>CabinPulse</h3>
+          <p>Cellular connectivity built-in</p>
+          <div class="connection-arrow"></div>
+        </div>
+        
+        <div class="connection-item">
+          <div class="connection-icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h3>Instant Alerts</h3>
+          <p>Text & email notifications</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Bundle Builder Section -->
+  <section class="bundle-builder" id="build-bundle">
+    <div class="container">
+      <h2 class="section-title">Build Your Bundle</h2>
+      <p style="text-align: center; font-size: 1.1rem; opacity: 0.9; max-width: 800px; margin: 0 auto;">
+        Select the sensors you need. Save more when you order multiple sensors!
+      </p>
+      
+      <div class="builder-container">
+        <div class="builder-grid">
+          <div class="sensor-selector">
+            <div class="sensor-select-card" data-price="59" data-name="Temperature Sensor">
+              <div class="sensor-icon-small" style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--highlight-color) 0%, #ff5a7c 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white;">
+                <i class="fas fa-temperature-half"></i>
+              </div>
+              <div>
+                <h4 style="margin: 0; color: var(--text-color);">Temperature Sensor</h4>
+                <p style="margin: 5px 0 0; opacity: 0.8; font-size: 0.9rem;">Monitor multiple temperature zones</p>
+                <span style="color: var(--highlight-color); font-weight: 600;">$59 CAD</span>
+              </div>
+              <div class="quantity-control" style="display: flex; align-items: center; gap: 10px;">
+                <button onclick="updateQuantity(this, -1)" style="width: 30px; height: 30px; border-radius: 50%; background: var(--highlight-color); color: white; border: none; cursor: pointer;">-</button>
+                <span class="quantity-display" style="min-width: 20px; text-align: center;">0</span>
+                <button onclick="updateQuantity(this, 1)" style="width: 30px; height: 30px; border-radius: 50%; background: var(--highlight-color); color: white; border: none; cursor: pointer;">+</button>
+              </div>
+            </div>
+            
+            <div class="sensor-select-card" data-price="59" data-name="Motion Sensor">
+              <div class="sensor-icon-small" style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--highlight-color) 0%, #ff5a7c 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white;">
+                <i class="fas fa-person-running"></i>
+              </div>
+              <div>
+                <h4 style="margin: 0; color: var(--text-color);">Motion Sensor</h4>
+                <p style="margin: 5px 0 0; opacity: 0.8; font-size: 0.9rem;">Detect movement in key areas</p>
+                <span style="color: var(--highlight-color); font-weight: 600;">$59 CAD</span>
+              </div>
+              <div class="quantity-control" style="display: flex; align-items: center; gap: 10px;">
+                <button onclick="updateQuantity(this, -1)" style="width: 30px; height: 30px; border-radius: 50%; background: var(--highlight-color); color: white; border: none; cursor: pointer;">-</button>
+                <span class="quantity-display" style="min-width: 20px; text-align: center;">0</span>
+                <button onclick="updateQuantity(this, 1)" style="width: 30px; height: 30px; border-radius: 50%; background: var(--highlight-color); color: white; border: none; cursor: pointer;">+</button>
+              </div>
+            </div>
+            
+            <div class="sensor-select-card" data-price="59" data-name="Door Sensor">
+              <div class="sensor-icon-small" style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--highlight-color) 0%, #ff5a7c 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white;">
+                <i class="fas fa-door-open"></i>
+              </div>
+              <div>
+                <h4 style="margin: 0; color: var(--text-color);">Door/Window Sensor</h4>
+                <p style="margin: 5px 0 0; opacity: 0.8; font-size: 0.9rem;">Monitor all entry points</p>
+                <span style="color: var(--highlight-color); font-weight: 600;">$59 CAD</span>
+              </div>
+              <div class="quantity-control" style="display: flex; align-items: center; gap: 10px;">
+                <button onclick="updateQuantity(this, -1)" style="width: 30px; height: 30px; border-radius: 50%; background: var(--highlight-color); color: white; border: none; cursor: pointer;">-</button>
+                <span class="quantity-display" style="min-width: 20px; text-align: center;">0</span>
+                <button onclick="updateQuantity(this, 1)" style="width: 30px; height: 30px; border-radius: 50%; background: var(--highlight-color); color: white; border: none; cursor: pointer;">+</button>
+              </div>
+            </div>
+            
+            <div class="sensor-select-card" data-price="59" data-name="Leak Sensor">
+              <div class="sensor-icon-small" style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--highlight-color) 0%, #ff5a7c 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white;">
+                <i class="fas fa-droplet"></i>
+              </div>
+              <div>
+                <h4 style="margin: 0; color: var(--text-color);">Leak Sensor with Cable</h4>
+                <p style="margin: 5px 0 0; opacity: 0.8; font-size: 0.9rem;">Includes 1m detection cable</p>
+                <span style="color: var(--highlight-color); font-weight: 600;">$59 CAD</span>
+              </div>
+              <div class="quantity-control" style="display: flex; align-items: center; gap: 10px;">
+                <button onclick="updateQuantity(this, -1)" style="width: 30px; height: 30px; border-radius: 50%; background: var(--highlight-color); color: white; border: none; cursor: pointer;">-</button>
+                <span class="quantity-display" style="min-width: 20px; text-align: center;">0</span>
+                <button onclick="updateQuantity(this, 1)" style="width: 30px; height: 30px; border-radius: 50%; background: var(--highlight-color); color: white; border: none; cursor: pointer;">+</button>
+              </div>
+            </div>
+            
+            <div class="sensor-select-card" data-price="59" data-name="Smart Switch">
+              <div class="sensor-icon-small" style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--highlight-color) 0%, #ff5a7c 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white;">
+                <i class="fas fa-toggle-on"></i>
+              </div>
+              <div>
+                <h4 style="margin: 0; color: var(--text-color);">Smart Switch Relay</h4>
+                <p style="margin: 5px 0 0; opacity: 0.8; font-size: 0.9rem;">Control devices remotely (3A max)</p>
+                <span style="color: var(--highlight-color); font-weight: 600;">$59 CAD</span>
+              </div>
+              <div class="quantity-control" style="display: flex; align-items: center; gap: 10px;">
+                <button onclick="updateQuantity(this, -1)" style="width: 30px; height: 30px; border-radius: 50%; background: var(--highlight-color); color: white; border: none; cursor: pointer;">-</button>
+                <span class="quantity-display" style="min-width: 20px; text-align: center;">0</span>
+                <button onclick="updateQuantity(this, 1)" style="width: 30px; height: 30px; border-radius: 50%; background: var(--highlight-color); color: white; border: none; cursor: pointer;">+</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bundle-summary">
+            <h3 style="text-align: center; margin-bottom: 20px; color: var(--text-color);">Order Summary</h3>
+            <div id="summary-items" style="margin-bottom: 20px;">
+              <p style="text-align: center; opacity: 0.6;">Select sensors to build your bundle</p>
+            </div>
+            <hr style="border: 1px solid rgba(255,255,255,0.1); margin: 20px 0;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+              <span>Subtotal</span>
+              <span id="subtotal">$0 CAD</span>
+            </div>
+            <div id="discount-row" style="display: none; color: #4CAF50; margin-bottom: 10px;">
+              <div style="display: flex; justify-content: space-between;">
+                <span>Bundle Discount</span>
+                <span id="discount">-$0 CAD</span>
+              </div>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 1.4rem; font-weight: 700; color: var(--highlight-color); margin-bottom: 20px;">
+              <span>Total</span>
+              <span id="total">$0 CAD</span>
+            </div>
+            <button onclick="proceedToCheckout()" style="width: 100%; background: linear-gradient(135deg, var(--highlight-color) 0%, #ff5a7c 100%); color: white; padding: 15px; border-radius: 50px; font-weight: 700; font-size: 1rem; border: none; cursor: pointer; transition: all 0.3s ease;" disabled id="checkout-btn">
+              Add to Cart
+            </button>
+            <div id="savings-message" style="display: none; text-align: center; margin-top: 15px; color: #4CAF50; font-size: 0.9rem;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="addons-cta">
+    <div class="container" style="position: relative; z-index: 1;">
+      <div style="text-align: center;">
+        <i class="fas fa-shield-heart" style="font-size: 4rem; color: var(--highlight-color); margin-bottom: 30px;"></i>
+        <h2 style="font-size: 2.5rem; margin-bottom: 20px; color: var(--text-color);">Complete Property Protection</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto; opacity: 0.9;">
+          Don't wait for disaster to strike. Expand your monitoring coverage today with CabinPulse Add-Ons.
+        </p>
+        <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+          <a href="#build-bundle" style="background: linear-gradient(135deg, var(--highlight-color) 0%, #ff5a7c 100%); color: white; padding: 18px 40px; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 1.1rem; transition: all 0.3s ease; display: inline-block;">
+            Build Your Bundle →
+          </a>
+          <a href="mailto:support@cabinpulse.com" style="background: transparent; color: var(--text-color); padding: 18px 40px; border-radius: 50px; font-weight: 600; text-decoration: none; font-size: 1.1rem; border: 2px solid var(--text-color); transition: all 0.3s ease; display: inline-block;">
+            Contact Support
+          </a>
+        </div>
+        <div style="display: flex; justify-content: center; gap: 40px; margin-top: 40px; flex-wrap: wrap;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <i class="fas fa-check-circle" style="color: var(--highlight-color); font-size: 1.2rem;"></i>
+            <span>30-Day Money Back</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <i class="fas fa-check-circle" style="color: var(--highlight-color); font-size: 1.2rem;"></i>
+            <span>3-Year Warranty</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <i class="fas fa-check-circle" style="color: var(--highlight-color); font-size: 1.2rem;"></i>
+            <span>FREE Shipping</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px; text-align: left; padding: 48px 0;">
+        <!-- Company Info -->
+        <div>
+          <div class="logo-container" style="margin-bottom: 20px;">
+            <img src="cpicon.png" alt="CabinPulse Logo" style="width: 40px; height: 40px; margin-right: 10px;">
+            <h3>CabinPulse</h3>
+          </div>
+          <p style="color: #ccc; margin-bottom: 20px;">Intelligent remote property monitoring, no WiFi required.</p>
+          <div style="display: flex; gap: 15px;">
+            <a href="mailto:support@cabinpulse.com" style="color: var(--text-color);"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.facebook.com/61567189714759" style="color: var(--text-color);"><i class="fab fa-facebook"></i></a>
+          </div>
+        </div>
+        
+        <!-- Quick Links -->
+        <div>
+          <h4 style="color: var(--highlight-color); margin-bottom: 20px;">Quick Links</h4>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 10px;"><a href="/" style="color: var(--text-color); text-decoration: none;">Home</a></li>
+            <li style="margin-bottom: 10px;"><a href="/addons" style="color: var(--text-color); text-decoration: none;">Add-Ons</a></li>
+            <li style="margin-bottom: 10px;"><a href="/#pricing" style="color: var(--text-color); text-decoration: none;">Pricing</a></li>
+            <li style="margin-bottom: 10px;"><a href="/#faq" style="color: var(--text-color); text-decoration: none;">FAQ</a></li>
+          </ul>
+        </div>
+        
+        <!-- Resources -->
+        <div>
+          <h4 style="color: var(--highlight-color); margin-bottom: 20px;">Resources</h4>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 10px;"><a href="/manual.html" style="color: var(--text-color); text-decoration: none;">User Manual</a></li>
+            <li style="margin-bottom: 10px;"><a href="https://blog.cabinpulse.com" style="color: var(--text-color); text-decoration: none;">Blog</a></li>
+            <li style="margin-bottom: 10px;"><a href="https://dashboard.cabinpulse.com" style="color: var(--text-color); text-decoration: none;">Dashboard</a></li>
+            <li style="margin-bottom: 10px;"><a href="/legal.html" style="color: var(--text-color); text-decoration: none;">Legal</a></li>
+          </ul>
+        </div>
+        
+        <!-- Contact -->
+        <div>
+          <h4 style="color: var(--highlight-color); margin-bottom: 20px;">Contact</h4>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 10px;"><i class="fas fa-envelope" style="margin-right: 10px;"></i><a href="mailto:support@cabinpulse.com" style="color: var(--text-color);">support@cabinpulse.com</a></li>
+            <li style="margin-bottom: 10px;"><i class="fas fa-location-dot" style="margin-right: 10px;"></i>Saskatchewan, Canada</li>
+          </ul>
+        </div>
+      </div>
+      <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 20px; text-align: center; font-size: 0.8rem;">
+        <p>&copy; 2025 Toccata, Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Tab switching functionality
+    function selectTab(tabName) {
+      // Update tab buttons
+      const tabButtons = document.querySelectorAll('.tab-button');
+      tabButtons.forEach(button => {
+        if (button.dataset.tab === tabName) {
+          button.classList.add('active');
+        } else {
+          button.classList.remove('active');
+        }
+      });
+      
+      // Update tab content
+      const tabContents = document.querySelectorAll('.tab-content');
+      tabContents.forEach(content => {
+        if (content.id === tabName) {
+          content.classList.add('active');
+        } else {
+          content.classList.remove('active');
+        }
+      });
+      
+      // Scroll to features section if clicking from hero
+      const featuresSection = document.getElementById('features');
+      if (featuresSection && window.scrollY < featuresSection.offsetTop - 100) {
+        featuresSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+
+    // Bundle builder functionality
+    const orderData = {
+      items: {},
+      subtotal: 0,
+      discount: 0,
+      total: 0
+    };
+
+    function updateQuantity(button, change) {
+      const card = button.closest('.sensor-select-card');
+      const quantityDisplay = card.querySelector('.quantity-display');
+      const price = parseInt(card.dataset.price);
+      const name = card.dataset.name;
+      
+      let currentQuantity = parseInt(quantityDisplay.textContent);
+      let newQuantity = Math.max(0, Math.min(30, currentQuantity + change));
+      
+      quantityDisplay.textContent = newQuantity;
+      
+      // Update order data
+      if (newQuantity === 0) {
+        delete orderData.items[name];
+        card.classList.remove('selected');
+      } else {
+        orderData.items[name] = {
+          quantity: newQuantity,
+          price: price,
+          total: price * newQuantity
+        };
+        card.classList.add('selected');
+      }
+      
+      updateOrderSummary();
+    }
+
+    function updateOrderSummary() {
+      const summaryItems = document.getElementById('summary-items');
+      const subtotalEl = document.getElementById('subtotal');
+      const discountEl = document.getElementById('discount');
+      const totalEl = document.getElementById('total');
+      const checkoutBtn = document.getElementById('checkout-btn');
+      const discountRow = document.getElementById('discount-row');
+      const savingsMessage = document.getElementById('savings-message');
+      
+      // Clear summary
+      summaryItems.innerHTML = '';
+      
+      // Calculate totals
+      let subtotal = 0;
+      let totalItems = 0;
+      
+      for (const [name, data] of Object.entries(orderData.items)) {
+        const itemDiv = document.createElement('div');
+        itemDiv.style.display = 'flex';
+        itemDiv.style.justifyContent = 'space-between';
+        itemDiv.style.marginBottom = '8px';
+        itemDiv.innerHTML = `
+          <span style="font-size: 0.9rem;">${name} ×${data.quantity}</span>
+          <span style="font-size: 0.9rem;">$${data.total}</span>
+        `;
+        summaryItems.appendChild(itemDiv);
+        
+        subtotal += data.total;
+        totalItems += data.quantity;
+      }
+      
+      // Show empty state if no items
+      if (totalItems === 0) {
+        summaryItems.innerHTML = '<p style="text-align: center; opacity: 0.6;">Select sensors to build your bundle</p>';
+      }
+      
+      // Calculate discount based on quantity
+      let discount = 0;
+      let discountText = '';
+      
+      if (totalItems >= 8) {
+        discount = 20;
+        discountText = 'You\'re saving $20 with 8+ sensors!';
+      } else if (totalItems >= 5) {
+        discount = 10;
+        discountText = 'You\'re saving $10 with 5+ sensors!';
+      } else if (totalItems >= 3) {
+        discount = 5;
+        discountText = 'You\'re saving $5 with 3+ sensors!';
+      }
+      const total = subtotal - discount;
+      
+      // Update display
+      subtotalEl.textContent = `$${subtotal} CAD`;
+      discountEl.textContent = `-$${discount} CAD`;
+      totalEl.textContent = `$${total} CAD`;
+      
+      // Show/hide discount elements
+      if (discount > 0) {
+        discountRow.style.display = 'block';
+        savingsMessage.style.display = 'block';
+        savingsMessage.textContent = discountText;
+      } else {
+        discountRow.style.display = 'none';
+        savingsMessage.style.display = 'none';
+      }
+      
+      // Enable/disable checkout button
+      checkoutBtn.disabled = totalItems === 0;
+      
+      // Update order data
+      orderData.subtotal = subtotal;
+      orderData.discount = discount;
+      orderData.total = total;
+    }
+
+    function proceedToCheckout() {
+      console.log('Order data:', orderData);
+      alert('Add-Ons bundle added to cart!');
+    }
+
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+      var header = document.querySelector('header');
+      header.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Mobile menu (if needed)
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+      if (mobileMenuToggle) {
+        // Add mobile menu functionality if needed
+      }
+    });
+  </script>
+</body>
+</html>
