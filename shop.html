@@ -7,13 +7,13 @@
 
   <!-- Primary Meta Tags -->
   <meta name="title" content="CabinPulse Shop - Expand Your Monitoring">
-  <meta name="description" content="Add-Ons, accessories, and swag for your CabinPulse cabin monitoring system. Water leak sensors, temperature monitors, and more.">
+  <meta name="description" content="Add-Ons, accessories, and swag for your CabinPulse monitoring system. Water leak sensors, temperature monitors, and more.">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://cabinpulse.com/shop.html">
   <meta property="og:title" content="CabinPulse Shop - Expand Your Monitoring">
-  <meta property="og:description" content="Add-Ons, accessories, and swag for your CabinPulse cabin monitoring system. Water leak sensors, temperature monitors, and more.">
+  <meta property="og:description" content="Add-Ons, accessories, and swag for your CabinPulse monitoring system. Water leak sensors, temperature monitors, and more.">
   <meta property="og:image" content="https://cabinpulse.com/shop-preview.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -22,7 +22,7 @@
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://cabinpulse.com/shop.html">
   <meta property="twitter:title" content="CabinPulse Shop - Expand Your Monitoring">
-  <meta property="twitter:description" content="Add-Ons, accessories, and swag for your CabinPulse cabin monitoring system. Water leak sensors, temperature monitors, and more.">
+  <meta property="twitter:description" content="Add-Ons, accessories, and swag for your CabinPulse monitoring system. Water leak sensors, temperature monitors, and more.">
   <meta property="twitter:image" content="https://cabinpulse.com/shop-preview.png">
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -352,14 +352,14 @@
       top: 1rem;
       right: 1rem;
       padding: 0.4rem 0.8rem;
-      background: rgba(59, 130, 246, 0.15);
-      border: 1px solid #3b82f6;
+      background: rgba(233, 69, 96, 0.15);
+      border: 1px solid var(--accent);
       border-radius: 6px;
       font-size: 0.7rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      color: #3b82f6;
+      color: var(--accent);
     }
 
     .product-card.unavailable {
@@ -1210,9 +1210,16 @@
         text-align: center;
       }
 
+      .footer-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+      }
+
       .footer-links {
         flex-direction: column;
         gap: 1rem;
+        align-items: center;
       }
 
       .featured-banner-content {
@@ -1408,7 +1415,7 @@
 
     <div class="products-grid">
       <div class="product-card large" onclick="openModal('leak-sensor')">
-        <span class="beta-tag">In Beta</span>
+        <span class="beta-tag">Limited Beta</span>
         <div class="product-image-wrap">
           <img src="shop/leak.png" alt="Leak Sensor">
         </div>
@@ -1426,7 +1433,7 @@
       </div>
 
       <div class="product-card large" onclick="openModal('temp-sensor')">
-        <span class="beta-tag">In Beta</span>
+        <span class="beta-tag">Limited Beta</span>
         <div class="product-image-wrap">
           <img src="shop/temp.png" alt="Temperature Sensor">
         </div>
