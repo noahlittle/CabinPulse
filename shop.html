@@ -1828,8 +1828,8 @@
             <div class="modal-grid">
               <div class="modal-left">
                 <div class="gallery-container">
-                  <div class="main-image" onclick="openLightbox('${id}', 0)">
-                    <img src="${product.images[0]}" alt="${product.name}" id="${id}-main-img">
+                  <div class="main-image" onclick="openLightboxFromCurrent('${id}')">
+                    <img src="${product.images[0]}" alt="${product.name}" id="${id}-main-img" data-current-index="0">
                   </div>
                   <div class="image-thumbnails" id="${id}-thumbnails">
                     ${product.images.map((img, i) => `
@@ -1881,12 +1881,20 @@
     function changeImage(productId, index) {
       const product = products[productId];
       document.getElementById(`${productId}-main-img`).src = product.images[index];
-      
+      document.getElementById(`${productId}-main-img`).dataset.currentIndex = index;
+
       // Update thumbnails
       const thumbnails = document.querySelectorAll(`#${productId}-thumbnails .thumbnail`);
       thumbnails.forEach((thumb, i) => {
         thumb.classList.toggle('active', i === index);
       });
+    }
+
+    function openLightboxFromCurrent(productId) {
+      // Get the current image index from the main image
+      const mainImg = document.getElementById(`${productId}-main-img`);
+      const currentIndex = parseInt(mainImg.dataset.currentIndex || 0);
+      openLightbox(productId, currentIndex);
     }
 
     function openLightbox(productId, startIndex) {
@@ -1915,11 +1923,21 @@
     function openModal(id) {
       document.getElementById(id).classList.add('active');
       document.body.style.overflow = 'hidden';
+
+      // Update URL without reloading page
+      const url = new URL(window.location);
+      url.searchParams.set('product', id);
+      window.history.pushState({}, '', url);
     }
 
     function closeModal(id) {
       document.getElementById(id).classList.remove('active');
       document.body.style.overflow = '';
+
+      // Remove product parameter from URL
+      const url = new URL(window.location);
+      url.searchParams.delete('product');
+      window.history.pushState({}, '', url);
     }
 
     function toggleCart() {
@@ -2196,9 +2214,39 @@
       }
     });
 
+    // Check URL parameters on page load
+    function checkURLParams() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get('product');
+
+      // If product parameter exists and is valid, open that modal
+      if (productId && products[productId]) {
+        openModal(productId);
+      }
+    }
+
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get('product');
+
+      // Close all modals first
+      document.querySelectorAll('.modal.active').forEach(modal => {
+        modal.classList.remove('active');
+      });
+      document.body.style.overflow = '';
+
+      // Open modal if product parameter exists
+      if (productId && products[productId]) {
+        document.getElementById(productId).classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+
     // Initialize
     generateModals();
     updateCartUI();
+    checkURLParams();
   </script>
 
 </body>
