@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Renewal Successful - CabinPulse</title>
+  <link rel="icon" href="https://cabinpulse.com/cpicon.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      -webkit-font-smoothing: antialiased;
+      color: #ffffff;
+    }
+
+    .container {
+      max-width: 600px;
+      width: 100%;
+      background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+      border-radius: 24px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+      animation: slideUp 0.6s ease-out;
+      border: 2px solid rgba(233, 69, 96, 0.3);
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Processing State */
+    .processing-state {
+      text-align: center;
+      padding: 60px 40px;
+    }
+
+    .spinner {
+      width: 60px;
+      height: 60px;
+      border: 4px solid rgba(233, 69, 96, 0.2);
+      border-top: 4px solid #e94560;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 30px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Success State */
+    .success-state {
+      text-align: center;
+      padding: 60px 40px;
+      display: none;
+    }
+
+    .success-state.active {
+      display: block;
+    }
+
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 30px;
+      background: #e94560;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: scaleIn 0.5s ease-out;
+      box-shadow: 0 8px 24px rgba(233, 69, 96, 0.4);
+    }
+
+    @keyframes scaleIn {
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .checkmark {
+      width: 40px;
+      height: 40px;
+      border: 4px solid white;
+      border-top: none;
+      border-left: none;
+      transform: rotate(45deg);
+      margin-bottom: 10px;
+    }
+
+    .confetti {
+      font-size: 40px;
+      animation: confettiFall 1s ease-out;
+    }
+
+    @keyframes confettiFall {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0) rotate(360deg);
+        opacity: 1;
+      }
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #e94560;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    p {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .details-card {
+      background: rgba(15, 52, 96, 0.4);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 30px 0;
+      text-align: left;
+      border: 1px solid rgba(233, 69, 96, 0.2);
+    }
+
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .detail-row:last-child {
+      border-bottom: none;
+    }
+
+    .detail-label {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 14px;
+    }
+
+    .detail-value {
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .detail-value.highlight {
+      color: #e94560;
+    }
+
+    .redirect-notice {
+      background: rgba(15, 52, 96, 0.5);
+      border: 1px solid rgba(233, 69, 96, 0.3);
+      border-radius: 12px;
+      padding: 16px;
+      margin: 20px 0;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .redirect-notice .icon {
+      font-size: 20px;
+      color: #e94560;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #e94560;
+      color: white;
+      text-decoration: none;
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(233, 69, 96, 0.6);
+      background: #ff5a7c;
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    /* Error State */
+    .error-state {
+      text-align: center;
+      padding: 60px 40px;
+      display: none;
+    }
+
+    .error-state.active {
+      display: block;
+    }
+
+    .error-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 30px;
+      background: rgba(255, 68, 68, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      color: #ff4444;
+      border: 2px solid rgba(255, 68, 68, 0.3);
+    }
+
+    .error-state h1 {
+      color: #ff4444;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #ffffff;
+      border: 2px solid rgba(233, 69, 96, 0.5);
+      box-shadow: none;
+      margin-left: 10px;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(233, 69, 96, 0.1);
+      border-color: #e94560;
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 600px) {
+      .container {
+        border-radius: 16px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .processing-state,
+      .success-state,
+      .error-state {
+        padding: 40px 24px;
+      }
+
+      .details-card {
+        padding: 20px;
+      }
+
+      .btn {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .btn-secondary {
+        margin-left: 0;
+      }
+    }
+
+    /* Loading dots animation */
+    .loading-dots {
+      display: inline-flex;
+      gap: 4px;
+    }
+
+    .loading-dots span {
+      width: 8px;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 50%;
+      animation: bounce 1.4s infinite ease-in-out;
+    }
+
+    .loading-dots span:nth-child(1) {
+      animation-delay: -0.32s;
+    }
+
+    .loading-dots span:nth-child(2) {
+      animation-delay: -0.16s;
+    }
+
+    @keyframes bounce {
+      0%, 80%, 100% {
+        transform: scale(0.8);
+        opacity: 0.5;
+      }
+      40% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Processing State -->
+    <div class="processing-state" id="processing-state">
+      <div class="spinner"></div>
+      <h1>Processing Your Renewal</h1>
+      <p>Please wait while we confirm your payment
+        <span class="loading-dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </p>
+    </div>
+
+    <!-- Success State -->
+    <div class="success-state" id="success-state">
+      <div class="success-icon">
+        <div class="checkmark"></div>
+      </div>
+      <div class="confetti">🎉</div>
+      <h1>Plan Renewed Successfully!</h1>
+      <p>Thank you for continuing with CabinPulse. Your plan has been renewed and your cabin monitoring will continue uninterrupted.</p>
+
+      <div class="details-card" id="renewal-details">
+        <!-- Will be populated by JavaScript -->
+      </div>
+
+      <div class="redirect-notice">
+        <span class="icon">⏱️</span>
+        <span>Redirecting to your dashboard in <strong id="countdown">5</strong> seconds...</span>
+      </div>
+
+      <a href="https://dashboard.cabinpulse.com/dashboard" class="btn" id="dashboard-btn">
+        Go to Dashboard Now
+      </a>
+    </div>
+
+    <!-- Error State -->
+    <div class="error-state" id="error-state">
+      <div class="error-icon">❌</div>
+      <h1>Something Went Wrong</h1>
+      <p id="error-message">We couldn't process your renewal. Please try again or contact support if the problem persists.</p>
+      
+      <div style="margin-top: 30px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
+        <a href="https://dashboard.cabinpulse.com/dashboard" class="btn">Return to Dashboard</a>
+        <button class="btn btn-secondary" onclick="location.reload()">Try Again</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ⚙️ CONFIGURATION - UPDATE THESE VALUES
+    const API_BASE_URL = 'https://cabinpulse.com/api';
+    const DASHBOARD_URL = 'https://dashboard.cabinpulse.com/dashboard';
+    const REDIRECT_DELAY = 5; // seconds
+
+    // Get URL parameters
+    function getUrlParameter(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+
+    // Show specific state
+    function showState(state) {
+      document.getElementById('processing-state').style.display = 'none';
+      document.getElementById('success-state').classList.remove('active');
+      document.getElementById('error-state').classList.remove('active');
+      
+      if (state === 'success') {
+        document.getElementById('success-state').classList.add('active');
+      } else if (state === 'error') {
+        document.getElementById('error-state').classList.add('active');
+      } else {
+        document.getElementById('processing-state').style.display = 'block';
+      }
+    }
+
+    // Format date
+    function formatDate(dateString) {
+      const date = new Date(dateString);
+      return date.toLocaleDateString('en-US', { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+      });
+    }
+
+    // Display renewal details
+    function displayRenewalDetails(renewal) {
+      const detailsCard = document.getElementById('renewal-details');
+      const planTypeText = renewal.plan_type === '1-year' ? '1 Year' : '3 Years';
+      
+      detailsCard.innerHTML = `
+        <div class="detail-row">
+          <span class="detail-label">Plan Type</span>
+          <span class="detail-value">${planTypeText}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Renewal Number</span>
+          <span class="detail-value">#${renewal.renewal_number}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">New Expiry Date</span>
+          <span class="detail-value highlight">${formatDate(renewal.new_end_date)}</span>
+        </div>
+      `;
+    }
+
+    // Start countdown and redirect
+    function startRedirectCountdown() {
+      let timeLeft = REDIRECT_DELAY;
+      const countdownEl = document.getElementById('countdown');
+      
+      const interval = setInterval(() => {
+        timeLeft--;
+        countdownEl.textContent = timeLeft;
+        
+        if (timeLeft <= 0) {
+          clearInterval(interval);
+          window.location.href = DASHBOARD_URL;
+        }
+      }, 1000);
+    }
+
+    // Process renewal
+    async function processRenewal() {
+      try {
+        // Get parameters from URL
+        const sessionId = getUrlParameter('session_id');
+        const deviceId = getUrlParameter('device_id');
+        const planType = getUrlParameter('plan_type') || '1-year';
+
+        // Validate parameters
+        if (!sessionId) {
+          throw new Error('Missing session ID. Please try the renewal process again.');
+        }
+
+        if (!deviceId) {
+          throw new Error('Missing device ID. Please try the renewal process again.');
+        }
+
+        // Get auth token from localStorage
+        const authToken = localStorage.getItem('authToken') || 
+                         sessionStorage.getItem('authToken') ||
+                         getCookie('authToken');
+
+        if (!authToken) {
+          console.warn('No auth token found');
+        }
+
+        // Call process renewal endpoint
+        const response = await fetch(`${API_BASE_URL}/device/${deviceId}/renewal/process`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            ...(authToken && { 'Authorization': `Bearer ${authToken}` })
+          },
+          body: JSON.stringify({
+            session_id: sessionId,
+            plan_type: planType
+          })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          // Success!
+          displayRenewalDetails(data.renewal);
+          showState('success');
+          startRedirectCountdown();
+        } else {
+          // API returned an error
+          throw new Error(data.message || 'Failed to process renewal');
+        }
+
+      } catch (error) {
+        console.error('Renewal processing error:', error);
+        document.getElementById('error-message').textContent = error.message;
+        showState('error');
+      }
+    }
+
+    // Helper to get cookie value
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+      return null;
+    }
+
+    // Initialize on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      showState('processing');
+      setTimeout(processRenewal, 500);
+    });
+  </script>
+</body>
+</html>
