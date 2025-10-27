@@ -107,15 +107,10 @@
       }
     }
 
-    .checkmark {
-      width: 40px;
-      height: 40px;
-      border: 4px solid white;
-      border-top: none;
-      border-left: none;
-      transform: rotate(45deg);
-      margin-bottom: 10px;
-    }
+.checkmark {
+  font-size: 48px;
+  color: white;
+}
 
     .confetti {
       font-size: 40px;
@@ -349,19 +344,17 @@
 
     <!-- Success State -->
     <div class="success-state" id="success-state">
-      <div class="success-icon">
-        <div class="checkmark"></div>
-      </div>
-      <div class="confetti">🎉</div>
+<div class="success-icon">
+  <i class="fas fa-check checkmark"></i>
+</div>
       <h1>Plan Renewed Successfully!</h1>
-      <p>Thank you for continuing with CabinPulse. Your plan has been renewed and your cabin monitoring will continue uninterrupted.</p>
+      <p>Thank you for continuing with CabinPulse. Your plan has been renewed and your monitoring will continue uninterrupted.</p>
 
       <div class="details-card" id="renewal-details">
         <!-- Will be populated by JavaScript -->
       </div>
 
       <div class="redirect-notice">
-        <span class="icon">⏱️</span>
         <span>Redirecting to your dashboard in <strong id="countdown">5</strong> seconds...</span>
       </div>
 
