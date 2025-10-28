@@ -962,6 +962,60 @@
             border-top: 1px solid rgba(233, 69, 96, 0.2);
         }
 
+                .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* ADD THIS NEW CSS BLOCK */
+        /* Phone Input with Country Code */
+        .phone-input-wrapper {
+            display: flex;
+            gap: 12px;
+            align-items: stretch;
+        }
+
+        .country-select {
+            position: relative;
+            min-width: 120px;
+        }
+
+        .country-select select {
+            width: 100%;
+            padding: 14px 36px 14px 14px;
+            border: 2px solid rgba(233, 69, 96, 0.3);
+            border-radius: 12px;
+            background: rgba(15, 52, 96, 0.3);
+            color: var(--text-color);
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            appearance: none;
+        }
+
+        .country-select select:focus {
+            outline: none;
+            border-color: var(--highlight-color);
+            background: rgba(15, 52, 96, 0.5);
+            box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.2);
+        }
+
+        .country-select::after {
+            content: '\f107';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--highlight-color);
+            pointer-events: none;
+        }
+
+        .phone-input-wrapper input {
+            flex: 1;
+        }
+
         /* Responsive Design */
         @media (max-width: 968px) {
             .plan-summary-header {
@@ -1089,6 +1143,14 @@
             .device-fee-compact {
                 padding: 8px 12px;
                 font-size: 0.8rem;
+            }
+            .phone-input-wrapper {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .country-select {
+                width: 100%;
             }
         }
     </style>
@@ -1254,7 +1316,18 @@
                                             <i class="fas fa-mobile-alt"></i>
                                             Mobile Number for Alerts
                                         </label>
-                                        <input type="tel" id="phone" name="phone" placeholder="555-555-5555" required>
+                                        <div class="phone-input-wrapper">
+                                            <div class="country-select">
+                                                <select id="phone-country" name="phone-country">
+                                                    <option value="CA" data-code="+1">🇨🇦 +1</option>
+                                                    <option value="US" data-code="+1">🇺🇸 +1</option>
+                                                    <option value="AU" data-code="+61">🇦🇺 +61</option>
+                                                    <option value="NZ" data-code="+64">🇳🇿 +64</option>
+                                                    <option value="VN" data-code="+84">🇻🇳 +84</option>
+                                                </select>
+                                            </div>
+                                            <input type="tel" id="phone" name="phone" placeholder="0001234567" required>
+                                        </div>
                                         <div class="info-box" style="margin-top: 12px;">
                                             <i class="fas fa-bell"></i>
                                             <p>You'll receive text alerts about your property's status. Alert preferences can be customized anytime.</p>
@@ -1542,16 +1615,21 @@ function initializePlan() {
             }
 
             // API functions
-            async function checkFieldAvailability(field, value) {
+            async function checkFieldAvailability(field, value, country = null) {
                 try {
+                    const body = { [field]: value };
+                    
+                    // For phone numbers, include country code
+                    if (field === 'phone' && country) {
+                        body.country = country;
+                    }
+                    
                     const response = await fetch('https://cabinpulse.com/api/users/check-availability', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify({
-                            [field]: value
-                        })
+                        body: JSON.stringify(body)
                     });
 
                     if (!response.ok) {
@@ -1974,9 +2052,11 @@ document.querySelectorAll('.selection-option[data-country]').forEach(option => {
             }, 500));
 
             document.getElementById('phone')?.addEventListener('input', debounce(async function(e) {
-                const phone = e.target.value.trim();
+                const phone = e.target.value.trim().replace(/\D/g, ''); // Remove non-digits
+                const country = document.getElementById('phone-country').value;
+                
                 if (phone && phone.length >= 10) {
-                    const result = await checkFieldAvailability('phone', phone);
+                    const result = await checkFieldAvailability('phone', phone, country);
                     if (!result.available) {
                         showFieldError('phone', result.message);
                     } else {
@@ -2055,7 +2135,8 @@ document.querySelectorAll('.selection-option[data-country]').forEach(option => {
                             }
                         } else {
                             const email = document.getElementById('email').value;
-                            const phone = document.getElementById('phone').value;
+                            const phone = document.getElementById('phone').value.trim().replace(/\D/g, ''); // Remove non-digits
+                            const phoneCountry = document.getElementById('phone-country').value;
 
                             const response = await fetch('https://cabinpulse.com/api/users/check-availability', {
                                 method: 'POST',
@@ -2064,7 +2145,8 @@ document.querySelectorAll('.selection-option[data-country]').forEach(option => {
                                 },
                                 body: JSON.stringify({
                                     email,
-                                    phone
+                                    phone,
+                                    country: phoneCountry
                                 })
                             });
 
@@ -2153,7 +2235,7 @@ document.querySelectorAll('.selection-option[data-country]').forEach(option => {
                     const deviceCost = 199;
                     const totalAmount = (deviceCost + planCost + shippingCost + usTariff) * 100; // Convert to cents
                     
-                    // Prepare customer info
+
                     let customerInfo;
                     if (isLoginMode) {
                         customerInfo = {
@@ -2161,9 +2243,15 @@ document.querySelectorAll('.selection-option[data-country]').forEach(option => {
                             existingUser: true
                         };
                     } else {
+                        const phoneNumber = document.getElementById('phone').value.trim().replace(/\D/g, ''); // Remove non-digits
+                        const phoneCountry = document.getElementById('phone-country').value;
+                        
                         customerInfo = {
                             email: document.getElementById('email').value,
-                            phone: document.getElementById('phone').value,
+                            phone: {
+                                country: phoneCountry,
+                                number: phoneNumber
+                            },
                             name: document.getElementById('name').value,
                             existingUser: false
                         };
