@@ -1153,6 +1153,187 @@
                 width: 100%;
             }
         }
+.referral-section {
+    background: rgba(15, 52, 96, 0.3);
+    border: 1px solid rgba(233, 69, 96, 0.2);
+    border-radius: 16px;
+    padding: 20px;
+    margin: 24px 0;
+}
+
+.referral-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+}
+
+.referral-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.referral-title i {
+    color: var(--highlight-color);
+    font-size: 1.2rem;
+}
+
+.referral-toggle {
+    color: var(--highlight-color);
+    font-size: 0.9rem;
+    transition: transform 0.2s ease;
+}
+
+.referral-toggle.open {
+    transform: rotate(180deg);
+}
+
+/* Pure transform - no height animation at all */
+.referral-content {
+    transform: scaleY(0);
+    transform-origin: top;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.referral-content.open {
+    transform: scaleY(1);
+    opacity: 1;
+    height: auto;
+}
+
+.referral-content-padding {
+    padding-top: 20px;
+}
+
+.referral-input-wrapper {
+    display: flex;
+    gap: 12px;
+    align-items: stretch;
+}
+
+.referral-input-wrapper input {
+    flex: 1;
+    padding: 14px 18px;
+    border: 2px solid rgba(233, 69, 96, 0.3);
+    border-radius: 12px;
+    background: rgba(15, 52, 96, 0.3);
+    color: var(--text-color);
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.referral-input-wrapper input:focus {
+    outline: none;
+    border-color: var(--highlight-color);
+    background: rgba(15, 52, 96, 0.5);
+    box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.2);
+}
+
+.referral-input-wrapper input.valid {
+    border-color: #4CAF50;
+    background: rgba(76, 175, 80, 0.1);
+}
+
+.referral-input-wrapper input.invalid {
+    border-color: #ff4444;
+    background: rgba(255, 68, 68, 0.1);
+}
+
+.referral-validate-btn {
+    padding: 14px 24px;
+    background: var(--highlight-color);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    font-family: 'Poppins', sans-serif;
+}
+
+.referral-validate-btn:hover:not(:disabled) {
+    background: #ff5a7c;
+    transform: translateY(-2px);
+}
+
+.referral-validate-btn:disabled {
+    background: rgba(233, 69, 96, 0.5);
+    cursor: not-allowed;
+}
+
+.referral-feedback {
+    margin-top: 12px;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    display: none;
+    align-items: center;
+    gap: 8px;
+}
+
+.referral-feedback.show {
+    display: flex;
+}
+
+.referral-feedback.success {
+    background: rgba(76, 175, 80, 0.1);
+    border: 1px solid #4CAF50;
+    color: #4CAF50;
+}
+
+.referral-feedback.error {
+    background: rgba(255, 68, 68, 0.1);
+    border: 1px solid #ff4444;
+    color: #ff4444;
+}
+
+.referral-feedback i {
+    font-size: 1.1rem;
+}
+
+.referral-description {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    margin-bottom: 16px;
+}
+
+/* Discount Code Notice */
+.discount-notice {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    text-align: center;
+    margin-top: 16px;
+    padding: 12px;
+    background: rgba(15, 52, 96, 0.2);
+    border-radius: 8px;
+    border: 1px solid rgba(233, 69, 96, 0.1);
+}
+
+.discount-notice i {
+    color: var(--highlight-color);
+    margin-right: 6px;
+}
+
+@media (max-width: 480px) {
+    .referral-input-wrapper {
+        flex-direction: column;
+    }
+    
+    .referral-validate-btn {
+        width: 100%;
+    }
+}
     </style>
 </head>
 <body>
@@ -1458,22 +1639,49 @@
                                     </div>
                                 </div>
 
-                                <div class="info-box">
-                                    <i class="fas fa-gift"></i>
-                                    <p><strong>Have a discount code?</strong> You'll be able to apply it on the next screen.</p>
-                                </div>
-
+                                <!-- Referral Code Section -->
+                                <!-- Referral Code Section -->
+<div class="referral-section">
+    <div class="referral-header" id="referral-header">
+        <div class="referral-title">
+            <i class="fas fa-tag"></i>
+            <span>Have a referral code?</span>
+        </div>
+        <i class="fas fa-chevron-down referral-toggle" id="referral-toggle"></i>
+    </div>
+    <div class="referral-content" id="referral-content">
+        <div class="referral-content-padding">
+            <p class="referral-description">Enter referral code below.</p>
+            <div class="referral-input-wrapper">
+                <input 
+                    type="text" 
+                    id="referral-code" 
+                    placeholder="Enter code (e.g., ABC123)"
+                    maxlength="10"
+                >
+                <button type="button" class="referral-validate-btn" id="validate-referral-btn">
+                    Apply
+                </button>
+            </div>
+            <div class="referral-feedback" id="referral-feedback">
+                <i class="fas fa-circle-check"></i>
+                <span id="referral-feedback-text"></span>
+            </div>
+            
+            <!-- Discount Code Notice - Now Inside -->
+            <div class="discount-notice">
+                <i class="fas fa-ticket"></i>
+                Have a discount code instead? You'll be able to apply it on the next screen.
+            </div>
+        </div>
+    </div>
+</div>
                                 <div class="info-box">
                                     <i class="fas fa-info-circle"></i>
                                     <p>You can choose whether to renew when your plan ends - you won't be charged automatically. We'll send you a reminder before your renewal date.</p>
                                 </div>
 
-                                <p style="font-size: 0.9rem; opacity: 0.8; text-align: center; margin-top: 24px;">
-                                    By clicking "Complete Purchase", you agree to our 
-                                    <a href="https://cabinpulse.com/legal.html" style="color: var(--highlight-color);">Terms of Service</a> 
-                                    and 
-                                    <a href="https://cabinpulse.com/legal.html" style="color: var(--highlight-color);">Privacy Policy</a>.
-                                </p>
+
                             </div>
 
                             <div class="button-container">
@@ -1486,6 +1694,13 @@
                                     Complete Purchase
                                 </button>
                             </div>
+                                <p style="font-size: 0.9rem; opacity: 0.8; text-align: center; margin-top: 24px;">
+                                    By clicking "Complete Purchase", you agree to our 
+                                    <a href="https://cabinpulse.com/legal.html" style="color: var(--highlight-color);">Terms of Service</a> 
+                                    and 
+                                    <a href="https://cabinpulse.com/legal.html" style="color: var(--highlight-color);">Privacy Policy</a>.
+                                </p>
+                        </div>
                         </div>
                     </form>
                 </div>
@@ -1501,10 +1716,13 @@
     </footer>
 
     <script>
-        // Enhanced JavaScript functionality with full validation and account handling
         document.addEventListener('DOMContentLoaded', function() {
             const urlParams = new URLSearchParams(window.location.search);
-            let plan = urlParams.get('plan') || '1';
+            
+            // Safely validate plan parameter - default to '1' if invalid
+            let planParam = urlParams.get('plan') || '1';
+            let plan = (planParam === '1' || planParam === '3') ? planParam : '1';
+            
             let currentStep = 1;
             let isLoginMode = false;
             let isAuthenticated = false;
@@ -1513,6 +1731,8 @@
             let shippingCost = 0;
             let usTariff = 0;
             let selectedCountry = null;
+            let referralCode = null;
+            let isReferralValid = false;
 
             // Plan toggle functionality
             const compactToggles = document.querySelectorAll('.compact-toggle-option');
@@ -1534,8 +1754,8 @@
 
             // Initialize the plan toggle based on URL parameter
 function initializePlan() {
-    // Set the correct plan from URL parameter
-    plan = urlParams.get('plan') || '1';
+    // DON'T re-read from URL - use the already-validated plan variable
+    // plan is already set at the top with validation
     
     // Update toggle state
     compactToggles.forEach(toggle => {
@@ -1554,6 +1774,144 @@ function initializePlan() {
     
     updatePlanInfo();
 }
+
+// Referral Code Functionality
+const referralHeader = document.getElementById('referral-header');
+const referralToggle = document.getElementById('referral-toggle');
+const referralContent = document.getElementById('referral-content');
+const referralInput = document.getElementById('referral-code');
+const validateBtn = document.getElementById('validate-referral-btn');
+const referralFeedback = document.getElementById('referral-feedback');
+const referralFeedbackText = document.getElementById('referral-feedback-text');
+
+// Check for refcode in URL
+const refcodeParam = urlParams.get('refcode');
+if (refcodeParam) {
+    referralCode = refcodeParam.toUpperCase();
+    referralInput.value = referralCode;
+    
+    // Auto-open and validate if refcode is in URL
+    referralContent.classList.add('open');
+    referralToggle.classList.add('open');
+    
+    // Validate immediately - but don't block user progress
+    setTimeout(() => {
+        validateReferralCode().catch(error => {
+            console.warn('Referral code validation failed:', error);
+            // Silently fail - don't block the user
+            referralCode = null;
+            isReferralValid = false;
+        });
+    }, 500);
+}
+
+// Toggle referral section
+referralHeader.addEventListener('click', function() {
+    referralContent.classList.toggle('open');
+    referralToggle.classList.toggle('open');
+});
+
+// Validate referral code function
+async function validateReferralCode() {
+    const code = referralInput.value.trim().toUpperCase();
+    
+    if (!code) {
+        referralFeedback.classList.remove('show', 'success', 'error');
+        referralInput.classList.remove('valid', 'invalid');
+        isReferralValid = false;
+        referralCode = null;
+        return;
+    }
+    
+    validateBtn.disabled = true;
+    validateBtn.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
+    
+    try {
+        const response = await fetch('https://cabinpulse.com/api/users/referral/validate', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                referral_code: code
+            })
+        });
+        
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        
+        const data = await response.json();
+        
+        referralFeedback.classList.add('show');
+        
+        if (data.valid) {
+            // Valid code
+            referralFeedback.classList.remove('error');
+            referralFeedback.classList.add('success');
+            referralFeedback.querySelector('i').className = 'fas fa-circle-check';
+            referralFeedbackText.textContent = data.referrer_name 
+                ? `Referred by ${data.referrer_name}.` 
+                : 'Valid referral code applied!';
+            referralInput.classList.remove('invalid');
+            referralInput.classList.add('valid');
+            isReferralValid = true;
+            referralCode = code;
+            validateBtn.textContent = 'Applied ✓';
+        } else {
+            // Invalid code
+            referralFeedback.classList.remove('success');
+            referralFeedback.classList.add('error');
+            referralFeedback.querySelector('i').className = 'fas fa-circle-xmark';
+            referralFeedbackText.textContent = data.message || 'Invalid referral code';
+            referralInput.classList.remove('valid');
+            referralInput.classList.add('invalid');
+            isReferralValid = false;
+            referralCode = null;
+            validateBtn.textContent = 'Apply';
+        }
+    } catch (error) {
+        console.error('Error validating referral code:', error);
+        referralFeedback.classList.add('show', 'error');
+        referralFeedback.querySelector('i').className = 'fas fa-circle-xmark';
+        referralFeedbackText.textContent = 'Error validating code. Please try again.';
+        referralInput.classList.remove('valid');
+        referralInput.classList.add('invalid');
+        isReferralValid = false;
+        referralCode = null;
+        validateBtn.textContent = 'Apply';
+    } finally {
+        validateBtn.disabled = false;
+        // Always re-enable button, never block user
+        if (!isReferralValid) {
+            validateBtn.textContent = 'Apply';
+        }
+    }
+}
+
+// Apply button click
+validateBtn.addEventListener('click', validateReferralCode);
+
+// Validate on Enter key
+referralInput.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        validateReferralCode();
+    }
+});
+
+// Clear validation when input changes
+referralInput.addEventListener('input', function(e) {
+    this.value = this.value.toUpperCase();
+    
+    if (isReferralValid) {
+        referralFeedback.classList.remove('show');
+        referralInput.classList.remove('valid', 'invalid');
+        isReferralValid = false;
+        referralCode = null;
+        validateBtn.textContent = 'Apply';
+    }
+});
 
             // Debounce function for API calls
             function debounce(func, wait) {
@@ -2269,6 +2627,7 @@ document.querySelectorAll('.selection-option[data-country]').forEach(option => {
                             userType: isLoginMode ? 'existing' : 'new',
                             country: selectedCountry,
                             shippingCost: shippingCost,
+                            referralCode: isReferralValid ? referralCode : null,
                             usTariff: usTariff,
                             priceData: {
                                 deviceCost,

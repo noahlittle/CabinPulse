@@ -2709,7 +2709,61 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
+<script>
+// Referral code tracking
+document.addEventListener('DOMContentLoaded', function() {
+  // Get refcode from URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const refcode = urlParams.get('refcode');
+  
+  if (refcode) {
+    // Store refcode in sessionStorage to persist across page navigation
+    sessionStorage.setItem('refcode', refcode);
+  }
+  
+  // Get refcode from sessionStorage if it exists
+  const storedRefcode = sessionStorage.getItem('refcode');
+  
+  if (storedRefcode) {
+    // Function to append refcode to URL
+    function appendRefcode(url) {
+      if (!url || url.startsWith('#')) return url;
+      
+      const urlObj = new URL(url, window.location.origin);
+      urlObj.searchParams.set('refcode', storedRefcode);
+      return urlObj.toString();
+    }
+    
+    // Update all purchase links
+    const purchaseLinks = document.querySelectorAll('a[href*="purchase.html"]');
+    purchaseLinks.forEach(link => {
+      link.href = appendRefcode(link.href);
+    });
+    
+    // Also update the dynamic CTA button in pricing section
+    const ctaButton = document.getElementById('cta-button');
+    if (ctaButton) {
+      ctaButton.href = appendRefcode(ctaButton.href);
+    }
+    
+    // Update plan toggle functionality to include refcode
+    const toggleOptions = document.querySelectorAll('.toggle-option');
+    if (toggleOptions.length > 0) {
+      toggleOptions.forEach(opt => {
+        opt.addEventListener('click', function() {
+          const plan = this.dataset.plan;
+          const ctaBtn = document.getElementById('cta-button');
+          if (ctaBtn) {
+            const baseUrl = `https://cabinpulse.com/purchase.html?plan=${plan}`;
+            ctaBtn.href = appendRefcode(baseUrl);
+          }
+        });
+      });
+    }
+  }
+});
 </script>
+
   <script type="text/javascript">
     window._mfq = window._mfq || [];
     (function() {
