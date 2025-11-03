@@ -5387,3 +5387,68 @@ Replace the existing top-bar-content div with:
     font-size: 0.85rem;
   }
 }
+
+
+/* Add-Ons Shop Button Styling */
+.addon-shop-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--highlight-color) 0%, #ff5a7c 100%);
+  color: white !important;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.addon-shop-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(233, 69, 96, 0.5);
+  color: white !important;
+  text-decoration: none;
+}
+
+.addon-shop-button i:first-child {
+  font-size: 1.1rem;
+}
+
+.addon-shop-button i:last-child {
+  font-size: 0.9rem;
+  transition: transform 0.3s ease;
+}
+
+.addon-shop-button:hover i:last-child {
+  transform: translateX(4px);
+}
+
+/* Ensure button container has proper z-index too */
+.feature-card.large > div {
+  position: relative;
+  z-index: 2;
+}
+
+/* Mobile responsive */
+@media (max-width: 900px) {
+  .addon-shop-button {
+    padding: 12px 24px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .addon-shop-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    width: 100%;
+    justify-content: center;
+  }
+}
