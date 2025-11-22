@@ -1416,7 +1416,7 @@
 
     <div class="products-grid">
       <div class="product-card large" onclick="openModal('leak-sensor')">
-        <span class="beta-tag">Limited Beta</span>
+        <span class="beta-tag">New</span>
         <div class="product-image-wrap">
           <img src="shop/leak.png" alt="Leak Sensor">
         </div>
@@ -1425,7 +1425,7 @@
           <p>Instant detection and alerts for water leaks anywhere in your property</p>
           <div class="product-price">$49 CAD</div>
           <ul class="product-features">
-            <li><i class="fas fa-circle-check"></i> Up to 30m wireless range</li>
+            <li><i class="fas fa-circle-check"></i> 30m+ wireless range</li>
             <li><i class="fas fa-circle-check"></i> Up to 3-year battery life with replaceable 2x AA Lithium</li>
             <li><i class="fas fa-circle-check"></i> Instant alerts</li>
             <li><i class="fas fa-circle-check"></i> Optional Leak Cable</li>
@@ -1434,7 +1434,7 @@
       </div>
 
       <div class="product-card large" onclick="openModal('temp-sensor')">
-        <span class="beta-tag">Limited Beta</span>
+        <span class="beta-tag">New</span>
         <div class="product-image-wrap">
           <img src="shop/temp.png" alt="Temperature Sensor">
         </div>
@@ -1443,12 +1443,24 @@
           <p>Monitor temperature in additional locations without power</p>
           <div class="product-price">$59 CAD</div>
           <ul class="product-features">
-            <li><i class="fas fa-circle-check"></i> Up to 30m wireless range</li>
+            <li><i class="fas fa-circle-check"></i> 30m+ wireless range</li>
             <li><i class="fas fa-circle-check"></i> Up to 5-year battery life with replaceable 4x AA Lithium</li>
             <li><i class="fas fa-circle-check"></i> Instant alerts</li>
             <li><i class="fas fa-circle-check"></i> Temperature update every 6 hours when not in alert state</li>
             <li><i class="fas fa-circle-check"></i> ±0.1°C accuracy</li>
           </ul>
+        </div>
+      </div>
+
+      <div class="product-card medium" onclick="openModal('climate-sensor')">
+        <span class="beta-tag">New</span>
+        <div class="product-image-wrap">
+          <img src="shop/temp.png" alt="Climate Sensor">
+        </div>
+        <div class="product-info">
+          <h3>Climate Add-On</h3>
+          <p>Temperature + humidity monitoring</p>
+          <div class="product-price">$79 CAD</div>
         </div>
       </div>
 
@@ -1549,8 +1561,8 @@
         </div>
       </div>
 
-      <div class="product-card small unavailable">
-        <span class="coming-soon">Available Soon</span>
+      <div class="product-card small" onclick="openModal('leak-cable')">
+        <span class="coming-soon">NEW</span>
         <div class="product-image-wrap">
           <img src="shop/leak-cable.png" alt="Leak Cable">
         </div>
@@ -1706,7 +1718,7 @@
         images: ['shop/leak.png', 'shop/leak-2.png', 'shop/leak-sc.png'],
         description: 'Wireless water leak detection that alerts you the moment moisture is detected. Perfect for water heaters, under sinks, basements, and anywhere water damage is a concern.',
         features: [
-          '30m wireless Bluetooth range',
+          '30m+ wireless range',
           '24-month battery life (AA batteries)',
           'Instant leak detection alerts',
           'No additional subscription'
@@ -1720,7 +1732,7 @@
         description: 'Extend temperature monitoring to additional rooms or locations. Precision ±0.1°C temperature sensor.',
         features: [
           '±0.1°C precision accuracy',
-          'Up to 30m wireless range',
+          '30m+ range',
           'Up to 3 year battery life',
           'Set high and low thresholds',
           'Instant temperature alerts'
@@ -1753,6 +1765,21 @@
         ],
         priceId: 'price_WALL'
       },
+      'temp-plus-sensor': {
+        name: 'Temperature+ Add-On',
+        price: 69,
+        images: ['shop/temp-plus.png', 'shop/temp-plus-sc.png'],
+        description: 'Monitor both temperature and humidity in additional locations. Perfect for detecting conditions that could lead to mold, monitoring indoor comfort levels, or protecting humidity-sensitive items.',
+        features: [
+          '±1°C temperature accuracy',
+          '±3% RH humidity accuracy',
+          '30m+ wireless range',
+          'Up to 3 year battery life (4x AA Lithium)',
+          'Set high and low thresholds for both sensors',
+          'Instant temperature and humidity alerts'
+        ],
+        priceId: 'price_TEMP_PLUS'
+      },
       'usb-adapter': {
         name: 'USB Power Cable',
         price: 9,
@@ -1780,9 +1807,9 @@
         name: 'Leak Cable',
         price: 19,
         images: ['shop/leak-cable.png'],
-        description: 'Extend leak detection capabilities of the Leak Sensor with this 1ft cable. Perfect for hard-to-reach areas like behind appliances or under flooring.',
+        description: 'Extend leak detection capabilities of the Leak Sensor with this 1m cable. Perfect for hard-to-reach areas like behind appliances or under flooring.',
         features: [
-          '1ft length',
+          '1m length',
           'Compatible with Leak Sensor Add On',
         ],
         priceId: 'price_LEAK_CABLE'
