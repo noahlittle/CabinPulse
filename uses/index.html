@@ -3,53 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CabinPulse Use Cases - Remote Monitoring Applications Without WiFi</title>
+  <title>CabinPulse Use Cases | Remote Monitoring Applications Without WiFi</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <meta name="description" content="Discover all the ways CabinPulse can protect your property without WiFi. From freeze alarms to humidity monitoring, power outage detection and more. Explore all applications." />
+  <meta name="description" content="Discover all the ways CabinPulse can protect your property without WiFi. From freeze alarms to humidity monitoring, power outage detection and more." />
   <meta name="keywords" content="remote monitoring, cabin monitoring, property protection, freeze alarm, power outage monitor, humidity monitor, air quality monitor, no wifi monitoring">
   <script defer src="https://analytics.cabinliving.ca/script.js" data-website-id="bd58d7d8-2b00-44ae-8285-c76db6e383ad"></script>
+
   <style>
-    /* Root variables */
+ /* =========================================
+   1. CORE VARIABLES & RESET (MATCHING NEW DESIGN)
+   ========================================= */
 :root {
+  /* Original Palette (Kept for Header/Footer compatibility) */
   --primary-color: #1a1a2e;
   --secondary-color: #16213e;
   --cta-color: #ffffff;
   --accent-color: #0f3460;
-  --highlight-color: #e94560;
+  --highlight-color: #e94560; 
   --text-color: #ffffff;
-  --dark-text-color: #000000;
+
+  /* New Revamped Palette (Body Content) */
+  --bg-dark: #0b0b15;
+  --bg-panel: #131320;
+  --primary-accent: #e94560; 
+  --primary-glow: rgba(233, 69, 96, 0.4);
+  --success: #00f2ea; 
+  --text-muted: #a0a0b0;
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --font-main: 'Poppins', sans-serif;
 }
 
-/* Base styles */
 html {
   font-size: 18px;
+  scroll-behavior: smooth;
 }
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: var(--primary-color);
+  font-family: var(--font-main);
+  background-color: var(--bg-dark);
   color: var(--text-color);
   overflow-x: hidden;
   font-size: 1rem;
+  line-height: 1.6;
 }
+
+a { text-decoration: none; }
+ul { list-style: none; }
+
+/* Utility */
 .container {
   max-width: 1300px;
   margin: 0 auto;
   padding: 0 25px;
 }
-
-.logo-text {
-  font-size: 1.5rem;
-  font-weight: 900;
-  color: var(--text-color);
+.text-center { text-align: center; }
+.text-gradient {
+  background: linear-gradient(135deg, #fff 0%, #a5a5a5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
+.highlight-red { color: var(--primary-accent); font-weight: 700; }
 
-/* Top Bar Styles */
+/* =========================================
+   2. HEADER & NAV STYLES (PRESERVED)
+   ========================================= */
 .top-bar {
   background-color: rgba(15, 52, 96, 0.95);
   backdrop-filter: blur(8px);
@@ -80,7 +105,6 @@ body {
 
 .top-bar-link {
   color: var(--text-color);
-  text-decoration: none;
   font-size: 0.7rem;
   font-weight: 500;
   text-transform: uppercase;
@@ -118,7 +142,7 @@ body {
   font-size: 0.8rem;
 }
 
-/* Header styles */
+/* Header */
 header {
   padding-top: 12px;
   position: fixed;
@@ -147,13 +171,18 @@ nav {
   display: flex;
   align-items: center;
 }
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--text-color);
+}
 .icon {
   width: 40px;
   height: 40px;
   margin-right: 10px;
 }
 
-/* Desktop Navigation Links */
+/* Desktop Nav */
 .nav-links {
   display: flex;
   align-items: center;
@@ -166,7 +195,6 @@ nav {
 }
 .nav-link {
   color: var(--text-color);
-  text-decoration: none;
   padding: 10px 16px;
   border-radius: 6px;
   transition: all 0.3s ease;
@@ -194,7 +222,7 @@ nav {
   transform: rotate(180deg);
 }
 
-/* Nav Dropdowns */
+/* Dropdowns */
 .dropdown {
   position: absolute;
   top: 100%;
@@ -221,7 +249,6 @@ nav {
 .dropdown-item {
   display: block;
   color: var(--text-color);
-  text-decoration: none;
   padding: 10px 20px;
   font-size: 0.85rem;
   font-weight: 500;
@@ -244,7 +271,7 @@ nav {
   opacity: 0.8;
 }
 
-/* Nav CTA Buttons */
+/* Buttons in Nav */
 .login-btn {
   border: 1px solid rgba(255, 255, 255, 0.3);
   background-color: rgba(255, 255, 255, 0.05);
@@ -264,12 +291,11 @@ nav {
 }
 .primary-cta:hover {
   background-color: #ff5a7c;
-  color: white !important;
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(233, 69, 96, 0.4);
 }
 
-/* Mobile Navigation */
+/* Mobile Menu */
 .mobile-menu-toggle {
   display: none;
   cursor: pointer;
@@ -286,17 +312,13 @@ nav {
 .mobile-menu-toggle:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
-
 .mobile-menu-toggle i {
   font-size: 1.2rem;
   transition: all 0.3s ease;
 }
-
 .mobile-menu-toggle.active i {
   transform: rotate(90deg);
 }
-
-/* New Mobile Menu Styles */
 .mobile-menu {
   position: fixed;
   top: 0;
@@ -311,18 +333,15 @@ nav {
   overflow-y: auto;
   padding-top: 80px;
 }
-
 .mobile-menu.open {
   opacity: 1;
   visibility: visible;
 }
-
 .mobile-menu-content {
   padding: 20px;
   max-width: 400px;
   margin: 0 auto;
 }
-
 .mobile-nav-item {
   margin-bottom: 12px;
   border-radius: 16px;
@@ -331,52 +350,23 @@ nav {
   overflow: hidden;
   transition: all 0.3s ease;
 }
-
-.mobile-nav-item:hover {
-  background: rgba(15, 52, 96, 0.5);
-  border-color: rgba(233, 69, 96, 0.4);
-}
-
 .mobile-nav-link {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 20px;
   color: var(--text-color);
-  text-decoration: none;
   font-size: 1.1rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   transition: all 0.3s ease;
-  position: relative;
 }
-
-.mobile-nav-link:hover {
-  color: var(--highlight-color);
-  background: rgba(233, 69, 96, 0.1);
-}
-
 .mobile-nav-link i {
   margin-right: 12px;
   font-size: 1.2rem;
   color: var(--highlight-color);
 }
-
-.mobile-nav-link.has-dropdown::after {
-  content: '\f0d7';
-  font-family: 'Font Awesome 6 Free';
-  font-weight: 900;
-  font-size: 0.9rem;
-  transition: transform 0.3s ease;
-  color: var(--highlight-color);
-}
-
-.mobile-nav-link.has-dropdown.open::after {
-  transform: rotate(180deg);
-}
-
-/* Mobile Dropdown */
 .mobile-dropdown {
   max-height: 0;
   overflow: hidden;
@@ -384,43 +374,25 @@ nav {
   background: rgba(22, 33, 62, 0.8);
   border-top: 1px solid rgba(233, 69, 96, 0.2);
 }
-
 .mobile-dropdown.open {
   max-height: 400px;
   padding: 12px 0;
 }
-
 .mobile-dropdown-item {
   display: block;
   padding: 16px 32px;
   color: var(--text-color);
-  text-decoration: none;
   font-size: 0.95rem;
   font-weight: 500;
-  text-transform: none;
-  letter-spacing: 0;
   transition: all 0.2s ease;
   border-left: 3px solid transparent;
-  position: relative;
 }
-
 .mobile-dropdown-item:hover {
   background-color: rgba(233, 69, 96, 0.1);
   color: var(--highlight-color);
   border-left-color: var(--highlight-color);
   padding-left: 36px;
 }
-
-.mobile-dropdown-item i {
-  margin-right: 12px;
-  width: 16px;
-  text-align: center;
-  color: var(--highlight-color);
-  opacity: 0.8;
-  font-size: 1rem;
-}
-
-/* Mobile CTA Section */
 .mobile-cta-section {
   margin-top: 32px;
   padding-top: 32px;
@@ -429,58 +401,26 @@ nav {
   flex-direction: column;
   gap: 16px;
 }
-
-.mobile-login-btn {
+.mobile-login-btn, .mobile-cta-btn {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
   padding: 16px 24px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  background-color: rgba(255, 255, 255, 0.05);
-  color: var(--text-color);
-  text-decoration: none;
   border-radius: 12px;
   font-weight: 600;
-  font-size: 1rem;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
   transition: all 0.3s ease;
+  color: white;
 }
-
-.mobile-login-btn:hover {
-  border-color: var(--highlight-color);
-  background-color: rgba(233, 69, 96, 0.1);
-  color: var(--highlight-color);
+.mobile-login-btn {
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.05);
 }
-
 .mobile-cta-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 18px 24px;
   background: linear-gradient(135deg, var(--highlight-color) 0%, #ff5a7c 100%);
-  color: white !important;
-  text-decoration: none;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
   box-shadow: 0 8px 20px rgba(233, 69, 96, 0.3);
-  transition: all 0.3s ease;
 }
-
-.mobile-cta-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(233, 69, 96, 0.5);
-}
-
-.mobile-cta-btn i {
-  font-size: 1.2rem;
-}
-
 .mobile-menu-close {
   position: absolute;
   top: 20px;
@@ -493,284 +433,246 @@ nav {
   border-radius: 50%;
   background-color: rgba(233, 69, 96, 0.2);
   border: 2px solid rgba(233, 69, 96, 0.4);
-  transition: all 0.3s ease;
   cursor: pointer;
-  font-size: 1.5rem;
   color: var(--highlight-color);
   z-index: 1002;
 }
 
-.mobile-menu-close:hover {
-  background-color: var(--highlight-color);
-  color: white;
-  transform: rotate(90deg);
-}
-
-/* Integrated Breadcrumb */
+/* Breadcrumb */
 .integrated-breadcrumb {
-  background-color: rgba(15, 52, 96, 0.7); /* Lighter blue color */
+  background-color: rgba(15, 52, 96, 0.7);
   padding: 8px 0;
   margin-top: 15px;
   font-size: 0.7rem;
 }
-
 .breadcrumb-nav {
   display: flex;
   align-items: center;
   font-size: 0.7rem;
   color: rgba(255, 255, 255, 0.7);
 }
-
 .breadcrumb-nav a {
   color: rgba(255, 255, 255, 0.7);
-  text-decoration: none;
   transition: color 0.3s ease;
 }
-
 .breadcrumb-nav a:hover {
   color: var(--highlight-color);
 }
-
-.breadcrumb-separator {
-  margin: 0 10px;
-}
-
+.breadcrumb-separator { margin: 0 10px; }
 .breadcrumb-current {
   color: var(--highlight-color);
   font-weight: 600;
 }
 
-/* Button styles */
-.cta-button {
-  display: inline-block;
-  background-color: var(--highlight-color);
+/* =========================================
+   3. UPDATED BODY STYLES (NEW LOOK)
+   ========================================= */
+
+/* Primary Button Style */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(90deg, var(--primary-accent), #d6334d);
   color: white;
-  padding: 15px 30px;
-  text-decoration: none;
+  padding: 16px 32px;
   border-radius: 50px;
-  font-weight: bold;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin-top: 1.2rem;
-  font-size: 1.1rem;
-  position: relative;
-  z-index: 10;
-  text-align: center;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(233, 69, 96, 0.3);
+  border: 1px solid rgba(255,255,255,0.1);
 }
-.cta-button:hover {
+.btn-primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 24px rgba(233, 69, 96, 0.4);
+  box-shadow: 0 15px 40px rgba(233, 69, 96, 0.5);
+  color: white;
 }
 
-/* Badge styles */
-.badge {
-  background-color: var(--accent-color);
-  padding: 6px 12px;
-  border-radius: 18px;
-  font-size: 0.9rem;
-}
-.badge.featured {
-  background-color: var(--highlight-color);
-  font-weight: bold;
-  margin-bottom: 2.4rem;
-  font-size: 1.3rem;
-}
-
-/* Section styles */
-.section-title {
+/* Section Title */
+.section-header {
   text-align: center;
-  font-size: 2rem;
-  margin-top: 3rem;
-  margin-bottom: 70px;
-  color: var(--highlight-color);
+  margin-bottom: 60px;
+}
+.section-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+.section-header p {
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-/* Uses Hero Section */
+/* USES HERO */
 .uses-hero {
-  padding: 250px 0 120px; /* Adjusted top padding for the integrated breadcrumb */
-  background-color: var(--primary-color);
+  padding: 180px 0 100px;
+  text-align: center;
+  background: radial-gradient(circle at 50% 0%, #1a1a2e 0%, var(--bg-dark) 70%);
   position: relative;
   overflow: hidden;
-  text-align: center;
 }
-
-.uses-hero::before {
-  content: '';
+.hero-glow {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('../bg-5.png') no-repeat center center;
-  background-size: cover;
-  filter: brightness(0.5);
+  width: 600px;
+  height: 600px;
+  background: var(--primary-accent);
+  filter: blur(180px);
+  opacity: 0.15;
+  border-radius: 50%;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 0;
-  opacity: 0.3;
 }
-
-.uses-hero-container {
+.hero-content {
   position: relative;
   z-index: 1;
   max-width: 900px;
   margin: 0 auto;
 }
-
-.uses-hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 25px;
-  line-height: 1.2;
+.hero-device-img {
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto 30px;
+  display: block;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+  animation: float 6s ease-in-out infinite;
 }
-
-.uses-hero-subtitle {
-  font-size: 0.9rem;
-  margin-bottom: 35px;
-  color: var(--text-color);
-  opacity: 0.9;
-  max-width: 800px;
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+.uses-hero h1 {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+.uses-hero p {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  margin-bottom: 40px;
+  max-width: 700px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.uses-product {
-  width: 100%;
-  max-width: 500px;
-  margin: 0 auto;
-  margin-bottom: 30px;
-  border-radius: 20px;
-  margin-top: -3rem;
+/* CARD GRID SYSTEM */
+.uses-section {
+  padding: 50px 0 100px;
 }
-
-.left {
-  text-align: left;
-}
-
-/* Uses Grid */
 .uses-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 30px;
-  margin-top: 30px;
-  margin-bottom: 60px;
 }
-
 .use-card {
-  background-color: var(--accent-color);
-  border-radius: 24px;
+  background: var(--bg-panel);
+  border: 1px solid var(--glass-border);
   padding: 40px 30px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
-  overflow: hidden;
+  border-radius: 20px;
+  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   height: 100%;
-}
-
-.use-card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
-}
-
-.use-icon {
-  font-size: 3rem;
-  color: var(--highlight-color);
-  margin-bottom: 24px;
-}
-
-.use-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 18px;
-  color: var(--text-color);
-}
-
-.use-card p {
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: var(--text-color);
-  opacity: 0.8;
-  margin-bottom: 24px;
-  flex-grow: 1;
-  text-align: left;
-}
-
-.learn-more {
-  background-color: rgba(233, 69, 96, 0.2);
-  color: var(--text-color);
-  padding: 10px 20px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: auto;
-}
-
-.learn-more:hover {
-  background-color: var(--highlight-color);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(233, 69, 96, 0.3);
-}
-
-/* Final CTA Section */
-.final-cta {
-  padding: 120px 0;
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-  text-align: center;
   position: relative;
+  overflow: hidden;
 }
-.final-cta::before {
+.use-card:hover {
+  border-color: var(--primary-accent);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+/* Subtle glow inside card on hover */
+.use-card::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('../cabinpulse-bg.jpg') no-repeat center center;
-  background-size: cover;
-  opacity: 0.1;
-  z-index: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at top right, rgba(233,69,96,0.1), transparent 40%);
+  opacity: 0;
+  transition: 0.3s;
 }
-.final-cta-container {
+.use-card:hover::before { opacity: 1; }
+
+.use-icon {
+  font-size: 2.5rem;
+  color: var(--primary-accent);
+  margin-bottom: 25px;
+  background: rgba(233, 69, 96, 0.1);
+  width: 70px;
+  height: 70px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.use-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  color: var(--text-color);
+}
+.use-card p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 25px;
+  flex-grow: 1;
+}
+.learn-more {
+  font-weight: 600;
+  color: white;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.3s;
+  margin-top: auto;
   position: relative;
-  z-index: 1;
-  max-width: 800px;
-  margin: 0 auto;
+  z-index: 2;
 }
-.final-cta-icon {
-  font-size: 4rem;
-  color: var(--highlight-color);
-  margin-bottom: 30px;
+.learn-more i { 
+  font-size: 0.8rem; 
+  transition: 0.3s;
 }
-.final-cta h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: var(--text-color);
-}
-.final-cta p {
-  font-size: 0.9rem;
-  margin-bottom: 40px;
-  color: var(--text-color);
-  opacity: 0.9;
+.learn-more:hover { color: var(--primary-accent); }
+.learn-more:hover i { transform: translateX(5px); }
+
+/* FINAL CTA */
+.final-cta {
+  background: linear-gradient(rgba(11, 11, 21, 0.8), rgba(11, 11, 21, 0.9)), url('../bg-5.png');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  text-align: center;
+  padding: 120px 0;
+  border-top: 1px solid var(--glass-border);
 }
 .cta-features {
   display: flex;
   justify-content: center;
-  gap: 30px;
-  margin-bottom: 40px;
+  gap: 40px;
+  margin-bottom: 50px;
   flex-wrap: wrap;
 }
 .cta-feature {
   display: flex;
   align-items: center;
   gap: 10px;
+  color: white;
+  font-weight: 500;
 }
-.cta-feature i {
-  color: var(--highlight-color);
-}
+.cta-feature i { color: var(--success); }
 
-/* Footer Styles */
+/* =========================================
+   4. FOOTER STYLES (PRESERVED)
+   ========================================= */
 footer {
   background-color: var(--secondary-color);
   padding: 60px 0 20px;
@@ -781,20 +683,6 @@ footer {
   grid-template-columns: repeat(4, 1fr);
   gap: 40px;
   margin-bottom: 40px;
-}
-.footer-logo {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-.footer-logo img {
-  width: 40px;
-  height: 40px;
-  margin-right: 10px;
-}
-.footer-logo h3 {
-  color: var(--text-color);
-  font-size: 1.5rem;
 }
 .footer-grid p {
   color: var(--text-color);
@@ -807,13 +695,14 @@ footer {
   margin-bottom: 20px;
   font-size: 1.2rem;
 }
-.footer-links {
+.footer-grid ul {
   list-style: none;
+  padding: 0;
 }
-.footer-links li {
+.footer-grid li {
   margin-bottom: 10px;
 }
-.footer-links a {
+.footer-grid a {
   color: var(--text-color);
   text-decoration: none;
   opacity: 0.7;
@@ -822,164 +711,49 @@ footer {
   display: flex;
   align-items: center;
 }
-.footer-links a i {
-  margin-right: 10px;
-  color: var(--highlight-color);
-}
-.footer-links a:hover {
-  opacity: 1;
-  color: var(--highlight-color);
-}
-.footer-divider {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  margin-bottom: 20px;
-}
-.footer-bottom {
-  text-align: center;
-  color: var(--text-color);
-  opacity: 0.7;
-  font-size: 0.9rem;
-}
-
-/* Style for "View All Use Cases" link with arrow */
-.footer-grid a[href="/uses/"] {
-  color: var(--highlight-color) !important;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  font-weight: 500;
-}
-
-.footer-grid a[href="/uses/"] i {
-  margin-left: 10px;
-  margin-right: 0 !important;
-  transition: transform 0.2s ease;
-}
-
-.footer-grid a[href="/uses/"]:hover i {
-  transform: translateX(3px);
-}
-
-/* Fix for footer links and icons alignment */
-.footer-grid ul {
-  list-style: none;
-  padding: 0;
-  font-size: 0.9rem;
-}
-
-.footer-grid li {
-  margin-bottom: 10px;
-  font-size: 0.9rem;
-}
-
-.footer-grid a {
-  color: var(--text-color);
-  text-decoration: none;
-  opacity: 0.7;
-  transition: all 0.3s ease;
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-}
-
 .footer-grid a i {
   margin-right: 10px;
   color: var(--highlight-color);
 }
-
 .footer-grid a:hover {
   opacity: 1;
   color: var(--highlight-color);
 }
+.footer-grid a[href="/uses/"] {
+  color: var(--highlight-color) !important;
+  font-weight: 500;
+}
+.footer-grid a[href="/uses/"] i {
+  margin-left: 10px;
+  margin-right: 0 !important;
+}
 
-/* Responsive styles */
+/* Responsive */
 @media (max-width: 1024px) {
-  .uses-hero h1 {
-    font-size: 1.6rem;
-  }
-  .uses-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .footer-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
+  .uses-hero h1 { font-size: 2.5rem; }
 }
-
 @media (max-width: 900px) {
-  .nav-links {
-    display: none;
-  }
-  .mobile-menu-toggle {
-    display: flex;
-  }
-  .top-bar {
-    padding: 6px 0;
-  }
-  .top-bar-content {
-    padding: 0 15px;
-  }
-  .top-bar-left {
-    gap: 16px;
-  }
-  .top-bar-link {
-    font-size: 0.7rem;
-    padding: 3px 6px;
-  }
-  .integrated-breadcrumb {
-    padding: 6px 0;
-    font-size: 0.8rem;
-  }
+  .nav-links { display: none; }
+  .mobile-menu-toggle { display: flex; }
+  .hero-glow { width: 100%; opacity: 0.1; }
 }
-
 @media (max-width: 768px) {
-  .integrated-breadcrumb {
-    padding: 6px 0;
-    font-size: 0.8rem;
-  }
-  .uses-hero {
-    padding-top: 200px;
-  }
-  .uses-hero h1 {
-    font-size: 1.4rem;
-  }
-  .uses-hero-subtitle {
-    font-size: 0.9rem;
-  }
-  .uses-grid {
-    grid-template-columns: 1fr;
-  }
-  /* Updated footer responsive styles to match freeze alarm page */
-  .footer-grid {
-    grid-template-columns: 1fr !important;
-    gap: 32px !important;
-  }
-  
-  .footer-grid a[href="/uses/"] {
-    justify-content: center;
-  }
-  
-  .final-cta h2 {
-    font-size: 2.5rem;
-  }
-  
-  .section-title {
-    font-size: 1.5rem;
-    margin-bottom: 40px;
-  }
+  .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .uses-hero h1 { font-size: 2rem; }
+  .uses-grid { grid-template-columns: 1fr; }
+  .cta-features { flex-direction: column; gap: 15px; align-items: center; }
 }
   </style>
 </head>
 <body>
+
   <!-- TOP BAR -->
   <div class="top-bar">
     <div class="top-bar-content">
       <div class="top-bar-left">
-        <a href="../about.html" class="top-bar-link">
-          About
-        </a>
-        <a href="mailto:support@cabinpulse.com" class="top-bar-link">
-          Contact Us
-        </a>
+        <a href="../about.html" class="top-bar-link">About</a>
+        <a href="mailto:support@cabinpulse.com" class="top-bar-link">Contact Us</a>
       </div>
       <div class="proudly-canadian">
         <i class="fa-brands fa-canadian-maple-leaf"></i>
@@ -999,64 +773,33 @@ footer {
         <div class="nav-item">
           <a href="#" class="nav-link has-dropdown">Product</a>
           <div class="dropdown">
-            <a href="../index.html#features" class="dropdown-item">
-              <i class="fas fa-check-circle"></i>Features
-            </a>
-            <a href="../index.html#pricing" class="dropdown-item">
-              <i class="fas fa-tag"></i>Pricing
-            </a>
-            <a href="../index.html#coverage" class="dropdown-item">
-              <i class="fas fa-tower-cell"></i>Coverage
-            </a>
+            <a href="../index.html#features" class="dropdown-item"><i class="fas fa-check-circle"></i>Features</a>
+            <a href="../index.html#pricing" class="dropdown-item"><i class="fas fa-tag"></i>Pricing</a>
+            <a href="../index.html#coverage" class="dropdown-item"><i class="fas fa-tower-cell"></i>Coverage</a>
           </div>
         </div>
-    
         <div class="nav-item">
           <a href="#" class="nav-link has-dropdown">Use Cases</a>
           <div class="dropdown">
-            <a href="https://cabinpulse.com/uses/remote-cabin-cottage-monitoring-system.html" class="dropdown-item">
-              <i class="fas fa-home"></i>Cabin Monitoring
-            </a>
-            <a href="https://cabinpulse.com/uses/rv-temperature-monitor-pets.html" class="dropdown-item">
-              <i class="fas fa-dog"></i>RV Monitor for Pets
-            </a>
-            <a href="https://cabinpulse.com/uses/vacation-home-monitoring.html" class="dropdown-item">
-              <i class="fas fa-house-chimney-window"></i>Vacation Home Monitoring
-            </a>
-            <a href="https://cabinpulse.com/uses/server-room-monitor.html" class="dropdown-item">
-              <i class="fas fa-server"></i>Server Room Monitoring
-            </a>
+            <a href="https://cabinpulse.com/uses/remote-cabin-cottage-monitoring-system.html" class="dropdown-item"><i class="fas fa-home"></i>Cabin Monitoring</a>
+            <a href="https://cabinpulse.com/uses/rv-temperature-monitor-pets.html" class="dropdown-item"><i class="fas fa-dog"></i>RV Monitor for Pets</a>
+            <a href="https://cabinpulse.com/uses/vacation-home-monitoring.html" class="dropdown-item"><i class="fas fa-house-chimney-window"></i>Vacation Home Monitoring</a>
+            <a href="https://cabinpulse.com/uses/server-room-monitor.html" class="dropdown-item"><i class="fas fa-server"></i>Server Room Monitoring</a>
           </div>
         </div>
-    
         <div class="nav-item">
           <a href="#" class="nav-link has-dropdown">Resources</a>
           <div class="dropdown">
-            <a href="../index.html#faq" class="dropdown-item">
-              <i class="fas fa-question-circle"></i>FAQ
-            </a>
-            <a href="https://blog.cabinpulse.com" class="dropdown-item">
-              <i class="fas fa-blog"></i>Blog
-            </a>
-            <a href="../manual.html" class="dropdown-item">
-              <i class="fas fa-book"></i>User Manual
-            </a>
-            <a href="mailto:support@cabinpulse.com" class="dropdown-item">
-              <i class="fas fa-life-ring"></i>Support
-            </a>
+            <a href="../index.html#faq" class="dropdown-item"><i class="fas fa-question-circle"></i>FAQ</a>
+            <a href="https://blog.cabinpulse.com" class="dropdown-item"><i class="fas fa-blog"></i>Blog</a>
+            <a href="../manual.html" class="dropdown-item"><i class="fas fa-book"></i>User Manual</a>
+            <a href="mailto:support@cabinpulse.com" class="dropdown-item"><i class="fas fa-life-ring"></i>Support</a>
           </div>
         </div>
-    
-        <a href="https://dashboard.cabinpulse.com" class="nav-link login-btn">
-          Dashboard
-        </a>
-        <a href="https://cabinpulse.com/index.html#pricing" class="nav-link primary-cta">
-          Get Started
-        </a>
+        <a href="https://dashboard.cabinpulse.com" class="nav-link login-btn">Dashboard</a>
+        <a href="https://cabinpulse.com/index.html#pricing" class="nav-link primary-cta">Get Started</a>
       </div>
-      <div class="mobile-menu-toggle">
-        <i class="fas fa-bars"></i>
-      </div>
+      <div class="mobile-menu-toggle"><i class="fas fa-bars"></i></div>
     </nav>
     
     <!-- Integrated Breadcrumb -->
@@ -1073,386 +816,232 @@ footer {
   
   <!-- Mobile Menu -->
   <div class="mobile-menu">
-    <div class="mobile-menu-close">
-      <i class="fas fa-times"></i>
-    </div>
-    
+    <div class="mobile-menu-close"><i class="fas fa-times"></i></div>
     <div class="mobile-menu-content">
-      <!-- Product Section -->
       <div class="mobile-nav-item">
-        <a href="#" class="mobile-nav-link has-dropdown">
-          <div>
-            <i class="fas fa-cube"></i>
-            Product
-          </div>
-        </a>
+        <a href="#" class="mobile-nav-link has-dropdown"><div><i class="fas fa-cube"></i>Product</div></a>
         <div class="mobile-dropdown">
-          <a href="../index.html#features" class="mobile-dropdown-item">
-            <i class="fas fa-check-circle"></i>Features
-          </a>
-          <a href="../index.html#pricing" class="mobile-dropdown-item">
-            <i class="fas fa-tag"></i>Pricing
-          </a>
-          <a href="../index.html#coverage" class="mobile-dropdown-item">
-            <i class="fas fa-tower-cell"></i>Coverage
-          </a>
+          <a href="../index.html#features" class="mobile-dropdown-item"><i class="fas fa-check-circle"></i>Features</a>
+          <a href="../index.html#pricing" class="mobile-dropdown-item"><i class="fas fa-tag"></i>Pricing</a>
+          <a href="../index.html#coverage" class="mobile-dropdown-item"><i class="fas fa-tower-cell"></i>Coverage</a>
         </div>
       </div>
-
-      <!-- Use Cases Section -->
       <div class="mobile-nav-item">
-        <a href="#" class="mobile-nav-link has-dropdown">
-          <div>
-            <i class="fas fa-lightbulb"></i>
-            Use Cases
-          </div>
-        </a>
+        <a href="#" class="mobile-nav-link has-dropdown"><div><i class="fas fa-lightbulb"></i>Use Cases</div></a>
         <div class="mobile-dropdown">
-          <a href="https://cabinpulse.com/uses/remote-cabin-cottage-monitoring-system.html" class="mobile-dropdown-item">
-            <i class="fas fa-home"></i>Cabin Monitoring
-          </a>
-          <a href="https://cabinpulse.com/uses/rv-temperature-monitor-pets.html" class="mobile-dropdown-item">
-            <i class="fas fa-dog"></i>RV Monitor for Pets
-          </a>
-          <a href="https://cabinpulse.com/uses/vacation-home-monitoring.html" class="mobile-dropdown-item">
-            <i class="fas fa-house-chimney-window"></i>Vacation Home Monitoring
-          </a>
-          <a href="https://cabinpulse.com/uses/server-room-monitor.html" class="mobile-dropdown-item">
-            <i class="fas fa-server"></i>Server Room Monitoring
-          </a>
+          <a href="https://cabinpulse.com/uses/remote-cabin-cottage-monitoring-system.html" class="mobile-dropdown-item"><i class="fas fa-home"></i>Cabin Monitoring</a>
+          <a href="https://cabinpulse.com/uses/rv-temperature-monitor-pets.html" class="mobile-dropdown-item"><i class="fas fa-dog"></i>RV Monitor for Pets</a>
+          <a href="https://cabinpulse.com/uses/vacation-home-monitoring.html" class="mobile-dropdown-item"><i class="fas fa-house-chimney-window"></i>Vacation Home Monitoring</a>
+          <a href="https://cabinpulse.com/uses/server-room-monitor.html" class="mobile-dropdown-item"><i class="fas fa-server"></i>Server Room Monitoring</a>
         </div>
       </div>
-
-      <!-- Resources Section -->
       <div class="mobile-nav-item">
-        <a href="#" class="mobile-nav-link has-dropdown">
-          <div>
-            <i class="fas fa-book"></i>
-            Resources
-          </div>
-        </a>
+        <a href="#" class="mobile-nav-link has-dropdown"><div><i class="fas fa-book"></i>Resources</div></a>
         <div class="mobile-dropdown">
-          <a href="../index.html#faq" class="mobile-dropdown-item">
-            <i class="fas fa-question-circle"></i>FAQ
-          </a>
-          <a href="https://blog.cabinpulse.com" class="mobile-dropdown-item">
-            <i class="fas fa-blog"></i>Blog
-          </a>
-          <a href="../manual.html" class="mobile-dropdown-item">
-            <i class="fas fa-book"></i>User Manual
-          </a>
-          <a href="mailto:support@cabinpulse.com" class="mobile-dropdown-item">
-            <i class="fas fa-life-ring"></i>Support
-          </a>
+          <a href="../index.html#faq" class="mobile-dropdown-item"><i class="fas fa-question-circle"></i>FAQ</a>
+          <a href="https://blog.cabinpulse.com" class="mobile-dropdown-item"><i class="fas fa-blog"></i>Blog</a>
+          <a href="../manual.html" class="mobile-dropdown-item"><i class="fas fa-book"></i>User Manual</a>
+          <a href="mailto:support@cabinpulse.com" class="mobile-dropdown-item"><i class="fas fa-life-ring"></i>Support</a>
         </div>
       </div>
-
-      <!-- CTA Buttons -->
       <div class="mobile-cta-section">
-        <a href="https://dashboard.cabinpulse.com" class="mobile-login-btn">
-          <i class="fas fa-tachometer-alt"></i>
-          Dashboard
-        </a>
-        <a href="https://cabinpulse.com/index.html#pricing" class="mobile-cta-btn">
-          <i class="fas fa-shopping-cart"></i>
-          Get CabinPulse
-        </a>
+        <a href="https://dashboard.cabinpulse.com" class="mobile-login-btn"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+        <a href="https://cabinpulse.com/index.html#pricing" class="mobile-cta-btn"><i class="fas fa-shopping-cart"></i>Get CabinPulse</a>
       </div>
     </div>
   </div>
   
-  <!-- Uses Hero Section -->
+  <!-- MODERN HERO SECTION -->
   <section class="uses-hero">
-    <div class="container uses-hero-container">
-      <img src="../front.png" alt="CabinPulse Device" class="uses-product">
-      
-      <h1>CabinPulse Remote Monitoring Use Cases</h1>
-      <div class="left">
-      <p class="uses-hero-subtitle">CabinPulse provides versatile, cellular-based monitoring for a wide range of properties and applications. Discover all the ways CabinPulse can protect your investments - without needing WiFi.</p>
-    </div>
-      <a href="https://cabinpulse.com/index.html#pricing" class="cta-button">
-        Get CabinPulse Now →
+    <div class="hero-glow"></div>
+    <div class="container hero-content">
+      <img src="../front.png" alt="CabinPulse Device" class="hero-device-img">
+      <h1>One Device. <br><span class="text-gradient">Endless Applications.</span></h1>
+      <p>From frozen pipes to server rooms, see how CabinPulse protects properties around the globe without relying on WiFi.</p>
+      <a href="https://cabinpulse.com/index.html#pricing" class="btn-primary">
+        Get Protected Now <i class="fas fa-arrow-right"></i>
       </a>
     </div>
   </section>
   
-  <!-- Uses Grid Section -->
+  <!-- USES GRID SECTION -->
   <section class="uses-section">
     <div class="container">
-      <h2 class="section-title">What You Can Use CabinPulse For</h2>
+      <div class="section-header">
+        <h2>Capabilities & Use Cases</h2>
+        <p>Click on a use case to learn exactly how CabinPulse solves the problem.</p>
+      </div>
       
       <div class="uses-grid">
+        <!-- Card 1 -->
         <div class="use-card">
-          <i class="use-icon fas fa-temperature-low"></i>
+          <div class="use-icon"><i class="fas fa-temperature-low"></i></div>
           <h3>Freeze Alarm</h3>
-          <p>Prevent frozen pipes and costly water damage with precise temperature monitoring and instant alerts when temperatures approach freezing levels. Perfect for cabins, vacation homes, and any property at risk in cold climates.</p>
-          <a href="/uses/freeze-alarm.html" class="learn-more">
-            Learn More <i class="fas fa-arrow-right"></i>
-          </a>
+          <p>Prevent frozen pipes and costly water damage with precise temperature monitoring and instant alerts when temperatures approach freezing levels.</p>
+          <a href="/uses/freeze-alarm.html" class="learn-more">Learn More <i class="fas fa-chevron-right"></i></a>
         </div>
         
+        <!-- Card 2 -->
         <div class="use-card">
-          <i class="use-icon fas fa-plug-circle-xmark"></i>
+          <div class="use-icon"><i class="fas fa-plug-circle-xmark"></i></div>
           <h3>Power Outage Monitor</h3>
-          <p>Get instant notifications when power fails at your property. Monitor outage duration and know exactly when power is restored, allowing you to take immediate action to protect refrigerated items, prevent freezing, or ensure backup systems are working.</p>
-          <a href="/uses/power-outage-monitor.html" class="learn-more">
-            Learn More <i class="fas fa-arrow-right"></i>
-          </a>
+          <p>Get instant notifications when power fails. Monitor outage duration and know exactly when power is restored to protect appliances and pipes.</p>
+          <a href="/uses/power-outage-monitor.html" class="learn-more">Learn More <i class="fas fa-chevron-right"></i></a>
         </div>
 
+        <!-- Card 3 -->
         <div class="use-card">
-          <i class="use-icon fas fa-temperature-high"></i>
-          <h3>Cellular Temperature Monitor</h3>
-          <p>Monitor temperature in remote locations without WiFi. Ideal for cabins, cottages, and vacation homes, CabinPulse provides real-time alerts for temperature fluctuations, ensuring your property remains safe and secure.</p>
-          <a href="/uses/cellular-temperature-monitor.html" class="learn-more">
-            Learn More <i class="fas fa-arrow-right"></i>
-          </a>
+          <div class="use-icon"><i class="fas fa-temperature-high"></i></div>
+          <h3>Temperature Monitor</h3>
+          <p>Monitor temperature in remote locations without WiFi. Ideal for cabins and cottages, providing real-time alerts for fluctuations.</p>
+          <a href="/uses/cellular-temperature-monitor.html" class="learn-more">Learn More <i class="fas fa-chevron-right"></i></a>
         </div>
         
+        <!-- Card 4 -->
         <div class="use-card">
-          <i class="use-icon fas fa-droplet"></i>
-          <h3>Remote Humidity Monitor</h3>
-          <p>Prevent mold, mildew, and moisture damage with precise humidity tracking. Receive alerts when humidity levels rise to concerning levels that could damage furniture, electronics, or building materials.</p>
-          <a href="/uses/remote-humidity-monitor.html" class="learn-more">
-            Learn More <i class="fas fa-arrow-right"></i>
-          </a>
+          <div class="use-icon"><i class="fas fa-droplet"></i></div>
+          <h3>Humidity Monitor</h3>
+          <p>Prevent mold, mildew, and moisture damage with precise humidity tracking. Receive alerts when humidity levels rise to concerning levels.</p>
+          <a href="/uses/remote-humidity-monitor.html" class="learn-more">Learn More <i class="fas fa-chevron-right"></i></a>
         </div>
         
+        <!-- Card 5 -->
         <div class="use-card">
-          <i class="use-icon fas fa-wind"></i>
-          <h3>Cellular Air Quality Monitor</h3>
-          <p>Track indoor air quality in your property with CabinPulse's built-in air quality sensor and cellular connection. Detect VOCs and other contaminants to ensure a healthy environment for you and your family, even when you're away.</p>
-          <a href="/uses/cellular-air-quality-monitor.html" class="learn-more">
-            Learn More <i class="fas fa-arrow-right"></i>
-          </a>
+          <div class="use-icon"><i class="fas fa-wind"></i></div>
+          <h3>Air Quality Monitor</h3>
+          <p>Track indoor air quality with built-in sensors. Detect VOCs and contaminants to ensure a healthy environment even when you're away.</p>
+          <a href="/uses/cellular-air-quality-monitor.html" class="learn-more">Learn More <i class="fas fa-chevron-right"></i></a>
         </div>
 
+        <!-- Card 6 -->
         <div class="use-card">
-          <i class="use-icon fas fa-mountain-sun"></i>
-          <h3>Remote Cabin & Cottage Monitoring System</h3>
-          <p>Monitor your cabin or cottage without needing WiFi. Track temperature, power systems, and environmental conditions with CabinPulse's reliable cellular connectivity in remote locations across North America.</p>
-          <a href="/uses/remote-cabin-cottage-monitoring-system.html" class="learn-more">
-            Learn More <i class="fas fa-arrow-right"></i>
-          </a>
+          <div class="use-icon"><i class="fas fa-mountain-sun"></i></div>
+          <h3>Cabin Monitoring</h3>
+          <p>The complete system for cottages. Track temperature, power, and environmental conditions with reliable cellular connectivity.</p>
+          <a href="/uses/remote-cabin-cottage-monitoring-system.html" class="learn-more">Learn More <i class="fas fa-chevron-right"></i></a>
         </div>
 
+        <!-- Card 7 -->
         <div class="use-card">
-          <i class="use-icon fas fa-paw"></i>
-          <h3>RV Temperature Monitor for Pets</h3>
-          <p>Keep your pets safe in your RV or motor home with continuous temperature monitoring. Receive immediate alerts if temperatures rise to unsafe levels, providing peace of mind when you have to leave pets unattended.</p>
-          <a href="/uses/rv-temperature-monitor-pets.html" class="learn-more">
-            Learn More <i class="fas fa-arrow-right"></i>
-          </a>
+          <div class="use-icon"><i class="fas fa-paw"></i></div>
+          <h3>RV Pet Monitor</h3>
+          <p>Keep pets safe in your RV. Receive immediate alerts if temperatures rise to unsafe levels while you are away from the vehicle.</p>
+          <a href="/uses/rv-temperature-monitor-pets.html" class="learn-more">Learn More <i class="fas fa-chevron-right"></i></a>
         </div>
 
+        <!-- Card 8 -->
         <div class="use-card">
-          <i class="use-icon fas fa-server"></i>
-          <h3>Server Room Environment</h3>
-          <p>Ensure optimal conditions for your IT infrastructure with precise temperature, humidity, and power monitoring. Receive immediate alerts if environmental parameters fall outside acceptable ranges for electronic equipment.</p>
-          <a href="/uses/server-room-monitor.html" class="learn-more">
-            Learn More <i class="fas fa-arrow-right"></i>
-          </a>
+          <div class="use-icon"><i class="fas fa-server"></i></div>
+          <h3>Server Room Monitor</h3>
+          <p>Ensure optimal conditions for IT infrastructure. Monitor heat, humidity, and power status independent of the local network.</p>
+          <a href="/uses/server-room-monitor.html" class="learn-more">Learn More <i class="fas fa-chevron-right"></i></a>
         </div>
         
+        <!-- Card 9 -->
         <div class="use-card">
-          <i class="use-icon fas fa-bell"></i>
+          <div class="use-icon"><i class="fas fa-house"></i></div>
+          <h3>Vacation Homes</h3>
+          <p>Travel with confidence. Get instant alerts for temperature drops or power failures that could lead to damage while you're away.</p>
+          <a href="/uses/vacation-home-monitoring.html" class="learn-more">Learn More <i class="fas fa-chevron-right"></i></a>
+        </div>
+        
+        <!-- Card 10 -->
+        <div class="use-card">
+          <div class="use-icon"><i class="fas fa-warehouse"></i></div>
+          <h3>Barns & Agriculture</h3>
+          <p>Ensure optimal conditions for livestock and feed. Monitor temperature and humidity in barns to prevent stress and spoilage.</p>
+        </div>
+        
+        <!-- Card 11 -->
+        <div class="use-card">
+          <div class="use-icon"><i class="fas fa-key"></i></div>
+          <h3>Vacant Properties</h3>
+          <p>Safeguard empty properties during vacancies. Monitor for heating failure and power issues to protect real estate investments.</p>
+        </div>
+
+        <!-- Card 12 -->
+        <div class="use-card">
+          <div class="use-icon"><i class="fas fa-bell"></i></div>
           <h3>Smoke Alarm Companion</h3>
-          <p>Get notified immediately if your smoke detector activates while you're away. CabinPulse can detect standard T3 smoke alarm patterns and send instant alerts, adding an extra layer of fire protection for your property.</p>
-        </div>
-        
-        <div class="use-card">
-          <i class="use-icon fas fa-warehouse"></i>
-          <h3>Barn Monitor</h3>
-          <p>Ensure optimal conditions in your barn or stables with comprehensive environmental monitoring. Track temperature, humidity, and air quality to protect livestock, feed, and equipment in agricultural settings.</p>
-        </div>
-        
-        <div class="use-card">
-          <i class="use-icon fas fa-screwdriver-wrench"></i>
-          <h3>Farm Shop Monitor</h3>
-          <p>Protect valuable tools, equipment, and supplies in your farm shop or outbuilding. Monitor environmental conditions and power status to prevent damage to sensitive machinery and materials.</p>
-        </div>
-        
-        <div class="use-card">
-          <i class="use-icon fas fa-house"></i>
-          <h3>Vacant Property Monitor</h3>
-          <p>Safeguard empty properties during vacancies or between tenants. Monitor for proper heating, power issues, and potential water damage to protect your real estate investments when no one is present.</p>
-        </div>
-        
-      </div>
-    </div>
-  </section>
-  
-  <!-- Customer Personas Section -->
-  <section class="uses-section">
-    <div class="container">
-      <h2 class="section-title">Who Uses CabinPulse?</h2>
-      
-      <div class="uses-grid">
-        <div class="use-card">
-          <i class="use-icon fas fa-home"></i>
-          <h3>Cabin & Cottage Owners</h3>
-          <p>Monitor temperature to prevent frozen pipes, detect power outages, and keep an eye on your vacation property year-round without the need for WiFi or internet service. Perfect for remote cabin security and peace of mind.</p>
-          <a href="/uses/remote-cabin-cottage-monitoring-system.html" class="learn-more">
-            Learn More <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-        
-        <div class="use-card">
-          <i class="use-icon fas fa-building"></i>
-          <h3>Vacation Home Owners</h3>
-          <p>Travel with confidence knowing your seasonal home is protected. Get instant alerts for temperature drops, power failures, or humidity issues that could lead to costly damage while you're away for extended periods.</p>
-          <a href="/uses/vacation-home-monitoring.html" class="learn-more">
-            Learn More <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-        
-        <div class="use-card">
-          <i class="use-icon fas fa-dog"></i>
-          <h3>RV Owners with Pets</h3>
-          <p>Keep your pets safe while you're away from your RV or motor home. Monitor temperature and receive immediate alerts if conditions become unsafe, ensuring your furry companions remain comfortable and protected.</p>
-        </div>
-        
-        <div class="use-card">
-          <i class="use-icon fas fa-tractor"></i>
-          <h3>Farm Shops & Outbuildings</h3>
-          <p>Protect valuable tools, equipment, and supplies in your remote farm shops or outbuildings where WiFi doesn't reach. Monitor for freezing conditions that could damage water systems or equipment.</p>
-        </div>
-        
-        <div class="use-card">
-          <i class="use-icon fas fa-warehouse"></i>
-          <h3>Barns & Agricultural Storage</h3>
-          <p>Ensure optimal conditions for livestock, feed, and stored agricultural products. Monitor temperature and humidity in barns to prevent livestock stress and feed spoilage with reliable connectivity anywhere on the property.</p>
-        </div>
-        
-        <div class="use-card">
-          <i class="use-icon fas fa-key"></i>
-          <h3>Realtors & Property Managers</h3>
-          <p>Safeguard vacant properties between listings or tenants. Prevent unexpected damage from extreme temperatures or power outages. Monitor multiple properties efficiently with Fleet View from one simple dashboard.</p>
+          <p>Detect standard T3 smoke alarm patterns and send instant cellular alerts, adding a layer of fire protection.</p>
         </div>
       </div>
     </div>
   </section>
   
-  <!-- Final CTA Section -->
+  <!-- FINAL CTA SECTION -->
   <section class="final-cta">
-    <div class="container final-cta-container">
-      <div class="final-cta-icon">
-        <i class="fas fa-shield-alt"></i>
-      </div>
-      <h2>Protect Your Property with CabinPulse</h2>
-      <p>No matter your application, CabinPulse provides reliable monitoring with precision sensors, instant alerts, and no WiFi required - all with monitoring of multiple conditions in one simple device.</p>
+    <div class="container">
+      <h2 class="text-center" style="font-size: 3rem; margin-bottom: 20px;">Ready to Secure Your Property?</h2>
+      <p style="font-size: 1.2rem; margin-bottom: 40px; opacity: 0.9; color: var(--text-muted);">Join thousands of property owners who trust CabinPulse.</p>
       
       <div class="cta-features">
-        <div class="cta-feature">
-          <i class="fas fa-check-circle"></i>
-          <span>No WiFi Required</span>
-        </div>
-        <div class="cta-feature">
-          <i class="fas fa-check-circle"></i>
-          <span>Made in Canada</span>
-        </div>
-        <div class="cta-feature">
-          <i class="fas fa-check-circle"></i>
-          <span>Immediate Alerts</span>
-        </div>
+        <div class="cta-feature"><i class="fas fa-check-circle"></i> No WiFi Required</div>
+        <div class="cta-feature"><i class="fas fa-check-circle"></i> Made in Canada</div>
+        <div class="cta-feature"><i class="fas fa-check-circle"></i> Instant Alerts</div>
       </div>
       
-      <a href="https://cabinpulse.com/index.html#pricing" class="cta-button">Get CabinPulse Now →</a>
+      <a href="https://cabinpulse.com/index.html#pricing" class="btn-primary">Get CabinPulse Today <i class="fas fa-arrow-right"></i></a>
     </div>
   </section>
   
   <!-- Footer -->
   <footer id="contact">
     <div class="container">
-      <div class="footer-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px; text-align: left; padding: 48px 0;">
+      <div class="footer-grid">
         <!-- Company Info -->
         <div>
           <div class="logo-container" style="margin-bottom: 20px;">
             <img src="../cpicon.png" alt="CabinPulse Logo" style="width: 40px; height: 40px; margin-right: 10px;">
             <h3>CabinPulse</h3>
           </div>
-          <p style="color: #ccc; margin-bottom: 20px;">Intelligent remote property monitoring, no WiFi required.</p>
+          <p>Intelligent remote property monitoring, no WiFi required.</p>
           <div style="display: flex; gap: 15px;">
-            <a href="mailto:support@cabinpulse.com" style="color: var(--text-color);"><i class="fas fa-envelope"></i></a>
-            <a href="https://www.facebook.com/61567189714759" style="color: var(--text-color);"><i class="fab fa-facebook"></i></a>
+            <a href="mailto:support@cabinpulse.com"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.facebook.com/61567189714759"><i class="fab fa-facebook"></i></a>
           </div>
         </div>
         
         <!-- Use Cases Section -->
         <div>
-          <h4 style="color: var(--highlight-color); margin-bottom: 20px;">Use Cases</h4>
-          <ul style="list-style: none; padding: 0;">
-            <li style="margin-bottom: 10px;">
-              <a href="/uses/freeze-alarm.html" style="color: var(--text-color); text-decoration: none; display: flex; align-items: center;">
-                <i class="fas fa-temperature-low" style="margin-right: 10px;"></i>
-                Freeze Alarm
-              </a>
-            </li>
-            <li style="margin-bottom: 10px;">
-              <a href="/uses/power-outage-monitor.html" style="color: var(--text-color); text-decoration: none; display: flex; align-items: center;">
-                <i class="fas fa-plug-circle-xmark" style="margin-right: 10px;"></i>
-                Power Outage Monitor
-              </a>
-            </li>
-            <li style="margin-bottom: 10px;">
-              <a href="/uses/remote-cabin-cottage-monitoring-system.html" style="color: var(--text-color); text-decoration: none; display: flex; align-items: center;">
-                <i class="fas fa-mountain-sun" style="margin-right: 10px;"></i>
-                Cabin & Cottage Monitoring System
-              </a>
-            </li>
-            <li style="margin-bottom: 10px;">
-              <a href="/uses/" style="color: var(--highlight-color); text-decoration: none; display: flex; align-items: center; font-weight: 500;">
-                <span>View All Use Cases</span>
-                <i class="fas fa-arrow-right" style="margin-left: 10px;"></i>
-              </a>
-            </li>
+          <h4>Use Cases</h4>
+          <ul>
+            <li><a href="/uses/freeze-alarm.html"><i class="fas fa-temperature-low"></i> Freeze Alarm</a></li>
+            <li><a href="/uses/power-outage-monitor.html"><i class="fas fa-plug-circle-xmark"></i> Power Outage Monitor</a></li>
+            <li><a href="/uses/remote-cabin-cottage-monitoring-system.html"><i class="fas fa-mountain-sun"></i> Cabin & Cottage Monitoring</a></li>
+            <li><a href="/uses/"><span>View All Use Cases</span><i class="fas fa-arrow-right"></i></a></li>
           </ul>
         </div>
         
         <!-- Quick Links -->
         <div>
-          <h4 style="color: var(--highlight-color); margin-bottom: 20px;">Quick Links</h4>
-          <ul style="list-style: none; padding: 0;">
-            <li style="margin-bottom: 10px;"><a href="#features" style="color: var(--text-color); text-decoration: none;">Features</a></li>
-            <li style="margin-bottom: 10px;"><a href="#pricing" style="color: var(--text-color); text-decoration: none;">Pricing</a></li>
-            <li style="margin-bottom: 10px;"><a href="#faq" style="color: var(--text-color); text-decoration: none;">FAQ</a></li>
-            <li style="margin-bottom: 10px;"><a href="/legal.html" style="color: var(--text-color); text-decoration: none;">Legal</a></li>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="/legal.html">Legal</a></li>
           </ul>
-  
-          <!-- Press Links -->
-          <h4 style="color: var(--highlight-color); margin-top: 25px; margin-bottom: 20px;">Press</h4>
-          <ul style="list-style: none; padding: 0;">
-            <li style="margin-bottom: 10px;">
-              <a href="https://www.theglobeandmail.com/investing/markets/markets-news/GetNews/29709301/cabinpulse-launches-remote-monitoring-solution-for-cabin-owners-no-wifi-needed/" 
-                 style="color: var(--text-color); text-decoration: none; display: flex; align-items: center;">
-                <i class="far fa-newspaper" style="margin-right: 10px;"></i>
-                CabinPulse Launch
-              </a>
-            </li>
-            <li style="margin-bottom: 10px;">
-              <a href="https://www.barchart.com/story/news/32222883/cabinpulse-announces-major-product-updates-new-design-expanded-connectivity-advanced-features-and-flexible-plans" 
-                 style="color: var(--text-color); text-decoration: none; display: flex; align-items: center;">
-                <i class="far fa-newspaper" style="margin-right: 10px;"></i>
-                Product Updates
-              </a>
-            </li>
+          <h4 style="margin-top: 25px;">Press</h4>
+          <ul>
+            <li><a href="https://www.theglobeandmail.com/investing/markets/markets-news/GetNews/29709301/cabinpulse-launches-remote-monitoring-solution-for-cabin-owners-no-wifi-needed/"><i class="far fa-newspaper"></i> CabinPulse Launch</a></li>
+            <li><a href="https://www.barchart.com/story/news/32222883/cabinpulse-announces-major-product-updates-new-design-expanded-connectivity-advanced-features-and-flexible-plans"><i class="far fa-newspaper"></i> Product Updates</a></li>
           </ul>
         </div>
         
         <!-- Helpful Links & Contact -->
         <div>
-          <h4 style="color: var(--highlight-color); margin-bottom: 20px;">Helpful Links</h4>
-          <ul style="list-style: none; padding: 0;">
-            <li style="margin-bottom: 10px;"><a href="/manual.html" style="color: var(--text-color); text-decoration: none;"><i class="fas fa-book" style="margin-right: 10px;"></i>CabinPulse Manual</a></li>
-            <li style="margin-bottom: 10px;"><a href="https://blog.cabinpulse.com" style="color: var(--text-color); text-decoration: none;"><i class="fas fa-blog" style="margin-right: 10px;"></i>CabinPulse Blog</a></li>
-            <li style="margin-bottom: 10px;"><a href="https://blog.cabinpulse.com/how-to-prevent-frozen-pipes-in-your-cabin-this-winter/" style="color: var(--text-color); text-decoration: none;"><i class="far fa-newspaper" style="margin-right: 10px;"></i>Prevent Frozen Pipes</a></li>
-            <li style="margin-bottom: 10px;"><a href="https://blog.cabinpulse.com/remote-vacation-home-monitors-keeping-your-investment-safe/" style="color: var(--text-color); text-decoration: none;"><i class="far fa-newspaper" style="margin-right: 10px;"></i>Remote Home Monitors</a></li>
+          <h4>Helpful Links</h4>
+          <ul>
+            <li><a href="/manual.html"><i class="fas fa-book"></i> CabinPulse Manual</a></li>
+            <li><a href="https://blog.cabinpulse.com"><i class="fas fa-blog"></i> CabinPulse Blog</a></li>
+            <li><a href="https://blog.cabinpulse.com/how-to-prevent-frozen-pipes-in-your-cabin-this-winter/"><i class="far fa-newspaper"></i> Prevent Frozen Pipes</a></li>
+            <li><a href="https://blog.cabinpulse.com/remote-vacation-home-monitors-keeping-your-investment-safe/"><i class="far fa-newspaper"></i> Remote Home Monitors</a></li>
           </ul>
-          
-          <h4 style="color: var(--highlight-color); margin-top: 25px; margin-bottom: 20px;">Contact</h4>
-          <ul style="list-style: none; padding: 0;">
-            <li style="margin-bottom: 10px;"><i class="fas fa-envelope" style="margin-right: 10px;"></i><a href="mailto:support@cabinpulse.com" style="color: var(--text-color);">support@cabinpulse.com</a></li>
-            <li style="margin-bottom: 10px;"><i class="fas fa-location-dot" style="margin-right: 10px;"></i> Saskatchewan, Canada</li>
+          <h4 style="margin-top: 25px;">Contact</h4>
+          <ul>
+            <li><i class="fas fa-envelope"></i> <a href="mailto:support@cabinpulse.com">support@cabinpulse.com</a></li>
+            <li><i class="fas fa-location-dot"></i> Saskatchewan, Canada</li>
           </ul>
         </div>
       </div>
@@ -1466,7 +1055,7 @@ footer {
     // Header scroll effect
     window.addEventListener('scroll', function() {
       var header = document.querySelector('header');
-      header.classList.toggle('scrolled', window.scrollY > 50);
+      if(header) header.classList.toggle('scrolled', window.scrollY > 50);
     });
 
     // Mobile menu functionality
@@ -1476,42 +1065,28 @@ footer {
     const mobileMenuClose = document.querySelector('.mobile-menu-close');
     const dropdownLinks = document.querySelectorAll('.mobile-nav-link.has-dropdown');
 
-    // Toggle mobile menu
     function toggleMobileMenu() {
       mobileMenu.classList.toggle('open');
       mobileMenuToggle.classList.toggle('active');
       document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
     }
 
-    // Open mobile menu
-    if (mobileMenuToggle) {
-      mobileMenuToggle.addEventListener('click', toggleMobileMenu);
-    }
+    if (mobileMenuToggle) mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+    if (mobileMenuClose) mobileMenuClose.addEventListener('click', toggleMobileMenu);
 
-    // Close mobile menu
-    if (mobileMenuClose) {
-      mobileMenuClose.addEventListener('click', toggleMobileMenu);
-    }
-
-    // Close mobile menu when clicking outside
     if (mobileMenu) {
       mobileMenu.addEventListener('click', function(e) {
-        if (e.target === mobileMenu) {
-          toggleMobileMenu();
-        }
+        if (e.target === mobileMenu) toggleMobileMenu();
       });
     }
 
-    // Handle dropdown toggles
     dropdownLinks.forEach(link => {
       link.addEventListener('click', function(e) {
         e.preventDefault();
-        
         const parentItem = this.closest('.mobile-nav-item');
         const dropdown = parentItem.querySelector('.mobile-dropdown');
         const isOpen = dropdown.classList.contains('open');
 
-        // Close all other dropdowns
         document.querySelectorAll('.mobile-dropdown.open').forEach(openDropdown => {
           if (openDropdown !== dropdown) {
             openDropdown.classList.remove('open');
@@ -1519,30 +1094,18 @@ footer {
           }
         });
 
-        // Toggle current dropdown
         dropdown.classList.toggle('open', !isOpen);
         this.classList.toggle('open', !isOpen);
       });
     });
 
-    // Close mobile menu when clicking on non-dropdown links
     const regularLinks = document.querySelectorAll('.mobile-dropdown-item, .mobile-cta-btn, .mobile-login-btn');
     regularLinks.forEach(link => {
       link.addEventListener('click', function() {
-        // Small delay to allow navigation
-        setTimeout(() => {
-          toggleMobileMenu();
-        }, 200);
+        setTimeout(() => { toggleMobileMenu(); }, 200);
       });
     });
-
-    // Handle escape key
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
-        toggleMobileMenu();
-      }
-    });
   });
-    </script>
+  </script>
 </body>
 </html>

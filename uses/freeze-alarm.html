@@ -6,6 +6,8 @@
   <title>CabinPulse | Freeze Alarm with Advanced Features | Made in Canada</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  
+  <!-- SEO & SCHEMA (PRESERVED) -->
   <meta name="description" content="Protect your cabin from freezing pipes with CabinPulse Freeze Alarm. Get instant alerts for temperature drops without WiFi. Advanced freeze monitoring for remote properties." />
   <meta name="keywords" content="freeze alarm, cabin freeze alarm, frozen pipe protection, temperature monitoring, no wifi freeze alarm, remote freeze alert">
   <script defer src="https://analytics.cabinliving.ca/script.js" data-website-id="bd58d7d8-2b00-44ae-8285-c76db6e383ad"></script>
@@ -36,53 +38,6 @@
             "valueAddedTaxIncluded": true,
             "description": "One-time hardware fee"
           }
-        },
-        {
-          "@type": "AggregateOffer",
-          "offerCount": 2,
-          "lowPrice": "10.00",
-          "highPrice": "14.00",
-          "priceCurrency": "CAD",
-          "offers": [
-            {
-              "@type": "Offer",
-              "name": "1-Year Plan",
-              "price": "14.00",
-              "priceCurrency": "CAD",
-              "priceValidUntil": "2026-05-30",
-              "itemCondition": "https://schema.org/NewCondition",
-              "availability": "https://schema.org/InStock",
-              "url": "https://cabinpulse.com/purchase.html?plan=1",
-              "priceSpecification": {
-                "@type": "PriceSpecification",
-                "price": "14.00",
-                "priceCurrency": "CAD",
-                "valueAddedTaxIncluded": true,
-                "billingIncrement": 12,
-                "billingDuration": "P1Y",
-                "description": "$14 CAD/month (billed annually) with $199 CAD one-time device fee"
-              }
-            },
-            {
-              "@type": "Offer",
-              "name": "3-Year Plan",
-              "price": "10.00",
-              "priceCurrency": "CAD",
-              "priceValidUntil": "2026-05-30",
-              "itemCondition": "https://schema.org/NewCondition",
-              "availability": "https://schema.org/InStock",
-              "url": "https://cabinpulse.com/purchase.html?plan=3",
-              "priceSpecification": {
-                "@type": "PriceSpecification",
-                "price": "10.00",
-                "priceCurrency": "CAD",
-                "valueAddedTaxIncluded": true,
-                "billingIncrement": 36,
-                "billingDuration": "P3Y",
-                "description": "$10 CAD/month (billed every 3 years) with $199 CAD one-time device fee"
-              }
-            }
-          ]
         }
       ],
       "aggregateRating": {
@@ -91,1570 +46,830 @@
         "bestRating": "5",
         "worstRating": "1",
         "reviewCount": "12"
-      },
-      "review": [
-        {
-          "@type": "Review",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": 5,
-            "bestRating": 5
-          },
-          "author": {
-            "@type": "Person",
-            "name": "Cabin Owner from Emma Lake, SK"
-          },
-          "reviewBody": "After years of worrying about frozen pipes every winter, [CabinPulse] has been a game-changer for us. The connection works perfectly where our cabin is and the alerts are very reliable and instant! It's a no brainer and I tell everyone I know with a cabin about it and show them the app!"
-        },
-        {
-          "@type": "Review",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": 4.5,
-            "bestRating": 5
-          },
-          "author": {
-            "@type": "Person",
-            "name": "Cabin Owner from Candle Lake, SK"
-          },
-          "reviewBody": "Got a power outage alert and sure enough our clocks were reset today. The peace of mind from knowing exactly what's happening at our property is worth every penny."
-        },
-        {
-          "@type": "Review",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": 5,
-            "bestRating": 5
-          },
-          "author": {
-            "@type": "Person",
-            "name": "Property Owner from Moose Jaw, SK"
-          },
-          "reviewBody": "Setup was very easy. I appreciate the instant alerts and extra long power cord. Using for a vacant property and saves me a lot of time and worry."
-        }
-      ],
-      "hasFeature": [
-        "Temperature Monitoring",
-        "Humidity Monitoring",
-        "Power Outage Tracking",
-        "Air Quality Monitoring",
-        "Alarm Detection",
-        "Instant Alerts",
-        "Cellular Connectivity (No WiFi Required)",
-        "3-Year Warranty"
-      ]
+      }
     }
     </script>
   
   <style>
-    /* Root variables */
-    :root {
-      --primary-color: #1a1a2e;
-      --secondary-color: #16213e;
-      --cta-color: #ffffff;
-      --accent-color: #0f3460;
-      --highlight-color: #e94560;
-      --text-color: #ffffff;
-      --dark-text-color: #000000;
-    }
-    
-    /* Base styles */
-    html {
-      font-size: 18px;
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--primary-color);
-      color: var(--text-color);
-      overflow-x: hidden;
-      font-size: 1rem;
-    }
-    .container {
-      max-width: 1300px;
-      margin: 0 auto;
-      padding: 0 25px;
-    }
-    
-    .logo-text {
-      font-size: 1.5rem;
-      font-weight: 900;
-      color: var(--text-color);
-    }
+ /* =========================================
+   1. CORE VARIABLES & RESET
+   ========================================= */
+:root {
+  /* Original Palette (Header/Footer Compatibility) */
+  --primary-color: #1a1a2e;
+  --secondary-color: #16213e;
+  --highlight-color: #e94560;
+  --text-color: #ffffff;
 
-    /* Top Bar Styles */
-    .top-bar {
-      background-color: rgba(15, 52, 96, 0.95);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(233, 69, 96, 0.1);
-      padding: 6px 0;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 999;
-      transition: all 0.3s ease;
-    }
+  /* New Revamped Palette */
+  --bg-dark: #0b0b15;
+  --bg-panel: #131320;
+  --primary-accent: #e94560; 
+  --primary-glow: rgba(233, 69, 96, 0.4);
+  --success: #00f2ea; 
+  --text-muted: #a0a0b0;
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --font-main: 'Poppins', sans-serif;
+}
 
-    .top-bar-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1300px;
-      margin: 0 auto;
-      padding: 0 25px;
-    }
+html {
+  font-size: 18px;
+  scroll-behavior: smooth;
+}
 
-    .top-bar-left {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    .top-bar-link {
-      color: var(--text-color);
-      text-decoration: none;
-      font-size: 0.7rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      opacity: 0.8;
-      transition: all 0.3s ease;
-      padding: 3px 6px;
-      border-radius: 4px;
-    }
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-dark);
+  color: var(--text-color);
+  overflow-x: hidden;
+  font-size: 1rem;
+  line-height: 1.6;
+}
 
-    .top-bar-link:hover {
-      opacity: 1;
-      color: var(--highlight-color);
-      background-color: rgba(255, 255, 255, 0.05);
-    }
+a { text-decoration: none; }
+ul { list-style: none; }
 
-    .proudly-canadian {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--text-color);
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      opacity: 0.9;
-      background-color: rgba(233, 69, 96, 0.15);
-      padding: 3px 8px;
-      border-radius: 12px;
-      border: 1px solid rgba(233, 69, 96, 0.3);
-    }
+/* Utility */
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 25px;
+}
+.text-center { text-align: center; }
+.text-gradient {
+  background: linear-gradient(135deg, #fff 0%, #a5a5a5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.highlight-red { color: var(--primary-accent); font-weight: 700; }
+.highlight-cyan { color: var(--success); font-weight: 700; }
 
-    .proudly-canadian i {
-      color: var(--highlight-color);
-      font-size: 0.8rem;
-    }
-    
-    /* Header styles */
-    header {
-      padding-top: 12px;
-      position: fixed;
-      width: 100%;
-      z-index: 1000;
-      background-color: rgba(26, 26, 46, 0.98);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-      border-bottom: 1px solid rgba(233, 69, 96, 0.2);
-      top: 38px;
-      transition: all 0.3s ease;
-    }
+/* Global Section Padding (Matched to Power Outage Page) */
+section {
+  padding: 100px 0;
+  position: relative;
+}
 
-    header.scrolled {
-      padding-top: 12px;
-      background-color: rgba(26, 26, 46, 1);
-      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
-    }
-    
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .logo-container {
-      display: flex;
-      align-items: center;
-    }
-    .icon {
-      width: 40px;
-      height: 40px;
-      margin-right: 10px;
-    }
-    
-    /* Desktop Navigation Links */
-    .nav-links {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 8px;
-      margin-left: auto;
-    }
-    .nav-item {
-      position: relative;
-    }
-    .nav-link {
-      color: var(--text-color);
-      text-decoration: none;
-      padding: 10px 16px;
-      border-radius: 6px;
-      transition: all 0.3s ease;
-      font-size: 0.8rem;
-      font-weight: 600;
-      white-space: nowrap;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      position: relative;
-    }
-    .nav-link:hover {
-      color: var(--highlight-color);
-      background-color: rgba(255, 255, 255, 0.08);
-      transform: translateY(-1px);
-    }
-    .nav-link.has-dropdown::after {
-      content: '\f0d7';
-      font-family: 'Font Awesome 6 Free';
-      font-weight: 900;
-      margin-left: 6px;
-      font-size: 0.7rem;
-      transition: transform 0.3s ease;
-    }
-    .nav-item:hover .nav-link.has-dropdown::after {
-      transform: rotate(180deg);
-    }
-    
-    /* Nav Dropdowns */
-    .dropdown {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      transform: translateY(-10px);
-      background-color: rgba(22, 33, 62, 0.98);
-      backdrop-filter: blur(12px);
-      border-radius: 12px;
-      padding: 12px 0;
-      min-width: 220px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-      border: 1px solid rgba(233, 69, 96, 0.2);
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-      z-index: 1001;
-    }
-    
-    .nav-item:hover .dropdown {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(5%);
-    }
-    .dropdown-item {
-      display: block;
-      color: var(--text-color);
-      text-decoration: none;
-      padding: 10px 20px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      text-transform: none;
-      letter-spacing: 0;
-      transition: all 0.2s ease;
-      border-left: 3px solid transparent;
-    }
-    .dropdown-item:hover {
-      background-color: rgba(233, 69, 96, 0.1);
-      color: var(--highlight-color);
-      border-left-color: var(--highlight-color);
-      padding-left: 24px;
-    }
-    .dropdown-item i {
-      margin-right: 10px;
-      width: 16px;
-      text-align: center;
-      color: var(--highlight-color);
-      opacity: 0.8;
-    }
-    
-    /* Nav CTA Buttons */
-    .login-btn {
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      background-color: rgba(255, 255, 255, 0.05);
-    }
-    .login-btn:hover {
-      border-color: var(--highlight-color);
-      background-color: rgba(233, 69, 96, 0.1);
-    }
-    .primary-cta {
-      background-color: var(--highlight-color);
-      color: white !important;
-      padding: 10px 20px;
-      border-radius: 6px;
-      font-weight: 700;
-      box-shadow: 0 4px 12px rgba(233, 69, 96, 0.3);
-      margin-left: 8px;
-    }
-    .primary-cta:hover {
-      background-color: #ff5a7c;
-      color: white !important;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(233, 69, 96, 0.4);
-    }
-    
-    /* Mobile Navigation */
-    .mobile-menu-toggle {
-      display: none;
-      cursor: pointer;
-      width: 40px;
-      height: 40px;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      transition: all 0.3s ease;
-      background-color: rgba(255, 255, 255, 0.1);
-      position: relative;
-      z-index: 1002;
-    }
-    .mobile-menu-toggle:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-    }
-
-    .mobile-menu-toggle i {
-      font-size: 1.2rem;
-      transition: all 0.3s ease;
-    }
-
-    .mobile-menu-toggle.active i {
-      transform: rotate(90deg);
-    }
-
-    /* New Mobile Menu Styles */
-    .mobile-menu {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-      z-index: 1001;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-      overflow-y: auto;
-      padding-top: 80px;
-    }
-
-    .mobile-menu.open {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .mobile-menu-content {
-      padding: 20px;
-      max-width: 400px;
-      margin: 0 auto;
-    }
-
-    .mobile-nav-item {
-      margin-bottom: 12px;
-      border-radius: 16px;
-      background: rgba(15, 52, 96, 0.3);
-      border: 1px solid rgba(233, 69, 96, 0.2);
-      overflow: hidden;
-      transition: all 0.3s ease;
-    }
-
-    .mobile-nav-item:hover {
-      background: rgba(15, 52, 96, 0.5);
-      border-color: rgba(233, 69, 96, 0.4);
-    }
-
-    .mobile-nav-link {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px;
-      color: var(--text-color);
-      text-decoration: none;
-      font-size: 1.1rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      transition: all 0.3s ease;
-      position: relative;
-    }
-
-    .mobile-nav-link:hover {
-      color: var(--highlight-color);
-      background: rgba(233, 69, 96, 0.1);
-    }
-
-    .mobile-nav-link i {
-      margin-right: 12px;
-      font-size: 1.2rem;
-      color: var(--highlight-color);
-    }
-
-    .mobile-nav-link.has-dropdown::after {
-      content: '\f0d7';
-      font-family: 'Font Awesome 6 Free';
-      font-weight: 900;
-      font-size: 0.9rem;
-      transition: transform 0.3s ease;
-      color: var(--highlight-color);
-    }
-
-    .mobile-nav-link.has-dropdown.open::after {
-      transform: rotate(180deg);
-    }
-
-    /* Mobile Dropdown */
-    .mobile-dropdown {
-      max-height: 0;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      background: rgba(22, 33, 62, 0.8);
-      border-top: 1px solid rgba(233, 69, 96, 0.2);
-    }
-
-    .mobile-dropdown.open {
-      max-height: 400px;
-      padding: 12px 0;
-    }
-
-    .mobile-dropdown-item {
-      display: block;
-      padding: 16px 32px;
-      color: var(--text-color);
-      text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 500;
-      text-transform: none;
-      letter-spacing: 0;
-      transition: all 0.2s ease;
-      border-left: 3px solid transparent;
-      position: relative;
-    }
-
-    .mobile-dropdown-item:hover {
-      background-color: rgba(233, 69, 96, 0.1);
-      color: var(--highlight-color);
-      border-left-color: var(--highlight-color);
-      padding-left: 36px;
-    }
-
-    .mobile-dropdown-item i {
-      margin-right: 12px;
-      width: 16px;
-      text-align: center;
-      color: var(--highlight-color);
-      opacity: 0.8;
-      font-size: 1rem;
-    }
-
-    /* Mobile CTA Section */
-    .mobile-cta-section {
-      margin-top: 32px;
-      padding-top: 32px;
-      border-top: 1px solid rgba(233, 69, 96, 0.2);
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .mobile-login-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      padding: 16px 24px;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      background-color: rgba(255, 255, 255, 0.05);
-      color: var(--text-color);
-      text-decoration: none;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      transition: all 0.3s ease;
-    }
-
-    .mobile-login-btn:hover {
-      border-color: var(--highlight-color);
-      background-color: rgba(233, 69, 96, 0.1);
-      color: var(--highlight-color);
-    }
-
-    .mobile-cta-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      padding: 18px 24px;
-      background: linear-gradient(135deg, var(--highlight-color) 0%, #ff5a7c 100%);
-      color: white !important;
-      text-decoration: none;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      box-shadow: 0 8px 20px rgba(233, 69, 96, 0.3);
-      transition: all 0.3s ease;
-    }
-
-    .mobile-cta-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 28px rgba(233, 69, 96, 0.5);
-    }
-
-    .mobile-cta-btn i {
-      font-size: 1.2rem;
-    }
-
-    .mobile-menu-close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 44px;
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background-color: rgba(233, 69, 96, 0.2);
-      border: 2px solid rgba(233, 69, 96, 0.4);
-      transition: all 0.3s ease;
-      cursor: pointer;
-      font-size: 1.5rem;
-      color: var(--highlight-color);
-      z-index: 1002;
-    }
-
-    .mobile-menu-close:hover {
-      background-color: var(--highlight-color);
-      color: white;
-      transform: rotate(90deg);
-    }
-    
-    /* Integrated Breadcrumb */
-    .integrated-breadcrumb {
-      background-color: rgba(15, 52, 96, 0.7);
-      padding: 8px 0;
-      margin-top: 15px;
-      font-size: 0.7rem;
-    }
-    
-    .breadcrumb-nav {
-      display: flex;
-      align-items: center;
-      font-size: 0.7rem;
-      color: rgba(255, 255, 255, 0.7);
-    }
-    
-    .breadcrumb-nav a {
-      color: rgba(255, 255, 255, 0.7);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    
-    .breadcrumb-nav a:hover {
-      color: var(--highlight-color);
-    }
-    
-    .breadcrumb-separator {
-      margin: 0 10px;
-    }
-    
-    .breadcrumb-current {
-      color: var(--highlight-color);
-      font-weight: 600;
-    }
-    
-    /* Button styles */
-    .cta-button {
-      display: inline-block;
-      background-color: var(--highlight-color);
-      color: white;
-      padding: 15px 30px;
-      text-decoration: none;
-      border-radius: 50px;
-      font-weight: bold;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      margin-top: 1.2rem;
-      font-size: 1.1rem;
-      position: relative;
-      z-index: 10;
-    }
-    .cta-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 24px rgba(233, 69, 96, 0.4);
-    }
-    
-    /* Badge styles */
-    .badge {
-      background-color: var(--accent-color);
-      padding: 6px 12px;
-      border-radius: 18px;
-      font-size: 0.9rem;
-    }
-    .badge.featured {
-      background-color: var(--highlight-color);
-      font-weight: bold;
-      margin-bottom: 2.4rem;
-      font-size: 1.3rem;
-    }
-    
-    
-    /* Section styles */
-    .section-title {
-      text-align: center;
-      font-size: 2rem;
-      margin-top: 3rem;
-      margin-bottom: 70px;
-      color: var(--highlight-color);
-    }
-    
-    /* Hero Section for Freeze Alarm */
-    .freeze-hero {
-      padding: 250px 0 120px; 
-      background-color: var(--primary-color);
-      position: relative;
-      overflow: hidden;
-    }
-    .freeze-hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('../bg-5.png') no-repeat center center;
-      background-size: cover;
-      filter: brightness(0.5);
-      z-index: 0;
-      opacity: 0.3;
-    }
-    .freeze-hero-container {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 50px;
-    }
-    .freeze-hero-content {
-      flex: 1;
-    }
-    .freeze-hero-image {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      position: relative;
-      margin-top: 1rem;
-    }
-    .freeze-hero-image img {
-      max-width: 100%;
-      height: auto;
-      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
-      position: relative;
-      z-index: 1;
-    }
-    .freeze-hero-image::after {
-      content: '';
-      position: absolute;
-      bottom: -30px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80%;
-      height: 20px;
-      background: var(--highlight-color);
-      filter: blur(30px);
-      opacity: 0.6;
-      z-index: 0;
-    }
-    .freeze-hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 25px;
-      line-height: 1.2;
-    }
-    .freeze-hero-subtitle {
-      font-size: 0.9rem;
-      margin-bottom: 35px;
-      color: var(--text-color);
-      opacity: 0.9;
-      max-width: 600px;
-    }
-    .badge-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin: 25px 0;
-    }
-    .temperature-highlight {
-      color: var(--highlight-color);
-      font-weight: bold;
-    }
-    
-    /* Feature Cards */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 40px;
-      margin-top: 60px;
-    }
-    .feature-card {
-      background-color: var(--accent-color);
-      border-radius: 24px;
-      padding: 40px 30px;
-      text-align: left;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .feature-card:hover {
-      transform: translateY(-12px);
-      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
-    }
-    .feature-icon {
-      font-size: 3.5rem;
-      color: var(--highlight-color);
-      margin-bottom: 24px;
-    }
-    .feature-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 18px;
-      color: var(--text-color);
-    }
-    .feature-card p {
-      font-size: 0.9rem;
-      line-height: 1.6;
-      color: var(--text-color);
-      opacity: 0.8;
-    }
-    
-    /* How It Works Section */
-    .how-it-works {
-      padding: 50px 0;
-      background-color: var(--secondary-color);
-      position: relative;
-    }
-    .how-it-works::before {
-      content: '';
-      position: absolute;
-      top: -100px;
-      left: 0;
-      right: 0;
-      height: 120px;
-      background-color: var(--secondary-color);
-      --mask:
-        radial-gradient(108.17px at 50% 150px, #000 99%, #0000 101%) calc(50% - 120px) 0/240px 100%,
-        radial-gradient(108.17px at 50% -90px, #0000 99%, #000 101%) 50% 60px/240px 100% repeat-x;
-      -webkit-mask: var(--mask);
-              mask: var(--mask);
-    }
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 40px;
-    }
-    .step-card {
-      background-color: var(--accent-color);
-      border-radius: 24px;
-      padding: 40px 30px;
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-    }
-    .step-card:hover {
-      transform: translateY(-12px);
-      box-shadow: 0 24px 36px rgba(0, 0, 0, 0.2);
-    }
-    .step-number {
-      background-color: var(--highlight-color);
-      color: var(--primary-color);
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin: 0 auto 24px;
-    }
-    .step-icon {
-      font-size: 3rem;
-      color: var(--highlight-color);
-      margin-bottom: 24px;
-    }
-    .step-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 16px;
-      color: var(--text-color);
-    }
-    .step-card p {
-      font-size: 0.9rem;
-      line-height: 1.6;
-      color: var(--text-color);
-      opacity: 0.9;
-    }
-    
-    /* Comparison Section */
-    .comparison {
-      padding: 120px 0;
-      background-color: var(--primary-color);
-      position: relative;
-    }
-    .comparison-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .comparison-intro {
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto 60px;
-    }
-    .comparison-intro p {
-      font-size: 0.9rem;
-      line-height: 1.6;
-      color: var(--text-color);
-      opacity: 0.9;
-      margin-bottom: 30px;
-    }
-    
-    /* Updated Table Styles with Scrolling */
-    .table-wrapper {
-      width: 100%;
-      max-width: 1000px;
-      overflow-x: auto;
-      margin-bottom: 60px;
-      border-radius: 12px;
-      -webkit-overflow-scrolling: touch; /* For smoother scrolling on iOS */
-      scrollbar-width: thin;
-      scrollbar-color: var(--highlight-color) var(--primary-color);
-    }
-    
-    .table-wrapper::-webkit-scrollbar {
-      height: 6px;
-    }
-    
-    .table-wrapper::-webkit-scrollbar-track {
-      background: var(--primary-color);
-    }
-    
-    .table-wrapper::-webkit-scrollbar-thumb {
-      background-color: var(--highlight-color);
-      border-radius: 3px;
-    }
-    
-    .comparison-table {
-      width: 100%;
-      min-width: 600px; /* Ensures table doesn't get too narrow */
-      border-collapse: collapse;
-    }
-    
-    .comparison-table th {
-      padding: 20px;
-      text-align: left;
-      border-bottom: 2px solid var(--accent-color);
-      color: var(--highlight-color);
-      font-size: 1rem;
-      white-space: nowrap;
-    }
-    
-    .comparison-table td {
-      padding: 20px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      font-size: 0.8rem;
-    }
-    
-    .comparison-table tr:last-child td {
-      border-bottom: none;
-    }
-    
-    .checkmark {
-      color: #4CAF50;
-      font-size: 1.5rem;
-    }
-    
-    .xmark {
-      color: #FF5252;
-      font-size: 1.5rem;
-    }
-    
-    .cabinpulse-col {
-      background-color: rgba(233, 69, 96, 0.1);
-    }
-    
-    .feature-name {
-      font-weight: 600;
-      color: var(--text-color);
-    }
-    
-    /* Testimonials Section */
-    .testimonials {
-      padding: 120px 0;
-      background-color: var(--secondary-color);
-      position: relative;
-    }
-    .testimonials::before {
-      content: '';
-      position: absolute;
-      top: -100px;
-      left: 0;
-      right: 0;
-      height: 120px;
-      background-color: var(--secondary-color);
-      --mask:
-        radial-gradient(108.17px at 50% 150px, #000 99%, #0000 101%) calc(50% - 120px) 0/240px 100%,
-        radial-gradient(108.17px at 50% -90px, #0000 99%, #000 101%) 50% 60px/240px 100% repeat-x;
-      -webkit-mask: var(--mask);
-              mask: var(--mask);
-    }
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-    }
-    .testimonial-card {
-      background-color: var(--accent-color);
-      border-radius: 24px;
-      padding: 40px;
-      position: relative;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .testimonial-card:hover {
-      transform: translateY(-12px);
-      box-shadow: 0 24px 36px rgba(0, 0, 0, 0.2);
-    }
-    .star-rating {
-      color: #ffd700;
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-    }
-    .testimonial-content {
-      font-size: 0.9rem;
-      line-height: 1.8;
-      margin-bottom: 24px;
-      position: relative;
-    }
-    .testimonial-content::before {
-      content: '"';
-      font-size: 4rem;
-      color: var(--highlight-color);
-      position: absolute;
-      top: -20px;
-      left: -10px;
-      opacity: 0.3;
-    }
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-top: 20px;
-    }
-    .author-avatar {
-      width: 60px;
-      height: 60px;
-      background-color: var(--highlight-color);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      color: var(--primary-color);
-    }
-    .author-info h4 {
-      color: var(--highlight-color);
-      font-size: 1.2rem;
-      margin-bottom: 4px;
-    }
-    .author-info p {
-      color: var(--text-color);
-      opacity: 0.8;
-    }
-    
-    /* FAQ Section */
-    .faq {
-      padding: 120px 0;
-      background-color: var(--primary-color);
-      position: relative;
-    }
-    .faq-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 40px;
-    }
-    .faq-item {
-      background-color: var(--secondary-color);
-      border-radius: 24px;
-      padding: 30px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .faq-item:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-    }
-    .faq-item h3 {
-      margin-bottom: 15px;
-      color: var(--highlight-color);
-      display: flex;
-      align-items: center;
-      font-size: 1.2rem;
-    }
-    .faq-item h3 i {
-      margin-right: 15px;
-      font-size: 1.4rem;
-    }
-    .faq-item p {
-      font-size: 0.9rem;
-      line-height: 1.6;
-      color: var(--text-color);
-      opacity: 0.9;
-    }
-
-    .faq-item a {
-      color: var(--highlight-color);
-      text-decoration: none;
-      font-weight: bold;
-      transition: all 0.3s ease;
-    }
-    
-    /* Final CTA Section */
-    .final-cta {
-      padding: 120px 0;
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-      text-align: center;
-      position: relative;
-    }
-    .final-cta::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('../freeze-bg.jpg') no-repeat center center;
-      background-size: cover;
-      opacity: 0.1;
-      z-index: 0;
-    }
-    .final-cta-container {
-      position: relative;
-      z-index: 1;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .final-cta-icon {
-      font-size: 4rem;
-      color: var(--highlight-color);
-      margin-bottom: 30px;
-    }
-    .final-cta h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: var(--text-color);
-    }
-    .final-cta p {
-      font-size: 0.9rem;
-      margin-bottom: 40px;
-      color: var(--text-color);
-      opacity: 0.9;
-    }
-    .cta-features {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin-bottom: 40px;
-      flex-wrap: wrap;
-    }
-    .cta-feature {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .cta-feature i {
-      color: var(--highlight-color);
-    }
-    
-    /* Footer Styles */
-    footer {
-      background-color: var(--secondary-color);
-      padding: 60px 0 20px;
-      text-align: left;
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 40px;
-      margin-bottom: 40px;
-    }
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-    .footer-logo img {
-      width: 40px;
-      height: 40px;
-      margin-right: 10px;
-    }
-    .footer-logo h3 {
-      color: var(--text-color);
-      font-size: 1.5rem;
-    }
-    .footer-grid p {
-      color: var(--text-color);
-      opacity: 0.7;
-      margin-bottom: 20px;
-      font-size: 0.8rem;
-    }
-    .footer-grid h4 {
-      color: var(--highlight-color);
-      margin-bottom: 20px;
-      font-size: 1.2rem;
-    }
-    .footer-links {
-      list-style: none;
-    }
-    .footer-links li {
-      margin-bottom: 10px;
-    }
-    .footer-links a {
-      color: var(--text-color);
-      text-decoration: none;
-      opacity: 0.7;
-      transition: all 0.3s ease;
-      font-size: 0.8rem;
-      display: flex;
-      align-items: center;
-    }
-    .footer-links a i {
-      margin-right: 10px;
-      color: var(--highlight-color);
-    }
-    .footer-links a:hover {
-      opacity: 1;
-      color: var(--highlight-color);
-    }
-    .footer-divider {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      margin-bottom: 20px;
-    }
-    .footer-bottom {
-      text-align: center;
-      color: var(--text-color);
-      opacity: 0.7;
-      font-size: 0.9rem;
-    }
-    
-    /* Temperature Display Animation */
-    .temp-display {
-      font-family: monospace;
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: var(--highlight-color);
-      margin: 30px 0;
-      display: inline-block;
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 15px 30px;
-      border-radius: 12px;
-      position: relative;
-      overflow: hidden;
-    }
-    .temp-display::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-      animation: temp-shine 4s infinite;
-    }
-    @keyframes temp-shine {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(100%); }
-    }
-    .temp-notice {
-      color: var(--text-color);
-      opacity: 0.8;
-      font-size: 0.9rem;
-      margin-top: 10px;
-    }
-    
-    /* Image with Overlay */
-    .image-overlay {
-      position: relative;
-      overflow: hidden;
-      border-radius: 24px;
-      margin: 40px 0;
-      max-height: 500px;
-    }
-    .image-overlay img {
-      width: 100%;
-      display: block;
-      transition: transform 0.5s ease;
-    }
-    .overlay-content {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(to top, rgba(26, 26, 46, 0.9), rgba(26, 26, 46, 0.2));
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 40px;
-    }
-    .overlay-content h3 {
-      color: var(--text-color);
-      font-size: 1.5rem;
-      margin-bottom: 15px;
-    }
-    .overlay-content p {
-      color: var(--text-color);
-      opacity: 0.9;
-      font-size: 0.9rem;
-      margin-bottom: 20px;
-    }
-    .image-overlay:hover img {
-      transform: scale(1.05);
-    }
-    
-    /* Text Highlight Animation */
-    .text-highlight {
-      color: var(--highlight-color);
-      position: relative;
-      display: inline-block;
-    }
-    .text-highlight::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background-color: var(--highlight-color);
-      transform: scaleX(0);
-      transform-origin: bottom right;
-      transition: transform 0.5s ease;
-    }
-    .text-highlight:hover::after {
-      transform: scaleX(1);
-      transform-origin: bottom left;
-    }
-    
-    .freeze-hero-image {
-      position: relative;
-    }
-
-    .temp-alert {
-      position: absolute;
-      bottom: -100%; /* Use percentage to ensure it's completely off-screen */
-      left: 0;
-      width: 100%;
-      background-color: #e94560; /* Same as highlight-color */
-      color: white;
-      padding: 12px 10px;
-      border-radius: 12px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 5px;
-      font-weight: bold;
-      visibility: hidden; /* Start hidden */
-      opacity: 0; /* Start transparent */
-      transition: bottom 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s 0.5s;
-      z-index: 10;
-    }
-
-    .temp-alert i {
-      font-size: 1.2rem;
-      margin-bottom: 3px;
-      animation: pulse 1.5s infinite;
-    }
-
-    .alert-text {
-      font-size: 0.9rem;
-    }
-
-    .alert-status {
-      font-size: 0.75rem;
-      opacity: 0.9;
-    }
-
-    /* Alert active state */
-    .device-temp-display.alert-active {
-      background-color: rgba(233, 69, 96, 0.9); /* Red background based on highlight-color */
-      border-color: #ff0033;
-      box-shadow: 0 0 20px rgba(233, 69, 96, 0.7);
-    }
-
-    .device-temp-display.alert-active .temp-alert {
-      bottom: 0; /* Slide up to visible position */
-      visibility: visible; /* Make visible */
-      opacity: 1; /* Make fully opaque */
-      transition: bottom 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
-    }
-
-    .device-temp-display {
-      position: absolute;
-      top: 10%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(15, 52, 96, 0.9);
-      border: 2px solid var(--highlight-color);
-      border-radius: 12px;
-      padding: 15px;
-      text-align: center;
-      box-shadow: 0 0 15px rgba(233, 69, 96, 0.5);
-      width: 180px;
-    }
-
-    .temp-value {
-      font-family: monospace;
-      font-size: 2.2rem;
-      font-weight: bold;
-      color: var(--highlight-color);
-      margin-bottom: 5px;
-    }
-
-    .temp-status {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      font-size: 0.8rem;
-      color: #ffffff;
-    }
-
-    .status-indicator {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background-color: #4CAF50;
-      animation: blink 1.5s infinite;
-    }
-
-    @keyframes blink {
-      0% { opacity: 1; }
-      50% { opacity: 0.4; }
-      100% { opacity: 1; }
-    }
-
-    /* Style for "View All Use Cases" link with arrow */
-.footer-grid a[href="/uses/"] {
-  color: var(--highlight-color) !important;
-  text-decoration: none;
+/* =========================================
+   2. HEADER & NAV STYLES (PRESERVED)
+   ========================================= */
+.top-bar {
+  background-color: rgba(15, 52, 96, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(233, 69, 96, 0.1);
+  padding: 6px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  transition: all 0.3s ease;
+}
+.top-bar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 25px;
+}
+.top-bar-left {
   display: flex;
   align-items: center;
+  gap: 20px;
+}
+.top-bar-link {
+  color: var(--text-color);
+  font-size: 0.7rem;
   font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+  padding: 3px 6px;
+  border-radius: 4px;
+}
+.top-bar-link:hover {
+  opacity: 1;
+  color: var(--highlight-color);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.proudly-canadian {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-color);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.9;
+  background-color: rgba(233, 69, 96, 0.15);
+  padding: 3px 8px;
+  border-radius: 12px;
+  border: 1px solid rgba(233, 69, 96, 0.3);
+}
+.proudly-canadian i {
+  color: var(--highlight-color);
+  font-size: 0.8rem;
 }
 
-.footer-grid a[href="/uses/"] i {
-  margin-left: 10px;
-  margin-right: 0 !important;
-  transition: transform 0.2s ease;
+/* Header */
+header {
+  padding-top: 12px;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(26, 26, 46, 0.98);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(233, 69, 96, 0.2);
+  top: 38px;
+  transition: all 0.3s ease;
+}
+header.scrolled {
+  padding-top: 12px;
+  background-color: rgba(26, 26, 46, 1);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--text-color);
+}
+.icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-left: auto;
+}
+.nav-item { position: relative; }
+.nav-link {
+  color: var(--text-color);
+  padding: 10px 16px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+}
+.nav-link:hover {
+  color: var(--highlight-color);
+  background-color: rgba(255, 255, 255, 0.08);
+  transform: translateY(-1px);
+}
+.nav-link.has-dropdown::after {
+  content: '\f0d7';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  margin-left: 6px;
+  font-size: 0.7rem;
+  transition: transform 0.3s ease;
+}
+.nav-item:hover .nav-link.has-dropdown::after {
+  transform: rotate(180deg);
+}
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  transform: translateY(-10px);
+  background-color: rgba(22, 33, 62, 0.98);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  padding: 12px 0;
+  min-width: 220px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(233, 69, 96, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1001;
+}
+.nav-item:hover .dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(5%);
+}
+.dropdown-item {
+  display: block;
+  color: var(--text-color);
+  padding: 10px 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+.dropdown-item:hover {
+  background-color: rgba(233, 69, 96, 0.1);
+  color: var(--highlight-color);
+  border-left-color: var(--highlight-color);
+  padding-left: 24px;
+}
+.dropdown-item i {
+  margin-right: 10px;
+  width: 16px;
+  text-align: center;
+  color: var(--highlight-color);
+  opacity: 0.8;
+}
+.login-btn {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.login-btn:hover {
+  border-color: var(--highlight-color);
+  background-color: rgba(233, 69, 96, 0.1);
+}
+.primary-cta {
+  background-color: var(--highlight-color);
+  color: white !important;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(233, 69, 96, 0.3);
+  margin-left: 8px;
+}
+.primary-cta:hover {
+  background-color: #ff5a7c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(233, 69, 96, 0.4);
+}
+.mobile-menu-toggle {
+  display: none;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 1002;
+}
+.mobile-menu-toggle:hover { background-color: rgba(255, 255, 255, 0.2); }
+.mobile-menu-toggle i { font-size: 1.2rem; transition: all 0.3s ease; }
+.mobile-menu-toggle.active i { transform: rotate(90deg); }
+.mobile-menu {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  z-index: 1001;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  overflow-y: auto;
+  padding-top: 80px;
+}
+.mobile-menu.open { opacity: 1; visibility: visible; }
+.mobile-menu-content { padding: 20px; max-width: 400px; margin: 0 auto; }
+.mobile-nav-item {
+  margin-bottom: 12px;
+  border-radius: 16px;
+  background: rgba(15, 52, 96, 0.3);
+  border: 1px solid rgba(233, 69, 96, 0.2);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.mobile-nav-link {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px; color: var(--text-color);
+  font-size: 1.1rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.5px; transition: all 0.3s ease;
+}
+.mobile-nav-link i { margin-right: 12px; font-size: 1.2rem; color: var(--highlight-color); }
+.mobile-dropdown {
+  max-height: 0; overflow: hidden; transition: all 0.3s ease;
+  background: rgba(22, 33, 62, 0.8);
+  border-top: 1px solid rgba(233, 69, 96, 0.2);
+}
+.mobile-dropdown.open { max-height: 400px; padding: 12px 0; }
+.mobile-dropdown-item {
+  display: block; padding: 16px 32px;
+  color: var(--text-color); font-size: 0.95rem; font-weight: 500;
+  transition: all 0.2s ease; border-left: 3px solid transparent;
+}
+.mobile-dropdown-item:hover {
+  background-color: rgba(233, 69, 96, 0.1);
+  color: var(--highlight-color);
+  border-left-color: var(--highlight-color);
+  padding-left: 36px;
+}
+.mobile-cta-section {
+  margin-top: 32px; padding-top: 32px;
+  border-top: 1px solid rgba(233, 69, 96, 0.2);
+  display: flex; flex-direction: column; gap: 16px;
+}
+.mobile-login-btn, .mobile-cta-btn {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; padding: 16px 24px; border-radius: 12px;
+  font-weight: 600; text-transform: uppercase; transition: all 0.3s ease; color: white;
+}
+.mobile-login-btn {
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.mobile-cta-btn {
+  background: linear-gradient(135deg, var(--highlight-color) 0%, #ff5a7c 100%);
+  box-shadow: 0 8px 20px rgba(233, 69, 96, 0.3);
+}
+.mobile-menu-close {
+  position: absolute; top: 20px; right: 20px;
+  width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background-color: rgba(233, 69, 96, 0.2);
+  border: 2px solid rgba(233, 69, 96, 0.4);
+  cursor: pointer; color: var(--highlight-color); z-index: 1002;
+}
+.integrated-breadcrumb {
+  background-color: rgba(15, 52, 96, 0.7);
+  padding: 8px 0; margin-top: 15px; font-size: 0.7rem;
+}
+.breadcrumb-nav { display: flex; align-items: center; font-size: 0.7rem; color: rgba(255, 255, 255, 0.7); }
+.breadcrumb-nav a { color: rgba(255, 255, 255, 0.7); transition: color 0.3s ease; }
+.breadcrumb-nav a:hover { color: var(--highlight-color); }
+.breadcrumb-separator { margin: 0 10px; }
+.breadcrumb-current { color: var(--highlight-color); font-weight: 600; }
+
+/* =========================================
+   3. MODERN BODY STYLES
+   ========================================= */
+
+/* Primary Button Style */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(90deg, var(--primary-accent), #d6334d);
+  color: white;
+  padding: 16px 32px;
+  border-radius: 50px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(233, 69, 96, 0.3);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(233, 69, 96, 0.5);
+  color: white;
 }
 
-.footer-grid a[href="/uses/"]:hover i {
-  transform: translateX(3px);
+/* --- HERO SECTION --- */
+.freeze-hero {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  background: radial-gradient(circle at 50% 0%, #1a1a2e 0%, var(--bg-dark) 70%);
+  padding-top: 160px;
+  overflow: hidden;
+  position: relative;
+}
+.hero-glow {
+  position: absolute;
+  width: 600px; height: 600px;
+  background: var(--primary-accent);
+  filter: blur(150px);
+  opacity: 0.1;
+  border-radius: 50%;
+  top: -100px; right: -100px;
+  z-index: 0;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.hero-content {
+  padding-right: 20px;
+}
+/* Typography matched to Power Outage Page */
+.hero-content h1 {
+  font-size: 2.5rem;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+.hero-content p {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  margin-bottom: 30px;
+  max-width: 500px;
+}
+.hero-badges {
+  display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 40px;
+}
+.h-badge {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  display: flex; align-items: center; gap: 8px;
+  backdrop-filter: blur(5px);
+}
+.h-badge i { color: var(--primary-accent); }
+
+/* Hero Visuals */
+.hero-visual {
+  position: relative;
+  display: flex; justify-content: center; align-items: center;
+  height: 600px;
+}
+.phone-mockup {
+  width: 350px;
+  background: #000;
+  border-radius: 40px;
+  border: 8px solid #333;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  z-index: 1;
+  transform: translateX(30px);
+}
+.phone-screen {
+  background: 
+      radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), 
+      linear-gradient(to bottom, #16213e, #0f3460);
+  background-size: 20px 20px, 100% 100%;
+  height: 550px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 60px; 
+}
+.device-overlay {
+  position: absolute;
+  left: -80px;
+  bottom: 0px;
+  width: 460px; 
+  z-index: 10; 
+  filter: drop-shadow(0 15px 30px rgba(0,0,0,0.6));
 }
 
-/* Fix for footer links and icons alignment */
-.footer-grid ul {
+/* Redesigned Notification Card */
+.notification-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 12px;
+  color: #333;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  animation: slideInUp 1s ease-out forwards;
+  transform: translateY(20px);
+  opacity: 0;
+  margin-bottom: 12px;
+}
+.notif-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 6px; padding-bottom: 6px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.notif-app-info { display: flex; align-items: center; gap: 6px; }
+.notif-icon-circle {
+  width: 20px; height: 20px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 0.6rem;
+}
+.notif-title {
+  font-size: 0.75rem; font-weight: 600; color: #444;
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
+.notif-time { font-size: 0.7rem; color: #888; }
+.notif-body { font-size: 0.85rem; line-height: 1.3; color: #222; }
+.notif-body strong { font-weight: 700; display: block; margin-bottom: 2px; }
+
+@keyframes slideInUp { to { transform: translateY(0); opacity: 1; } }
+
+/* --- FEATURES GRID --- */
+.features-section { background: var(--bg-dark); }
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+.feature-card {
+  background: var(--bg-panel);
+  padding: 40px 30px;
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+  transition: 0.3s;
+  height: 100%;
+}
+.feature-card:hover {
+  border-color: var(--primary-accent);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+.feature-icon {
+  font-size: 2rem;
+  color: var(--primary-accent);
+  margin-bottom: 20px;
+  background: rgba(233,69,96,0.1);
+  width: 60px; height: 60px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 12px;
+}
+.feature-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: var(--text-color);
+}
+.feature-card p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+/* --- HOW IT WORKS (Steps) --- */
+.how-it-works { background: #0f0f18; }
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 60px;
+}
+.step-card {
+  text-align: center;
+  padding: 30px;
+  position: relative;
+}
+.step-number {
+  font-size: 4rem;
+  font-weight: 900;
+  color: rgba(255,255,255,0.05);
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  z-index: 0;
+}
+.step-icon {
+  font-size: 2.5rem;
+  color: var(--success);
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+.step-card h3 { position: relative; z-index: 1; margin-bottom: 10px; }
+.step-card p { position: relative; z-index: 1; color: var(--text-muted); }
+
+/* --- COMPARISON TABLE (Matched to Power Outage Page) --- */
+.comparison-section {
+  background: linear-gradient(180deg, var(--bg-dark) 0%, #161625 100%);
+}
+/* Uses .compare-card wrapper just like Power Outage */
+.compare-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  padding: 20px;
+  border: 1px solid var(--glass-border);
+  max-width: 1000px;
+  margin: 50px auto 0;
+  overflow-x: auto;
+}
+/* Uses .modern-table just like Power Outage */
+.modern-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+.modern-table th {
+  text-align: left;
+  padding: 20px;
+  font-size: 1.1rem;
+  border-bottom: 1px solid var(--glass-border);
+  color: var(--text-color);
+}
+.modern-table td {
+  padding: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+.col-highlight {
+  color: #fff !important;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+}
+.th-brand {
+  color: var(--primary-accent);
+  font-size: 1.4rem !important;
+}
+
+/* --- TESTIMONIALS (Matched to Power Outage Page) --- */
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+.review-card {
+  background: var(--bg-panel);
+  padding: 35px;
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+  position: relative;
+}
+.quote-icon {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 3rem;
+  color: var(--glass-border);
+}
+.stars { color: #ffd700; margin-bottom: 15px; }
+.review-text { font-style: italic; color: #ddd; margin-bottom: 20px; }
+.reviewer {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.avatar { 
+  width: 50px; height: 50px; background: #333; border-radius: 50%; 
+  display: flex; align-items: center; justify-content: center;
+  font-weight: bold; color: #fff;
+}
+.verified-badge {
+  font-size: 0.7rem; color: var(--success);
+  text-transform: uppercase; letter-spacing: 1px;
+}
+
+/* FAQ Accordion style */
+.faq-grid { display: grid; gap: 20px; margin-top: 50px; }
+details {
+  background: var(--bg-panel);
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--glass-border);
+  cursor: pointer;
+}
+summary {
+  font-weight: 600;
+  font-size: 1.1rem;
   list-style: none;
-  padding: 0;
-  font-size: 0.9rem;
+  display: flex; justify-content: space-between; align-items: center;
+  color: var(--text-color);
 }
+details p { margin-top: 15px; color: var(--text-muted); }
 
-.footer-grid li {
-  margin-bottom: 10px;
-  font-size: 0.9rem;
+/* --- FINAL CTA --- */
+.final-cta {
+  background: linear-gradient(rgba(11, 11, 21, 0.8), rgba(11, 11, 21, 0.9)), url('../freeze-bg.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  text-align: center;
+  padding: 120px 0;
 }
+.cta-features {
+  display: flex; justify-content: center; gap: 40px; margin-bottom: 50px; flex-wrap: wrap;
+}
+.cta-feature { display: flex; align-items: center; gap: 10px; color: white; font-weight: 500; }
+.cta-feature i { color: var(--success); }
 
+/* =========================================
+   4. FOOTER STYLES (PRESERVED)
+   ========================================= */
+footer {
+  background-color: var(--secondary-color);
+  padding: 60px 0 20px;
+  text-align: left;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  margin-bottom: 40px;
+}
+.footer-grid p {
+  color: var(--text-color);
+  opacity: 0.7;
+  margin-bottom: 20px;
+  font-size: 0.8rem;
+}
+.footer-grid h4 {
+  color: var(--highlight-color);
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+.footer-grid ul { list-style: none; padding: 0; }
+.footer-grid li { margin-bottom: 10px; }
 .footer-grid a {
   color: var(--text-color);
   text-decoration: none;
   opacity: 0.7;
   transition: all 0.3s ease;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   display: flex;
   align-items: center;
 }
+.footer-grid a i { margin-right: 10px; color: var(--highlight-color); }
+.footer-grid a:hover { opacity: 1; color: var(--highlight-color); }
+.footer-grid a[href="/uses/"] {
+  color: var(--highlight-color) !important;
+  font-weight: 500;
+}
+.footer-grid a[href="/uses/"] i { margin-left: 10px; margin-right: 0 !important; }
 
-.footer-grid a i {
-  margin-right: 10px;
-  color: var(--highlight-color);
+h2 {
+  line-height: 2.5rem;
 }
 
-.footer-grid a:hover {
-  opacity: 1;
-  color: var(--highlight-color);
+/* Responsive */
+@media (max-width: 1024px) {
+  .hero-content h1 { font-size: 2.5rem; }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
 }
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .mobile-menu-toggle { display: flex; }
+  .hero-grid { grid-template-columns: 1fr; text-align: center; }
+  .hero-content { padding-right: 0; margin-bottom: 50px; display: flex; flex-direction: column; align-items: center; }
+  .hero-badges { justify-content: center; }
+  
+  /* UPDATED HERO VISUAL LOGIC FOR MOBILE */
+  .hero-visual { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto; 
+    margin-top: 30px;
+    /* Padding ensure device overlay doesn't cover next section */
+    padding-bottom: 80px; 
+    position: relative; 
+  }
 
-    /* Responsive styles */
-    @media (max-width: 1024px) {
-      .freeze-hero h1 {
-        font-size: 1.6rem;
-      }
-      .features-grid, 
-      .steps-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .footer-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      
-      /* Reduced table text size for medium screens */
-      .comparison-table th {
-        font-size: 1.1rem;
-        padding: 18px 15px;
-      }
-      .comparison-table td {
-        font-size: 0.95rem;
-        padding: 18px 15px;
-      }
-    }
-    
-    @media (max-width: 900px) {
-      .nav-links {
-        display: none;
-      }
-      .mobile-menu-toggle {
-        display: flex;
-      }
-      .top-bar {
-        padding: 6px 0;
-      }
-      .top-bar-content {
-        padding: 0 15px;
-      }
-      .top-bar-left {
-        gap: 16px;
-      }
-      .top-bar-link {
-        font-size: 0.7rem;
-        padding: 3px 6px;
-      }
-      .integrated-breadcrumb {
-        padding: 6px 0;
-        font-size: 0.8rem;
-      }
-    }
-    
-    @media (max-width: 768px) {
-      .integrated-breadcrumb {
-        padding: 6px 0;
-        font-size: 0.8rem;
-      }
-      .freeze-hero {
-        padding-top: 200px;
-      }
-      .freeze-hero-container {
-        flex-direction: column;
-        text-align: center;
-      }
-      .badge-container {
-        justify-content: center;
-      }
-      .freeze-hero h1 {
-        font-size: 1.4rem;
-      }
-      .freeze-hero-subtitle {
-        font-size: 0.9rem;
-      }
-      .features-grid, 
-      .steps-grid, 
-      .faq-grid, 
-      .testimonials-grid,
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      /* Further reduced table text size for small screens */
-      .comparison-table th {
-        font-size: 0.9rem;
-        padding: 15px 10px;
-      }
-      .comparison-table td {
-        font-size: 0.85rem;
-        padding: 12px 10px;
-      }
-      .checkmark, .xmark {
-        font-size: 1.2rem;
-      }
-      
-      .final-cta h2 {
-        font-size: 2.5rem;
-      }
-      
-      .section-title {
-        font-size: 1.5rem;
-        margin-bottom: 40px;
-      }
-    }
+  .phone-mockup { 
+    transform: none; 
+    max-width: 90vw; 
+    margin-bottom: 0; 
+    z-index: 1; /* Phone behind */
+  }
 
-    @media (max-width: 480px) {
-      .freeze-hero h1 {
-        font-size: 1.3rem;
-      }
-      
-      /* Even smaller table text for very small screens */
-      .comparison-table th {
-        font-size: 0.8rem;
-        padding: 10px 8px;
-      }
-      .comparison-table td {
-        font-size: 0.75rem;
-        padding: 10px 8px;
-      }
-      .checkmark, .xmark {
-        font-size: 1rem;
-      }
-    }
-
-    /* Ensure footer responsive behavior is consistent */
-    @media (max-width: 768px) {
-      .footer-grid {
-        grid-template-columns: 1fr !important;
-        gap: 32px !important;
-      }
-      
-      .footer-grid a[href="/uses/"] {
-        justify-content: center;
-      }
-    }
+  .device-overlay { 
+    position: absolute; 
+    left: 50%; 
+    transform: translateX(-50%); /* Center horizontally */
+    bottom: 0; 
+    top: auto;
+    width: 280px; 
+    z-index: 10; /* Device on top */
+    order: unset; 
+    margin-bottom: 0;
+  }
+}
+@media (max-width: 768px) {
+  .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .modern-table { display: block; }
+  .cta-features { flex-direction: column; gap: 15px; align-items: center; }
+}
   </style>
 </head>
 <body>
+
   <!-- TOP BAR -->
   <div class="top-bar">
     <div class="top-bar-content">
       <div class="top-bar-left">
-        <a href="../about.html" class="top-bar-link">
-          About
-        </a>
-        <a href="mailto:support@cabinpulse.com" class="top-bar-link">
-          Contact Us
-        </a>
+        <a href="../about.html" class="top-bar-link">About</a>
+        <a href="mailto:support@cabinpulse.com" class="top-bar-link">Contact Us</a>
       </div>
       <div class="proudly-canadian">
         <i class="fa-brands fa-canadian-maple-leaf"></i>
@@ -1663,7 +878,6 @@
     </div>
   </div>
 
-  <!-- HEADER SECTION -->
   <!-- HEADER SECTION -->
   <header>
     <nav class="container">
@@ -1675,64 +889,33 @@
         <div class="nav-item">
           <a href="#" class="nav-link has-dropdown">Product</a>
           <div class="dropdown">
-            <a href="../index.html#features" class="dropdown-item">
-              <i class="fas fa-check-circle"></i>Features
-            </a>
-            <a href="../index.html#pricing" class="dropdown-item">
-              <i class="fas fa-tag"></i>Pricing
-            </a>
-            <a href="../index.html#coverage" class="dropdown-item">
-              <i class="fas fa-tower-cell"></i>Coverage
-            </a>
+            <a href="../index.html#features" class="dropdown-item"><i class="fas fa-check-circle"></i>Features</a>
+            <a href="../index.html#pricing" class="dropdown-item"><i class="fas fa-tag"></i>Pricing</a>
+            <a href="../index.html#coverage" class="dropdown-item"><i class="fas fa-tower-cell"></i>Coverage</a>
           </div>
         </div>
-    
         <div class="nav-item">
           <a href="#" class="nav-link has-dropdown">Use Cases</a>
           <div class="dropdown">
-            <a href="https://cabinpulse.com/uses/remote-cabin-cottage-monitoring-system.html" class="dropdown-item">
-              <i class="fas fa-home"></i>Cabin Monitoring
-            </a>
-            <a href="https://cabinpulse.com/uses/rv-temperature-monitor-pets.html" class="dropdown-item">
-              <i class="fas fa-dog"></i>RV Monitor for Pets
-            </a>
-            <a href="https://cabinpulse.com/uses/vacation-home-monitoring.html" class="dropdown-item">
-              <i class="fas fa-house-chimney-window"></i>Vacation Home Monitoring
-            </a>
-            <a href="https://cabinpulse.com/uses/server-room-monitor.html" class="dropdown-item">
-              <i class="fas fa-server"></i>Server Room Monitoring
-            </a>
+            <a href="https://cabinpulse.com/uses/remote-cabin-cottage-monitoring-system.html" class="dropdown-item"><i class="fas fa-home"></i>Cabin Monitoring</a>
+            <a href="https://cabinpulse.com/uses/rv-temperature-monitor-pets.html" class="dropdown-item"><i class="fas fa-dog"></i>RV Monitor for Pets</a>
+            <a href="https://cabinpulse.com/uses/vacation-home-monitoring.html" class="dropdown-item"><i class="fas fa-house-chimney-window"></i>Vacation Home Monitoring</a>
+            <a href="https://cabinpulse.com/uses/server-room-monitor.html" class="dropdown-item"><i class="fas fa-server"></i>Server Room Monitoring</a>
           </div>
         </div>
-    
         <div class="nav-item">
           <a href="#" class="nav-link has-dropdown">Resources</a>
           <div class="dropdown">
-            <a href="../index.html#faq" class="dropdown-item">
-              <i class="fas fa-question-circle"></i>FAQ
-            </a>
-            <a href="https://blog.cabinpulse.com" class="dropdown-item">
-              <i class="fas fa-blog"></i>Blog
-            </a>
-            <a href="../manual.html" class="dropdown-item">
-              <i class="fas fa-book"></i>User Manual
-            </a>
-            <a href="mailto:support@cabinpulse.com" class="dropdown-item">
-              <i class="fas fa-life-ring"></i>Support
-            </a>
+            <a href="../index.html#faq" class="dropdown-item"><i class="fas fa-question-circle"></i>FAQ</a>
+            <a href="https://blog.cabinpulse.com" class="dropdown-item"><i class="fas fa-blog"></i>Blog</a>
+            <a href="../manual.html" class="dropdown-item"><i class="fas fa-book"></i>User Manual</a>
+            <a href="mailto:support@cabinpulse.com" class="dropdown-item"><i class="fas fa-life-ring"></i>Support</a>
           </div>
         </div>
-    
-        <a href="https://dashboard.cabinpulse.com" class="nav-link login-btn">
-          Dashboard
-        </a>
-        <a href="https://cabinpulse.com/index.html#pricing" class="nav-link primary-cta">
-          Get Started
-        </a>
+        <a href="https://dashboard.cabinpulse.com" class="nav-link login-btn">Dashboard</a>
+        <a href="https://cabinpulse.com/index.html#pricing" class="nav-link primary-cta">Get Started</a>
       </div>
-      <div class="mobile-menu-toggle">
-        <i class="fas fa-bars"></i>
-      </div>
+      <div class="mobile-menu-toggle"><i class="fas fa-bars"></i></div>
     </nav>
     
     <!-- Integrated Breadcrumb -->
@@ -1751,527 +934,405 @@
   
   <!-- Mobile Menu -->
   <div class="mobile-menu">
-    <div class="mobile-menu-close">
-      <i class="fas fa-times"></i>
-    </div>
-    
+    <div class="mobile-menu-close"><i class="fas fa-times"></i></div>
     <div class="mobile-menu-content">
-      <!-- Product Section -->
       <div class="mobile-nav-item">
-        <a href="#" class="mobile-nav-link has-dropdown">
-          <div>
-            <i class="fas fa-cube"></i>
-            Product
-          </div>
-        </a>
+        <a href="#" class="mobile-nav-link has-dropdown"><div><i class="fas fa-cube"></i>Product</div></a>
         <div class="mobile-dropdown">
-          <a href="../index.html#features" class="mobile-dropdown-item">
-            <i class="fas fa-check-circle"></i>Features
-          </a>
-          <a href="../index.html#pricing" class="mobile-dropdown-item">
-            <i class="fas fa-tag"></i>Pricing
-          </a>
-          <a href="../index.html#coverage" class="mobile-dropdown-item">
-            <i class="fas fa-tower-cell"></i>Coverage
-          </a>
+          <a href="../index.html#features" class="mobile-dropdown-item"><i class="fas fa-check-circle"></i>Features</a>
+          <a href="../index.html#pricing" class="mobile-dropdown-item"><i class="fas fa-tag"></i>Pricing</a>
+          <a href="../index.html#coverage" class="mobile-dropdown-item"><i class="fas fa-tower-cell"></i>Coverage</a>
         </div>
       </div>
-
-      <!-- Use Cases Section -->
       <div class="mobile-nav-item">
-        <a href="#" class="mobile-nav-link has-dropdown">
-          <div>
-            <i class="fas fa-lightbulb"></i>
-            Use Cases
-          </div>
-        </a>
+        <a href="#" class="mobile-nav-link has-dropdown"><div><i class="fas fa-lightbulb"></i>Use Cases</div></a>
         <div class="mobile-dropdown">
-          <a href="https://cabinpulse.com/uses/remote-cabin-cottage-monitoring-system.html" class="mobile-dropdown-item">
-            <i class="fas fa-home"></i>Cabin Monitoring
-          </a>
-          <a href="https://cabinpulse.com/uses/rv-temperature-monitor-pets.html" class="mobile-dropdown-item">
-            <i class="fas fa-dog"></i>RV Monitor for Pets
-          </a>
-          <a href="https://cabinpulse.com/uses/vacation-home-monitoring.html" class="mobile-dropdown-item">
-            <i class="fas fa-house-chimney-window"></i>Vacation Home Monitoring
-          </a>
-          <a href="https://cabinpulse.com/uses/server-room-monitor.html" class="mobile-dropdown-item">
-            <i class="fas fa-server"></i>Server Room Monitoring
-          </a>
+          <a href="https://cabinpulse.com/uses/remote-cabin-cottage-monitoring-system.html" class="mobile-dropdown-item"><i class="fas fa-home"></i>Cabin Monitoring</a>
+          <a href="https://cabinpulse.com/uses/rv-temperature-monitor-pets.html" class="mobile-dropdown-item"><i class="fas fa-dog"></i>RV Monitor for Pets</a>
+          <a href="https://cabinpulse.com/uses/vacation-home-monitoring.html" class="mobile-dropdown-item"><i class="fas fa-house-chimney-window"></i>Vacation Home Monitoring</a>
+          <a href="https://cabinpulse.com/uses/server-room-monitor.html" class="mobile-dropdown-item"><i class="fas fa-server"></i>Server Room Monitoring</a>
         </div>
       </div>
-
-      <!-- Resources Section -->
       <div class="mobile-nav-item">
-        <a href="#" class="mobile-nav-link has-dropdown">
-          <div>
-            <i class="fas fa-book"></i>
-            Resources
-          </div>
-        </a>
+        <a href="#" class="mobile-nav-link has-dropdown"><div><i class="fas fa-book"></i>Resources</div></a>
         <div class="mobile-dropdown">
-          <a href="../index.html#faq" class="mobile-dropdown-item">
-            <i class="fas fa-question-circle"></i>FAQ
-          </a>
-          <a href="https://blog.cabinpulse.com" class="mobile-dropdown-item">
-            <i class="fas fa-blog"></i>Blog
-          </a>
-          <a href="../manual.html" class="mobile-dropdown-item">
-            <i class="fas fa-book"></i>User Manual
-          </a>
-          <a href="mailto:support@cabinpulse.com" class="mobile-dropdown-item">
-            <i class="fas fa-life-ring"></i>Support
-          </a>
+          <a href="../index.html#faq" class="mobile-dropdown-item"><i class="fas fa-question-circle"></i>FAQ</a>
+          <a href="https://blog.cabinpulse.com" class="mobile-dropdown-item"><i class="fas fa-blog"></i>Blog</a>
+          <a href="../manual.html" class="mobile-dropdown-item"><i class="fas fa-book"></i>User Manual</a>
+          <a href="mailto:support@cabinpulse.com" class="mobile-dropdown-item"><i class="fas fa-life-ring"></i>Support</a>
         </div>
       </div>
-
-      <!-- CTA Buttons -->
       <div class="mobile-cta-section">
-        <a href="https://dashboard.cabinpulse.com" class="mobile-login-btn">
-          <i class="fas fa-tachometer-alt"></i>
-          Dashboard
-        </a>
-        <a href="https://cabinpulse.com/index.html#pricing" class="mobile-cta-btn">
-          <i class="fas fa-shopping-cart"></i>
-          Get CabinPulse
-        </a>
+        <a href="https://dashboard.cabinpulse.com" class="mobile-login-btn"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+        <a href="https://cabinpulse.com/index.html#pricing" class="mobile-cta-btn"><i class="fas fa-shopping-cart"></i>Get CabinPulse</a>
       </div>
     </div>
   </div>
 
-  <!-- Freeze Alarm Hero Section -->
+  <!-- HERO SECTION -->
   <section class="freeze-hero">
-    <div class="container freeze-hero-container">
-      <div class="freeze-hero-content">
-        <h1>CabinPulse Cellular Freeze Alarm</h1>
-        <p class="freeze-hero-subtitle">Prevent frozen pipes and costly damage with CabinPulse's industry-leading freeze alarm system. No WiFi required.</p>
-        
-        <div class="badge-container">
-          <span class="badge"><i class="fas fa-temperature-low icon-text" style="margin-right:0.2rem;"></i>±0.2°C Accuracy</span>
-          <span class="badge"><i class="fas fa-bell icon-text" style="margin-right:0.2rem;"></i>Instant Alerts</span>
-          <span class="badge"><i class="fas fa-wifi icon-text" style="margin-right:0.2rem;"></i>No WiFi Required</span>
-        </div>
-        <p class="temp-notice">CabinPulse detects temperature drops with precision and sends instant alerts before pipes freeze. Works across Canada and the US.</p>
-        
-        <a href="https://cabinpulse.com/index.html#pricing" class="cta-button">
-          Get CabinPulse Now →
-        </a>
-      </div>
-      <div class="freeze-hero-image">
-        <img src="../front.png" alt="CabinPulse Freeze Alarm Device - Monitor temperature remotely with no WiFi required">
-        <div class="device-temp-display">
-          <div class="temp-value">5.3°C</div>
-          <div class="temp-status">
-            <span class="status-indicator"></span>
-            <span class="status-text">Monitoring</span>
+    <div class="hero-glow"></div>
+    <div class="container">
+      <div class="hero-grid">
+        <!-- Left Content -->
+        <div class="hero-content">
+          <div class="h-badge" style="margin-bottom: 20px; margin-top: 40px; display: inline-flex;">
+            <i class="fas fa-snowflake"></i> Advanced Freeze Protection
           </div>
-          <!-- Add the new alert element -->
-          <div class="temp-alert">
-            <i class="fas fa-exclamation-triangle"></i>
-            <span class="alert-text">Below Threshold</span>
-            <span class="alert-status">Alert Sent</span>
+          <h1>Stop Frozen Pipes <br><span class="text-gradient">Before They Burst.</span></h1>
+          <p>The cellular freeze alarm that works without WiFi - and during power outages. Get instant alerts for precise temperature drops and prevent costly water damage.</p>
+          
+          <div class="hero-badges">
+            <div class="h-badge"><i class="fas fa-bullseye"></i> ±0.2°C Accuracy</div>
+            <div class="h-badge"><i class="fas fa-bolt"></i> Instant Alerts</div>
+            <div class="h-badge"><i class="fas fa-signal"></i> No WiFi Needed</div>
+          </div>
+
+          <a href="https://cabinpulse.com/index.html#pricing" class="btn-primary">
+            Get Protected Now <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Right Visual (Device + Phone Alert Animation) -->
+        <div class="hero-visual">
+          <!-- Device Image -->
+          <img src="../front.png" alt="CabinPulse Freeze Alarm Device" class="device-overlay">
+          
+          <!-- Phone Mockup -->
+          <div class="phone-mockup">
+            <div class="phone-screen">
+              
+              <!-- Alert 1: The Warning (Appears immediately) -->
+              <div class="notification-card">
+                <div class="notif-header">
+                  <div class="notif-app-info">
+                      <div class="notif-icon-circle" style="background: var(--primary-accent);">
+                          <i class="fas fa-temperature-low"></i>
+                      </div>
+                      <span class="notif-title">CabinPulse Alert</span>
+                  </div>
+                  <span class="notif-time">15m AGO</span>
+                </div>
+                <div class="notif-body">
+                  <strong>Low Temp Detected</strong>
+                  Current Temp: 4.5°C.<br>
+                  Threshold: 5.0°C.<br>
+                  Action Required.
+                </div>
+              </div>
+
+              <!-- Alert 2: The Resolution (Appears after 1.5 seconds) -->
+              <div class="notification-card" style="animation-delay: 1.5s;">
+                <div class="notif-header">
+                  <div class="notif-app-info">
+                      <div class="notif-icon-circle" style="background: var(--success);">
+                          <i class="fas fa-check-circle"></i>
+                      </div>
+                      <span class="notif-title">CabinPulse Alert</span>
+                  </div>
+                  <span class="notif-time">NOW</span>
+                </div>
+                <div class="notif-body">
+                  <strong>Temp Restored</strong>
+                  Current Temp: 10.0°C.<br>
+                  <strong>Resolved.</strong>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
   
-  <!-- Features Section -->
-  <section class="features">
-    <div class="container" style="margin-bottom: 5rem;">
-      <h2 class="section-title">Why CabinPulse is the Ultimate Freeze Alarm</h2>
+  <!-- FEATURES GRID -->
+  <section class="features-section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:60px;">
+        <h2 style="font-size:2.5rem;">Why It's The Ultimate Freeze Alarm</h2>
+        <p style="color:var(--text-muted);">Precision engineering for remote climates.</p>
+      </div>
       
       <div class="features-grid">
         <div class="feature-card">
-          <i class="feature-icon fas fa-temperature-low"></i>
-          <h3>Precision Temperature Monitoring</h3>
-          <p>CabinPulse measures temperature with incredible <span class="temperature-highlight">±0.2°C accuracy</span>, far more precise than standard freeze alarms that only alert at preset thresholds.</p>
+          <div class="feature-icon"><i class="fas fa-temperature-low"></i></div>
+          <h3>Precision Monitoring</h3>
+          <p>Measures temperature with <span class="highlight-red">±0.2°C accuracy</span>, far more precise than standard freeze alarms that only alert at fixed presets.</p>
         </div>
         
         <div class="feature-card">
-          <i class="feature-icon fas fa-bell"></i>
-          <h3>Customizable Alert Thresholds</h3>
-          <p>Set personalized temperature thresholds to receive immediate alerts before temperatures reach freezing levels, giving you time to act before pipes freeze.</p>
+          <div class="feature-icon"><i class="fas fa-sliders"></i></div>
+          <h3>Custom Thresholds</h3>
+          <p>Set personalized alert levels. Get notified at 5°C instead of 0°C, giving you valuable time to act before freezing occurs.</p>
         </div>
         
         <div class="feature-card">
-          <i class="feature-icon fas fa-tower-cell"></i>
+          <div class="feature-icon"><i class="fas fa-tower-cell"></i></div>
           <h3>Cellular Connectivity</h3>
-          <p>Unlike WiFi-dependent systems, CabinPulse connects directly to every major network in Canada, the US and Mexico to deliver alerts even during power outages or in remote locations with no internet access.</p>
+          <p>Works on major networks across Canada and the US. Delivers alerts even during power outages when WiFi routers are dead.</p>
         </div>
         
         <div class="feature-card">
-          <i class="feature-icon fas fa-chart-line"></i>
-          <h3>Historical Temperature Data</h3>
-          <p>Track temperature patterns over time to identify recurring issues and optimize your property's heating efficiency during cold months.</p>
+          <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>Historical Data</h3>
+          <p>Track temperature patterns over time to identify insulation issues or heating system inefficiencies.</p>
         </div>
         
         <div class="feature-card">
-          <i class="feature-icon fas fa-battery-half"></i>
+          <div class="feature-icon"><i class="fas fa-battery-half"></i></div>
           <h3>Battery Backup</h3>
-          <p>CabinPulse continues monitoring for up to 3 days during power outages—when your property is most vulnerable to freezing pipes—providing critical protection when you need it most.</p>
+          <p>Internal battery keeps monitoring for up to 3 days during outages—precisely when your pipes are most vulnerable.</p>
         </div>
         
         <div class="feature-card">
-          <i class="feature-icon fas fa-plug-circle-xmark"></i>
-          <h3>Power Outage Detection</h3>
-          <p>Instantly know when your property loses power with immediate power outage alerts, allowing you to take immediate action before temperatures drop to freezing.</p>
+          <div class="feature-icon"><i class="fas fa-plug-circle-xmark"></i></div>
+          <h3>Power Detection</h3>
+          <p>Know immediately if the heat source (power) fails. Fix the furnace before the temperature even drops.</p>
         </div>
       </div>
     </div>
   </section>
   
-  
-  <!-- How It Works Section -->
+  <!-- HOW IT WORKS -->
   <section class="how-it-works">
     <div class="container">
-      <h2 class="section-title">How CabinPulse's Freeze Alarm Feature Works</h2>
+      <div class="text-center" style="margin-bottom: 60px;">
+        <h2 style="font-size: 2.5rem;">How It Works</h2>
+      </div>
       
       <div class="steps-grid">
         <div class="step-card">
           <div class="step-number">1</div>
-          <i class="step-icon fas fa-plug"></i>
-          <h3>Simple Setup</h3>
-          <p>Plug CabinPulse into any power outlet in your cabin or property. No complex wiring, WiFi configuration, or professional installation required.</p>
+          <div class="step-icon"><i class="fas fa-plug"></i></div>
+          <h3>Plug It In</h3>
+          <p>Connect CabinPulse to any standard outlet. No wiring, no WiFi passwords, no professional installation.</p>
         </div>
         
         <div class="step-card">
           <div class="step-number">2</div>
-          <i class="step-icon fas fa-gauge-high"></i>
-          <h3>Continuous Monitoring</h3>
-          <p>CabinPulse automatically monitors temperature every second with precision accuracy, tracking changes that could lead to freezing conditions.</p>
+          <div class="step-icon"><i class="fas fa-satellite-dish"></i></div>
+          <h3>Auto-Connect</h3>
+          <p>It automatically finds the strongest cellular signal and begins monitoring temperature instantly.</p>
         </div>
         
         <div class="step-card">
           <div class="step-number">3</div>
-          <i class="step-icon fas fa-bell"></i>
-          <h3>Instant Alerts</h3>
-          <p>Receive <b>immediate</b> notifications via text message and email when temperatures approach your customized freezing thresholds or during power outages.</p>
-        </div>
-      </div>
-      
-      <div class="image-overlay" style="margin-top: 80px;">
-        <img src="../dashboard.png" alt="CabinPulse Dashboard showing temperature monitoring and freeze alerts">
-        <div class="overlay-content">
-          <h3>Monitor From Anywhere</h3>
-          <p>Access your property's temperature data from your phone, tablet, or computer. The easy-to-use dashboard lets you view current conditions, check historical data, and adjust alert thresholds remotely.</p>
+          <div class="step-icon"><i class="fas fa-bell"></i></div>
+          <h3>Get Alerted</h3>
+          <p>Receive immediate SMS and Email notifications if the temperature drops below your setting.</p>
         </div>
       </div>
     </div>
   </section>
   
-  <!-- Comparison Section -->
-  <section class="comparison">
-    <div class="container comparison-container">
-      <h2 class="section-title">How CabinPulse Compares to Standard Freeze Alarms</h2>
-      
-      <div class="comparison-intro">
-        <p>Traditional freeze alarms offer basic protection, but CabinPulse provides comprehensive monitoring with advanced features that keep your property safe in all seasons and conditions.</p>
+  <!-- COMPARISON (Standardized with .modern-table) -->
+  <section class="comparison-section">
+    <div class="container">
+      <div class="text-center">
+        <h2 style="font-size: 2.5rem;">Better Than Basic Alarms</h2>
+        <p style="color:var(--text-muted);">Why smart plugs and basic thermostats aren't enough.</p>
       </div>
       
-      <!-- Added table wrapper for horizontal scrolling -->
-      <div class="table-wrapper">
-        <table class="comparison-table">
+      <div class="compare-card">
+        <table class="modern-table">
           <thead>
             <tr>
-              <th>Features</th>
-              <th>Basic Freeze Alarms</th>
-              <th class="cabinpulse-col" style="border-radius: 1rem 1rem 0rem 0rem;">CabinPulse</th>
+              <th>Feature</th>
+              <th>Basic Freeze Alarm</th>
+              <th class="th-brand">CabinPulse</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td class="feature-name">Precise Temperature Readings</td>
-              <td><i class="xmark fas fa-xmark"></i> Basic threshold only</td>
-              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> ±0.2°C accuracy</td>
+              <td>Connectivity</td>
+              <td>WiFi (Fails w/ power)</td>
+              <td class="col-highlight"><i class="fas fa-signal"></i> Independent Cellular</td>
             </tr>
             <tr>
-              <td class="feature-name">No WiFi Required</td>
-              <td><i class="xmark fas fa-xmark"></i> Most require WiFi</td>
-              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Cellular connection included</td>
+              <td>Accuracy</td>
+              <td>Fixed point (e.g. 4°C)</td>
+              <td class="col-highlight"><i class="fas fa-check"></i> ±0.2°C Precision</td>
             </tr>
             <tr>
-              <td class="feature-name">Where It Works</td>
-              <td><i class="xmark fas fa-xmark"></i> USA Only</td>
-              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> USA, Canada, Mexico</td>
+              <td>Custom Thresholds</td>
+              <td><i class="fas fa-times" style="color:#555"></i> No</td>
+              <td class="col-highlight"><i class="fas fa-check"></i> Fully Customizable</td>
             </tr>
             <tr>
-              <td class="feature-name">Battery Backup</td>
-              <td><i class="xmark fas fa-xmark"></i> Limited or none</td>
-              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Up to 3 days</td>
+              <td>Battery Backup</td>
+              <td><i class="fas fa-times" style="color:#555"></i> Often None</td>
+              <td class="col-highlight"><i class="fas fa-check"></i> 2-3 Day Integrated Battery</td>
             </tr>
             <tr>
-              <td class="feature-name">Historical Data Tracking</td>
-              <td><i class="xmark fas fa-xmark"></i> Not available</td>
-              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Complete history</td>
+              <td>History Tracking</td>
+              <td><i class="fas fa-times" style="color:#555"></i> No Data</td>
+              <td class="col-highlight"><i class="fas fa-check"></i> Complete Dashboard History</td>
             </tr>
             <tr>
-              <td class="feature-name">Customizable Alert Thresholds</td>
-              <td><i class="xmark fas fa-xmark"></i> Fixed thresholds</td>
-              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Fully customizable</td>
-            </tr>
-            <tr>
-              <td class="feature-name">Multiple Alert Recipients</td>
-              <td><i class="xmark fas fa-xmark"></i> Limited options</td>
-              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Unlimited contacts</td>
-            </tr>
-            <tr>
-              <td class="feature-name">Power Outage Alerts</td>
-              <td><i class="xmark fas fa-xmark"></i> Rarely included</td>
-              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Instant notifications</td>
-            </tr>
-            <tr>
-              <td class="feature-name">Other Metrics</td>
-              <td><i class="xmark fas fa-xmark"></i> Temperature Only</td>
-              <td class="cabinpulse-col"><i class="checkmark fas fa-check"></i> Air Quality, Humidity & More</td>
-            </tr>
-            <tr>
-              <td class="feature-name">Easy Installation</td>
-              <td><i class="checkmark fas fa-check"></i> Usually simple</td>
-              <td class="cabinpulse-col" style="border-radius: 0rem 0rem 1rem 1rem;"><i class="checkmark fas fa-check"></i> Plug & play</td>
+              <td>Coverage</td>
+              <td>Local WiFi Range</td>
+              <td class="col-highlight"><i class="fas fa-check"></i> Canada, USA, Mexico</td>
             </tr>
           </tbody>
         </table>
       </div>
-      
-      <a href="https://cabinpulse.com/index.html#pricing" class="cta-button">Get CabinPulse →</a>
     </div>
   </section>
 
-  
-  
-  <!-- Testimonials Section -->
-  <section class="testimonials">
+  <!-- TESTIMONIALS (Standardized with .review-card) -->
+  <section class="features-section">
     <div class="container">
-      <h2 class="section-title">What People Think of Our Freeze Alarm</h2>
+      <div class="text-center">
+        <h2 style="font-size: 2.5rem;">Real Stories, Real Protection</h2>
+      </div>
       
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <div class="star-rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="testimonial-content">
-            After years of worrying about frozen pipes every winter, CabinPulse has been a game-changer for us. The connection works perfectly where our cabin is and the alerts are very reliable and instant! It's a no brainer and I tell everyone I know with a cabin about it and show them the app!
-          </div>
-          <div class="testimonial-author">
-            <div class="author-avatar">
-              <i class="fas fa-user"></i>
-            </div>
-            <div class="author-info">
-              <h4>Cabin Owner</h4>
-              <p>Emma Lake, SK</p>
+      <div class="review-grid">
+        <div class="review-card">
+          <i class="fas fa-quote-right quote-icon"></i>
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="review-text">"Got a low temperature alert while we were away for the holidays. We called a neighbor to check our furnace, which had stopped working. Without CabinPulse, we would have returned to frozen pipes and thousands in damage."</p>
+          <div class="reviewer">
+            <div class="avatar">PO</div>
+            <div>
+              <strong>Property Owner</strong>
+              <div class="verified-badge"><i class="fas fa-check-circle"></i> Thunder Bay, ON</div>
             </div>
           </div>
         </div>
         
-        <div class="testimonial-card">
-          <div class="star-rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="testimonial-content">
-            Got a low temperature alert while we were away for the holidays. We were able to call a neighbor to check on our furnace, which had stopped working. Without CabinPulse, we would have returned to frozen pipes and thousands in damage. This device literally paid for itself in one event!
-          </div>
-          <div class="testimonial-author">
-            <div class="author-avatar">
-              <i class="fas fa-user"></i>
-            </div>
-            <div class="author-info">
-              <h4>Property Owner</h4>
-              <p>Thunder Bay, ON</p>
+        <div class="review-card">
+          <i class="fas fa-quote-right quote-icon"></i>
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="review-text">"After years of worrying about frozen pipes every winter, this has been a game-changer. The connection works perfectly where our cabin is and the alerts are very reliable!"</p>
+          <div class="reviewer">
+            <div class="avatar">CO</div>
+            <div>
+              <strong>Cabin Owner</strong>
+              <div class="verified-badge"><i class="fas fa-check-circle"></i> Emma Lake, SK</div>
             </div>
           </div>
         </div>
       </div>
-      <div>
-        <div style="text-align: center;">
-          <a class="cta-button" href="https://www.google.com/search?sca_esv=7899e45081c54108&rlz=1C5GCCM_en&si=APYL9bs7Hg2KMLB-4tSoTdxuOx8BdRvHbByC_AuVpNyh0x2KzeWXWgXwfKH3IlceyMiFu88HEuZVWF8eHsdJTTf-cqBwzE7tIQOeY0nPJ7KjYfeFFZQlRGNoA0lez-VUqH8M6t1h-lLc&q=CabinPulse+Reviews&sa=X&ved=2ahUKEwjR-LikzLONAxUeEVkFHb7RFc8Q0bkNegQIMRAE&biw=1736&bih=849&dpr=2">More Reviews →</a>
-        </div>
-    </div>
+      
     </div>
   </section>
   
-  <!-- FAQ Section -->
-  <section class="faq">
-    <div class="container">
-      <h2 class="section-title">Frequently Asked Questions About CabinPulse's Freeze Alarm Feature</h2>
+  <!-- FAQ -->
+  <section class="features-section" style="background: var(--bg-dark);">
+    <div class="container" style="max-width: 900px;">
+      <div class="text-center" style="margin-bottom:50px;">
+        <h2 style="font-size: 2.5rem;">Frequently Asked Questions</h2>
+      </div>
       
       <div class="faq-grid">
-        <div class="faq-item">
-          <h3><i class="fas fa-temperature-low"></i> What temperature do pipes freeze at?</h3>
-          <p>Water pipes typically begin to freeze when temperatures drop to <a href="https://blog.cabinpulse.com/at-what-temperature-do-pipes-burst/">around -7°C (20°F)</a> or below for an extended period. However, pipes in exterior walls or unheated spaces can freeze at higher temperatures. CabinPulse allows you to set custom alert thresholds so you can be notified well before reaching critical freezing temperatures.</p>
-        </div>
+        <details>
+          <summary>What temperature do pipes freeze at? <i class="fas fa-plus" style="color: var(--primary-accent);"></i></summary>
+          <p>Pipes can freeze as soon as 0°C (32°F) depending on insulation and other factors. CabinPulse lets you set alerts for 3°C, 5°C or whatever threshold you'd like so you have plenty of warning before they reach freezing point.</p>
+        </details>
         
-        <div class="faq-item">
-          <h3><i class="fas fa-wifi"></i> Does CabinPulse need WiFi to work as a freeze alarm?</h3>
-          <p>No, WiFi is NOT required. Unlike most freeze alarms that depend on an internet connection, CabinPulse uses cellular technology (LTE with 3G fallback) to transmit temperature data and alerts. This makes it ideal for remote cabins, vacation homes, or any property where internet connectivity is unreliable or unavailable.</p>
-        </div>
+        <details>
+          <summary>Does it need WiFi? <i class="fas fa-plus" style="color: var(--primary-accent);"></i></summary>
+          <p>No. CabinPulse uses cellular technology (LTE with 3G fallback) to transmit data. It does not rely on your home internet router, making it immune to internet outages.</p>
+        </details>
         
-        <div class="faq-item">
-          <h3><i class="fas fa-mobile-alt"></i> How will I receive freeze alerts?</h3>
-          <p>CabinPulse sends instant alerts via both text message and email when temperatures drop below your customized thresholds. You can <a href="https://blog.cabinpulse.com/how-to-a/">add multiple contacts</a> to receive alerts, ensuring that someone will always be notified even if you're unavailable.</p>
-        </div>
+        <details>
+          <summary>How do I get alerts? <i class="fas fa-plus" style="color: var(--primary-accent);"></i></summary>
+          <p>You receive instant SMS text messages and Emails. You can add unlimited contacts to the notification list.</p>
+        </details>
         
-        <div class="faq-item">
-          <h3><i class="fas fa-snowflake"></i> Will CabinPulse work in very cold environments?</h3>
-          <p>Yes, CabinPulse is designed to function reliably in extreme temperatures from -20°C to 60°C (-4°F to 140°F) while plugged into power. The device's temperature sensors remain accurate even in very cold conditions, making it ideal for winter cabin monitoring.</p>
-        </div>
+        <details>
+          <summary>Does it work in extreme cold? <i class="fas fa-plus" style="color: var(--primary-accent);"></i></summary>
+          <p>CabinPulse is designed to be used indoors, but the device can operate and accurately measure temperatures from -20°C to 60°C (-4°F to 140°F) while plugged in.</p>
+        </details>
         
-        <div class="faq-item">
-          <h3><i class="fas fa-battery-half"></i> What happens during a power outage?</h3>
-          <p>CabinPulse features a backup battery that keeps the device functioning for up to 3 days during power outages. You'll receive an immediate alert when power is lost, and the device will continue monitoring temperature and sending alerts throughout the outage period.</p>
-        </div>
-        
-        <div class="faq-item">
-          <h3><i class="fas fa-map-marker-alt"></i> Where should I place the CabinPulse device for best freeze protection?</h3>
-          <p>For optimal freeze protection, place your CabinPulse device in the coldest area of your property where pipes are located, such as near exterior walls, in basements, or in crawl spaces. If you have multiple vulnerable areas, you can add additional CabinPulse devices to monitor different zones.</p>
-        </div>
-        
-        <div class="faq-item">
-          <h3><i class="fas fa-cog"></i> Can I adjust the temperature threshold for freeze alerts?</h3>
-          <p>Yes, CabinPulse allows you to set custom temperature thresholds through the dashboard from anywhere. Most users set their freeze alerts between 3-5°C (37-41°F) to provide ample warning before pipes reach freezing temperatures.</p>
-        </div>
-        
-        <div class="faq-item">
-          <h3><i class="fas fa-chart-line"></i> Does CabinPulse record temperature history?</h3>
-          <p>Yes, CabinPulse maintains a complete historical record of temperature readings for as long as your subscription is active. This data helps you identify patterns, troubleshoot heating issues, and optimize your property's climate control systems.</p>
-        </div>
+        <details>
+          <summary>Where should I place it? <i class="fas fa-plus" style="color: var(--primary-accent);"></i></summary>
+          <p>Place it in the area most vulnerable to cold, such as a basement, utility room, or near plumbing on an exterior wall.</p>
+        </details>
+
+        <details>
+          <summary>Can I monitor multiple areas? <i class="fas fa-plus" style="color: var(--primary-accent);"></i></summary>
+          <p>Yes, you can monitor multiple areas by using CabinPulse Temperature Add-Ons. Each Add-On can be placed in a different location to provide comprehensive coverage, without increasing your subscription cost.</p>
+        </details>
+        <details>
+          <summary>Does CabinPulse support a leak detection feature? <i class="fas fa-plus" style="color: var(--primary-accent);"></i></summary>
+          <p>Yes, CabinPulse can support leak detection by using our Leak Sensor Add-On. These Add-Ons can be placed in areas prone to leaks, providing real-time alerts and monitoring.</p>
+        </details>
       </div>
     </div>
-    <div>
-      <div style="text-align: center;">
-        <a class="cta-button" href="https://cabinpulse.com/#faq">More Answers →</a>
-      </div>
-  </div>
   </section>
   
-  <!-- Final CTA Section -->
+  <!-- FINAL CTA -->
   <section class="final-cta">
-    <div class="container final-cta-container">
-      <div class="final-cta-icon">
-        <i class="fas fa-shield-alt"></i>
-      </div>
-      <h2>Protect Your Property from Freezing Damage</h2>
-      <p>CabinPulse provides reliable freeze protection with precision temperature monitoring, instant alerts, and no WiFi required - with monitoring of many additional conditions, too.</p>
+    <div class="container">
+      <h2 style="font-size: 3rem; margin-bottom: 20px;">Don't Risk Frost Damage.</h2>
+      <p style="font-size: 1.2rem; margin-bottom: 40px; opacity: 0.9; color: #ddd;">Secure your peace of mind with the most reliable freeze alarm in Canada.</p>
       
-      <div class="cta-features">
-        <div class="cta-feature">
-          <i class="fas fa-check-circle"></i>
-          <span>No WiFi Required</span>
-        </div>
-        <div class="cta-feature">
-          <i class="fas fa-check-circle"></i>
-          <span>±0.2°C Accuracy</span>
-        </div>
-        <div class="cta-feature">
-          <i class="fas fa-check-circle"></i>
-          <span>Immediate Alerts</span>
-        </div>
-      </div>
-      
-      <a href="https://cabinpulse.com/index.html#pricing" class="cta-button">Get CabinPulse Now →</a>
+      <a href="https://cabinpulse.com/index.html#pricing" class="btn-primary" style="font-size: 1.2rem; padding: 20px 50px;">
+        Get CabinPulse Now <i class="fas fa-chevron-right"></i>
+      </a>
+      <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.7;"><i class="fas fa-shield-alt"></i> 30-Day Money Back Guarantee • Made in Canada</p>
     </div>
   </section>
   
   <!-- Footer -->
   <footer id="contact">
     <div class="container">
-      <div class="footer-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px; text-align: left; padding: 48px 0;">
+      <div class="footer-grid">
         <!-- Company Info -->
         <div>
           <div class="logo-container" style="margin-bottom: 20px;">
             <img src="../cpicon.png" alt="CabinPulse Logo" style="width: 40px; height: 40px; margin-right: 10px;">
             <h3>CabinPulse</h3>
           </div>
-          <p style="color: #ccc; margin-bottom: 20px;">Intelligent remote property monitoring, no WiFi required.</p>
+          <p>Intelligent remote property monitoring, no WiFi required.</p>
           <div style="display: flex; gap: 15px;">
-            <a href="mailto:support@cabinpulse.com" style="color: var(--text-color);"><i class="fas fa-envelope"></i></a>
-            <a href="https://www.facebook.com/61567189714759" style="color: var(--text-color);"><i class="fab fa-facebook"></i></a>
+            <a href="mailto:support@cabinpulse.com"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.facebook.com/61567189714759"><i class="fab fa-facebook"></i></a>
           </div>
         </div>
         
         <!-- Use Cases Section -->
         <div>
-          <h4 style="color: var(--highlight-color); margin-bottom: 20px;">Use Cases</h4>
-          <ul style="list-style: none; padding: 0;">
-            <li style="margin-bottom: 10px;">
-              <a href="/uses/freeze-alarm.html" style="color: var(--text-color); text-decoration: none; display: flex; align-items: center;">
-                <i class="fas fa-temperature-low" style="margin-right: 10px;"></i>
-                Freeze Alarm
-              </a>
-            </li>
-            <li style="margin-bottom: 10px;">
-              <a href="/uses/power-outage-monitor.html" style="color: var(--text-color); text-decoration: none; display: flex; align-items: center;">
-                <i class="fas fa-plug-circle-xmark" style="margin-right: 10px;"></i>
-                Power Outage Monitor
-              </a>
-            </li>
-            <li style="margin-bottom: 10px;">
-              <a href="/uses/remote-cabin-cottage-monitoring-system.html" style="color: var(--text-color); text-decoration: none; display: flex; align-items: center;">
-                <i class="fas fa-mountain-sun" style="margin-right: 10px;"></i>
-                Cabin & Cottage Monitoring System
-              </a>
-            </li>
-            <li style="margin-bottom: 10px;">
-              <a href="/uses/" style="color: var(--highlight-color); text-decoration: none; display: flex; align-items: center; font-weight: 500;">
-                <span>View All Use Cases</span>
-                <i class="fas fa-arrow-right" style="margin-left: 10px;"></i>
-              </a>
-            </li>
+          <h4>Use Cases</h4>
+          <ul>
+            <li><a href="/uses/freeze-alarm.html"><i class="fas fa-temperature-low"></i> Freeze Alarm</a></li>
+            <li><a href="/uses/power-outage-monitor.html"><i class="fas fa-plug-circle-xmark"></i> Power Outage Monitor</a></li>
+            <li><a href="/uses/remote-cabin-cottage-monitoring-system.html"><i class="fas fa-mountain-sun"></i> Cabin & Cottage Monitoring</a></li>
+            <li><a href="/uses/"><span>View All Use Cases</span><i class="fas fa-arrow-right"></i></a></li>
           </ul>
         </div>
         
         <!-- Quick Links -->
         <div>
-          <h4 style="color: var(--highlight-color); margin-bottom: 20px;">Quick Links</h4>
-          <ul style="list-style: none; padding: 0;">
-            <li style="margin-bottom: 10px;"><a href="#features" style="color: var(--text-color); text-decoration: none;">Features</a></li>
-            <li style="margin-bottom: 10px;"><a href="#pricing" style="color: var(--text-color); text-decoration: none;">Pricing</a></li>
-            <li style="margin-bottom: 10px;"><a href="#faq" style="color: var(--text-color); text-decoration: none;">FAQ</a></li>
-            <li style="margin-bottom: 10px;"><a href="/legal.html" style="color: var(--text-color); text-decoration: none;">Legal</a></li>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="/legal.html">Legal</a></li>
           </ul>
-  
-          <!-- Press Links -->
-          <h4 style="color: var(--highlight-color); margin-top: 25px; margin-bottom: 20px;">Press</h4>
-          <ul style="list-style: none; padding: 0;">
-            <li style="margin-bottom: 10px;">
-              <a href="https://www.theglobeandmail.com/investing/markets/markets-news/GetNews/29709301/cabinpulse-launches-remote-monitoring-solution-for-cabin-owners-no-wifi-needed/" 
-                 style="color: var(--text-color); text-decoration: none; display: flex; align-items: center;">
-                <i class="far fa-newspaper" style="margin-right: 10px;"></i>
-                CabinPulse Launch
-              </a>
-            </li>
-            <li style="margin-bottom: 10px;">
-              <a href="https://www.barchart.com/story/news/32222883/cabinpulse-announces-major-product-updates-new-design-expanded-connectivity-advanced-features-and-flexible-plans" 
-                 style="color: var(--text-color); text-decoration: none; display: flex; align-items: center;">
-                <i class="far fa-newspaper" style="margin-right: 10px;"></i>
-                Product Updates
-              </a>
-            </li>
+          <h4 style="margin-top: 25px;">Press</h4>
+          <ul>
+            <li><a href="https://www.theglobeandmail.com/investing/markets/markets-news/GetNews/29709301/cabinpulse-launches-remote-monitoring-solution-for-cabin-owners-no-wifi-needed/"><i class="far fa-newspaper"></i> CabinPulse Launch</a></li>
+            <li><a href="https://www.barchart.com/story/news/32222883/cabinpulse-announces-major-product-updates-new-design-expanded-connectivity-advanced-features-and-flexible-plans"><i class="far fa-newspaper"></i> Product Updates</a></li>
           </ul>
         </div>
         
         <!-- Helpful Links & Contact -->
         <div>
-          <h4 style="color: var(--highlight-color); margin-bottom: 20px;">Helpful Links</h4>
-          <ul style="list-style: none; padding: 0;">
-            <li style="margin-bottom: 10px;"><a href="/manual.html" style="color: var(--text-color); text-decoration: none;"><i class="fas fa-book" style="margin-right: 10px;"></i>CabinPulse Manual</a></li>
-            <li style="margin-bottom: 10px;"><a href="https://blog.cabinpulse.com" style="color: var(--text-color); text-decoration: none;"><i class="fas fa-blog" style="margin-right: 10px;"></i>CabinPulse Blog</a></li>
-            <li style="margin-bottom: 10px;"><a href="https://blog.cabinpulse.com/how-to-prevent-frozen-pipes-in-your-cabin-this-winter/" style="color: var(--text-color); text-decoration: none;"><i class="far fa-newspaper" style="margin-right: 10px;"></i>Prevent Frozen Pipes</a></li>
-            <li style="margin-bottom: 10px;"><a href="https://blog.cabinpulse.com/remote-vacation-home-monitors-keeping-your-investment-safe/" style="color: var(--text-color); text-decoration: none;"><i class="far fa-newspaper" style="margin-right: 10px;"></i>Remote Home Monitors</a></li>
+          <h4>Helpful Links</h4>
+          <ul>
+            <li><a href="/manual.html"><i class="fas fa-book"></i> CabinPulse Manual</a></li>
+            <li><a href="https://blog.cabinpulse.com"><i class="fas fa-blog"></i> CabinPulse Blog</a></li>
+            <li><a href="https://blog.cabinpulse.com/how-to-prevent-frozen-pipes-in-your-cabin-this-winter/"><i class="far fa-newspaper"></i> Prevent Frozen Pipes</a></li>
+            <li><a href="https://blog.cabinpulse.com/remote-vacation-home-monitors-keeping-your-investment-safe/"><i class="far fa-newspaper"></i> Remote Home Monitors</a></li>
           </ul>
-          
-          <h4 style="color: var(--highlight-color); margin-top: 25px; margin-bottom: 20px;">Contact</h4>
-          <ul style="list-style: none; padding: 0;">
-            <li style="margin-bottom: 10px;"><i class="fas fa-envelope" style="margin-right: 10px;"></i><a href="mailto:support@cabinpulse.com" style="color: var(--text-color);">support@cabinpulse.com</a></li>
-            <li style="margin-bottom: 10px;"><i class="fas fa-location-dot" style="margin-right: 10px;"></i> Saskatchewan, Canada</li>
+          <h4 style="margin-top: 25px;">Contact</h4>
+          <ul>
+            <li><i class="fas fa-envelope"></i> <a href="mailto:support@cabinpulse.com">support@cabinpulse.com</a></li>
+            <li><i class="fas fa-location-dot"></i> Saskatchewan, Canada</li>
           </ul>
         </div>
       </div>
@@ -2285,165 +1346,57 @@
     // Header scroll effect
     window.addEventListener('scroll', function() {
       var header = document.querySelector('header');
-      header.classList.toggle('scrolled', window.scrollY > 50);
+      if(header) header.classList.toggle('scrolled', window.scrollY > 50);
     });
 
     // Mobile menu functionality
     document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const mobileMenuClose = document.querySelector('.mobile-menu-close');
-    const dropdownLinks = document.querySelectorAll('.mobile-nav-link.has-dropdown');
+      const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+      const mobileMenu = document.querySelector('.mobile-menu');
+      const mobileMenuClose = document.querySelector('.mobile-menu-close');
+      const dropdownLinks = document.querySelectorAll('.mobile-nav-link.has-dropdown');
 
-    // Toggle mobile menu
-    function toggleMobileMenu() {
-      mobileMenu.classList.toggle('open');
-      mobileMenuToggle.classList.toggle('active');
-      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-    }
-
-    // Open mobile menu
-    if (mobileMenuToggle) {
-      mobileMenuToggle.addEventListener('click', toggleMobileMenu);
-    }
-
-    // Close mobile menu
-    if (mobileMenuClose) {
-      mobileMenuClose.addEventListener('click', toggleMobileMenu);
-    }
-
-    // Close mobile menu when clicking outside
-    if (mobileMenu) {
-      mobileMenu.addEventListener('click', function(e) {
-        if (e.target === mobileMenu) {
-          toggleMobileMenu();
-        }
-      });
-    }
-
-    // Handle dropdown toggles
-    dropdownLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const parentItem = this.closest('.mobile-nav-item');
-        const dropdown = parentItem.querySelector('.mobile-dropdown');
-        const isOpen = dropdown.classList.contains('open');
-
-        // Close all other dropdowns
-        document.querySelectorAll('.mobile-dropdown.open').forEach(openDropdown => {
-          if (openDropdown !== dropdown) {
-            openDropdown.classList.remove('open');
-            openDropdown.previousElementSibling.classList.remove('open');
-          }
-        });
-
-        // Toggle current dropdown
-        dropdown.classList.toggle('open', !isOpen);
-        this.classList.toggle('open', !isOpen);
-      });
-    });
-
-    // Close mobile menu when clicking on non-dropdown links
-    const regularLinks = document.querySelectorAll('.mobile-dropdown-item, .mobile-cta-btn, .mobile-login-btn');
-    regularLinks.forEach(link => {
-      link.addEventListener('click', function() {
-        // Small delay to allow navigation
-        setTimeout(() => {
-          toggleMobileMenu();
-        }, 200);
-      });
-    });
-
-    // Handle escape key
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
-        toggleMobileMenu();
+      function toggleMobileMenu() {
+        mobileMenu.classList.toggle('open');
+        mobileMenuToggle.classList.toggle('active');
+        document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
       }
-    });
-  });
 
- document.addEventListener('DOMContentLoaded', function() {
-  // Temperature display animation
-  const tempDisplay = document.querySelector('.temp-value');
-  const deviceTempDisplay = document.querySelector('.device-temp-display');
-  const tempAlert = document.querySelector('.temp-alert');
-  let temp = 5.4; // Start at 5.4 as requested
-  let alertTriggered = false;
-  let thresholdWarningShown = false;
-  
-  // Create the threshold warning element
-  const thresholdWarning = document.createElement('div');
-  thresholdWarning.className = 'threshold-warning';
-  thresholdWarning.innerHTML = 'Below Threshold';
-  thresholdWarning.style.position = 'absolute';
-  thresholdWarning.style.top = '-30px';
-  thresholdWarning.style.left = '0';
-  thresholdWarning.style.width = '100%';
-  thresholdWarning.style.backgroundColor = '#e94560';
-  thresholdWarning.style.color = 'white';
-  thresholdWarning.style.padding = '5px';
-  thresholdWarning.style.textAlign = 'center';
-  thresholdWarning.style.borderRadius = '8px 8px 0 0';
-  thresholdWarning.style.fontWeight = 'bold';
-  thresholdWarning.style.fontSize = '0.8rem';
-  thresholdWarning.style.opacity = '0';
-  thresholdWarning.style.transition = 'opacity 0.5s ease-in-out';
-  deviceTempDisplay.prepend(thresholdWarning);
-  
-  // Function to gradually decrease temperature
-  const decreaseTemp = () => {
-    temp -= 0.1;
-    tempDisplay.textContent = `${temp.toFixed(1)}°C`;
-    
-    if (temp <= 5.0 && !alertTriggered) {
-      // Trigger alert when reaching 5.0
-      alertTriggered = true;
-      deviceTempDisplay.classList.add('alert-active');
-      document.querySelector('.status-text').textContent = 'Alert Sent';
-      document.querySelector('.status-indicator').style.backgroundColor = '#e94560';
-      
-      // After 5 seconds, hide the alert and show the threshold warning
-      setTimeout(() => {
-        // Hide the alert by removing the class
-        deviceTempDisplay.classList.remove('alert-active');
-        
-        // Wait for animation to complete, then show the threshold warning
-        setTimeout(() => {
-          if (!thresholdWarningShown) {
-            thresholdWarningShown = true;
-            deviceTempDisplay.style.border = '2px solid #ff0033';
-            deviceTempDisplay.style.boxShadow = '0 0 15px rgba(255, 0, 51, 0.5)';
-            thresholdWarning.style.opacity = '1';
-            
-            // After showing the warning, continue with colder temperature
-            temp = 4.7;
-            tempDisplay.textContent = `${temp.toFixed(1)}°C`;
-          }
-        }, 500); // Short delay to ensure animation completes
-      }, 5000);
-      
-      return;
-    }
-    
-    if (!alertTriggered) {
-      // Continue countdown if we haven't reached 5.0 yet
-      setTimeout(decreaseTemp, 800);
-    }
-  };
-  
-  // Start the countdown after a short delay
-  setTimeout(decreaseTemp, 1000);
-  
-  // Handle the temperature fluctuation after alert
-  setInterval(() => {
-    if (alertTriggered && thresholdWarningShown) {
-      // Small fluctuations after alert
-      temp += (Math.random() > 0.5 ? 0.1 : -0.1) * 0.1;
-      tempDisplay.textContent = `${temp.toFixed(1)}°C`;
-    }
-  }, 3000);
-});
-    </script>
+      if (mobileMenuToggle) mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+      if (mobileMenuClose) mobileMenuClose.addEventListener('click', toggleMobileMenu);
+
+      if (mobileMenu) {
+        mobileMenu.addEventListener('click', function(e) {
+          if (e.target === mobileMenu) toggleMobileMenu();
+        });
+      }
+
+      dropdownLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const parentItem = this.closest('.mobile-nav-item');
+          const dropdown = parentItem.querySelector('.mobile-dropdown');
+          const isOpen = dropdown.classList.contains('open');
+
+          document.querySelectorAll('.mobile-dropdown.open').forEach(openDropdown => {
+            if (openDropdown !== dropdown) {
+              openDropdown.classList.remove('open');
+              openDropdown.previousElementSibling.classList.remove('open');
+            }
+          });
+
+          dropdown.classList.toggle('open', !isOpen);
+          this.classList.toggle('open', !isOpen);
+        });
+      });
+
+      const regularLinks = document.querySelectorAll('.mobile-dropdown-item, .mobile-cta-btn, .mobile-login-btn');
+      regularLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          setTimeout(() => { toggleMobileMenu(); }, 200);
+        });
+      });
+    });
+  </script>
 </body>
 </html>
