@@ -3700,5 +3700,454 @@
             initializePlan();
         });
     </script>
+    <!-- ========================================== -->
+<!-- CabinPulse Custom Consent Manager (Start)  -->
+<!-- ========================================== -->
+
+<style>
+/* --- Custom Consent Styles --- */
+:root {
+  /* Mapped to CabinPulse Brand Colors */
+  --cp-highlight: #e94560;       /* Your Highlight/Action Color */
+  --cp-highlight-hover: #d33b52; /* Slightly darker for hover state */
+  --cp-bg-panel: #16213e;        /* Your Secondary Color (Cards/Modals) */
+  --cp-bg-dark: #1a1a2e;         /* Your Primary Color (Backgrounds) */
+  --cp-text: #ffffff;
+  --cp-text-muted: rgba(255, 255, 255, 0.7);
+  --cp-border: rgba(255, 255, 255, 0.1);
+}
+
+#cp-consent-container {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--cp-text);
+  z-index: 999999; /* Max z-index to stay on top */
+  position: relative;
+}
+
+/* 1. The Bottom Banner */
+#cp-consent-banner {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 1000px;
+  /* Using your primary color with transparency for glassmorphism */
+  background: rgba(26, 26, 46, 0.95); 
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--cp-border);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+  display: none; /* Hidden by default, JS shows it */
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  #cp-consent-banner {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+.cp-banner-content h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--cp-text);
+}
+
+.cp-banner-content p {
+  font-size: 13px;
+  color: var(--cp-text-muted);
+  margin: 0;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.cp-btn-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Button Styles */
+.cp-btn {
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  outline: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Primary Button (Pink/Red Highlight) */
+.cp-btn-primary {
+  background: var(--cp-highlight);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
+}
+
+.cp-btn-primary:hover {
+  background: var(--cp-highlight-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(233, 69, 96, 0.5);
+}
+
+/* Outline Button */
+.cp-btn-outline {
+  background: transparent;
+  border: 1px solid var(--cp-border);
+  color: var(--cp-text);
+}
+
+.cp-btn-outline:hover {
+  border-color: var(--cp-text);
+  background: rgba(255,255,255,0.05);
+}
+
+/* 2. The Preferences Modal */
+#cp-consent-modal {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(5px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000000;
+}
+
+.cp-modal-content {
+  background: var(--cp-bg-panel); /* Uses your Secondary Color */
+  width: 90%;
+  max-width: 500px;
+  border-radius: 16px;
+  border: 1px solid var(--cp-border);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+  overflow: hidden;
+  animation: cpFadeIn 0.3s ease;
+}
+
+.cp-modal-header {
+  padding: 20px 24px;
+  background: rgba(0,0,0,0.2);
+  border-bottom: 1px solid var(--cp-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cp-modal-header h3 { margin: 0; font-size: 18px; color: var(--cp-text); }
+
+.cp-close-btn { 
+  background: none; 
+  border: none; 
+  color: var(--cp-text-muted); 
+  font-size: 24px; 
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.cp-close-btn:hover { color: var(--cp-highlight); }
+
+.cp-modal-body {
+  padding: 24px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.cp-toggle-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--cp-border);
+}
+
+.cp-toggle-row:last-child { border: none; margin-bottom: 0; padding-bottom: 0; }
+
+.cp-toggle-info h4 { margin: 0 0 6px 0; font-size: 14px; font-weight: 600; }
+.cp-toggle-info p { margin: 0; font-size: 12px; color: var(--cp-text-muted); line-height: 1.4; }
+
+/* Switch Toggle */
+.cp-switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 26px;
+  flex-shrink: 0;
+}
+
+.cp-switch input { opacity: 0; width: 0; height: 0; }
+
+.cp-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #2a2a40; /* Darker track */
+  transition: .4s;
+  border-radius: 34px;
+  border: 1px solid var(--cp-border);
+}
+
+.cp-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .cp-slider { 
+  background-color: var(--cp-highlight); 
+  border-color: var(--cp-highlight);
+}
+input:checked + .cp-slider:before { transform: translateX(20px); }
+input:disabled + .cp-slider { opacity: 0.5; cursor: not-allowed; }
+
+.cp-modal-footer {
+  padding: 20px 24px;
+  background: rgba(0,0,0,0.2);
+  border-top: 1px solid var(--cp-border);
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+@keyframes cpFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+
+<div id="cp-consent-container">
+  <!-- Bottom Banner -->
+  <div id="cp-consent-banner">
+    <div class="cp-banner-content">
+      <h3><i class="fas fa-cookie-bite" style="color: var(--cp-highlight);"></i> Privacy Settings</h3>
+      <p>We use cookies to enhance your experience, analyze site usage, and assist in our marketing efforts. You can customize your preferences or accept all cookies.</p>
+    </div>
+    <div class="cp-btn-group">
+      <button class="cp-btn cp-btn-outline" onclick="cpConsent.openModal()">Preferences</button>
+      <button class="cp-btn cp-btn-primary" onclick="cpConsent.acceptAll()">Accept All</button>
+    </div>
+  </div>
+
+  <!-- Preferences Modal -->
+  <div id="cp-consent-modal">
+    <div class="cp-modal-content">
+      <div class="cp-modal-header">
+        <h3>Cookie Preferences</h3>
+        <button class="cp-close-btn" onclick="cpConsent.closeModal()">&times;</button>
+      </div>
+      <div class="cp-modal-body">
+        
+        <!-- Essential -->
+        <div class="cp-toggle-row">
+          <div class="cp-toggle-info">
+            <h4>Strictly Necessary</h4>
+            <p>Required for the website to function (e.g., login, cart). Cannot be disabled.</p>
+          </div>
+          <label class="cp-switch">
+            <input type="checkbox" checked disabled>
+            <span class="cp-slider"></span>
+          </label>
+        </div>
+
+        <!-- Analytics -->
+        <div class="cp-toggle-row">
+          <div class="cp-toggle-info">
+            <h4>Analytics</h4>
+            <p>Help us understand how the site is used (Clarity, Mouseflow).</p>
+          </div>
+          <label class="cp-switch">
+            <input type="checkbox" id="cp-opt-analytics">
+            <span class="cp-slider"></span>
+          </label>
+        </div>
+
+        <!-- Marketing -->
+        <div class="cp-toggle-row">
+          <div class="cp-toggle-info">
+            <h4>Marketing</h4>
+            <p>Used for ads and conversion tracking (Facebook, Google, Bing).</p>
+          </div>
+          <label class="cp-switch">
+            <input type="checkbox" id="cp-opt-marketing">
+            <span class="cp-slider"></span>
+          </label>
+        </div>
+
+      </div>
+      <div class="cp-modal-footer">
+        <button class="cp-btn cp-btn-outline" onclick="cpConsent.rejectAll()">Reject All</button>
+        <button class="cp-btn cp-btn-primary" onclick="cpConsent.savePreferences()">Save Preferences</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* --- Custom Consent Logic Engine --- */
+const cpConsent = (function() {
+  
+  // CONFIGURATION: Add your IDs here
+  const config = {
+    googleAds: 'AW-17117116213',
+    fbPixel: '491964136205687',
+    clarity: 'rzeoobm96j',
+    bing: '97188751',
+    mouseflow: '61e5b084-381f-4246-be67-cb4704cb544b'
+  };
+
+  const COOKIE_NAME = 'cabinpulse_consent_v1';
+  
+  // DOM Elements
+  const banner = document.getElementById('cp-consent-banner');
+  const modal = document.getElementById('cp-consent-modal');
+  const checkAnalytics = document.getElementById('cp-opt-analytics');
+  const checkMarketing = document.getElementById('cp-opt-marketing');
+
+  // 1. Check for existing consent
+  function init() {
+    const saved = localStorage.getItem(COOKIE_NAME);
+    if (saved) {
+      const preferences = JSON.parse(saved);
+      runScripts(preferences);
+    } else {
+      showBanner();
+    }
+  }
+
+  // 2. UI Actions
+  function showBanner() { banner.style.display = 'flex'; }
+  function hideBanner() { banner.style.display = 'none'; }
+  function openModal() { 
+    modal.style.display = 'flex'; 
+    // Load current checkboxes based on existing state or default to false
+    const saved = localStorage.getItem(COOKIE_NAME);
+    if(saved) {
+      const prefs = JSON.parse(saved);
+      checkAnalytics.checked = prefs.analytics;
+      checkMarketing.checked = prefs.marketing;
+    }
+  }
+  function closeModal() { modal.style.display = 'none'; }
+
+  // 3. User Decisions
+  function acceptAll() {
+    const prefs = { necessary: true, analytics: true, marketing: true };
+    save(prefs);
+  }
+
+  function rejectAll() {
+    const prefs = { necessary: true, analytics: false, marketing: false };
+    save(prefs);
+  }
+
+  function savePreferences() {
+    const prefs = {
+      necessary: true,
+      analytics: checkAnalytics.checked,
+      marketing: checkMarketing.checked
+    };
+    save(prefs);
+  }
+
+  function save(prefs) {
+    localStorage.setItem(COOKIE_NAME, JSON.stringify(prefs));
+    hideBanner();
+    closeModal();
+    runScripts(prefs);
+  }
+
+  // 4. The Script Loader (The Engine)
+  function runScripts(prefs) {
+    console.log('CabinPulse Consent:', prefs);
+
+    // --- ANALYTICS SCRIPTS (Clarity, Mouseflow) ---
+    if (prefs.analytics) {
+      // Load Clarity
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", config.clarity);
+
+      // Load Mouseflow
+      var mf = document.createElement("script");
+      mf.type = "text/javascript"; mf.defer = true;
+      mf.src = "//cdn.mouseflow.com/projects/" + config.mouseflow + ".js";
+      document.getElementsByTagName("head")[0].appendChild(mf);
+    }
+
+    // --- MARKETING SCRIPTS (Google, FB, Bing) ---
+    if (prefs.marketing) {
+      // 1. Google Ads (GTAG)
+      var gas = document.createElement('script');
+      gas.async = true;
+      gas.src = "https://www.googletagmanager.com/gtag/js?id=" + config.googleAds;
+      document.head.appendChild(gas);
+      
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', config.googleAds);
+
+      // 2. Facebook Pixel
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', config.fbPixel);
+      fbq('track', 'PageView');
+
+      // 3. Bing / Microsoft UET
+      (function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:config.bing, enableAutoSpaTracking: true};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");
+    }
+  }
+
+  // Public API
+  return {
+    init: init,
+    openModal: openModal,
+    closeModal: closeModal,
+    acceptAll: acceptAll,
+    rejectAll: rejectAll,
+    savePreferences: savePreferences
+  };
+})();
+
+// Initialize on Load
+document.addEventListener("DOMContentLoaded", function() {
+  cpConsent.init();
+});
+</script>
+
+<!-- ========================================== -->
+<!-- CabinPulse Custom Consent Manager (End)    -->
+<!-- ========================================== -->
 </body>
 </html>

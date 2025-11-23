@@ -6,13 +6,10 @@
     <title>Legal - CabinPulse</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <script defer src="https://analytics.cabinliving.ca/script.js" data-website-id="bd58d7d8-2b00-44ae-8285-c76db6e383ad"></script>
     <style>
         :root {
             --primary-color: #1a1a2e;
             --secondary-color: #16213e;
-            --cta-color: #ffffff;
-            --accent-color: #0f3460;
             --highlight-color: #e94560;
             --text-color: #ffffff;
         }
@@ -75,6 +72,7 @@
             display: flex;
             gap: 20px;
             margin-bottom: 30px;
+            flex-wrap: wrap;
         }
 
         .tab {
@@ -121,6 +119,12 @@
             font-size: 1.4rem;
         }
 
+        .tab-content h4 {
+            color: var(--highlight-color);
+            margin: 15px 0 10px;
+            font-size: 1.2rem;
+        }
+
         .tab-content p, .tab-content li {
             margin-bottom: 15px;
         }
@@ -128,6 +132,14 @@
         .tab-content ul {
             margin-left: 20px;
             margin-bottom: 20px;
+        }
+
+        .highlight-box {
+            background: rgba(233, 69, 96, 0.1);
+            border-left: 4px solid var(--highlight-color);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
         }
 
         footer {
@@ -176,183 +188,970 @@
                 <div class="tabs">
                     <button class="tab active" onclick="openTab('privacy')">Privacy Policy</button>
                     <button class="tab" onclick="openTab('terms')">Terms & Conditions</button>
+                    <button class="tab" onclick="openTab('cookies')">Cookie Policy</button>
                 </div>
 
                 <div id="privacy" class="tab-content active">
                     <h1>Privacy Policy</h1>
-                    <p>Last updated: December 24, 2024</p>
+                    <p><strong>Effective Date:</strong> November 22, 2025</p>
+                    <p><strong>Last Updated:</strong> November 22, 2025</p>
 
-                    <h2>Introduction</h2>
-                    <p>CabinPulse ("we", "us", "our"), a service provided by Toccata, Inc., is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and protect your personal information.</p>
+                    <h2>1. Introduction</h2>
+                    <p>Toccata, Inc. ("Company," "we," "us," or "our"), operating as CabinPulse, is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your personal information when you use our services, website, and products.</p>
+                    
+                    <p>Our registered office is located in Saskatchewan, Canada, and we maintain operational headquarters in Saskatoon, SK. We are also registered in Delaware, United States for sales purposes only.</p>
 
-                    <h2>Information We Collect</h2>
-                    <h3>Personal Information</h3>
+                    <div class="highlight-box">
+                        <p><strong>Important:</strong> By using our services, you consent to the collection and use of information in accordance with this Privacy Policy. If you do not agree with our policies and practices, do not use our services.</p>
+                    </div>
+
+                    <h2>2. Information We Collect</h2>
+                    
+                    <h3>2.1 Personal Information You Provide</h3>
+                    <p>We collect information that you voluntarily provide to us when you:</p>
                     <ul>
-                        <li>Contact information (name, email address, phone number)</li>
-                        <li>Account credentials (encrypted passwords)</li>
-                        <li>Shipping and billing addresses</li>
-                        <li>Device data from your CabinPulse unit (temperature, humidity, power status, and air quality readings)</li>
+                        <li><strong>Create an Account:</strong> Name, email address, phone number, password (encrypted)</li>
+                        <li><strong>Make a Purchase:</strong> Billing and shipping addresses, payment information (processed by our payment processor Stripe)</li>
+                        <li><strong>Contact Us:</strong> Any information you provide in customer support inquiries</li>
+                        <li><strong>Subscribe to Communications:</strong> Email address and communication preferences</li>
                     </ul>
 
-                    <h3>Automatically Collected Information</h3>
-                    <p>We collect anonymous usage data on our landing page only through:</p>
+                    <h3>2.2 Device Data</h3>
+                    <p>When you use a CabinPulse monitoring device, we automatically collect:</p>
                     <ul>
-                        <li>Umami Analytics</li>
-                        <li>Mouseflow (for user behavior analysis)</li>
+                        <li>Temperature readings</li>
+                        <li>Humidity levels</li>
+                        <li>Air quality measurements (VOC levels)</li>
+                        <li>Power status and outage information</li>
+                        <li>Device health and connectivity status</li>
+                        <li>Device serial number and firmware version</li>
+                        <li>Cellular network information</li>
+                        <li>Add-on sensor data (if applicable)</li>
                     </ul>
 
-                    <h2>How We Use Your Information</h2>
-                    <p>We use your information to:</p>
+                    <h3>2.3 Automatically Collected Information</h3>
+                    <p>We automatically collect certain information when you visit our website:</p>
                     <ul>
-                        <li>Provide and maintain our monitoring service</li>
-                        <li>Process your orders and payments</li>
-                        <li>Send alerts and notifications</li>
-                        <li>Communicate about your account</li>
-                        <li>Improve our service and website</li>
+                        <li><strong>Usage Data:</strong> Pages visited, time spent, click patterns (via Umami Analytics and Mouseflow - landing page only)</li>
+                        <li><strong>Device Information:</strong> Browser type, operating system, device identifiers</li>
+                        <li><strong>Location Information:</strong> General location based on IP address (country/city level only)</li>
+                        <li><strong>Cookies and Similar Technologies:</strong> See our Cookie Policy for details</li>
                     </ul>
 
-                    <h2>Data Storage and Security</h2>
+                    <h3>2.4 Information from Third Parties</h3>
+                    <p>We may receive information from:</p>
                     <ul>
-                        <li>All device data is encrypted during transmission</li>
-                        <li>Passwords are stored in encrypted format</li>
-                        <li>We retain your data for the duration of your active account</li>
-                        <li>Data may be deleted 30 days after account closure</li>
+                        <li>Payment processors (transaction confirmations)</li>
+                        <li>Analytics providers</li>
+                        <li>Marketing partners (if you interact with our advertisements)</li>
                     </ul>
 
-                    <h2>Third-Party Services</h2>
-                    <p>We share limited data only when necessary with:</p>
+                    <h2>3. Legal Basis for Processing (GDPR)</h2>
+                    <p>For users in the European Economic Area (EEA), United Kingdom, or Switzerland, we process your personal data based on the following legal grounds:</p>
                     <ul>
-                        <li>Stripe (payment processing)</li>
-                        <li>Umami Analytics (anonymous website analytics)</li>
-                        <li>Mouseflow (anonymous website behavior analysis)</li>
+                        <li><strong>Contract Performance:</strong> Processing necessary to provide our monitoring services and fulfill our agreement with you</li>
+                        <li><strong>Legitimate Interests:</strong> Improving our services, preventing fraud, network security</li>
+                        <li><strong>Consent:</strong> Marketing communications, analytics cookies (where required)</li>
+                        <li><strong>Legal Obligations:</strong> Compliance with tax, accounting, and legal requirements</li>
                     </ul>
-                    <p>These services have their own privacy policies and handling practices. No mobile information will be shared with third parties/affiliates for marketing/promotional purposes. All other categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.</p>
 
-                    <h2>Data Retention</h2>
-                    <p>We retain your data for as long as you maintain an active account. After account closure, we may delete your data after 30 days.</p>
+                    <h2>4. How We Use Your Information</h2>
+                    <p>We use your information for the following purposes:</p>
+                    
+                    <h3>4.1 Service Provision</h3>
+                    <ul>
+                        <li>Operating and maintaining your CabinPulse monitoring service</li>
+                        <li>Processing and fulfilling orders</li>
+                        <li>Sending critical service alerts and notifications</li>
+                        <li>Providing customer support</li>
+                        <li>Managing your account and subscriptions</li>
+                    </ul>
 
-                    <h2>Your Rights</h2>
+                    <h3>4.2 Communication</h3>
+                    <ul>
+                        <li>Sending transactional emails (order confirmations, alerts, service updates)</li>
+                        <li>Responding to inquiries and support requests</li>
+                        <li>Sending marketing communications (with your consent, where required)</li>
+                        <li>Notifying you of important changes to our services or policies</li>
+                    </ul>
+
+                    <h3>4.3 Improvement and Analytics</h3>
+                    <ul>
+                        <li>Analyzing usage patterns to improve our services</li>
+                        <li>Conducting research and development</li>
+                        <li>Testing new features and functionality</li>
+                        <li>Understanding user preferences and behavior</li>
+                    </ul>
+
+                    <h3>4.4 Legal and Security</h3>
+                    <ul>
+                        <li>Preventing fraud and unauthorized access</li>
+                        <li>Complying with legal obligations</li>
+                        <li>Enforcing our Terms and Conditions</li>
+                        <li>Protecting our rights, property, and safety</li>
+                    </ul>
+
+                    <h2>5. Data Sharing and Disclosure</h2>
+                    
+                    <h3>5.1 Third-Party Service Providers</h3>
+                    <p>We share limited data with trusted third parties who assist us in operating our business:</p>
+                    <ul>
+                        <li><strong>Stripe:</strong> Payment processing (subject to Stripe's Privacy Policy)</li>
+                        <li><strong>Umami Analytics:</strong> Anonymous website analytics (landing page only)</li>
+                        <li><strong>Mouseflow:</strong> Anonymous website behavior analysis (landing page only)</li>
+                        <li><strong>Email Service Providers:</strong> Transactional and marketing emails</li>
+                        <li><strong>Cloud Hosting Providers:</strong> Data storage and server infrastructure</li>
+                        <li><strong>Customer Support Tools:</strong> Managing support tickets and inquiries</li>
+                    </ul>
+                    
+                    <p>These providers are contractually obligated to protect your data and use it only for the purposes we specify.</p>
+
+                    <h3>5.2 Legal Requirements</h3>
+                    <p>We may disclose your information when required by law or in response to:</p>
+                    <ul>
+                        <li>Valid legal process (subpoenas, court orders)</li>
+                        <li>Government or regulatory requests</li>
+                        <li>Protection of our legal rights</li>
+                        <li>Prevention of fraud or illegal activity</li>
+                        <li>Protection of safety of our users or the public</li>
+                    </ul>
+
+                    <h3>5.3 Business Transfers</h3>
+                    <p>In the event of a merger, acquisition, bankruptcy, or sale of assets, your information may be transferred to the successor entity. We will notify you via email and/or prominent notice on our website before your information is transferred.</p>
+
+                    <h3>5.4 With Your Consent</h3>
+                    <p>We may share your information for other purposes with your explicit consent.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Important:</strong> We do NOT sell, rent, or trade your personal information to third parties for their marketing purposes. No mobile information will be shared with third parties/affiliates for marketing/promotional purposes.</p>
+                    </div>
+
+                    <h2>6. International Data Transfers</h2>
+                    <p>We primarily serve customers in the United States and Canada. All data is processed and stored on servers located in Canada. If you are accessing our services from outside these countries, please be aware that your information may be transferred to, stored, and processed in Canada.</p>
+                    
+                    <p>For users in the EEA, UK, or Switzerland, we ensure appropriate safeguards are in place for any international transfers, including:</p>
+                    <ul>
+                        <li>Standard Contractual Clauses approved by the European Commission</li>
+                        <li>Adequacy decisions by the European Commission</li>
+                        <li>Other lawful transfer mechanisms under applicable data protection laws</li>
+                    </ul>
+
+                    <h2>7. Data Security</h2>
+                    <p>We implement appropriate technical and organizational measures to protect your personal information:</p>
+                    <ul>
+                        <li><strong>Encryption:</strong> All device data is encrypted during transmission using industry-standard protocols (TLS 1.2+)</li>
+                        <li><strong>Password Protection:</strong> Passwords are hashed and encrypted using bcrypt</li>
+                        <li><strong>Access Controls:</strong> Strict internal access controls limit who can access your data</li>
+                        <li><strong>Secure Infrastructure:</strong> Regular security audits and monitoring</li>
+                        <li><strong>Employee Training:</strong> All employees receive data protection training</li>
+                    </ul>
+                    
+                    <p>However, no method of transmission over the Internet or electronic storage is 100% secure. While we strive to protect your personal information, we cannot guarantee absolute security.</p>
+
+                    <h2>8. Data Retention</h2>
+                    <p>We retain your personal information for as long as necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required or permitted by law.</p>
+                    
+                    <h3>Specific Retention Periods:</h3>
+                    <ul>
+                        <li><strong>Account Information:</strong> For the duration of your active account</li>
+                        <li><strong>Device Data:</strong> For the duration of your active subscription</li>
+                        <li><strong>Transaction Records:</strong> 7 years for tax and accounting purposes</li>
+                        <li><strong>Marketing Data:</strong> Until you unsubscribe or request deletion</li>
+                        <li><strong>Support Communications:</strong> 3 years after case closure</li>
+                    </ul>
+                    
+                    <p>After account closure, we will delete or anonymize your personal information within 30 days, except where we are required to retain it for legal, tax, or accounting purposes.</p>
+
+                    <h2>9. Your Privacy Rights</h2>
+                    
+                    <h3>9.1 General Rights (All Users)</h3>
                     <p>You have the right to:</p>
                     <ul>
-                        <li>Access your personal data</li>
-                        <li>Request data correction</li>
-                        <li>Request data deletion</li>
-                        <li>Export your data</li>
-                        <li>Close your account</li>
+                        <li><strong>Access:</strong> Request a copy of your personal data</li>
+                        <li><strong>Correction:</strong> Request correction of inaccurate or incomplete data</li>
+                        <li><strong>Deletion:</strong> Request deletion of your personal data (subject to legal obligations)</li>
+                        <li><strong>Data Portability:</strong> Receive your data in a structured, machine-readable format</li>
+                        <li><strong>Opt-Out:</strong> Unsubscribe from marketing communications</li>
+                        <li><strong>Account Closure:</strong> Close your account at any time</li>
                     </ul>
 
-                    <h2>Children's Privacy</h2>
-                    <p>Our service is not intended for children under 13. We do not knowingly collect data from children under 13.</p>
+                    <h3>9.2 European Union / EEA Rights (GDPR)</h3>
+                    <p>If you are located in the EU/EEA, you have additional rights:</p>
+                    <ul>
+                        <li><strong>Right to Restrict Processing:</strong> Limit how we use your data</li>
+                        <li><strong>Right to Object:</strong> Object to processing based on legitimate interests</li>
+                        <li><strong>Right to Withdraw Consent:</strong> Withdraw consent at any time (where processing is based on consent)</li>
+                        <li><strong>Right to Lodge a Complaint:</strong> File a complaint with your local data protection authority</li>
+                    </ul>
 
-                    <h2>International Users</h2>
-                    <p>We only provide services to users in the United States and Canada. All data is processed in accordance with U.S. and Canadian law. Data is stored and processed in Canada.</p>
+                    <h3>9.3 California Rights (CCPA/CPRA)</h3>
+                    <p>If you are a California resident, you have the right to:</p>
+                    <ul>
+                        <li><strong>Know:</strong> Request disclosure of personal information we collect, use, and share</li>
+                        <li><strong>Delete:</strong> Request deletion of your personal information</li>
+                        <li><strong>Opt-Out of Sale:</strong> We do not sell personal information</li>
+                        <li><strong>Non-Discrimination:</strong> We will not discriminate against you for exercising your rights</li>
+                        <li><strong>Correct:</strong> Request correction of inaccurate personal information</li>
+                        <li><strong>Limit Use:</strong> Limit use and disclosure of sensitive personal information</li>
+                    </ul>
 
-                    <h2>Changes to This Policy</h2>
-                    <p>We may update this policy periodically and without notice. We will update this page, and may notify users when changes are made.</p>
+                    <h3>9.4 Canadian Rights (PIPEDA)</h3>
+                    <p>As a Canadian company, we comply with PIPEDA. You have the right to:</p>
+                    <ul>
+                        <li>Access your personal information</li>
+                        <li>Challenge the accuracy and completeness of your information</li>
+                        <li>File a complaint with the Privacy Commissioner of Canada</li>
+                    </ul>
 
-                    <h2>Contact Us</h2>
-                    <p>For any privacy-related questions, please contact us at: support@cabinpulse.com</p>
+                    <h3>9.5 How to Exercise Your Rights</h3>
+                    <p>To exercise any of these rights, please contact us at:</p>
+                    <ul>
+                        <li><strong>Email:</strong> support@cabinpulse.com</li>
+                        <li><strong>Subject Line:</strong> "Privacy Rights Request"</li>
+                    </ul>
+                    
+                    <p>We will respond to your request within 30 days (or as required by applicable law). We may need to verify your identity before processing your request.</p>
+
+                    <h2>10. Children's Privacy</h2>
+                    <p>Our services are not intended for children under 13 years of age (or 16 in the EEA). We do not knowingly collect personal information from children. If you believe we have collected information from a child, please contact us immediately, and we will delete such information.</p>
+
+                    <h2>11. Text Message Communications</h2>
+                    <p>By providing your mobile phone number, you consent to receive transactional text messages (SMS) from CabinPulse, including:</p>
+                    <ul>
+                        <li>Critical device alerts (temperature, power outage, etc.)</li>
+                        <li>Service notifications</li>
+                        <li>Account security messages</li>
+                    </ul>
+                    
+                    <p>Message and data rates may apply. You can opt out of non-critical messages at any time by replying STOP. However, you cannot opt out of critical alert messages while maintaining an active subscription, as these are essential to the service.</p>
+                    
+                    <p><strong>Text messaging originator opt-in data and consent will not be shared with any third parties for marketing or promotional purposes.</strong></p>
+
+                    <h2>12. Marketing Communications</h2>
+                    <p>We may send you marketing emails about our products, services, and promotions. You can opt out at any time by:</p>
+                    <ul>
+                        <li>Clicking the "unsubscribe" link in any marketing email</li>
+                        <li>Adjusting your email preferences in your account settings</li>
+                        <li>Contacting us at support@cabinpulse.com</li>
+                    </ul>
+                    
+                    <p>Please note that even if you opt out of marketing communications, we will still send you transactional emails related to your account and service.</p>
+
+                    <h2>13. Cookies and Tracking Technologies</h2>
+                    <p>We use cookies and similar tracking technologies on our website. For detailed information, please see our Cookie Policy.</p>
+
+                    <h2>14. Do Not Track Signals</h2>
+                    <p>Some browsers have a "Do Not Track" feature. Because there is no common understanding of how to interpret Do Not Track signals, our website does not currently respond to browser Do Not Track signals.</p>
+
+                    <h2>15. Data Breach Notification</h2>
+                    <p>In the event of a data breach that affects your personal information, we will notify you and relevant authorities as required by applicable law. Notification will be made without undue delay and, where feasible, within 72 hours of becoming aware of the breach.</p>
+
+                    <h2>16. Third-Party Links</h2>
+                    <p>Our website may contain links to third-party websites. We are not responsible for the privacy practices of these sites. We encourage you to review the privacy policies of any third-party sites you visit.</p>
+
+                    <h2>17. Changes to This Privacy Policy</h2>
+                    <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology, legal requirements, or other factors. We will notify you of material changes by:</p>
+                    <ul>
+                        <li>Posting the updated policy on our website with a new "Last Updated" date</li>
+                        <li>Sending an email notification to your registered email address</li>
+                        <li>Displaying a prominent notice on our website or in our service</li>
+                    </ul>
+                    
+                    <p>Your continued use of our services after the effective date of the updated Privacy Policy constitutes your acceptance of the changes.</p>
+
+                    <h2>18. Contact Information</h2>
+                    <p>If you have questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:</p>
+                    
+                    <p><strong>Toccata, Inc. (operating as CabinPulse)</strong><br>
+                    Email: support@cabinpulse.com<br>
+                    Attention: Privacy Officer<br>
+                    Operational Address: Saskatoon, SK, Canada</p>
+                    
+                    <p>For EU/EEA data protection inquiries, you may also contact your local data protection authority.</p>
+
+                    <h2>19. Accessibility</h2>
+                    <p>We are committed to ensuring this Privacy Policy is accessible to all users. If you need this policy in an alternative format, please contact us at support@cabinpulse.com.</p>
                 </div>
 
                 <div id="terms" class="tab-content">
                     <h1>Terms and Conditions</h1>
-                    <p>Last updated: February 1, 2025</p>
+                    <p><strong>Effective Date:</strong> November 22, 2025</p>
+                    <p><strong>Last Updated:</strong> November 22, 2025</p>
+
+                    <div class="highlight-box">
+                        <p><strong>IMPORTANT:</strong> PLEASE READ THESE TERMS CAREFULLY BEFORE USING OUR SERVICES. BY CREATING AN ACCOUNT, PURCHASING OUR PRODUCTS, OR USING OUR SERVICES, YOU AGREE TO BE BOUND BY THESE TERMS. IF YOU DO NOT AGREE, DO NOT USE OUR SERVICES.</p>
+                    </div>
 
                     <h2>1. Agreement to Terms</h2>
-                    <p>By accessing our website or using our services, you agree to these Terms and Conditions.</p>
+                    <p>These Terms and Conditions ("Terms") constitute a legally binding agreement between you ("User," "you," or "your") and Toccata, Inc. ("Company," "we," "us," or "our"), operating as CabinPulse, governing your access to and use of our website, products, and services.</p>
+                    
+                    <p>By accessing our website, creating an account, purchasing our products, or using our monitoring services, you represent that:</p>
+                    <ul>
+                        <li>You are at least 18 years of age</li>
+                        <li>You have the legal capacity to enter into a binding contract</li>
+                        <li>You will comply with all terms and conditions set forth herein</li>
+                        <li>All information you provide is accurate and truthful</li>
+                    </ul>
 
                     <h2>2. Company Information</h2>
-                    <p>CabinPulse is a service provided by Toccata, Inc., a fully Canadian-owned company with its operational headquarters in Saskatoon, SK, where assembly and customer support are conducted. Our parent company is registered in Delaware, United States solely to facilitate sales in that market, and we do not maintain a physical presence in the United States.</p>
+                    <p><strong>Legal Entity:</strong> Toccata, Inc.<br>
+                    <strong>Operating Name:</strong> CabinPulse<br>
+                    <strong>Operational Headquarters:</strong> Saskatoon, SK, Canada<br>
+                    <strong>Delaware Registration:</strong> For U.S. sales purposes only; no physical presence in the United States</p>
+                    
+                    <p>CabinPulse is a fully Canadian-owned company. All product assembly, customer support, and primary operations are conducted in Saskatoon, Saskatchewan, Canada. Our Delaware registration exists solely to facilitate sales in the U.S. market.</p>
 
                     <h2>3. Services Description</h2>
-                    <p>CabinPulse provides remote monitoring services through cellular-connected devices that track temperature, humidity, power status, and air quality.</p>
+                    <p>CabinPulse provides remote property monitoring services through cellular-connected devices that track and report:</p>
+                    <ul>
+                        <li>Temperature (±0.2°C accuracy)</li>
+                        <li>Humidity levels</li>
+                        <li>Power status and outage detection</li>
+                        <li>Air quality (VOC monitoring)</li>
+                        <li>Environmental pressure</li>
+                        <li>Optional add-on sensors (leak detection, remote temperature sensors, etc.)</li>
+                    </ul>
+                    
+                    <p>Our services include:</p>
+                    <ul>
+                        <li>Real-time data monitoring and storage</li>
+                        <li>Instant alert notifications via SMS and email</li>
+                        <li>Historical data access and analysis</li>
+                        <li>Device health monitoring</li>
+                        <li>Fleet management capabilities (for multiple devices)</li>
+                        <li>Cellular connectivity (no separate data plan required)</li>
+                    </ul>
 
                     <h2>4. Account Terms</h2>
+                    
+                    <h3>4.1 Account Creation and Security</h3>
                     <ul>
-                        <li>You must provide accurate information when creating an account</li>
-                        <li>You are responsible for maintaining account security</li>
-                        <li>Account sharing is permitted only with trusted persons</li>
-                        <li>We reserve the right to terminate accounts for violations of these terms</li>
+                        <li>You must provide accurate, complete, and current information during registration</li>
+                        <li>You are responsible for maintaining the confidentiality of your account credentials</li>
+                        <li>You are responsible for all activities that occur under your account</li>
+                        <li>You must immediately notify us of any unauthorized access or security breach</li>
+                        <li>We reserve the right to refuse service or terminate accounts at our discretion</li>
                     </ul>
 
-                    <h2>5. Service Area</h2>
+                    <h3>4.2 Account Sharing</h3>
+                    <p>You may share account access with trusted individuals (e.g., family members, property managers). However, you remain responsible for all actions taken under your account. We recommend using strong passwords and limiting access to trusted persons only.</p>
+
+                    <h3>4.3 Account Termination</h3>
+                    <p>You may close your account at any time by contacting support@cabinpulse.com. Upon account closure:</p>
                     <ul>
-                        <li>Service is available only in the continental United States and Canada</li>
-                        <li>Service requires cellular coverage in your area by our network partners</li>
-                        <li>There is no guarantee of service in areas with poor cellular coverage</li>
-                        <li>At our discretion, we may permit returns in the case of poor cellular coverage in your intended service area</li>
+                        <li>Your devices will cease reporting data</li>
+                        <li>You will no longer receive alerts</li>
+                        <li>Your data will be retained for 30 days, then deleted</li>
+                        <li>No refunds will be provided for unused subscription time (except as specified in Section 7)</li>
                     </ul>
+                    
+                    <p>We may terminate or suspend your account immediately, without notice, for:</p>
+                    <ul>
+                        <li>Violation of these Terms</li>
+                        <li>Fraudulent activity</li>
+                        <li>Non-payment</li>
+                        <li>Abuse of our services or staff</li>
+                        <li>Any conduct we deem harmful to our business or other users</li>
+                    </ul>
+
+                    <h2>5. Service Area and Coverage</h2>
+                    
+                    <h3>5.1 Geographic Coverage</h3>
+                    <p>CabinPulse devices are designed to operate in areas with cellular coverage from our supported networks:</p>
+                    <ul>
+                        <li><strong>Canada:</strong> Bell Mobility, Rogers Wireless, Telus, Videotron, SaskTel</li>
+                        <li><strong>United States:</strong> AT&T, T-Mobile, Verizon, Alaska Wireless</li>
+                        <li><strong>Mexico:</strong> AT&T, Telcel</li>
+                        <li><strong>International:</strong> Coverage available in 100+ countries (see website for details)</li>
+                    </ul>
+                    
+                    <p>Devices automatically connect to available cellular networks (LTE with 3G fallback) in your area.</p>
+
+                    <h3>5.2 Coverage Limitations</h3>
+                    <ul>
+                        <li>Service requires adequate cellular signal from supported carriers</li>
+                        <li>We do not guarantee service in areas with poor or no cellular coverage</li>
+                        <li>Buildings with metal roofs, underground locations, or RF shielding may experience reduced connectivity</li>
+                        <li>Coverage maps from cellular carriers are estimates and actual performance may vary</li>
+                    </ul>
+
+                    <h3>5.3 Coverage-Related Returns</h3>
+                    <p>If your location has insufficient cellular coverage, you may return the device within the 30-day guarantee period (see Section 7.1). We may, at our sole discretion, approve returns after 30 days in cases of documented poor coverage.</p>
 
                     <h2>6. Payment Terms</h2>
+                    
+                    <h3>6.1 Pricing</h3>
                     <ul>
-                        <li>Prices are as listed on our website in Canadian Dollars (CAD)</li>
-                        <li>Renewals and payments are not automatic; your account will not automatically renew</li>
-                        <li>All payments are processed through Stripe</li>
+                        <li>All prices are listed in Canadian Dollars (CAD)</li>
+                        <li>Current pricing: $199 CAD one-time device fee + subscription</li>
+                        <li>Subscription options:
+                            <ul>
+                                <li>1-Year Plan: $14 CAD/month (billed annually at $168 CAD)</li>
+                                <li>3-Year Plan: $10 CAD/month (billed every 3 years at $360 CAD)</li>
+                            </ul>
+                        </li>
+                        <li>Prices are subject to change with 30 days' notice for new subscriptions</li>
+                        <li>Existing subscriptions are locked at their original price for the duration of the plan</li>
                     </ul>
 
-                    <h2>7. Refund Policy</h2>
-                    <h3>30-Day Guarantee</h3>
+                    <h3>6.2 Payment Processing</h3>
                     <ul>
-                        <li>Full refund of device and subscription will be provided when requested within 30 days of purchase, given conditions are met</li>
-                        <li>Device must be returned in resaleable condition</li>
-                        <li>Return shipping costs are customer's responsibility, unless waived at our discretion</li>
-                        <li>Customers may only take advantage of the 30-Day Guarantee once; subsequent requests will be refused except at our discretion</li>
+                        <li>All payments are processed securely through Stripe</li>
+                        <li>We accept major credit cards and debit cards</li>
+                        <li>Payment is required at the time of purchase</li>
+                        <li>You authorize us to charge your payment method for all fees incurred</li>
                     </ul>
 
-                    <h3>After 30 Days</h3>
+                    <h3>6.3 Subscription Renewals</h3>
+                    <p><strong>IMPORTANT: Subscriptions DO NOT automatically renew.</strong></p>
                     <ul>
-                        <li>No refunds after 30 days unless approved at our discretion</li>
-                        <li>We reserve the right to refuse refunds beyond the 30-day period</li>
+                        <li>We will send renewal reminders 60, 30, and 14 days before expiration</li>
+                        <li>You must manually renew your subscription to continue service</li>
+                        <li>If you do not renew, your service will terminate at the end of your subscription period</li>
+                        <li>Data will be retained for 30 days after expiration, then permanently deleted</li>
+                    </ul>
+
+                    <h3>6.4 Subscription Pausing</h3>
+                    <ul>
+                        <li>You may pause your subscription once per year</li>
+                        <li>Pausing extends your subscription expiration date by the pause duration</li>
+                        <li>Example: A 1-year plan can be used over two 6-month periods across two years</li>
+                        <li>To pause or restart, contact support@cabinpulse.com</li>
+                        <li>During pause periods, devices will not report data and alerts will not be sent</li>
+                    </ul>
+
+                    <h3>6.5 Failed Payments</h3>
+                    <p>If a payment fails:</p>
+                    <ul>
+                        <li>We will attempt to process payment up to 3 times</li>
+                        <li>You will be notified of payment failures</li>
+                        <li>Service will continue during retry period (up to 14 days)</li>
+                        <li>If payment ultimately fails, service will be suspended</li>
+                        <li>Account may be terminated if payment is not received within 30 days</li>
+                    </ul>
+
+                    <h3>6.6 Chargebacks and Payment Disputes</h3>
+                    <ul>
+                        <li>Unauthorized chargebacks may result in immediate account termination</li>
+                        <li>You agree to contact us first to resolve any billing disputes</li>
+                        <li>Chargeback fees may be charged to your account</li>
+                        <li>Devices must be returned for chargeback-related refunds</li>
+                    </ul>
+
+                    <h2>7. Refund and Return Policy</h2>
+                    
+                    <h3>7.1 30-Day Money-Back Guarantee</h3>
+                    <p>We offer a 30-day money-back guarantee from the date of purchase, subject to the following conditions:</p>
+                    <ul>
+                        <li><strong>Eligibility:</strong> Available to all first-time purchasers</li>
+                        <li><strong>Full Refund Includes:</strong> Device fee + subscription fee</li>
+                        <li><strong>Device Condition:</strong> Device must be returned in resaleable condition (minimal wear, original packaging preferred)</li>
+                        <li><strong>Return Shipping:</strong> Customer is responsible for return shipping costs unless waived at our discretion</li>
+                        <li><strong>One-Time Offer:</strong> Each customer may use the 30-day guarantee once; subsequent requests will be refused except at our sole discretion</li>
+                        <li><strong>Processing Time:</strong> Refunds issued within 7-10 business days after receiving returned device</li>
+                    </ul>
+
+                    <h3>7.2 Returns After 30 Days</h3>
+                    <ul>
+                        <li>Generally, no refunds are provided after the 30-day period</li>
+                        <li>Exceptions may be made at our sole discretion for:
+                            <ul>
+                                <li>Documented cellular coverage issues</li>
+                                <li>Defective devices outside warranty coverage</li>
+                                <li>Other exceptional circumstances</li>
+                            </ul>
+                        </li>
+                        <li>Any approved returns after 30 days will be evaluated on a case-by-case basis</li>
+                    </ul>
+
+                    <h3>7.3 Non-Refundable Items</h3>
+                    <ul>
+                        <li>Shipping fees (unless product is defective)</li>
+                        <li>Add-on sensors and accessories (after 30 days)</li>
+                        <li>Subscription fees for time already used</li>
                     </ul>
 
                     <h2>8. Device Warranty</h2>
+                    
+                    <h3>8.1 Limited 3-Year Warranty</h3>
+                    <p>CabinPulse devices are covered by a limited 3-year warranty from the date of purchase, covering:</p>
                     <ul>
-                        <li>3-year limited warranty from date of purchase</li>
-                        <li>Covers manufacturing defects and malfunctions</li>
-                        <li>Contact support@cabinpulse.com for warranty claims</li>
-                        <li>We will repair or replace defective devices at our discretion</li>
-                        <li>Warranty does not cover damage from misuse (such as use outdoors) or unauthorized modifications</li>
+                        <li>Manufacturing defects</li>
+                        <li>Hardware malfunctions under normal use</li>
+                        <li>Defective components</li>
+                        <li>Firmware issues preventing normal operation</li>
                     </ul>
 
-                    <h2>9. Limitations of Liability</h2>
-                    <p>We are not liable for:</p>
+                    <h3>8.2 Warranty Process</h3>
                     <ul>
-                        <li>Service interruptions due to cellular network issues</li>
-                        <li>Damage resulting from device malfunction</li>
-                        <li>Consequential damages</li>
-                        <li>Events beyond our reasonable control</li>
+                        <li>Contact support@cabinpulse.com to initiate a warranty claim</li>
+                        <li>Provide device serial number and description of issue</li>
+                        <li>We may request diagnostic information or troubleshooting steps</li>
+                        <li>We will repair or replace defective devices at our sole discretion</li>
+                        <li>Replacement devices may be new or refurbished</li>
+                        <li>Warranty on replacement devices extends original warranty period only</li>
                     </ul>
 
-                    <h2>10. Device Usage</h2>
+                    <h3>8.3 Warranty Exclusions</h3>
+                    <p>The warranty does NOT cover:</p>
                     <ul>
-                        <li>Devices are for indoor use only</li>
-                        <li>Operating temperature range: -20°C to 60°C (-4°F to 140°F)</li>
-                        <li>Battery life may be reduced in extreme temperatures</li>
+                        <li>Damage from misuse, abuse, or improper installation</li>
+                        <li>Outdoor use or exposure to extreme conditions outside specified ranges</li>
+                        <li>Unauthorized modifications or repairs</li>
+                        <li>Normal wear and tear</li>
+                        <li>Damage from power surges, lightning, or electrical issues</li>
+                        <li>Water damage or liquid ingress</li>
+                        <li>Physical damage, drops, or impact</li>
+                        <li>Loss or theft</li>
+                        <li>Acts of nature (fire, flood, etc.)</li>
                     </ul>
 
-                    <h2>11. Data Collection and Privacy</h2>
+                    <h3>8.4 Warranty Disclaimer</h3>
+                    <p><strong>THIS LIMITED WARRANTY IS YOUR EXCLUSIVE WARRANTY AND REPLACES ALL OTHER WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. SOME JURISDICTIONS DO NOT ALLOW LIMITATIONS ON IMPLIED WARRANTIES, SO THE ABOVE LIMITATIONS MAY NOT APPLY TO YOU.</strong></p>
+
+                    <h2>9. Device Usage and Specifications</h2>
+                    
+                    <h3>9.1 Intended Use</h3>
                     <ul>
-                        <li>See our Privacy Policy for data handling practices</li>
-                        <li>We encrypt device data during transmission</li>
-                        <li>We retain data for active accounts only</li>
+                        <li><strong>Indoor Use Only:</strong> Devices are designed for indoor environmental monitoring</li>
+                        <li><strong>Operating Range:</strong> -20°C to 60°C (-4°F to 140°F)</li>
+                        <li><strong>Humidity Range:</strong> 0-100% RH</li>
+                        <li><strong>Power Requirements:</strong> 110-240V AC via included adapter</li>
                     </ul>
 
-                    <h2>12. Modifications to Service</h2>
+                    <h3>9.2 Installation Requirements</h3>
+                    <ul>
+                        <li>Device must be plugged into a power outlet at all times</li>
+                        <li>Adequate cellular signal required for operation</li>
+                        <li>Avoid placement near heat sources, vents, or direct sunlight</li>
+                        <li>Do not block ventilation holes</li>
+                        <li>Keep device away from water and excessive moisture</li>
+                    </ul>
+
+                    <h3>9.3 Alternative Power Sources</h3>
+                    <ul>
+                        <li>Device compatible with 12V/24V power with appropriate converter</li>
+                        <li>Solar power systems supported with proper voltage regulation</li>
+                        <li>Contact support for converter recommendations</li>
+                        <li>Backup battery provides up to 3 days during power outages</li>
+                        <li>Battery life significantly reduced in extreme temperatures</li>
+                    </ul>
+
+                    <h2>10. Limitation of Liability</h2>
+                    
+                    <div class="highlight-box">
+                        <p><strong>IMPORTANT - PLEASE READ CAREFULLY</strong></p>
+                    </div>
+
+                    <h3>10.1 General Limitations</h3>
+                    <p><strong>TO THE MAXIMUM EXTENT PERMITTED BY LAW, WE SHALL NOT BE LIABLE FOR:</strong></p>
+                    <ul>
+                        <li>Service interruptions or outages due to cellular network issues, ISP failures, or circumstances beyond our reasonable control</li>
+                        <li>Property damage, including but not limited to frozen pipes, mold, fire, flooding, or other conditions that our devices are designed to monitor</li>
+                        <li>Consequential, indirect, incidental, special, or punitive damages</li>
+                        <li>Loss of profits, revenue, data, or use</li>
+                        <li>Business interruption</li>
+                        <li>Personal injury (except where prohibited by law)</li>
+                        <li>Emotional distress or mental anguish</li>
+                    </ul>
+
+                    <h3>10.2 Monitoring Devices - Not Insurance</h3>
+                    <p><strong>IMPORTANT:</strong> CabinPulse devices are monitoring and alerting tools only. They are NOT:</p>
+                    <ul>
+                        <li>A substitute for property insurance</li>
+                        <li>A guarantee against property damage</li>
+                        <li>A prevention system (devices monitor and alert; they do not prevent problems)</li>
+                        <li>Suitable for life safety or critical infrastructure monitoring</li>
+                    </ul>
+                    
+                    <p>You acknowledge that:</p>
+                    <ul>
+                        <li>Alerts may be delayed due to cellular network issues</li>
+                        <li>False positives and false negatives can occur</li>
+                        <li>You are solely responsible for taking appropriate action upon receiving alerts</li>
+                        <li>Proper property maintenance and insurance are your responsibility</li>
+                    </ul>
+
+                    <h3>10.3 Maximum Liability Cap</h3>
+                    <p><strong>IN NO EVENT SHALL OUR TOTAL LIABILITY TO YOU EXCEED THE AMOUNT YOU PAID FOR THE DEVICE AND ONE YEAR OF SUBSCRIPTION FEES, OR $500 CAD, WHICHEVER IS LESS.</strong></p>
+
+                    <h3>10.4 Essential Purpose</h3>
+                    <p>You acknowledge that the limitations of liability in this section are essential elements of the agreement between you and CabinPulse. The Service would not be provided without such limitations.</p>
+
+                    <h2>11. Disclaimer of Warranties</h2>
+                    <p><strong>OUR SERVICES AND PRODUCTS ARE PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO:</strong></p>
+                    <ul>
+                        <li>Implied warranties of merchantability</li>
+                        <li>Fitness for a particular purpose</li>
+                        <li>Non-infringement</li>
+                        <li>Accuracy, reliability, or completeness of data</li>
+                        <li>Uninterrupted or error-free operation</li>
+                        <li>Compatibility with all systems or networks</li>
+                    </ul>
+                    
+                    <p>SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF IMPLIED WARRANTIES, SO THE ABOVE EXCLUSIONS MAY NOT APPLY TO YOU. IN SUCH JURISDICTIONS, OUR LIABILITY IS LIMITED TO THE GREATEST EXTENT PERMITTED BY LAW.</p>
+
+                    <h2>12. Indemnification</h2>
+                    <p>You agree to indemnify, defend, and hold harmless Toccata, Inc. (CabinPulse), its officers, directors, employees, agents, affiliates, and partners from and against any and all claims, liabilities, damages, losses, costs, or expenses (including reasonable attorneys' fees) arising from or related to:</p>
+                    <ul>
+                        <li>Your use or misuse of our services or products</li>
+                        <li>Your violation of these Terms</li>
+                        <li>Your violation of any rights of another party</li>
+                        <li>Your violation of any applicable laws or regulations</li>
+                        <li>Any content or information you provide</li>
+                        <li>Property damage at your monitored locations</li>
+                    </ul>
+
+                    <h2>13. Dispute Resolution and Arbitration</h2>
+                    
+                    <div class="highlight-box">
+                        <p><strong>IMPORTANT - ARBITRATION AGREEMENT AND CLASS ACTION WAIVER</strong></p>
+                        <p>Please read this section carefully. It affects your legal rights.</p>
+                    </div>
+
+                    <h3>13.1 Informal Resolution</h3>
+                    <p>Before filing any formal dispute, you agree to first contact us at support@cabinpulse.com to attempt to resolve the dispute informally. We will attempt to resolve disputes in good faith within 30 days.</p>
+
+                    <h3>13.2 Binding Arbitration</h3>
+                    <p>If informal resolution fails, any dispute arising out of or relating to these Terms or our services will be resolved through binding arbitration, except as specified below.</p>
+                    
+                    <p><strong>Arbitration Procedures:</strong></p>
+                    <ul>
+                        <li><strong>Governing Rules:</strong> Arbitration will be conducted under the Arbitration Rules of the ADR Institute of Canada</li>
+                        <li><strong>Location:</strong> Arbitration will take place in Saskatchewan, Canada, or via remote/virtual hearing</li>
+                        <li><strong>Single Arbitrator:</strong> Disputes will be heard by a single arbitrator</li>
+                        <li><strong>Decision:</strong> The arbitrator's decision is final and binding</li>
+                        <li><strong>Costs:</strong> Each party bears their own costs unless the arbitrator determines otherwise</li>
+                    </ul>
+
+                    <h3>13.3 Class Action Waiver</h3>
+                    <p><strong>YOU AND CABINPULSE AGREE THAT EACH MAY BRING CLAIMS AGAINST THE OTHER ONLY IN YOUR OR ITS INDIVIDUAL CAPACITY, AND NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY PURPORTED CLASS, REPRESENTATIVE, OR COLLECTIVE PROCEEDING.</strong></p>
+                    
+                    <p>Unless both you and CabinPulse agree otherwise, the arbitrator may not consolidate more than one person's claims and may not preside over any form of representative, class, or collective proceeding.</p>
+
+                    <h3>13.4 Exceptions to Arbitration</h3>
+                    <p>Either party may seek injunctive or other equitable relief in court to protect intellectual property rights or confidential information. Small claims court actions (under applicable jurisdictional limits) may also be pursued in court.</p>
+
+                    <h3>13.5 Opt-Out Right</h3>
+                    <p>You may opt out of this arbitration agreement by sending written notice to support@cabinpulse.com within 30 days of first accepting these Terms. Your opt-out notice must include your name, address, and a clear statement that you wish to opt out of the arbitration agreement.</p>
+
+                    <h2>14. Intellectual Property</h2>
+                    
+                    <h3>14.1 Our Intellectual Property</h3>
+                    <p>All content, features, and functionality of our website, products, and services, including but not limited to:</p>
+                    <ul>
+                        <li>Text, graphics, logos, icons, images, audio, and video</li>
+                        <li>Software, firmware, and source code</li>
+                        <li>Design, layout, and interface</li>
+                        <li>Trademarks, service marks, and trade names</li>
+                        <li>Data, algorithms, and processes</li>
+                    </ul>
+                    
+                    <p>are owned by or licensed to Toccata, Inc. and are protected by Canadian and international copyright, trademark, patent, and other intellectual property laws.</p>
+
+                    <h3>14.2 Limited License</h3>
+                    <p>We grant you a limited, non-exclusive, non-transferable, revocable license to:</p>
+                    <ul>
+                        <li>Access and use our services for personal, non-commercial purposes</li>
+                        <li>View and display content from our website</li>
+                        <li>Use our products as intended</li>
+                    </ul>
+                    
+                    <p>This license does not permit you to:</p>
+                    <ul>
+                        <li>Modify, copy, distribute, or create derivative works</li>
+                        <li>Reverse engineer, decompile, or disassemble our products or software</li>
+                        <li>Remove or alter any proprietary notices</li>
+                        <li>Use our trademarks without permission</li>
+                        <li>Frame or mirror any portion of our services</li>
+                    </ul>
+
+                    <h3>14.3 User Data Ownership</h3>
+                    <p>You retain all rights to the data collected by your CabinPulse device. We claim no ownership over your temperature, humidity, or other monitoring data.</p>
+                    
+                    <p>However, you grant us a limited license to:</p>
+                    <ul>
+                        <li>Store, process, and transmit your data to provide services</li>
+                        <li>Use anonymized, aggregated data for analytics and service improvement</li>
+                        <li>Display your data back to you through our dashboard and applications</li>
+                    </ul>
+
+                    <h3>14.4 Trademark Usage</h3>
+                    <p>"CabinPulse" and our logo are trademarks of Toccata, Inc. You may not use our trademarks without our prior written permission. Any authorized use must comply with our brand guidelines.</p>
+
+                    <h3>14.5 Copyright Infringement</h3>
+                    <p>If you believe any content on our platform infringes your copyright, please contact us at support@cabinpulse.com with:</p>
+                    <ul>
+                        <li>Description of the copyrighted work</li>
+                        <li>Location of the infringing material</li>
+                        <li>Your contact information</li>
+                        <li>Statement of good faith belief</li>
+                        <li>Statement of accuracy and authority</li>
+                        <li>Your physical or electronic signature</li>
+                    </ul>
+
+                    <h2>15. Prohibited Uses and User Conduct</h2>
+                    
+                    <p>You agree NOT to:</p>
+                    
+                    <h3>15.1 Illegal Activities</h3>
+                    <ul>
+                        <li>Use our services for any illegal purpose</li>
+                        <li>Violate any local, provincial, national, or international law</li>
+                        <li>Infringe on intellectual property rights</li>
+                        <li>Engage in fraudulent activity</li>
+                    </ul>
+
+                    <h3>15.2 Harmful Activities</h3>
+                    <ul>
+                        <li>Transmit viruses, malware, or malicious code</li>
+                        <li>Attempt to gain unauthorized access to our systems</li>
+                        <li>Interfere with or disrupt our services or servers</li>
+                        <li>Conduct denial-of-service attacks</li>
+                        <li>Probe, scan, or test vulnerabilities</li>
+                    </ul>
+
+                    <h3>15.3 Abuse and Misuse</h3>
+                    <ul>
+                        <li>Share your account with unauthorized parties</li>
+                        <li>Use the service in violation of our policies</li>
+                        <li>Abuse, harass, or threaten our staff or other users</li>
+                        <li>Create multiple accounts to circumvent restrictions</li>
+                        <li>Use automated systems (bots, scrapers) without permission</li>
+                    </ul>
+
+                    <h3>15.4 Commercial Restrictions</h3>
+                    <ul>
+                        <li>Resell or redistribute our services without authorization</li>
+                        <li>Use our services for competitive purposes</li>
+                        <li>Scrape or harvest data from our platform</li>
+                        <li>Use our services for unauthorized commercial purposes</li>
+                    </ul>
+
+                    <h2>16. Force Majeure</h2>
+                    <p>We shall not be liable for any failure or delay in performance due to circumstances beyond our reasonable control, including but not limited to:</p>
+                    <ul>
+                        <li>Acts of God (earthquakes, floods, fires, storms, etc.)</li>
+                        <li>War, terrorism, civil unrest</li>
+                        <li>Government actions or regulations</li>
+                        <li>Pandemic or epidemic</li>
+                        <li>Labor disputes or strikes</li>
+                        <li>Telecommunications or internet failures</li>
+                        <li>Cellular network outages or issues</li>
+                        <li>Power outages</li>
+                        <li>Supplier or vendor failures</li>
+                    </ul>
+
+                    <h2>17. Export Compliance</h2>
+                    <p>Our products and services are subject to Canadian export controls and may be subject to U.S. export laws. You agree to comply with all applicable export and import laws and regulations. You represent that:</p>
+                    <ul>
+                        <li>You are not located in, or a resident of, any country subject to trade embargo</li>
+                        <li>You are not on any list of prohibited or restricted parties</li>
+                        <li>You will not export or re-export our products to prohibited countries or parties</li>
+                    </ul>
+
+                    <h2>18. Modifications to Service and Terms</h2>
+                    
+                    <h3>18.1 Service Modifications</h3>
                     <p>We reserve the right to:</p>
                     <ul>
-                        <li>Modify or discontinue services</li>
-                        <li>Update these terms</li>
-                        <li>Change pricing with notice</li>
+                        <li>Modify, suspend, or discontinue any part of our services</li>
+                        <li>Update device firmware and software</li>
+                        <li>Change features, functionality, or specifications</li>
+                        <li>Adjust pricing with 30 days' notice for new purchases</li>
+                    </ul>
+                    
+                    <p>Material changes will be communicated via email or notice in your account dashboard.</p>
+
+                    <h3>18.2 Terms Modifications</h3>
+                    <p>We may update these Terms at any time. When we make material changes, we will:</p>
+                    <ul>
+                        <li>Update the "Last Updated" date</li>
+                        <li>Notify you via email</li>
+                        <li>Post a prominent notice on our website</li>
+                    </ul>
+                    
+                    <p>Your continued use of our services after changes take effect constitutes acceptance of the modified Terms. If you do not agree to the changes, you must stop using our services.</p>
+
+                    <h2>19. Severability</h2>
+                    <p>If any provision of these Terms is found to be invalid, illegal, or unenforceable by a court of competent jurisdiction, such provision shall be modified to the minimum extent necessary to make it valid and enforceable, or if such modification is not possible, shall be severed from these Terms. The remaining provisions shall continue in full force and effect.</p>
+
+                    <h2>20. Waiver</h2>
+                    <p>Our failure to enforce any right or provision of these Terms shall not constitute a waiver of such right or provision. No waiver by us of any term or condition shall be deemed a continuing waiver of such term or condition or a waiver of any other term or condition.</p>
+
+                    <h2>21. Assignment</h2>
+                    <p>You may not assign or transfer these Terms or your rights and obligations without our prior written consent. We may assign these Terms to any affiliate or successor entity without your consent. Any attempted assignment in violation of this section is void.</p>
+
+                    <h2>22. Entire Agreement</h2>
+                    <p>These Terms, together with our Privacy Policy and any other policies referenced herein, constitute the entire agreement between you and CabinPulse regarding the use of our services and supersede all prior or contemporaneous understandings, agreements, representations, and warranties, whether written or oral.</p>
+
+                    <h2>23. Electronic Communications</h2>
+                    <p>By using our services, you consent to receive electronic communications from us, including emails, text messages, and notifications through our platform. These communications may include:</p>
+                    <ul>
+                        <li>Transactional messages (alerts, order confirmations, etc.)</li>
+                        <li>Service updates and announcements</li>
+                        <li>Administrative messages</li>
+                        <li>Marketing communications (if you opt in)</li>
+                    </ul>
+                    
+                    <p>You agree that all agreements, notices, disclosures, and other communications that we provide electronically satisfy any legal requirement that such communications be in writing.</p>
+
+                    <h2>24. Language</h2>
+                    <p>These Terms are drafted in English. In the event of any conflict between an English version and a translation, the English version shall prevail to the extent permitted by applicable law.</p>
+
+                    <h2>25. Survival</h2>
+                    <p>Sections of these Terms that by their nature should survive termination shall survive, including but not limited to: intellectual property provisions, disclaimer of warranties, limitation of liability, indemnification, dispute resolution, and governing law.</p>
+
+                    <h2>26. Governing Law and Jurisdiction</h2>
+                    <p>These Terms are governed by and construed in accordance with the laws of Saskatchewan, Canada, without regard to conflict of law principles.</p>
+                    
+                    <p>Subject to the arbitration provisions in Section 13, any legal action or proceeding arising out of or relating to these Terms shall be brought exclusively in the courts of Saskatchewan, Canada. You consent to the personal jurisdiction of such courts and waive any objection to venue.</p>
+                    
+                    <p>For users in Quebec, any dispute shall be governed by the laws of Quebec, Canada.</p>
+
+                    <h2>27. Enterprise and Custom Agreements</h2>
+                    <p>For customers requiring:</p>
+                    <ul>
+                        <li>Service Level Agreements (SLAs)</li>
+                        <li>Bulk orders (10+ devices)</li>
+                        <li>Custom terms or pricing</li>
+                        <li>Dedicated support</li>
+                        <li>Custom deployment or integration</li>
+                    </ul>
+                    
+                    <p>Please contact us at support@cabinpulse.com. Enterprise agreements may supersede certain provisions of these standard Terms.</p>
+
+                    <h2>28. Contact Information</h2>
+                    <p>For questions, concerns, or notices regarding these Terms, please contact us:</p>
+                    
+                    <p><strong>Toccata, Inc. (operating as CabinPulse)</strong><br>
+                    Email: support@cabinpulse.com<br>
+                    Subject Line: "Terms of Service Inquiry"<br>
+                    Operational Address: Saskatoon, SK, Canada</p>
+
+                    <h2>29. Acknowledgment</h2>
+                    <p>BY CLICKING "I AGREE," CREATING AN ACCOUNT, MAKING A PURCHASE, OR USING OUR SERVICES, YOU ACKNOWLEDGE THAT:</p>
+                    <ul>
+                        <li>You have read and understood these Terms</li>
+                        <li>You agree to be bound by these Terms</li>
+                        <li>You are of legal age to enter into a binding contract</li>
+                        <li>You have the authority to accept these Terms</li>
+                    </ul>
+                </div>
+
+                <div id="cookies" class="tab-content">
+                    <h1>Cookie Policy</h1>
+                    <p><strong>Effective Date:</strong> November 22, 2025</p>
+                    <p><strong>Last Updated:</strong> November 22, 2025</p>
+
+                    <h2>1. What Are Cookies?</h2>
+                    <p>Cookies are small text files placed on your device when you visit a website. They are widely used to make websites work more efficiently and provide information to website owners.</p>
+
+                    <h2>2. How We Use Cookies</h2>
+                    <p>We use cookies and similar tracking technologies on our website for the following purposes:</p>
+
+                    <h3>2.1 Essential Cookies</h3>
+                    <p>These cookies are necessary for our website to function properly:</p>
+                    <ul>
+                        <li><strong>Session Management:</strong> Keep you logged in as you navigate</li>
+                        <li><strong>Security:</strong> Detect and prevent security threats</li>
+                        <li><strong>Authentication:</strong> Verify your identity</li>
+                    </ul>
+                    <p><em>Legal Basis:</em> These cookies are necessary for contract performance and cannot be disabled.</p>
+
+                    <h3>2.2 Analytics Cookies</h3>
+                    <p>We use analytics to understand how visitors interact with our website:</p>
+                    <ul>
+                        <li><strong>Umami Analytics:</strong> Privacy-focused analytics on landing pages only (anonymous data)</li>
+                        <li><strong>Mouseflow:</strong> Behavior analysis on landing pages (anonymous heatmaps and recordings)</li>
+                    </ul>
+                    <p><em>Data Collected:</em> Page views, click patterns, time on site, device type (all anonymized)</p>
+                    <p><em>Legal Basis:</em> Legitimate interest in improving our website</p>
+
+                    <h3>2.3 Advertising Cookies</h3>
+                    <p>We use cookies to deliver and measure advertising:</p>
+                    <ul>
+                        <li><strong>Facebook Pixel:</strong> Track conversions and deliver targeted ads</li>
+                        <li><strong>Google Ads:</strong> Measure ad performance and conversions</li>
+                        <li><strong>Microsoft Clarity:</strong> Session recordings and analytics</li>
+                    </ul>
+                    <p><em>Legal Basis:</em> Consent (where required by law)</p>
+
+                    <h3>2.4 Performance Cookies</h3>
+                    <p>These cookies help us understand and improve website performance:</p>
+                    <ul>
+                        <li>Load times and page performance metrics</li>
+                        <li>Error detection and troubleshooting</li>
+                        <li>Server optimization</li>
                     </ul>
 
-                    <h2>13. Enterprise Services</h2>
-                    <p>Contact us for enterprise-level service agreements and custom solutions.</p>
+                    <h2>3. Third-Party Cookies</h2>
+                    <p>Our website may include cookies from third parties:</p>
+                    <ul>
+                        <li><strong>Stripe:</strong> Payment processing (session cookies only)</li>
+                        <li><strong>Social Media Platforms:</strong> Social sharing features</li>
+                        <li><strong>Content Delivery Networks:</strong> Faster content delivery</li>
+                    </ul>
+                    
+                    <p>These third parties have their own privacy and cookie policies. We do not control their cookies.</p>
 
-                    <h2>14. Contact</h2>
-                    <p>For all inquiries: support@cabinpulse.com</p>
+                    <h2>4. Cookie Duration</h2>
+                    <ul>
+                        <li><strong>Session Cookies:</strong> Deleted when you close your browser</li>
+                        <li><strong>Persistent Cookies:</strong> Remain on your device for a set period (typically 1-24 months) or until manually deleted</li>
+                    </ul>
 
-                    <h2>15. Governing Law</h2>
-                    <p>These terms are governed by the laws of Saskatchewan, Canada. Any disputes arising from these terms shall be resolved exclusively in the courts of Saskatchewan.</p>
+                    <h2>5. Managing Cookies</h2>
+                    
+                    <h3>5.1 Browser Controls</h3>
+                    <p>Most browsers allow you to control cookies through their settings:</p>
+                    <ul>
+                        <li>Block all cookies</li>
+                        <li>Block third-party cookies only</li>
+                        <li>Delete cookies after each session</li>
+                        <li>Accept all cookies (default)</li>
+                    </ul>
+                    
+                    <p>Browser help pages:</p>
+                    <ul>
+                        <li>Chrome: <a href="https://support.google.com/chrome/answer/95647" style="color: var(--highlight-color);">https://support.google.com/chrome/answer/95647</a></li>
+                        <li>Firefox: <a href="https://support.mozilla.org/en-US/kb/cookies-information-websites-store-on-your-computer" style="color: var(--highlight-color);">https://support.mozilla.org/kb/cookies</a></li>
+                        <li>Safari: <a href="https://support.apple.com/guide/safari/manage-cookies-sfri11471/mac" style="color: var(--highlight-color);">https://support.apple.com/guide/safari/manage-cookies</a></li>
+                        <li>Edge: <a href="https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" style="color: var(--highlight-color);">https://support.microsoft.com/edge/delete-cookies</a></li>
+                    </ul>
+
+                    <h3>5.2 Opt-Out Options</h3>
+                    <p>You can opt out of specific tracking:</p>
+                    <ul>
+                        <li><strong>Google Ads:</strong> <a href="https://adssettings.google.com" style="color: var(--highlight-color);">https://adssettings.google.com</a></li>
+                        <li><strong>Facebook Ads:</strong> <a href="https://www.facebook.com/settings?tab=ads" style="color: var(--highlight-color);">https://www.facebook.com/settings?tab=ads</a></li>
+                        <li><strong>General Opt-Out:</strong> <a href="https://optout.aboutads.info" style="color: var(--highlight-color);">https://optout.aboutads.info</a></li>
+                    </ul>
+
+                    <h3>5.3 Impact of Blocking Cookies</h3>
+                    <p>If you block or delete cookies:</p>
+                    <ul>
+                        <li>Some website features may not function properly</li>
+                        <li>You may need to re-enter information more frequently</li>
+                        <li>Personalization features may not work</li>
+                        <li>Essential cookies cannot be disabled without affecting site functionality</li>
+                    </ul>
+
+                    <h2>6. Other Tracking Technologies</h2>
+                    <p>In addition to cookies, we may use:</p>
+                    <ul>
+                        <li><strong>Web Beacons:</strong> Small graphic images to track page views and email opens</li>
+                        <li><strong>Local Storage:</strong> HTML5 local storage for session management</li>
+                        <li><strong>Device Fingerprinting:</strong> Collecting device characteristics for security purposes</li>
+                    </ul>
+
+                    <h2>7. Updates to This Policy</h2>
+                    <p>We may update this Cookie Policy to reflect changes in technology, law, or our practices. We will notify you of material changes by updating the "Last Updated" date and, where required, seeking your consent.</p>
+
+                    <h2>8. Contact Us</h2>
+                    <p>For questions about our use of cookies, contact us at:</p>
+                    <p><strong>Email:</strong> support@cabinpulse.com<br>
+                    <strong>Subject:</strong> Cookie Policy Inquiry</p>
                 </div>
             </div>
         </div>
@@ -360,7 +1159,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Toccata, Inc. All rights reserved.</p>
+            <p>&copy; 2025 Toccata, Inc. All rights reserved.</p>
         </div>
     </footer>
 
