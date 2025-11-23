@@ -390,6 +390,42 @@
             z-index: 1;
         }
 
+        /* Make International option full-width and horizontal */
+        .selection-option[data-country="INTL"] {
+            grid-column: 1 / -1;
+            padding: 16px 24px;
+            opacity: 0.85;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            text-align: left;
+        }
+
+        .selection-option[data-country="INTL"] i {
+            font-size: 2rem;
+            margin-bottom: 0;
+            display: inline;
+        }
+
+        .selection-option[data-country="INTL"] .option-title {
+            font-size: 1.2rem;
+            margin-bottom: 0;
+            display: inline;
+        }
+
+        .selection-option[data-country="INTL"] .option-description {
+            font-size: 0.85rem;
+            display: inline;
+            margin-left: 8px;
+        }
+
+        .selection-option[data-country="INTL"]:hover,
+        .selection-option[data-country="INTL"].selected {
+            opacity: 1;
+        }
+
         /* Shipping Options */
         .shipping-options {
             display: none;
@@ -962,11 +998,6 @@
             border-top: 1px solid rgba(233, 69, 96, 0.2);
         }
 
-                .form-group input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        /* ADD THIS NEW CSS BLOCK */
         /* Phone Input with Country Code */
         .phone-input-wrapper {
             display: flex;
@@ -1014,6 +1045,177 @@
 
         .phone-input-wrapper input {
             flex: 1;
+        }
+
+        /* Referral Section */
+        .referral-section {
+            background: rgba(15, 52, 96, 0.3);
+            border: 1px solid rgba(233, 69, 96, 0.2);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 24px 0;
+        }
+
+        .referral-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .referral-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .referral-title i {
+            color: var(--highlight-color);
+            font-size: 1.2rem;
+        }
+
+        .referral-toggle {
+            color: var(--highlight-color);
+            font-size: 0.9rem;
+            transition: transform 0.2s ease;
+        }
+
+        .referral-toggle.open {
+            transform: rotate(180deg);
+        }
+
+        .referral-content {
+            transform: scaleY(0);
+            transform-origin: top;
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .referral-content.open {
+            transform: scaleY(1);
+            opacity: 1;
+            height: auto;
+        }
+
+        .referral-content-padding {
+            padding-top: 20px;
+        }
+
+        .referral-input-wrapper {
+            display: flex;
+            gap: 12px;
+            align-items: stretch;
+        }
+
+        .referral-input-wrapper input {
+            flex: 1;
+            padding: 14px 18px;
+            border: 2px solid rgba(233, 69, 96, 0.3);
+            border-radius: 12px;
+            background: rgba(15, 52, 96, 0.3);
+            color: var(--text-color);
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .referral-input-wrapper input:focus {
+            outline: none;
+            border-color: var(--highlight-color);
+            background: rgba(15, 52, 96, 0.5);
+            box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.2);
+        }
+
+        .referral-input-wrapper input.valid {
+            border-color: #4CAF50;
+            background: rgba(76, 175, 80, 0.1);
+        }
+
+        .referral-input-wrapper input.invalid {
+            border-color: #ff4444;
+            background: rgba(255, 68, 68, 0.1);
+        }
+
+        .referral-validate-btn {
+            padding: 14px 24px;
+            background: var(--highlight-color);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .referral-validate-btn:hover:not(:disabled) {
+            background: #ff5a7c;
+            transform: translateY(-2px);
+        }
+
+        .referral-validate-btn:disabled {
+            background: rgba(233, 69, 96, 0.5);
+            cursor: not-allowed;
+        }
+
+        .referral-feedback {
+            margin-top: 12px;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            display: none;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .referral-feedback.show {
+            display: flex;
+        }
+
+        .referral-feedback.success {
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid #4CAF50;
+            color: #4CAF50;
+        }
+
+        .referral-feedback.error {
+            background: rgba(255, 68, 68, 0.1);
+            border: 1px solid #ff4444;
+            color: #ff4444;
+        }
+
+        .referral-feedback i {
+            font-size: 1.1rem;
+        }
+
+        .referral-description {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-bottom: 16px;
+        }
+
+        .discount-notice {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            text-align: center;
+            margin-top: 16px;
+            padding: 12px;
+            background: rgba(15, 52, 96, 0.2);
+            border-radius: 8px;
+            border: 1px solid rgba(233, 69, 96, 0.1);
+        }
+
+        .discount-notice i {
+            color: var(--highlight-color);
+            margin-right: 6px;
         }
 
         /* Responsive Design */
@@ -1066,6 +1268,11 @@
 
             .selection-option {
                 padding: 24px 20px;
+            }
+
+            .selection-option[data-country="INTL"] {
+                flex-direction: row;
+                padding: 16px 20px;
             }
 
             .step-indicators {
@@ -1144,6 +1351,7 @@
                 padding: 8px 12px;
                 font-size: 0.8rem;
             }
+
             .phone-input-wrapper {
                 flex-direction: column;
                 gap: 12px;
@@ -1152,188 +1360,331 @@
             .country-select {
                 width: 100%;
             }
+
+            .referral-input-wrapper {
+                flex-direction: column;
+            }
+            
+            .referral-validate-btn {
+                width: 100%;
+            }
+
+            .selection-option[data-country="INTL"] {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
         }
-.referral-section {
-    background: rgba(15, 52, 96, 0.3);
-    border: 1px solid rgba(233, 69, 96, 0.2);
-    border-radius: 16px;
-    padding: 20px;
-    margin: 24px 0;
-}
 
-.referral-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
-    user-select: none;
-}
+        /* International Shipping Modal */
+        .intl-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
 
-.referral-title {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--text-color);
-}
+        .intl-modal.visible {
+            display: flex;
+        }
 
-.referral-title i {
-    color: var(--highlight-color);
-    font-size: 1.2rem;
-}
+        .intl-modal-content {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border: 2px solid var(--highlight-color);
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(233, 69, 96, 0.3);
+            animation: slideUp 0.4s ease;
+            position: relative;
+        }
 
-.referral-toggle {
-    color: var(--highlight-color);
-    font-size: 0.9rem;
-    transition: transform 0.2s ease;
-}
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-.referral-toggle.open {
-    transform: rotate(180deg);
-}
+        .intl-modal-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(233, 69, 96, 0.3);
+        }
 
-/* Pure transform - no height animation at all */
-.referral-content {
-    transform: scaleY(0);
-    transform-origin: top;
-    opacity: 0;
-    height: 0;
-    overflow: hidden;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-}
+        .intl-modal-icon {
+            font-size: 2.5rem;
+            color: var(--highlight-color);
+        }
 
-.referral-content.open {
-    transform: scaleY(1);
-    opacity: 1;
-    height: auto;
-}
+        .intl-modal-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-color);
+        }
 
-.referral-content-padding {
-    padding-top: 20px;
-}
+        .intl-modal-body {
+            margin-bottom: 32px;
+        }
 
-.referral-input-wrapper {
-    display: flex;
-    gap: 12px;
-    align-items: stretch;
-}
+        .intl-modal-body p {
+            margin-bottom: 16px;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
 
-.referral-input-wrapper input {
-    flex: 1;
-    padding: 14px 18px;
-    border: 2px solid rgba(233, 69, 96, 0.3);
-    border-radius: 12px;
-    background: rgba(15, 52, 96, 0.3);
-    color: var(--text-color);
-    font-size: 1rem;
-    font-family: 'Poppins', sans-serif;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-}
+        .intl-modal-body strong {
+            color: var(--highlight-color);
+        }
 
-.referral-input-wrapper input:focus {
-    outline: none;
-    border-color: var(--highlight-color);
-    background: rgba(15, 52, 96, 0.5);
-    box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.2);
-}
+        .intl-device-highlight {
+            background: rgba(233, 69, 96, 0.1);
+            border-left: 4px solid var(--highlight-color);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
 
-.referral-input-wrapper input.valid {
-    border-color: #4CAF50;
-    background: rgba(76, 175, 80, 0.1);
-}
+        .intl-device-highlight h3 {
+            color: var(--highlight-color);
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+        }
 
-.referral-input-wrapper input.invalid {
-    border-color: #ff4444;
-    background: rgba(255, 68, 68, 0.1);
-}
+        .intl-support-info {
+            background: rgba(15, 52, 96, 0.4);
+            border: 1px solid rgba(233, 69, 96, 0.2);
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 20px;
+            display: flex;
+            align-items: start;
+            gap: 12px;
+        }
 
-.referral-validate-btn {
-    padding: 14px 24px;
-    background: var(--highlight-color);
-    color: white;
-    border: none;
-    border-radius: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-    font-family: 'Poppins', sans-serif;
-}
+        .intl-support-info i {
+            color: var(--highlight-color);
+            font-size: 1.2rem;
+            margin-top: 2px;
+        }
 
-.referral-validate-btn:hover:not(:disabled) {
-    background: #ff5a7c;
-    transform: translateY(-2px);
-}
+        .intl-modal-footer {
+            display: flex;
+            justify-content: flex-end;
+        }
 
-.referral-validate-btn:disabled {
-    background: rgba(233, 69, 96, 0.5);
-    cursor: not-allowed;
-}
+        .intl-modal-btn {
+            background: linear-gradient(135deg, var(--highlight-color) 0%, #c93756 100%);
+            color: var(--text-color);
+            border: none;
+            padding: 16px 40px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
+        }
 
-.referral-feedback {
-    margin-top: 12px;
-    padding: 12px;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    display: none;
-    align-items: center;
-    gap: 8px;
-}
+        .intl-modal-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(233, 69, 96, 0.4);
+        }
 
-.referral-feedback.show {
-    display: flex;
-}
+        .intl-modal-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
 
-.referral-feedback.success {
-    background: rgba(76, 175, 80, 0.1);
-    border: 1px solid #4CAF50;
-    color: #4CAF50;
-}
+        .intl-modal-btn:disabled:hover {
+            transform: none;
+            box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
+        }
 
-.referral-feedback.error {
-    background: rgba(255, 68, 68, 0.1);
-    border: 1px solid #ff4444;
-    color: #ff4444;
-}
+        .intl-modal-screen {
+            display: none;
+        }
 
-.referral-feedback i {
-    font-size: 1.1rem;
-}
+        .intl-modal-screen.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
 
-.referral-description {
-    font-size: 0.85rem;
-    opacity: 0.7;
-    margin-bottom: 16px;
-}
+        .intl-country-select {
+            width: 100%;
+            padding: 14px 16px;
+            background: linear-gradient(135deg, rgba(15, 52, 96, 0.6) 0%, rgba(26, 26, 46, 0.6) 100%);
+            border: 2px solid rgba(233, 69, 96, 0.3);
+            border-radius: 12px;
+            color: var(--text-color);
+            font-size: 1rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 12px;
+        }
 
-/* Discount Code Notice */
-.discount-notice {
-    font-size: 0.85rem;
-    opacity: 0.7;
-    text-align: center;
-    margin-top: 16px;
-    padding: 12px;
-    background: rgba(15, 52, 96, 0.2);
-    border-radius: 8px;
-    border: 1px solid rgba(233, 69, 96, 0.1);
-}
+        .intl-country-select:hover {
+            border-color: var(--highlight-color);
+            background: linear-gradient(135deg, rgba(15, 52, 96, 0.8) 0%, rgba(26, 26, 46, 0.8) 100%);
+        }
 
-.discount-notice i {
-    color: var(--highlight-color);
-    margin-right: 6px;
-}
+        .intl-country-select:focus {
+            outline: none;
+            border-color: var(--highlight-color);
+            box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.2);
+        }
 
-@media (max-width: 480px) {
-    .referral-input-wrapper {
-        flex-direction: column;
-    }
-    
-    .referral-validate-btn {
-        width: 100%;
-    }
-}
+        .intl-country-select option {
+            background: rgba(26, 26, 46, 0.95);
+            color: var(--text-color);
+            padding: 8px;
+        }
+
+        .intl-country-select optgroup {
+            font-weight: 600;
+            color: var(--highlight-color);
+        }
+
+        /* Quantity Selector */
+        .quantity-selector {
+            background: rgba(15, 52, 96, 0.3);
+            border: 2px solid rgba(233, 69, 96, 0.3);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .quantity-label {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .quantity-label-main {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .quantity-label-sub {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .quantity-btn {
+            background: linear-gradient(135deg, var(--highlight-color) 0%, #c93756 100%);
+            border: none;
+            color: var(--text-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quantity-btn:hover:not(:disabled) {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
+        }
+
+        .quantity-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .quantity-input {
+            background: rgba(15, 52, 96, 0.4);
+            border: 2px solid rgba(233, 69, 96, 0.3);
+            color: var(--text-color);
+            font-size: 1.2rem;
+            font-weight: 600;
+            width: 80px;
+            height: 40px;
+            text-align: center;
+            border-radius: 12px;
+            padding: 8px;
+        }
+
+        .quantity-input:focus {
+            outline: none;
+            border-color: var(--highlight-color);
+        }
+
+        /* Hide number input arrows */
+        .quantity-input::-webkit-inner-spin-button,
+        .quantity-input::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .quantity-input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        @media (max-width: 768px) {
+            .intl-modal-content {
+                padding: 24px;
+                width: 95%;
+            }
+
+            .intl-modal-title {
+                font-size: 1.4rem;
+            }
+
+            .intl-modal-icon {
+                font-size: 2rem;
+            }
+
+            .intl-modal-body p {
+                font-size: 0.95rem;
+            }
+
+            .quantity-selector {
+                flex-direction: column;
+                gap: 16px;
+                align-items: stretch;
+            }
+
+            .quantity-label {
+                text-align: center;
+            }
+
+            .quantity-controls {
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1425,6 +1776,11 @@
                                         <i class="fas fa-flag-usa"></i>
                                         <div class="option-title">United States</div>
                                         <div class="option-description">Free shipping via Canada Post / USPS</div>
+                                    </div>
+                                    <div class="selection-option" data-country="INTL">
+                                        <i class="fas fa-globe-americas"></i>
+                                        <div class="option-title">International</div>
+                                        <div class="option-description">Worldwide shipping available</div>
                                     </div>
                                 </div>
 
@@ -1583,6 +1939,25 @@
                                         </div>
                                     </div>
 
+                                    <!-- Quantity Selector -->
+                                    <div class="quantity-selector">
+                                        <div class="quantity-label">
+                                            <span class="quantity-label-main">Number of Units</span>
+                                            <span class="quantity-label-sub" id="quantity-sub-label">Select quantity</span>
+                                        </div>
+                                        <div id="quantity-controls-wrapper">
+                                            <div class="quantity-controls">
+                                                <button type="button" class="quantity-btn" id="quantity-decrease">
+                                                    <i class="fas fa-minus"></i>
+                                                </button>
+                                                <input type="number" class="quantity-input" id="quantity-input" value="1" min="1" max="25">
+                                                <button type="button" class="quantity-btn" id="quantity-increase">
+                                                    <i class="fas fa-plus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <!-- Horizontal Pricing Layout -->
                                     <div class="pricing-horizontal">
                                         <div class="price-main">
@@ -1622,7 +1997,7 @@
                                         </div>
                                         <div class="total-row">
                                             <span class="total-label">Device Fee</span>
-                                            <span class="total-amount">$199 CAD</span>
+                                            <span class="total-amount" id="confirm-device-fee">$199 CAD</span>
                                         </div>
                                         <div class="total-row" id="confirm-shipping-summary-row" style="display: none;">
                                             <span class="total-label">Shipping</span>
@@ -1640,48 +2015,46 @@
                                 </div>
 
                                 <!-- Referral Code Section -->
-                                <!-- Referral Code Section -->
-<div class="referral-section">
-    <div class="referral-header" id="referral-header">
-        <div class="referral-title">
-            <i class="fas fa-tag"></i>
-            <span>Have a referral code?</span>
-        </div>
-        <i class="fas fa-chevron-down referral-toggle" id="referral-toggle"></i>
-    </div>
-    <div class="referral-content" id="referral-content">
-        <div class="referral-content-padding">
-            <p class="referral-description">Enter referral code below.</p>
-            <div class="referral-input-wrapper">
-                <input 
-                    type="text" 
-                    id="referral-code" 
-                    placeholder="Enter code (e.g., ABC123)"
-                    maxlength="10"
-                >
-                <button type="button" class="referral-validate-btn" id="validate-referral-btn">
-                    Apply
-                </button>
-            </div>
-            <div class="referral-feedback" id="referral-feedback">
-                <i class="fas fa-circle-check"></i>
-                <span id="referral-feedback-text"></span>
-            </div>
-            
-            <!-- Discount Code Notice - Now Inside -->
-            <div class="discount-notice">
-                <i class="fas fa-ticket"></i>
-                Have a discount code instead? You'll be able to apply it on the next screen.
-            </div>
-        </div>
-    </div>
-</div>
+                                <div class="referral-section">
+                                    <div class="referral-header" id="referral-header">
+                                        <div class="referral-title">
+                                            <i class="fas fa-tag"></i>
+                                            <span>Have a referral code?</span>
+                                        </div>
+                                        <i class="fas fa-chevron-down referral-toggle" id="referral-toggle"></i>
+                                    </div>
+                                    <div class="referral-content" id="referral-content">
+                                        <div class="referral-content-padding">
+                                            <p class="referral-description">Enter referral code below.</p>
+                                            <div class="referral-input-wrapper">
+                                                <input 
+                                                    type="text" 
+                                                    id="referral-code" 
+                                                    placeholder="Enter code (e.g., ABC123)"
+                                                    maxlength="10"
+                                                >
+                                                <button type="button" class="referral-validate-btn" id="validate-referral-btn">
+                                                    Apply
+                                                </button>
+                                            </div>
+                                            <div class="referral-feedback" id="referral-feedback">
+                                                <i class="fas fa-circle-check"></i>
+                                                <span id="referral-feedback-text"></span>
+                                            </div>
+                                            
+                                            <!-- Discount Code Notice -->
+                                            <div class="discount-notice">
+                                                <i class="fas fa-ticket"></i>
+                                                Have a discount code instead? You'll be able to apply it on the next screen.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="info-box">
                                     <i class="fas fa-info-circle"></i>
                                     <p>You can choose whether to renew when your plan ends - you won't be charged automatically. We'll send you a reminder before your renewal date.</p>
                                 </div>
-
-
                             </div>
 
                             <div class="button-container">
@@ -1694,13 +2067,12 @@
                                     Complete Purchase
                                 </button>
                             </div>
-                                <p style="font-size: 0.9rem; opacity: 0.8; text-align: center; margin-top: 24px;">
-                                    By clicking "Complete Purchase", you agree to our 
-                                    <a href="https://cabinpulse.com/legal.html" style="color: var(--highlight-color);">Terms of Service</a> 
-                                    and 
-                                    <a href="https://cabinpulse.com/legal.html" style="color: var(--highlight-color);">Privacy Policy</a>.
-                                </p>
-                        </div>
+                            <p style="font-size: 0.9rem; opacity: 0.8; text-align: center; margin-top: 24px;">
+                                By clicking "Complete Purchase", you agree to our 
+                                <a href="https://cabinpulse.com/legal.html" style="color: var(--highlight-color);">Terms of Service</a> 
+                                and 
+                                <a href="https://cabinpulse.com/legal.html" style="color: var(--highlight-color);">Privacy Policy</a>.
+                            </p>
                         </div>
                     </form>
                 </div>
@@ -1714,6 +2086,233 @@
             <p>&copy; 2025 CabinPulse</p>
         </div>
     </footer>
+
+    <!-- International Shipping Modal -->
+    <div id="intl-modal" class="intl-modal">
+        <div class="intl-modal-content">
+            <!-- Screen 1: Region Selection -->
+            <div id="intl-modal-screen-1" class="intl-modal-screen active">
+                <div class="intl-modal-header">
+                    <i class="fas fa-globe intl-modal-icon"></i>
+                    <h2 class="intl-modal-title">Select Your Country</h2>
+                </div>
+
+                <div class="intl-modal-body">
+                    <p style="margin-bottom: 24px;">Please select your country to continue:</p>
+
+                    <select class="intl-country-select" id="intl-country-select">
+                        <option value="">Choose your country...</option>
+
+                        <optgroup label="North America">
+                            <option value="CA">Canada</option>
+                            <option value="US">United States</option>
+                            <option value="MX">Mexico</option>
+                        </optgroup>
+
+                        <optgroup label="Central America & Caribbean">
+                            <option value="BZ">Belize</option>
+                            <option value="CR">Costa Rica</option>
+                            <option value="SV">El Salvador</option>
+                            <option value="GT">Guatemala</option>
+                            <option value="HN">Honduras</option>
+                            <option value="NI">Nicaragua</option>
+                            <option value="PA">Panama</option>
+                        </optgroup>
+
+                        <optgroup label="South America">
+                            <option value="AR">Argentina</option>
+                            <option value="BO">Bolivia</option>
+                            <option value="BR">Brazil</option>
+                            <option value="CL">Chile</option>
+                            <option value="CO">Colombia</option>
+                            <option value="EC">Ecuador</option>
+                            <option value="GY">Guyana</option>
+                            <option value="PY">Paraguay</option>
+                            <option value="PE">Peru</option>
+                            <option value="SR">Suriname</option>
+                            <option value="UY">Uruguay</option>
+                            <option value="VE">Venezuela</option>
+                        </optgroup>
+
+                        <optgroup label="Europe">
+                            <option value="AT">Austria</option>
+                            <option value="BE">Belgium</option>
+                            <option value="CZ">Czech Republic</option>
+                            <option value="DK">Denmark</option>
+                            <option value="FI">Finland</option>
+                            <option value="FR">France</option>
+                            <option value="DE">Germany</option>
+                            <option value="IE">Ireland</option>
+                            <option value="IT">Italy</option>
+                            <option value="NL">Netherlands</option>
+                            <option value="NO">Norway</option>
+                            <option value="PL">Poland</option>
+                            <option value="PT">Portugal</option>
+                            <option value="ES">Spain</option>
+                            <option value="SE">Sweden</option>
+                            <option value="CH">Switzerland</option>
+                            <option value="GB">United Kingdom</option>
+                        </optgroup>
+
+                        <optgroup label="Asia">
+                            <option value="HK">Hong Kong</option>
+                            <option value="JP">Japan</option>
+                            <option value="MY">Malaysia</option>
+                            <option value="SG">Singapore</option>
+                            <option value="KR">South Korea</option>
+                            <option value="TW">Taiwan</option>
+                            <option value="TH">Thailand</option>
+                        </optgroup>
+
+                        <optgroup label="Middle East">
+                            <option value="AE">United Arab Emirates</option>
+                        </optgroup>
+
+                        <optgroup label="Oceania">
+                            <option value="AU">Australia</option>
+                            <option value="NZ">New Zealand</option>
+                        </optgroup>
+
+                        <optgroup label="Africa">
+                            <option value="ZA">South Africa</option>
+                        </optgroup>
+                    </select>
+
+                    <p style="margin-top: 16px; font-size: 0.9rem; opacity: 0.8;">
+                        Don't see your country? Contact <a href="mailto:support@cabinpulse.com" style="color: var(--highlight-color); text-decoration: none;">support@cabinpulse.com</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Screen 2a: Americas Information -->
+            <div id="intl-modal-screen-2a" class="intl-modal-screen">
+                <div class="intl-modal-header">
+                    <i class="fas fa-earth-americas intl-modal-icon"></i>
+                    <h2 class="intl-modal-title">Americas Shipping</h2>
+                </div>
+
+                <div class="intl-modal-body">
+                    <p>Thank you for your interest in CabinPulse! For shipments to North, Central, and South America, we ship the standard <strong>CabinPulse</strong> device.</p>
+
+                    <div class="intl-device-highlight">
+                        <h3>CabinPulse Device</h3>
+                        <p>The standard CabinPulse device works throughout the Americas region with full cellular connectivity and all monitoring features.</p>
+                    </div>
+
+                    <div class="intl-support-info">
+                        <i class="fas fa-question-circle"></i>
+                        <div>
+                            <p style="margin: 0;"><strong>Questions about coverage in your country?</strong></p>
+                            <p style="margin: 4px 0 0 0;">Please contact our customer service team at <a href="mailto:support@cabinpulse.com" style="color: var(--highlight-color); text-decoration: none;">support@cabinpulse.com</a> to confirm compatibility and coverage in your specific location.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="intl-modal-footer" style="justify-content: space-between;">
+                    <button id="intl-modal-back-2a" class="intl-modal-btn" style="background: linear-gradient(135deg, rgba(15, 52, 96, 0.6) 0%, rgba(233, 69, 96, 0.3) 100%);">Back</button>
+                    <button id="intl-modal-next-2a" class="intl-modal-btn">Next</button>
+                </div>
+            </div>
+
+            <!-- Screen 2b: Rest of World - CabinPulse Global Information -->
+            <div id="intl-modal-screen-2b" class="intl-modal-screen">
+                <div class="intl-modal-header">
+                    <i class="fas fa-globe-asia intl-modal-icon"></i>
+                    <h2 class="intl-modal-title">International Shipping</h2>
+                </div>
+
+                <div class="intl-modal-body">
+                    <p>Thank you for your interest in CabinPulse! For international orders outside the Americas, we ship the <strong>CabinPulse Global</strong> device.</p>
+
+                    <div class="intl-device-highlight">
+                        <h3>CabinPulse Global</h3>
+                        <p>The CabinPulse Global is functionally identical to the standard CabinPulse device, with one key difference: it uses a different cellular modem specifically designed for international networks.</p>
+                        <ul style="margin-left: 20px; margin-top: 12px; line-height: 1.8;">
+                            <li>Works <strong>only outside of the Americas</strong></li>
+                            <li>Supports most major cellular networks worldwide</li>
+                            <li>Same great features and monitoring capabilities</li>
+                        </ul>
+                    </div>
+
+                    <div class="intl-support-info">
+                        <i class="fas fa-question-circle"></i>
+                        <div>
+                            <p style="margin: 0;"><strong>Questions about coverage in your country?</strong></p>
+                            <p style="margin: 4px 0 0 0;">Please contact our customer service team at <a href="mailto:support@cabinpulse.com" style="color: var(--highlight-color); text-decoration: none;">support@cabinpulse.com</a> to confirm compatibility and coverage in your specific location.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="intl-modal-footer" style="justify-content: space-between;">
+                    <button id="intl-modal-back-2b" class="intl-modal-btn" style="background: linear-gradient(135deg, rgba(15, 52, 96, 0.6) 0%, rgba(233, 69, 96, 0.3) 100%);">Back</button>
+                    <button id="intl-modal-next-2b" class="intl-modal-btn">Next</button>
+                </div>
+            </div>
+
+            <!-- Screen 3: Certification & Customs Information -->
+            <div id="intl-modal-screen-3" class="intl-modal-screen">
+                <div class="intl-modal-header">
+                    <i class="fas fa-file-contract intl-modal-icon"></i>
+                    <h2 class="intl-modal-title">Important Information</h2>
+                </div>
+
+                <div class="intl-modal-body">
+                    <div class="info-box" style="margin-bottom: 24px; border-color: #4CAF50; background: rgba(76, 175, 80, 0.1); border: 1px solid #4CAF50; border-radius: 12px; padding: 16px; display: flex; align-items: start; gap: 12px;">
+                        <i class="fas fa-certificate" style="color: #4CAF50; font-size: 1.2rem; margin-top: 2px;"></i>
+                        <div>
+                            <p style="margin-bottom: 8px;"><strong>Certification Standards:</strong></p>
+                            <p style="font-size: 0.9rem; line-height: 1.6; margin: 0;">
+                                CabinPulse devices are compliant with <strong>IC (Canada)</strong> and <strong>FCC</strong> standards. Please note that other countries may have different wireless certification requirements or regulatory standards. As the importer, you are responsible for ensuring the device meets your country's specific regulatory requirements.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="info-box" style="margin-bottom: 24px; border-color: #FFA726; background: rgba(255, 167, 38, 0.1); border: 1px solid #FFA726; border-radius: 12px; padding: 16px; display: flex; align-items: start; gap: 12px;">
+                        <i class="fas fa-exclamation-triangle" style="color: #FFA726; font-size: 1.2rem; margin-top: 2px;"></i>
+                        <div>
+                            <p style="margin-bottom: 8px;"><strong>Customs Duties & Import Fees:</strong></p>
+                            <p style="font-size: 0.9rem; line-height: 1.6; margin: 0;">
+                                As the importer, you are responsible for any applicable import duties, taxes, customs fees, or brokerage charges that may be assessed by your country's customs authorities. These fees vary by country and are not included in the purchase price. CabinPulse cannot predict or control these charges.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="background: rgba(15, 52, 96, 0.4); border: 2px solid rgba(233, 69, 96, 0.3); border-radius: 16px; padding: 20px; margin-bottom: 0;">
+                        <label style="display: flex; align-items: start; gap: 12px; cursor: pointer; user-select: none;">
+                            <input type="checkbox" id="intl-modal-acknowledgment" style="width: 20px; height: 20px; margin-top: 2px; accent-color: var(--highlight-color); flex-shrink: 0;">
+                            <span style="font-size: 0.9rem; line-height: 1.5;">
+                                I understand and acknowledge that: (1) CabinPulse devices are certified with IC and FCC standards; (2) I am responsible for ensuring compliance with my country's regulatory requirements; and (3) I am liable for any import duties, taxes, customs fees, or brokerage charges assessed by my country's customs authorities.
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="intl-modal-footer" style="justify-content: space-between;">
+                    <button id="intl-modal-back" class="intl-modal-btn" style="background: linear-gradient(135deg, rgba(15, 52, 96, 0.6) 0%, rgba(233, 69, 96, 0.3) 100%);">Back</button>
+                    <button id="intl-modal-continue" class="intl-modal-btn" disabled>Check Network Compatibility</button>
+                </div>
+            </div>
+
+            <!-- Screen 4: Network Compatibility -->
+            <div id="intl-modal-screen-4" class="intl-modal-screen">
+                <div class="intl-modal-header">
+                    <i class="fas fa-signal intl-modal-icon"></i>
+                    <h2 class="intl-modal-title">Network Compatibility</h2>
+                </div>
+
+                <div class="intl-modal-body">
+                    <div id="compatibility-content">
+                        <!-- Will be dynamically populated -->
+                    </div>
+                </div>
+
+                <div class="intl-modal-footer" style="justify-content: space-between;">
+                    <button id="intl-modal-back-4" class="intl-modal-btn" style="background: linear-gradient(135deg, rgba(15, 52, 96, 0.6) 0%, rgba(233, 69, 96, 0.3) 100%);">Back</button>
+                    <button id="intl-modal-finish" class="intl-modal-btn">Continue to Shipping</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -1733,11 +2332,65 @@
             let selectedCountry = null;
             let referralCode = null;
             let isReferralValid = false;
+            let quantity = 1;
 
             // Plan toggle functionality
             const compactToggles = document.querySelectorAll('.compact-toggle-option');
             const compactSlider = document.querySelector('.compact-toggle-slider');
             const confirmSavingsIndicator = document.querySelector('.compact-savings-indicator');
+
+            // Quantity controls
+            const quantityInput = document.getElementById('quantity-input');
+            const quantityDecrease = document.getElementById('quantity-decrease');
+            const quantityIncrease = document.getElementById('quantity-increase');
+
+            function updateQuantity(newQuantity) {
+                quantity = Math.max(1, Math.min(25, newQuantity));
+                quantityInput.value = quantity;
+
+                // Update button states
+                quantityDecrease.disabled = quantity <= 1;
+                quantityIncrease.disabled = quantity >= 25;
+
+                // Update subtitle text
+                const subLabel = document.getElementById('quantity-sub-label');
+
+                if (quantity >= 25) {
+                    subLabel.innerHTML = 'Need more than 25? <a href="mailto:support@cabinpulse.com?subject=Bulk Order Inquiry" style="color: var(--highlight-color); text-decoration: none; font-weight: 600;">Contact Sales</a>';
+                } else {
+                    subLabel.textContent = 'Select quantity';
+                }
+
+                // Recalculate shipping cost if a shipping option is already selected
+                const selectedShipping = document.querySelector('.shipping-option.selected input[type="radio"]');
+                if (selectedShipping) {
+                    const baseCost = parseFloat(selectedShipping.value);
+                    shippingCost = calculateShippingCost(baseCost, quantity);
+                }
+
+                // Update pricing
+                updatePlanInfo();
+            }
+
+            quantityDecrease.addEventListener('click', function() {
+                updateQuantity(quantity - 1);
+            });
+
+            quantityIncrease.addEventListener('click', function() {
+                updateQuantity(quantity + 1);
+            });
+
+            quantityInput.addEventListener('input', function() {
+                const value = parseInt(this.value) || 1;
+                updateQuantity(value);
+            });
+
+            quantityInput.addEventListener('blur', function() {
+                // Ensure valid value on blur
+                if (!this.value || parseInt(this.value) < 1) {
+                    updateQuantity(1);
+                }
+            });
 
             const plans = {
                 1: { price: '14', label: 'billed annually', duration: '1-Year Plan', subscription: '$168/year' },
@@ -1753,165 +2406,166 @@
             });
 
             // Initialize the plan toggle based on URL parameter
-function initializePlan() {
-    // DON'T re-read from URL - use the already-validated plan variable
-    // plan is already set at the top with validation
-    
-    // Update toggle state
-    compactToggles.forEach(toggle => {
-        toggle.classList.remove('active');
-        if (toggle.dataset.plan === plan) {
-            toggle.classList.add('active');
-        }
-    });
-    
-    // Update slider position
-    if (plan === '3') {
-        compactSlider.classList.add('three-year');
-    } else {
-        compactSlider.classList.remove('three-year');
-    }
-    
-    updatePlanInfo();
-}
+            function initializePlan() {
+                // Update toggle state
+                compactToggles.forEach(toggle => {
+                    toggle.classList.remove('active');
+                    if (toggle.dataset.plan === plan) {
+                        toggle.classList.add('active');
+                    }
+                });
+                
+                // Update slider position
+                if (plan === '3') {
+                    compactSlider.classList.add('three-year');
+                } else {
+                    compactSlider.classList.remove('three-year');
+                }
 
-// Referral Code Functionality
-const referralHeader = document.getElementById('referral-header');
-const referralToggle = document.getElementById('referral-toggle');
-const referralContent = document.getElementById('referral-content');
-const referralInput = document.getElementById('referral-code');
-const validateBtn = document.getElementById('validate-referral-btn');
-const referralFeedback = document.getElementById('referral-feedback');
-const referralFeedbackText = document.getElementById('referral-feedback-text');
+                // Initialize quantity button states
+                quantityDecrease.disabled = quantity <= 1;
+                quantityIncrease.disabled = quantity >= 25;
 
-// Check for refcode in URL
-const refcodeParam = urlParams.get('refcode');
-if (refcodeParam) {
-    referralCode = refcodeParam.toUpperCase();
-    referralInput.value = referralCode;
-    
-    // Auto-open and validate if refcode is in URL
-    referralContent.classList.add('open');
-    referralToggle.classList.add('open');
-    
-    // Validate immediately - but don't block user progress
-    setTimeout(() => {
-        validateReferralCode().catch(error => {
-            console.warn('Referral code validation failed:', error);
-            // Silently fail - don't block the user
-            referralCode = null;
-            isReferralValid = false;
-        });
-    }, 500);
-}
+                updatePlanInfo();
+            }
 
-// Toggle referral section
-referralHeader.addEventListener('click', function() {
-    referralContent.classList.toggle('open');
-    referralToggle.classList.toggle('open');
-});
+            // Referral Code Functionality
+            const referralHeader = document.getElementById('referral-header');
+            const referralToggle = document.getElementById('referral-toggle');
+            const referralContent = document.getElementById('referral-content');
+            const referralInput = document.getElementById('referral-code');
+            const validateBtn = document.getElementById('validate-referral-btn');
+            const referralFeedback = document.getElementById('referral-feedback');
+            const referralFeedbackText = document.getElementById('referral-feedback-text');
 
-// Validate referral code function
-async function validateReferralCode() {
-    const code = referralInput.value.trim().toUpperCase();
-    
-    if (!code) {
-        referralFeedback.classList.remove('show', 'success', 'error');
-        referralInput.classList.remove('valid', 'invalid');
-        isReferralValid = false;
-        referralCode = null;
-        return;
-    }
-    
-    validateBtn.disabled = true;
-    validateBtn.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
-    
-    try {
-        const response = await fetch('https://cabinpulse.com/api/users/referral/validate', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                referral_code: code
-            })
-        });
-        
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        
-        const data = await response.json();
-        
-        referralFeedback.classList.add('show');
-        
-        if (data.valid) {
-            // Valid code
-            referralFeedback.classList.remove('error');
-            referralFeedback.classList.add('success');
-            referralFeedback.querySelector('i').className = 'fas fa-circle-check';
-            referralFeedbackText.textContent = data.referrer_name 
-                ? `Referred by ${data.referrer_name}.` 
-                : 'Valid referral code applied!';
-            referralInput.classList.remove('invalid');
-            referralInput.classList.add('valid');
-            isReferralValid = true;
-            referralCode = code;
-            validateBtn.textContent = 'Applied ✓';
-        } else {
-            // Invalid code
-            referralFeedback.classList.remove('success');
-            referralFeedback.classList.add('error');
-            referralFeedback.querySelector('i').className = 'fas fa-circle-xmark';
-            referralFeedbackText.textContent = data.message || 'Invalid referral code';
-            referralInput.classList.remove('valid');
-            referralInput.classList.add('invalid');
-            isReferralValid = false;
-            referralCode = null;
-            validateBtn.textContent = 'Apply';
-        }
-    } catch (error) {
-        console.error('Error validating referral code:', error);
-        referralFeedback.classList.add('show', 'error');
-        referralFeedback.querySelector('i').className = 'fas fa-circle-xmark';
-        referralFeedbackText.textContent = 'Error validating code. Please try again.';
-        referralInput.classList.remove('valid');
-        referralInput.classList.add('invalid');
-        isReferralValid = false;
-        referralCode = null;
-        validateBtn.textContent = 'Apply';
-    } finally {
-        validateBtn.disabled = false;
-        // Always re-enable button, never block user
-        if (!isReferralValid) {
-            validateBtn.textContent = 'Apply';
-        }
-    }
-}
+            // Check for refcode in URL
+            const refcodeParam = urlParams.get('refcode');
+            if (refcodeParam) {
+                referralCode = refcodeParam.toUpperCase();
+                referralInput.value = referralCode;
+                
+                // Auto-open and validate if refcode is in URL
+                referralContent.classList.add('open');
+                referralToggle.classList.add('open');
+                
+                // Validate immediately - but don't block user progress
+                setTimeout(() => {
+                    validateReferralCode().catch(error => {
+                        console.warn('Referral code validation failed:', error);
+                        // Silently fail - don't block the user
+                        referralCode = null;
+                        isReferralValid = false;
+                    });
+                }, 500);
+            }
 
-// Apply button click
-validateBtn.addEventListener('click', validateReferralCode);
+            // Toggle referral section
+            referralHeader.addEventListener('click', function() {
+                referralContent.classList.toggle('open');
+                referralToggle.classList.toggle('open');
+            });
 
-// Validate on Enter key
-referralInput.addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-        e.preventDefault();
-        validateReferralCode();
-    }
-});
+            // Validate referral code function
+            async function validateReferralCode() {
+                const code = referralInput.value.trim().toUpperCase();
+                
+                if (!code) {
+                    referralFeedback.classList.remove('show', 'success', 'error');
+                    referralInput.classList.remove('valid', 'invalid');
+                    isReferralValid = false;
+                    referralCode = null;
+                    return;
+                }
+                
+                validateBtn.disabled = true;
+                validateBtn.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
+                
+                try {
+                    const response = await fetch('https://cabinpulse.com/api/users/referral/validate', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            referral_code: code
+                        })
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    
+                    const data = await response.json();
+                    
+                    referralFeedback.classList.add('show');
+                    
+                    if (data.valid) {
+                        // Valid code
+                        referralFeedback.classList.remove('error');
+                        referralFeedback.classList.add('success');
+                        referralFeedback.querySelector('i').className = 'fas fa-circle-check';
+                        referralFeedbackText.textContent = data.referrer_name 
+                            ? `Referred by ${data.referrer_name}.` 
+                            : 'Valid referral code applied!';
+                        referralInput.classList.remove('invalid');
+                        referralInput.classList.add('valid');
+                        isReferralValid = true;
+                        referralCode = code;
+                        validateBtn.textContent = 'Applied ✓';
+                    } else {
+                        // Invalid code
+                        referralFeedback.classList.remove('success');
+                        referralFeedback.classList.add('error');
+                        referralFeedback.querySelector('i').className = 'fas fa-circle-xmark';
+                        referralFeedbackText.textContent = data.message || 'Invalid referral code';
+                        referralInput.classList.remove('valid');
+                        referralInput.classList.add('invalid');
+                        isReferralValid = false;
+                        referralCode = null;
+                        validateBtn.textContent = 'Apply';
+                    }
+                } catch (error) {
+                    console.error('Error validating referral code:', error);
+                    referralFeedback.classList.add('show', 'error');
+                    referralFeedback.querySelector('i').className = 'fas fa-circle-xmark';
+                    referralFeedbackText.textContent = 'Error validating code. Please try again.';
+                    referralInput.classList.remove('valid');
+                    referralInput.classList.add('invalid');
+                    isReferralValid = false;
+                    referralCode = null;
+                    validateBtn.textContent = 'Apply';
+                } finally {
+                    validateBtn.disabled = false;
+                    // Always re-enable button, never block user
+                    if (!isReferralValid) {
+                        validateBtn.textContent = 'Apply';
+                    }
+                }
+            }
 
-// Clear validation when input changes
-referralInput.addEventListener('input', function(e) {
-    this.value = this.value.toUpperCase();
-    
-    if (isReferralValid) {
-        referralFeedback.classList.remove('show');
-        referralInput.classList.remove('valid', 'invalid');
-        isReferralValid = false;
-        referralCode = null;
-        validateBtn.textContent = 'Apply';
-    }
-});
+            // Apply button click
+            validateBtn.addEventListener('click', validateReferralCode);
+
+            // Validate on Enter key
+            referralInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    validateReferralCode();
+                }
+            });
+
+            // Clear validation when input changes
+            referralInput.addEventListener('input', function(e) {
+                this.value = this.value.toUpperCase();
+                
+                if (isReferralValid) {
+                    referralFeedback.classList.remove('show');
+                    referralInput.classList.remove('valid', 'invalid');
+                    isReferralValid = false;
+                    referralCode = null;
+                    validateBtn.textContent = 'Apply';
+                }
+            });
 
             // Debounce function for API calls
             function debounce(func, wait) {
@@ -2034,15 +2688,26 @@ referralInput.addEventListener('input', function(e) {
                 const planData = plans[plan];
                 const monthlyPrice = parseInt(planData.price);
                 const planCost = monthlyPrice * (plan === '1' ? 12 : 36);
-                const totalAmount = 199 + planCost + shippingCost + usTariff;
-                
+                const deviceCost = 199 * quantity;
+                const subscriptionCost = planCost * quantity;
+                const totalAmount = deviceCost + subscriptionCost + shippingCost + usTariff;
+
                 // Update confirmation step elements
                 document.getElementById('confirm-monthly-price').textContent = planData.price;
                 document.getElementById('confirm-price-label').textContent = planData.label;
                 document.getElementById('confirm-plan-duration').textContent = planData.duration;
-                document.getElementById('confirm-subscription-cost').textContent = planData.subscription;
+
+                // Update costs with quantity
+                if (quantity > 1) {
+                    document.getElementById('confirm-subscription-cost').textContent = `$${subscriptionCost}/${plan === '1' ? 'year' : '3 years'} (${quantity} units)`;
+                    document.getElementById('confirm-device-fee').textContent = `$${deviceCost} CAD (${quantity} units)`;
+                } else {
+                    document.getElementById('confirm-subscription-cost').textContent = planData.subscription;
+                    document.getElementById('confirm-device-fee').textContent = '$199 CAD';
+                }
+
                 document.getElementById('confirm-total-due').textContent = `$${totalAmount} CAD`;
-                
+
                 // Update savings indicator
                 if (plan === '3') {
                     confirmSavingsIndicator.textContent = "Saving 29%";
@@ -2051,34 +2716,34 @@ referralInput.addEventListener('input', function(e) {
                     confirmSavingsIndicator.textContent = "Save 29%!";
                     confirmSavingsIndicator.classList.remove('activated');
                 }
-                
+
                 // Update URL
                 urlParams.set('plan', plan);
                 window.history.replaceState({}, '', `${window.location.pathname}?${urlParams}`);
-                
+
                 updateShippingSummary();
             }
 
             function updateShippingSummary() {
-    const shippingSummaryRow = document.getElementById('confirm-shipping-summary-row');
-    const shippingCostElement = document.getElementById('confirm-shipping-cost');
-    const tariffSummaryRow = document.getElementById('confirm-tariff-summary-row');
+                const shippingSummaryRow = document.getElementById('confirm-shipping-summary-row');
+                const shippingCostElement = document.getElementById('confirm-shipping-cost');
+                const tariffSummaryRow = document.getElementById('confirm-tariff-summary-row');
 
-    if (shippingCost > 0) {
-        shippingSummaryRow.style.display = 'flex';
-        shippingCostElement.textContent = `$${shippingCost.toFixed(2)} CAD`;
-    } else {
-        shippingSummaryRow.style.display = 'flex';
-        shippingCostElement.textContent = 'FREE';
-    }
+                if (shippingCost > 0) {
+                    shippingSummaryRow.style.display = 'flex';
+                    shippingCostElement.textContent = `$${shippingCost.toFixed(2)} CAD`;
+                } else {
+                    shippingSummaryRow.style.display = 'flex';
+                    shippingCostElement.textContent = 'FREE';
+                }
 
-    // Show/hide tariff row for US orders
-    if (usTariff > 0) {
-        tariffSummaryRow.style.display = 'flex';
-    } else {
-        tariffSummaryRow.style.display = 'none';
-    }
-}
+                // Show/hide tariff row for US orders
+                if (usTariff > 0) {
+                    tariffSummaryRow.style.display = 'flex';
+                } else {
+                    tariffSummaryRow.style.display = 'none';
+                }
+            }
 
             compactToggles.forEach(toggle => {
                 toggle.addEventListener('click', function() {
@@ -2105,59 +2770,341 @@ referralInput.addEventListener('input', function(e) {
             });
 
             function scrollToAccountForm() {
-    // Only scroll on mobile devices
-    if (window.innerWidth <= 768) {
-        const newUserForm = document.getElementById('new-user-form');
-        const existingUserForm = document.getElementById('existing-user-form');
-        
-        // Determine which form is visible
-        const visibleForm = newUserForm.style.display === 'block' ? newUserForm : existingUserForm;
-        
-        if (visibleForm) {
-            // Small delay to ensure the form is visible first
-            setTimeout(() => {
-                const rect = visibleForm.getBoundingClientRect();
-                const isVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
-                
-                // Only scroll if the form isn't fully visible
-                if (!isVisible) {
-                    // Scroll just enough to show the form
-                    const scrollOffset = rect.top - window.innerHeight * 0.7; // Show at 70% down the screen
-                    window.scrollBy({
-                        top: scrollOffset,
-                        behavior: 'smooth'
-                    });
+                // Only scroll on mobile devices
+                if (window.innerWidth <= 768) {
+                    const newUserForm = document.getElementById('new-user-form');
+                    const existingUserForm = document.getElementById('existing-user-form');
+                    
+                    // Determine which form is visible
+                    const visibleForm = newUserForm.style.display === 'block' ? newUserForm : existingUserForm;
+                    
+                    if (visibleForm) {
+                        // Small delay to ensure the form is visible first
+                        setTimeout(() => {
+                            const rect = visibleForm.getBoundingClientRect();
+                            const isVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
+                            
+                            // Only scroll if the form isn't fully visible
+                            if (!isVisible) {
+                                // Scroll just enough to show the form
+                                const scrollOffset = rect.top - window.innerHeight * 0.7; // Show at 70% down the screen
+                                window.scrollBy({
+                                    top: scrollOffset,
+                                    behavior: 'smooth'
+                                });
+                            }
+                        }, 100);
+                    }
                 }
-            }, 100);
-        }
-    }
-}
+            }
 
- // Country selection with validation
-document.querySelectorAll('.selection-option[data-country]').forEach(option => {
-    option.addEventListener('click', function() {
-        const country = this.dataset.country;
-        selectedCountry = country;
+            // Country selection with validation
+            document.querySelectorAll('.selection-option[data-country]').forEach(option => {
+                option.addEventListener('click', function() {
+                    const country = this.dataset.country;
+                    selectedCountry = country;
 
-        // Set US tariff if shipping to USA
-        if (country === 'US') {
-            usTariff = 90;
-        } else {
-            usTariff = 0;
-        }
+                    // Set US tariff if shipping to USA
+                    if (country === 'US') {
+                        usTariff = 90;
+                    } else {
+                        usTariff = 0;
+                    }
 
-        // Update selection state
-        document.querySelectorAll('.selection-option[data-country]').forEach(opt =>
-            opt.classList.remove('selected'));
-        this.classList.add('selected');
+                    // Update selection state
+                    document.querySelectorAll('.selection-option[data-country]').forEach(opt =>
+                        opt.classList.remove('selected'));
+                    this.classList.add('selected');
 
-        // Show shipping options
-        showShippingOptions(country);
+                    // For international shipping, show modal first
+                    if (country === 'INTL') {
+                        const modal = document.getElementById('intl-modal');
+                        modal.classList.add('visible');
+                        // Don't show shipping options yet - wait for modal continue
+                    } else {
+                        // Show shipping options for CA and US
+                        showShippingOptions(country);
+                        // Scroll to shipping options on mobile
+                        scrollToShippingOptions();
+                    }
+                });
+            });
 
-        // Scroll to shipping options on mobile
-        scrollToShippingOptions();
-    });
-});
+            // International modal - Track selected region
+            let selectedRegion = null;
+
+            // Define which countries are in the Americas (use standard CabinPulse B504)
+            // Countries removed: BR, CL, GY, SR (these use CabinPulse Global B524)
+            // All others use CabinPulse Global
+            const americasCountries = ['MX', 'BZ', 'CR', 'SV', 'GT', 'HN', 'NI', 'PA', 'AR', 'BO', 'CO', 'EC', 'PY', 'PE', 'UY', 'VE'];
+
+            // Coverage status for each country
+            const coverageStatus = {
+                // Americas - "Likely to Work" (use standard B504)
+                // Removed BR, CL, GY, SR - these use Global B524
+                'AR': 'likely', 'BZ': 'likely', 'BO': 'likely',
+                'CO': 'likely', 'CR': 'may', 'EC': 'likely', 'SV': 'likely', 'GT': 'likely',
+                'HN': 'likely', 'MX': 'likely', 'NI': 'likely', 'PA': 'likely',
+                'PY': 'likely', 'PE': 'likely', 'UY': 'likely', 'VE': 'likely',
+
+                // All other countries in dropdown use CabinPulse Global B524
+                // Including: BR, CL, GY, SR (South America), SG, AE (Asia/Middle East)
+                // And officially supported: GB, IE, FR, DE, IT, ES, PT, NL, BE, CH, AT, SE, NO, DK, FI, PL, CZ, HK, JP, MY, KR, TW, TH, AU, NZ, ZA
+            };
+
+            // Carriers for officially supported countries (CabinPulse Global)
+            const officialCarriers = {
+                'AU': ['Optus', 'Telstra', 'Vodafone'],
+                'AT': ['3 (Drei)', 'A1', 'T-Mobile'],
+                'BE': ['Base', 'Orange', 'Proximus'],
+                'CH': ['Salt', 'Sunrise', 'Swisscom'],
+                'CZ': ['O2', 'T-Mobile', 'Vodafone'],
+                'DE': ['O2', 'Telekom', 'Vodafone'],
+                'DK': ['3 (Tre)', 'TDC', 'Telenor', 'Telia'],
+                'ES': ['Orange', 'Telefonica', 'Vodafone', 'Yoigo'],
+                'FI': ['DNA', 'Elisa', 'Telia'],
+                'FR': ['Bouygues', 'Free Mobile', 'Orange', 'SFR'],
+                'GB': ['3', 'EE', 'O2', 'Vodafone'],
+                'HK': ['CMHK', 'CSL', 'SmarTone'],
+                'IE': ['3 (Tre)', 'Meteor', 'O2', 'Vodafone'],
+                'IT': ['TIM', 'Vodafone', 'Wind'],
+                'JP': ['KDDI', 'NTT DoCoMo', 'Softbank'],
+                'KR': ['KT', 'LG U+', 'SK Telecom'],
+                'MY': ['Celcom', 'DiGi', 'Maxis'],
+                'NL': ['KPN', 'T-Mobile', 'Vodafone'],
+                'NO': ['TDC', 'Telenor', 'Telia'],
+                'NZ': ['2degrees', 'Spark', 'Vodafone'],
+                'PL': ['Orange', 'Play', 'Plus', 'T-Mobile'],
+                'PT': ['NOS', 'TMN', 'Vodafone'],
+                'SE': ['3 (Tre)', 'Tele2', 'Telenor', 'Telia'],
+                'TH': ['AIS', 'DTAC', 'True Move'],
+                'TW': ['Chunghwa', 'FarEasTone', 'T Star', 'Taiwan Mobile'],
+                'ZA': ['Cell C', 'MTN', 'Vodacom'],
+            };
+
+            // Country selection from single dropdown
+            const intlCountrySelect = document.getElementById('intl-country-select');
+
+            intlCountrySelect.addEventListener('change', function() {
+                if (this.value) {
+                    // Store the selected country value
+                    const countryCode = this.value;
+                    selectedCountry = countryCode;
+
+                    // Special handling for CA/US - bypass modal and go straight to shipping
+                    if (countryCode === 'CA' || countryCode === 'US') {
+                        const modal = document.getElementById('intl-modal');
+                        modal.classList.remove('visible');
+
+                        // Reset modal to screen 1 for next time
+                        document.getElementById('intl-modal-screen-1').classList.add('active');
+                        intlCountrySelect.value = '';
+
+                        // Set US tariff if USA
+                        if (countryCode === 'US') {
+                            usTariff = 90;
+                        } else {
+                            usTariff = 0;
+                        }
+
+                        // Update selection state in the country buttons
+                        document.querySelectorAll('.selection-option[data-country]').forEach(opt =>
+                            opt.classList.remove('selected'));
+                        const countryButton = document.querySelector(`.selection-option[data-country="${countryCode}"]`);
+                        if (countryButton) {
+                            countryButton.classList.add('selected');
+                        }
+
+                        // Show shipping options for selected country
+                        showShippingOptions(countryCode);
+                        scrollToShippingOptions();
+                    }
+                    // Determine if this is Americas or Rest of World
+                    else if (americasCountries.includes(countryCode)) {
+                        selectedRegion = 'americas';
+
+                        // Reset screen 2a to Americas content in case it was changed
+                        const screen2aIcon = document.querySelector('#intl-modal-screen-2a .intl-modal-icon');
+                        const screen2aTitle = document.querySelector('#intl-modal-screen-2a .intl-modal-title');
+                        const screen2aBody = document.querySelector('#intl-modal-screen-2a .intl-modal-body p');
+                        const screen2aDeviceText = document.querySelector('#intl-modal-screen-2a .intl-device-highlight p');
+
+                        screen2aIcon.className = 'fas fa-earth-americas intl-modal-icon';
+                        screen2aTitle.textContent = 'Americas Shipping';
+                        screen2aBody.innerHTML = 'Thank you for your interest in CabinPulse! For shipments to North, Central, and South America, we ship the standard <strong>CabinPulse</strong> device.';
+                        screen2aDeviceText.textContent = 'The standard CabinPulse device works throughout the Americas region with full cellular connectivity and all monitoring features.';
+
+                        // Transition to Americas device info screen
+                        document.getElementById('intl-modal-screen-1').classList.remove('active');
+                        document.getElementById('intl-modal-screen-2a').classList.add('active');
+                    } else {
+                        selectedRegion = 'row';
+                        // Transition to Rest of World device info screen
+                        document.getElementById('intl-modal-screen-1').classList.remove('active');
+                        document.getElementById('intl-modal-screen-2b').classList.add('active');
+                    }
+                }
+            });
+
+            // Back button from Americas screen (2a) to region selection (1)
+            document.getElementById('intl-modal-back-2a').addEventListener('click', function() {
+                document.getElementById('intl-modal-screen-2a').classList.remove('active');
+                document.getElementById('intl-modal-screen-1').classList.add('active');
+                // Reset dropdown selection and region
+                intlCountrySelect.value = '';
+                selectedRegion = null;
+            });
+
+            // Next button from Americas screen (2a) to certification (3)
+            document.getElementById('intl-modal-next-2a').addEventListener('click', function() {
+                document.getElementById('intl-modal-screen-2a').classList.remove('active');
+                document.getElementById('intl-modal-screen-3').classList.add('active');
+            });
+
+            // Back button from Rest of World screen (2b) to region selection (1)
+            document.getElementById('intl-modal-back-2b').addEventListener('click', function() {
+                document.getElementById('intl-modal-screen-2b').classList.remove('active');
+                document.getElementById('intl-modal-screen-1').classList.add('active');
+                // Reset dropdown selection and region
+                intlCountrySelect.value = '';
+                selectedRegion = null;
+            });
+
+            // Next button from Rest of World screen (2b) to certification (3)
+            document.getElementById('intl-modal-next-2b').addEventListener('click', function() {
+                document.getElementById('intl-modal-screen-2b').classList.remove('active');
+                document.getElementById('intl-modal-screen-3').classList.add('active');
+            });
+
+            // Back button from certification screen (3) - returns to appropriate device screen
+            document.getElementById('intl-modal-back').addEventListener('click', function() {
+                document.getElementById('intl-modal-screen-3').classList.remove('active');
+                if (selectedRegion === 'americas' || selectedRegion === 'special') {
+                    document.getElementById('intl-modal-screen-2a').classList.add('active');
+                } else {
+                    document.getElementById('intl-modal-screen-2b').classList.add('active');
+                }
+            });
+
+            // Handle checkbox to enable/disable continue button
+            document.getElementById('intl-modal-acknowledgment').addEventListener('change', function() {
+                const continueBtn = document.getElementById('intl-modal-continue');
+                continueBtn.disabled = !this.checked;
+            });
+
+            // Continue to network compatibility (from screen 3 to screen 4)
+            document.getElementById('intl-modal-continue').addEventListener('click', function() {
+                // Populate compatibility screen
+                showNetworkCompatibility(selectedCountry);
+
+                // Transition to screen 4
+                document.getElementById('intl-modal-screen-3').classList.remove('active');
+                document.getElementById('intl-modal-screen-4').classList.add('active');
+            });
+
+            // Back button from compatibility screen (4) to certification (3)
+            document.getElementById('intl-modal-back-4').addEventListener('click', function() {
+                document.getElementById('intl-modal-screen-4').classList.remove('active');
+                document.getElementById('intl-modal-screen-3').classList.add('active');
+            });
+
+            // Finish button from compatibility screen (4) - close modal and show shipping
+            document.getElementById('intl-modal-finish').addEventListener('click', function() {
+                const modal = document.getElementById('intl-modal');
+                modal.classList.remove('visible');
+
+                // Reset modal to screen 1 for next time
+                document.getElementById('intl-modal-screen-4').classList.remove('active');
+                document.getElementById('intl-modal-screen-3').classList.remove('active');
+                document.getElementById('intl-modal-screen-2a').classList.remove('active');
+                document.getElementById('intl-modal-screen-2b').classList.remove('active');
+                document.getElementById('intl-modal-screen-1').classList.add('active');
+
+                // Reset checkbox for next time
+                document.getElementById('intl-modal-acknowledgment').checked = false;
+                document.getElementById('intl-modal-continue').disabled = true;
+
+                // Reset dropdown for next time
+                intlCountrySelect.value = '';
+
+                // Reset selected region (but keep selectedCountry as it's needed for checkout)
+                selectedRegion = null;
+
+                // Now show shipping options for international
+                showShippingOptions('INTL');
+                // Scroll to shipping options on mobile
+                scrollToShippingOptions();
+            });
+
+            // Function to show network compatibility
+            function showNetworkCompatibility(countryCode) {
+                const content = document.getElementById('compatibility-content');
+                const status = coverageStatus[countryCode] || 'official';
+                const countryName = document.querySelector(`option[value="${countryCode}"]`).textContent;
+
+                let html = '';
+
+                if (status === 'likely') {
+                    // Likely to work - Standard device
+                    html = `
+                        <div class="info-box" style="margin-bottom: 20px; border-color: #4CAF50; background: rgba(76, 175, 80, 0.1);">
+                            <i class="fas fa-check-circle" style="color: #4CAF50;"></i>
+                            <div>
+                                <p style="margin-bottom: 8px;"><strong>Your device will work in ${countryName}!</strong></p>
+                                <p style="margin: 0;">CabinPulse is expected to work with local cellular networks in your country.</p>
+                            </div>
+                        </div>
+                    `;
+                } else if (status === 'may') {
+                    // May work - Standard device
+                    html = `
+                        <div class="info-box" style="margin-bottom: 20px; border-color: #FFA726; background: rgba(255, 167, 38, 0.1);">
+                            <i class="fas fa-info-circle" style="color: #FFA726;"></i>
+                            <div>
+                                <p style="margin-bottom: 8px;"><strong>Coverage may vary in ${countryName}</strong></p>
+                                <p style="margin: 0;">CabinPulse may work in your country, but coverage is not guaranteed and may vary by location. We recommend contacting <a href="mailto:support@cabinpulse.com" style="color: var(--highlight-color);">support@cabinpulse.com</a> to confirm compatibility.</p>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    // Global device (official or expected to work)
+                    const carriers = officialCarriers[countryCode] || [];
+
+                    if (carriers.length > 0) {
+                        // Official support with known carriers
+                        html = `
+                            <div class="info-box" style="margin-bottom: 20px; border-color: #4CAF50; background: rgba(76, 175, 80, 0.1);">
+                                <i class="fas fa-check-circle" style="color: #4CAF50;"></i>
+                                <div>
+                                    <p style="margin-bottom: 8px;"><strong>Your CabinPulse Global will work in ${countryName}!</strong></p>
+                                    <p style="margin: 0;">Compatible with major carriers including:</p>
+                                </div>
+                            </div>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-top: 16px;">
+                                ${carriers.map(carrier => `
+                                    <div style="background: rgba(15, 52, 96, 0.3); border: 1px solid rgba(233, 69, 96, 0.3); border-radius: 8px; padding: 12px; text-align: center;">
+                                        <i class="fas fa-signal" style="color: var(--highlight-color); margin-bottom: 4px;"></i>
+                                        <div style="font-size: 0.9rem; font-weight: 500;">${carrier}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        `;
+                    } else {
+                        // Global device but no specific carrier data yet (e.g., BR, CL, GY, SR, SG, AE)
+                        html = `
+                            <div class="info-box" style="margin-bottom: 20px; border-color: #4CAF50; background: rgba(76, 175, 80, 0.1);">
+                                <i class="fas fa-check-circle" style="color: #4CAF50;"></i>
+                                <div>
+                                    <p style="margin-bottom: 8px;"><strong>Your CabinPulse Global will work in ${countryName}!</strong></p>
+                                    <p style="margin: 0;">The CabinPulse Global device is expected to work with local cellular networks in your country.</p>
+                                </div>
+                            </div>
+                        `;
+                    }
+                }
+
+                content.innerHTML = html;
+            }
 
             function showShippingOptions(country) {
                 const shippingOptions = document.getElementById('shipping-options');
@@ -2231,8 +3178,12 @@ document.querySelectorAll('.selection-option[data-country]').forEach(option => {
                                     </div>
                                 </div>
                             </div>
+                            <div class="info-box" style="margin-top: 20px; font-size: 0.9rem;">
+                                <i class="fas fa-info-circle"></i>
+                                <p>Getting multiple devices? Additional shipping is 25% of base rate per extra device.</p>
+                            </div>
                         `;
-                    } else {
+                    } else if (country === 'US') {
                         optionsHTML = `
                             <div class="info-box" style="margin-bottom: 24px;">
                                 <i class="fas fa-info-circle"></i>
@@ -2291,110 +3242,179 @@ document.querySelectorAll('.selection-option[data-country]').forEach(option => {
                                     </div>
                                 </div>
                             </div>
+                            <div class="info-box" style="margin-top: 20px; font-size: 0.9rem;">
+                                <i class="fas fa-info-circle"></i>
+                                <p>Getting multiple devices? Additional shipping is 25% of base rate per extra device.</p>
+                            </div>
+                        `;
+                    } else if (country === 'INTL') {
+                        // For international, the country was already selected in the modal (stored in selectedCountry)
+                        optionsHTML = `
+                            <div class="info-box" style="margin-bottom: 20px;">
+                                <i class="fas fa-shipping-fast"></i>
+                                <p>Delivery times may vary depending on your location and local customs processing. Full tracking is provided for all international shipments.</p>
+                            </div>
+                            <div class="shipping-option" data-cost="35">
+                                <input type="radio" name="shipping" value="35" id="tracked-packet-intl">
+                                <div class="shipping-details">
+                                    <div class="shipping-name">
+                                        <div class="shipping-provider">
+                                            <img src="https://www.canadapost-postescanada.ca/cpc/assets/cpc/uploads/logos/cpc-scp/primary/postmarks-80x80.svg"
+                                                 alt="Canada Post" class="shipping-logo">
+                                            <span>Tracked Packet International</span>
+                                            <i class="fas fa-ship" style="color: var(--highlight-color); margin-left: 4px;"></i>
+                                        </div>
+                                        <span class="shipping-price">$35.00</span>
+                                    </div>
+                                    <div class="shipping-estimate">
+                                        <i class="fas fa-clock"></i>
+                                        <span>Usually delivers in 6-10 business days</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="shipping-option" data-cost="75">
+                                <input type="radio" name="shipping" value="75" id="xpresspost-intl">
+                                <div class="shipping-details">
+                                    <div class="shipping-name">
+                                        <div class="shipping-provider">
+                                            <img src="https://www.canadapost-postescanada.ca/cpc/assets/cpc/uploads/logos/cpc-scp/primary/postmarks-80x80.svg"
+                                                 alt="Canada Post" class="shipping-logo">
+                                            <span>Xpresspost International</span>
+                                            <i class="fas fa-plane" style="color: var(--highlight-color); margin-left: 4px;"></i>
+                                        </div>
+                                        <span class="shipping-price">$75.00</span>
+                                    </div>
+                                    <div class="shipping-estimate">
+                                        <i class="fas fa-clock"></i>
+                                        <span>Usually delivers in 4-7 business days</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info-box" style="margin-top: 20px; font-size: 0.9rem;">
+                                <i class="fas fa-info-circle"></i>
+                                <p>Getting multiple devices? Additional shipping is 25% of base rate per extra device.</p>
+                            </div>
                         `;
                     }
-                    
+
                     container.innerHTML = optionsHTML;
-                    
+
                     // Add event listeners for shipping options
                     document.querySelectorAll('.shipping-option').forEach(option => {
                         option.addEventListener('click', function() {
                             const radio = this.querySelector('input[type="radio"]');
                             radio.checked = true;
-                            shippingCost = parseFloat(radio.value);
-                            
+                            const baseCost = parseFloat(radio.value);
+                            shippingCost = calculateShippingCost(baseCost, quantity);
+
                             // Update selection state
-                            document.querySelectorAll('.shipping-option').forEach(opt => 
+                            document.querySelectorAll('.shipping-option').forEach(opt =>
                                 opt.classList.remove('selected'));
                             this.classList.add('selected');
-                            
+
                             // Update pricing
                             updatePlanInfo();
-                            
-                            // Enable continue button
+
+                            // Enable continue button when shipping is selected
                             document.getElementById('step1-continue').disabled = false;
                         });
                     });
-                    
-                    // Auto-select first option (free shipping) for both countries
-                    const firstOption = container.querySelector('.shipping-option');
-                    const firstRadio = firstOption.querySelector('input[type="radio"]');
-                    firstRadio.checked = true;
-                    firstOption.classList.add('selected');
-                    shippingCost = 0;
-                    updatePlanInfo();
-                    document.getElementById('step1-continue').disabled = false;
+
+                    if (country === 'INTL') {
+                        // For international, don't auto-select - require explicit selection
+                        // Acknowledgment was already done in the modal
+                        document.getElementById('step1-continue').disabled = true;
+                    } else {
+                        // Auto-select first option for CA and US
+                        if (country === 'CA' || country === 'US') {
+                            const firstOption = container.querySelector('.shipping-option');
+                            const firstRadio = firstOption.querySelector('input[type="radio"]');
+                            firstRadio.checked = true;
+                            firstOption.classList.add('selected');
+                            const baseCost = parseFloat(firstRadio.value);
+                            shippingCost = calculateShippingCost(baseCost, quantity);
+                            updatePlanInfo();
+                            document.getElementById('step1-continue').disabled = false;
+                        }
+                    }
                 }, 1000);
+            }
+
+            // Calculate shipping cost based on quantity
+            // Base cost + (base cost * 0.25 * (quantity - 1))
+            function calculateShippingCost(baseCost, qty) {
+                if (baseCost === 0) return 0; // Free shipping stays free
+                return baseCost + (baseCost * 0.25 * (qty - 1));
             }
 
             // Smooth scroll to shipping options on mobile
             function scrollToShippingOptions() {
-    // Only scroll on mobile devices
-    if (window.innerWidth <= 768) {
-        const shippingOptions = document.getElementById('shipping-options');
-        if (shippingOptions) {
-            // Small delay to ensure the shipping options are visible first
-            setTimeout(() => {
-                const rect = shippingOptions.getBoundingClientRect();
-                const isVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
-                
-                // Only scroll if the shipping options aren't fully visible
-                if (!isVisible) {
-                    // Scroll just enough to show the shipping options
-                    const scrollOffset = rect.top - window.innerHeight * 0.7; // Show at 70% down the screen
-                    window.scrollBy({
-                        top: scrollOffset,
-                        behavior: 'smooth'
-                    });
+                // Only scroll on mobile devices
+                if (window.innerWidth <= 768) {
+                    const shippingOptions = document.getElementById('shipping-options');
+                    if (shippingOptions) {
+                        // Small delay to ensure the shipping options are visible first
+                        setTimeout(() => {
+                            const rect = shippingOptions.getBoundingClientRect();
+                            const isVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
+                            
+                            // Only scroll if the shipping options aren't fully visible
+                            if (!isVisible) {
+                                // Scroll just enough to show the shipping options
+                                const scrollOffset = rect.top - window.innerHeight * 0.7; // Show at 70% down the screen
+                                window.scrollBy({
+                                    top: scrollOffset,
+                                    behavior: 'smooth'
+                                });
+                            }
+                        }, 100);
+                    }
                 }
-            }, 100);
-        }
-    }
-}
+            }
 
             // Account type selection
             document.querySelectorAll('.selection-option[data-type]').forEach(option => {
-    option.addEventListener('click', function() {
-        const type = this.dataset.type;
-        
-        // Update selection state
-        document.querySelectorAll('.selection-option[data-type]').forEach(opt => 
-            opt.classList.remove('selected'));
-        this.classList.add('selected');
-        
-        const newUserForm = document.getElementById('new-user-form');
-        const existingUserForm = document.getElementById('existing-user-form');
-        
-        if (type === 'new') {
-            newUserForm.style.display = 'block';
-            existingUserForm.style.display = 'none';
-            isLoginMode = false;
-            
-            // Set required fields
-            existingUserForm.querySelectorAll('input').forEach(input => {
-                input.required = false;
+                option.addEventListener('click', function() {
+                    const type = this.dataset.type;
+                    
+                    // Update selection state
+                    document.querySelectorAll('.selection-option[data-type]').forEach(opt => 
+                        opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                    
+                    const newUserForm = document.getElementById('new-user-form');
+                    const existingUserForm = document.getElementById('existing-user-form');
+                    
+                    if (type === 'new') {
+                        newUserForm.style.display = 'block';
+                        existingUserForm.style.display = 'none';
+                        isLoginMode = false;
+                        
+                        // Set required fields
+                        existingUserForm.querySelectorAll('input').forEach(input => {
+                            input.required = false;
+                        });
+                        newUserForm.querySelectorAll('input').forEach(input => {
+                            input.required = true;
+                        });
+                    } else {
+                        newUserForm.style.display = 'none';
+                        existingUserForm.style.display = 'block';
+                        isLoginMode = true;
+                        
+                        // Set required fields
+                        newUserForm.querySelectorAll('input').forEach(input => {
+                            input.required = false;
+                        });
+                        existingUserForm.querySelectorAll('input').forEach(input => {
+                            input.required = true;
+                        });
+                    }
+                    
+                    // Add scroll effect for mobile
+                    scrollToAccountForm();
+                });
             });
-            newUserForm.querySelectorAll('input').forEach(input => {
-                input.required = true;
-            });
-        } else {
-            newUserForm.style.display = 'none';
-            existingUserForm.style.display = 'block';
-            isLoginMode = true;
-            
-            // Set required fields
-            newUserForm.querySelectorAll('input').forEach(input => {
-                input.required = false;
-            });
-            existingUserForm.querySelectorAll('input').forEach(input => {
-                input.required = true;
-            });
-        }
-        
-        // Add scroll effect for mobile
-        scrollToAccountForm();
-    });
-});
 
             // Real-time validation for email and phone
             document.getElementById('email')?.addEventListener('input', debounce(async function(e) {
@@ -2587,12 +3607,13 @@ document.querySelectorAll('.selection-option[data-country]').forEach(option => {
                 submitButton.innerHTML = '<div class="loading"><div class="spinner"></div> Processing...</div>';
                 
                 try {
-                    // Calculate totals
+                    // Calculate totals with quantity
                     const monthlyPrice = plan === '1' ? 14 : 10;
-                    const planCost = monthlyPrice * (plan === '1' ? 12 : 36);
-                    const deviceCost = 199;
+                    const planCostPerUnit = monthlyPrice * (plan === '1' ? 12 : 36);
+                    const planCost = planCostPerUnit * quantity;
+                    const deviceCost = 199 * quantity;
                     const totalAmount = (deviceCost + planCost + shippingCost + usTariff) * 100; // Convert to cents
-                    
+
 
                     let customerInfo;
                     if (isLoginMode) {
@@ -2627,6 +3648,7 @@ document.querySelectorAll('.selection-option[data-country]').forEach(option => {
                             userType: isLoginMode ? 'existing' : 'new',
                             country: selectedCountry,
                             shippingCost: shippingCost,
+                            quantity: quantity,
                             referralCode: isReferralValid ? referralCode : null,
                             usTariff: usTariff,
                             priceData: {
@@ -2669,7 +3691,5 @@ document.querySelectorAll('.selection-option[data-country]').forEach(option => {
             initializePlan();
         });
     </script>
-
-
 </body>
 </html>
