@@ -820,7 +820,7 @@ h2 {
 
 /* Responsive */
 @media (max-width: 1024px) {
-  .hero-content h1 { font-size: 2.5rem; }
+  .hero-content h1 { font-size: 1.5rem; }
   .footer-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 900px) {
@@ -865,6 +865,85 @@ h2 {
   .steps-grid { grid-template-columns: 1fr; }
   .modern-table { display: block; }
   .cta-features { flex-direction: column; gap: 15px; align-items: center; }
+}
+/* =========================================
+   2. HEADER & NAV STYLES (UPDATED)
+   ========================================= */
+.top-bar {
+  background-color: rgba(15, 52, 96, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(233, 69, 96, 0.1);
+  padding: 6px 0;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 999;
+  transition: all 0.3s ease;
+}
+
+.top-bar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 25px;
+  flex-wrap: nowrap; /* Prevents items from dropping to a new line */
+}
+
+.top-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0; /* Prevents this section from getting squished */
+}
+
+.top-bar-link {
+  color: var(--text-color);
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+  padding: 3px 6px;
+  border-radius: 4px;
+  white-space: nowrap; /* Prevents "Contact Us" from breaking */
+}
+
+.top-bar-link:hover {
+  opacity: 1;
+  color: var(--highlight-color);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.proudly-canadian {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-color);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.9;
+  background-color: rgba(233, 69, 96, 0.15);
+  padding: 3px 8px;
+  border-radius: 12px;
+  border: 1px solid rgba(233, 69, 96, 0.3);
+  white-space: nowrap; /* Prevents badge from breaking */
+}
+
+.proudly-canadian i {
+  color: var(--highlight-color);
+  font-size: 0.8rem;
+}
+
+/* Mobile Adjustment to keep everything on one line on small screens */
+@media (max-width: 480px) {
+  .top-bar-left { gap: 8px; }
+  .top-bar-content { padding: 0 15px; }
+  .top-bar-link, .proudly-canadian { font-size: 0.6rem; }
+  .proudly-canadian { padding: 2px 6px; }
 }
   </style>
 </head>
