@@ -2283,7 +2283,7 @@
                     <div style="background: rgba(15, 52, 96, 0.4); border: 2px solid rgba(233, 69, 96, 0.3); border-radius: 16px; padding: 20px; margin-bottom: 0;">
                         <label style="display: flex; align-items: start; gap: 12px; cursor: pointer; user-select: none;">
                             <input type="checkbox" id="intl-modal-acknowledgment" style="width: 20px; height: 20px; margin-top: 2px; accent-color: var(--highlight-color); flex-shrink: 0;">
-                            <span style="font-size: 0.9rem; line-height: 1.5;">
+                            <span id="acknowledgment-text" style="font-size: 0.9rem; line-height: 1.5;">
                                 I understand and acknowledge that: (1) CabinPulse devices are certified with IC and FCC standards; (2) I am responsible for ensuring compliance with my country's regulatory requirements; and (3) I am liable for any import duties, taxes, customs fees, or brokerage charges assessed by my country's customs authorities.
                             </span>
                         </label>
@@ -2963,6 +2963,9 @@
                 // Update certification text for CabinPulse Standard
                 document.getElementById('certification-text').innerHTML = '<strong>CabinPulse Standard:</strong> FCC (United States), ISED (Canada)';
 
+                // Update acknowledgment checkbox text for IC and FCC
+                document.getElementById('acknowledgment-text').innerHTML = 'I understand and acknowledge that: (1) CabinPulse devices are certified with IC and FCC standards; (2) I am responsible for ensuring compliance with my country\'s regulatory requirements; and (3) I am liable for any import duties, taxes, customs fees, or brokerage charges assessed by my country\'s customs authorities.';
+
                 document.getElementById('intl-modal-screen-2a').classList.remove('active');
                 document.getElementById('intl-modal-screen-3').classList.add('active');
             });
@@ -2979,7 +2982,10 @@
             // Next button from Rest of World screen (2b) to certification (3)
             document.getElementById('intl-modal-next-2b').addEventListener('click', function() {
                 // Update certification text for CabinPulse Global
-                document.getElementById('certification-text').innerHTML = '<strong>CabinPulse Global:</strong> CE (Europe), UKCA (United Kingdom), Japan (D 24 0029 201, 201 240198)';
+                document.getElementById('certification-text').innerHTML = '<strong>CabinPulse Global:</strong> CE, UKCA and Japan';
+
+                // Update acknowledgment checkbox text for CE, UKCA and Japan
+                document.getElementById('acknowledgment-text').innerHTML = 'I understand and acknowledge that: (1) CabinPulse Global devices are certified with CE, UKCA and Japan standards; (2) I am responsible for ensuring compliance with my country\'s regulatory requirements; and (3) I am liable for any import duties, taxes, customs fees, or brokerage charges assessed by my country\'s customs authorities.';
 
                 document.getElementById('intl-modal-screen-2b').classList.remove('active');
                 document.getElementById('intl-modal-screen-3').classList.add('active');
