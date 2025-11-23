@@ -73,19 +73,24 @@ ul { list-style: none; }
 .highlight-red { color: var(--primary-accent); font-weight: 700; }
 
 /* =========================================
-   2. HEADER & NAV STYLES (PRESERVED)
+   2. HEADER & NAV STYLES (FIXED ALIGNMENT)
    ========================================= */
 .top-bar {
   background-color: rgba(15, 52, 96, 0.95);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(233, 69, 96, 0.1);
-  padding: 6px 0;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 999;
   transition: all 0.3s ease;
+  
+  /* DESKTOP HEIGHT */
+  height: 35px; 
+  display: flex; 
+  align-items: center; 
+  padding: 0; 
 }
 
 .top-bar-content {
@@ -95,6 +100,8 @@ ul { list-style: none; }
   max-width: 1300px;
   margin: 0 auto;
   padding: 0 25px;
+  flex-wrap: nowrap; 
+  width: 100%; 
 }
 
 .top-bar-left {
@@ -113,6 +120,8 @@ ul { list-style: none; }
   transition: all 0.3s ease;
   padding: 3px 6px;
   border-radius: 4px;
+  white-space: nowrap;
+  line-height: 1; 
 }
 
 .top-bar-link:hover {
@@ -132,9 +141,11 @@ ul { list-style: none; }
   letter-spacing: 0.5px;
   opacity: 0.9;
   background-color: rgba(233, 69, 96, 0.15);
-  padding: 3px 8px;
+  padding: 4px 8px;
   border-radius: 12px;
   border: 1px solid rgba(233, 69, 96, 0.3);
+  white-space: nowrap; 
+  line-height: 1;
 }
 
 .proudly-canadian i {
@@ -152,7 +163,10 @@ header {
   backdrop-filter: blur(12px);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
   border-bottom: 1px solid rgba(233, 69, 96, 0.2);
-  top: 38px;
+  
+  /* DESKTOP TOP POSITION */
+  top: 35px; 
+  
   transition: all 0.3s ease;
 }
 
@@ -743,6 +757,15 @@ footer {
   .uses-hero h1 { font-size: 2rem; }
   .uses-grid { grid-template-columns: 1fr; }
   .cta-features { flex-direction: column; gap: 15px; align-items: center; }
+}
+/* MOBILE ADJUSTMENTS */
+@media (max-width: 480px) {
+  .top-bar { height: 30px; } /* Force height to match header top */
+  .top-bar-content { padding: 0 10px; }
+  .top-bar-left { gap: 10px; }
+  .top-bar-link, .proudly-canadian { font-size: 0.6rem; }
+  .proudly-canadian { padding: 2px 6px; } /* Slightly reduced padding */
+  header { top: 30px; } 
 }
   </style>
 </head>
