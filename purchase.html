@@ -2261,8 +2261,11 @@
                         <i class="fas fa-certificate" style="color: #4CAF50; font-size: 1.2rem; margin-top: 2px;"></i>
                         <div>
                             <p style="margin-bottom: 8px;"><strong>Certification Standards:</strong></p>
+                            <p id="certification-text" style="font-size: 0.9rem; line-height: 1.6; margin: 0 0 12px 0;">
+                                <!-- Will be populated dynamically based on device type -->
+                            </p>
                             <p style="font-size: 0.9rem; line-height: 1.6; margin: 0;">
-                                CabinPulse devices are compliant with <strong>IC (Canada)</strong> and <strong>FCC</strong> standards. Please note that other countries may have different wireless certification requirements or regulatory standards. As the importer, you are responsible for ensuring the device meets your country's specific regulatory requirements.
+                                Please note that different countries may have different wireless certification requirements or regulatory standards. As the importer, you are responsible for ensuring the device meets your country's specific regulatory requirements.
                             </p>
                         </div>
                     </div>
@@ -2957,6 +2960,9 @@
 
             // Next button from Americas screen (2a) to certification (3)
             document.getElementById('intl-modal-next-2a').addEventListener('click', function() {
+                // Update certification text for CabinPulse Standard
+                document.getElementById('certification-text').innerHTML = '<strong>CabinPulse Standard:</strong> FCC (United States), ISED (Canada)';
+
                 document.getElementById('intl-modal-screen-2a').classList.remove('active');
                 document.getElementById('intl-modal-screen-3').classList.add('active');
             });
@@ -2972,6 +2978,9 @@
 
             // Next button from Rest of World screen (2b) to certification (3)
             document.getElementById('intl-modal-next-2b').addEventListener('click', function() {
+                // Update certification text for CabinPulse Global
+                document.getElementById('certification-text').innerHTML = '<strong>CabinPulse Global:</strong> CE (Europe), UKCA (United Kingdom), Japan (D 24 0029 201, 201 240198)';
+
                 document.getElementById('intl-modal-screen-2b').classList.remove('active');
                 document.getElementById('intl-modal-screen-3').classList.add('active');
             });
