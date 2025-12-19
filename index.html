@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -110,6 +111,177 @@
 
 .raven {
   height: 75px;
+}
+
+/* Contact Modal Styles */
+.contact-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  z-index: 10000;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-modal-content {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 420px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contact-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 28px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  line-height: 1;
+}
+
+.contact-modal-close:hover {
+  opacity: 1;
+}
+
+.contact-modal-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.contact-modal-header i {
+  font-size: 48px;
+  color: var(--highlight-color);
+  margin-bottom: 16px;
+}
+
+.contact-modal-header h2 {
+  color: #fff;
+  font-size: 24px;
+  margin: 0 0 8px 0;
+}
+
+.contact-modal-header p {
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  font-size: 14px;
+}
+
+.contact-modal-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-option {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-option:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(4px);
+  border-color: var(--highlight-color);
+}
+
+.contact-option-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--highlight-color);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+
+.contact-option-icon i {
+  font-size: 20px;
+  color: #fff;
+}
+
+.contact-option-info {
+  flex: 1;
+}
+
+.contact-option-info h3 {
+  color: #fff;
+  font-size: 16px;
+  margin: 0 0 4px 0;
+  font-weight: 600;
+}
+
+.contact-option-info p {
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  font-size: 13px;
+}
+
+.contact-option-arrow {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.contact-option:hover .contact-option-arrow {
+  color: var(--highlight-color);
+  transform: translateX(4px);
+}
+
+@media (max-width: 480px) {
+  .contact-modal-content {
+    padding: 24px;
+    margin: 16px;
+  }
+
+  .contact-modal-header i {
+    font-size: 36px;
+  }
+
+  .contact-modal-header h2 {
+    font-size: 20px;
+  }
+
+  .contact-option {
+    padding: 14px;
+  }
+
+  .contact-option-icon {
+    width: 42px;
+    height: 42px;
+  }
 }
 </style>
     <script type="application/ld+json">
@@ -347,7 +519,7 @@
         <a href="about.html" class="top-bar-link">
           About
         </a>
-        <a href="mailto:support@cabinpulse.com" class="top-bar-link">
+        <a href="#" class="top-bar-link" onclick="openContactModal(); return false;">
           Contact Us
         </a>
       </div>
@@ -2027,6 +2199,50 @@
     </div>
   </footer>
 
+  <!-- Contact Modal -->
+  <div id="contact-modal" class="contact-modal">
+    <div class="contact-modal-content">
+      <button class="contact-modal-close" onclick="closeContactModal()">&times;</button>
+      <div class="contact-modal-header">
+        <i class="fas fa-headset"></i>
+        <h2>Contact Us</h2>
+        <p>Choose how you'd like to reach us</p>
+      </div>
+      <div class="contact-modal-options">
+        <a href="mailto:support@cabinpulse.com" class="contact-option">
+          <div class="contact-option-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="contact-option-info">
+            <h3>Email Support</h3>
+            <p>support@cabinpulse.com</p>
+          </div>
+          <i class="fas fa-arrow-right contact-option-arrow"></i>
+        </a>
+        <a href="tel:+16396389919" class="contact-option">
+          <div class="contact-option-icon">
+            <i class="fas fa-phone"></i>
+          </div>
+          <div class="contact-option-info">
+            <h3>Phone Support</h3>
+            <p>(639) 638-9919</p>
+          </div>
+          <i class="fas fa-arrow-right contact-option-arrow"></i>
+        </a>
+        <a href="#" class="contact-option" onclick="openLiveChat(); return false;">
+          <div class="contact-option-icon">
+            <i class="fas fa-comments"></i>
+          </div>
+          <div class="contact-option-info">
+            <h3>Live Chat Support</h3>
+            <p>Chat with us now</p>
+          </div>
+          <i class="fas fa-arrow-right contact-option-arrow"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
   <div id="exit-popup" class="exit-popup">
     <div class="exit-popup-content">
       <button class="exit-popup-close">&times;</button>
@@ -2064,6 +2280,42 @@
 </style>
 
 <script>
+  // Contact Modal Functions
+  function openContactModal() {
+    const modal = document.getElementById('contact-modal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeContactModal() {
+    const modal = document.getElementById('contact-modal');
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  // Close modal when clicking outside
+  document.addEventListener('click', function(e) {
+    const modal = document.getElementById('contact-modal');
+    if (e.target === modal) {
+      closeContactModal();
+    }
+  });
+
+  // Close modal with Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeContactModal();
+    }
+  });
+
+  // Open Zendesk live chat
+  function openLiveChat() {
+    closeContactModal();
+    if (typeof zE !== 'undefined') {
+      zE('messenger', 'open');
+    }
+  }
+
   // Header scroll effect
   window.addEventListener('scroll', function() {
     var header = document.querySelector('header');
