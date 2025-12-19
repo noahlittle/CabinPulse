@@ -196,7 +196,35 @@ Replace the existing top-bar-content div with:
 .top-bar-left {
   display: flex;
   align-items: center;
-  gap: 20px; /* Reduced from 24px */
+  gap: 20px;
+}
+
+.currency-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 2px 3px;
+}
+.currency-option {
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text-color);
+  opacity: 0.5;
+}
+.currency-option.active {
+  background: var(--highlight-color);
+  opacity: 1;
+}
+.currency-option:not(.active):hover {
+  opacity: 0.8;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .top-bar-link {
@@ -216,6 +244,12 @@ Replace the existing top-bar-content div with:
   opacity: 1;
   color: var(--highlight-color);
   background-color: rgba(255, 255, 255, 0.05);
+}
+
+.top-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 /* Add Proudly Canadian styling */
@@ -3343,7 +3377,11 @@ Replace the existing top-bar-content div with:
       padding: 3px 8px;
       font-size: 0.65rem;
     }
-  
+    .currency-option {
+      padding: 2px 8px;
+      font-size: 0.65rem;
+    }
+
     /* Promo Banner */
     .promo-banner {
       padding: 0.5rem 2rem 0.5rem 0.5rem;
@@ -5450,5 +5488,19 @@ Replace the existing top-bar-content div with:
     font-size: 0.9rem;
     width: 100%;
     justify-content: center;
+  }
+}
+
+/* Extra small screens - prevent top bar wrapping */
+@media (max-width: 400px) {
+  .top-bar-link {
+    font-size: 0.6rem;
+    padding: 2px 4px;
+  }
+  .top-bar-left {
+    gap: 10px;
+  }
+  .proudly-canadian {
+    font-size: 0.6rem;
   }
 }
